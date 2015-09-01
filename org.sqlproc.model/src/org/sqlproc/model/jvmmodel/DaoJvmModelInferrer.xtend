@@ -755,7 +755,6 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations();
 				«pojoAttrName».setInitAssociations(new «HASH_SET»<String>());
 				final «LIST»<«pkType»> ids = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
-				«pojoAttrName».setInitAssociations(initAssociations);
 
 				List<«pojo.name»> «pojoAttrName»List = new «ARRAY_LIST»<«pojo.name»>();
 				if (!ids.isEmpty()) {
@@ -771,7 +770,9 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 							return true;
 						}
 					};
-					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»()._setIds(ids), sqlc, sqlRowProcessor);
+					«pojo.name» criteria = new «pojo.name»()._setIds(ids);
+					criteria.setInitAssociations(initAssociations);
+					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, criteria, sqlc, sqlRowProcessor);
 					for («pkType» id : ids)
 						«pojoAttrName»List.add(map.get(id));
 				}
