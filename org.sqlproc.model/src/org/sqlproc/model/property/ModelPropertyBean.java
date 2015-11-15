@@ -781,6 +781,17 @@ public class ModelPropertyBean extends ModelProperty {
             }
         } else if (METAGEN_ACTIVE_FILTER.equals(property.getName())) {
             modelValues.metaActiveFilter = Utils.getPropertyValue(property.getActiveFilter());
+        } else if (METAGEN_INSERT_SKIP_DEFAULT_VALUES.equals(property.getName())) {
+            modelValues.metaInsertSkipDefaultValues = true;
+            if (property.getDbTables() != null && !property.getDbTables().isEmpty()) {
+                for (int i = 0, m = property.getDbTables().size(); i < m; i++) {
+                    modelValues.metaInsertSkipDefaultValuesPos.add(property.getDbTables().get(i));
+                }
+            } else if (property.getDbNotTables() != null && !property.getDbNotTables().isEmpty()) {
+                for (int i = 0, m = property.getDbNotTables().size(); i < m; i++) {
+                    modelValues.metaInsertSkipDefaultValuesNeg.add(property.getDbNotTables().get(i));
+                }
+            }
         }
     }
 

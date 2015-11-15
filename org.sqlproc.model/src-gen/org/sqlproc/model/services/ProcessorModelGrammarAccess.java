@@ -3086,6 +3086,23 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cNameActiveFilterKeyword_21_0_0 = (Keyword)cNameAssignment_21_0.eContents().get(0);
 		private final Assignment cActiveFilterAssignment_21_1 = (Assignment)cGroup_21.eContents().get(1);
 		private final RuleCall cActiveFilterValueTypeParserRuleCall_21_1_0 = (RuleCall)cActiveFilterAssignment_21_1.eContents().get(0);
+		private final Group cGroup_22 = (Group)cAlternatives.eContents().get(22);
+		private final Assignment cNameAssignment_22_0 = (Assignment)cGroup_22.eContents().get(0);
+		private final Keyword cNameInsertSkipDefaultValuesKeyword_22_0_0 = (Keyword)cNameAssignment_22_0.eContents().get(0);
+		private final Group cGroup_22_1 = (Group)cGroup_22.eContents().get(1);
+		private final RuleCall cWSTerminalRuleCall_22_1_0 = (RuleCall)cGroup_22_1.eContents().get(0);
+		private final Keyword cPlusSignKeyword_22_1_1 = (Keyword)cGroup_22_1.eContents().get(1);
+		private final Group cGroup_22_1_2 = (Group)cGroup_22_1.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_1_2_0 = (RuleCall)cGroup_22_1_2.eContents().get(0);
+		private final Assignment cDbTablesAssignment_22_1_2_1 = (Assignment)cGroup_22_1_2.eContents().get(1);
+		private final RuleCall cDbTablesValidIDParserRuleCall_22_1_2_1_0 = (RuleCall)cDbTablesAssignment_22_1_2_1.eContents().get(0);
+		private final Group cGroup_22_2 = (Group)cGroup_22.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_2_0 = (RuleCall)cGroup_22_2.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_22_2_1 = (Keyword)cGroup_22_2.eContents().get(1);
+		private final Group cGroup_22_2_2 = (Group)cGroup_22_2.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_2_2_0 = (RuleCall)cGroup_22_2_2.eContents().get(0);
+		private final Assignment cDbNotTablesAssignment_22_2_2_1 = (Assignment)cGroup_22_2_2.eContents().get(1);
+		private final RuleCall cDbNotTablesValidIDParserRuleCall_22_2_2_1_0 = (RuleCall)cDbNotTablesAssignment_22_2_2_1.eContents().get(0);
 		
 		//MetagenProperty:
 		//	name="global-sequence" sequence=ValidID type=ValidID? ("+" dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)? |
@@ -3099,7 +3116,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	name="function-result" dbFunction=ValidID type=ValidID | name="function-result-set" dbFunction=ValidID dbTable=ValidID
 		//	| name="procedure-result-set" dbProcedure=ValidID dbTable=ValidID | name="debug-level" debug=DebugLevelAssignement |
 		//	name="generate-operators" | name="optimize-insert" dbTables+=ValidID* | name="optional-features" dbStatement=ValidID
-		//	optionalFeatures+=ValueType+ | name="active-filter" activeFilter=ValueType;
+		//	optionalFeatures+=ValueType+ | name="active-filter" activeFilter=ValueType | name="insert-skip-default-values" (WS+
+		//	"+" (WS+ dbTables+=ValidID)+)? (WS+ "-" (WS+ dbNotTables+=ValidID)+)?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//name="global-sequence" sequence=ValidID type=ValidID? ("+" dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)? |
@@ -3113,7 +3131,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//type=ValidID | name="function-result-set" dbFunction=ValidID dbTable=ValidID | name="procedure-result-set"
 		//dbProcedure=ValidID dbTable=ValidID | name="debug-level" debug=DebugLevelAssignement | name="generate-operators" |
 		//name="optimize-insert" dbTables+=ValidID* | name="optional-features" dbStatement=ValidID optionalFeatures+=ValueType+ |
-		//name="active-filter" activeFilter=ValueType
+		//name="active-filter" activeFilter=ValueType | name="insert-skip-default-values" (WS+ "+" (WS+ dbTables+=ValidID)+)?
+		//(WS+ "-" (WS+ dbNotTables+=ValidID)+)?
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//name="global-sequence" sequence=ValidID type=ValidID? ("+" dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)?
@@ -3532,6 +3551,57 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ValueType
 		public RuleCall getActiveFilterValueTypeParserRuleCall_21_1_0() { return cActiveFilterValueTypeParserRuleCall_21_1_0; }
+
+		//name="insert-skip-default-values" (WS+ "+" (WS+ dbTables+=ValidID)+)? (WS+ "-" (WS+ dbNotTables+=ValidID)+)?
+		public Group getGroup_22() { return cGroup_22; }
+
+		//name="insert-skip-default-values"
+		public Assignment getNameAssignment_22_0() { return cNameAssignment_22_0; }
+
+		//"insert-skip-default-values"
+		public Keyword getNameInsertSkipDefaultValuesKeyword_22_0_0() { return cNameInsertSkipDefaultValuesKeyword_22_0_0; }
+
+		//(WS+ "+" (WS+ dbTables+=ValidID)+)?
+		public Group getGroup_22_1() { return cGroup_22_1; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_1_0() { return cWSTerminalRuleCall_22_1_0; }
+
+		//"+"
+		public Keyword getPlusSignKeyword_22_1_1() { return cPlusSignKeyword_22_1_1; }
+
+		//(WS+ dbTables+=ValidID)+
+		public Group getGroup_22_1_2() { return cGroup_22_1_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_1_2_0() { return cWSTerminalRuleCall_22_1_2_0; }
+
+		//dbTables+=ValidID
+		public Assignment getDbTablesAssignment_22_1_2_1() { return cDbTablesAssignment_22_1_2_1; }
+
+		//ValidID
+		public RuleCall getDbTablesValidIDParserRuleCall_22_1_2_1_0() { return cDbTablesValidIDParserRuleCall_22_1_2_1_0; }
+
+		//(WS+ "-" (WS+ dbNotTables+=ValidID)+)?
+		public Group getGroup_22_2() { return cGroup_22_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_2_0() { return cWSTerminalRuleCall_22_2_0; }
+
+		//"-"
+		public Keyword getHyphenMinusKeyword_22_2_1() { return cHyphenMinusKeyword_22_2_1; }
+
+		//(WS+ dbNotTables+=ValidID)+
+		public Group getGroup_22_2_2() { return cGroup_22_2_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_2_2_0() { return cWSTerminalRuleCall_22_2_2_0; }
+
+		//dbNotTables+=ValidID
+		public Assignment getDbNotTablesAssignment_22_2_2_1() { return cDbNotTablesAssignment_22_2_2_1; }
+
+		//ValidID
+		public RuleCall getDbNotTablesValidIDParserRuleCall_22_2_2_1_0() { return cDbNotTablesValidIDParserRuleCall_22_2_2_1_0; }
 	}
 
 	public class DaogenPropertyElements extends AbstractParserRuleElementFinder {
@@ -6818,7 +6888,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	name="function-result" dbFunction=ValidID type=ValidID | name="function-result-set" dbFunction=ValidID dbTable=ValidID
 	//	| name="procedure-result-set" dbProcedure=ValidID dbTable=ValidID | name="debug-level" debug=DebugLevelAssignement |
 	//	name="generate-operators" | name="optimize-insert" dbTables+=ValidID* | name="optional-features" dbStatement=ValidID
-	//	optionalFeatures+=ValueType+ | name="active-filter" activeFilter=ValueType;
+	//	optionalFeatures+=ValueType+ | name="active-filter" activeFilter=ValueType | name="insert-skip-default-values" (WS+
+	//	"+" (WS+ dbTables+=ValidID)+)? (WS+ "-" (WS+ dbNotTables+=ValidID)+)?;
 	public MetagenPropertyElements getMetagenPropertyAccess() {
 		return pMetagenProperty;
 	}

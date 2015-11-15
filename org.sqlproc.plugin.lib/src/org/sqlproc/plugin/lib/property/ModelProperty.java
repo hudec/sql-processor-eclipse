@@ -113,6 +113,7 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String METAGEN_OPTIMIZE_INSERT = "optimize-insert";
     public static final String METAGEN_OPTIONAL_FEATURES = "optional-features";
     public static final String METAGEN_ACTIVE_FILTER = "active-filter";
+    public static final String METAGEN_INSERT_SKIP_DEFAULT_VALUES = "metagen-insert-skip-default-values";
 
     public static final String DAOGEN = "daogen";
     public static final String DAOGEN_IGNORE_TABLES = "ignore-tables";
@@ -269,6 +270,9 @@ public abstract class ModelProperty extends AdapterImpl {
         public Set<String> metaOptimizeInsert;
         public Map<String, Set<String>> metaOptionalFeatures;
         public String metaActiveFilter;
+        public boolean metaInsertSkipDefaultValues;
+        public Set<String> metaInsertSkipDefaultValuesPos;
+        public Set<String> metaInsertSkipDefaultValuesNeg;
 
         public Set<String> daoIgnoreTables;
         public Set<String> daoOnlyTables;
@@ -405,6 +409,9 @@ public abstract class ModelProperty extends AdapterImpl {
             metaOptimizeInsert = new HashSet<String>();
             metaOptionalFeatures = new HashMap<String, Set<String>>();
             metaActiveFilter = null;
+            metaInsertSkipDefaultValues = false;
+            metaInsertSkipDefaultValuesPos = new HashSet<String>();
+            metaInsertSkipDefaultValuesNeg = new HashSet<String>();
             defaultAttrs.put(METAGEN, new HashSet<String>());
             conditionalAttrs.put(METAGEN, new HashSet<String>());
         }
@@ -933,6 +940,21 @@ public abstract class ModelProperty extends AdapterImpl {
     public String getMetaActiveFilter(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.metaActiveFilter : null;
+    }
+
+    public boolean isMetaInsertSkipDefaultValues(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.metaInsertSkipDefaultValues : false;
+    }
+
+    public Set<String> getMetaInsertSkipDefaultValuesPos(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.metaInsertSkipDefaultValuesPos : Collections.<String> emptySet();
+    }
+
+    public Set<String> getMetaInsertSkipDefaultValuesNeg(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.metaInsertSkipDefaultValuesNeg : Collections.<String> emptySet();
     }
 
     public Set<String> getDaoIgnoreTables(EObject model) {

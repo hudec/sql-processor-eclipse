@@ -6829,7 +6829,83 @@ ruleMetagenProperty returns [EObject current=null]
 	    }
 
 )
-)))
+))
+    |((
+(
+		lv_name_96_0=	'insert-skip-default-values' 
+    {
+        newLeafNode(lv_name_96_0, grammarAccess.getMetagenPropertyAccess().getNameInsertSkipDefaultValuesKeyword_22_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMetagenPropertyRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_96_0, "insert-skip-default-values");
+	    }
+
+)
+)((this_WS_97=RULE_WS
+    { 
+    newLeafNode(this_WS_97, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_0()); 
+    }
+)+this_PLUS_98=RULE_PLUS
+    { 
+    newLeafNode(this_PLUS_98, grammarAccess.getMetagenPropertyAccess().getPLUSTerminalRuleCall_22_1_1()); 
+    }
+((this_WS_99=RULE_WS
+    { 
+    newLeafNode(this_WS_99, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_2_0()); 
+    }
+)+(
+(
+		lv_dbTables_100_0=RULE_IDENT
+		{
+			newLeafNode(lv_dbTables_100_0, grammarAccess.getMetagenPropertyAccess().getDbTablesIDENTTerminalRuleCall_22_1_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMetagenPropertyRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"dbTables",
+        		lv_dbTables_100_0, 
+        		"IDENT");
+	    }
+
+)
+))+)?((this_WS_101=RULE_WS
+    { 
+    newLeafNode(this_WS_101, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_0()); 
+    }
+)+this_MINUS_102=RULE_MINUS
+    { 
+    newLeafNode(this_MINUS_102, grammarAccess.getMetagenPropertyAccess().getMINUSTerminalRuleCall_22_2_1()); 
+    }
+((this_WS_103=RULE_WS
+    { 
+    newLeafNode(this_WS_103, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_2_0()); 
+    }
+)+(
+(
+		lv_dbNotTables_104_0=RULE_IDENT
+		{
+			newLeafNode(lv_dbNotTables_104_0, grammarAccess.getMetagenPropertyAccess().getDbNotTablesIDENTTerminalRuleCall_22_2_2_1_0()); 
+		}
+		{
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMetagenPropertyRule());
+	        }
+       		addWithLastConsumed(
+       			$current, 
+       			"dbNotTables",
+        		lv_dbNotTables_104_0, 
+        		"IDENT");
+	    }
+
+)
+))+)?))
 ;
 
 

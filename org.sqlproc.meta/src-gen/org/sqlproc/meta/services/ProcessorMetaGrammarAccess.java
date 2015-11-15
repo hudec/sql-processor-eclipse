@@ -3927,6 +3927,23 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWSTerminalRuleCall_21_1 = (RuleCall)cGroup_21.eContents().get(1);
 		private final Assignment cActiveFilterAssignment_21_2 = (Assignment)cGroup_21.eContents().get(2);
 		private final RuleCall cActiveFilterValueTypeParserRuleCall_21_2_0 = (RuleCall)cActiveFilterAssignment_21_2.eContents().get(0);
+		private final Group cGroup_22 = (Group)cAlternatives.eContents().get(22);
+		private final Assignment cNameAssignment_22_0 = (Assignment)cGroup_22.eContents().get(0);
+		private final Keyword cNameInsertSkipDefaultValuesKeyword_22_0_0 = (Keyword)cNameAssignment_22_0.eContents().get(0);
+		private final Group cGroup_22_1 = (Group)cGroup_22.eContents().get(1);
+		private final RuleCall cWSTerminalRuleCall_22_1_0 = (RuleCall)cGroup_22_1.eContents().get(0);
+		private final RuleCall cPLUSTerminalRuleCall_22_1_1 = (RuleCall)cGroup_22_1.eContents().get(1);
+		private final Group cGroup_22_1_2 = (Group)cGroup_22_1.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_1_2_0 = (RuleCall)cGroup_22_1_2.eContents().get(0);
+		private final Assignment cDbTablesAssignment_22_1_2_1 = (Assignment)cGroup_22_1_2.eContents().get(1);
+		private final RuleCall cDbTablesIDENTTerminalRuleCall_22_1_2_1_0 = (RuleCall)cDbTablesAssignment_22_1_2_1.eContents().get(0);
+		private final Group cGroup_22_2 = (Group)cGroup_22.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_2_0 = (RuleCall)cGroup_22_2.eContents().get(0);
+		private final RuleCall cMINUSTerminalRuleCall_22_2_1 = (RuleCall)cGroup_22_2.eContents().get(1);
+		private final Group cGroup_22_2_2 = (Group)cGroup_22_2.eContents().get(2);
+		private final RuleCall cWSTerminalRuleCall_22_2_2_0 = (RuleCall)cGroup_22_2_2.eContents().get(0);
+		private final Assignment cDbNotTablesAssignment_22_2_2_1 = (Assignment)cGroup_22_2_2.eContents().get(1);
+		private final RuleCall cDbNotTablesIDENTTerminalRuleCall_22_2_2_1_0 = (RuleCall)cDbNotTablesAssignment_22_2_2_1.eContents().get(0);
 		
 		//MetagenProperty:
 		//	name="global-sequence" WS+ sequence=IDENT type=IDENT? (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+
@@ -3942,7 +3959,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	name="function-result-set" WS+ dbFunction=IDENT WS+ dbTable=IDENT | name="procedure-result-set" WS+ dbProcedure=IDENT
 		//	WS+ dbTable=IDENT | name="debug-level" WS+ debug=DebugLevelAssignement | name="generate-operators" |
 		//	name="optimize-insert" (WS+ dbTables+=IDENT)* | name="optional-features" WS+ dbStatement=IDENT (WS+
-		//	optionalFeatures+=ValueType)+ | name="active-filter" WS+ activeFilter=ValueType;
+		//	optionalFeatures+=ValueType)+ | name="active-filter" WS+ activeFilter=ValueType | name="insert-skip-default-values"
+		//	(WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//name="global-sequence" WS+ sequence=IDENT type=IDENT? (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+
@@ -3958,7 +3976,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//dbTable=IDENT | name="procedure-result-set" WS+ dbProcedure=IDENT WS+ dbTable=IDENT | name="debug-level" WS+
 		//debug=DebugLevelAssignement | name="generate-operators" | name="optimize-insert" (WS+ dbTables+=IDENT)* |
 		//name="optional-features" WS+ dbStatement=IDENT (WS+ optionalFeatures+=ValueType)+ | name="active-filter" WS+
-		//activeFilter=ValueType
+		//activeFilter=ValueType | name="insert-skip-default-values" (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+
+		//dbNotTables+=IDENT)+)?
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//name="global-sequence" WS+ sequence=IDENT type=IDENT? (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+
@@ -4526,6 +4545,57 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ValueType
 		public RuleCall getActiveFilterValueTypeParserRuleCall_21_2_0() { return cActiveFilterValueTypeParserRuleCall_21_2_0; }
+
+		//name="insert-skip-default-values" (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?
+		public Group getGroup_22() { return cGroup_22; }
+
+		//name="insert-skip-default-values"
+		public Assignment getNameAssignment_22_0() { return cNameAssignment_22_0; }
+
+		//"insert-skip-default-values"
+		public Keyword getNameInsertSkipDefaultValuesKeyword_22_0_0() { return cNameInsertSkipDefaultValuesKeyword_22_0_0; }
+
+		//(WS+ PLUS (WS+ dbTables+=IDENT)+)?
+		public Group getGroup_22_1() { return cGroup_22_1; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_1_0() { return cWSTerminalRuleCall_22_1_0; }
+
+		//PLUS
+		public RuleCall getPLUSTerminalRuleCall_22_1_1() { return cPLUSTerminalRuleCall_22_1_1; }
+
+		//(WS+ dbTables+=IDENT)+
+		public Group getGroup_22_1_2() { return cGroup_22_1_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_1_2_0() { return cWSTerminalRuleCall_22_1_2_0; }
+
+		//dbTables+=IDENT
+		public Assignment getDbTablesAssignment_22_1_2_1() { return cDbTablesAssignment_22_1_2_1; }
+
+		//IDENT
+		public RuleCall getDbTablesIDENTTerminalRuleCall_22_1_2_1_0() { return cDbTablesIDENTTerminalRuleCall_22_1_2_1_0; }
+
+		//(WS+ MINUS (WS+ dbNotTables+=IDENT)+)?
+		public Group getGroup_22_2() { return cGroup_22_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_2_0() { return cWSTerminalRuleCall_22_2_0; }
+
+		//MINUS
+		public RuleCall getMINUSTerminalRuleCall_22_2_1() { return cMINUSTerminalRuleCall_22_2_1; }
+
+		//(WS+ dbNotTables+=IDENT)+
+		public Group getGroup_22_2_2() { return cGroup_22_2_2; }
+
+		//WS+
+		public RuleCall getWSTerminalRuleCall_22_2_2_0() { return cWSTerminalRuleCall_22_2_2_0; }
+
+		//dbNotTables+=IDENT
+		public Assignment getDbNotTablesAssignment_22_2_2_1() { return cDbNotTablesAssignment_22_2_2_1; }
+
+		//IDENT
+		public RuleCall getDbNotTablesIDENTTerminalRuleCall_22_2_2_1_0() { return cDbNotTablesIDENTTerminalRuleCall_22_2_2_1_0; }
 	}
 
 	public class DaogenPropertyElements extends AbstractParserRuleElementFinder {
@@ -8544,7 +8614,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	name="function-result-set" WS+ dbFunction=IDENT WS+ dbTable=IDENT | name="procedure-result-set" WS+ dbProcedure=IDENT
 	//	WS+ dbTable=IDENT | name="debug-level" WS+ debug=DebugLevelAssignement | name="generate-operators" |
 	//	name="optimize-insert" (WS+ dbTables+=IDENT)* | name="optional-features" WS+ dbStatement=IDENT (WS+
-	//	optionalFeatures+=ValueType)+ | name="active-filter" WS+ activeFilter=ValueType;
+	//	optionalFeatures+=ValueType)+ | name="active-filter" WS+ activeFilter=ValueType | name="insert-skip-default-values"
+	//	(WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 	public MetagenPropertyElements getMetagenPropertyAccess() {
 		return pMetagenProperty;
 	}

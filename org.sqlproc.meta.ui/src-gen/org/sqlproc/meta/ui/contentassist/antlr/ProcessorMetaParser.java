@@ -284,6 +284,11 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_20(), "rule__MetagenProperty__Group_20__0");
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_20_3(), "rule__MetagenProperty__Group_20_3__0");
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_21(), "rule__MetagenProperty__Group_21__0");
+					put(grammarAccess.getMetagenPropertyAccess().getGroup_22(), "rule__MetagenProperty__Group_22__0");
+					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_1(), "rule__MetagenProperty__Group_22_1__0");
+					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_1_2(), "rule__MetagenProperty__Group_22_1_2__0");
+					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_2(), "rule__MetagenProperty__Group_22_2__0");
+					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_2_2(), "rule__MetagenProperty__Group_22_2_2__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_0(), "rule__DaogenProperty__Group_0__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_0_1(), "rule__DaogenProperty__Group_0_1__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_1(), "rule__DaogenProperty__Group_1__0");
@@ -679,6 +684,9 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetagenPropertyAccess().getOptionalFeaturesAssignment_20_3_1(), "rule__MetagenProperty__OptionalFeaturesAssignment_20_3_1");
 					put(grammarAccess.getMetagenPropertyAccess().getNameAssignment_21_0(), "rule__MetagenProperty__NameAssignment_21_0");
 					put(grammarAccess.getMetagenPropertyAccess().getActiveFilterAssignment_21_2(), "rule__MetagenProperty__ActiveFilterAssignment_21_2");
+					put(grammarAccess.getMetagenPropertyAccess().getNameAssignment_22_0(), "rule__MetagenProperty__NameAssignment_22_0");
+					put(grammarAccess.getMetagenPropertyAccess().getDbTablesAssignment_22_1_2_1(), "rule__MetagenProperty__DbTablesAssignment_22_1_2_1");
+					put(grammarAccess.getMetagenPropertyAccess().getDbNotTablesAssignment_22_2_2_1(), "rule__MetagenProperty__DbNotTablesAssignment_22_2_2_1");
 					put(grammarAccess.getDaogenPropertyAccess().getNameAssignment_0_0(), "rule__DaogenProperty__NameAssignment_0_0");
 					put(grammarAccess.getDaogenPropertyAccess().getDbTablesAssignment_0_1_1(), "rule__DaogenProperty__DbTablesAssignment_0_1_1");
 					put(grammarAccess.getDaogenPropertyAccess().getNameAssignment_1_0(), "rule__DaogenProperty__NameAssignment_1_0");

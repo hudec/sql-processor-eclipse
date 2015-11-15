@@ -898,7 +898,8 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         name='generate-operators' | 
 	 *         (name='optimize-insert' dbTables+=IDENT*) | 
 	 *         (name='optional-features' dbStatement=IDENT optionalFeatures+=ValueType+) | 
-	 *         (name='active-filter' activeFilter=ValueType)
+	 *         (name='active-filter' activeFilter=ValueType) | 
+	 *         (name='insert-skip-default-values' dbTables+=IDENT* dbNotTables+=IDENT*)
 	 *     )
 	 */
 	protected void sequence_MetagenProperty(EObject context, MetagenProperty semanticObject) {

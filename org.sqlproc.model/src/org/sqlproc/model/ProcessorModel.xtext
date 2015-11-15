@@ -158,6 +158,7 @@ MetagenProperty:
 	|name='optimize-insert' (dbTables+=ValidID)*
 	|name='optional-features' dbStatement=ValidID (optionalFeatures+=ValueType)+
 	|name='active-filter' activeFilter=ValueType
+	|name='insert-skip-default-values' (WS+ '+' (WS+ dbTables+=ValidID)+)? (WS+ '-' (WS+ dbNotTables+=ValidID)+)?
 	);
 
 DaogenProperty:

@@ -22,6 +22,10 @@ import org.sqlproc.model.services.ProcessorModelGrammarAccess;
 public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected ProcessorModelGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_1_0_p;
+	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p;
+	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_2_0_p;
+	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p;
 	protected AbstractElementAlias match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
@@ -34,6 +38,10 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ProcessorModelGrammarAccess) access;
+		match_MetagenProperty_WSTerminalRuleCall_22_1_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_0());
+		match_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_2_0());
+		match_MetagenProperty_WSTerminalRuleCall_22_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_0());
+		match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_2_0());
 		match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getColonColonKeyword_2_0_0_1()), new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0_0()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
@@ -58,6 +66,8 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 			return getOpSingleAssignToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getRPARENRule())
 			return getRPARENToken(semanticObject, ruleCall, node);
+		else if(ruleCall.getRule() == grammarAccess.getWSRule())
+			return getWSToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
@@ -119,13 +129,30 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 		return ")";
 	}
 	
+	/**
+	 * terminal WS: (' '|'\t'|'\r'|'\n')+;
+	 */
+	protected String getWSToken(EObject semanticObject, RuleCall ruleCall, INode node) {
+		if (node != null)
+			return getTokenText(node);
+		return " ";
+	}
+	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
 		if (transition.getAmbiguousSyntaxes().isEmpty()) return;
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if(match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q.equals(syntax))
+			if(match_MetagenProperty_WSTerminalRuleCall_22_1_0_p.equals(syntax))
+				emit_MetagenProperty_WSTerminalRuleCall_22_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p.equals(syntax))
+				emit_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_MetagenProperty_WSTerminalRuleCall_22_2_0_p.equals(syntax))
+				emit_MetagenProperty_WSTerminalRuleCall_22_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p.equals(syntax))
+				emit_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q.equals(syntax))
 				emit_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -145,6 +172,54 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     WS+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     name='insert-skip-default-values' (ambiguity) '+' WS+ dbTables+=ValidID
+	 */
+	protected void emit_MetagenProperty_WSTerminalRuleCall_22_1_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     WS+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     dbTables+=ValidID (ambiguity) dbTables+=ValidID
+	 *     name='insert-skip-default-values' WS+ '+' (ambiguity) dbTables+=ValidID
+	 */
+	protected void emit_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     WS+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     dbTables+=ValidID (ambiguity) '-' WS+ dbNotTables+=ValidID
+	 *     name='insert-skip-default-values' (ambiguity) '-' WS+ dbNotTables+=ValidID
+	 */
+	protected void emit_MetagenProperty_WSTerminalRuleCall_22_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     WS+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     dbNotTables+=ValidID (ambiguity) dbNotTables+=ValidID
+	 *     dbTables+=ValidID WS+ '-' (ambiguity) dbNotTables+=ValidID
+	 *     name='insert-skip-default-values' WS+ '-' (ambiguity) dbNotTables+=ValidID
+	 */
+	protected void emit_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     (':' | '::')?

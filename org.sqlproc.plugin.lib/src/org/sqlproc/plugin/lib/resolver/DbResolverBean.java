@@ -1130,6 +1130,7 @@ public class DbResolverBean implements DbResolver {
                     if (modelDatabaseValues.dbTakeComments)
                         dbColumn.setComment(result.getString("REMARKS"));
                     // dbColumn.setPosition(result.getInt("ORDINAL_POSITION"));
+                    dbColumn.setDefaultValue(result.getString("COLUMN_DEF"));
                     columnsForModel.add(dbColumn);
                     // debug.debug(table + ": " + dbColumn.toString());
                 }

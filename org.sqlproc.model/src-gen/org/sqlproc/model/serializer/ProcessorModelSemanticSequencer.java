@@ -1526,7 +1526,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         name='generate-operators' | 
 	 *         (name='optimize-insert' dbTables+=ValidID*) | 
 	 *         (name='optional-features' dbStatement=ValidID optionalFeatures+=ValueType+) | 
-	 *         (name='active-filter' activeFilter=ValueType)
+	 *         (name='active-filter' activeFilter=ValueType) | 
+	 *         (name='insert-skip-default-values' dbTables+=ValidID* dbNotTables+=ValidID*)
 	 *     )
 	 */
 	protected void sequence_MetagenProperty(EObject context, MetagenProperty semanticObject) {

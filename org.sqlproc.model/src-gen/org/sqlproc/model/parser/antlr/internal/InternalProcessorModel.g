@@ -6143,7 +6143,83 @@ ruleMetagenProperty returns [EObject current=null]
 	    }
 
 )
-)))
+))
+    |((
+(
+		lv_name_60_0=	'insert-skip-default-values' 
+    {
+        newLeafNode(lv_name_60_0, grammarAccess.getMetagenPropertyAccess().getNameInsertSkipDefaultValuesKeyword_22_0_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getMetagenPropertyRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_60_0, "insert-skip-default-values");
+	    }
+
+)
+)((this_WS_61=RULE_WS
+    { 
+    newLeafNode(this_WS_61, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_0()); 
+    }
+)+	otherlv_62='+' 
+    {
+    	newLeafNode(otherlv_62, grammarAccess.getMetagenPropertyAccess().getPlusSignKeyword_22_1_1());
+    }
+((this_WS_63=RULE_WS
+    { 
+    newLeafNode(this_WS_63, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_2_0()); 
+    }
+)+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbTablesValidIDParserRuleCall_22_1_2_1_0()); 
+	    }
+		lv_dbTables_64_0=ruleValidID		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
+	        }
+       		add(
+       			$current, 
+       			"dbTables",
+        		lv_dbTables_64_0, 
+        		"ValidID");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))+)?((this_WS_65=RULE_WS
+    { 
+    newLeafNode(this_WS_65, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_0()); 
+    }
+)+	otherlv_66='-' 
+    {
+    	newLeafNode(otherlv_66, grammarAccess.getMetagenPropertyAccess().getHyphenMinusKeyword_22_2_1());
+    }
+((this_WS_67=RULE_WS
+    { 
+    newLeafNode(this_WS_67, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_2_0()); 
+    }
+)+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbNotTablesValidIDParserRuleCall_22_2_2_1_0()); 
+	    }
+		lv_dbNotTables_68_0=ruleValidID		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
+	        }
+       		add(
+       			$current, 
+       			"dbNotTables",
+        		lv_dbNotTables_68_0, 
+        		"ValidID");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+))+)?))
 ;
 
 
