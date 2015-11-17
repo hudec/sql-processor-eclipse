@@ -39,6 +39,7 @@ public class PojoAttribute {
     private int size;
     private String comment;
     private String one2one;
+    private String defaultValue;
 
     public PojoAttribute(String dbName) {
         this.dbName = dbName;
@@ -331,6 +332,14 @@ public class PojoAttribute {
         this.dependencyPojo = dependencyPojo;
     }
 
+    public String getDefaultValue() {
+        return defaultValue;
+    }
+
+    public void setDefaultValue(String defaultValue) {
+        this.defaultValue = defaultValue;
+    }
+
     @Override
     public String toString() {
         return "PojoAttribute [dbName=" + dbName + ", primitive=" + primitive + ", required=" + required
@@ -342,7 +351,7 @@ public class PojoAttribute {
                 + ", oneToManyOppositeColumn=" + oneToManyOppositeColumn + ", oneToManyTable=" + oneToManyTable
                 + ", manyToManyColumn=" + manyToManyColumn + ", manyToManyTable=" + manyToManyTable + ", funProcType="
                 + funProcType + ", funProcColumnType=" + funProcColumnType + ", sqlType=" + sqlType
-                + ", completeSqlType=" + completeSqlType + ", size=" + size + ", comment=" + comment + ", one2one="
-                + one2one + "]";
+                + ", completeSqlType=" + completeSqlType + ", size=" + size + ", comment=" + comment
+                + ", defaultValue=" + defaultValue + ", one2one=" + one2one + "]";
     }
 }

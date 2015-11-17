@@ -67,6 +67,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
     protected Set<String> metaOptimizeInsert = new HashSet<String>();
     protected Map<String, Set<String>> metaOptionalFeatures = new HashMap<String, Set<String>>();
     protected MetaFilter metaActiveFilter = null;
+    protected boolean metaInsertSkipDefaultValues = false;
+    protected Set<String> metaInsertSkipDefaultValuesPos = new HashSet<String>();
+    protected Set<String> metaInsertSkipDefaultValuesNeg = new HashSet<String>();
 
     enum StatementType {
         INSERT, GET, UPDATE, DELETE, SELECT
@@ -182,6 +185,15 @@ public class TableMetaGenerator extends TableBaseGenerator {
             this.metaOptionalFeatures.putAll(metaOptionalFeatures);
         }
         this.metaActiveFilter = MetaFilter.parse(modelProperty.getMetaActiveFilter(artifacts));
+        this.metaInsertSkipDefaultValues = modelProperty.isMetaInsertSkipDefaultValues(artifacts);
+        Set<String> metaInsertSkipDefaultValuesPos = modelProperty.getMetaInsertSkipDefaultValuesPos(artifacts);
+        if (metaInsertSkipDefaultValuesPos != null) {
+            this.metaInsertSkipDefaultValuesPos.addAll(metaInsertSkipDefaultValuesPos);
+        }
+        Set<String> metaInsertSkipDefaultValuesNeg = modelProperty.getMetaInsertSkipDefaultValuesNeg(artifacts);
+        if (metaInsertSkipDefaultValuesNeg != null) {
+            this.metaInsertSkipDefaultValuesNeg.addAll(metaInsertSkipDefaultValuesNeg);
+        }
 
         for (String pojo : this.metaTablesIdentity.keySet()) {
             this.metaGlobalIdentityNotForTables.add(pojo);
@@ -230,6 +242,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
             System.out.println("metaOptimizeInsert " + this.metaOptimizeInsert);
             System.out.println("metaOptionalFeatures " + this.metaOptionalFeatures);
             System.out.println("metaActiveFilter " + this.metaActiveFilter);
+            System.out.println("metaInsertSkipDefaultValues " + this.metaInsertSkipDefaultValues);
+            System.out.println("metaInsertSkipDefaultValuesPos " + this.metaInsertSkipDefaultValuesPos);
+            System.out.println("metaInsertSkipDefaultValuesNeg " + this.metaInsertSkipDefaultValuesNeg);
         }
     }
 
@@ -346,9 +361,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
         first = insertIdentity(buffer, pojo, first);
         if (parentPojo != null)
             first = insertIdentity(buffer, parentPojo, first);
-        first = pojoColumns(buffer, pojo, first, header.statementName);
+        first = insertValues(buffer, pojo, first, header.statementName);
         if (parentPojo != null)
-            pojoColumns(buffer, parentPojo, first, header.statementName);
+            insertValues(buffer, parentPojo, first, header.statementName);
         if (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_"))
             buffer.append("\n  ) }");
         else
@@ -572,6 +587,12 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 if (ignore)
                     continue;
             }
+            if (metaInsertSkipDefaultValues && pentry.getValue().getDefaultValue() != null) {
+                if (!metaInsertSkipDefaultValuesPos.isEmpty() && !metaInsertSkipDefaultValuesPos.contains(pojo))
+                    continue;
+                if (!metaInsertSkipDefaultValuesNeg.isEmpty() && metaInsertSkipDefaultValuesNeg.contains(pojo))
+                    continue;
+            }
             PairValues identity = getIdentity(pojo, pentry.getValue());
             if (identity != null && !metaGenerateIdGenerators && !metaGenerateIndirectIdGenerators)
                 continue;
@@ -656,13 +677,19 @@ public class TableMetaGenerator extends TableBaseGenerator {
         return first;
     }
 
-    boolean pojoColumns(StringBuilder buffer, String pojo, boolean first, String statementName) {
+    boolean insertValues(StringBuilder buffer, String pojo, boolean first, String statementName) {
         for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
             if (pentry.getValue().getOne2one() != null)
                 continue;
             Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), true);
             if (attr == null)
                 continue;
+            if (metaInsertSkipDefaultValues && pentry.getValue().getDefaultValue() != null) {
+                if (!metaInsertSkipDefaultValuesPos.isEmpty() && !metaInsertSkipDefaultValuesPos.contains(pojo))
+                    continue;
+                if (!metaInsertSkipDefaultValuesNeg.isEmpty() && metaInsertSkipDefaultValuesNeg.contains(pojo))
+                    continue;
+            }
             String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
                     attr.attributeName) : null;
             if (name == null)

@@ -1175,6 +1175,7 @@ public class TableBaseGenerator {
         attribute.setCompleteSqlType(dbColumn.getCompleteType());
         attribute.setSize(dbColumn.getSize());
         attribute.setComment(dbColumn.getComment());
+        attribute.setDefaultValue(dbColumn.getDefaultValue());
         return attribute;
     }
 
@@ -1320,6 +1321,7 @@ public class TableBaseGenerator {
         attribute.setCompleteSqlType(dbColumn.getCompleteType());
         attribute.setSize(dbColumn.getSize());
         attribute.setComment(dbColumn.getComment());
+        attribute.setDefaultValue(dbColumn.getDefaultValue());
         return attribute;
     }
 
