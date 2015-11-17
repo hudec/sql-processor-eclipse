@@ -113,7 +113,7 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String METAGEN_OPTIMIZE_INSERT = "optimize-insert";
     public static final String METAGEN_OPTIONAL_FEATURES = "optional-features";
     public static final String METAGEN_ACTIVE_FILTER = "active-filter";
-    public static final String METAGEN_INSERT_SKIP_DEFAULT_VALUES = "metagen-insert-skip-default-values";
+    public static final String METAGEN_INSERT_SKIP_DEFAULT_VALUES = "insert-skip-default-values";
 
     public static final String DAOGEN = "daogen";
     public static final String DAOGEN_IGNORE_TABLES = "ignore-tables";

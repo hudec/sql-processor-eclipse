@@ -588,6 +588,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     continue;
             }
             if (metaInsertSkipDefaultValues && pentry.getValue().getDefaultValue() != null) {
+                if (metaInsertSkipDefaultValuesPos.isEmpty() && metaInsertSkipDefaultValuesNeg.isEmpty())
+                    continue;
                 if (!metaInsertSkipDefaultValuesPos.isEmpty() && !metaInsertSkipDefaultValuesPos.contains(pojo))
                     continue;
                 if (!metaInsertSkipDefaultValuesNeg.isEmpty() && metaInsertSkipDefaultValuesNeg.contains(pojo))
@@ -685,6 +687,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (attr == null)
                 continue;
             if (metaInsertSkipDefaultValues && pentry.getValue().getDefaultValue() != null) {
+                if (metaInsertSkipDefaultValuesPos.isEmpty() && metaInsertSkipDefaultValuesNeg.isEmpty())
+                    continue;
                 if (!metaInsertSkipDefaultValuesPos.isEmpty() && !metaInsertSkipDefaultValuesPos.contains(pojo))
                     continue;
                 if (!metaInsertSkipDefaultValuesNeg.isEmpty() && metaInsertSkipDefaultValuesNeg.contains(pojo))
