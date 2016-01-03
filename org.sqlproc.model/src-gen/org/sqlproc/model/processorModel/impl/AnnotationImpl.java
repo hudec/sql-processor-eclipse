@@ -30,12 +30,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.AnnotationImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.AnnotationImpl#isFinal <em>Final</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.AnnotationImpl#getAnnotation <em>Annotation</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

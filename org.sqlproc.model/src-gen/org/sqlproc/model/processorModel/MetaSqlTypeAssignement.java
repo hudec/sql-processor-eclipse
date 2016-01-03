@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.MetaSqlTypeAssignement#getSqlType <em>Sql Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.MetaSqlTypeAssignement#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.MetaSqlTypeAssignement#getExtension <em>Extension</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getMetaSqlTypeAssignement()
  * @model

@@ -20,10 +20,10 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ImplementsExtendsDirectiveExceptPojosImpl#getExceptPojos <em>Except Pojos</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

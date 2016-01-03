@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.MetagenProperty#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.MetagenProperty#getSequence <em>Sequence</em>}</li>
@@ -31,7 +32,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.model.processorModel.MetagenProperty#getOptionalFeatures <em>Optional Features</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.MetagenProperty#getActiveFilter <em>Active Filter</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getMetagenProperty()
  * @model

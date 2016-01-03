@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.ValueType#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ValueType#getNumber <em>Number</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ValueType#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getValueType()
  * @model

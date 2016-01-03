@@ -18,12 +18,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ManyToManyAssignementImpl#getPkColumn <em>Pk Column</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ManyToManyAssignementImpl#getPkTable <em>Pk Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ManyToManyAssignementImpl#getFkColumn <em>Fk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -18,11 +18,11 @@ import org.sqlproc.model.processorModel.TableDefinitionModel;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.TableDefinitionModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.TableDefinitionModelImpl#getTable <em>Table</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

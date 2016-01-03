@@ -11,11 +11,11 @@ import org.eclipse.emf.common.util.EList;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.EnumEntity#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.EnumEntity#getAttribute <em>Attribute</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEnumEntity()
  * @model

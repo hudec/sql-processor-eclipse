@@ -13,12 +13,12 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoType#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoType#getRef <em>Ref</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoType#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoType()
  * @model

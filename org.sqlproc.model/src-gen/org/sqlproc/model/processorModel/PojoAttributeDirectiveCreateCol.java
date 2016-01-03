@@ -10,11 +10,11 @@ package org.sqlproc.model.processorModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveCreateCol#getCreateColumn1 <em>Create Column1</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveCreateCol#getCreateColumn2 <em>Create Column2</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttributeDirectiveCreateCol()
  * @model

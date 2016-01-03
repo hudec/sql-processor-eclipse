@@ -4,7 +4,7 @@
     editorDirectory="/org.sqlproc.meta.editor/src" modelPluginID="org.sqlproc.meta"
     forceOverwrite="true" modelName="ProcessorMeta" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="org.sqlproc.meta.edit"
-    editorPluginID="org.sqlproc.meta.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
+    editorPluginID="org.sqlproc.meta.editor" runtimeVersion="2.11" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types">
   <genPackages prefix="ProcessorMeta" basePackage="org.sqlproc.meta" disposableProviderFactory="true"
       fileExtensions="meta" ecorePackage="ProcessorMeta.ecore#/">
     <genClasses ecoreClass="ProcessorMeta.ecore#//Artifacts">

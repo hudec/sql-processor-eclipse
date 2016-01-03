@@ -24,12 +24,12 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoTypeImpl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoTypeImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoTypeImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

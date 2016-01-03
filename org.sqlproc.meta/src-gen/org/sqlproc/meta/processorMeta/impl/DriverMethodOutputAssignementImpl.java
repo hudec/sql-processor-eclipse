@@ -21,11 +21,11 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.DriverMethodOutputAssignementImpl#getDriverMethod <em>Driver Method</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.DriverMethodOutputAssignementImpl#getCallOutput <em>Call Output</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAssignement#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAssignement#getNewName <em>New Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getColumnAssignement()
  * @model

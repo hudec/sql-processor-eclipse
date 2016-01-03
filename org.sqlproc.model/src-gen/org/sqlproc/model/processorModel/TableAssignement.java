@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.TableAssignement#getDbTable <em>Db Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.TableAssignement#getNewName <em>New Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getTableAssignement()
  * @model

@@ -18,12 +18,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExportAssignementImpl#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExportAssignementImpl#getFkTable <em>Fk Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExportAssignementImpl#getFkColumn <em>Fk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

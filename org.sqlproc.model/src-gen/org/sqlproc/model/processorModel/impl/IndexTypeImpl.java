@@ -18,11 +18,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.IndexTypeImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.IndexTypeImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

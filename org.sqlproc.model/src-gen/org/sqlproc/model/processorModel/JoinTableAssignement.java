@@ -13,11 +13,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.JoinTableAssignement#getDbTable <em>Db Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.JoinTableAssignement#getDbTables <em>Db Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getJoinTableAssignement()
  * @model

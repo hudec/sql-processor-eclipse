@@ -28,11 +28,11 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSqlImpl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSqlImpl#getSqls <em>Sqls</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

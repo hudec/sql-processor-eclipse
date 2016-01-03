@@ -21,11 +21,11 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ProcedurePojoAssignementImpl#getDbProcedure <em>Db Procedure</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ProcedurePojoAssignementImpl#getPojo <em>Pojo</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.DatabaseProperty#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DatabaseProperty#getDbUrl <em>Db Url</em>}</li>
@@ -30,7 +31,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.model.processorModel.DatabaseProperty#getDbMethodsCalls <em>Db Methods Calls</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DatabaseProperty#getDebug <em>Debug</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getDatabaseProperty()
  * @model

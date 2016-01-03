@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.SqlFragment#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.SqlFragment#getCol <em>Col</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.meta.processorMeta.SqlFragment#getDbtab <em>Dbtab</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.SqlFragment#getDbcol <em>Dbcol</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getSqlFragment()
  * @model

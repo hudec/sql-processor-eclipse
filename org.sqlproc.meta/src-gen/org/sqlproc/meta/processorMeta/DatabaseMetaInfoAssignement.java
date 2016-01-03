@@ -11,10 +11,10 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.DatabaseMetaInfoAssignement#getDbMetaInfo <em>Db Meta Info</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getDatabaseMetaInfoAssignement()
  * @model

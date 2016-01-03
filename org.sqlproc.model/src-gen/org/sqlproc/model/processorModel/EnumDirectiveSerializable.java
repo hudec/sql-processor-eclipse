@@ -10,10 +10,10 @@ package org.sqlproc.model.processorModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.EnumDirectiveSerializable#getSernum <em>Sernum</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEnumDirectiveSerializable()
  * @model

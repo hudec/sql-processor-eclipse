@@ -28,11 +28,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.AnnotatedEntityImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.AnnotatedEntityImpl#getEntity <em>Entity</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -11,8 +11,6 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Annotation Directive Standard</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

@@ -15,12 +15,12 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.Annotation#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Annotation#isFinal <em>Final</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Annotation#getAnnotation <em>Annotation</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getAnnotation()
  * @model

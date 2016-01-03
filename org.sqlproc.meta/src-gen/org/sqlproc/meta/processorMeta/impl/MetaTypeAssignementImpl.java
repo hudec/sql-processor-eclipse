@@ -18,12 +18,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaTypeAssignementImpl#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaTypeAssignementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaTypeAssignementImpl#getExtension <em>Extension</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

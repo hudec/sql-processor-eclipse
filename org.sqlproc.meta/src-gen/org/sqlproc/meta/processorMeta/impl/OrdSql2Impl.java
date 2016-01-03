@@ -23,13 +23,13 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSql2Impl#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSql2Impl#getCnst <em>Cnst</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSql2Impl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OrdSql2Impl#getDbcol <em>Dbcol</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

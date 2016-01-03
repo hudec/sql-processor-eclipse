@@ -21,10 +21,10 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DriverMetaInfoAssignementImpl#getDbDriverInfo <em>Db Driver Info</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

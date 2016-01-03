@@ -33,6 +33,7 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaogenPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaogenPropertyImpl#getDbTables <em>Db Tables</em>}</li>
@@ -47,7 +48,6 @@ import org.sqlproc.model.processorModel.ValueType;
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaogenPropertyImpl#getPckg <em>Pckg</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaogenPropertyImpl#getImplPckg <em>Impl Pckg</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

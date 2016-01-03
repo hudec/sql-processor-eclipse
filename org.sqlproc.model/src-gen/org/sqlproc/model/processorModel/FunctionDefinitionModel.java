@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.FunctionDefinitionModel#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.FunctionDefinitionModel#getTable <em>Table</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getFunctionDefinitionModel()
  * @model

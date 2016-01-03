@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.FunctionPojoAssignement#getDbFunction <em>Db Function</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.FunctionPojoAssignement#getPojo <em>Pojo</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getFunctionPojoAssignement()
  * @model

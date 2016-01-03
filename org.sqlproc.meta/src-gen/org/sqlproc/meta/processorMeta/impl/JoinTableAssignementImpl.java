@@ -24,11 +24,11 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.JoinTableAssignementImpl#getDbTable <em>Db Table</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.JoinTableAssignementImpl#getDbTables <em>Db Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

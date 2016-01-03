@@ -21,12 +21,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoDefinitionModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoDefinitionModelImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoDefinitionModelImpl#getClassx <em>Classx</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

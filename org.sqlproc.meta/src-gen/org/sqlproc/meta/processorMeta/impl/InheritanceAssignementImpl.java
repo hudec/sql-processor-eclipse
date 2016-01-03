@@ -24,12 +24,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.InheritanceAssignementImpl#getDiscriminator <em>Discriminator</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.InheritanceAssignementImpl#getDbTable <em>Db Table</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.InheritanceAssignementImpl#getDbColumns <em>Db Columns</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

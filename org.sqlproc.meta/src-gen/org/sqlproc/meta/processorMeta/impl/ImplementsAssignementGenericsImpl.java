@@ -27,12 +27,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ImplementsAssignementGenericsImpl#getToImplement <em>To Implement</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ImplementsAssignementGenericsImpl#getDbTables <em>Db Tables</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ImplementsAssignementGenericsImpl#getDbNotTables <em>Db Not Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

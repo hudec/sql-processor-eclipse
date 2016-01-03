@@ -21,11 +21,11 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

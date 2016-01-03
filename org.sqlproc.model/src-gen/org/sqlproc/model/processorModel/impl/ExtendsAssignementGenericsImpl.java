@@ -27,12 +27,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExtendsAssignementGenericsImpl#getToExtends <em>To Extends</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExtendsAssignementGenericsImpl#getDbTables <em>Db Tables</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ExtendsAssignementGenericsImpl#getDbNotTables <em>Db Not Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

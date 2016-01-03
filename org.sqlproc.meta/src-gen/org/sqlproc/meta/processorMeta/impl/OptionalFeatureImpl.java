@@ -24,13 +24,13 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OptionalFeatureImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OptionalFeatureImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OptionalFeatureImpl#getModifiers <em>Modifiers</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.OptionalFeatureImpl#getOption <em>Option</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,12 +13,12 @@ import org.eclipse.xtext.common.types.JvmType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoDefinitionModel#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoDefinitionModel#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoDefinitionModel#getClassx <em>Classx</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoDefinitionModel()
  * @model

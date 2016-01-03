@@ -27,11 +27,11 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ExtendedMappingItemImpl#getAttr <em>Attr</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ExtendedMappingItemImpl#getModifiers <em>Modifiers</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

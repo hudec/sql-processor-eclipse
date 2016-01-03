@@ -13,11 +13,11 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.DescendantAssignment#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DescendantAssignment#getDescendant <em>Descendant</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getDescendantAssignment()
  * @model

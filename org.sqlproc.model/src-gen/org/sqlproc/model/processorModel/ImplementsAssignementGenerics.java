@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.ImplementsAssignementGenerics#getToImplement <em>To Implement</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.ImplementsAssignementGenerics#getDbTables <em>Db Tables</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.ImplementsAssignementGenerics#getDbNotTables <em>Db Not Tables</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getImplementsAssignementGenerics()
  * @model

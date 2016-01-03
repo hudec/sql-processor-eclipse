@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getSqlType <em>Sql Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getSqlTypeAssignement()
  * @model

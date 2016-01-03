@@ -18,11 +18,11 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAssignementImpl#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAssignementImpl#getNewName <em>New Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

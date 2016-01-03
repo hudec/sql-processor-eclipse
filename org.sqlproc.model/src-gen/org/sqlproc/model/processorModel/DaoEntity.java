@@ -13,13 +13,13 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.DaoEntity#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DaoEntity#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DaoEntity#getSuperType <em>Super Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DaoEntity#getAttributes <em>Attributes</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getDaoEntity()
  * @model

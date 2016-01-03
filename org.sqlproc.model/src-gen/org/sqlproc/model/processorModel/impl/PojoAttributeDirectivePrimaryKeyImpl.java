@@ -17,12 +17,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectivePrimaryKeyImpl#getFromTo <em>From To</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectivePrimaryKeyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectivePrimaryKeyImpl#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

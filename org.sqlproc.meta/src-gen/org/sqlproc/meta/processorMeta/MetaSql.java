@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaSql#getIfs <em>Ifs</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaSql#getType <em>Type</em>}</li>
@@ -20,7 +21,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaSql#getFtype <em>Ftype</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaSql#getOrd <em>Ord</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getMetaSql()
  * @model

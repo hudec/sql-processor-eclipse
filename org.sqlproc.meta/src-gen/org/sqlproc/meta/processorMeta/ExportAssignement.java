@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.ExportAssignement#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ExportAssignement#getFkTable <em>Fk Table</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ExportAssignement#getFkColumn <em>Fk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getExportAssignement()
  * @model

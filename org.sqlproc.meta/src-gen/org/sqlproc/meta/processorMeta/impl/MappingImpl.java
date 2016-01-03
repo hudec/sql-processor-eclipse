@@ -26,10 +26,10 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MappingImpl#getMappingItems <em>Mapping Items</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.Property#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Property#getName <em>Name</em>}</li>
@@ -27,7 +28,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.model.processorModel.Property#getDoNotVerifyResources <em>Do Not Verify Resources</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Property#getCaseFormatLibrary <em>Case Format Library</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getProperty()
  * @model

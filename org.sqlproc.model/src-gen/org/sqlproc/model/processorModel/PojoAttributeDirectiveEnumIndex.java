@@ -10,10 +10,10 @@ package org.sqlproc.model.processorModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex#getIndex <em>Index</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttributeDirectiveEnumIndex()
  * @model

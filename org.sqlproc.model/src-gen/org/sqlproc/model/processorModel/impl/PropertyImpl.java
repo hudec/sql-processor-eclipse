@@ -33,6 +33,7 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PropertyImpl#getCondition <em>Condition</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PropertyImpl#getName <em>Name</em>}</li>
@@ -47,7 +48,6 @@ import org.sqlproc.model.processorModel.ValueType;
  *   <li>{@link org.sqlproc.model.processorModel.impl.PropertyImpl#getDoNotVerifyResources <em>Do Not Verify Resources</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PropertyImpl#getCaseFormatLibrary <em>Case Format Library</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

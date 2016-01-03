@@ -29,11 +29,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoDirectiveParametersImpl#getOut <em>Out</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoDirectiveParametersImpl#getIns <em>Ins</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.ImportAssignement#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.ImportAssignement#getPkTable <em>Pk Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.ImportAssignement#getPkColumn <em>Pk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getImportAssignement()
  * @model

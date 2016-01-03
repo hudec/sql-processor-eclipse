@@ -19,11 +19,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveCreateColImpl#getCreateColumn1 <em>Create Column1</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveCreateColImpl#getCreateColumn2 <em>Create Column2</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

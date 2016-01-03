@@ -29,11 +29,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ImplementsImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ImplementsImpl#getImplements <em>Implements</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

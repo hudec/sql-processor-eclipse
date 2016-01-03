@@ -22,12 +22,12 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoDefinitionModelImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoDefinitionModelImpl#getClass_ <em>Class</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoDefinitionModelImpl#getClassx <em>Classx</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

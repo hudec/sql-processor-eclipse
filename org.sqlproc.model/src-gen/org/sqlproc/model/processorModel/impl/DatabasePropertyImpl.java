@@ -36,6 +36,7 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabasePropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabasePropertyImpl#getDbUrl <em>Db Url</em>}</li>
@@ -53,7 +54,6 @@ import org.sqlproc.model.processorModel.ValueType;
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabasePropertyImpl#getDbMethodsCalls <em>Db Methods Calls</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabasePropertyImpl#getDebug <em>Debug</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

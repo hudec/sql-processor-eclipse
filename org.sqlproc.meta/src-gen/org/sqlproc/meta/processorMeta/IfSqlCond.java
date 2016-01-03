@@ -13,12 +13,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlCond#getBool1 <em>Bool1</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlCond#getOper <em>Oper</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlCond#getBool2 <em>Bool2</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getIfSqlCond()
  * @model

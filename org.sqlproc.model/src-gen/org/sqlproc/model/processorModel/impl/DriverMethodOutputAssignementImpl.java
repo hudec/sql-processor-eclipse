@@ -21,11 +21,11 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DriverMethodOutputAssignementImpl#getDriverMethod <em>Driver Method</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DriverMethodOutputAssignementImpl#getCallOutput <em>Call Output</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

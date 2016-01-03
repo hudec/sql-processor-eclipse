@@ -10,12 +10,12 @@ package org.sqlproc.model.processorModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey#getFromTo <em>From To</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey#getType <em>Type</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttributeDirectivePrimaryKey()
  * @model

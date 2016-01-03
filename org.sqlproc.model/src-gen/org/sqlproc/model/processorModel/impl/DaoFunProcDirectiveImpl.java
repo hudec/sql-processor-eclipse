@@ -21,11 +21,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoFunProcDirectiveImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoFunProcDirectiveImpl#getParamlist <em>Paramlist</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

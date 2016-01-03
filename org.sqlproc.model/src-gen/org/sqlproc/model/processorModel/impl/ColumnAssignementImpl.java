@@ -18,11 +18,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ColumnAssignementImpl#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ColumnAssignementImpl#getNewName <em>New Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

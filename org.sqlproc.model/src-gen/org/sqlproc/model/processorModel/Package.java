@@ -15,13 +15,13 @@ import org.eclipse.xtext.xtype.XImportSection;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.Package#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Package#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Package#getImportSection <em>Import Section</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Package#getElements <em>Elements</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPackage()
  * @model

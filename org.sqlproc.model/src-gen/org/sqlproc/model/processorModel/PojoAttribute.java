@@ -17,6 +17,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getDirectives <em>Directives</em>}</li>
@@ -27,7 +28,6 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getInitExpr <em>Init Expr</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttribute()
  * @model

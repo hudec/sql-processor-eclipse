@@ -18,12 +18,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ManyToManyAssignementImpl#getPkColumn <em>Pk Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ManyToManyAssignementImpl#getPkTable <em>Pk Table</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ManyToManyAssignementImpl#getFkColumn <em>Fk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -13,6 +13,7 @@ import org.eclipse.xtext.common.types.JvmType;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getRef <em>Ref</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getGtype <em>Gtype</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#isArray <em>Array</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType()
  * @model

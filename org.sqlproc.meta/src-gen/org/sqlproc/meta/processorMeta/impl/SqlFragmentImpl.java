@@ -28,6 +28,7 @@ import org.sqlproc.meta.processorMeta.SqlFragment;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlFragmentImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlFragmentImpl#getCol <em>Col</em>}</li>
@@ -39,7 +40,6 @@ import org.sqlproc.meta.processorMeta.SqlFragment;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlFragmentImpl#getDbtab <em>Dbtab</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlFragmentImpl#getDbcol <em>Dbcol</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

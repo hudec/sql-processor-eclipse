@@ -33,6 +33,7 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoProcedureImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoProcedureImpl#isFinal <em>Final</em>}</li>
@@ -42,7 +43,6 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoProcedureImpl#getParams <em>Params</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoProcedureImpl#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

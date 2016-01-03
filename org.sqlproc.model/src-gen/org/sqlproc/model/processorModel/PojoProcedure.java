@@ -18,6 +18,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.PojoProcedure#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoProcedure#isFinal <em>Final</em>}</li>
@@ -27,7 +28,6 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.sqlproc.model.processorModel.PojoProcedure#getParams <em>Params</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoProcedure#getBody <em>Body</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoProcedure()
  * @model

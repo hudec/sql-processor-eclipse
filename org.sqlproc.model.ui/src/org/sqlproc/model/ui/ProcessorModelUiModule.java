@@ -6,7 +6,6 @@ package org.sqlproc.model.ui;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.sqlproc.model.ui.resolver.WorkspacePojoResolverImpl;
 import org.sqlproc.model.ui.syntaxcoloring.SemanticHighlightingCalculator;
 import org.sqlproc.model.ui.templates.ProcessorModelTemplateContextType;
@@ -15,50 +14,52 @@ import org.sqlproc.plugin.lib.resolver.PojoResolver;
 import org.sqlproc.plugin.lib.resolver.PojoResolverFactory;
 import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean;
 
-import com.google.inject.Binder;
-
 /**
  * Use this class to register components to be used within the IDE.
  */
 public class ProcessorModelUiModule extends org.sqlproc.model.ui.AbstractProcessorModelUiModule {
-	public ProcessorModelUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
+    public ProcessorModelUiModule(AbstractUIPlugin plugin) {
+        super(plugin);
+    }
 
-	public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-		return PojoResolverFactoryBean.class;
-	}
+    public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+        return PojoResolverFactoryBean.class;
+    }
 
-	public Class<? extends PojoResolver> bindPojoResolver() {
-		return WorkspacePojoResolverImpl.class;
-	}
+    public Class<? extends PojoResolver> bindPojoResolver() {
+        return WorkspacePojoResolverImpl.class;
+    }
 
-	// @Override
-	// public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
-	// return HighlightingConfiguration.class;
-	// }
-	//
-	// public Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
-	// return TokenToIdMapper.class;
-	// }
+    // @Override
+    // public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+    // return HighlightingConfiguration.class;
+    // }
+    //
+    // public Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
+    // return TokenToIdMapper.class;
+    // }
 
-	@Override
-	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-		return SemanticHighlightingCalculator.class;
-	}
+    @Override
+    public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+        return SemanticHighlightingCalculator.class;
+    }
 
-	// public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
-	// return FixedOutlineFilterAndSorter.class;
-	// }
+    // public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
+    // return FixedOutlineFilterAndSorter.class;
+    // }
 
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		binder.bind(XtextTemplateContextType.class).to(ProcessorModelTemplateContextType.class);
-	}
+    // @Override
+    // public void configure(Binder binder) {
+    // super.configure(binder);
+    // binder.bind(XtextTemplateContextType.class).to(ProcessorModelTemplateContextType.class);
+    // }
 
-	@Override
-	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
-		return ProcessorTemplateProposalProvider.class;
-	}
+    public Class<? extends org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType> bindXtextTemplateContextType() {
+        return ProcessorModelTemplateContextType.class;
+    }
+
+    @Override
+    public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+        return ProcessorTemplateProposalProvider.class;
+    }
 }

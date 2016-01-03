@@ -30,6 +30,7 @@ import org.sqlproc.model.processorModel.TableDefinitionModel;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ArtifactsImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ArtifactsImpl#getPojos <em>Pojos</em>}</li>
@@ -38,7 +39,6 @@ import org.sqlproc.model.processorModel.TableDefinitionModel;
  *   <li>{@link org.sqlproc.model.processorModel.impl.ArtifactsImpl#getFunctions <em>Functions</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ArtifactsImpl#getPackages <em>Packages</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

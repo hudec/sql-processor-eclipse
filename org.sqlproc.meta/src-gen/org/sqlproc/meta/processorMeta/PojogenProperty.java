@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getSqlTypes <em>Sql Types</em>}</li>
@@ -47,7 +48,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getEnumName <em>Enum Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getDbCheckConstraints <em>Db Check Constraints</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojogenProperty()
  * @model

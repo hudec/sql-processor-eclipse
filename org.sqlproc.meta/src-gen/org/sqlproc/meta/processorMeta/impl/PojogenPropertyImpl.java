@@ -46,6 +46,7 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getSqlTypes <em>Sql Types</em>}</li>
@@ -80,7 +81,6 @@ import org.sqlproc.meta.processorMeta.ValueType;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getEnumName <em>Enum Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getDbCheckConstraints <em>Db Check Constraints</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

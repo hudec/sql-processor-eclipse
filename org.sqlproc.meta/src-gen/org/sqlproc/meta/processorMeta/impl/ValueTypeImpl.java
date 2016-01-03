@@ -18,12 +18,12 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ValueTypeImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ValueTypeImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ValueTypeImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

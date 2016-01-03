@@ -15,6 +15,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttribute#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttribute#isFinal <em>Final</em>}</li>
@@ -22,7 +23,6 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttribute#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttribute#getName <em>Name</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEnumAttribute()
  * @model

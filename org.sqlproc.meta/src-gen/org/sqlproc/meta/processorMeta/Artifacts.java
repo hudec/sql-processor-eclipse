@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.Artifacts#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.Artifacts#getPojos <em>Pojos</em>}</li>
@@ -23,7 +24,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.meta.processorMeta.Artifacts#getMappings <em>Mappings</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.Artifacts#getFeatures <em>Features</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getArtifacts()
  * @model

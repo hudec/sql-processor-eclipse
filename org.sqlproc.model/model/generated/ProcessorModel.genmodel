@@ -4,7 +4,7 @@
     editorDirectory="/org.sqlproc.model.editor/src" modelPluginID="org.sqlproc.model"
     forceOverwrite="true" modelName="ProcessorModel" updateClasspath="false" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
     complianceLevel="6.0" copyrightFields="false" editPluginID="org.sqlproc.model.edit"
-    editorPluginID="org.sqlproc.model.editor" runtimeVersion="2.10" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
+    editorPluginID="org.sqlproc.model.editor" runtimeVersion="2.11" usedGenPackages="platform:/resource/org.eclipse.xtext.common.types/model/JavaVMTypes.genmodel#//types platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xAnnotations platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xbase platform:/resource/org.eclipse.xtext.xbase/model/Xbase.genmodel#//xtype">
   <genPackages prefix="ProcessorModel" basePackage="org.sqlproc.model" disposableProviderFactory="true"
       fileExtensions="model" ecorePackage="ProcessorModel.ecore#/">
     <genClasses ecoreClass="ProcessorModel.ecore#//Artifacts">

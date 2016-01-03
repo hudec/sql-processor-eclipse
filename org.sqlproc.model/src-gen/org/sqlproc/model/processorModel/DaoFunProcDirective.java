@@ -10,11 +10,11 @@ package org.sqlproc.model.processorModel;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.DaoFunProcDirective#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.DaoFunProcDirective#getParamlist <em>Paramlist</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getDaoFunProcDirective()
  * @model

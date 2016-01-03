@@ -18,11 +18,11 @@ import org.sqlproc.model.processorModel.TableAssignement;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.TableAssignementImpl#getDbTable <em>Db Table</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.TableAssignementImpl#getNewName <em>New Name</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

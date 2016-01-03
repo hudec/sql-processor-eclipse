@@ -11,12 +11,12 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.ManyToManyAssignement#getPkColumn <em>Pk Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ManyToManyAssignement#getPkTable <em>Pk Table</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ManyToManyAssignement#getFkColumn <em>Fk Column</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getManyToManyAssignement()
  * @model

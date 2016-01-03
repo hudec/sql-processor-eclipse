@@ -11,13 +11,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlBool#isNot <em>Not</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlBool#getCnst <em>Cnst</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlBool#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.IfSqlBool#getCond <em>Cond</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getIfSqlBool()
  * @model

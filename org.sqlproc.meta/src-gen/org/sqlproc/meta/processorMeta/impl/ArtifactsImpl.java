@@ -33,6 +33,7 @@ import org.sqlproc.meta.processorMeta.TableDefinitionModel;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getPojos <em>Pojos</em>}</li>
@@ -43,7 +44,6 @@ import org.sqlproc.meta.processorMeta.TableDefinitionModel;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getMappings <em>Mappings</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getFeatures <em>Features</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

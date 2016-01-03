@@ -24,6 +24,7 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getRef <em>Ref</em>}</li>
@@ -33,7 +34,6 @@ import org.sqlproc.meta.processorMeta.ValueType;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getGtype <em>Gtype</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#isArray <em>Array</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -29,12 +29,12 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlCondImpl#getBool1 <em>Bool1</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlCondImpl#getOper <em>Oper</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlCondImpl#getBool2 <em>Bool2</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

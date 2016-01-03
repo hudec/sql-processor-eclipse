@@ -21,12 +21,12 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlTypeAssignementImpl#getSqlType <em>Sql Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlTypeAssignementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlTypeAssignementImpl#getExtension <em>Extension</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

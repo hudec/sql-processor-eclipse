@@ -13,8 +13,6 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Dao Directive</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * </p>
  *
  * @generated
  */

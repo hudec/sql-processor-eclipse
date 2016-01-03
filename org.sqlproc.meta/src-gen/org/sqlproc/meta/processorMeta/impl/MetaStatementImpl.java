@@ -27,13 +27,13 @@ import org.sqlproc.meta.processorMeta.Sql;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaStatementImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaStatementImpl#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaStatementImpl#getModifiers <em>Modifiers</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaStatementImpl#getStatement <em>Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

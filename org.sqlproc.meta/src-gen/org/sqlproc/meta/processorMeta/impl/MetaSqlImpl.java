@@ -30,6 +30,7 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlImpl#getIfs <em>Ifs</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlImpl#getType <em>Type</em>}</li>
@@ -37,7 +38,6 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlImpl#getFtype <em>Ftype</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetaSqlImpl#getOrd <em>Ord</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

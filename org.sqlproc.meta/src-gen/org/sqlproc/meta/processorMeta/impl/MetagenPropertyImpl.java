@@ -32,6 +32,7 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetagenPropertyImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetagenPropertyImpl#getSequence <em>Sequence</em>}</li>
@@ -50,7 +51,6 @@ import org.sqlproc.meta.processorMeta.ValueType;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetagenPropertyImpl#getOptionalFeatures <em>Optional Features</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.MetagenPropertyImpl#getActiveFilter <em>Active Filter</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -11,11 +11,11 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.DebugLevelAssignement#getDebug <em>Debug</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.DebugLevelAssignement#getScope <em>Scope</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getDebugLevelAssignement()
  * @model

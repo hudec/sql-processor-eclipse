@@ -13,11 +13,11 @@ import org.eclipse.xtext.xbase.XExpression;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttributeValue#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.EnumAttributeValue#getValue <em>Value</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEnumAttributeValue()
  * @model

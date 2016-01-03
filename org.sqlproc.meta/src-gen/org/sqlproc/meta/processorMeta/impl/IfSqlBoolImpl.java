@@ -23,13 +23,13 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlBoolImpl#isNot <em>Not</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlBoolImpl#getCnst <em>Cnst</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlBoolImpl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.IfSqlBoolImpl#getCond <em>Cond</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

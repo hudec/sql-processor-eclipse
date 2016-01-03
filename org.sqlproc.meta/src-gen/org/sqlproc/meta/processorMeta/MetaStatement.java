@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.EObject;
  *
  * <p>
  * The following features are supported:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaStatement#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaStatement#getType <em>Type</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaStatement#getModifiers <em>Modifiers</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.MetaStatement#getStatement <em>Statement</em>}</li>
  * </ul>
- * </p>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getMetaStatement()
  * @model

@@ -18,12 +18,12 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ValueTypeImpl#getValue <em>Value</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ValueTypeImpl#getNumber <em>Number</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ValueTypeImpl#getId <em>Id</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

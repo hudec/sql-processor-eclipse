@@ -28,11 +28,11 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoDirectiveDiscriminatorImpl#getAncestor <em>Ancestor</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DaoDirectiveDiscriminatorImpl#getDescendants <em>Descendants</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

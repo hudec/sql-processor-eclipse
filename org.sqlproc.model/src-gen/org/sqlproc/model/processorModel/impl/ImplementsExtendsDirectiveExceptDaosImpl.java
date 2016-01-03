@@ -20,10 +20,10 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.ImplementsExtendsDirectiveExceptDaosImpl#getExceptDaos <em>Except Daos</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

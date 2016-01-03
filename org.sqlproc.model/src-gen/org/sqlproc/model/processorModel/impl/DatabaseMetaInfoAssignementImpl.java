@@ -21,10 +21,10 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabaseMetaInfoAssignementImpl#getDbMetaInfo <em>Db Meta Info</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */

@@ -21,10 +21,10 @@ import org.sqlproc.model.processorModel.ValueType;
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
+ * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.DatabaseCatalogAssignementImpl#getDbCatalog <em>Db Catalog</em>}</li>
  * </ul>
- * </p>
  *
  * @generated
  */
