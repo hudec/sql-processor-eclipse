@@ -19,16 +19,16 @@ import org.sqlproc.meta.processorMeta.DatabaseColumn;
 import org.sqlproc.meta.processorMeta.DatabaseTable;
 import org.sqlproc.meta.processorMeta.ExtendedColumn;
 import org.sqlproc.meta.processorMeta.ExtendedMappingItem;
+import org.sqlproc.meta.processorMeta.FunctionDefinitionModel;
 import org.sqlproc.meta.processorMeta.Identifier;
 import org.sqlproc.meta.processorMeta.MappingItem;
 import org.sqlproc.meta.processorMeta.MappingRule;
 import org.sqlproc.meta.processorMeta.MetaStatement;
 import org.sqlproc.meta.processorMeta.OptionalFeature;
+import org.sqlproc.meta.processorMeta.PojoDefinitionModel;
 import org.sqlproc.meta.processorMeta.PojoType;
-import org.sqlproc.plugin.lib.property.FunctionDefinition;
-import org.sqlproc.plugin.lib.property.PojoDefinition;
-import org.sqlproc.plugin.lib.property.ProcedureDefinition;
-import org.sqlproc.plugin.lib.property.TableDefinition;
+import org.sqlproc.meta.processorMeta.ProcedureDefinitionModel;
+import org.sqlproc.meta.processorMeta.TableDefinitionModel;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
 import org.sqlproc.plugin.lib.resolver.PojoResolverFactory;
 import org.sqlproc.plugin.lib.util.Pair;
@@ -50,7 +50,7 @@ public class SemanticHighlightingCalculator implements ISemanticHighlightingCalc
 
     @Override
     public void provideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor) {
-        // tohle je blbarna, jak dostat tridu z org.sqlproc.dsl.ui dp org.sqlproc.dsl, mozna to jde jednoduseji
+        // tohle je blbarna, jak dostat tridu z org.sqlproc.dsl.ui do org.sqlproc.dsl, mozna to jde jednoduseji
         if (pojoResolverFactory != null && pojoResolverFactory.getPojoResolver() == null)
             pojoResolverFactory.setPojoResolver(pojoResolver);
 
@@ -66,7 +66,8 @@ public class SemanticHighlightingCalculator implements ISemanticHighlightingCalc
                 MetaStatement statement = (MetaStatement) current;
                 if (statement.getName() != null) {
                     // Nazev statementu je prvni pole, neni treba vyhledat node
-                    acceptor.addPosition(node.getOffset(), statement.getName().length(), HighlightingConfiguration.NAME);
+                    acceptor.addPosition(node.getOffset(), statement.getName().length(),
+                            HighlightingConfiguration.NAME);
                     provideHighlightingForModifiers(statement.getModifiers(), node, acceptor);
                 }
             } else if (current instanceof MappingRule) {
@@ -109,17 +110,17 @@ public class SemanticHighlightingCalculator implements ISemanticHighlightingCalc
                 acceptor.addPosition(node.getOffset(), node.getLength(), HighlightingConfiguration.DATABASE_COLUMN);
             } else if (current instanceof DatabaseTable) {
                 acceptor.addPosition(node.getOffset(), node.getLength(), HighlightingConfiguration.DATABASE_TABLE);
-            } else if (current instanceof PojoDefinition) {
-                PojoDefinition pojo = (PojoDefinition) current;
+            } else if (current instanceof PojoDefinitionModel) {
+                PojoDefinitionModel pojo = (PojoDefinitionModel) current;
                 provideHighlightingForPojo(null, pojo.getName(), node, acceptor);
-            } else if (current instanceof TableDefinition) {
-                TableDefinition table = (TableDefinition) current;
+            } else if (current instanceof TableDefinitionModel) {
+                TableDefinitionModel table = (TableDefinitionModel) current;
                 provideHighlightingForTable(null, table.getName(), node, acceptor);
-            } else if (current instanceof ProcedureDefinition) {
-                ProcedureDefinition procedure = (ProcedureDefinition) current;
+            } else if (current instanceof ProcedureDefinitionModel) {
+                ProcedureDefinitionModel procedure = (ProcedureDefinitionModel) current;
                 provideHighlightingForTable(null, procedure.getName(), node, acceptor);
-            } else if (current instanceof FunctionDefinition) {
-                FunctionDefinition function = (FunctionDefinition) current;
+            } else if (current instanceof FunctionDefinitionModel) {
+                FunctionDefinitionModel function = (FunctionDefinitionModel) current;
                 provideHighlightingForTable(null, function.getName(), node, acceptor);
             }
 
