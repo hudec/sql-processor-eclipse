@@ -730,7 +730,7 @@ class PojoJvmModelInferrer {
 			}
 			
 			if (!processingIdsList.isEmpty || !isDefList.isEmpty || isDefList.isEmpty || entity.hasOperators) {
-	   			val method = entity.toMethod('getPro', typeRef(String)) [
+	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
 	   				body = '''
 						String result = "BASE:" + hashCodeForAttributes();
 						«IF !isDefList.isEmpty»
