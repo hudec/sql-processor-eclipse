@@ -277,7 +277,7 @@ class PojoJvmModelInferrer {
 	 				'''
 	   			]
    			}
-			   			
+
    			val isDefList = entity.isDefAttributes
    			if (!isDefList.isEmpty) {
    				val isDefType = entity.toEnumerationType('Attribute') []
@@ -532,6 +532,20 @@ class PojoJvmModelInferrer {
    					'''
    				]	
    			}
+   			
+   			val processingIdsList = entity.processingIdsAttributes
+   			if (!processingIdsList.isEmpty || !toInitList.isEmpty) {
+	   			val method = entity.toMethod('getProcessingId', typeRef(int)) [
+	   				body = '''
+						java.util.List<Object> attributes = new java.util.ArrayList<Object>();
+						«FOR f2:processingIdsList»
+						attributes.add(«f2.name»);
+						«ENDFOR»
+						return java.util.Objects.hashCode(attributes.toArray(new Object[0]));
+	   				'''
+	   			]
+	   			members += method
+			}
 
    			val enumInitList = entity.enumInitAttributes
    			if (!enumInitList.isEmpty) {

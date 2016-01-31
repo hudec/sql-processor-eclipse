@@ -69,6 +69,7 @@ import org.sqlproc.model.processorModel.PackageDirectiveImplementation
 import org.sqlproc.plugin.lib.util.CommonUtils
 import org.sqlproc.model.processorModel.PojoDirectiveEnumIndex
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex
+import org.sqlproc.model.processorModel.PojoDirectiveProcessingId
 
 class ProcessorGeneratorUtils {
 
@@ -318,6 +319,15 @@ class ProcessorGeneratorUtils {
         val List<PojoAttribute> result = newArrayList()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveToString].forEach[
 			val d = it as PojoDirectiveToString
+			result.addAll(d.proplist.features)
+		]
+        return result
+    }
+
+    def List<PojoAttribute> processingIdsAttributes(PojoEntity pojo) {
+        val List<PojoAttribute> result = newArrayList()
+		pojo?.directives.filter[x|x instanceof PojoDirectiveProcessingId].forEach[
+			val d = it as PojoDirectiveProcessingId
 			result.addAll(d.proplist.features)
 		]
         return result
