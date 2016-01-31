@@ -674,8 +674,6 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.enumForCheckConstraints.put(property.getDbCheckConstraints().get(i),
                         property.getEnumName());
             }
-        } else if (POJOGEN_GENERATE_PROCESSING_IDS.equals(property.getName())) {
-            modelValues.doGenerateProcessingIds = true;
         }
     }
 

@@ -90,7 +90,6 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
-import org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveUpdateCol;
@@ -103,6 +102,7 @@ import org.sqlproc.model.processorModel.PojoDirectiveEquals;
 import org.sqlproc.model.processorModel.PojoDirectiveHashCode;
 import org.sqlproc.model.processorModel.PojoDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoDirectiveOperators;
+import org.sqlproc.model.processorModel.PojoDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoDirectiveSerializable;
 import org.sqlproc.model.processorModel.PojoDirectiveToString;
 import org.sqlproc.model.processorModel.PojoEntity;
@@ -581,6 +581,11 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
         return createPojoDirectiveHashCodeAdapter();
       }
       @Override
+      public Adapter casePojoDirectiveProcessingId(PojoDirectiveProcessingId object)
+      {
+        return createPojoDirectiveProcessingIdAdapter();
+      }
+      @Override
       public Adapter casePojoAttributeDirectiveRequired(PojoAttributeDirectiveRequired object)
       {
         return createPojoAttributeDirectiveRequiredAdapter();
@@ -639,11 +644,6 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
       public Adapter casePojoAttributeDirectiveEnumDef(PojoAttributeDirectiveEnumDef object)
       {
         return createPojoAttributeDirectiveEnumDefAdapter();
-      }
-      @Override
-      public Adapter casePojoAttributeDirectiveProcessingId(PojoAttributeDirectiveProcessingId object)
-      {
-        return createPojoAttributeDirectiveProcessingIdAdapter();
       }
       @Override
       public Adapter caseEnumDirectiveSerializable(EnumDirectiveSerializable object)
@@ -1953,6 +1953,21 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.PojoDirectiveProcessingId <em>Pojo Directive Processing Id</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.sqlproc.model.processorModel.PojoDirectiveProcessingId
+   * @generated
+   */
+  public Adapter createPojoDirectiveProcessingIdAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired <em>Pojo Attribute Directive Required</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -2128,21 +2143,6 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPojoAttributeDirectiveEnumDefAdapter()
-  {
-    return null;
-  }
-
-  /**
-   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId <em>Pojo Attribute Directive Processing Id</em>}'.
-   * <!-- begin-user-doc -->
-   * This default implementation returns null so that we can easily ignore cases;
-   * it's useful to ignore a case when inheritance will catch all the cases anyway.
-   * <!-- end-user-doc -->
-   * @return the new adapter.
-   * @see org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId
-   * @generated
-   */
-  public Adapter createPojoAttributeDirectiveProcessingIdAdapter()
   {
     return null;
   }

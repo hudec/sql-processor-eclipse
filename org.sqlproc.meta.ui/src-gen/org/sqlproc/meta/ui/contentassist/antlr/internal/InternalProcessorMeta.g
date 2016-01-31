@@ -2852,12 +2852,6 @@ rule__PojogenProperty__Alternatives
 { after(grammarAccess.getPojogenPropertyAccess().getGroup_43()); }
 )
 
-    |(
-{ before(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44()); }
-(rule__PojogenProperty__NameAssignment_44)
-{ after(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44()); }
-)
-
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -36886,29 +36880,6 @@ rule__PojogenProperty__DbCheckConstraintsAssignment_43_3_1
 (
 { before(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0()); }
 	RULE_IDENT{ after(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0()); }
-)
-
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__PojogenProperty__NameAssignment_44
-    @init {
-		int stackSize = keepStackSize();
-    }
-:
-(
-{ before(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
-(
-{ before(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
-
-	'generate-processing-ids' 
-
-{ after(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
-)
-
-{ after(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
 )
 
 ;

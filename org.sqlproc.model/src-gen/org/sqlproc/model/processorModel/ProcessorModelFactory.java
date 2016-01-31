@@ -734,6 +734,15 @@ public interface ProcessorModelFactory extends EFactory
   PojoDirectiveHashCode createPojoDirectiveHashCode();
 
   /**
+   * Returns a new object of class '<em>Pojo Directive Processing Id</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pojo Directive Processing Id</em>'.
+   * @generated
+   */
+  PojoDirectiveProcessingId createPojoDirectiveProcessingId();
+
+  /**
    * Returns a new object of class '<em>Pojo Attribute Directive Required</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -840,15 +849,6 @@ public interface ProcessorModelFactory extends EFactory
    * @generated
    */
   PojoAttributeDirectiveEnumDef createPojoAttributeDirectiveEnumDef();
-
-  /**
-   * Returns a new object of class '<em>Pojo Attribute Directive Processing Id</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Pojo Attribute Directive Processing Id</em>'.
-   * @generated
-   */
-  PojoAttributeDirectiveProcessingId createPojoAttributeDirectiveProcessingId();
 
   /**
    * Returns a new object of class '<em>Enum Directive Serializable</em>'.

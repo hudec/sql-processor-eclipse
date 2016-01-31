@@ -2485,8 +2485,6 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWSTerminalRuleCall_43_3_0 = (RuleCall)cGroup_43_3.eContents().get(0);
 		private final Assignment cDbCheckConstraintsAssignment_43_3_1 = (Assignment)cGroup_43_3.eContents().get(1);
 		private final RuleCall cDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0 = (RuleCall)cDbCheckConstraintsAssignment_43_3_1.eContents().get(0);
-		private final Assignment cNameAssignment_44 = (Assignment)cAlternatives.eContents().get(44);
-		private final Keyword cNameGenerateProcessingIdsKeyword_44_0 = (Keyword)cNameAssignment_44.eContents().get(0);
 		
 		//PojogenProperty:
 		//	name="types-sqltypes" (WS+ sqlTypes+=SqlTypeAssignement)+ | name="types-in-table" WS+ dbTable=IDENT (WS+
@@ -2519,8 +2517,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	name="debug-level" WS+ debug=DebugLevelAssignement | name="pojos-for-procedures" (WS+
 		//	procPojos+=ProcedurePojoAssignement)+ | name="pojos-for-functions" (WS+ funPojos+=FunctionPojoAssignement)+ |
 		//	name="active-filter" WS+ activeFilter=ValueType | name="package" WS+ pckg=QualifiedName |
-		//	name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+ |
-		//	name="generate-processing-ids";
+		//	name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+;
 		@Override public ParserRule getRule() { return rule; }
 
 		//name="types-sqltypes" (WS+ sqlTypes+=SqlTypeAssignement)+ | name="types-in-table" WS+ dbTable=IDENT (WS+
@@ -2553,7 +2550,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//name="debug-level" WS+ debug=DebugLevelAssignement | name="pojos-for-procedures" (WS+
 		//procPojos+=ProcedurePojoAssignement)+ | name="pojos-for-functions" (WS+ funPojos+=FunctionPojoAssignement)+ |
 		//name="active-filter" WS+ activeFilter=ValueType | name="package" WS+ pckg=QualifiedName |
-		//name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+ | name="generate-processing-ids"
+		//name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//name="types-sqltypes" (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -3641,12 +3638,6 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 
 		//IDENT
 		public RuleCall getDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0() { return cDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0; }
-
-		//name="generate-processing-ids"
-		public Assignment getNameAssignment_44() { return cNameAssignment_44; }
-
-		//"generate-processing-ids"
-		public Keyword getNameGenerateProcessingIdsKeyword_44_0() { return cNameGenerateProcessingIdsKeyword_44_0; }
 	}
 
 	public class MetaSqlTypeAssignementElements extends AbstractParserRuleElementFinder {
@@ -8580,8 +8571,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	name="debug-level" WS+ debug=DebugLevelAssignement | name="pojos-for-procedures" (WS+
 	//	procPojos+=ProcedurePojoAssignement)+ | name="pojos-for-functions" (WS+ funPojos+=FunctionPojoAssignement)+ |
 	//	name="active-filter" WS+ activeFilter=ValueType | name="package" WS+ pckg=QualifiedName |
-	//	name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+ |
-	//	name="generate-processing-ids";
+	//	name="enum-for-check-constraints" WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+;
 	public PojogenPropertyElements getPojogenPropertyAccess() {
 		return pPojogenProperty;
 	}

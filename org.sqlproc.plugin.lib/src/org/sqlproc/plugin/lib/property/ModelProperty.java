@@ -89,7 +89,6 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String POJOGEN_ACTIVE_FILTER = "active-filter";
     public static final String POJOGEN_PACKAGE = "package";
     public static final String POJOGEN_ENUM_FOR_CHECK_CONSTRAINTS = "enum-for-check-constraints";
-    public static final String POJOGEN_GENERATE_PROCESSING_IDS = "generate-processing-ids";
 
     public static final String METAGEN = "metagen";
     public static final String METAGEN_GLOBAL_SEQUENCE = "global-sequence";
@@ -245,7 +244,6 @@ public abstract class ModelProperty extends AdapterImpl {
         public String activeFilter;
         public String pckg;
         public Map<String, String> enumForCheckConstraints;
-        public boolean doGenerateProcessingIds;
 
         public PairValues metaGlobalSequence;
         public Map<String, PairValues> metaTablesSequence;
@@ -383,7 +381,6 @@ public abstract class ModelProperty extends AdapterImpl {
             enumForCheckConstraints = new HashMap<String, String>();
             defaultAttrs.put(POJOGEN, new HashSet<String>());
             conditionalAttrs.put(POJOGEN, new HashSet<String>());
-            doGenerateProcessingIds = false;
         }
 
         public void initMetagenModel() {
@@ -814,11 +811,6 @@ public abstract class ModelProperty extends AdapterImpl {
     public Map<String, String> getEnumForCheckConstraints(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.enumForCheckConstraints : Collections.<String, String> emptyMap();
-    }
-
-    public boolean isDoGenerateProcessingIds(EObject model) {
-        ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.doGenerateProcessingIds : false;
     }
 
     public Map<String, PairValues> getMetaTablesIdentity(EObject model) {

@@ -4977,23 +4977,7 @@ rulePojogenProperty returns [EObject current=null]
 	    }
 
 )
-)+)
-    |(
-(
-		lv_name_111_0=	'generate-processing-ids' 
-    {
-        newLeafNode(lv_name_111_0, grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPojogenPropertyRule());
-	        }
-       		setWithLastConsumed($current, "name", lv_name_111_0, "generate-processing-ids");
-	    }
-
-)
-))
+)+))
 ;
 
 
@@ -8140,6 +8124,46 @@ this_LPAREN_41=RULE_LPAREN
     { 
     newLeafNode(this_RPAREN_43, grammarAccess.getPojoDirectiveAccess().getRPARENTerminalRuleCall_7_4()); 
     }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPojoDirectiveAccess().getPojoDirectiveProcessingIdAction_8_0(),
+            $current);
+    }
+)	otherlv_45='#ProcId' 
+    {
+    	newLeafNode(otherlv_45, grammarAccess.getPojoDirectiveAccess().getProcIdKeyword_8_1());
+    }
+this_LPAREN_46=RULE_LPAREN
+    { 
+    newLeafNode(this_LPAREN_46, grammarAccess.getPojoDirectiveAccess().getLPARENTerminalRuleCall_8_2()); 
+    }
+(
+(
+		{ 
+	        newCompositeNode(grammarAccess.getPojoDirectiveAccess().getProplistDirectivePropertiesParserRuleCall_8_3_0()); 
+	    }
+		lv_proplist_47_0=ruleDirectiveProperties		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPojoDirectiveRule());
+	        }
+       		set(
+       			$current, 
+       			"proplist",
+        		lv_proplist_47_0, 
+        		"DirectiveProperties");
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)this_RPAREN_48=RULE_RPAREN
+    { 
+    newLeafNode(this_RPAREN_48, grammarAccess.getPojoDirectiveAccess().getRPARENTerminalRuleCall_8_4()); 
+    }
 ))
 ;
 
@@ -8694,20 +8718,6 @@ this_LPAREN_32=RULE_LPAREN
 )	otherlv_44='#EnumDef' 
     {
     	newLeafNode(otherlv_44, grammarAccess.getPojoAttributeDirectiveAccess().getEnumDefKeyword_11_1());
-    }
-)
-    |((
-	{ 
-	  /* */ 
-	}
-    {
-        $current = forceCreateModelElement(
-            grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveProcessingIdAction_12_0(),
-            $current);
-    }
-)	otherlv_46='#Pid' 
-    {
-    	newLeafNode(otherlv_46, grammarAccess.getPojoAttributeDirectiveAccess().getPidKeyword_12_1());
     }
 ))
 ;

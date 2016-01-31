@@ -88,7 +88,6 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
-import org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveUpdateCol;
@@ -101,6 +100,7 @@ import org.sqlproc.model.processorModel.PojoDirectiveEquals;
 import org.sqlproc.model.processorModel.PojoDirectiveHashCode;
 import org.sqlproc.model.processorModel.PojoDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoDirectiveOperators;
+import org.sqlproc.model.processorModel.PojoDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoDirectiveSerializable;
 import org.sqlproc.model.processorModel.PojoDirectiveToString;
 import org.sqlproc.model.processorModel.PojoEntity;
@@ -756,6 +756,14 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ProcessorModelPackage.POJO_DIRECTIVE_PROCESSING_ID:
+      {
+        PojoDirectiveProcessingId pojoDirectiveProcessingId = (PojoDirectiveProcessingId)theEObject;
+        T result = casePojoDirectiveProcessingId(pojoDirectiveProcessingId);
+        if (result == null) result = casePojoDirective(pojoDirectiveProcessingId);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_REQUIRED:
       {
         PojoAttributeDirectiveRequired pojoAttributeDirectiveRequired = (PojoAttributeDirectiveRequired)theEObject;
@@ -849,14 +857,6 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         PojoAttributeDirectiveEnumDef pojoAttributeDirectiveEnumDef = (PojoAttributeDirectiveEnumDef)theEObject;
         T result = casePojoAttributeDirectiveEnumDef(pojoAttributeDirectiveEnumDef);
         if (result == null) result = casePojoAttributeDirective(pojoAttributeDirectiveEnumDef);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_PROCESSING_ID:
-      {
-        PojoAttributeDirectiveProcessingId pojoAttributeDirectiveProcessingId = (PojoAttributeDirectiveProcessingId)theEObject;
-        T result = casePojoAttributeDirectiveProcessingId(pojoAttributeDirectiveProcessingId);
-        if (result == null) result = casePojoAttributeDirective(pojoAttributeDirectiveProcessingId);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -2289,6 +2289,22 @@ public class ProcessorModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Pojo Directive Processing Id</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pojo Directive Processing Id</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePojoDirectiveProcessingId(PojoDirectiveProcessingId object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Pojo Attribute Directive Required</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -2476,22 +2492,6 @@ public class ProcessorModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePojoAttributeDirectiveEnumDef(PojoAttributeDirectiveEnumDef object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Pojo Attribute Directive Processing Id</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Pojo Attribute Directive Processing Id</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T casePojoAttributeDirectiveProcessingId(PojoAttributeDirectiveProcessingId object)
   {
     return null;
   }

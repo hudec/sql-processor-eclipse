@@ -130,7 +130,6 @@ PojogenProperty:
 	|name='active-filter' WS+ activeFilter=ValueType
 	|name='package' WS+ pckg=QualifiedName
 	|name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
-	|name='generate-processing-ids'
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=IDENT ('->' extension=IDENT)?;

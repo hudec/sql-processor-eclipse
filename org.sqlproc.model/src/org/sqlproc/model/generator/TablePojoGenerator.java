@@ -238,8 +238,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 if (entityAnnotations != null) {
                     buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
                             entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                    buffer.append(entityAnnotations
-                            .getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                    buffer.append(
+                            entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
                 }
@@ -261,7 +261,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(NLINDENT).append(INDENT).append("#Values(");
                 Set<String> values = new TreeSet<>();
                 for (EnumAttribute attribute : pentry.getValue()) {
-                    // System.out.println("  RRR " + attribute.getName());
+                    // System.out.println(" RRR " + attribute.getName());
                     StringBuilder sb = new StringBuilder();
                     if (attribute.getIntValue() == null && attribute.getStrValue() == null)
                         continue;
@@ -289,7 +289,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 }
                 buffer.append(")");
                 for (EnumAttribute attribute : pentry.getValue()) {
-                    // System.out.println("  RRR " + attribute.getName());
+                    // System.out.println(" RRR " + attribute.getName());
                     if (attribute.getIntValue() == null && attribute.getStrValue() == null) {
                         String name = (columnNames.containsKey(pojo)) ? columnNames.get(pojo).get(attribute.getName())
                                 : null;
@@ -337,8 +337,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 if (entityAnnotations != null) {
                     buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
                             entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                    buffer.append(entityAnnotations
-                            .getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                    buffer.append(
+                            entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
                 }
@@ -368,8 +368,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                         break;
                                     }
                                 }
-                                String name = (columnNames.containsKey(pojo)) ? columnNames.get(pojo).get(
-                                        attr.getName()) : null;
+                                String name = (columnNames.containsKey(pojo))
+                                        ? columnNames.get(pojo).get(attr.getName()) : null;
                                 if (name == null)
                                     name = attr.getName();
                                 else
@@ -402,7 +402,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 Set<String> pkeys = new LinkedHashSet<String>();
                 Set<String> toStr = new LinkedHashSet<String>();
                 // TODO
-                Set<String> prodId = new LinkedHashSet<String>();
+                Set<String> procId = new LinkedHashSet<String>();
                 {
                     bufferPartial = new StringBuilder();
                     printComment(bufferPartial, comments.get(pojo), INDENT);
@@ -425,7 +425,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     // TODO
                     // boolean morePkAttributes = false;
                     for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
-                        // System.out.println("  RRR " + pentry.getKey());
+                        // System.out.println(" RRR " + pentry.getKey());
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))
                             continue;
                         PojoAttribute attribute = pentry.getValue();
@@ -436,31 +436,30 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         else
                             name = columnToCamelCase(name);
                         if (entityAnnotations != null) {
-                            bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName,
-                                    name, serializer, true,
-                                    entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                            bufferPartial.append(
+                                    entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name, serializer,
+                                            true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
                             bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                             bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                         }
                         if (doGenerateValidationAnnotations) {
-                            if ((requiredColumns.containsKey(pojo) && requiredColumns.get(pojo).contains(
-                                    pentry.getKey()))
+                            if ((requiredColumns.containsKey(pojo)
+                                    && requiredColumns.get(pojo).contains(pentry.getKey()))
                                     || (attribute.isRequired() && !attribute.isPrimaryKey())) {
                                 if (!notRequiredColumns.containsKey(pojo)
                                         || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
                                     if (entityAnnotations == null
-                                            || !entityAnnotations.hasAttributeAnnotationsDefinitions(realPojoName,
-                                                    name, ANNOTATION_NOT_NULL)) {
+                                            || !entityAnnotations.hasAttributeAnnotationsDefinitions(realPojoName, name,
+                                                    ANNOTATION_NOT_NULL)) {
                                         bufferPartial.append(NLINDENT).append(INDENT).append("@NotNull");
                                     }
                             }
                             if (attribute.getDependencyClassName() == null && !attribute.isPrimitive()) {
                                 if (attribute.isString() && attribute.getSize() > 0) {
-                                    if (entityAnnotations == null
-                                            || !entityAnnotations.hasAttributeAnnotationsDefinitions(realPojoName,
-                                                    name, ANNOTATION_SIZE)) {
+                                    if (entityAnnotations == null || !entityAnnotations
+                                            .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_SIZE)) {
                                         bufferPartial.append(NLINDENT).append(INDENT).append("@Size(max = ")
                                                 .append(attribute.getSize()).append(")");
                                     }
@@ -490,9 +489,9 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             if (attribute.isVersion()) {
                                 bufferMetaAttr.append(nlindent2()).append("#Version");
                             }
-                            if (!attribute.isVersion()
-                                    && ((requiredColumns.containsKey(pojo) && requiredColumns.get(pojo).contains(
-                                            pentry.getKey())) || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
+                            if (!attribute.isVersion() && ((requiredColumns.containsKey(pojo)
+                                    && requiredColumns.get(pojo).contains(pentry.getKey()))
+                                    || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
                                 if (!notRequiredColumns.containsKey(pojo)
                                         || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
                                     bufferMetaAttr.append(nlindent2()).append("#Required");
@@ -506,8 +505,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                         if (attribute.isDependencyClassNameIsEnum()) {
                                             List<EnumAttribute> enumAttrs = enums.get(attribute.getDependencyPojo());
                                             if (enumAttrs != null)
-                                                bufferMetaAttr.append("(value,")
-                                                        .append(enumAttrs.get(0).getClassName()).append(")");
+                                                bufferMetaAttr.append("(value,").append(enumAttrs.get(0).getClassName())
+                                                        .append(")");
                                         } else {
                                             PojoAttribute depPkAttribute = getPrimaryKey(attribute.getDependencyPojo());
                                             if (depPkAttribute != null)
@@ -554,10 +553,13 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         } else if (attribute.isPrimitive()) {
                             bufferPartial.append(attribute.getClassName());
                             toStr.add(name);
+                            procId.add(name);
                         } else {
                             bufferPartial.append(attribute.getClassName());
-                            if (!attribute.getClassName().startsWith(COLLECTION_LIST))
+                            if (!attribute.getClassName().startsWith(COLLECTION_LIST)) {
                                 toStr.add(name);
+                                procId.add(name);
+                            }
                         }
                         bufferPartial.append(' ').append(name);
                         if (debug.debug)
@@ -595,9 +597,9 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     appendList(bufferMeta, toStr);
                     bufferMeta.append(")");
                 }
-                if (generateMethods.contains(METHOD_PROC_ID) && !prodId.isEmpty()) {
+                if (generateMethods.contains(METHOD_PROC_ID) && !procId.isEmpty()) {
                     bufferMeta.append(nlindent()).append("#ProcId(");
-                    appendList(bufferMeta, prodId);
+                    appendList(bufferMeta, procId);
                     bufferMeta.append(")");
                 }
                 if (bufferMeta.length() > 0 && bufferMeta.charAt(0) == ' ')
@@ -636,8 +638,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 if (entityAnnotations != null) {
                     buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
                             entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                    buffer.append(entityAnnotations
-                            .getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                    buffer.append(
+                            entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
                 }
@@ -659,7 +661,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" extends ").append(tableToCamelCase(pojoExtends.get(pojo)));
                     bufferPartial.append(" {");
                     for (Map.Entry<String, PojoAttribute> pentry : procedures.get(pojo).entrySet()) {
-                        // System.out.println("  RRR " + pentry.getKey());
+                        // System.out.println(" RRR " + pentry.getKey());
                         if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                             continue;
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))
@@ -673,17 +675,17 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             name = columnToCamelCase(name);
                         printComment(bufferPartial, attribute.getComment(), INDENT, INDENT);
                         if (entityAnnotations != null) {
-                            bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName,
-                                    name, serializer, true,
-                                    entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                            bufferPartial.append(
+                                    entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name, serializer,
+                                            true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
                             bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                             bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                         }
-                        if (!attribute.isVersion()
-                                && ((requiredColumns.containsKey(pojo) && requiredColumns.get(pojo).contains(
-                                        pentry.getKey())) || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
+                        if (!attribute.isVersion() && ((requiredColumns.containsKey(pojo)
+                                && requiredColumns.get(pojo).contains(pentry.getKey()))
+                                || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
                             if (!notRequiredColumns.containsKey(pojo)
                                     || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
                                 bufferPartial.append(nlindent2()).append("#Required");
@@ -751,8 +753,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 if (entityAnnotations != null) {
                     buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
                             entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                    buffer.append(entityAnnotations
-                            .getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                    buffer.append(
+                            entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
                     buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
                 }
@@ -775,7 +777,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" extends ").append(tableToCamelCase(pojoExtends.get(pojo)));
                     bufferPartial.append(" {");
                     for (Map.Entry<String, PojoAttribute> pentry : functions.get(pojo).entrySet()) {
-                        // System.out.println("  RRR " + pentry.getKey());
+                        // System.out.println(" RRR " + pentry.getKey());
                         if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                             continue;
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))
@@ -789,17 +791,17 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             name = columnToCamelCase(name);
                         printComment(bufferPartial, attribute.getComment(), INDENT, INDENT);
                         if (entityAnnotations != null) {
-                            bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName,
-                                    name, serializer, true,
-                                    entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                            bufferPartial.append(
+                                    entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name, serializer,
+                                            true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
                             bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                             bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                     serializer, true));
                         }
-                        if (!attribute.isVersion()
-                                && ((requiredColumns.containsKey(pojo) && requiredColumns.get(pojo).contains(
-                                        pentry.getKey())) || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
+                        if (!attribute.isVersion() && ((requiredColumns.containsKey(pojo)
+                                && requiredColumns.get(pojo).contains(pentry.getKey()))
+                                || (attribute.isRequired() && !attribute.isPrimaryKey()))) {
                             if (!notRequiredColumns.containsKey(pojo)
                                     || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
                                 bufferPartial.append(nlindent2()).append("#Required");
@@ -896,7 +898,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             map.put(proc.getName(), serializer.serialize(proc));
                         }
                     }
-                } else if (ape instanceof AnnotatedEntity && ((AnnotatedEntity) ape).getEntity() instanceof EnumEntity) {
+                } else if (ape instanceof AnnotatedEntity
+                        && ((AnnotatedEntity) ape).getEntity() instanceof EnumEntity) {
                     EnumEntity pojo = (EnumEntity) ((AnnotatedEntity) ape).getEntity();
                     Annotations.grabAnnotations((AnnotatedEntity) ape, annotations);
                     if (pojo.isFinal()) {

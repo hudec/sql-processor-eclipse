@@ -622,7 +622,6 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_43_0(), "rule__PojogenProperty__NameAssignment_43_0");
 					put(grammarAccess.getPojogenPropertyAccess().getEnumNameAssignment_43_2(), "rule__PojogenProperty__EnumNameAssignment_43_2");
 					put(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsAssignment_43_3_1(), "rule__PojogenProperty__DbCheckConstraintsAssignment_43_3_1");
-					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44(), "rule__PojogenProperty__NameAssignment_44");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__MetaSqlTypeAssignement__SqlTypeAssignment_0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__MetaSqlTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getExtensionAssignment_3_1(), "rule__MetaSqlTypeAssignement__ExtensionAssignment_3_1");

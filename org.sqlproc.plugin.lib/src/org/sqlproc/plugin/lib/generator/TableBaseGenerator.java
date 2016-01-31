@@ -76,7 +76,6 @@ public class TableBaseGenerator {
     protected static final String METHOD_ENUM_TO_INIT = "enumInit";
     protected static final String METHOD_PROC_ID = "procId";
     protected static final String METHOD_ENUM_INDEX = "enumIndex";
-    protected static final String PROC_ID_SEP = "$$$$";
     protected static final String COLLECTION_LIST = "java.util.List";
     protected static final String ANNOTATION_NOT_NULL = "javax.validation.constraints.NotNull";
     protected static final String ANNOTATION_SIZE = "javax.validation.constraints.Size";
@@ -125,7 +124,6 @@ public class TableBaseGenerator {
     protected Map<String, PojoEntityType> pojosForFunctions = new HashMap<String, PojoEntityType>();
     protected Filter activeFilter = null;
     protected Map<String, String> enumForCheckConstraints = new HashMap<String, String>();
-    protected boolean doGenerateProcessingIds;
 
     protected Set<String> tables = new HashSet<String>();
     protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<String, Map<String, PojoAttribute>>();
@@ -308,7 +306,6 @@ public class TableBaseGenerator {
             this.enumForCheckConstraints.putAll(enumForCheckConstraints);
         }
         pojoPackage = modelProperty.getPackage(model);
-        this.doGenerateProcessingIds = modelProperty.isDoGenerateProcessingIds(model);
 
         for (Map.Entry<String, Map<String, Map<String, String>>> inheritImport : this.inheritImports.entrySet()) {
             for (Map.Entry<String, Map<String, String>> inherit : inheritImport.getValue().entrySet()) {
@@ -412,7 +409,6 @@ public class TableBaseGenerator {
             System.out.println("modelTables " + this.modelTables);
             System.out.println("modelProcedures " + this.modelProcedures);
             System.out.println("modelFunctions " + this.modelFunctions);
-            System.out.println("doGenerateProcessingIds " + this.doGenerateProcessingIds);
         }
 
         for (String table : createTables) {
