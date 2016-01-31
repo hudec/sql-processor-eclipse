@@ -244,19 +244,34 @@ class PojoJvmModelInferrer {
 	   			members += method
 			}
    			
+   			// TODO primitive arrays
    			val hashCodeList = entity.hashCodeAttributes
    			if (!hashCodeList.isEmpty) {
 	   			val method = entity.toMethod('hashCode', typeRef(int)) [
 	   				body = '''
-						final int prime = 31;
 						int result = 1;
 						«FOR f2:hashCodeList»
-						result = prime * result + «IF f2.isNative»(int) («f2.name» ^ («f2.name» >>> 32))«ELSE»((«f2.name» != null) ? «f2.name».hashCode() : 0)«ENDIF»;
+						result = 31 * result + «IF f2.isNative»(int) «f2.hashForPrimitive»«ELSE»((«f2.name» != null) ? «f2.name».hashCode() : 0)«ENDIF»;
 						«ENDFOR»
 						return result;
 	   				'''
 	   			]
 	   			method.getAnnotations().add(annotationRef(Override))
+	   			members += method
+			}
+			
+   			// TODO primitive arrays
+    		val processingIdsList = entity.processingIdsAttributes
+   			if (!processingIdsList.isEmpty) {
+	   			val method = entity.toMethod('hashCodeForAttributes', typeRef(int)) [
+	   				body = '''
+						int result = 1;
+						«FOR f2:processingIdsList»
+						result = 31 * result + «IF f2.isNative»(int) «f2.hashForPrimitive»«ELSE»((«f2.name» != null) ? «f2.name».hashCode() : 0)«ENDIF»;
+						«ENDFOR»
+						return result;
+	   				'''
+	   			]
 	   			members += method
 			}
    			
@@ -399,6 +414,17 @@ class PojoJvmModelInferrer {
 						nullValues = new «HASH_SET»<String>();
    					'''
    				]	
+	   			members += entity.toMethod('hashCodeForNulls', typeRef(int)) [
+   					body = '''
+						if (nullValues == null)
+							return 0;
+						int result = 1;
+						for (Attribute attribute : Attribute.values()) {
+							result = 31 * result + (nullValues.contains(attribute.name()) ? attribute.name().hashCode() : 0);
+						}
+						return result;
+   					'''
+   				]	
    			}
    			
    			val enumDefList = entity.enumDefAttributes
@@ -531,22 +557,19 @@ class PojoJvmModelInferrer {
 						initAssociations = new «HASH_SET»<String>();
    					'''
    				]	
+	   			members += entity.toMethod('hashCodeForAssociations', typeRef(int)) [
+   					body = '''
+						if (initAssociations == null)
+							return 0;
+						int result = 1;
+						for (Association association : Association.values()) {
+							result = 31 * result + (initAssociations.contains(association.name()) ? association.name().hashCode() : 0);
+						}
+						return result;
+   					'''
+   				]	
    			}
    			
-   			val processingIdsList = entity.processingIdsAttributes
-   			if (!processingIdsList.isEmpty || !toInitList.isEmpty) {
-	   			val method = entity.toMethod('getProcessingId', typeRef(int)) [
-	   				body = '''
-						java.util.List<Object> attributes = new java.util.ArrayList<Object>();
-						«FOR f2:processingIdsList»
-						attributes.add(«f2.name»);
-						«ENDFOR»
-						return java.util.Objects.hashCode(attributes.toArray(new Object[0]));
-	   				'''
-	   			]
-	   			members += method
-			}
-
    			val enumInitList = entity.enumInitAttributes
    			if (!enumInitList.isEmpty) {
    				val toInitType = entity.toEnumerationType('Association') []
@@ -693,7 +716,38 @@ class PojoJvmModelInferrer {
 						operators = new «HASH_MAP»<String, String>();
    					'''
    				]	
+	   			members += entity.toMethod('hashCodeForOperators', typeRef(int)) [
+   					body = '''
+						if (operators == null)
+							return 0;
+						int result = 1;
+						for (OpAttribute opAttribute : OpAttribute.values()) {
+							result = 31 * result + (operators.containsKey(opAttribute.name()) ? operators.get(opAttribute.name()).hashCode() : 0);
+						}
+						return result;
+   					'''
+   				]	
 			}
+			
+			if (!processingIdsList.isEmpty || !isDefList.isEmpty || isDefList.isEmpty || entity.hasOperators) {
+	   			val method = entity.toMethod('getPro', typeRef(String)) [
+	   				body = '''
+						String result = "BASE:" + hashCodeForAttributes();
+						«IF !isDefList.isEmpty»
+						result = result + ",DEF:" + hashCodeForNulls();
+						«ENDIF»
+						«IF !toInitList.isEmpty»
+						result = result + ",ASSOC:" + hashCodeForAssociations();
+						«ENDIF»
+						«IF entity.hasOperators»
+						result = result + ",OPER:" + hashCodeForOperators();
+						«ENDIF»
+						return result;
+	   				'''
+	   			]
+	   			members += method
+			}
+			
    		]
    	}
 

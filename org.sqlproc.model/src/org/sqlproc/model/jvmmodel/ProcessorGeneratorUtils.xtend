@@ -164,7 +164,7 @@ class ProcessorGeneratorUtils {
 	}
 
 	def isNative(PojoAttribute f) {
-		return if (f.type != null && f.type instanceof JvmPrimitiveType) true else false
+		return if (f.type != null && f.type.type instanceof JvmPrimitiveType) true else false
 	}
 
 	def isToInit(PojoAttribute f) {
@@ -1064,5 +1064,28 @@ class ProcessorGeneratorUtils {
    			name.append('>')
    		}
    		return name.toString	
+   	}
+   	
+   	def String hashForPrimitive(PojoAttribute f) {
+   		if (f.type == null || !(f.type.type instanceof JvmPrimitiveType))
+   			return "0"
+   		val name = (f.type.type as JvmPrimitiveType).simpleName
+   		if (name == "boolean")
+   			return "("+f.name+" ? 0 : 1)"
+   		if (name == "byte")
+   			return f.name
+   		if (name == "char")
+   			return f.name
+   		if (name == "double")
+   			return "Double.doubleToLongBits("+f.name+")"
+   		if (name == "float")
+   			return "Float.floatToIntBits("+f.name+")"
+   		if (name == "int")
+   			return f.name
+   		if (name == "long")
+   			return "((int) ("+f.name+" ^ ("+f.name+" >> 32)))"
+   		if (name == "short")
+   			return f.name
+		return "0"
    	}
 }
