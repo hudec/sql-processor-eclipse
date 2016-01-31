@@ -135,6 +135,7 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveUpdateCol;
@@ -390,6 +391,9 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 				return; 
 			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_PRIMARY_KEY:
 				sequence_PojoAttributeDirective(context, (PojoAttributeDirectivePrimaryKey) semanticObject); 
+				return; 
+			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_PROCESSING_ID:
+				sequence_PojoAttributeDirective(context, (PojoAttributeDirectiveProcessingId) semanticObject); 
 				return; 
 			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_REQUIRED:
 				sequence_PojoAttributeDirective(context, (PojoAttributeDirectiveRequired) semanticObject); 
@@ -1644,6 +1648,15 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Constraint:
+	 *     {PojoAttributeDirectiveProcessingId}
+	 */
+	protected void sequence_PojoAttributeDirective(EObject context, PojoAttributeDirectiveProcessingId semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
 	 *     {PojoAttributeDirectiveRequired}
 	 */
 	protected void sequence_PojoAttributeDirective(EObject context, PojoAttributeDirectiveRequired semanticObject) {
@@ -1911,7 +1924,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         (name='pojos-for-functions' funPojos+=FunctionPojoAssignement+) | 
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
-	 *         (name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+)
+	 *         (name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+) | 
+	 *         name='generate-processing-ids'
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(EObject context, PojogenProperty semanticObject) {

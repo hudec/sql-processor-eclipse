@@ -5519,7 +5519,23 @@ rulePojogenProperty returns [EObject current=null]
 	    }
 
 )
-))+))
+))+)
+    |(
+(
+		lv_name_178_0=	'generate-processing-ids' 
+    {
+        newLeafNode(lv_name_178_0, grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPojogenPropertyRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_178_0, "generate-processing-ids");
+	    }
+
+)
+))
 ;
 
 

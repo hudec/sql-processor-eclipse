@@ -4801,6 +4801,12 @@ rule__PojogenProperty__Alternatives
 { after(grammarAccess.getPojogenPropertyAccess().getGroup_43()); }
 )
 
+    |(
+{ before(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44()); }
+(rule__PojogenProperty__NameAssignment_44)
+{ after(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -5313,6 +5319,12 @@ rule__PojoAttributeDirective__Alternatives
 { before(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_11()); }
 (rule__PojoAttributeDirective__Group_11__0)
 { after(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_11()); }
+)
+
+    |(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12()); }
+(rule__PojoAttributeDirective__Group_12__0)
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12()); }
 )
 
 ;
@@ -24474,6 +24486,71 @@ rule__PojoAttributeDirective__Group_11__1__Impl
 	'#EnumDef' 
 
 { after(grammarAccess.getPojoAttributeDirectiveAccess().getEnumDefKeyword_11_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__PojoAttributeDirective__Group_12__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PojoAttributeDirective__Group_12__0__Impl
+	rule__PojoAttributeDirective__Group_12__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttributeDirective__Group_12__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveProcessingIdAction_12_0()); }
+(
+
+)
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveProcessingIdAction_12_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PojoAttributeDirective__Group_12__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PojoAttributeDirective__Group_12__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttributeDirective__Group_12__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getPidKeyword_12_1()); }
+
+	'#Pid' 
+
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getPidKeyword_12_1()); }
 )
 
 ;
@@ -47901,6 +47978,29 @@ rule__PojogenProperty__DbCheckConstraintsAssignment_43_2
 (
 { before(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsValidIDParserRuleCall_43_2_0()); }
 	ruleValidID{ after(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsValidIDParserRuleCall_43_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojogenProperty__NameAssignment_44
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
+(
+{ before(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
+
+	'generate-processing-ids' 
+
+{ after(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
+)
+
+{ after(grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0()); }
 )
 
 ;

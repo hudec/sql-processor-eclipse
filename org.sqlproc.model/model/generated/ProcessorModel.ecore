@@ -565,6 +565,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="PojoAttributeDirectiveEnumInit" eSuperTypes="#//PojoAttributeDirective"/>
   <eClassifiers xsi:type="ecore:EClass" name="PojoAttributeDirectiveIsDef" eSuperTypes="#//PojoAttributeDirective"/>
   <eClassifiers xsi:type="ecore:EClass" name="PojoAttributeDirectiveEnumDef" eSuperTypes="#//PojoAttributeDirective"/>
+  <eClassifiers xsi:type="ecore:EClass" name="PojoAttributeDirectiveProcessingId"
+      eSuperTypes="#//PojoAttributeDirective"/>
   <eClassifiers xsi:type="ecore:EClass" name="EnumDirectiveSerializable" eSuperTypes="#//EnumDirective">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="sernum" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
   </eClassifiers>

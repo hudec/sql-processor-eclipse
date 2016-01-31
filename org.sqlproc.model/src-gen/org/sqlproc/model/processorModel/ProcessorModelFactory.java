@@ -842,6 +842,15 @@ public interface ProcessorModelFactory extends EFactory
   PojoAttributeDirectiveEnumDef createPojoAttributeDirectiveEnumDef();
 
   /**
+   * Returns a new object of class '<em>Pojo Attribute Directive Processing Id</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Pojo Attribute Directive Processing Id</em>'.
+   * @generated
+   */
+  PojoAttributeDirectiveProcessingId createPojoAttributeDirectiveProcessingId();
+
+  /**
    * Returns a new object of class '<em>Enum Directive Serializable</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

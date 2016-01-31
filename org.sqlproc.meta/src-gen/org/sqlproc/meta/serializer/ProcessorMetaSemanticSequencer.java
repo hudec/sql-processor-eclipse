@@ -1002,7 +1002,8 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='pojos-for-functions' funPojos+=FunctionPojoAssignement+) | 
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
-	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+)
+	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+) | 
+	 *         name='generate-processing-ids'
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(EObject context, PojogenProperty semanticObject) {

@@ -125,6 +125,7 @@ public class TableBaseGenerator {
     protected Map<String, PojoEntityType> pojosForFunctions = new HashMap<String, PojoEntityType>();
     protected Filter activeFilter = null;
     protected Map<String, String> enumForCheckConstraints = new HashMap<String, String>();
+    protected boolean doGenerateProcessingIds;
 
     protected Set<String> tables = new HashSet<String>();
     protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<String, Map<String, PojoAttribute>>();
@@ -307,6 +308,7 @@ public class TableBaseGenerator {
             this.enumForCheckConstraints.putAll(enumForCheckConstraints);
         }
         pojoPackage = modelProperty.getPackage(model);
+        this.doGenerateProcessingIds = modelProperty.isDoGenerateProcessingIds(model);
 
         for (Map.Entry<String, Map<String, Map<String, String>>> inheritImport : this.inheritImports.entrySet()) {
             for (Map.Entry<String, Map<String, String>> inherit : inheritImport.getValue().entrySet()) {
@@ -410,6 +412,7 @@ public class TableBaseGenerator {
             System.out.println("modelTables " + this.modelTables);
             System.out.println("modelProcedures " + this.modelProcedures);
             System.out.println("modelFunctions " + this.modelFunctions);
+            System.out.println("doGenerateProcessingIds " + this.doGenerateProcessingIds);
         }
 
         for (String table : createTables) {
@@ -489,8 +492,7 @@ public class TableBaseGenerator {
 
         for (DbImport dbImport : dbImports) {
             if (ignoreImports.containsKey(table)
-                    && (ignoreImports.get(table) == null || ignoreImports.get(table)
-                            .containsKey(dbImport.getFkColumn())
+                    && (ignoreImports.get(table) == null || ignoreImports.get(table).containsKey(dbImport.getFkColumn())
                             && ignoreImports.get(table).get(dbImport.getFkColumn()).containsKey(dbImport.getPkTable())))
                 continue;
             if (manyToManyImports.containsKey(table)) {
@@ -624,8 +626,9 @@ public class TableBaseGenerator {
 
         for (int i = 0, l = dbCheckConstraints.size(); i < l; i++) {
             DbCheckConstraint check = dbCheckConstraints.get(i);
-            PojoAttribute attribute = (pojos.containsKey(check.getTable()) && pojos.get(check.getTable()).containsKey(
-                    check.getColumn())) ? pojos.get(check.getTable()).get(check.getColumn()) : null;
+            PojoAttribute attribute = (pojos.containsKey(check.getTable())
+                    && pojos.get(check.getTable()).containsKey(check.getColumn()))
+                            ? pojos.get(check.getTable()).get(check.getColumn()) : null;
             if (attribute == null) {
                 System.out.println("For the constraint " + check.getEnumName() + " there's no table or column");
                 continue;
@@ -757,8 +760,8 @@ public class TableBaseGenerator {
                                 attrib.setOneToManyColumn(entry.getKey());
                                 attrib.setOneToManyOppositeColumn(fkColumn);
                                 attrib.setOneToManyTable(fk.getKey());
-                                attrib.setClassName(COLLECTION_LIST + " <"
-                                        + tableToCamelCase(getTableName(fk.getKey())) + ">");
+                                attrib.setClassName(
+                                        COLLECTION_LIST + " <" + tableToCamelCase(getTableName(fk.getKey())) + ">");
                                 attrib.setRef(fk.getKey());
                                 String dbColumnName = columnToDbConv(attrib.getName());
                                 newAttributes.put(dbColumnName, attrib);
@@ -825,11 +828,10 @@ public class TableBaseGenerator {
         int ix = 0;
         for (DbColumn dbColumn : dbProcColumns) {
             ix++;
-            if ((dbColumn.getColumnType() == 3 || dbColumn.getColumnType() == 5)
-                    && (dbColumn.getName() == null || dbColumn.getName().trim().length() == 0
-                            || dbColumn.getName().equalsIgnoreCase("returnValue")
-                            || dbColumn.getName().equalsIgnoreCase("RETURN_VALUE") || dbColumn.getName()
-                            .equalsIgnoreCase("null"))) {
+            if ((dbColumn.getColumnType() == 3 || dbColumn.getColumnType() == 5) && (dbColumn.getName() == null
+                    || dbColumn.getName().trim().length() == 0 || dbColumn.getName().equalsIgnoreCase("returnValue")
+                    || dbColumn.getName().equalsIgnoreCase("RETURN_VALUE")
+                    || dbColumn.getName().equalsIgnoreCase("null"))) {
                 dbColumn.setName(FAKE_FUN_PROC_COLUMN_NAME);
             }
             if (dbType == DbType.INFORMIX && ix == 1 && isFunction
@@ -847,7 +849,8 @@ public class TableBaseGenerator {
                 attribute.setFunProcType(dbProcedure.getFtype());
                 attribute.setFunProcColumnType(dbColumn.getColumnType());
             }
-            if (FAKE_FUN_PROC_COLUMN_NAME.equals(dbColumn.getName()) && isFunction && attribute.getClassName() != null) {
+            if (FAKE_FUN_PROC_COLUMN_NAME.equals(dbColumn.getName()) && isFunction
+                    && attribute.getClassName() != null) {
                 String metaType = className2metaType(attribute.getClassName());
                 // System.out.println("XXXXXX " + procedure + " " + metaType + " " + attribute.getClassName());
                 if (metaType != null)
@@ -888,7 +891,8 @@ public class TableBaseGenerator {
     // functionColumnReturn - function return value 4
     // functionColumnResult - Indicates that the parameter or column is a column in the ResultSet 5
 
-    public void addFunctionDefinition(String function, DbTable dbFunction, List<DbColumn> dbFunColumns, String comment) {
+    public void addFunctionDefinition(String function, DbTable dbFunction, List<DbColumn> dbFunColumns,
+            String comment) {
         if (debug.debug) {
             System.out.println("addFunctionDefinition: " + function + " dbFunction " + dbFunction);
             System.out.println("addFunctionDefinition: " + function + " dbFunColumns " + dbFunColumns);
@@ -919,7 +923,8 @@ public class TableBaseGenerator {
             }
         }
         if (dbType == DbType.DB2 && metaFunctionsResult.containsKey(function)) {
-            PojoAttribute attribute = convertDbColumnDefinition(FUN_PROC_COLUMN_NAME, metaFunctionsResult.get(function));
+            PojoAttribute attribute = convertDbColumnDefinition(FUN_PROC_COLUMN_NAME,
+                    metaFunctionsResult.get(function));
             attributes.put(FUN_PROC_COLUMN_NAME, attribute);
             attribute.setFunProcType(dbFunction.getFtype());
             attribute.setFunProcColumnType((short) 5);
@@ -1326,6 +1331,7 @@ public class TableBaseGenerator {
     }
 
     protected static Map<String, String> metaType2classNameMap = new LinkedHashMap<String, String>();
+
     static {
         metaType2classNameMap.put("stamp", java.sql.Timestamp.class.getName());
         metaType2classNameMap.put("timestamp", java.sql.Timestamp.class.getName());
@@ -1367,6 +1373,7 @@ public class TableBaseGenerator {
     }
 
     protected static Map<String, String> className2metaTypeMap = new HashMap<String, String>();
+
     static {
         for (Entry<String, String> entry : metaType2classNameMap.entrySet()) {
             String value = entry.getValue();
@@ -1529,8 +1536,8 @@ public class TableBaseGenerator {
                 String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
                 List<DbCheckConstraint> dbCheckConstraints = dbResolver.getDbCheckConstraints(model, table);
                 stats.checkConstraints += dbCheckConstraints.size();
-                addTableDefinition(table, dbColumns, dbPrimaryKeys, dbExports, dbImports, dbIndexes,
-                        dbCheckConstraints, comment);
+                addTableDefinition(table, dbColumns, dbPrimaryKeys, dbExports, dbImports, dbIndexes, dbCheckConstraints,
+                        comment);
                 System.out.println("< table " + table);
             }
             // converter.resolveReferencesOnConvention();

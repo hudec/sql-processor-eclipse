@@ -130,6 +130,7 @@ PojogenProperty:
 	|name='active-filter' activeFilter=ValueType
 	|name='package' pckg=QualifiedName
 	|name='enum-for-check-constraints' enumName=ValidID (dbCheckConstraints+=ValidID)+
+	|name='generate-processing-ids'
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=ValidID ('->' extension=ValidID)?;
@@ -270,6 +271,7 @@ PojoAttributeDirective:
 	| {PojoAttributeDirectiveEnumInit} '#EnumInit'
 	| {PojoAttributeDirectiveIsDef} '#IsDef'
 	| {PojoAttributeDirectiveEnumDef} '#EnumDef'
+	| {PojoAttributeDirectiveProcessingId} '#Pid'
 ;
 
 PojoAttribute:

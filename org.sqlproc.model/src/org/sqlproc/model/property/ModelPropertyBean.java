@@ -70,8 +70,8 @@ public class ModelPropertyBean extends ModelProperty {
                 LOGGER.debug("LOADED RESOURCE " + resource + " for " + rootASTElement);
                 if (parseResult == null || rootASTElement == null || !(rootASTElement instanceof Artifacts)
                         || resource.getURI() == null) {
-                    LOGGER.error("LOADED RESOURCE IS NOT VALID: for parseResult " + parseResult
-                            + " and rootASTElement " + rootASTElement + " and msg " + msg);
+                    LOGGER.error("LOADED RESOURCE IS NOT VALID: for parseResult " + parseResult + " and rootASTElement "
+                            + rootASTElement + " and msg " + msg);
                     return;
                 }
                 String dir = CommonUtils.resourceDir(resource);
@@ -206,32 +206,32 @@ public class ModelPropertyBean extends ModelProperty {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelPojos.put(pojo.getName(), new PojoDefinitionImpl(pojo.getName(), pojo.getClass_(),
-                        pojo.getClassx()));
+                modelValues.modelPojos.put(pojo.getName(),
+                        new PojoDefinitionImpl(pojo.getName(), pojo.getClass_(), pojo.getClassx()));
             }
             for (TableDefinitionModel table : artifacts.getTables()) {
                 if (firstModel) {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelTables
-                        .put(table.getName(), new TableDefinitionImpl(table.getName(), table.getTable()));
+                modelValues.modelTables.put(table.getName(),
+                        new TableDefinitionImpl(table.getName(), table.getTable()));
             }
             for (ProcedureDefinitionModel procedure : artifacts.getProcedures()) {
                 if (firstModel) {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelProcedures.put(procedure.getName(), new ProcedureDefinitionImpl(procedure.getName(),
-                        procedure.getTable()));
+                modelValues.modelProcedures.put(procedure.getName(),
+                        new ProcedureDefinitionImpl(procedure.getName(), procedure.getTable()));
             }
             for (FunctionDefinitionModel function : artifacts.getFunctions()) {
                 if (firstModel) {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelFunctions.put(function.getName(), new FunctionDefinitionImpl(function.getName(),
-                        function.getTable()));
+                modelValues.modelFunctions.put(function.getName(),
+                        new FunctionDefinitionImpl(function.getName(), function.getTable()));
             }
         } catch (RuntimeException e) {
             e.printStackTrace();
@@ -320,8 +320,8 @@ public class ModelPropertyBean extends ModelProperty {
             }
             if (property.getDoNotVerifyResources() != null) {
                 for (int i = 0, m = property.getDoNotVerifyResources().size(); i < m; i++) {
-                    modelValues.doNotVerifyResources.add(Utils.getPropertyValue(property.getDoNotVerifyResources().get(
-                            i)));
+                    modelValues.doNotVerifyResources
+                            .add(Utils.getPropertyValue(property.getDoNotVerifyResources().get(i)));
                 }
             }
         }
@@ -413,8 +413,8 @@ public class ModelPropertyBean extends ModelProperty {
             for (int i = 0, m = property.getColumnTypes().size(); i < m; i++) {
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(property.getColumnTypes().get(i).getDbColumn(), null,
                         property.getColumnTypes().get(i).getType());
-                modelValues.procedureTypes.get(property.getDbProcedure()).put(
-                        property.getColumnTypes().get(i).getDbColumn(), type);
+                modelValues.procedureTypes.get(property.getDbProcedure())
+                        .put(property.getColumnTypes().get(i).getDbColumn(), type);
             }
         } else if (POJOGEN_TYPE_FOR_FUNCTION.equals(property.getName())) {
             if (!modelValues.functionTypes.containsKey(property.getDbFunction()))
@@ -422,13 +422,13 @@ public class ModelPropertyBean extends ModelProperty {
             for (int i = 0, m = property.getColumnTypes().size(); i < m; i++) {
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(property.getColumnTypes().get(i).getDbColumn(), null,
                         property.getColumnTypes().get(i).getType());
-                modelValues.functionTypes.get(property.getDbFunction()).put(
-                        property.getColumnTypes().get(i).getDbColumn(), type);
+                modelValues.functionTypes.get(property.getDbFunction())
+                        .put(property.getColumnTypes().get(i).getDbColumn(), type);
             }
         } else if (POJOGEN_RENAME_TABLES.equals(property.getName())) {
             for (int i = 0, m = property.getTables().size(); i < m; i++) {
-                modelValues.tableNames.put(property.getTables().get(i).getDbTable(), property.getTables().get(i)
-                        .getNewName());
+                modelValues.tableNames.put(property.getTables().get(i).getDbTable(),
+                        property.getTables().get(i).getNewName());
             }
         } else if (POJOGEN_RENAME_COLUMNS.equals(property.getName())) {
             if (!modelValues.columnNames.containsKey(property.getDbTable()))
@@ -477,8 +477,8 @@ public class ModelPropertyBean extends ModelProperty {
             for (int i = 0, m = property.getColumnTypes().size(); i < m; i++) {
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(property.getColumnTypes().get(i).getDbColumn(), null,
                         property.getColumnTypes().get(i).getType());
-                modelValues.createColumns.get(property.getDbTable()).put(
-                        property.getColumnTypes().get(i).getDbColumn(), type);
+                modelValues.createColumns.get(property.getDbTable()).put(property.getColumnTypes().get(i).getDbColumn(),
+                        type);
             }
         } else if (POJOGEN_IGNORE_EXPORTS.equals(property.getName())) {
             if (!modelValues.ignoreExports.containsKey(property.getDbTable()))
@@ -600,8 +600,8 @@ public class ModelPropertyBean extends ModelProperty {
             modelValues.toExtends = ie;
         } else if (POJOGEN_IMPLEMENTS_INTERFACES_GENERICS.equals(property.getName())) {
             ImplementsExtendsImpl ie = new ImplementsExtendsImpl(property.getToImplementsGenerics().getToImplement(),
-                    true, property.getToImplementsGenerics().getDbTables(), property.getToImplementsGenerics()
-                            .getDbNotTables());
+                    true, property.getToImplementsGenerics().getDbTables(),
+                    property.getToImplementsGenerics().getDbNotTables());
             modelValues.toImplements.put(ie.getIdentifier(), ie);
         } else if (POJOGEN_EXTENDS_CLASS_GENERICS.equals(property.getName())) {
             ImplementsExtendsImpl ie = new ImplementsExtendsImpl(property.getToExtendsGenerics().getToExtends(), true,
@@ -668,11 +668,13 @@ public class ModelPropertyBean extends ModelProperty {
         } else if (POJOGEN_ENUM_FOR_CHECK_CONSTRAINTS.equals(property.getName())) {
             for (int i = 0, m = property.getDbCheckConstraints().size(); i < m; i++) {
                 if (i == 0)
-                    modelValues.enumForCheckConstraints.put(property.getEnumName(), property.getDbCheckConstraints()
-                            .get(i));
-                modelValues.enumForCheckConstraints
-                        .put(property.getDbCheckConstraints().get(i), property.getEnumName());
+                    modelValues.enumForCheckConstraints.put(property.getEnumName(),
+                            property.getDbCheckConstraints().get(i));
+                modelValues.enumForCheckConstraints.put(property.getDbCheckConstraints().get(i),
+                        property.getEnumName());
             }
+        } else if (POJOGEN_GENERATE_PROCESSING_IDS.equals(property.getName())) {
+            modelValues.doGenerateProcessingIds = true;
         }
     }
 
@@ -816,8 +818,8 @@ public class ModelPropertyBean extends ModelProperty {
             modelValues.daoToExtends = ie;
         } else if (DAOGEN_IMPLEMENTS_INTERFACES_GENERICS.equals(property.getName())) {
             ImplementsExtendsImpl ie = new ImplementsExtendsImpl(property.getToImplementsGenerics().getToImplement(),
-                    true, property.getToImplementsGenerics().getDbTables(), property.getToImplementsGenerics()
-                            .getDbNotTables());
+                    true, property.getToImplementsGenerics().getDbTables(),
+                    property.getToImplementsGenerics().getDbNotTables());
             modelValues.daoToImplements.put(ie.getIdentifier(), ie);
         } else if (DAOGEN_EXTENDS_CLASS_GENERICS.equals(property.getName())) {
             ImplementsExtendsImpl ie = new ImplementsExtendsImpl(property.getToExtendsGenerics().getToExtends(), true,

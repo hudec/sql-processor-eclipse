@@ -1994,6 +1994,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cEnumNameValidIDParserRuleCall_43_1_0 = (RuleCall)cEnumNameAssignment_43_1.eContents().get(0);
 		private final Assignment cDbCheckConstraintsAssignment_43_2 = (Assignment)cGroup_43.eContents().get(2);
 		private final RuleCall cDbCheckConstraintsValidIDParserRuleCall_43_2_0 = (RuleCall)cDbCheckConstraintsAssignment_43_2.eContents().get(0);
+		private final Assignment cNameAssignment_44 = (Assignment)cAlternatives.eContents().get(44);
+		private final Keyword cNameGenerateProcessingIdsKeyword_44_0 = (Keyword)cNameAssignment_44.eContents().get(0);
 		
 		//PojogenProperty:
 		//	name="types-sqltypes" sqlTypes+=SqlTypeAssignement+ | name="types-in-table" dbTable=ValidID
@@ -2024,7 +2026,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)? | name="debug-level" debug=DebugLevelAssignement |
 		//	name="pojos-for-procedures" procPojos+=ProcedurePojoAssignement+ | name="pojos-for-functions"
 		//	funPojos+=FunctionPojoAssignement+ | name="active-filter" activeFilter=ValueType | name="package" pckg=QualifiedName |
-		//	name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+;
+		//	name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+ | name="generate-processing-ids";
 		@Override public ParserRule getRule() { return rule; }
 
 		//name="types-sqltypes" sqlTypes+=SqlTypeAssignement+ | name="types-in-table" dbTable=ValidID
@@ -2055,7 +2057,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)? | name="debug-level" debug=DebugLevelAssignement |
 		//name="pojos-for-procedures" procPojos+=ProcedurePojoAssignement+ | name="pojos-for-functions"
 		//funPojos+=FunctionPojoAssignement+ | name="active-filter" activeFilter=ValueType | name="package" pckg=QualifiedName |
-		//name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+
+		//name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+ | name="generate-processing-ids"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//name="types-sqltypes" sqlTypes+=SqlTypeAssignement+
@@ -2846,6 +2848,12 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ValidID
 		public RuleCall getDbCheckConstraintsValidIDParserRuleCall_43_2_0() { return cDbCheckConstraintsValidIDParserRuleCall_43_2_0; }
+
+		//name="generate-processing-ids"
+		public Assignment getNameAssignment_44() { return cNameAssignment_44; }
+
+		//"generate-processing-ids"
+		public Keyword getNameGenerateProcessingIdsKeyword_44_0() { return cNameGenerateProcessingIdsKeyword_44_0; }
 	}
 
 	public class MetaSqlTypeAssignementElements extends AbstractParserRuleElementFinder {
@@ -5027,6 +5035,9 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_11 = (Group)cAlternatives.eContents().get(11);
 		private final Action cPojoAttributeDirectiveEnumDefAction_11_0 = (Action)cGroup_11.eContents().get(0);
 		private final Keyword cEnumDefKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Group cGroup_12 = (Group)cAlternatives.eContents().get(12);
+		private final Action cPojoAttributeDirectiveProcessingIdAction_12_0 = (Action)cGroup_12.eContents().get(0);
+		private final Keyword cPidKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
 		
 		//PojoAttributeDirective:
 		//	{PojoAttributeDirectiveRequired} "#Required" | {PojoAttributeDirectivePrimaryKey} "#PrimaryKey" (fromTo=LPAREN
@@ -5037,7 +5048,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	updateColumn2=[PojoAttribute|ValidID] RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN
 		//	createColumn1=[PojoAttribute|ValidID] COMMA createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" |
 		//	{PojoAttributeDirectiveEnumInit} "#EnumInit" | {PojoAttributeDirectiveIsDef} "#IsDef" |
-		//	{PojoAttributeDirectiveEnumDef} "#EnumDef";
+		//	{PojoAttributeDirectiveEnumDef} "#EnumDef" | {PojoAttributeDirectiveProcessingId} "#Pid";
 		@Override public ParserRule getRule() { return rule; }
 
 		//{PojoAttributeDirectiveRequired} "#Required" | {PojoAttributeDirectivePrimaryKey} "#PrimaryKey" (fromTo=LPAREN
@@ -5047,7 +5058,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//{PojoAttributeDirectiveUpdateCol} "#UpdateCol" LPAREN updateColumn1=ValidID COMMA updateColumn2=[PojoAttribute|ValidID]
 		//RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN createColumn1=[PojoAttribute|ValidID] COMMA
 		//createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" | {PojoAttributeDirectiveEnumInit} "#EnumInit"
-		//| {PojoAttributeDirectiveIsDef} "#IsDef" | {PojoAttributeDirectiveEnumDef} "#EnumDef"
+		//| {PojoAttributeDirectiveIsDef} "#IsDef" | {PojoAttributeDirectiveEnumDef} "#EnumDef" |
+		//{PojoAttributeDirectiveProcessingId} "#Pid"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{PojoAttributeDirectiveRequired} "#Required"
@@ -5267,6 +5279,15 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"#EnumDef"
 		public Keyword getEnumDefKeyword_11_1() { return cEnumDefKeyword_11_1; }
+
+		//{PojoAttributeDirectiveProcessingId} "#Pid"
+		public Group getGroup_12() { return cGroup_12; }
+
+		//{PojoAttributeDirectiveProcessingId}
+		public Action getPojoAttributeDirectiveProcessingIdAction_12_0() { return cPojoAttributeDirectiveProcessingIdAction_12_0; }
+
+		//"#Pid"
+		public Keyword getPidKeyword_12_1() { return cPidKeyword_12_1; }
 	}
 
 	public class PojoAttributeElements extends AbstractParserRuleElementFinder {
@@ -6847,7 +6868,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	dbTables+=ValidID+)? ("-" dbNotTables+=ValidID+)? | name="debug-level" debug=DebugLevelAssignement |
 	//	name="pojos-for-procedures" procPojos+=ProcedurePojoAssignement+ | name="pojos-for-functions"
 	//	funPojos+=FunctionPojoAssignement+ | name="active-filter" activeFilter=ValueType | name="package" pckg=QualifiedName |
-	//	name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+;
+	//	name="enum-for-check-constraints" enumName=ValidID dbCheckConstraints+=ValidID+ | name="generate-processing-ids";
 	public PojogenPropertyElements getPojogenPropertyAccess() {
 		return pPojogenProperty;
 	}
@@ -7087,7 +7108,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	updateColumn2=[PojoAttribute|ValidID] RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN
 	//	createColumn1=[PojoAttribute|ValidID] COMMA createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" |
 	//	{PojoAttributeDirectiveEnumInit} "#EnumInit" | {PojoAttributeDirectiveIsDef} "#IsDef" |
-	//	{PojoAttributeDirectiveEnumDef} "#EnumDef";
+	//	{PojoAttributeDirectiveEnumDef} "#EnumDef" | {PojoAttributeDirectiveProcessingId} "#Pid";
 	public PojoAttributeDirectiveElements getPojoAttributeDirectiveAccess() {
 		return pPojoAttributeDirective;
 	}

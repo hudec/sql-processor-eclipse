@@ -4977,7 +4977,23 @@ rulePojogenProperty returns [EObject current=null]
 	    }
 
 )
-)+))
+)+)
+    |(
+(
+		lv_name_111_0=	'generate-processing-ids' 
+    {
+        newLeafNode(lv_name_111_0, grammarAccess.getPojogenPropertyAccess().getNameGenerateProcessingIdsKeyword_44_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPojogenPropertyRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_111_0, "generate-processing-ids");
+	    }
+
+)
+))
 ;
 
 
@@ -8678,6 +8694,20 @@ this_LPAREN_32=RULE_LPAREN
 )	otherlv_44='#EnumDef' 
     {
     	newLeafNode(otherlv_44, grammarAccess.getPojoAttributeDirectiveAccess().getEnumDefKeyword_11_1());
+    }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveProcessingIdAction_12_0(),
+            $current);
+    }
+)	otherlv_46='#Pid' 
+    {
+    	newLeafNode(otherlv_46, grammarAccess.getPojoAttributeDirectiveAccess().getPidKeyword_12_1());
     }
 ))
 ;

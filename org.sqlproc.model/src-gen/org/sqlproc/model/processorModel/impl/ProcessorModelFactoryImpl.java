@@ -91,6 +91,7 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveProcessingId;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveUpdateCol;
@@ -266,6 +267,7 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_ENUM_INIT: return createPojoAttributeDirectiveEnumInit();
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_IS_DEF: return createPojoAttributeDirectiveIsDef();
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_ENUM_DEF: return createPojoAttributeDirectiveEnumDef();
+      case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_PROCESSING_ID: return createPojoAttributeDirectiveProcessingId();
       case ProcessorModelPackage.ENUM_DIRECTIVE_SERIALIZABLE: return createEnumDirectiveSerializable();
       case ProcessorModelPackage.ENUM_ATTRIBUTE_DIRECTIVE_VALUES: return createEnumAttributeDirectiveValues();
       case ProcessorModelPackage.FUNCTION_CALL_QUERY: return createFunctionCallQuery();
@@ -1290,6 +1292,17 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
   {
     PojoAttributeDirectiveEnumDefImpl pojoAttributeDirectiveEnumDef = new PojoAttributeDirectiveEnumDefImpl();
     return pojoAttributeDirectiveEnumDef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public PojoAttributeDirectiveProcessingId createPojoAttributeDirectiveProcessingId()
+  {
+    PojoAttributeDirectiveProcessingIdImpl pojoAttributeDirectiveProcessingId = new PojoAttributeDirectiveProcessingIdImpl();
+    return pojoAttributeDirectiveProcessingId;
   }
 
   /**

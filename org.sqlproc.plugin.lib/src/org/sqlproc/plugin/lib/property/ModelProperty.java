@@ -89,6 +89,7 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String POJOGEN_ACTIVE_FILTER = "active-filter";
     public static final String POJOGEN_PACKAGE = "package";
     public static final String POJOGEN_ENUM_FOR_CHECK_CONSTRAINTS = "enum-for-check-constraints";
+    public static final String POJOGEN_GENERATE_PROCESSING_IDS = "generate-processing-ids";
 
     public static final String METAGEN = "metagen";
     public static final String METAGEN_GLOBAL_SEQUENCE = "global-sequence";
@@ -134,6 +135,7 @@ public abstract class ModelProperty extends AdapterImpl {
     protected Logger LOGGER = Logger.getLogger(ModelProperty.class);
 
     public static final List<String> STANDARD_DIRECTIVES = new ArrayList<String>();
+
     static {
         STANDARD_DIRECTIVES.add(RESOLVE_POJO_ON);
         STANDARD_DIRECTIVES.add(RESOLVE_POJO_OFF);
@@ -147,6 +149,7 @@ public abstract class ModelProperty extends AdapterImpl {
     }
 
     public static final List<String> DATABASE_DIRECTIVES = new ArrayList<String>();
+
     static {
         DATABASE_DIRECTIVES.add(DATABASE_IS_ONLINE);
         DATABASE_DIRECTIVES.add(DATABASE_IS_OFFLINE);
@@ -242,6 +245,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public String activeFilter;
         public String pckg;
         public Map<String, String> enumForCheckConstraints;
+        public boolean doGenerateProcessingIds;
 
         public PairValues metaGlobalSequence;
         public Map<String, PairValues> metaTablesSequence;
@@ -379,6 +383,7 @@ public abstract class ModelProperty extends AdapterImpl {
             enumForCheckConstraints = new HashMap<String, String>();
             defaultAttrs.put(POJOGEN, new HashSet<String>());
             conditionalAttrs.put(POJOGEN, new HashSet<String>());
+            doGenerateProcessingIds = false;
         }
 
         public void initMetagenModel() {
@@ -546,7 +551,8 @@ public abstract class ModelProperty extends AdapterImpl {
         Map<String, String> result = new HashMap<String, String>();
         for (String replaceId : modelValues.replaceAllRegex.keySet()) {
             if (modelValues.replaceAllReplacement.containsKey(replaceId)) {
-                result.put(modelValues.replaceAllRegex.get(replaceId), modelValues.replaceAllReplacement.get(replaceId));
+                result.put(modelValues.replaceAllRegex.get(replaceId),
+                        modelValues.replaceAllReplacement.get(replaceId));
             }
         }
         return result;
@@ -584,26 +590,26 @@ public abstract class ModelProperty extends AdapterImpl {
 
     public Map<String, Map<String, PojoAttrType>> getTableTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.tableTypes : Collections
-                .<String, Map<String, PojoAttrType>> emptyMap();
+        return (modelValues != null) ? modelValues.tableTypes
+                : Collections.<String, Map<String, PojoAttrType>> emptyMap();
     }
 
     public Map<String, Map<String, PojoAttrType>> getColumnTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.columnTypes : Collections
-                .<String, Map<String, PojoAttrType>> emptyMap();
+        return (modelValues != null) ? modelValues.columnTypes
+                : Collections.<String, Map<String, PojoAttrType>> emptyMap();
     }
 
     public Map<String, Map<String, PojoAttrType>> getProcedureTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.procedureTypes : Collections
-                .<String, Map<String, PojoAttrType>> emptyMap();
+        return (modelValues != null) ? modelValues.procedureTypes
+                : Collections.<String, Map<String, PojoAttrType>> emptyMap();
     }
 
     public Map<String, Map<String, PojoAttrType>> getFunctionTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.functionTypes : Collections
-                .<String, Map<String, PojoAttrType>> emptyMap();
+        return (modelValues != null) ? modelValues.functionTypes
+                : Collections.<String, Map<String, PojoAttrType>> emptyMap();
     }
 
     public Map<String, String> getTableNames(EObject model) {
@@ -653,56 +659,56 @@ public abstract class ModelProperty extends AdapterImpl {
 
     public Map<String, Map<String, PojoAttrType>> getCreateColumns(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.createColumns : Collections
-                .<String, Map<String, PojoAttrType>> emptyMap();
+        return (modelValues != null) ? modelValues.createColumns
+                : Collections.<String, Map<String, PojoAttrType>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getIgnoreExports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.ignoreExports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.ignoreExports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getIgnoreImports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.ignoreImports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.ignoreImports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getCreateExports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.createExports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.createExports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getCreateImports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.createImports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.createImports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getCreate121Imports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.create121Imports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.create121Imports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getInheritImports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.inheritImports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.inheritImports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getManyToManyImports(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.manyToManyImports : Collections
-                .<String, Map<String, Map<String, String>>> emptyMap();
+        return (modelValues != null) ? modelValues.manyToManyImports
+                : Collections.<String, Map<String, Map<String, String>>> emptyMap();
     }
 
     public Map<String, Map<String, Map<String, List<String>>>> getInheritance(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.inheritance : Collections
-                .<String, Map<String, Map<String, List<String>>>> emptyMap();
+        return (modelValues != null) ? modelValues.inheritance
+                : Collections.<String, Map<String, Map<String, List<String>>>> emptyMap();
     }
 
     public Map<String, String> getInheritanceColumns(EObject model) {
@@ -810,6 +816,11 @@ public abstract class ModelProperty extends AdapterImpl {
         return (modelValues != null) ? modelValues.enumForCheckConstraints : Collections.<String, String> emptyMap();
     }
 
+    public boolean isDoGenerateProcessingIds(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.doGenerateProcessingIds : false;
+    }
+
     public Map<String, PairValues> getMetaTablesIdentity(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.metaTablesIdentity : Collections.<String, PairValues> emptyMap();
@@ -832,14 +843,14 @@ public abstract class ModelProperty extends AdapterImpl {
 
     public Map<String, Map<String, PairValues>> getMetaColumnsMetaTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.metaColumnsMetaTypes : Collections
-                .<String, Map<String, PairValues>> emptyMap();
+        return (modelValues != null) ? modelValues.metaColumnsMetaTypes
+                : Collections.<String, Map<String, PairValues>> emptyMap();
     }
 
     public Map<String, Map<String, PairValues>> getMetaStatementsMetaTypes(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.metaStatementsMetaTypes : Collections
-                .<String, Map<String, PairValues>> emptyMap();
+        return (modelValues != null) ? modelValues.metaStatementsMetaTypes
+                : Collections.<String, Map<String, PairValues>> emptyMap();
     }
 
     public boolean isMetaMakeItFinal(EObject model) {
@@ -1119,8 +1130,8 @@ public abstract class ModelProperty extends AdapterImpl {
 
     public Map<String, ProcedureDefinition> getModelProcedures(EObject model) {
         ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.modelProcedures : Collections
-                .<String, ProcedureDefinition> emptyMap();
+        return (modelValues != null) ? modelValues.modelProcedures
+                : Collections.<String, ProcedureDefinition> emptyMap();
     }
 
     public Map<String, FunctionDefinition> getModelFunctions(EObject model) {
