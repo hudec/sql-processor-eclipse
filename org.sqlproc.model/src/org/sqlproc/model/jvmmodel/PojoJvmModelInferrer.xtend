@@ -729,20 +729,27 @@ class PojoJvmModelInferrer {
    				]	
 			}
 			
-			if (!processingIdsList.isEmpty || !isDefList.isEmpty || isDefList.isEmpty || entity.hasOperators) {
+			if (!processingIdsList.isEmpty) {
 	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
+   					parameters += entity.toParameter("moreAttributes", typeRef(Object).addArrayTypeDimension)
+	   				varArgs = true
 	   				body = '''
-						String result = "BASE:" + hashCodeForAttributes();
+						StringBuilder result = new StringBuilder();
+						«IF !processingIdsList.isEmpty»
+						result.append(",BASE:").append(hashCodeForAttributes());
+						«ENDIF»
 						«IF !isDefList.isEmpty»
-						result = result + ",DEF:" + hashCodeForNulls();
+						result.append(",DEF:").append(hashCodeForNulls());
 						«ENDIF»
 						«IF !toInitList.isEmpty»
-						result = result + ",ASSOC:" + hashCodeForAssociations();
+						result.append(",ASSOC:").append(hashCodeForAssociations());
 						«ENDIF»
 						«IF entity.hasOperators»
-						result = result + ",OPER:" + hashCodeForOperators();
+						result.append(",OPER:").append(hashCodeForOperators());
 						«ENDIF»
-						return result;
+						if (moreAttributes != null)
+							result.append(",MORE:").append(java.util.Arrays.hashCode(moreAttributes));
+						return result.toString();
 	   				'''
 	   			]
 	   			members += method
