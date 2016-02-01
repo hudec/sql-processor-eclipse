@@ -169,7 +169,11 @@ class PojoJvmModelInferrer {
 	   			]
    			}
    			
+   			var _hasIds = false
    			for (attr : entity.attributes) {
+   				if (attr.name == "ids")
+   					_hasIds = true
+   					
    				val type = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
    				members += entity.toField(attr.name, type) [
    					documentation = attr.documentation
@@ -730,12 +734,15 @@ class PojoJvmModelInferrer {
 			}
 			
 			if (!processingIdsList.isEmpty) {
+				val hasIds = _hasIds
 	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
    					parameters += entity.toParameter("moreAttributes", typeRef(Object).addArrayTypeDimension)
 	   				varArgs = true
 	   				body = '''
+						«IF hasIds»
 						if (ids != null)
 							return null;
+						«ENDIF»
 						StringBuilder result = new StringBuilder();
 						«IF !processingIdsList.isEmpty»
 						result.append("BASE:").append(hashCodeForAttributes());
