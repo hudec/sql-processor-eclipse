@@ -734,9 +734,11 @@ class PojoJvmModelInferrer {
    					parameters += entity.toParameter("moreAttributes", typeRef(Object).addArrayTypeDimension)
 	   				varArgs = true
 	   				body = '''
+						if (ids != null)
+							return null;
 						StringBuilder result = new StringBuilder();
 						«IF !processingIdsList.isEmpty»
-						result.append(",BASE:").append(hashCodeForAttributes());
+						result.append("BASE:").append(hashCodeForAttributes());
 						«ENDIF»
 						«IF !isDefList.isEmpty»
 						result.append(",DEF:").append(hashCodeForNulls());
