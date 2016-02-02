@@ -548,8 +548,10 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(NLINDENT).append(INDENT).append("#Attr ");
                         if (attribute.getDependencyClassName() != null) {
                             bufferPartial.append(attribute.getDependencyClassName());
-                            if (attribute.isDependencyClassNameIsEnum())
+                            if (attribute.isDependencyClassNameIsEnum()) {
                                 toStr.add(name);
+                            }
+                            procId.add(name);
                         } else if (attribute.isPrimitive()) {
                             bufferPartial.append(attribute.getClassName());
                             toStr.add(name);
