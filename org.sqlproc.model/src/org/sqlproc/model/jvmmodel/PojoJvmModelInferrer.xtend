@@ -264,21 +264,6 @@ class PojoJvmModelInferrer {
 	   			members += method
 			}
 			
-   			// TODO primitive arrays
-    		val processingIdsList = entity.processingIdsAttributes
-   			if (!processingIdsList.isEmpty) {
-	   			val method = entity.toMethod('hashCodeForAttributes', typeRef(int)) [
-	   				body = '''
-						int result = 1;
-						«FOR f2:processingIdsList»
-						result = 31 * result + «IF f2.isNative»(int) «f2.hashForPrimitive»«ELSE»((«f2.name» != null) ? «f2.name».hashCode() : 0)«ENDIF»;
-						«ENDFOR»
-						return result;
-	   				'''
-	   			]
-	   			members += method
-			}
-   			
    			val toStringList = entity.toStringAttributes
    			if (!toStringList.isEmpty) {
 	   			val method = entity.toMethod('toString', typeRef(String)) [
@@ -733,6 +718,7 @@ class PojoJvmModelInferrer {
    				]	
 			}
 			
+			val processingIdsList = entity.processingIdsAttributes
 			if (!processingIdsList.isEmpty) {
 				val hasIds = _hasIds
 	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
@@ -745,7 +731,11 @@ class PojoJvmModelInferrer {
 						«ENDIF»
 						StringBuilder result = new StringBuilder();
 						«IF !processingIdsList.isEmpty»
-						result.append("BASE:").append(hashCodeForAttributes());
+						result.append("BASE:");
+						«FOR f2:processingIdsList»
+						if («f2.name» != null)
+							result.append(«f2.name»).append("@");
+						«ENDFOR»
 						«ENDIF»
 						«IF !isDefList.isEmpty»
 						result.append(",DEF:").append(hashCodeForNulls());
