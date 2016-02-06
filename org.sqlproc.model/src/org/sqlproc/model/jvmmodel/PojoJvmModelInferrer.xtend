@@ -224,6 +224,21 @@ class PojoJvmModelInferrer {
    					body = proc.body
    				]
 			}
+
+			val processingIdsList = entity.processingIdsAttributes
+			if (!processingIdsList.isEmpty) {
+	   			val method = entity.toMethod('getProcessingIdForAttributes', typeRef(StringBuilder)) [
+	   				body = '''
+						StringBuilder result = new StringBuilder("«simpleName»");
+						«FOR f2:processingIdsList»
+						if («f2.name» != null)
+							result.append("@").append("«f2.name»");
+						«ENDFOR»
+						return result;
+	   				'''
+	   			]
+	   			members += method
+			}
 			   			
    			val equalsList = entity.equalsAttributes
    			if (!equalsList.isEmpty) {
@@ -403,17 +418,20 @@ class PojoJvmModelInferrer {
 						nullValues = new «HASH_SET»<String>();
    					'''
    				]	
-	   			members += entity.toMethod('hashCodeForNulls', typeRef(int)) [
-   					body = '''
-						if (nullValues == null || nullValues.isEmpty())
-							return 0;
-						int result = 1;
-						for (Attribute attribute : Attribute.values()) {
-							result = 31 * result + (nullValues.contains(attribute.name()) ? attribute.name().hashCode() : 0);
-						}
-						return result;
-   					'''
-   				]	
+				if (!processingIdsList.isEmpty) {
+		   			members += entity.toMethod('getProcessingIdForNulls', typeRef(StringBuilder)) [
+	   					body = '''
+							if (nullValues == null || nullValues.isEmpty())
+								return null;
+							StringBuilder result = new StringBuilder("NULL");
+							for (Attribute attribute : Attribute.values()) {
+								if (nullValues.contains(attribute.name()))
+									result.append("@").append(attribute.name());
+							}
+							return result;
+	   					'''
+	   				]
+   				}	
    			}
    			
    			val enumDefList = entity.enumDefAttributes
@@ -546,17 +564,20 @@ class PojoJvmModelInferrer {
 						initAssociations = new «HASH_SET»<String>();
    					'''
    				]	
-	   			members += entity.toMethod('hashCodeForAssociations', typeRef(int)) [
-   					body = '''
-						if (initAssociations == null || initAssociations.isEmpty())
-							return 0;
-						int result = 1;
-						for (Association association : Association.values()) {
-							result = 31 * result + (initAssociations.contains(association.name()) ? association.name().hashCode() : 0);
-						}
-						return result;
-   					'''
-   				]	
+				if (!processingIdsList.isEmpty) {
+		   			members += entity.toMethod('getProcessingIdForAssociations', typeRef(StringBuilder)) [
+	   					body = '''
+							if (initAssociations == null || initAssociations.isEmpty())
+								return null;
+							StringBuilder result = new StringBuilder("ASSOC");
+							for (Association association : Association.values()) {
+								if (initAssociations.contains(association.name()))
+									result.append("@").append(association.name());
+							}
+							return result;
+	   					'''
+	   				]
+   				}	
    			}
    			
    			val enumInitList = entity.enumInitAttributes
@@ -705,50 +726,54 @@ class PojoJvmModelInferrer {
 						operators = new «HASH_MAP»<String, String>();
    					'''
    				]	
-	   			members += entity.toMethod('hashCodeForOperators', typeRef(int)) [
-   					body = '''
-						if (operators == null || operators.isEmpty())
-							return 0;
-						int result = 1;
-						for (OpAttribute opAttribute : OpAttribute.values()) {
-							result = 31 * result + (operators.containsKey(opAttribute.name()) ? operators.get(opAttribute.name()).hashCode() : 0);
-						}
-						return result;
-   					'''
-   				]	
+				if (!processingIdsList.isEmpty) {
+		   			members += entity.toMethod('getProcessingIdForOperators', typeRef(StringBuilder)) [
+	   					body = '''
+							if (operators == null || operators.isEmpty())
+								return null;
+							StringBuilder result = new StringBuilder("OPER");
+							for (OpAttribute opAttribute : OpAttribute.values()) {
+								if (operators.containsKey(opAttribute.name()))
+									result.append("@").append(opAttribute.name()).append("=").append(operators.get(opAttribute.name()));
+							}
+							return result;
+	   					'''
+	   				]
+   				}	
 			}
 			
-			val processingIdsList = entity.processingIdsAttributes
 			if (!processingIdsList.isEmpty) {
 				val hasIds = _hasIds
-	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
-   					parameters += entity.toParameter("moreAttributes", typeRef(Object).addArrayTypeDimension)
+	   			val method = entity.toMethod('getProcessingId', typeRef(StringBuilder)) [
+   					parameters += entity.toParameter("moreAttributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
 	   				body = '''
 						«IF hasIds»
 						if (ids != null && !ids.isEmpty())
 							return null;
 						«ENDIF»
-						StringBuilder result = new StringBuilder();
-						«IF !processingIdsList.isEmpty»
-						result.append("BASE:");
-						«FOR f2:processingIdsList»
-						if («f2.name» != null)
-							result.append("«f2.name»").append("@");
-						«ENDFOR»
-						«ENDIF»
+						StringBuilder result = getProcessingIdForAttributes();
 						«IF !isDefList.isEmpty»
-						result.append(",DEF:").append(hashCodeForNulls());
+						StringBuilder processingIdForNulls = getProcessingIdForNulls();
+						if (processingIdForNulls != null)
+							result.append(",").append(processingIdForNulls);
 						«ENDIF»
 						«IF !toInitList.isEmpty»
-						result.append(",ASSOC:").append(hashCodeForAssociations());
+						StringBuilder processingIdForAssociations = getProcessingIdForAssociations();
+						if (processingIdForAssociations != null)
+							result.append(",").append(processingIdForAssociations);
 						«ENDIF»
 						«IF entity.hasOperators»
-						result.append(",OPER:").append(hashCodeForOperators());
+						StringBuilder processingIdForOperators = getProcessingIdForOperators();
+						if (processingIdForOperators != null)
+							result.append(",").append(processingIdForOperators);
 						«ENDIF»
-						if (moreAttributes != null)
-							result.append(",MORE:").append(java.util.Arrays.hashCode(moreAttributes));
-						return result.toString();
+						if (moreAttributes != null) {
+							result.append(",MORE");
+							for (String moreAttr : moreAttributes)
+								result.append("@").append(moreAttr);
+						}
+						return result;
 	   				'''
 	   			]
 	   			members += method
