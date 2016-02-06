@@ -744,7 +744,7 @@ class PojoJvmModelInferrer {
 			
 			if (!processingIdsList.isEmpty) {
 				val hasIds = _hasIds
-	   			val method = entity.toMethod('getProcessingId', typeRef(StringBuilder)) [
+	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
    					parameters += entity.toParameter("moreAttributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
 	   				body = '''
@@ -768,12 +768,12 @@ class PojoJvmModelInferrer {
 						if (processingIdForOperators != null)
 							result.append(",").append(processingIdForOperators);
 						«ENDIF»
-						if (moreAttributes != null) {
+						if (moreAttributes != null && moreAttributes.length > 0) {
 							result.append(",MORE");
 							for (String moreAttr : moreAttributes)
 								result.append("@").append(moreAttr);
 						}
-						return result;
+						return result.toString();
 	   				'''
 	   			]
 	   			members += method
