@@ -405,7 +405,7 @@ class PojoJvmModelInferrer {
    				]	
 	   			members += entity.toMethod('hashCodeForNulls', typeRef(int)) [
    					body = '''
-						if (nullValues == null)
+						if (nullValues == null || nullValues.isEmpty())
 							return 0;
 						int result = 1;
 						for (Attribute attribute : Attribute.values()) {
@@ -548,7 +548,7 @@ class PojoJvmModelInferrer {
    				]	
 	   			members += entity.toMethod('hashCodeForAssociations', typeRef(int)) [
    					body = '''
-						if (initAssociations == null)
+						if (initAssociations == null || initAssociations.isEmpty())
 							return 0;
 						int result = 1;
 						for (Association association : Association.values()) {
@@ -707,7 +707,7 @@ class PojoJvmModelInferrer {
    				]	
 	   			members += entity.toMethod('hashCodeForOperators', typeRef(int)) [
    					body = '''
-						if (operators == null)
+						if (operators == null || operators.isEmpty())
 							return 0;
 						int result = 1;
 						for (OpAttribute opAttribute : OpAttribute.values()) {
@@ -726,7 +726,7 @@ class PojoJvmModelInferrer {
 	   				varArgs = true
 	   				body = '''
 						«IF hasIds»
-						if (ids != null)
+						if (ids != null && !ids.isEmpty())
 							return null;
 						«ENDIF»
 						StringBuilder result = new StringBuilder();
@@ -734,7 +734,7 @@ class PojoJvmModelInferrer {
 						result.append("BASE:");
 						«FOR f2:processingIdsList»
 						if («f2.name» != null)
-							result.append(«f2.name»).append("@");
+							result.append("«f2.name»").append("@");
 						«ENDFOR»
 						«ENDIF»
 						«IF !isDefList.isEmpty»
