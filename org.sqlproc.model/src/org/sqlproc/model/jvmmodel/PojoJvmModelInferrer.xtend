@@ -231,8 +231,8 @@ class PojoJvmModelInferrer {
 	   				body = '''
 						StringBuilder result = new StringBuilder("«simpleName»");
 						«FOR f2:processingIdsList»
-						if («f2.name» != null)
-							result.append("@").append("«f2.name»");
+						«IF f2.isNative»result.append("@").append("«f2.name»");«ELSE»if («f2.name» != null)
+							result.append("@").append("«f2.name»");«ENDIF»
 						«ENDFOR»
 						return result;
 	   				'''

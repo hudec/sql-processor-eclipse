@@ -1089,8 +1089,27 @@ class ProcessorGeneratorUtils {
 		return "0"
    	}
 
-   	
    	def String wrapperPrimitive(String name) {
+   		if (name == "boolean")
+   			return "Boolean"
+   		if (name == "byte")
+   			return "Byte"
+   		if (name == "char")
+   			return "Char"
+   		if (name == "double")
+   			return "Double"
+   		if (name == "float")
+   			return "Float"
+   		if (name == "int")
+   			return "Integer"
+   		if (name == "long")
+   			return "Long"
+   		if (name == "short")
+   			return "Short"
+		return name
+   	}
+
+   	def String notEmptyCondition(String name) {
    		if (name == "boolean")
    			return "Boolean"
    		if (name == "byte")
