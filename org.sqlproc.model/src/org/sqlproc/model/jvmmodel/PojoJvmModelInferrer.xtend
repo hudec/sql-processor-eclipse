@@ -268,11 +268,7 @@ class PojoJvmModelInferrer {
    			if (!hashCodeList.isEmpty) {
 	   			val method = entity.toMethod('hashCode', typeRef(int)) [
 	   				body = '''
-						int result = 1;
-						«FOR f2:hashCodeList»
-						result = 31 * result + «IF f2.isNative»(int) «f2.hashForPrimitive»«ELSE»((«f2.name» != null) ? «f2.name».hashCode() : 0)«ENDIF»;
-						«ENDFOR»
-						return result;
+						return java.util.Objects.hash(«FOR f2:hashCodeList SEPARATOR ", "»«f2.name»«ENDFOR»);
 	   				'''
 	   			]
 	   			method.getAnnotations().add(annotationRef(Override))

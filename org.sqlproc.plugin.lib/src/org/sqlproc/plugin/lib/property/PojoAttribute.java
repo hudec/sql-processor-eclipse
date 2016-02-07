@@ -16,6 +16,7 @@ public class PojoAttribute {
     private Integer index;
     private String name;
     private String className;
+    private String wrapperClassName;
     private String ref;
     private String dependencyClassName;
     private String dependencyPojo;
@@ -105,6 +106,16 @@ public class PojoAttribute {
         this.className = className;
         if (this.className != null && this.className.startsWith("java.lang."))
             this.className = this.className.substring(10);
+    }
+
+    public String getWrapperClassName() {
+        return wrapperClassName;
+    }
+
+    public void setWrapperClassName(String wrapperClassName) {
+        this.wrapperClassName = wrapperClassName;
+        if (this.wrapperClassName != null && this.wrapperClassName.startsWith("java.lang."))
+            this.wrapperClassName = this.wrapperClassName.substring(10);
     }
 
     public String getRef() {
@@ -351,7 +362,7 @@ public class PojoAttribute {
                 + ", oneToManyOppositeColumn=" + oneToManyOppositeColumn + ", oneToManyTable=" + oneToManyTable
                 + ", manyToManyColumn=" + manyToManyColumn + ", manyToManyTable=" + manyToManyTable + ", funProcType="
                 + funProcType + ", funProcColumnType=" + funProcColumnType + ", sqlType=" + sqlType
-                + ", completeSqlType=" + completeSqlType + ", size=" + size + ", comment=" + comment
-                + ", defaultValue=" + defaultValue + ", one2one=" + one2one + "]";
+                + ", completeSqlType=" + completeSqlType + ", size=" + size + ", comment=" + comment + ", defaultValue="
+                + defaultValue + ", one2one=" + one2one + "]";
     }
 }

@@ -297,7 +297,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             name = attribute.getName();
                         if (attribute.getIntValue() == null && attribute.getStrValue() == null)
                             name = columnToCamelCase(name);
-                        buffer.append(NLINDENT).append(INDENT).append("#Attr ").append(attribute.getClassName())
+                        buffer.append(NLINDENT).append(INDENT).append("#Attr ").append(attribute.getWrapperClassName())
                                 .append(' ').append(name);
                     }
                 }
@@ -570,7 +570,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     if (pkAttribute != null) {
                         bufferPartial.append(NLINDENT).append(INDENT).append("#Attr boolean onlyIds");
                         bufferPartial.append(NLINDENT).append(INDENT).append("#Attr java.util.List <")
-                                .append(pkAttribute.getClassName()).append("> ids");
+                                .append(pkAttribute.getWrapperClassName()).append("> ids");
                     }
                     // if (pojoExtends.containsKey(pojo)) {
                     // getParentAttrs(pojoExtends.get(pojo), null, null, toStr);

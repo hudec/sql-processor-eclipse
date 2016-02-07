@@ -4,6 +4,7 @@ public class EnumAttribute {
 
     private String name;
     private String className;
+    private String wrapperClassName;
     private String intValue;
     private String strValue;
 
@@ -21,6 +22,16 @@ public class EnumAttribute {
 
     public void setClassName(String className) {
         this.className = className;
+    }
+
+    public String getWrapperClassName() {
+        return wrapperClassName;
+    }
+
+    public void setWrapperClassName(String wrapperClassName) {
+        this.wrapperClassName = wrapperClassName;
+        if (this.wrapperClassName != null && this.wrapperClassName.startsWith("java.lang."))
+            this.wrapperClassName = this.wrapperClassName.substring(10);
     }
 
     public String getIntValue() {

@@ -754,7 +754,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				«pojoAttrName».setOnlyIds(true);
 				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations();
 				«pojoAttrName».setInitAssociations(new «HASH_SET»<String>());
-				final «LIST»<«pkType»> ids = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
+				final «LIST»<«wrapperPrimitive(pkType)»> ids = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
 				«pojoAttrName».setInitAssociations(initAssociations);
 
 				List<«pojo.name»> «pojoAttrName»List = new «ARRAY_LIST»<«pojo.name»>();
@@ -763,7 +763,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 					sqlc.setFirstResult(0);
 					sqlc.setMaxResults(0);
 					sqlc.setOrder(null);
-					final «Map»<«pkType», «pojo.name»> map = new «HASH_MAP»<«pkType», «pojo.name»>();
+					final «Map»<«wrapperPrimitive(pkType)», «pojo.name»> map = new «HASH_MAP»<«wrapperPrimitive(pkType)», «pojo.name»>();
 					final SqlRowProcessor<«pojo.name»> sqlRowProcessor = new SqlRowProcessor<«pojo.name»>() {
 						@Override
 						public boolean processRow(«pojo.name» result, int rownum) throws «SQL_RUNTIME_EXCEPTION» {

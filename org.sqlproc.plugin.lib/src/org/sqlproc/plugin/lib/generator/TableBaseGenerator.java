@@ -655,6 +655,7 @@ public class TableBaseGenerator {
             EnumAttribute pattr = new EnumAttribute();
             pattr.setName("VALUE");
             pattr.setClassName(attribute.getClassName());
+            pattr.setWrapperClassName(attribute.getWrapperClassName());
             attrs.add(pattr);
 
             for (String val : check.getValues()) {
@@ -1192,45 +1193,55 @@ public class TableBaseGenerator {
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Boolean.class.getName());
+                attribute.setWrapperClassName(Boolean.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.BOOLEAN.getName());
+                attribute.setWrapperClassName(Boolean.class.getName());
             }
             break;
         case Types.TINYINT:
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Byte.class.getName());
+                attribute.setWrapperClassName(Byte.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.BYTE.getName());
+                attribute.setWrapperClassName(Byte.class.getName());
             }
             break;
         case Types.SMALLINT:
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Short.class.getName());
+                attribute.setWrapperClassName(Short.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.SHORT.getName());
+                attribute.setWrapperClassName(Short.class.getName());
             }
             break;
         case Types.INTEGER:
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Integer.class.getName());
+                attribute.setWrapperClassName(Integer.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.INT.getName());
+                attribute.setWrapperClassName(Integer.class.getName());
             }
             break;
         case Types.BIGINT:
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Long.class.getName());
+                attribute.setWrapperClassName(Long.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.LONG.getName());
+                attribute.setWrapperClassName(Long.class.getName());
             }
             break;
         case Types.FLOAT:
@@ -1238,23 +1249,28 @@ public class TableBaseGenerator {
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Float.class.getName());
+                attribute.setWrapperClassName(Float.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.FLOAT.getName());
+                attribute.setWrapperClassName(Float.class.getName());
             }
             break;
         case Types.DOUBLE:
             if (dbColumn.isNullable() || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(Double.class.getName());
+                attribute.setWrapperClassName(Double.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.DOUBLE.getName());
+                attribute.setWrapperClassName(PrimitiveType.DOUBLE.getName());
             }
             break;
         case Types.NUMERIC:
             attribute.setPrimitive(false);
             attribute.setClassName(BigDecimal.class.getName());
+            attribute.setWrapperClassName(attribute.getClassName());
             break;
         case Types.DECIMAL:
             attribute.setPrimitive(false);
@@ -1268,15 +1284,18 @@ public class TableBaseGenerator {
                 attribute.setClassName(Long.class.getName());
             else
                 attribute.setClassName(BigInteger.class.getName());
+            attribute.setWrapperClassName(attribute.getClassName());
             break;
         case Types.CHAR:
         case Types.NCHAR:
             if (dbColumn.isNullable() || dbColumn.getSize() > 1 || doGenerateWrappers) {
                 attribute.setPrimitive(false);
                 attribute.setClassName(String.class.getName());
+                attribute.setWrapperClassName(String.class.getName());
             } else {
                 attribute.setPrimitive(true);
                 attribute.setClassName(PrimitiveType.CHAR.getName());
+                attribute.setWrapperClassName(String.class.getName());
             }
             break;
         case Types.VARCHAR:
@@ -1284,20 +1303,24 @@ public class TableBaseGenerator {
         case Types.NVARCHAR:
             attribute.setPrimitive(false);
             attribute.setClassName(String.class.getName());
+            attribute.setWrapperClassName(String.class.getName());
             break;
         case Types.DATE:
             // java.util.Date or java.sql.Date ?
             attribute.setPrimitive(false);
             attribute.setClassName(java.util.Date.class.getName());
+            attribute.setWrapperClassName(java.util.Date.class.getName());
             break;
         case Types.TIME:
             attribute.setPrimitive(false);
             attribute.setClassName(java.sql.Time.class.getName());
+            attribute.setWrapperClassName(java.sql.Time.class.getName());
             break;
         case Types.TIMESTAMP:
             // java.util.Date or java.sql.Timestamp ?
             attribute.setPrimitive(false);
             attribute.setClassName(java.sql.Timestamp.class.getName());
+            attribute.setWrapperClassName(java.sql.Timestamp.class.getName());
             break;
         case Types.BINARY:
         case Types.VARBINARY:
@@ -1305,10 +1328,12 @@ public class TableBaseGenerator {
         case Types.BLOB:
             attribute.setPrimitive(true);
             attribute.setClassName(PrimitiveType.BYTE_ARRAY.getName());
+            attribute.setWrapperClassName(PrimitiveType.BYTE_ARRAY.getName());
             break;
         case Types.CLOB:
             attribute.setPrimitive(false);
             attribute.setClassName(String.class.getName());
+            attribute.setWrapperClassName(String.class.getName());
             break;
         default:
             // todo what type?
@@ -1317,6 +1342,7 @@ public class TableBaseGenerator {
                 attribute.setClassName(java.sql.Timestamp.class.getName());
             else
                 attribute.setClassName("java.lang.Object");
+            attribute.setWrapperClassName(attribute.getClassName());
         }
         attribute.setSqlType(dbColumn.getSqlType());
         attribute.setCompleteSqlType(dbColumn.getCompleteType());
