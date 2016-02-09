@@ -89,6 +89,7 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
@@ -644,6 +645,11 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
       public Adapter casePojoAttributeDirectiveEnumDef(PojoAttributeDirectiveEnumDef object)
       {
         return createPojoAttributeDirectiveEnumDefAdapter();
+      }
+      @Override
+      public Adapter casePojoAttributeDirectiveIsPojo(PojoAttributeDirectiveIsPojo object)
+      {
+        return createPojoAttributeDirectiveIsPojoAdapter();
       }
       @Override
       public Adapter caseEnumDirectiveSerializable(EnumDirectiveSerializable object)
@@ -2143,6 +2149,21 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPojoAttributeDirectiveEnumDefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo <em>Pojo Attribute Directive Is Pojo</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo
+   * @generated
+   */
+  public Adapter createPojoAttributeDirectiveIsPojoAdapter()
   {
     return null;
   }

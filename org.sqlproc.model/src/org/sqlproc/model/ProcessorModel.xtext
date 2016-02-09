@@ -271,6 +271,7 @@ PojoAttributeDirective:
 	| {PojoAttributeDirectiveEnumInit} '#EnumInit'
 	| {PojoAttributeDirectiveIsDef} '#IsDef'
 	| {PojoAttributeDirectiveEnumDef} '#EnumDef'
+	| {PojoAttributeDirectiveIsPojo} '#IsPojo'
 ;
 
 PojoAttribute:

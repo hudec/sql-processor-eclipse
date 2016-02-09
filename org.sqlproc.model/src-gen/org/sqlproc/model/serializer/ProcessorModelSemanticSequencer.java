@@ -134,6 +134,7 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
@@ -388,6 +389,9 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 				return; 
 			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_IS_DEF:
 				sequence_PojoAttributeDirective(context, (PojoAttributeDirectiveIsDef) semanticObject); 
+				return; 
+			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_IS_POJO:
+				sequence_PojoAttributeDirective(context, (PojoAttributeDirectiveIsPojo) semanticObject); 
 				return; 
 			case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_PRIMARY_KEY:
 				sequence_PojoAttributeDirective(context, (PojoAttributeDirectivePrimaryKey) semanticObject); 
@@ -1633,6 +1637,15 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     {PojoAttributeDirectiveIsDef}
 	 */
 	protected void sequence_PojoAttributeDirective(EObject context, PojoAttributeDirectiveIsDef semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Constraint:
+	 *     {PojoAttributeDirectiveIsPojo}
+	 */
+	protected void sequence_PojoAttributeDirective(EObject context, PojoAttributeDirectiveIsPojo semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	

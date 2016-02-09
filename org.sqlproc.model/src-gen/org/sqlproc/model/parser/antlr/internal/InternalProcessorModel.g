@@ -8719,6 +8719,20 @@ this_LPAREN_32=RULE_LPAREN
     {
     	newLeafNode(otherlv_44, grammarAccess.getPojoAttributeDirectiveAccess().getEnumDefKeyword_11_1());
     }
+)
+    |((
+	{ 
+	  /* */ 
+	}
+    {
+        $current = forceCreateModelElement(
+            grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveIsPojoAction_12_0(),
+            $current);
+    }
+)	otherlv_46='#IsPojo' 
+    {
+    	newLeafNode(otherlv_46, grammarAccess.getPojoAttributeDirectiveAccess().getIsPojoKeyword_12_1());
+    }
 ))
 ;
 

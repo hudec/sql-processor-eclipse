@@ -232,7 +232,7 @@ class PojoJvmModelInferrer {
 						StringBuilder result = new StringBuilder("«simpleName»");
 						«FOR f2:processingIdsList»
 						«IF f2.isNative»result.append("@").append("«f2.name»");«ELSE»if («f2.name» != null)
-							result.append("@").append("«f2.name»");«ENDIF»
+							result.append("@").append(«IF f2.isPojo»"{").append(«f2.name».getProcessingIdForAttributes()).append("}"«ELSE»"«f2.name»"«ENDIF»);«ENDIF»
 						«ENDFOR»
 						return result;
 	   				'''
@@ -263,7 +263,6 @@ class PojoJvmModelInferrer {
 	   			members += method
 			}
    			
-   			// TODO primitive arrays
    			val hashCodeList = entity.hashCodeAttributes
    			if (!hashCodeList.isEmpty) {
 	   			val method = entity.toMethod('hashCode', typeRef(int)) [

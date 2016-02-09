@@ -4091,6 +4091,25 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_ATTRIBUTE_DIRECTIVE_ENUM_DEF_FEATURE_COUNT = POJO_ATTRIBUTE_DIRECTIVE_FEATURE_COUNT + 0;
 
   /**
+   * The meta object id for the '{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveIsPojoImpl <em>Pojo Attribute Directive Is Pojo</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveIsPojoImpl
+   * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getPojoAttributeDirectiveIsPojo()
+   * @generated
+   */
+  int POJO_ATTRIBUTE_DIRECTIVE_IS_POJO = 92;
+
+  /**
+   * The number of structural features of the '<em>Pojo Attribute Directive Is Pojo</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POJO_ATTRIBUTE_DIRECTIVE_IS_POJO_FEATURE_COUNT = POJO_ATTRIBUTE_DIRECTIVE_FEATURE_COUNT + 0;
+
+  /**
    * The meta object id for the '{@link org.sqlproc.model.processorModel.impl.EnumDirectiveSerializableImpl <em>Enum Directive Serializable</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -4098,7 +4117,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getEnumDirectiveSerializable()
    * @generated
    */
-  int ENUM_DIRECTIVE_SERIALIZABLE = 92;
+  int ENUM_DIRECTIVE_SERIALIZABLE = 93;
 
   /**
    * The feature id for the '<em><b>Sernum</b></em>' attribute.
@@ -4126,7 +4145,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getEnumAttributeDirectiveValues()
    * @generated
    */
-  int ENUM_ATTRIBUTE_DIRECTIVE_VALUES = 93;
+  int ENUM_ATTRIBUTE_DIRECTIVE_VALUES = 94;
 
   /**
    * The feature id for the '<em><b>Values</b></em>' containment reference list.
@@ -4154,7 +4173,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getFunctionCallQuery()
    * @generated
    */
-  int FUNCTION_CALL_QUERY = 94;
+  int FUNCTION_CALL_QUERY = 95;
 
   /**
    * The number of structural features of the '<em>Function Call Query</em>' class.
@@ -4173,7 +4192,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getProcedureCallQuery()
    * @generated
    */
-  int PROCEDURE_CALL_QUERY = 95;
+  int PROCEDURE_CALL_QUERY = 96;
 
   /**
    * The number of structural features of the '<em>Procedure Call Query</em>' class.
@@ -4192,7 +4211,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 96;
+  int FUNCTION_CALL = 97;
 
   /**
    * The number of structural features of the '<em>Function Call</em>' class.
@@ -4211,7 +4230,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getProcedureUpdate()
    * @generated
    */
-  int PROCEDURE_UPDATE = 97;
+  int PROCEDURE_UPDATE = 98;
 
   /**
    * The number of structural features of the '<em>Procedure Update</em>' class.
@@ -4230,7 +4249,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getFunctionQuery()
    * @generated
    */
-  int FUNCTION_QUERY = 98;
+  int FUNCTION_QUERY = 99;
 
   /**
    * The number of structural features of the '<em>Function Query</em>' class.
@@ -4249,7 +4268,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoDirectiveSerializable()
    * @generated
    */
-  int DAO_DIRECTIVE_SERIALIZABLE = 99;
+  int DAO_DIRECTIVE_SERIALIZABLE = 100;
 
   /**
    * The feature id for the '<em><b>Sernum</b></em>' attribute.
@@ -4277,7 +4296,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoDirectiveDiscriminator()
    * @generated
    */
-  int DAO_DIRECTIVE_DISCRIMINATOR = 100;
+  int DAO_DIRECTIVE_DISCRIMINATOR = 101;
 
   /**
    * The feature id for the '<em><b>Ancestor</b></em>' reference.
@@ -4314,7 +4333,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoDirectiveCrud()
    * @generated
    */
-  int DAO_DIRECTIVE_CRUD = 101;
+  int DAO_DIRECTIVE_CRUD = 102;
 
   /**
    * The feature id for the '<em><b>Pojo</b></em>' reference.
@@ -4342,7 +4361,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoDirectiveQuery()
    * @generated
    */
-  int DAO_DIRECTIVE_QUERY = 102;
+  int DAO_DIRECTIVE_QUERY = 103;
 
   /**
    * The feature id for the '<em><b>Pojo</b></em>' reference.
@@ -4370,7 +4389,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoFunProcDirective()
    * @generated
    */
-  int DAO_FUN_PROC_DIRECTIVE = 103;
+  int DAO_FUN_PROC_DIRECTIVE = 104;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -4407,7 +4426,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getDaoDirectivePojo()
    * @generated
    */
-  int DAO_DIRECTIVE_POJO = 104;
+  int DAO_DIRECTIVE_POJO = 105;
 
   /**
    * The feature id for the '<em><b>Pojo</b></em>' reference.
@@ -4435,7 +4454,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveConflict()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_CONFLICT = 105;
+  int ANNOTATION_DIRECTIVE_CONFLICT = 106;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Conflict</em>' class.
@@ -4454,7 +4473,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveStatic()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_STATIC = 106;
+  int ANNOTATION_DIRECTIVE_STATIC = 107;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Static</em>' class.
@@ -4473,7 +4492,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveConstructor()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_CONSTRUCTOR = 107;
+  int ANNOTATION_DIRECTIVE_CONSTRUCTOR = 108;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Constructor</em>' class.
@@ -4492,7 +4511,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveStandard()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_STANDARD = 108;
+  int ANNOTATION_DIRECTIVE_STANDARD = 109;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Standard</em>' class.
@@ -4511,7 +4530,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveSetter()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_SETTER = 109;
+  int ANNOTATION_DIRECTIVE_SETTER = 110;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Setter</em>' class.
@@ -4530,7 +4549,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveGetter()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_GETTER = 110;
+  int ANNOTATION_DIRECTIVE_GETTER = 111;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Getter</em>' class.
@@ -4549,7 +4568,7 @@ public interface ProcessorModelPackage extends EPackage
    * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getAnnotationDirectiveAttribute()
    * @generated
    */
-  int ANNOTATION_DIRECTIVE_ATTRIBUTE = 111;
+  int ANNOTATION_DIRECTIVE_ATTRIBUTE = 112;
 
   /**
    * The number of structural features of the '<em>Annotation Directive Attribute</em>' class.
@@ -8177,6 +8196,16 @@ public interface ProcessorModelPackage extends EPackage
   EClass getPojoAttributeDirectiveEnumDef();
 
   /**
+   * Returns the meta object for class '{@link org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo <em>Pojo Attribute Directive Is Pojo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Pojo Attribute Directive Is Pojo</em>'.
+   * @see org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo
+   * @generated
+   */
+  EClass getPojoAttributeDirectiveIsPojo();
+
+  /**
    * Returns the meta object for class '{@link org.sqlproc.model.processorModel.EnumDirectiveSerializable <em>Enum Directive Serializable</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -11388,6 +11417,16 @@ public interface ProcessorModelPackage extends EPackage
      * @generated
      */
     EClass POJO_ATTRIBUTE_DIRECTIVE_ENUM_DEF = eINSTANCE.getPojoAttributeDirectiveEnumDef();
+
+    /**
+     * The meta object literal for the '{@link org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveIsPojoImpl <em>Pojo Attribute Directive Is Pojo</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.sqlproc.model.processorModel.impl.PojoAttributeDirectiveIsPojoImpl
+     * @see org.sqlproc.model.processorModel.impl.ProcessorModelPackageImpl#getPojoAttributeDirectiveIsPojo()
+     * @generated
+     */
+    EClass POJO_ATTRIBUTE_DIRECTIVE_IS_POJO = eINSTANCE.getPojoAttributeDirectiveIsPojo();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.model.processorModel.impl.EnumDirectiveSerializableImpl <em>Enum Directive Serializable</em>}' class.

@@ -87,6 +87,7 @@ import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumInit;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIndex;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsDef;
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveRequired;
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveToInit;
@@ -857,6 +858,14 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         PojoAttributeDirectiveEnumDef pojoAttributeDirectiveEnumDef = (PojoAttributeDirectiveEnumDef)theEObject;
         T result = casePojoAttributeDirectiveEnumDef(pojoAttributeDirectiveEnumDef);
         if (result == null) result = casePojoAttributeDirective(pojoAttributeDirectiveEnumDef);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE_IS_POJO:
+      {
+        PojoAttributeDirectiveIsPojo pojoAttributeDirectiveIsPojo = (PojoAttributeDirectiveIsPojo)theEObject;
+        T result = casePojoAttributeDirectiveIsPojo(pojoAttributeDirectiveIsPojo);
+        if (result == null) result = casePojoAttributeDirective(pojoAttributeDirectiveIsPojo);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -2492,6 +2501,22 @@ public class ProcessorModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePojoAttributeDirectiveEnumDef(PojoAttributeDirectiveEnumDef object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Pojo Attribute Directive Is Pojo</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Pojo Attribute Directive Is Pojo</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T casePojoAttributeDirectiveIsPojo(PojoAttributeDirectiveIsPojo object)
   {
     return null;
   }

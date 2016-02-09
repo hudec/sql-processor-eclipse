@@ -5055,6 +5055,9 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_11 = (Group)cAlternatives.eContents().get(11);
 		private final Action cPojoAttributeDirectiveEnumDefAction_11_0 = (Action)cGroup_11.eContents().get(0);
 		private final Keyword cEnumDefKeyword_11_1 = (Keyword)cGroup_11.eContents().get(1);
+		private final Group cGroup_12 = (Group)cAlternatives.eContents().get(12);
+		private final Action cPojoAttributeDirectiveIsPojoAction_12_0 = (Action)cGroup_12.eContents().get(0);
+		private final Keyword cIsPojoKeyword_12_1 = (Keyword)cGroup_12.eContents().get(1);
 		
 		//PojoAttributeDirective:
 		//	{PojoAttributeDirectiveRequired} "#Required" | {PojoAttributeDirectivePrimaryKey} "#PrimaryKey" (fromTo=LPAREN
@@ -5065,7 +5068,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	updateColumn2=[PojoAttribute|ValidID] RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN
 		//	createColumn1=[PojoAttribute|ValidID] COMMA createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" |
 		//	{PojoAttributeDirectiveEnumInit} "#EnumInit" | {PojoAttributeDirectiveIsDef} "#IsDef" |
-		//	{PojoAttributeDirectiveEnumDef} "#EnumDef";
+		//	{PojoAttributeDirectiveEnumDef} "#EnumDef" | {PojoAttributeDirectiveIsPojo} "#IsPojo";
 		@Override public ParserRule getRule() { return rule; }
 
 		//{PojoAttributeDirectiveRequired} "#Required" | {PojoAttributeDirectivePrimaryKey} "#PrimaryKey" (fromTo=LPAREN
@@ -5075,7 +5078,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//{PojoAttributeDirectiveUpdateCol} "#UpdateCol" LPAREN updateColumn1=ValidID COMMA updateColumn2=[PojoAttribute|ValidID]
 		//RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN createColumn1=[PojoAttribute|ValidID] COMMA
 		//createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" | {PojoAttributeDirectiveEnumInit} "#EnumInit"
-		//| {PojoAttributeDirectiveIsDef} "#IsDef" | {PojoAttributeDirectiveEnumDef} "#EnumDef"
+		//| {PojoAttributeDirectiveIsDef} "#IsDef" | {PojoAttributeDirectiveEnumDef} "#EnumDef" | {PojoAttributeDirectiveIsPojo}
+		//"#IsPojo"
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//{PojoAttributeDirectiveRequired} "#Required"
@@ -5295,6 +5299,15 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 		//"#EnumDef"
 		public Keyword getEnumDefKeyword_11_1() { return cEnumDefKeyword_11_1; }
+
+		//{PojoAttributeDirectiveIsPojo} "#IsPojo"
+		public Group getGroup_12() { return cGroup_12; }
+
+		//{PojoAttributeDirectiveIsPojo}
+		public Action getPojoAttributeDirectiveIsPojoAction_12_0() { return cPojoAttributeDirectiveIsPojoAction_12_0; }
+
+		//"#IsPojo"
+		public Keyword getIsPojoKeyword_12_1() { return cIsPojoKeyword_12_1; }
 	}
 
 	public class PojoAttributeElements extends AbstractParserRuleElementFinder {
@@ -7115,7 +7128,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	updateColumn2=[PojoAttribute|ValidID] RPAREN | {PojoAttributeDirectiveCreateCol} "#CreateCol" LPAREN
 	//	createColumn1=[PojoAttribute|ValidID] COMMA createColumn2=ValidID RPAREN | {PojoAttributeDirectiveToInit} "#ToInit" |
 	//	{PojoAttributeDirectiveEnumInit} "#EnumInit" | {PojoAttributeDirectiveIsDef} "#IsDef" |
-	//	{PojoAttributeDirectiveEnumDef} "#EnumDef";
+	//	{PojoAttributeDirectiveEnumDef} "#EnumDef" | {PojoAttributeDirectiveIsPojo} "#IsPojo";
 	public PojoAttributeDirectiveElements getPojoAttributeDirectiveAccess() {
 		return pPojoAttributeDirective;
 	}

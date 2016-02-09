@@ -418,6 +418,7 @@
     <genClasses ecoreClass="ProcessorModel.ecore#//PojoAttributeDirectiveEnumInit"/>
     <genClasses ecoreClass="ProcessorModel.ecore#//PojoAttributeDirectiveIsDef"/>
     <genClasses ecoreClass="ProcessorModel.ecore#//PojoAttributeDirectiveEnumDef"/>
+    <genClasses ecoreClass="ProcessorModel.ecore#//PojoAttributeDirectiveIsPojo"/>
     <genClasses ecoreClass="ProcessorModel.ecore#//EnumDirectiveSerializable">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//EnumDirectiveSerializable/sernum"/>
     </genClasses>

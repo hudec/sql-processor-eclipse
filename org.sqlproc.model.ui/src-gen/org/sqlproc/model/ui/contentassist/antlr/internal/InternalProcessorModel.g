@@ -5321,6 +5321,12 @@ rule__PojoAttributeDirective__Alternatives
 { after(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_11()); }
 )
 
+    |(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12()); }
+(rule__PojoAttributeDirective__Group_12__0)
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -24638,6 +24644,71 @@ rule__PojoAttributeDirective__Group_11__1__Impl
 	'#EnumDef' 
 
 { after(grammarAccess.getPojoAttributeDirectiveAccess().getEnumDefKeyword_11_1()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+
+
+
+
+rule__PojoAttributeDirective__Group_12__0
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PojoAttributeDirective__Group_12__0__Impl
+	rule__PojoAttributeDirective__Group_12__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttributeDirective__Group_12__0__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveIsPojoAction_12_0()); }
+(
+
+)
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getPojoAttributeDirectiveIsPojoAction_12_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PojoAttributeDirective__Group_12__1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PojoAttributeDirective__Group_12__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttributeDirective__Group_12__1__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeDirectiveAccess().getIsPojoKeyword_12_1()); }
+
+	'#IsPojo' 
+
+{ after(grammarAccess.getPojoAttributeDirectiveAccess().getIsPojoKeyword_12_1()); }
 )
 
 ;

@@ -70,6 +70,7 @@ import org.sqlproc.plugin.lib.util.CommonUtils
 import org.sqlproc.model.processorModel.PojoDirectiveEnumIndex
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex
 import org.sqlproc.model.processorModel.PojoDirectiveProcessingId
+import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo
 
 class ProcessorGeneratorUtils {
 
@@ -185,6 +186,11 @@ class ProcessorGeneratorUtils {
 	def isEnumDef(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveEnumDef]
 		return if(d != null) true else false
+	}
+
+	def boolean isPojo(PojoAttribute f) {
+		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveIsPojo] as PojoAttributeDirectiveIsPojo
+		return d != null
 	}
 
     def dispatch String constName(PojoAttribute attr) {

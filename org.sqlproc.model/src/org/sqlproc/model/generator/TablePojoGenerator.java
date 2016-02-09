@@ -530,6 +530,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                     bufferMetaAttr.append("#Index");
                             }
                             if (attribute.getDependencyClassName() != null) {
+                                if (!attribute.isDependencyClassNameIsEnum())
+                                    bufferMetaAttr.append(nlindent2()).append("#IsPojo");
                                 if (preserveForeignKeys.contains(pojo) || preserveForeignKeys.contains("_ALL_")) {
                                     if (attribute.getPkTable() != null) {
                                         addedAttributes.put(name, pentry.getValue());

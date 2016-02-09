@@ -302,6 +302,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_9(), "rule__PojoAttributeDirective__Group_9__0");
 					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_10(), "rule__PojoAttributeDirective__Group_10__0");
 					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_11(), "rule__PojoAttributeDirective__Group_11__0");
+					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12(), "rule__PojoAttributeDirective__Group_12__0");
 					put(grammarAccess.getPojoAttributeAccess().getGroup(), "rule__PojoAttribute__Group__0");
 					put(grammarAccess.getPojoAttributeAccess().getGroup_7(), "rule__PojoAttribute__Group_7__0");
 					put(grammarAccess.getPojoProcedureAccess().getGroup(), "rule__PojoProcedure__Group__0");
