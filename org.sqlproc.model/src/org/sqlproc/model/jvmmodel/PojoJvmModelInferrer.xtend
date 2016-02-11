@@ -234,6 +234,9 @@ class PojoJvmModelInferrer {
 						«IF f2.isNative»result.append("@").append("«f2.name»");«ELSE»if («f2.name» != null)
 							result.append("@").append(«IF f2.isPojo»"{").append(«f2.name».getProcessingIdForAttributes()).append("}"«ELSE»"«f2.name»"«ENDIF»);«ENDIF»
 						«ENDFOR»
+						«IF entity.parent != null»
+						result.append("@@").append(super.getProcessingIdForAttributes());
+						«ENDIF»
 						return result;
 	   				'''
 	   			]
