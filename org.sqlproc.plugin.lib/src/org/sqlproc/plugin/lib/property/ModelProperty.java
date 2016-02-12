@@ -53,6 +53,9 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String POJOGEN_TYPE_FOR_COLUMNS = "types-for-columns";
     public static final String POJOGEN_TYPE_FOR_PROCEDURE = "types-for-procedure";
     public static final String POJOGEN_TYPE_FOR_FUNCTION = "types-for-function";
+    public static final String POJOGEN_SHOW_TYPE_FOR_COLUMN = "show-type-for-column";
+    public static final String POJOGEN_SHOW_TYPE_FOR_PROCEDURE = "show-type-for-procedure";
+    public static final String POJOGEN_SHOW_TYPE_FOR_FUNCTION = "show-type-for-function";
     public static final String POJOGEN_IGNORE_TABLES = "ignore-tables";
     public static final String POJOGEN_ONLY_TABLES = "only-tables";
     public static final String POJOGEN_CREATE_TABLES = "create-tables";

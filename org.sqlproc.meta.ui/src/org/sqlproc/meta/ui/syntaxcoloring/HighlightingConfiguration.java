@@ -27,6 +27,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
     public final static String DAO_NAME = "daoName";
     public final static String DIRECTIVE = "directive";
     public final static String META_DIRECTIVE = "metaDirective";
+    public static final String STRING = "string";
 
     public void configure(IHighlightingConfigurationAcceptor acceptor) {
         // super.configure(acceptor);
@@ -49,6 +50,7 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
         acceptor.acceptDefaultHighlighting(DAO_NAME, "Pojo DAO name", daoNameStyle());
         acceptor.acceptDefaultHighlighting(DIRECTIVE, "Control directive", directiveStyle());
         acceptor.acceptDefaultHighlighting(META_DIRECTIVE, "Meta directive", metaDirectiveStyle());
+        acceptor.acceptDefaultHighlighting(STRING, "String", stringStyle());
     }
 
     public TextStyle punctationStyle() {
@@ -77,6 +79,12 @@ public class HighlightingConfiguration extends DefaultHighlightingConfiguration 
     }
 
     public TextStyle columnStyle() {
+        TextStyle textStyle = defaultStyle();
+        textStyle.setColor(new RGB(42, 0, 255));
+        return textStyle;
+    }
+
+    public TextStyle stringStyle() {
         TextStyle textStyle = defaultStyle();
         textStyle.setColor(new RGB(42, 0, 255));
         return textStyle;

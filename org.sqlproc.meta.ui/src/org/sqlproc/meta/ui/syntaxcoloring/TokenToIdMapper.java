@@ -99,6 +99,9 @@ public class TokenToIdMapper extends DefaultAntlrTokenToAttributeIdMapper {
         keywords.add("'" + ModelProperty.POJOGEN_TYPE_FOR_COLUMNS + "'");
         keywords.add("'" + ModelProperty.POJOGEN_TYPE_FOR_PROCEDURE + "'");
         keywords.add("'" + ModelProperty.POJOGEN_TYPE_FOR_FUNCTION + "'");
+        keywords.add("'" + ModelProperty.POJOGEN_SHOW_TYPE_FOR_COLUMN + "'");
+        keywords.add("'" + ModelProperty.POJOGEN_SHOW_TYPE_FOR_PROCEDURE + "'");
+        keywords.add("'" + ModelProperty.POJOGEN_SHOW_TYPE_FOR_FUNCTION + "'");
         keywords.add("'" + ModelProperty.POJOGEN_IGNORE_TABLES + "'");
         keywords.add("'" + ModelProperty.POJOGEN_ONLY_TABLES + "'");
         keywords.add("'" + ModelProperty.POJOGEN_CREATE_TABLES + "'");
@@ -201,6 +204,9 @@ public class TokenToIdMapper extends DefaultAntlrTokenToAttributeIdMapper {
         if (tokenType == InternalProcessorMetaLexer.RULE_ML_COMMENT
                 || tokenType == InternalProcessorMetaLexer.RULE_SL_COMMENT)
             return HighlightingConfiguration.COMMENT;
+
+        if (tokenType == InternalProcessorMetaLexer.RULE_STRING_VALUE)
+            return HighlightingConfiguration.STRING;
 
         if (types.contains(tokenName))
             return HighlightingConfiguration.TYPE;
