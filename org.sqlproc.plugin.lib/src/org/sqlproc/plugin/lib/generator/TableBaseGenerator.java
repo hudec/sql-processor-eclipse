@@ -522,11 +522,8 @@ public class TableBaseGenerator {
             // AAA3 PERSON PERSON ID PERSON_LIBRARY PERSON_ID
             // AAA3 MEDIA MEDIA ID PERSON_LIBRARY MEDIA_ID
             // pojogen table many-to-many PERSON_LIBRARY ID->MEDIA->LIBRARY;
-            // System.out.println("AAA3 " + table + " " + dbExport.getPkTable() + " " + dbExport.getPkColumn() + " "
-            // + dbExport.getFkTable() + " " + dbExport.getFkColumn());
             if (ignoreExports.containsKey(table) && ignoreExports.get(table).containsKey(dbExport.getPkColumn())
                     && ignoreExports.get(table).get(dbExport.getPkColumn()).containsKey(dbExport.getFkTable())) {
-                // System.out.println("AAAE " + ignoreExports.get(table));
                 String fkColumn = ignoreExports.get(table).get(dbExport.getPkColumn()).get(dbExport.getFkTable());
                 if (fkColumn == null || fkColumn.length() == 0)
                     continue;
@@ -849,13 +846,11 @@ public class TableBaseGenerator {
             if (FAKE_FUN_PROC_COLUMN_NAME.equals(dbColumn.getName()) && isFunction
                     && attribute.getClassName() != null) {
                 String metaType = className2metaType(attribute.getClassName());
-                // System.out.println("XXXXXX " + procedure + " " + metaType + " " + attribute.getClassName());
                 if (metaType != null)
                     metaFunctionsResult.put(procedure, metaType);
             } else if (FAKE_FUN_PROC_COLUMN_NAME.equals(dbColumn.getName()) && attribute.getClassName() != null
                     && (dbColumn.getColumnType() == 3 || dbColumn.getColumnType() == 5)) {
                 String metaType = className2metaType(attribute.getClassName());
-                // System.out.println("XXXXXX " + procedure + " " + metaType + " " + attribute.getClassName());
                 if (metaType != null)
                     metaProceduresResult.put(procedure, metaType);
             }
@@ -1537,13 +1532,11 @@ public class TableBaseGenerator {
                     continue;
                 if (table.toUpperCase().startsWith("BIN$"))
                     continue;
-                System.out.println("> table " + table);
                 if (!dbResolver.checkTable(model, table))
                     continue;
                 List<DbColumn> dbColumns = dbResolver.getDbColumns(model, table);
                 if (dbColumns.isEmpty())
                     continue;
-                System.out.println("= table " + table);
                 stats.tables += 1;
                 stats.columns += dbColumns.size();
                 List<String> dbPrimaryKeys = dbResolver.getDbPrimaryKeys(model, table);
@@ -1560,7 +1553,6 @@ public class TableBaseGenerator {
                 stats.checkConstraints += dbCheckConstraints.size();
                 addTableDefinition(table, dbColumns, dbPrimaryKeys, dbExports, dbImports, dbIndexes, dbCheckConstraints,
                         comment);
-                System.out.println("< table " + table);
             }
             // converter.resolveReferencesOnConvention();
             resolveReferencesOnKeys();
@@ -1571,11 +1563,9 @@ public class TableBaseGenerator {
                     continue;
                 if (procedure.toUpperCase().startsWith("BIN$"))
                     continue;
-                System.out.println("> procedure " + procedure);
                 List<DbTable> dbProcedures = dbResolver.getDbProcedures(model, procedure);
                 if (dbProcedures.isEmpty())
                     continue;
-                System.out.println("= procedure " + procedure);
                 stats.procedures += 1;
                 List<DbColumn> dbProcColumns = dbResolver.getDbProcColumns(model, procedure);
                 stats.procColumns += dbProcColumns.size();
@@ -1583,7 +1573,6 @@ public class TableBaseGenerator {
                 String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
                 addProcedureDefinition(procedure, dbProcedures.get(0), dbProcColumns,
                         modelFunctions.containsKey(_procedure.getName()), comment);
-                System.out.println("< procedure " + procedure);
             }
             for (FunctionDefinition _function : modelFunctions.values()) {
                 String function = _function.getFunction();
@@ -1591,18 +1580,15 @@ public class TableBaseGenerator {
                     continue;
                 if (function.toUpperCase().startsWith("BIN$"))
                     continue;
-                System.out.println("> function " + function);
                 List<DbTable> dbFunctions = dbResolver.getDbFunctions(model, function);
                 if (dbFunctions.isEmpty())
                     continue;
-                System.out.println("= function " + function);
                 stats.functions += 1;
                 List<DbColumn> dbFunColumns = dbResolver.getDbFunColumns(model, function);
                 stats.funColumns += dbFunColumns.size();
                 List<DbTable> ltables = dbResolver.getDbFunctions(model, function);
                 String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
                 addFunctionDefinition(function, dbFunctions.get(0), dbFunColumns, comment);
-                System.out.println("< function " + function);
             }
             return true;
         } catch (Exception e) {

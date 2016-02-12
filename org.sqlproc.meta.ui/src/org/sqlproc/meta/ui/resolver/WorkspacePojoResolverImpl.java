@@ -118,6 +118,10 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
 
     @Override
     public Class<?> loadClass(String name, URI uri) {
+        return loadClass(name, uri, false);
+    }
+
+    public Class<?> loadClass(String name, URI uri, boolean ignoreNotFound) {
         // platform:/resource/simple-jdbc-dao/src/main/resources/statements.meta
         String pname = getProjectName(uri);
         if (allLoaders == null)
@@ -137,7 +141,8 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
                     try {
                         return loader.loadClass(name);
                     } catch (ClassNotFoundException ignore) {
-                        LOGGER.warn("Can't find class '" + name + "' in loader " + loader + " " + uri);
+                        if (!ignoreNotFound)
+                            LOGGER.warn("Can't find class '" + name + "' in loader " + loader + " " + uri);
                     }
                 } else {
                     retry = true;
@@ -166,7 +171,8 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
             } catch (ClassNotFoundException ignore) {
             }
         }
-        LOGGER.warn("Can't find class '" + name + "' in any loader " + allLoaders);
+        if (!ignoreNotFound)
+            LOGGER.warn("Can't find class '" + name + "' in any loader " + allLoaders);
         return null;
     }
 
@@ -229,7 +235,7 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
         }
 
         beanClass = loadClass(name, uri);
-        Class<?> orderBeanClass = loadClass(name + "$Order", uri);
+        Class<?> orderBeanClass = loadClass(name + "$Order", uri, true);
         while (orderBeanClass != null && orderBeanClass.isEnum()) {
             for (Object en : orderBeanClass.getEnumConstants()) {
                 String ename = en.toString();

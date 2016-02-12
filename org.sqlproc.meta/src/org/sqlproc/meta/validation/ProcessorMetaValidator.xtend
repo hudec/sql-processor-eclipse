@@ -198,7 +198,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     
     def checkClass(String className, URI uri) {
-        if (className == null || pojoResolverFactory.getPojoResolver() == null)
+        if (className == null || pojoResolverFactory.getPojoResolver() == null || className.equals("void"))
             return true
         val clazz = pojoResolverFactory.getPojoResolver().loadClass(className, uri)
         return clazz != null

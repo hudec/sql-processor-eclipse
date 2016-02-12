@@ -326,8 +326,8 @@ public class DbResolverBean implements DbResolver {
             debug.trace(m, "DATA START FOR " + modelDatabaseValues.dir);
             debug.info(m, "DATA START FOR " + modelDatabaseValues.toString());
             URI uri = (model.eResource() != null) ? model.eResource().getURI() : null;
-            Class<?> driverClass = (this.driverClass != null) ? this.driverClass : pojoResolverFactory
-                    .getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
+            Class<?> driverClass = (this.driverClass != null) ? this.driverClass
+                    : pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
             debug.trace(m, "DATA DRIVER " + driverClass);
             if (driverClass != null && Driver.class.isAssignableFrom(driverClass)) {
                 try {
@@ -346,8 +346,8 @@ public class DbResolverBean implements DbResolver {
                         is = new StringInputStream(this.dbSqlsBefore);
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsBefore != null
                             && modelDatabaseValues.dbSqlsBefore.trim().length() > 0) {
-                        is = pojoResolverFactory.getPojoResolver()
-                                .getFile(modelDatabaseValues.dbSqlsBefore.trim(), uri);
+                        is = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsBefore.trim(),
+                                uri);
                     }
                     if (is != null) {
                         List<String> ddls = loadDDL(is);
@@ -375,8 +375,8 @@ public class DbResolverBean implements DbResolver {
                         is2 = new StringInputStream(this.dbSqlsBefore);
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsAfter != null
                             && modelDatabaseValues.dbSqlsAfter.trim().length() > 0) {
-                        is2 = pojoResolverFactory.getPojoResolver()
-                                .getFile(modelDatabaseValues.dbSqlsAfter.trim(), uri);
+                        is2 = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsAfter.trim(),
+                                uri);
                     }
                     if (is2 != null) {
                         modelDatabaseValues.ddlsAfter = loadDDL(is);
@@ -774,7 +774,6 @@ public class DbResolverBean implements DbResolver {
             return false;
         DatabaseDirectives modelDatabaseValues = getConnection(model);
         String origName = origName(model, modelDatabaseValues, table);
-        System.out.println(table + " -> " + origName);
         if (origName == null)
             return false;
         return true;
@@ -1346,10 +1345,6 @@ public class DbResolverBean implements DbResolver {
                 DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
                 result = meta.getFunctions(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
                         origName(model, modelDatabaseValues, table));
-                // ResultSetMetaData rmeta = result.getMetaData();
-                // for (int i = 1; i <= rmeta.getColumnCount(); i++) {
-                // System.out.println("" + i + ": " + rmeta.getColumnLabel(i));
-                // }
                 while (result.next()) {
                     if (ignore(result))
                         continue;
@@ -1419,10 +1414,6 @@ public class DbResolverBean implements DbResolver {
                 DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
                 result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
                         origName(model, modelDatabaseValues, function), null);
-                // ResultSetMetaData rmeta = result.getMetaData();
-                // for (int i = 1; i <= rmeta.getColumnCount(); i++) {
-                // System.out.println("" + i + ": " + rmeta.getColumnLabel(i));
-                // }
                 while (result.next()) {
                     if (ignore(result))
                         continue;
@@ -2265,8 +2256,8 @@ public class DbResolverBean implements DbResolver {
             String query2 = "select st.tabname, ss.constrname, sc.checktext from systables st, sysconstraints ss, syschecks sc where st.tabid = ss.tabid and ss.constrid = sc.constrid and ss.constrtype = 'C' and sc.type = 'T'";
             Map<String, List<String>> map = getCheckConstraints(modelDatabaseValues, table, query, query2, false);
             for (String constraintName : map.keySet()) {
-                DbCheckConstraint check = DbCheckConstraint.parseInformix(constraintName, map.get(constraintName)
-                        .get(0), map.get(constraintName).get(1));
+                DbCheckConstraint check = DbCheckConstraint.parseInformix(constraintName,
+                        map.get(constraintName).get(0), map.get(constraintName).get(1));
                 if (check != null)
                     mapOfCheckConstraints.put(constraintName, check);
             }
@@ -2399,7 +2390,6 @@ public class DbResolverBean implements DbResolver {
         else if (modelDatabaseValues.dbLowercaseNames)
             ss = s.toLowerCase();
         dbOriginalNames.get(modelDatabaseValues.dir).put(ss, s);
-        // System.out.println(">>>name " + s + " -> " + ss);
         return ss;
     }
 
@@ -2414,7 +2404,6 @@ public class DbResolverBean implements DbResolver {
             }
             ss = dbOriginalNames.get(modelDatabaseValues.dir).get(s);
         }
-        // System.out.println(">>>origName " + s + " -> " + ss);
         return ss;
     }
 

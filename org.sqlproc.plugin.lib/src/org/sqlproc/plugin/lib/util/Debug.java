@@ -60,6 +60,10 @@ public class Debug {
     public void info(String m, String msg) {
         if (!isScopeActive(m))
             return;
+        info(msg);
+    }
+
+    public void info(String msg) {
         if (trace || debug || info)
             System.out.println(msg);
         else if (LOGGER.isInfoEnabled())
@@ -70,6 +74,11 @@ public class Debug {
         System.out.println(msg);
         e.printStackTrace();
         LOGGER.error(msg, e);
+    }
+
+    public void error(String msg) {
+        System.out.println(msg);
+        LOGGER.error(msg);
     }
 
     private boolean isScopeActive(String m) {

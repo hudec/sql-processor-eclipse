@@ -218,7 +218,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
             for (Entry<String, List<EnumAttribute>> pentry : enums.entrySet()) {
                 String pojo = pentry.getKey();
                 String table = enumsTables.get(pojo);
-                // System.out.println("QQQQQ " + pojo);
                 if (table != null) {
                     if (!onlyTables.isEmpty() && !onlyTables.contains(table))
                         continue;
@@ -261,7 +260,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(NLINDENT).append(INDENT).append("#Values(");
                 Set<String> values = new TreeSet<>();
                 for (EnumAttribute attribute : pentry.getValue()) {
-                    // System.out.println(" RRR " + attribute.getName());
                     StringBuilder sb = new StringBuilder();
                     if (attribute.getIntValue() == null && attribute.getStrValue() == null)
                         continue;
@@ -289,7 +287,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 }
                 buffer.append(")");
                 for (EnumAttribute attribute : pentry.getValue()) {
-                    // System.out.println(" RRR " + attribute.getName());
                     if (attribute.getIntValue() == null && attribute.getStrValue() == null) {
                         String name = (columnNames.containsKey(pojo)) ? columnNames.get(pojo).get(attribute.getName())
                                 : null;
@@ -317,9 +314,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
             // Pojo
 
             for (String pojo : pojos.keySet()) {
-                // System.out.println("QQQQQ " + pojo);
-                if (pojo.equals("NEW_PERSON_RET_RS_RESULT"))
-                    System.out.println("XXX");
                 if (!onlyTables.isEmpty() && !onlyTables.contains(pojo))
                     continue;
                 if (ignoreTables.contains(pojo))
@@ -425,7 +419,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     // TODO
                     // boolean morePkAttributes = false;
                     for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
-                        // System.out.println(" RRR " + pentry.getKey());
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))
                             continue;
                         PojoAttribute attribute = pentry.getValue();
@@ -624,7 +617,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
             // Procedure
 
             for (String pojo : procedures.keySet()) {
-                // System.out.println("QQQQQ " + pojo);
                 if (ignoreTables.contains(pojo))
                     continue;
                 if (pojosForProcedures.containsKey(pojo))
@@ -665,7 +657,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" extends ").append(tableToCamelCase(pojoExtends.get(pojo)));
                     bufferPartial.append(" {");
                     for (Map.Entry<String, PojoAttribute> pentry : procedures.get(pojo).entrySet()) {
-                        // System.out.println(" RRR " + pentry.getKey());
                         if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                             continue;
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))
@@ -737,7 +728,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
             // Function
 
             for (String pojo : functions.keySet()) {
-                // System.out.println("QQQQQ " + pojo);
                 if (ignoreTables.contains(pojo))
                     continue;
                 if (procedures.containsKey(pojo))
@@ -781,7 +771,6 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" extends ").append(tableToCamelCase(pojoExtends.get(pojo)));
                     bufferPartial.append(" {");
                     for (Map.Entry<String, PojoAttribute> pentry : functions.get(pojo).entrySet()) {
-                        // System.out.println(" RRR " + pentry.getKey());
                         if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                             continue;
                         if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(pentry.getKey()))

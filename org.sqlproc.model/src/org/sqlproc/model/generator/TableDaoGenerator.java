@@ -57,8 +57,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
     public TableDaoGenerator(ModelProperty modelProperty, Artifacts artifacts, IScopeProvider scopeProvider,
             Map<String, String> finalDaos, Map<String, Map<String, String>> finalDaosFeatures,
             Annotations daoAnnotations, Set<String> daoImports, List<String> dbSequences, DbType dbType) {
-        super(modelProperty, artifacts, Collections.<String, String> emptyMap(), Collections
-                .<String, Map<String, String>> emptyMap(), null, null, dbSequences, dbType);
+        super(modelProperty, artifacts, Collections.<String, String> emptyMap(),
+                Collections.<String, Map<String, String>> emptyMap(), null, null, dbSequences, dbType);
 
         debug = new Debug(modelProperty.getDaoDebugLevel(artifacts), modelProperty.getDaoDebugScope(artifacts), LOGGER);
 
@@ -257,7 +257,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
             // Pojo
 
             for (String pojo : pojos.keySet()) {
-                // System.out.println("QQQQQ " + pojo);
                 if (!daoOnlyTables.isEmpty() && !daoOnlyTables.contains(pojo))
                     continue;
                 if (daoIgnoreTables.contains(pojo)
@@ -347,7 +346,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
             // Procedure
 
             for (String procedure : procedures.keySet()) {
-                // System.out.println("QQQQQ " + pojo);
                 if (!daoOnlyTables.isEmpty() && !daoOnlyTables.contains(procedure))
                     continue;
                 if (daoIgnoreTables.contains(procedure))
@@ -385,12 +383,12 @@ public class TableDaoGenerator extends TablePojoGenerator {
                         // TODO
                         if (tableNames.containsKey(name))
                             name = tableNames.get(name);
-                        bufferMeta.append(nlindent()).append("#ProcedureCallQuery(").append(COLLECTION_LIST)
-                                .append("<").append(pojos.containsKey(name) ? pojoPackage + "." : "")
-                                .append(tableToCamelCase(name)).append(">");
+                        bufferMeta.append(nlindent()).append("#ProcedureCallQuery(").append(COLLECTION_LIST).append("<")
+                                .append(pojos.containsKey(name) ? pojoPackage + "." : "").append(tableToCamelCase(name))
+                                .append(">");
                     } else {
-                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME)) ? attributes
-                                .get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
+                                ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
                         if (returnAttribute != null && dbType != DbType.POSTGRESQL && dbType != DbType.MS_SQL) {
                             bufferMeta.append(nlindent()).append("#ProcedureCallQuery(").append(COLLECTION_LIST)
                                     .append("<").append(returnAttribute.getClassName()).append(">");
@@ -429,7 +427,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
             // Procedure is function
 
             for (String function : procedures.keySet()) {
-                // System.out.println("QQQQQ " + function);
                 if (!daoOnlyTables.isEmpty() && !daoOnlyTables.contains(function))
                     continue;
                 if (daoIgnoreTables.contains(function))
@@ -467,14 +464,14 @@ public class TableDaoGenerator extends TablePojoGenerator {
                         if (tableNames.containsKey(name))
                             name = tableNames.get(name);
                         bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST).append("<")
-                                .append(pojos.containsKey(name) ? pojoPackage + "." : "")
-                                .append(tableToCamelCase(name)).append(">");
+                                .append(pojos.containsKey(name) ? pojoPackage + "." : "").append(tableToCamelCase(name))
+                                .append(">");
                     } else if (metaFunctionsResult.containsKey(function)) {
                         bufferMeta.append(nlindent()).append("#FunctionCall(")
                                 .append(metaType2className(metaFunctionsResult.get(function)));
                     } else {
-                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME)) ? attributes
-                                .get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
+                                ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
                         if (returnAttribute != null) {
                             bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST)
                                     .append("<").append(returnAttribute.getClassName()).append(">");
@@ -514,7 +511,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
             // Function
 
             for (String function : functions.keySet()) {
-                // System.out.println("QQQQQ " + function);
                 if (!daoOnlyTables.isEmpty() && !daoOnlyTables.contains(function))
                     continue;
                 if (daoIgnoreTables.contains(function))
@@ -552,8 +548,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
                         if (tableNames.containsKey(name))
                             name = tableNames.get(name);
                         bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST).append("<")
-                                .append(pojos.containsKey(name) ? pojoPackage + "." : "")
-                                .append(tableToCamelCase(name)).append(">");
+                                .append(pojos.containsKey(name) ? pojoPackage + "." : "").append(tableToCamelCase(name))
+                                .append(">");
                     } else if (metaFunctionsResult.containsKey(function) && dbType == DbType.DB2) {
                         bufferMeta.append(nlindent()).append("#FunctionQuery(")
                                 .append(metaType2className(metaFunctionsResult.get(function)));
@@ -561,8 +557,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
                         bufferMeta.append(nlindent()).append("callFunction ")
                                 .append(metaType2className(metaFunctionsResult.get(function)));
                     } else {
-                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME)) ? attributes
-                                .get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                        PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
+                                ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
                         if (returnAttribute != null) {
                             bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST)
                                     .append("<").append(returnAttribute.getClassName()).append(">");
@@ -623,7 +619,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
                     if (pojoInheritanceDiscriminator.containsKey(attribute.getRef())
                             || pojoInheritanceSimple.containsKey(attribute.getRef())) {
                         toInit.put(name, attribute.getRef());
-                        // System.out.println("AAAAAAAAA " + " " + pojo + " " + attribute.getRef() + " " + name);
                     }
                 }
             }

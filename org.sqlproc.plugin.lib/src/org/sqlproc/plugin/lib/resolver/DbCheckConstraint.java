@@ -286,20 +286,6 @@ public class DbCheckConstraint {
         return null;
     }
 
-    public static void main(String[] args) {
-        Matcher matcher = MSSQL_CHECK.matcher("([GENDER]='0' OR [GENDER]='F' OR [GENDER]='M')");
-        if (matcher.matches()) {
-            // String relCol = matcher.group(1).trim();
-            // System.out.println("1 " + relCol);
-            String[] constraintValues = matcher.group(1).trim().split("OR");
-            List<String> values = new ArrayList<String>();
-            for (int j = 0; j < constraintValues.length; j++) {
-            }
-            System.out.println("9 " + values);
-        } else
-            System.out.println("uch");
-    }
-
     @Override
     public String toString() {
         return "DbCheckConstraint [constraintName=" + constraintName + ", checkClause=" + checkClause + ", enumName="

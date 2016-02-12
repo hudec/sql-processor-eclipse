@@ -93,9 +93,9 @@ public class ModelPropertyBean extends ModelProperty {
                 if ((modelValues = loadModel(modelValues, artifacts)) == null)
                     return;
 
-                System.out.println("defaultAttrs = " + modelValues.defaultAttrs);
-                System.out.println("conditionalAttrs = " + modelValues.conditionalAttrs);
-                System.out.println("systemEnvAttrs = " + modelValues.systemEnvAttrs);
+                // System.out.println("defaultAttrs = " + modelValues.defaultAttrs);
+                // System.out.println("conditionalAttrs = " + modelValues.conditionalAttrs);
+                // System.out.println("systemEnvAttrs = " + modelValues.systemEnvAttrs);
 
                 LOGGER.debug("MODEL " + modelValues.toString());
             }

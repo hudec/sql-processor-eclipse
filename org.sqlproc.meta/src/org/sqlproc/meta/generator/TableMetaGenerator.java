@@ -347,8 +347,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             buffer.append(" {= columns (");
         else
             buffer.append(" (");
-        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName) ? pojoExtends
-                .get(header.table.tableName) : null;
+        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
+                ? pojoExtends.get(header.table.tableName) : null;
         boolean first = (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_")) ? false : true;
         first = insertColumns(buffer, pojo, first);
         if (parentPojo != null)
@@ -394,8 +394,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         if (doGenerateFromTo && select && primaryKey != null)
             buffer.append("{? :onlyIds | %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
                     .append(" @id(id) |\n    ");
-        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName) ? pojoExtends
-                .get(header.table.tableName) : null;
+        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
+                ? pojoExtends.get(header.table.tableName) : null;
         boolean first = selectColumns(buffer, pojo, true, header.statementName, header.table.tablePrefix, null, false,
                 header.assocTables, null, header.discrTables, header.inherTables, null);
         if (parentPojo != null)
@@ -455,9 +455,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
                                 .entrySet()) {
                             for (Entry<String, List<String>> tentry : ientry.getValue().entrySet()) {
                                 String tableName = tentry.getKey();
-                                first = selectColumns(buffer, tableName, first, header.statementName,
-                                        table.tablePrefix, table.attrName, true, Collections.EMPTY_MAP, null,
-                                        Collections.EMPTY_MAP, Collections.EMPTY_MAP, null);
+                                first = selectColumns(buffer, tableName, first, header.statementName, table.tablePrefix,
+                                        table.attrName, true, Collections.EMPTY_MAP, null, Collections.EMPTY_MAP,
+                                        Collections.EMPTY_MAP, null);
                             }
                         }
                     }
@@ -544,8 +544,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             return buffer;
         buffer.append("\n  update %%").append(header.table.realTableName);
         buffer.append("\n  {= set");
-        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName) ? pojoExtends
-                .get(header.table.tableName) : null;
+        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
+                ? pojoExtends.get(header.table.tableName) : null;
         boolean first = updateColumns(buffer, pojo, true, header.statementName);
         if (parentPojo != null)
             updateColumns(buffer, parentPojo, first, header.statementName);
@@ -565,8 +565,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             return buffer;
         buffer.append("\n  delete from %%").append(header.table.realTableName);
         buffer.append("\n  {= where");
-        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName) ? pojoExtends
-                .get(header.table.tableName) : null;
+        String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
+                ? pojoExtends.get(header.table.tableName) : null;
         boolean first = wherePrimaryKeys(buffer, pojo, true, header.statementName);
         if (parentPojo != null)
             wherePrimaryKeys(buffer, parentPojo, first, header.statementName);
@@ -609,8 +609,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), true);
                     if (attr == null)
                         continue;
-                    name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                            attr.attributeName) : null;
+                    name = (columnNames.containsKey(attr.tableName))
+                            ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
                     if (name == null)
                         name = attr.attribute.getName();
                     else
@@ -694,8 +694,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 if (!metaInsertSkipDefaultValuesNeg.isEmpty() && metaInsertSkipDefaultValuesNeg.contains(pojo))
                     continue;
             }
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -788,8 +788,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             return first;
         if (attr.attribute.isPrimaryKey() && notPrimaryKeys)
             return first;
-        String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                attr.attributeName) : null;
+        String name = (columnNames.containsKey(attr.tableName))
+                ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
         if (name == null)
             name = attr.attribute.getName();
         else
@@ -854,8 +854,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         && metaNotLikeColumns.get(pojo).contains(attr.attribute.getDbName()))
                     useLike = false;
             }
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -894,8 +894,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 continue;
             if (!attr.attribute.isPrimaryKey() && !attr.attribute.isVersion())
                 continue;
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -931,8 +931,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 continue;
             if (pentry.getValue().getOne2one() != null)
                 continue;
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -987,7 +987,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             boolean firstcol = true;
             for (Entry<PojoAttribute, Boolean> entry : mainList.get(i).entrySet()) {
                 if (entry.getKey().getDbName() != null) {
-                    if (ignoreColumns.containsKey(pojo) && ignoreColumns.get(pojo).contains(entry.getKey().getDbName())) {
+                    if (ignoreColumns.containsKey(pojo)
+                            && ignoreColumns.get(pojo).contains(entry.getKey().getDbName())) {
                         sb = null;
                         break;
                     }
@@ -1017,7 +1018,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
             }
         }
         int i = 0;
-        System.out.println(indMap);
         for (Entry<String, String> e : indMap.entrySet()) {
             ++i;
             buffer.append("\n  {#").append(constName(indMap2.get(e.getKey()))).append(" order by").append(e.getValue())
@@ -1072,7 +1072,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
     PojoAttribute resultSetAttribute(String pojo, boolean isFunction) {
         for (Map.Entry<String, PojoAttribute> pentry : procedures.get(pojo).entrySet()) {
-            // System.out.println("  RRR " + pentry.getKey());
             PojoAttribute attribute = pentry.getValue();
             if (dbType == DbType.ORACLE && attribute.getSqlType() == 1111) {
                 return attribute;
@@ -1128,14 +1127,13 @@ public class TableMetaGenerator extends TableBaseGenerator {
         boolean first = true;
         List<String> warnings = new ArrayList<String>();
         for (Map.Entry<String, PojoAttribute> pentry : procedures.get(pojo).entrySet()) {
-            // System.out.println("  RRR " + pentry.getKey());
             if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                 continue;
             Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), true);
             if (attr == null)
                 continue;
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -1194,7 +1192,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 for (Map.Entry<String, PojoAttribute> pentry : pojos.get(outPojo).entrySet()) {
                     if (pentry.getValue().getOne2one() != null)
                         continue;
-                    // System.out.println("  RRR " + pentry.getKey());
                     if (ignoreColumns.containsKey(outPojo) && ignoreColumns.get(outPojo).contains(pentry.getKey()))
                         continue;
                     PojoAttribute attribute = pentry.getValue();
@@ -1227,7 +1224,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         .append(tableToCamelCase(outPojoName));
                 buffer.append(")=\n ");
                 for (Map.Entry<String, PojoAttribute> pentry : pojos.get(outPojo).entrySet()) {
-                    // System.out.println("  RRR " + pentry.getKey());
                     if (ignoreColumns.containsKey(outPojo) && ignoreColumns.get(outPojo).contains(pentry.getKey()))
                         continue;
                     PojoAttribute attribute = pentry.getValue();
@@ -1262,7 +1258,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
     PojoAttribute resultSetAttribute(String pojo) {
         for (Map.Entry<String, PojoAttribute> pentry : functions.get(pojo).entrySet()) {
-            // System.out.println("  RRR " + pentry.getKey());
             PojoAttribute attribute = pentry.getValue();
             if (dbType == DbType.ORACLE && attribute.getSqlType() == 1111) {
                 return attribute;
@@ -1290,14 +1285,13 @@ public class TableMetaGenerator extends TableBaseGenerator {
         boolean first = true;
         List<String> warnings = new ArrayList<String>();
         for (Map.Entry<String, PojoAttribute> pentry : functions.get(pojo).entrySet()) {
-            // System.out.println("  RRR " + pentry.getKey());
             if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()) || FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                 continue;
             Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), true);
             if (attr == null)
                 continue;
-            String name = (columnNames.containsKey(attr.tableName)) ? columnNames.get(attr.tableName).get(
-                    attr.attributeName) : null;
+            String name = (columnNames.containsKey(attr.tableName))
+                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -1358,8 +1352,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
         @Override
         public String toString() {
-            return "Table [tableName=" + tableName + ", realTableName=" + realTableName + ", tablePrefix="
-                    + tablePrefix + ", primaryKey=" + primaryKey + ", tableKey=" + tableKey + ", attrName=" + attrName
+            return "Table [tableName=" + tableName + ", realTableName=" + realTableName + ", tablePrefix=" + tablePrefix
+                    + ", primaryKey=" + primaryKey + ", tableKey=" + tableKey + ", attrName=" + attrName
                     + ", oppositePrefix=" + oppositePrefix + ", toInit=" + toInit + "]";
         }
     }
@@ -1499,8 +1493,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     table.primaryKey = attr.getManyToManyColumn();
                     table.tableKey = findM2mKeyName(table.realTableName, header.table.realTableName);
                     if (table.tableKey == null) {
-                        System.out.println("Error for findM2mKeyName " + table.realTableName + " "
-                                + header.table.realTableName);
+                        System.out.println(
+                                "Error for findM2mKeyName " + table.realTableName + " " + header.table.realTableName);
                         continue;
                     }
                     table.tablePrefix = newPrefix(prefixes, table);
@@ -1514,8 +1508,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     table12.tableKey = findPKeyName(table.realTableName);
                     table12.primaryKey = findM2mKeyName(table.realTableName, table12.realTableName);
                     if (table12.tableKey == null) {
-                        System.out.println("Error for findM2mKeyName " + table12.realTableName + " "
-                                + table.realTableName);
+                        System.out.println(
+                                "Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
                         continue;
                     }
                     table12.tablePrefix = newPrefix(prefixes, table12);
@@ -1523,8 +1517,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     table12.oppositePrefix = table.tablePrefix;
                     header.m2mTables.put(pentry.getKey(), table12);
                     if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("555 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " "
-                                + table12);
+                        System.out.println(
+                                "555 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
                     if (pojoInheritanceSimple.containsKey(table12.realTableName)) {
                         header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                         for (String name : pojoInheritanceSimple.get(table12.realTableName)) {
@@ -1630,8 +1624,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
                             System.out.println("777b " + header.inherTables);
                     } else if (attr.getManyToManyColumn() != null) {
-                        PojoAttribute attr1 = pojos.get(header.extendTable.realTableName).get(
-                                attr.getManyToManyColumn());
+                        PojoAttribute attr1 = pojos.get(header.extendTable.realTableName)
+                                .get(attr.getManyToManyColumn());
                         if (header.extendTable.tablePrefix == null)
                             header.extendTable.tablePrefix = newPrefix(prefixes, header.extendTable);
                         Table table = new Table();
@@ -1654,8 +1648,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         table12.tableKey = findPKeyName(table.realTableName);
                         table12.primaryKey = findM2mKeyName(table12.realTableName, table.realTableName);
                         if (table12.tableKey == null) {
-                            System.out.println("Error for findM2mKeyName " + table12.realTableName + " "
-                                    + table.realTableName);
+                            System.out.println(
+                                    "Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
                             continue;
                         }
                         table12.tablePrefix = newPrefix(prefixes, table12);
@@ -1663,8 +1657,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         table12.oppositePrefix = table.tablePrefix;
                         header.m2mTables.put(pentry.getKey(), table12);
                         if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("888 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " "
-                                    + table12);
+                            System.out.println(
+                                    "888 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
                         if (pojoInheritanceSimple.containsKey(table12.realTableName)) {
                             header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                             for (String name : pojoInheritanceSimple.get(table12.realTableName)) {
@@ -1896,10 +1890,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 if (result != null) {
                     return result;
                 }
-                // for (Entry<String, StringBuilder> entry : identities.entrySet()) {
-                // System.out.println("e");
-                // return new PairValues(entry.getKey(), null);
-                // }
             }
         }
         return null;
@@ -1930,10 +1920,6 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 if (result != null) {
                     return result;
                 }
-                // for (Entry<String, StringBuilder> entry : sequences.entrySet()) {
-                // System.out.println("m");
-                // return new PairValues(entry.getKey(), null);
-                // }
             }
         }
         return null;
@@ -2138,6 +2124,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
         static final String ONLY_TABLE = "only-table";
         static final String ONLY_TABLES = "only-tables";
         static final Set<String> onlyKeys = new HashSet<String>();
+
         static {
             onlyKeys.add(ONLY_DELETE);
             onlyKeys.add(ONLY_UPDATE);
@@ -2146,6 +2133,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
             onlyKeys.add(ONLY_SELECT);
             onlyKeys.add(ONLY_CALL);
         }
+
         static final String ADD = "add";
         static final String ADD_FILTER = "add-filter";
         Map<String, String> filters;

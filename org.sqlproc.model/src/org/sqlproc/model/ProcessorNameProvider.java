@@ -15,17 +15,17 @@ public class ProcessorNameProvider extends IQualifiedNameProvider.AbstractImpl {
     private IQualifiedNameConverter qualifiedNameConverter;
 
     public QualifiedName getFullyQualifiedName(EObject obj) {
-        System.out.println("1111 " + obj);
+        // System.out.println("1111 " + obj);
         if (obj instanceof AnnotatedEntity) {
             obj = ((AnnotatedEntity) obj).getEntity();
         }
-        System.out.println("2222 " + obj);
+        // System.out.println("2222 " + obj);
         String name = SimpleAttributeResolver.NAME_RESOLVER.apply(obj);
-        System.out.println("3333 " + name);
+        // System.out.println("3333 " + name);
         if (name == null)
             return null;
         QualifiedName result = qualifiedNameConverter.toQualifiedName(name);
-        System.out.println("4444 " + result);
+        // System.out.println("4444 " + result);
         return result;
     }
 }
