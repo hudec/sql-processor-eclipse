@@ -360,56 +360,54 @@ public class TableBaseGenerator {
                 this.modelFunctionsInv.put(def.getFunction(), def);
         }
 
-        if (debug.debug) {
-            System.out.println("doCompressMetaDirectives " + this.doCompressMetaDirectives);
-            System.out.println("sqlTypes " + this.sqlTypes);
-            System.out.println("tableTypes " + this.tableTypes);
-            System.out.println("columnTypes " + this.columnTypes);
-            System.out.println("procedureTypes " + this.procedureTypes);
-            System.out.println("functionTypes " + this.functionTypes);
-            System.out.println("tableNames " + this.tableNames);
-            System.out.println("columnNames " + this.columnNames);
-            System.out.println("ignoreTables " + this.ignoreTables);
-            System.out.println("onlyTables " + this.onlyTables);
-            System.out.println("notAbstractTables " + this.notAbstractTables);
-            System.out.println("createTables " + this.createTables);
-            System.out.println("ignoreColumns " + this.ignoreColumns);
-            System.out.println("createColumns " + this.createColumns);
-            System.out.println("ignoreExports " + this.ignoreExports);
-            System.out.println("ignoreImports " + this.ignoreImports);
-            System.out.println("createExports " + this.createExports);
-            System.out.println("createImports " + this.createImports);
-            System.out.println("create121Imports " + this.create121Imports);
-            System.out.println("inheritImports " + this.inheritImports);
-            System.out.println("manyToManyImports " + this.manyToManyImports);
-            System.out.println("inheritance " + this.inheritance);
-            System.out.println("inheritanceColumns " + this.inheritanceColumns);
-            System.out.println("generateMethods " + this.generateMethods);
-            System.out.println("generateOperators " + this.generateOperators);
-            System.out.println("toImplements " + this.toImplements);
-            System.out.println("toExtends " + this.toExtends);
-            System.out.println("joinTables " + this.joinTables);
-            System.out.println("doGenerateWrappers " + this.doGenerateWrappers);
-            System.out.println("doGenerateValidationAnnotations " + this.doGenerateValidationAnnotations);
-            System.out.println("makeItFinal " + this.makeItFinal);
-            System.out.println("sequences " + this.dbSequences);
-            System.out.println("dbType " + this.dbType);
-            System.out.println("metaFunctionsResult " + this.metaFunctionsResult);
-            System.out.println("metaFunctionsResultSet " + this.metaFunctionsResultSet);
-            System.out.println("metaProceduresResultSet " + this.metaProceduresResultSet);
-            System.out.println("preserveForeignKeys " + this.preserveForeignKeys);
-            System.out.println("pojosForProcedures " + this.pojosForProcedures);
-            System.out.println("pojosForFunctions " + this.pojosForFunctions);
-            System.out.println("versionColumn " + this.versionColumn);
-            System.out.println("versionColumns " + this.versionColumns);
-            System.out.println("notVersionColumns " + this.notVersionColumns);
-            System.out.println("activeFilter " + this.activeFilter);
-            System.out.println("enumForCheckConstraints " + this.enumForCheckConstraints);
-            System.out.println("modelPojos " + this.modelPojos);
-            System.out.println("modelTables " + this.modelTables);
-            System.out.println("modelProcedures " + this.modelProcedures);
-            System.out.println("modelFunctions " + this.modelFunctions);
-        }
+        debug.debug("doCompressMetaDirectives " + this.doCompressMetaDirectives);
+        debug.debug("sqlTypes " + this.sqlTypes);
+        debug.debug("tableTypes " + this.tableTypes);
+        debug.debug("columnTypes " + this.columnTypes);
+        debug.debug("procedureTypes " + this.procedureTypes);
+        debug.debug("functionTypes " + this.functionTypes);
+        debug.debug("tableNames " + this.tableNames);
+        debug.debug("columnNames " + this.columnNames);
+        debug.debug("ignoreTables " + this.ignoreTables);
+        debug.debug("onlyTables " + this.onlyTables);
+        debug.debug("notAbstractTables " + this.notAbstractTables);
+        debug.debug("createTables " + this.createTables);
+        debug.debug("ignoreColumns " + this.ignoreColumns);
+        debug.debug("createColumns " + this.createColumns);
+        debug.debug("ignoreExports " + this.ignoreExports);
+        debug.debug("ignoreImports " + this.ignoreImports);
+        debug.debug("createExports " + this.createExports);
+        debug.debug("createImports " + this.createImports);
+        debug.debug("create121Imports " + this.create121Imports);
+        debug.debug("inheritImports " + this.inheritImports);
+        debug.debug("manyToManyImports " + this.manyToManyImports);
+        debug.debug("inheritance " + this.inheritance);
+        debug.debug("inheritanceColumns " + this.inheritanceColumns);
+        debug.debug("generateMethods " + this.generateMethods);
+        debug.debug("generateOperators " + this.generateOperators);
+        debug.debug("toImplements " + this.toImplements);
+        debug.debug("toExtends " + this.toExtends);
+        debug.debug("joinTables " + this.joinTables);
+        debug.debug("doGenerateWrappers " + this.doGenerateWrappers);
+        debug.debug("doGenerateValidationAnnotations " + this.doGenerateValidationAnnotations);
+        debug.debug("makeItFinal " + this.makeItFinal);
+        debug.debug("sequences " + this.dbSequences);
+        debug.debug("dbType " + this.dbType);
+        debug.debug("metaFunctionsResult " + this.metaFunctionsResult);
+        debug.debug("metaFunctionsResultSet " + this.metaFunctionsResultSet);
+        debug.debug("metaProceduresResultSet " + this.metaProceduresResultSet);
+        debug.debug("preserveForeignKeys " + this.preserveForeignKeys);
+        debug.debug("pojosForProcedures " + this.pojosForProcedures);
+        debug.debug("pojosForFunctions " + this.pojosForFunctions);
+        debug.debug("versionColumn " + this.versionColumn);
+        debug.debug("versionColumns " + this.versionColumns);
+        debug.debug("notVersionColumns " + this.notVersionColumns);
+        debug.debug("activeFilter " + this.activeFilter);
+        debug.debug("enumForCheckConstraints " + this.enumForCheckConstraints);
+        debug.debug("modelPojos " + this.modelPojos);
+        debug.debug("modelTables " + this.modelTables);
+        debug.debug("modelProcedures " + this.modelProcedures);
+        debug.debug("modelFunctions " + this.modelFunctions);
 
         for (String table : createTables) {
             addTableDefinition(table, Collections.<DbColumn> emptyList(), Collections.<String> emptyList(),
@@ -422,14 +420,13 @@ public class TableBaseGenerator {
     public void addTableDefinition(String table, List<DbColumn> dbColumns, List<String> dbPrimaryKeys,
             List<DbExport> dbExports, List<DbImport> dbImports, List<DbIndex> dbIndexes,
             List<DbCheckConstraint> dbCheckConstraints, String comment) {
-        if (debug.debug) {
-            System.out.println("addTableDefinition: " + table + " dbColumns " + dbColumns);
-            System.out.println("addTableDefinition: " + table + " dbPrimaryKeys " + dbPrimaryKeys);
-            System.out.println("addTableDefinition: " + table + " dbExports " + dbExports);
-            System.out.println("addTableDefinition: " + table + " dbImports " + dbImports);
-            System.out.println("addTableDefinition: " + table + " dbIndexes " + dbIndexes);
-            System.out.println("addTableDefinition: " + table + " dbCheckConstraints " + dbCheckConstraints);
-        }
+        debug.debug("addTableDefinition: " + table + " dbColumns " + dbColumns);
+        debug.debug("addTableDefinition: " + table + " dbPrimaryKeys " + dbPrimaryKeys);
+        debug.debug("addTableDefinition: " + table + " dbExports " + dbExports);
+        debug.debug("addTableDefinition: " + table + " dbImports " + dbImports);
+        debug.debug("addTableDefinition: " + table + " dbIndexes " + dbIndexes);
+        debug.debug("addTableDefinition: " + table + " dbCheckConstraints " + dbCheckConstraints);
+
         if (table == null || dbColumns == null)
             return;
         Map<String, PojoAttribute> attributes = new LinkedHashMap<String, PojoAttribute>();
@@ -602,12 +599,12 @@ public class TableBaseGenerator {
             for (int ii = 0, ll = dbIndex.getColumns().size(); ii < ll; ii++) {
                 DbIndexDetail dbIndexDetail = dbIndex.getColumns().get(ii);
                 if (dbIndexDetail == null) {
-                    System.out.println("Missing index in " + dbIndex);
+                    debug.warn("Missing index in " + dbIndex);
                     continue;
                 }
                 PojoAttribute attr = attributes.get(dbIndexDetail.getColname());
                 if (attr == null) {
-                    System.out.println("Missing attibute for " + dbIndex);
+                    debug.warn("Missing attibute for " + dbIndex);
                     continue;
                 }
                 list.put(attr, dbIndexDetail.isDesc());
@@ -623,7 +620,7 @@ public class TableBaseGenerator {
                     && pojos.get(check.getTable()).containsKey(check.getColumn()))
                             ? pojos.get(check.getTable()).get(check.getColumn()) : null;
             if (attribute == null) {
-                System.out.println("For the constraint " + check.getEnumName() + " there's no table or column");
+                debug.warn("For the constraint " + check.getEnumName() + " there's no table or column");
                 continue;
             }
             String name = check.getEnumName();
@@ -811,10 +808,8 @@ public class TableBaseGenerator {
 
     public void addProcedureDefinition(String procedure, DbTable dbProcedure, List<DbColumn> dbProcColumns,
             boolean isFunction, String comment) {
-        if (debug.debug) {
-            System.out.println("addProcedureDefinition: " + procedure + " dbProcedure " + dbProcedure);
-            System.out.println("addProcedureDefinition: " + procedure + " dbProcColumns " + dbProcColumns);
-        }
+        debug.debug("addProcedureDefinition: " + procedure + " dbProcedure " + dbProcedure);
+        debug.debug("addProcedureDefinition: " + procedure + " dbProcColumns " + dbProcColumns);
         if (procedure == null || dbProcColumns == null)
             return;
         Map<String, PojoAttribute> attributes = new LinkedHashMap<String, PojoAttribute>();
@@ -856,7 +851,7 @@ public class TableBaseGenerator {
             }
         }
         if (!attributesResultSet.isEmpty()) {
-            System.out.println("TODO " + procedure + " returns " + attributesResultSet);
+            debug.warn("TODO " + procedure + " returns " + attributesResultSet);
             String procedureResult = procedure + "_RESULT";
             pojos.put(procedureResult, attributesResultSet);
             metaProceduresResultSet.put(procedure, procedureResult);
@@ -885,10 +880,8 @@ public class TableBaseGenerator {
 
     public void addFunctionDefinition(String function, DbTable dbFunction, List<DbColumn> dbFunColumns,
             String comment) {
-        if (debug.debug) {
-            System.out.println("addFunctionDefinition: " + function + " dbFunction " + dbFunction);
-            System.out.println("addFunctionDefinition: " + function + " dbFunColumns " + dbFunColumns);
-        }
+        debug.debug("addFunctionDefinition: " + function + " dbFunction " + dbFunction);
+        debug.debug("addFunctionDefinition: " + function + " dbFunColumns " + dbFunColumns);
         if (function == null || dbFunColumns == null)
             return;
         Map<String, PojoAttribute> attributes = new LinkedHashMap<String, PojoAttribute>();

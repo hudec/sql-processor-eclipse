@@ -292,9 +292,7 @@ class ProcessorGeneratorUtils {
 					result.put(""+d.index.number, d.proplist.features)
 			}
 			else {
-				println(d.proplist.features)
 				val name = constName(d.proplist.features)
-				println(name)
 				result.put(name, d.proplist.features)
 			}
 		]
@@ -312,9 +310,7 @@ class ProcessorGeneratorUtils {
 					result.put(""+d.index.number, d.proplist.features)
 			}
 			else {
-				println(d.proplist.features)
 				val name = constName(d.proplist.features)
-				println(name)
 				result.put(name, d.proplist.features)
 			}
 		]
@@ -359,7 +355,6 @@ class ProcessorGeneratorUtils {
 //    def PojoEntity findEntity(IQualifiedNameConverter qualifiedNameConverter, Artifacts artifacts,
 //            IScope scope, String name) {
 //        for (description : scope.getAllElements()) {
-//        	println(description)
 //            val Package packageDeclaration = artifacts.eResource().getResourceSet()
 //                    .getEObject(description.getEObjectURI(), true) as Package
 //            for (aEntity : packageDeclaration.getElements()) {

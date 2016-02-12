@@ -60,12 +60,10 @@ public class TablePojoGenerator extends TableBaseGenerator {
             this.entityImports.add(ANNOTATION_SIZE);
         }
 
-        if (debug.debug) {
-            System.out.println("entityAnnotations " + this.entityAnnotations);
-            System.out.println("finalEntities " + this.finalEntities);
-            System.out.println("finalEntitiesFeatures " + this.finalEntitiesFeatures);
-            System.out.println("entityImports " + this.entityImports);
-        }
+        debug.debug("entityAnnotations " + this.entityAnnotations);
+        debug.debug("finalEntities " + this.finalEntities);
+        debug.debug("finalEntitiesFeatures " + this.finalEntitiesFeatures);
+        debug.debug("entityImports " + this.entityImports);
     }
 
     public String getPojoDefinitions(ModelProperty modelProperty, Artifacts artifacts, ISerializer serializer) {
@@ -75,17 +73,15 @@ public class TablePojoGenerator extends TableBaseGenerator {
 
     public String getPojoDefinitions(ISerializer serializer) {
         try {
-            if (debug.debug) {
-                System.out.println("pojos " + this.pojos);
-                System.out.println("pojoExtends " + this.pojoExtends);
-                System.out.println("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
-                System.out.println("pojoInheritanceSimple " + this.pojoInheritanceSimple);
-                System.out.println("pojoDiscriminators " + this.pojoDiscriminators);
-                System.out.println("indexes " + this.indexes);
-                System.out.println("procedures " + this.procedures);
-                System.out.println("functions " + this.functions);
-                System.out.println("enums " + this.enums);
-            }
+            debug.debug("pojos " + this.pojos);
+            debug.debug("pojoExtends " + this.pojoExtends);
+            debug.debug("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
+            debug.debug("pojoInheritanceSimple " + this.pojoInheritanceSimple);
+            debug.debug("pojoDiscriminators " + this.pojoDiscriminators);
+            debug.debug("indexes " + this.indexes);
+            debug.debug("procedures " + this.procedures);
+            debug.debug("functions " + this.functions);
+            debug.debug("enums " + this.enums);
 
             StringBuilder buffer = new StringBuilder(), bufferPartial, bufferMeta, bufferMetaAttr;
             boolean isSerializable = false;
@@ -559,7 +555,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             }
                         }
                         bufferPartial.append(' ').append(name);
-                        if (debug.debug)
+                        if (debug.isDebug())
                             bufferPartial.append(" // ").append(attribute.getCompleteSqlType());
                     }
                     if (pkAttribute != null) {
@@ -698,7 +694,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                 toStr.add(name);
                         }
                         bufferPartial.append(' ').append(name);
-                        if (debug.debug)
+                        if (debug.isDebug())
                             bufferPartial.append(" // ").append(attribute.getCompleteSqlType());
                     }
                     // if (pojoExtends.containsKey(pojo)) {
@@ -812,7 +808,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                 toStr.add(name);
                         }
                         bufferPartial.append(' ').append(name);
-                        if (debug.debug)
+                        if (debug.isDebug())
                             bufferPartial.append(" // ").append(attribute.getCompleteSqlType());
                     }
                     // if (pojoExtends.containsKey(pojo)) {

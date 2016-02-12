@@ -91,20 +91,18 @@ public class TableDaoGenerator extends TablePojoGenerator {
         daoPackage = modelProperty.getDaoPackage(artifacts);
         daoImplPackage = modelProperty.getDaoImplPackage(artifacts);
 
-        if (debug.debug) {
-            System.out.println("finalDaos " + this.finalDaos);
-            System.out.println("finalDaosFeatures " + this.finalDaosFeatures);
-            System.out.println("daoAnnotations " + this.daoAnnotations);
-            System.out.println("daoImports " + this.daoImports);
-            System.out.println("daoIgnoreTables " + this.daoIgnoreTables);
-            System.out.println("daoOnlyTables " + this.daoOnlyTables);
-            System.out.println("daoToImplements " + this.daoToImplements);
-            System.out.println("daoToExtends " + this.daoToExtends);
-            System.out.println("daoFunctionsResult " + this.daoFunctionsResult);
-            System.out.println("daoActiveFilter " + this.daoActiveFilter);
-            System.out.println("daoPackage " + this.daoPackage);
-            System.out.println("daoImplPackage " + this.daoImplPackage);
-        }
+        debug.debug("finalDaos " + this.finalDaos);
+        debug.debug("finalDaosFeatures " + this.finalDaosFeatures);
+        debug.debug("daoAnnotations " + this.daoAnnotations);
+        debug.debug("daoImports " + this.daoImports);
+        debug.debug("daoIgnoreTables " + this.daoIgnoreTables);
+        debug.debug("daoOnlyTables " + this.daoOnlyTables);
+        debug.debug("daoToImplements " + this.daoToImplements);
+        debug.debug("daoToExtends " + this.daoToExtends);
+        debug.debug("daoFunctionsResult " + this.daoFunctionsResult);
+        debug.debug("daoActiveFilter " + this.daoActiveFilter);
+        debug.debug("daoPackage " + this.daoPackage);
+        debug.debug("daoImplPackage " + this.daoImplPackage);
     }
 
     public String getDaoDefinitions(ModelProperty modelProperty, Artifacts artifacts, ISerializer serializer) {
@@ -127,16 +125,14 @@ public class TableDaoGenerator extends TablePojoGenerator {
 
     public StringBuilder _getDaoDefinitions(ISerializer serializer) {
         try {
-            if (debug.debug) {
-                System.out.println("pojos " + this.pojos);
-                System.out.println("pojoExtends " + this.pojoExtends);
-                System.out.println("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
-                System.out.println("pojoInheritanceSimple " + this.pojoInheritanceSimple);
-                System.out.println("pojoDiscriminators " + this.pojoDiscriminators);
-                System.out.println("indexes " + this.indexes);
-                System.out.println("procedures " + this.procedures);
-                System.out.println("functions " + this.functions);
-            }
+            debug.debug("pojos " + this.pojos);
+            debug.debug("pojoExtends " + this.pojoExtends);
+            debug.debug("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
+            debug.debug("pojoInheritanceSimple " + this.pojoInheritanceSimple);
+            debug.debug("pojoDiscriminators " + this.pojoDiscriminators);
+            debug.debug("indexes " + this.indexes);
+            debug.debug("procedures " + this.procedures);
+            debug.debug("functions " + this.functions);
 
             StringBuilder buffer = new StringBuilder(), bufferPartial, bufferMeta;
             boolean isSerializable = false;

@@ -379,8 +379,6 @@ public class CommonUtils {
     public static boolean skipVerification(EObject model, ModelProperty modelProperty) {
         if (modelProperty == null)
             assert false;
-        boolean result = modelProperty.skipVerification(model);
-        // System.out.println(model.toString() + "->" + result);
-        return result;
+        return modelProperty.skipVerification(model);
     }
 }

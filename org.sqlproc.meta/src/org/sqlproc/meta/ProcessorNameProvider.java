@@ -14,13 +14,10 @@ public class ProcessorNameProvider extends IQualifiedNameProvider.AbstractImpl {
     private IQualifiedNameConverter qualifiedNameConverter;
 
     public QualifiedName getFullyQualifiedName(EObject obj) {
-        // System.out.println("XXXX " + obj);
         String name = SimpleAttributeResolver.NAME_RESOLVER.apply(obj);
-        // System.out.println("YYYY " + name);
         if (name == null)
             return null;
         QualifiedName result = qualifiedNameConverter.toQualifiedName(name);
-        // System.out.println("YYYY " + result);
         return result;
     }
 }

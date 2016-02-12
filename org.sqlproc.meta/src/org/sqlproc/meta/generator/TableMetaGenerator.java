@@ -218,34 +218,32 @@ public class TableMetaGenerator extends TableBaseGenerator {
             }
         }
 
-        if (debug.debug) {
-            System.out.println("finalMetas " + this.finalMetas);
-            System.out.println("metaGlobalSequence " + this.metaGlobalSequence);
-            System.out.println("metaTablesSequence " + this.metaTablesSequence);
-            System.out.println("metaGlobalIdentity " + this.metaGlobalIdentity);
-            System.out.println("metaTablesIdentity " + this.metaTablesIdentity);
-            System.out.println("metaSqlTypes " + this.metaSqlTypes);
-            System.out.println("metaColumnsMetaTypes " + this.metaColumnsMetaTypes);
-            System.out.println("metaStatementsMetaTypes " + this.metaStatementsMetaTypes);
-            System.out.println("metaMakeItFinal " + this.metaMakeItFinal);
-            System.out.println("metaLikeColumns " + this.metaLikeColumns);
-            System.out.println("metaNotLikeColumns " + this.metaNotLikeColumns);
-            System.out.println("metaGenerateSequences " + this.metaGenerateSequences);
-            System.out.println("metaGlobalSequenceForTables " + this.metaGlobalSequenceForTables);
-            System.out.println("metaGlobalSequenceNotForTables " + this.metaGlobalSequenceNotForTables);
-            System.out.println("metaGenerateIdentities " + this.metaGenerateIdentities);
-            System.out.println("metaGlobalIdentityForTables " + this.metaGlobalIdentityForTables);
-            System.out.println("metaGlobalIdentityNotForTables " + this.metaGlobalIdentityNotForTables);
-            System.out.println("metaGenerateIdGenerators " + this.metaGenerateIdGenerators);
-            System.out.println("metaGenerateIndirectIdGenerators " + this.metaGenerateIndirectIdGenerators);
-            System.out.println("metaGenerateOperators " + this.metaGenerateOperators);
-            System.out.println("metaOptimizeInsert " + this.metaOptimizeInsert);
-            System.out.println("metaOptionalFeatures " + this.metaOptionalFeatures);
-            System.out.println("metaActiveFilter " + this.metaActiveFilter);
-            System.out.println("metaInsertSkipDefaultValues " + this.metaInsertSkipDefaultValues);
-            System.out.println("metaInsertSkipDefaultValuesPos " + this.metaInsertSkipDefaultValuesPos);
-            System.out.println("metaInsertSkipDefaultValuesNeg " + this.metaInsertSkipDefaultValuesNeg);
-        }
+        debug.debug("finalMetas " + this.finalMetas);
+        debug.debug("metaGlobalSequence " + this.metaGlobalSequence);
+        debug.debug("metaTablesSequence " + this.metaTablesSequence);
+        debug.debug("metaGlobalIdentity " + this.metaGlobalIdentity);
+        debug.debug("metaTablesIdentity " + this.metaTablesIdentity);
+        debug.debug("metaSqlTypes " + this.metaSqlTypes);
+        debug.debug("metaColumnsMetaTypes " + this.metaColumnsMetaTypes);
+        debug.debug("metaStatementsMetaTypes " + this.metaStatementsMetaTypes);
+        debug.debug("metaMakeItFinal " + this.metaMakeItFinal);
+        debug.debug("metaLikeColumns " + this.metaLikeColumns);
+        debug.debug("metaNotLikeColumns " + this.metaNotLikeColumns);
+        debug.debug("metaGenerateSequences " + this.metaGenerateSequences);
+        debug.debug("metaGlobalSequenceForTables " + this.metaGlobalSequenceForTables);
+        debug.debug("metaGlobalSequenceNotForTables " + this.metaGlobalSequenceNotForTables);
+        debug.debug("metaGenerateIdentities " + this.metaGenerateIdentities);
+        debug.debug("metaGlobalIdentityForTables " + this.metaGlobalIdentityForTables);
+        debug.debug("metaGlobalIdentityNotForTables " + this.metaGlobalIdentityNotForTables);
+        debug.debug("metaGenerateIdGenerators " + this.metaGenerateIdGenerators);
+        debug.debug("metaGenerateIndirectIdGenerators " + this.metaGenerateIndirectIdGenerators);
+        debug.debug("metaGenerateOperators " + this.metaGenerateOperators);
+        debug.debug("metaOptimizeInsert " + this.metaOptimizeInsert);
+        debug.debug("metaOptionalFeatures " + this.metaOptionalFeatures);
+        debug.debug("metaActiveFilter " + this.metaActiveFilter);
+        debug.debug("metaInsertSkipDefaultValues " + this.metaInsertSkipDefaultValues);
+        debug.debug("metaInsertSkipDefaultValuesPos " + this.metaInsertSkipDefaultValuesPos);
+        debug.debug("metaInsertSkipDefaultValuesNeg " + this.metaInsertSkipDefaultValuesNeg);
     }
 
     public String getMetaDefinitions(ModelProperty modelProperty, Artifacts artifacts) {
@@ -255,16 +253,14 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
     public String getMetaDefinitions() {
         try {
-            if (debug.debug) {
-                System.out.println("pojos " + this.pojos);
-                System.out.println("pojoExtends " + this.pojoExtends);
-                System.out.println("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
-                System.out.println("pojoInheritanceSimple " + this.pojoInheritanceSimple);
-                System.out.println("pojoDiscriminators " + this.pojoDiscriminators);
-                System.out.println("indexes " + this.indexes);
-                System.out.println("procedures " + this.procedures);
-                System.out.println("functions " + this.functions);
-            }
+            debug.debug("pojos " + this.pojos);
+            debug.debug("pojoExtends " + this.pojoExtends);
+            debug.debug("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
+            debug.debug("pojoInheritanceSimple " + this.pojoInheritanceSimple);
+            debug.debug("pojoDiscriminators " + this.pojoDiscriminators);
+            debug.debug("indexes " + this.indexes);
+            debug.debug("procedures " + this.procedures);
+            debug.debug("functions " + this.functions);
 
             if (metaGenerateSequences && dbType == DbType.MY_SQL) {
                 for (String pojo : pojos.keySet()) {
@@ -1370,15 +1366,13 @@ public class TableMetaGenerator extends TableBaseGenerator {
     }
 
     Header getStatementHeader(String pojo, StringBuilder buffer, StatementType type, String suffix) {
-        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-            System.out.println("\n--- " + pojo + " " + suffix);
+        debug.trace("\n--- " + pojo + " " + suffix);
         Header header = new Header();
         Set<String> prefixes = new HashSet<String>();
         header.table.setNames(pojo);
         if (pojoDiscriminators.containsKey(header.table.tableName)) {
             header.table.realTableName = pojoExtends.get(header.table.tableName);
-            if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                System.out.println("000 " + pojo + " " + header.table.realTableName);
+            debug.trace("000 " + pojo + " " + header.table.realTableName);
         } else if (pojoExtends.containsKey(header.table.realTableName)
                 && pojoInheritanceSimple.containsKey(pojoExtends.get(header.table.realTableName))) {
             header.extendTable.setNames(pojoExtends.get(header.table.realTableName));
@@ -1395,13 +1389,10 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     break outerloop;
                 }
             }
-            if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                System.out.println("001 " + pojo + " " + header.extendTable.realTableName);
+            debug.trace("001 " + pojo + " " + header.extendTable.realTableName);
         }
-        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-            System.out.println("111 " + pojo + " " + header.table);
-        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-            System.out.println("222 " + pojo + " " + header.extendTable);
+        debug.trace("111 " + pojo + " " + header.table);
+        debug.trace("222 " + pojo + " " + header.extendTable);
         if (type == StatementType.GET || type == StatementType.SELECT) {
             for (Map.Entry<String, PojoAttribute> pentry : pojos.get(header.table.realTableName).entrySet()) {
                 PojoAttribute attr = pentry.getValue();
@@ -1423,8 +1414,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         header.discrTables.put(table.realTableName, table);
                     }
                     header.assocTables.put(pentry.getKey(), table);
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("333 " + pentry.getKey() + " " + table + " " + attr);
+                    debug.trace("333 " + pentry.getKey() + " " + table + " " + attr);
                     if (pojoInheritanceSimple.containsKey(table.realTableName)) {
                         header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                         for (String name : pojoInheritanceSimple.get(table.realTableName)) {
@@ -1442,8 +1432,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             header.inherTables.get(pentry.getKey()).add(table2);
                         }
                     }
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("333b " + header.inherTables);
+                    debug.trace("333b " + header.inherTables);
                 } else if (attr.getOneToManyColumn() != null) {
                     PojoAttribute attr1 = pojos.get(header.table.realTableName).get(attr.getOneToManyColumn());
                     if (header.table.tablePrefix == null)
@@ -1463,8 +1452,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         header.discrTables.put(table.realTableName, table);
                     }
                     header.assocTables.put(pentry.getKey(), table);
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("444 " + pentry.getKey() + " " + table + " " + attr + " " + attr1);
+                    debug.trace("444 " + pentry.getKey() + " " + table + " " + attr + " " + attr1);
                     if (pojoInheritanceSimple.containsKey(table.realTableName)) {
                         header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                         for (String name : pojoInheritanceSimple.get(table.realTableName)) {
@@ -1482,8 +1470,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             header.inherTables.get(pentry.getKey()).add(table2);
                         }
                     }
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("444b " + header.inherTables);
+                    debug.trace("444b " + header.inherTables);
                 } else if (attr.getManyToManyColumn() != null) {
                     PojoAttribute attr1 = pojos.get(header.table.realTableName).get(attr.getManyToManyColumn());
                     if (header.table.tablePrefix == null)
@@ -1493,7 +1480,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     table.primaryKey = attr.getManyToManyColumn();
                     table.tableKey = findM2mKeyName(table.realTableName, header.table.realTableName);
                     if (table.tableKey == null) {
-                        System.out.println(
+                        debug.warn(
                                 "Error for findM2mKeyName " + table.realTableName + " " + header.table.realTableName);
                         continue;
                     }
@@ -1508,17 +1495,14 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     table12.tableKey = findPKeyName(table.realTableName);
                     table12.primaryKey = findM2mKeyName(table.realTableName, table12.realTableName);
                     if (table12.tableKey == null) {
-                        System.out.println(
-                                "Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
+                        debug.warn("Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
                         continue;
                     }
                     table12.tablePrefix = newPrefix(prefixes, table12);
                     table12.attrName = null;
                     table12.oppositePrefix = table.tablePrefix;
                     header.m2mTables.put(pentry.getKey(), table12);
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println(
-                                "555 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
+                    debug.trace("555 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
                     if (pojoInheritanceSimple.containsKey(table12.realTableName)) {
                         header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                         for (String name : pojoInheritanceSimple.get(table12.realTableName)) {
@@ -1536,8 +1520,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             header.inherTables.get(pentry.getKey()).add(table2);
                         }
                     }
-                    if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                        System.out.println("555b " + header.inherTables);
+                    debug.trace("555b " + header.inherTables);
                 }
             }
             if (header.extendTable.tableName != null) {
@@ -1561,8 +1544,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             header.discrTables.put(table.realTableName, table);
                         }
                         header.assocTables.put(pentry.getKey(), table);
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("666 " + pentry.getKey() + " " + table + " " + attr);
+                        debug.trace("666 " + pentry.getKey() + " " + table + " " + attr);
                         if (pojoInheritanceSimple.containsKey(table.realTableName)) {
                             header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                             for (String name : pojoInheritanceSimple.get(table.realTableName)) {
@@ -1580,8 +1562,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                                 header.inherTables.get(pentry.getKey()).add(table2);
                             }
                         }
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("666b " + header.inherTables);
+                        debug.trace("666b " + header.inherTables);
                     } else if (attr.getOneToManyColumn() != null) {
                         PojoAttribute attr1 = pojos.get(header.extendTable.realTableName)
                                 .get(attr.getOneToManyColumn());
@@ -1602,8 +1583,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             header.discrTables.put(table.realTableName, table);
                         }
                         header.assocTables.put(pentry.getKey(), table);
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("777 " + pentry.getKey() + " " + table + " " + attr + " " + attr1);
+                        debug.trace("777 " + pentry.getKey() + " " + table + " " + attr + " " + attr1);
                         if (pojoInheritanceSimple.containsKey(table.realTableName)) {
                             header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                             for (String name : pojoInheritanceSimple.get(table.realTableName)) {
@@ -1621,8 +1601,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                                 header.inherTables.get(pentry.getKey()).add(table2);
                             }
                         }
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("777b " + header.inherTables);
+                        debug.trace("777b " + header.inherTables);
                     } else if (attr.getManyToManyColumn() != null) {
                         PojoAttribute attr1 = pojos.get(header.extendTable.realTableName)
                                 .get(attr.getManyToManyColumn());
@@ -1633,7 +1612,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         table.primaryKey = attr.getManyToManyColumn();
                         table.tableKey = findM2mKeyName(table.realTableName, header.extendTable.realTableName);
                         if (table.tableKey == null) {
-                            System.out.println("Error for findM2mKeyName " + table.realTableName + " "
+                            debug.warn("Error for findM2mKeyName " + table.realTableName + " "
                                     + header.extendTable.realTableName);
                             continue;
                         }
@@ -1648,17 +1627,14 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         table12.tableKey = findPKeyName(table.realTableName);
                         table12.primaryKey = findM2mKeyName(table12.realTableName, table.realTableName);
                         if (table12.tableKey == null) {
-                            System.out.println(
-                                    "Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
+                            debug.warn("Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
                             continue;
                         }
                         table12.tablePrefix = newPrefix(prefixes, table12);
                         table12.attrName = null;
                         table12.oppositePrefix = table.tablePrefix;
                         header.m2mTables.put(pentry.getKey(), table12);
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println(
-                                    "888 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
+                        debug.trace("888 " + pentry.getKey() + " " + table + " " + attr + " " + attr1 + " " + table12);
                         if (pojoInheritanceSimple.containsKey(table12.realTableName)) {
                             header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                             for (String name : pojoInheritanceSimple.get(table12.realTableName)) {
@@ -1676,8 +1652,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                                 header.inherTables.get(pentry.getKey()).add(table2);
                             }
                         }
-                        if (debug.debug && (type == StatementType.GET || type == StatementType.SELECT))
-                            System.out.println("888b " + header.inherTables);
+                        debug.trace("888b " + header.inherTables);
                     }
                 }
             }
@@ -1863,10 +1838,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
     PairValues getIdentity(String pojo, PojoAttribute attribute) {
         if (attribute.isPrimaryKey()) {
-            if (debug.debug)
-                System.out.println("getIdentity " + pojo + " :" + metaTablesSequence + "|" + metaTablesIdentity + "|"
-                        + metaGlobalIdentity + "|" + metaGlobalIdentityForTables + "|" + metaGlobalIdentityNotForTables
-                        + "|" + identities);
+            debug.trace("getIdentity " + pojo + " :" + metaTablesSequence + "|" + metaTablesIdentity + "|"
+                    + metaGlobalIdentity + "|" + metaGlobalIdentityForTables + "|" + metaGlobalIdentityNotForTables
+                    + "|" + identities);
             if (metaTablesSequence.containsKey(pojo)) {
                 return null;
             }
@@ -1897,9 +1871,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
 
     PairValues getSequence(String pojo, PojoAttribute attribute) {
         if (attribute.isPrimaryKey()) {
-            if (debug.debug)
-                System.out.println("getSequence " + pojo + " :" + metaTablesSequence + "|" + metaGlobalSequence + "|"
-                        + metaGlobalSequenceForTables + "|" + metaGlobalSequenceNotForTables + "|" + sequences);
+            debug.trace("getSequence " + pojo + " :" + metaTablesSequence + "|" + metaGlobalSequence + "|"
+                    + metaGlobalSequenceForTables + "|" + metaGlobalSequenceNotForTables + "|" + sequences);
             if (metaTablesSequence.containsKey(pojo)) {
                 return metaTablesSequence.get(pojo);
             } else if (metaGlobalSequence != null) {

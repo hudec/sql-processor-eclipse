@@ -797,10 +797,6 @@ class PojoJvmModelInferrer {
 			// transform it to List to avoid concurrent modification exception
 			associatedElements.toList.forEach[assoc | associator.removeAllAssociation(assoc)]
 		}
-//		println("AAAAAAAAAAAAAA")
-//		println(target.getAnnotations())
-//		println(target)
-//		println(annotation)
 		addAnnotation(target, annotation);
 	}
 

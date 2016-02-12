@@ -35,9 +35,6 @@ class ProcessorModelScopeProvider extends XbaseWithAnnotationsBatchScopeProvider
                 // TODO - problem, ze Pojo rodice nemusi byt inicializovano
                 //val IScope scope = Scopes.scopeFor(allAttributes(pojo))
                 val IScope scope = Scopes.scopeFor(pojo.attributes)
-//                println(pojo)
-//                println(reference)
-//                println(scope)
                 return scope
             //}
         }
@@ -46,16 +43,11 @@ class ProcessorModelScopeProvider extends XbaseWithAnnotationsBatchScopeProvider
             if (dao != null) {
             	val PojoEntity pojo = dao.getPojo
                 val IScope scope = Scopes.scopeFor(allAttributes(pojo))
-//                println(reference)
-//                println(scope)
                 return scope
             }
         }
         
 		val IScope _scope =  super.getScope(context, reference)
-//        println(context)
-//        println(reference)
-//        println(_scope)
         return _scope
     }
 }
