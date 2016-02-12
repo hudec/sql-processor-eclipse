@@ -2,7 +2,7 @@
 <feature
       id="org.sqlproc.model.site"
       label="SQL Processor Model Plugin Feature"
-      version="2.4.3"
+      version="2.5.0"
       provider-name="SQL Processor Team">
 
    <url>
