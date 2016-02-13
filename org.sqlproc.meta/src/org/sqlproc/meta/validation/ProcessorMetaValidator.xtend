@@ -492,7 +492,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
                 warning("Problem order : " + identifierName + "[" + identifierUsageClass + "]",
                         order, ProcessorMetaPackage.Literals.ORD_SQL__IDENT)
             case ValidationResult.ERROR:
-		        error("Cannot find order : " + identifierName + "[" + identifierUsageClass + "]",
+		        warning("Cannot find order : " + identifierName + "[" + identifierUsageClass + "]",
 					order, ProcessorMetaPackage.Literals.ORD_SQL__IDENT)
             }
             return
