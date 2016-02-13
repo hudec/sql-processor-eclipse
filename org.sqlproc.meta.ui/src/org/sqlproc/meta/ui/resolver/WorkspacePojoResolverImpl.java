@@ -245,7 +245,7 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
             beanClass = beanClass.getSuperclass();
             if (beanClass == null)
                 break;
-            orderBeanClass = loadClass(beanClass.getName() + "$Order", uri);
+            orderBeanClass = loadClass(beanClass.getName() + "$Order", uri, true);
         }
         return orders;
     }

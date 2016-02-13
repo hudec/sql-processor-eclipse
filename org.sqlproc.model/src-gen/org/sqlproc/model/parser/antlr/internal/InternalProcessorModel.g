@@ -6690,19 +6690,18 @@ rulePojoDefinitionModel returns [EObject current=null]
 	    }
 
 )
-)(((	otherlv_2=':' 
+)((	otherlv_2=':' 
     {
-    	newLeafNode(otherlv_2, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0_0());
+    	newLeafNode(otherlv_2, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0());
     }
-
-    |	otherlv_3='::' 
+(	otherlv_3=':' 
     {
-    	newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonColonKeyword_2_0_0_1());
+    	newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
     }
 )?(
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_1_0()); 
+	        newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_2_0()); 
 	    }
 		lv_class_4_0=ruleQualifiedName		{
 	        if ($current==null) {

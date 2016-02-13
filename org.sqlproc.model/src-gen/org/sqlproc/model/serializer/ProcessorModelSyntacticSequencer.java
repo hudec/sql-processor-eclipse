@@ -10,7 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -26,7 +25,7 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p;
 	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_2_0_p;
 	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p;
-	protected AbstractElementAlias match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q;
+	protected AbstractElementAlias match_PojoDefinitionModel_ColonKeyword_2_0_1_q;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -42,7 +41,7 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 		match_MetagenProperty_WSTerminalRuleCall_22_1_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_2_0());
 		match_MetagenProperty_WSTerminalRuleCall_22_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_0());
 		match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_2_0());
-		match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getColonColonKeyword_2_0_0_1()), new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0_0()));
+		match_PojoDefinitionModel_ColonKeyword_2_0_1_q = new TokenAlias(false, true, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -152,8 +151,8 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 				emit_MetagenProperty_WSTerminalRuleCall_22_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p.equals(syntax))
 				emit_MetagenProperty_WSTerminalRuleCall_22_2_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if(match_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q.equals(syntax))
-				emit_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if(match_PojoDefinitionModel_ColonKeyword_2_0_1_q.equals(syntax))
+				emit_PojoDefinitionModel_ColonKeyword_2_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if(match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
@@ -222,12 +221,12 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Ambiguous syntax:
-	 *     (':' | '::')?
+	 *     ':'?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name=ValidID (ambiguity) class=QualifiedName
+	 *     name=ValidID ':' (ambiguity) class=QualifiedName
 	 */
-	protected void emit_PojoDefinitionModel___ColonColonKeyword_2_0_0_1_or_ColonKeyword_2_0_0_0__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_PojoDefinitionModel_ColonKeyword_2_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

@@ -3872,20 +3872,19 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Group cGroup_2_0 = (Group)cAlternatives_2.eContents().get(0);
-		private final Alternatives cAlternatives_2_0_0 = (Alternatives)cGroup_2_0.eContents().get(0);
-		private final Keyword cColonKeyword_2_0_0_0 = (Keyword)cAlternatives_2_0_0.eContents().get(0);
-		private final Keyword cColonColonKeyword_2_0_0_1 = (Keyword)cAlternatives_2_0_0.eContents().get(1);
-		private final Assignment cClassAssignment_2_0_1 = (Assignment)cGroup_2_0.eContents().get(1);
-		private final RuleCall cClassQualifiedNameParserRuleCall_2_0_1_0 = (RuleCall)cClassAssignment_2_0_1.eContents().get(0);
+		private final Keyword cColonKeyword_2_0_0 = (Keyword)cGroup_2_0.eContents().get(0);
+		private final Keyword cColonKeyword_2_0_1 = (Keyword)cGroup_2_0.eContents().get(1);
+		private final Assignment cClassAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
+		private final RuleCall cClassQualifiedNameParserRuleCall_2_0_2_0 = (RuleCall)cClassAssignment_2_0_2.eContents().get(0);
 		private final Assignment cClassxAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
 		private final RuleCall cClassxJvmParameterizedTypeReferenceParserRuleCall_2_1_0 = (RuleCall)cClassxAssignment_2_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//PojoDefinitionModel:
-		//	"pojo" name=ValidID ((":" | "::")? class=QualifiedName | classx=JvmParameterizedTypeReference) ";";
+		//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=JvmParameterizedTypeReference) ";";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"pojo" name=ValidID ((":" | "::")? class=QualifiedName | classx=JvmParameterizedTypeReference) ";"
+		//"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=JvmParameterizedTypeReference) ";"
 		public Group getGroup() { return cGroup; }
 
 		//"pojo"
@@ -3897,26 +3896,23 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 
-		//(":" | "::")? class=QualifiedName | classx=JvmParameterizedTypeReference
+		//":" ":"? class=QualifiedName | classx=JvmParameterizedTypeReference
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
-		//(":" | "::")? class=QualifiedName
+		//":" ":"? class=QualifiedName
 		public Group getGroup_2_0() { return cGroup_2_0; }
 
-		//(":" | "::")?
-		public Alternatives getAlternatives_2_0_0() { return cAlternatives_2_0_0; }
-
 		//":"
-		public Keyword getColonKeyword_2_0_0_0() { return cColonKeyword_2_0_0_0; }
+		public Keyword getColonKeyword_2_0_0() { return cColonKeyword_2_0_0; }
 
-		//"::"
-		public Keyword getColonColonKeyword_2_0_0_1() { return cColonColonKeyword_2_0_0_1; }
+		//":"?
+		public Keyword getColonKeyword_2_0_1() { return cColonKeyword_2_0_1; }
 
 		//class=QualifiedName
-		public Assignment getClassAssignment_2_0_1() { return cClassAssignment_2_0_1; }
+		public Assignment getClassAssignment_2_0_2() { return cClassAssignment_2_0_2; }
 
 		//QualifiedName
-		public RuleCall getClassQualifiedNameParserRuleCall_2_0_1_0() { return cClassQualifiedNameParserRuleCall_2_0_1_0; }
+		public RuleCall getClassQualifiedNameParserRuleCall_2_0_2_0() { return cClassQualifiedNameParserRuleCall_2_0_2_0; }
 
 		//classx=JvmParameterizedTypeReference
 		public Assignment getClassxAssignment_2_1() { return cClassxAssignment_2_1; }
@@ -6956,7 +6952,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PojoDefinitionModel:
-	//	"pojo" name=ValidID ((":" | "::")? class=QualifiedName | classx=JvmParameterizedTypeReference) ";";
+	//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=JvmParameterizedTypeReference) ";";
 	public PojoDefinitionModelElements getPojoDefinitionModelAccess() {
 		return pPojoDefinitionModel;
 	}

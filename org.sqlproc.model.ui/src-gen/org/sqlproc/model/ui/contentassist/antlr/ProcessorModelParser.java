@@ -47,7 +47,6 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetagenPropertyAccess().getAlternatives(), "rule__MetagenProperty__Alternatives");
 					put(grammarAccess.getDaogenPropertyAccess().getAlternatives(), "rule__DaogenProperty__Alternatives");
 					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_2(), "rule__PojoDefinitionModel__Alternatives_2");
-					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_2_0_0(), "rule__PojoDefinitionModel__Alternatives_2_0_0");
 					put(grammarAccess.getAbstractEntityAccess().getAlternatives(), "rule__AbstractEntity__Alternatives");
 					put(grammarAccess.getImplementsExtendsDirectiveAccess().getAlternatives(), "rule__ImplementsExtendsDirective__Alternatives");
 					put(grammarAccess.getEntityAccess().getAlternatives(), "rule__Entity__Alternatives");
@@ -869,7 +868,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDaogenPropertyAccess().getNameAssignment_11_0(), "rule__DaogenProperty__NameAssignment_11_0");
 					put(grammarAccess.getDaogenPropertyAccess().getImplPckgAssignment_11_1(), "rule__DaogenProperty__ImplPckgAssignment_11_1");
 					put(grammarAccess.getPojoDefinitionModelAccess().getNameAssignment_1(), "rule__PojoDefinitionModel__NameAssignment_1");
-					put(grammarAccess.getPojoDefinitionModelAccess().getClassAssignment_2_0_1(), "rule__PojoDefinitionModel__ClassAssignment_2_0_1");
+					put(grammarAccess.getPojoDefinitionModelAccess().getClassAssignment_2_0_2(), "rule__PojoDefinitionModel__ClassAssignment_2_0_2");
 					put(grammarAccess.getPojoDefinitionModelAccess().getClassxAssignment_2_1(), "rule__PojoDefinitionModel__ClassxAssignment_2_1");
 					put(grammarAccess.getTableDefinitionModelAccess().getNameAssignment_1(), "rule__TableDefinitionModel__NameAssignment_1");
 					put(grammarAccess.getTableDefinitionModelAccess().getTableAssignment_2(), "rule__TableDefinitionModel__TableAssignment_2");
