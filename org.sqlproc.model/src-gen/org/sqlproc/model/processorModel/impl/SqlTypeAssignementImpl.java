@@ -25,6 +25,7 @@ import org.sqlproc.model.processorModel.ValueType;
  * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.impl.SqlTypeAssignementImpl#getSqlType <em>Sql Type</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.impl.SqlTypeAssignementImpl#getSqlSize <em>Sql Size</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.SqlTypeAssignementImpl#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -41,6 +42,26 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected ValueType sqlType;
+
+  /**
+   * The default value of the '{@link #getSqlSize() <em>Sql Size</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSqlSize()
+   * @generated
+   * @ordered
+   */
+  protected static final int SQL_SIZE_EDEFAULT = 0;
+
+  /**
+   * The cached value of the '{@link #getSqlSize() <em>Sql Size</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSqlSize()
+   * @generated
+   * @ordered
+   */
+  protected int sqlSize = SQL_SIZE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -126,6 +147,29 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  public int getSqlSize()
+  {
+    return sqlSize;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSqlSize(int newSqlSize)
+  {
+    int oldSqlSize = sqlSize;
+    sqlSize = newSqlSize;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE, oldSqlSize, sqlSize));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PojoType getType()
   {
     return type;
@@ -199,6 +243,8 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         return getSqlType();
+      case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        return getSqlSize();
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         return getType();
     }
@@ -217,6 +263,9 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         setSqlType((ValueType)newValue);
+        return;
+      case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        setSqlSize((Integer)newValue);
         return;
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         setType((PojoType)newValue);
@@ -238,6 +287,9 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         setSqlType((ValueType)null);
         return;
+      case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        setSqlSize(SQL_SIZE_EDEFAULT);
+        return;
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         setType((PojoType)null);
         return;
@@ -257,10 +309,29 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         return sqlType != null;
+      case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        return sqlSize != SQL_SIZE_EDEFAULT;
       case ProcessorModelPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (sqlSize: ");
+    result.append(sqlSize);
+    result.append(')');
+    return result.toString();
   }
 
 } //SqlTypeAssignementImpl

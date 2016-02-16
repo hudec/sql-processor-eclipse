@@ -22,7 +22,7 @@ DatabaseTypeAssignement: dbType=ValidID;
 DatabaseMetaInfoAssignement: dbMetaInfo=ValueType;
 DriverMetaInfoAssignement: dbDriverInfo=ValueType;
 DriverMethodOutputAssignement: driverMethod=ValidID '->' callOutput=ValueType;
-SqlTypeAssignement: sqlType=ValueType '->' type=PojoType;
+SqlTypeAssignement: sqlType=ValueType (LPAREN sqlSize = INT RPAREN)? '->' type=PojoType;
 ColumnTypeAssignement: dbColumn=ValidID '->' type=PojoType;
 ShowColumnTypeAssignement: dbColumn=ValidID '->' type=ValueType;
 TableAssignement: dbTable=ValidID '->' newName=ValidID;

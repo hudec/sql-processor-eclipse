@@ -388,6 +388,8 @@ public class ModelPropertyBean extends ModelProperty {
         if (POJOGEN_TYPE_SQLTYPES.equals(property.getName())) {
             for (int i = 0, m = property.getSqlTypes().size(); i < m; i++) {
                 String sqlType = Utils.getPropertyValue(property.getSqlTypes().get(i).getSqlType());
+                if (property.getSqlTypes().get(i).getSqlSize() != null)
+                    sqlType = sqlType + "(" + property.getSqlTypes().get(i).getSqlSize() + ")";
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(null, sqlType, property.getSqlTypes().get(i).getType());
                 modelValues.sqlTypes.put(sqlType, type);
             }
@@ -396,6 +398,8 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.tableTypes.put(property.getDbTable(), new HashMap<String, PojoAttrType>());
             for (int i = 0, m = property.getSqlTypes().size(); i < m; i++) {
                 String sqlType = Utils.getPropertyValue(property.getSqlTypes().get(i).getSqlType());
+                if (property.getSqlTypes().get(i).getSqlSize() != null)
+                    sqlType = sqlType + "(" + property.getSqlTypes().get(i).getSqlSize() + ")";
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(null, sqlType, property.getSqlTypes().get(i).getType());
                 modelValues.tableTypes.get(property.getDbTable()).put(sqlType, type);
             }

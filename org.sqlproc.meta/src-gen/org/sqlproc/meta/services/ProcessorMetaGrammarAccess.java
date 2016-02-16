@@ -477,15 +477,20 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cSqlTypeAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final RuleCall cSqlTypeValueTypeParserRuleCall_0_0 = (RuleCall)cSqlTypeAssignment_0.eContents().get(0);
-		private final Keyword cHyphenMinusGreaterThanSignKeyword_1 = (Keyword)cGroup.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cTypePojoTypeParserRuleCall_2_0 = (RuleCall)cTypeAssignment_2.eContents().get(0);
+		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
+		private final RuleCall cLPARENTerminalRuleCall_1_0 = (RuleCall)cGroup_1.eContents().get(0);
+		private final Assignment cSqlSizeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cSqlSizeNUMBERTerminalRuleCall_1_1_0 = (RuleCall)cSqlSizeAssignment_1_1.eContents().get(0);
+		private final RuleCall cRPARENTerminalRuleCall_1_2 = (RuleCall)cGroup_1.eContents().get(2);
+		private final Keyword cHyphenMinusGreaterThanSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cTypePojoTypeParserRuleCall_3_0 = (RuleCall)cTypeAssignment_3.eContents().get(0);
 		
 		//SqlTypeAssignement:
-		//	sqlType=ValueType "->" type=PojoType;
+		//	sqlType=ValueType (LPAREN sqlSize=NUMBER RPAREN)? "->" type=PojoType;
 		@Override public ParserRule getRule() { return rule; }
 
-		//sqlType=ValueType "->" type=PojoType
+		//sqlType=ValueType (LPAREN sqlSize=NUMBER RPAREN)? "->" type=PojoType
 		public Group getGroup() { return cGroup; }
 
 		//sqlType=ValueType
@@ -494,14 +499,29 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//ValueType
 		public RuleCall getSqlTypeValueTypeParserRuleCall_0_0() { return cSqlTypeValueTypeParserRuleCall_0_0; }
 
+		//(LPAREN sqlSize=NUMBER RPAREN)?
+		public Group getGroup_1() { return cGroup_1; }
+
+		//LPAREN
+		public RuleCall getLPARENTerminalRuleCall_1_0() { return cLPARENTerminalRuleCall_1_0; }
+
+		//sqlSize=NUMBER
+		public Assignment getSqlSizeAssignment_1_1() { return cSqlSizeAssignment_1_1; }
+
+		//NUMBER
+		public RuleCall getSqlSizeNUMBERTerminalRuleCall_1_1_0() { return cSqlSizeNUMBERTerminalRuleCall_1_1_0; }
+
+		//RPAREN
+		public RuleCall getRPARENTerminalRuleCall_1_2() { return cRPARENTerminalRuleCall_1_2; }
+
 		//"->"
-		public Keyword getHyphenMinusGreaterThanSignKeyword_1() { return cHyphenMinusGreaterThanSignKeyword_1; }
+		public Keyword getHyphenMinusGreaterThanSignKeyword_2() { return cHyphenMinusGreaterThanSignKeyword_2; }
 
 		//type=PojoType
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
 
 		//PojoType
-		public RuleCall getTypePojoTypeParserRuleCall_2_0() { return cTypePojoTypeParserRuleCall_2_0; }
+		public RuleCall getTypePojoTypeParserRuleCall_3_0() { return cTypePojoTypeParserRuleCall_3_0; }
 	}
 
 	public class ColumnTypeAssignementElements extends AbstractParserRuleElementFinder {
@@ -8326,7 +8346,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//SqlTypeAssignement:
-	//	sqlType=ValueType "->" type=PojoType;
+	//	sqlType=ValueType (LPAREN sqlSize=NUMBER RPAREN)? "->" type=PojoType;
 	public SqlTypeAssignementElements getSqlTypeAssignementAccess() {
 		return pSqlTypeAssignement;
 	}

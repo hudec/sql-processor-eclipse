@@ -22,7 +22,7 @@ DatabaseTypeAssignement: dbType=IDENT;
 DatabaseMetaInfoAssignement: dbMetaInfo=ValueType;
 DriverMetaInfoAssignement: dbDriverInfo=ValueType;
 DriverMethodOutputAssignement: driverMethod=IDENT '->' callOutput=ValueType;
-SqlTypeAssignement: sqlType=ValueType '->' type=PojoType;
+SqlTypeAssignement: sqlType=ValueType (LPAREN sqlSize = NUMBER RPAREN)? '->' type=PojoType;
 ColumnTypeAssignement: dbColumn=IDENT '->' type=PojoType;
 ShowColumnTypeAssignement: dbColumn=IDENT '->' type=ValueType;
 TableAssignement: dbTable=IDENT '->' newName=IDENT;

@@ -472,13 +472,22 @@ public interface ProcessorMetaPackage extends EPackage
   int SQL_TYPE_ASSIGNEMENT__SQL_TYPE = 0;
 
   /**
+   * The feature id for the '<em><b>Sql Size</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SQL_TYPE_ASSIGNEMENT__SQL_SIZE = 1;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int SQL_TYPE_ASSIGNEMENT__TYPE = 1;
+  int SQL_TYPE_ASSIGNEMENT__TYPE = 2;
 
   /**
    * The number of structural features of the '<em>Sql Type Assignement</em>' class.
@@ -487,7 +496,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int SQL_TYPE_ASSIGNEMENT_FEATURE_COUNT = 2;
+  int SQL_TYPE_ASSIGNEMENT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.ColumnTypeAssignementImpl <em>Column Type Assignement</em>}' class.
@@ -3893,6 +3902,17 @@ public interface ProcessorMetaPackage extends EPackage
   EReference getSqlTypeAssignement_SqlType();
 
   /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.meta.processorMeta.SqlTypeAssignement#getSqlSize <em>Sql Size</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Sql Size</em>'.
+   * @see org.sqlproc.meta.processorMeta.SqlTypeAssignement#getSqlSize()
+   * @see #getSqlTypeAssignement()
+   * @generated
+   */
+  EAttribute getSqlTypeAssignement_SqlSize();
+
+  /**
    * Returns the meta object for the containment reference '{@link org.sqlproc.meta.processorMeta.SqlTypeAssignement#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -7192,6 +7212,14 @@ public interface ProcessorMetaPackage extends EPackage
      * @generated
      */
     EReference SQL_TYPE_ASSIGNEMENT__SQL_TYPE = eINSTANCE.getSqlTypeAssignement_SqlType();
+
+    /**
+     * The meta object literal for the '<em><b>Sql Size</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute SQL_TYPE_ASSIGNEMENT__SQL_SIZE = eINSTANCE.getSqlTypeAssignement_SqlSize();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.

@@ -1133,20 +1133,10 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	
 	/**
 	 * Constraint:
-	 *     (sqlType=ValueType type=PojoType)
+	 *     (sqlType=ValueType sqlSize=NUMBER? type=PojoType)
 	 */
 	protected void sequence_SqlTypeAssignement(EObject context, SqlTypeAssignement semanticObject) {
-		if(errorAcceptor != null) {
-			if(transientValues.isValueTransient(semanticObject, ProcessorMetaPackage.Literals.SQL_TYPE_ASSIGNEMENT__SQL_TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProcessorMetaPackage.Literals.SQL_TYPE_ASSIGNEMENT__SQL_TYPE));
-			if(transientValues.isValueTransient(semanticObject, ProcessorMetaPackage.Literals.SQL_TYPE_ASSIGNEMENT__TYPE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, ProcessorMetaPackage.Literals.SQL_TYPE_ASSIGNEMENT__TYPE));
-		}
-		INodesForEObjectProvider nodes = createNodeProvider(semanticObject);
-		SequenceFeeder feeder = createSequencerFeeder(semanticObject, nodes);
-		feeder.accept(grammarAccess.getSqlTypeAssignementAccess().getSqlTypeValueTypeParserRuleCall_0_0(), semanticObject.getSqlType());
-		feeder.accept(grammarAccess.getSqlTypeAssignementAccess().getTypePojoTypeParserRuleCall_2_0(), semanticObject.getType());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

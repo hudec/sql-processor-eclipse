@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getSqlType <em>Sql Type</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getSqlSize <em>Sql Size</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -48,6 +49,32 @@ public interface SqlTypeAssignement extends EObject
    * @generated
    */
   void setSqlType(ValueType value);
+
+  /**
+   * Returns the value of the '<em><b>Sql Size</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Sql Size</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sql Size</em>' attribute.
+   * @see #setSqlSize(int)
+   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getSqlTypeAssignement_SqlSize()
+   * @model
+   * @generated
+   */
+  int getSqlSize();
+
+  /**
+   * Sets the value of the '{@link org.sqlproc.model.processorModel.SqlTypeAssignement#getSqlSize <em>Sql Size</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sql Size</em>' attribute.
+   * @see #getSqlSize()
+   * @generated
+   */
+  void setSqlSize(int value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.

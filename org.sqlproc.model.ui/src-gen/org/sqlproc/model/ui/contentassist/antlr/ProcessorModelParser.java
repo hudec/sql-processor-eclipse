@@ -104,6 +104,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojoTypeAccess().getGroup_1(), "rule__PojoType__Group_1__0");
 					put(grammarAccess.getDriverMethodOutputAssignementAccess().getGroup(), "rule__DriverMethodOutputAssignement__Group__0");
 					put(grammarAccess.getSqlTypeAssignementAccess().getGroup(), "rule__SqlTypeAssignement__Group__0");
+					put(grammarAccess.getSqlTypeAssignementAccess().getGroup_1(), "rule__SqlTypeAssignement__Group_1__0");
 					put(grammarAccess.getColumnTypeAssignementAccess().getGroup(), "rule__ColumnTypeAssignement__Group__0");
 					put(grammarAccess.getShowColumnTypeAssignementAccess().getGroup(), "rule__ShowColumnTypeAssignement__Group__0");
 					put(grammarAccess.getTableAssignementAccess().getGroup(), "rule__TableAssignement__Group__0");
@@ -563,7 +564,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDriverMethodOutputAssignementAccess().getDriverMethodAssignment_0(), "rule__DriverMethodOutputAssignement__DriverMethodAssignment_0");
 					put(grammarAccess.getDriverMethodOutputAssignementAccess().getCallOutputAssignment_2(), "rule__DriverMethodOutputAssignement__CallOutputAssignment_2");
 					put(grammarAccess.getSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__SqlTypeAssignement__SqlTypeAssignment_0");
-					put(grammarAccess.getSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__SqlTypeAssignement__TypeAssignment_2");
+					put(grammarAccess.getSqlTypeAssignementAccess().getSqlSizeAssignment_1_1(), "rule__SqlTypeAssignement__SqlSizeAssignment_1_1");
+					put(grammarAccess.getSqlTypeAssignementAccess().getTypeAssignment_3(), "rule__SqlTypeAssignement__TypeAssignment_3");
 					put(grammarAccess.getColumnTypeAssignementAccess().getDbColumnAssignment_0(), "rule__ColumnTypeAssignement__DbColumnAssignment_0");
 					put(grammarAccess.getColumnTypeAssignementAccess().getTypeAssignment_2(), "rule__ColumnTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getShowColumnTypeAssignementAccess().getDbColumnAssignment_0(), "rule__ShowColumnTypeAssignement__DbColumnAssignment_0");

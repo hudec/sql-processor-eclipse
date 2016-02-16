@@ -25,6 +25,7 @@ import org.sqlproc.meta.processorMeta.ValueType;
  * </p>
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlTypeAssignementImpl#getSqlType <em>Sql Type</em>}</li>
+ *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlTypeAssignementImpl#getSqlSize <em>Sql Size</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.SqlTypeAssignementImpl#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -41,6 +42,26 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
    * @ordered
    */
   protected ValueType sqlType;
+
+  /**
+   * The default value of the '{@link #getSqlSize() <em>Sql Size</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSqlSize()
+   * @generated
+   * @ordered
+   */
+  protected static final String SQL_SIZE_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getSqlSize() <em>Sql Size</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSqlSize()
+   * @generated
+   * @ordered
+   */
+  protected String sqlSize = SQL_SIZE_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
@@ -126,6 +147,29 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
    * <!-- end-user-doc -->
    * @generated
    */
+  public String getSqlSize()
+  {
+    return sqlSize;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setSqlSize(String newSqlSize)
+  {
+    String oldSqlSize = sqlSize;
+    sqlSize = newSqlSize;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE, oldSqlSize, sqlSize));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PojoType getType()
   {
     return type;
@@ -199,6 +243,8 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         return getSqlType();
+      case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        return getSqlSize();
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         return getType();
     }
@@ -217,6 +263,9 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         setSqlType((ValueType)newValue);
+        return;
+      case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        setSqlSize((String)newValue);
         return;
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         setType((PojoType)newValue);
@@ -238,6 +287,9 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         setSqlType((ValueType)null);
         return;
+      case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        setSqlSize(SQL_SIZE_EDEFAULT);
+        return;
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         setType((PojoType)null);
         return;
@@ -257,10 +309,29 @@ public class SqlTypeAssignementImpl extends MinimalEObjectImpl.Container impleme
     {
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_TYPE:
         return sqlType != null;
+      case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__SQL_SIZE:
+        return SQL_SIZE_EDEFAULT == null ? sqlSize != null : !SQL_SIZE_EDEFAULT.equals(sqlSize);
       case ProcessorMetaPackage.SQL_TYPE_ASSIGNEMENT__TYPE:
         return type != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuffer result = new StringBuffer(super.toString());
+    result.append(" (sqlSize: ");
+    result.append(sqlSize);
+    result.append(')');
+    return result.toString();
   }
 
 } //SqlTypeAssignementImpl

@@ -52,6 +52,7 @@
     </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//SqlTypeAssignement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//SqlTypeAssignement/sqlType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//SqlTypeAssignement/sqlSize"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//SqlTypeAssignement/type"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//ColumnTypeAssignement">
