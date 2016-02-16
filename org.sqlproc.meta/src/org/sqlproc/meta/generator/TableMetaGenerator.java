@@ -252,85 +252,77 @@ public class TableMetaGenerator extends TableBaseGenerator {
     }
 
     public String getMetaDefinitions() {
-        try {
-            debug.debug("pojos " + this.pojos);
-            debug.debug("pojoExtends " + this.pojoExtends);
-            debug.debug("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
-            debug.debug("pojoInheritanceSimple " + this.pojoInheritanceSimple);
-            debug.debug("pojoDiscriminators " + this.pojoDiscriminators);
-            debug.debug("indexes " + this.indexes);
-            debug.debug("procedures " + this.procedures);
-            debug.debug("functions " + this.functions);
+        debug.debug("pojos " + this.pojos);
+        debug.debug("pojoExtends " + this.pojoExtends);
+        debug.debug("pojoInheritanceDiscriminator " + this.pojoInheritanceDiscriminator);
+        debug.debug("pojoInheritanceSimple " + this.pojoInheritanceSimple);
+        debug.debug("pojoDiscriminators " + this.pojoDiscriminators);
+        debug.debug("indexes " + this.indexes);
+        debug.debug("procedures " + this.procedures);
+        debug.debug("functions " + this.functions);
 
-            if (metaGenerateSequences && dbType == DbType.MY_SQL) {
-                for (String pojo : pojos.keySet()) {
-                    metaSequenceDefinition(pojo, null, sequences);
-                }
-            }
-            if (metaGenerateIdentities && dbType == DbType.POSTGRESQL) {
-                for (String pojo : pojos.keySet()) {
-                    String primaryKey = getPrimaryKey(pojo);
-                    if (primaryKey != null)
-                        metaIdentityDefinition(pojo, primaryKey, identities);
-                }
-            }
-
-            StringBuilder buffer = new StringBuilder();
-            if (sequences != null && MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT)) {
-                for (StringBuilder sequence : sequences.values()) {
-                    buffer.append(sequence);
-                }
-            }
-            if (identities != null && MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT)) {
-                for (StringBuilder identity : identities.values()) {
-                    buffer.append(identity);
-                }
-            }
+        if (metaGenerateSequences && dbType == DbType.MY_SQL) {
             for (String pojo : pojos.keySet()) {
-                if (!onlyTables.isEmpty() && !onlyTables.contains(pojo))
-                    continue;
+                metaSequenceDefinition(pojo, null, sequences);
+            }
+        }
+        if (metaGenerateIdentities && dbType == DbType.POSTGRESQL) {
+            for (String pojo : pojos.keySet()) {
+                String primaryKey = getPrimaryKey(pojo);
+                if (primaryKey != null)
+                    metaIdentityDefinition(pojo, primaryKey, identities);
+            }
+        }
+
+        StringBuilder buffer = new StringBuilder();
+        if (sequences != null && MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT)) {
+            for (StringBuilder sequence : sequences.values()) {
+                buffer.append(sequence);
+            }
+        }
+        if (identities != null && MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT)) {
+            for (StringBuilder identity : identities.values()) {
+                buffer.append(identity);
+            }
+        }
+        for (String pojo : pojos.keySet()) {
+            if (!onlyTables.isEmpty() && !onlyTables.contains(pojo))
+                continue;
+            if (ignoreTables.contains(pojo))
+                continue;
+            if (pojoInheritanceDiscriminator.containsKey(pojo))
+                continue;
+            if (metaProceduresResultSet.values().contains(pojo) && !tables.contains(pojo))
+                continue;
+            if (!MetaFilter.isTable(metaActiveFilter, pojo))
+                continue;
+            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT))
+                buffer.append(metaInsertDefinition(pojo));
+            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_GET))
+                buffer.append(metaGetSelectDefinition(pojo, false));
+            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_UPDATE))
+                buffer.append(metaUpdateDefinition(pojo));
+            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_DELETE))
+                buffer.append(metaDeleteDefinition(pojo));
+            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_SELECT))
+                buffer.append(metaGetSelectDefinition(pojo, true));
+        }
+        if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_CALL)) {
+            for (String pojo : procedures.keySet()) {
                 if (ignoreTables.contains(pojo))
                     continue;
-                if (pojoInheritanceDiscriminator.containsKey(pojo))
-                    continue;
-                if (metaProceduresResultSet.values().contains(pojo) && !tables.contains(pojo))
-                    continue;
-                if (!MetaFilter.isTable(metaActiveFilter, pojo))
-                    continue;
-                if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_INSERT))
-                    buffer.append(metaInsertDefinition(pojo));
-                if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_GET))
-                    buffer.append(metaGetSelectDefinition(pojo, false));
-                if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_UPDATE))
-                    buffer.append(metaUpdateDefinition(pojo));
-                if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_DELETE))
-                    buffer.append(metaDeleteDefinition(pojo));
-                if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_SELECT))
-                    buffer.append(metaGetSelectDefinition(pojo, true));
+                boolean isFunction = functions.containsKey(pojo);
+                buffer.append(metaCallProcedureDefinition(pojo, isFunction));
             }
-            if (MetaFilter.isGenerate(metaActiveFilter, MetaFilter.ONLY_CALL)) {
-                for (String pojo : procedures.keySet()) {
-                    if (ignoreTables.contains(pojo))
-                        continue;
-                    boolean isFunction = functions.containsKey(pojo);
-                    buffer.append(metaCallProcedureDefinition(pojo, isFunction));
-                }
-                for (String pojo : functions.keySet()) {
-                    if (ignoreTables.contains(pojo))
-                        continue;
-                    if (procedures.containsKey(pojo))
-                        continue;
-                    buffer.append(metaCallFunctionDefinition(pojo));
-                }
+            for (String pojo : functions.keySet()) {
+                if (ignoreTables.contains(pojo))
+                    continue;
+                if (procedures.containsKey(pojo))
+                    continue;
+                buffer.append(metaCallFunctionDefinition(pojo));
             }
-            return buffer.toString();
-        } catch (RuntimeException ex) {
-            Writer writer = new StringWriter();
-            PrintWriter printWriter = new PrintWriter(writer);
-            ex.printStackTrace(printWriter);
-            String s = writer.toString();
-            return s;
         }
+        return buffer.toString();
     }
 
     StringBuilder metaInsertDefinition(String pojo) {
@@ -2195,8 +2187,16 @@ public class TableMetaGenerator extends TableBaseGenerator {
         DbType dbType = Utils.getDbType(dbResolver, artifacts);
         TableMetaGenerator generator = new TableMetaGenerator(modelProperty, artifacts, scopeProvider, finalMetas,
                 dbSequences, dbType);
-        if (generator.addDefinitions(dbResolver, scopeProvider, stats))
-            return generator.getMetaDefinitions(modelProperty, artifacts);
+        try {
+            if (generator.addDefinitions(dbResolver, scopeProvider, stats))
+                return generator.getMetaDefinitions(modelProperty, artifacts);
+        } catch (RuntimeException ex) {
+            Writer writer = new StringWriter();
+            PrintWriter printWriter = new PrintWriter(writer);
+            ex.printStackTrace(printWriter);
+            String s = writer.toString();
+            return s;
+        }
         return null;
     }
 }

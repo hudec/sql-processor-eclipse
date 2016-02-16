@@ -1518,75 +1518,70 @@ public class TableBaseGenerator {
     }
 
     protected boolean addDefinitions(DbResolver dbResolver, IScopeProvider scopeProvider, Stats stats) {
-        try {
-            for (TableDefinition _table : modelTables.values()) {
-                String table = _table.getTable();
-                if (table == null)
-                    continue;
-                if (table.toUpperCase().startsWith("BIN$"))
-                    continue;
-                if (!dbResolver.checkTable(model, table))
-                    continue;
-                List<DbColumn> dbColumns = dbResolver.getDbColumns(model, table);
-                if (dbColumns.isEmpty())
-                    continue;
-                stats.tables += 1;
-                stats.columns += dbColumns.size();
-                List<String> dbPrimaryKeys = dbResolver.getDbPrimaryKeys(model, table);
-                stats.primaryKeys += dbPrimaryKeys.size();
-                List<DbExport> dbExports = dbResolver.getDbExports(model, table);
-                stats.exports += dbExports.size();
-                List<DbImport> dbImports = dbResolver.getDbImports(model, table);
-                stats.imports += dbImports.size();
-                List<DbIndex> dbIndexes = dbResolver.getDbIndexes(model, table);
-                stats.indexes += dbIndexes.size();
-                List<DbTable> ltables = dbResolver.getDbTables(model, table);
-                String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
-                List<DbCheckConstraint> dbCheckConstraints = dbResolver.getDbCheckConstraints(model, table);
-                stats.checkConstraints += dbCheckConstraints.size();
-                addTableDefinition(table, dbColumns, dbPrimaryKeys, dbExports, dbImports, dbIndexes, dbCheckConstraints,
-                        comment);
-            }
-            // converter.resolveReferencesOnConvention();
-            resolveReferencesOnKeys();
-            joinTables();
-            for (ProcedureDefinition _procedure : modelProcedures.values()) {
-                String procedure = _procedure.getProcedure();
-                if (procedure == null)
-                    continue;
-                if (procedure.toUpperCase().startsWith("BIN$"))
-                    continue;
-                List<DbTable> dbProcedures = dbResolver.getDbProcedures(model, procedure);
-                if (dbProcedures.isEmpty())
-                    continue;
-                stats.procedures += 1;
-                List<DbColumn> dbProcColumns = dbResolver.getDbProcColumns(model, procedure);
-                stats.procColumns += dbProcColumns.size();
-                List<DbTable> ltables = dbResolver.getDbProcedures(model, procedure);
-                String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
-                addProcedureDefinition(procedure, dbProcedures.get(0), dbProcColumns,
-                        modelFunctions.containsKey(_procedure.getName()), comment);
-            }
-            for (FunctionDefinition _function : modelFunctions.values()) {
-                String function = _function.getFunction();
-                if (function == null)
-                    continue;
-                if (function.toUpperCase().startsWith("BIN$"))
-                    continue;
-                List<DbTable> dbFunctions = dbResolver.getDbFunctions(model, function);
-                if (dbFunctions.isEmpty())
-                    continue;
-                stats.functions += 1;
-                List<DbColumn> dbFunColumns = dbResolver.getDbFunColumns(model, function);
-                stats.funColumns += dbFunColumns.size();
-                List<DbTable> ltables = dbResolver.getDbFunctions(model, function);
-                String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
-                addFunctionDefinition(function, dbFunctions.get(0), dbFunColumns, comment);
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
+        for (TableDefinition _table : modelTables.values()) {
+            String table = _table.getTable();
+            if (table == null)
+                continue;
+            if (table.toUpperCase().startsWith("BIN$"))
+                continue;
+            if (!dbResolver.checkTable(model, table))
+                continue;
+            List<DbColumn> dbColumns = dbResolver.getDbColumns(model, table);
+            if (dbColumns.isEmpty())
+                continue;
+            stats.tables += 1;
+            stats.columns += dbColumns.size();
+            List<String> dbPrimaryKeys = dbResolver.getDbPrimaryKeys(model, table);
+            stats.primaryKeys += dbPrimaryKeys.size();
+            List<DbExport> dbExports = dbResolver.getDbExports(model, table);
+            stats.exports += dbExports.size();
+            List<DbImport> dbImports = dbResolver.getDbImports(model, table);
+            stats.imports += dbImports.size();
+            List<DbIndex> dbIndexes = dbResolver.getDbIndexes(model, table);
+            stats.indexes += dbIndexes.size();
+            List<DbTable> ltables = dbResolver.getDbTables(model, table);
+            String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
+            List<DbCheckConstraint> dbCheckConstraints = dbResolver.getDbCheckConstraints(model, table);
+            stats.checkConstraints += dbCheckConstraints.size();
+            addTableDefinition(table, dbColumns, dbPrimaryKeys, dbExports, dbImports, dbIndexes, dbCheckConstraints,
+                    comment);
         }
+        // converter.resolveReferencesOnConvention();
+        resolveReferencesOnKeys();
+        joinTables();
+        for (ProcedureDefinition _procedure : modelProcedures.values()) {
+            String procedure = _procedure.getProcedure();
+            if (procedure == null)
+                continue;
+            if (procedure.toUpperCase().startsWith("BIN$"))
+                continue;
+            List<DbTable> dbProcedures = dbResolver.getDbProcedures(model, procedure);
+            if (dbProcedures.isEmpty())
+                continue;
+            stats.procedures += 1;
+            List<DbColumn> dbProcColumns = dbResolver.getDbProcColumns(model, procedure);
+            stats.procColumns += dbProcColumns.size();
+            List<DbTable> ltables = dbResolver.getDbProcedures(model, procedure);
+            String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
+            addProcedureDefinition(procedure, dbProcedures.get(0), dbProcColumns,
+                    modelFunctions.containsKey(_procedure.getName()), comment);
+        }
+        for (FunctionDefinition _function : modelFunctions.values()) {
+            String function = _function.getFunction();
+            if (function == null)
+                continue;
+            if (function.toUpperCase().startsWith("BIN$"))
+                continue;
+            List<DbTable> dbFunctions = dbResolver.getDbFunctions(model, function);
+            if (dbFunctions.isEmpty())
+                continue;
+            stats.functions += 1;
+            List<DbColumn> dbFunColumns = dbResolver.getDbFunColumns(model, function);
+            stats.funColumns += dbFunColumns.size();
+            List<DbTable> ltables = dbResolver.getDbFunctions(model, function);
+            String comment = (ltables != null && !ltables.isEmpty()) ? ltables.get(0).getComment() : null;
+            addFunctionDefinition(function, dbFunctions.get(0), dbFunColumns, comment);
+        }
+        return true;
     }
 }
