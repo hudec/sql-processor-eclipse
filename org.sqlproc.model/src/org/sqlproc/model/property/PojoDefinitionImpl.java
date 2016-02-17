@@ -1,6 +1,7 @@
 package org.sqlproc.model.property;
 
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.plugin.lib.property.PojoDefinition;
 
 public class PojoDefinitionImpl implements PojoDefinition {
@@ -9,11 +10,13 @@ public class PojoDefinitionImpl implements PojoDefinition {
     String clazz;
     JvmParameterizedTypeReference classx;
 
-    public PojoDefinitionImpl(String name, String clazz, JvmParameterizedTypeReference classx) {
+    public PojoDefinitionImpl(PojoDefinitionModel model) {
         super();
-        this.name = name;
-        this.clazz = clazz;
-        this.classx = classx;
+        if (model != null) {
+            this.name = model.getName();
+            this.clazz = model.getClass_();
+            this.classx = model.getClassx();
+        }
     }
 
     @Override
@@ -26,9 +29,9 @@ public class PojoDefinitionImpl implements PojoDefinition {
         return clazz;
     }
 
-    public JvmParameterizedTypeReference getClassx() {
-        return classx;
-    }
+    // public JvmParameterizedTypeReference getClassx() {
+    // return classx;
+    // }
 
     @Override
     public String getQualifiedName() {

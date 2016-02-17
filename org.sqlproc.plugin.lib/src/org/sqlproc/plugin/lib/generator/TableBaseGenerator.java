@@ -26,7 +26,6 @@ import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
-import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
 import org.sqlproc.plugin.lib.property.ProcedureDefinition;
 import org.sqlproc.plugin.lib.property.TableDefinition;
@@ -146,7 +145,7 @@ public class TableBaseGenerator {
     protected Map<String, String> metaFunctionsResultSet = new HashMap<String, String>();
     protected Map<String, String> metaProceduresResultSet = new HashMap<String, String>();
 
-    protected Map<String, PojoDefinition> modelPojos = new TreeMap<String, PojoDefinition>();
+    // protected Map<String, PojoDefinition> modelPojos = new TreeMap<String, PojoDefinition>();
     protected Map<String, TableDefinition> modelTables = new TreeMap<String, TableDefinition>();
     protected Map<String, ProcedureDefinition> modelProcedures = new TreeMap<String, ProcedureDefinition>();
     protected Map<String, FunctionDefinition> modelFunctions = new TreeMap<String, FunctionDefinition>();
@@ -337,10 +336,10 @@ public class TableBaseGenerator {
             this.metaProceduresResultSet.putAll(metaProceduresResultSet);
         }
 
-        Map<String, PojoDefinition> modelPojos = modelProperty.getModelPojos(model);
-        if (modelPojos != null) {
-            this.modelPojos.putAll(modelPojos);
-        }
+        // Map<String, PojoDefinition> modelPojos = modelProperty.getModelPojos(model);
+        // if (modelPojos != null) {
+        // this.modelPojos.putAll(modelPojos);
+        // }
         Map<String, TableDefinition> modelTables = modelProperty.getModelTables(model);
         if (modelTables != null) {
             this.modelTables.putAll(modelTables);
@@ -404,7 +403,7 @@ public class TableBaseGenerator {
         debug.debug("notVersionColumns " + this.notVersionColumns);
         debug.debug("activeFilter " + this.activeFilter);
         debug.debug("enumForCheckConstraints " + this.enumForCheckConstraints);
-        debug.debug("modelPojos " + this.modelPojos);
+        // debug.debug("modelPojos " + this.modelPojos);
         debug.debug("modelTables " + this.modelTables);
         debug.debug("modelProcedures " + this.modelProcedures);
         debug.debug("modelFunctions " + this.modelFunctions);

@@ -30,7 +30,6 @@ import org.sqlproc.model.processorModel.DaoEntity
 import org.sqlproc.model.processorModel.PojoAttribute
 import org.sqlproc.model.processorModel.Entity
 import org.sqlproc.plugin.lib.util.CommonUtils
-import org.sqlproc.model.processorModel.PojoDefinitionModel
 
 /**
  * Custom validation rules. 
@@ -59,10 +58,10 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
     	if (CommonUtils.skipVerification(pojoDefinition, modelProperty))
             return;
     	
-    	val URI uri = pojoDefinition.eResource?.URI
-        if (isResolvePojo(pojoDefinition) && !checkClass(getClass(pojoDefinition), uri))
-            error("Class name : " + getClass(pojoDefinition) + " not exists",
-                    ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
+//    	val URI uri = pojoDefinition.eResource?.URI
+//        if (isResolvePojo(pojoDefinition) && !checkClass(getClass(pojoDefinition), uri))
+//            error("Class name : " + getClass(pojoDefinition) + " not exists",
+//                    ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
         val artifacts = getArtifacts(pojoDefinition)
         if (artifacts == null)
             return;
@@ -97,11 +96,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         return dbResolver.isResolveDb(model)
     }
 
-    def String getClass(PojoDefinitionModel pojo) {
-        if (pojo.getClassx() != null)
-            return pojo.getClassx().getQualifiedName()
-        return pojo.getClass_()
-    }
+//    def String getClass(PojoDefinitionModel pojo) {
+//        if (pojo.getClassx() != null)
+//            return pojo.getClassx().getQualifiedName()
+//        return pojo.getClass_()
+//    }
 
 
     @Check

@@ -206,8 +206,7 @@ public class ModelPropertyBean extends ModelProperty {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelPojos.put(pojo.getName(),
-                        new PojoDefinitionImpl(pojo.getName(), pojo.getClass_(), pojo.getClassx()));
+                modelValues.modelPojos.put(pojo.getName(), new PojoDefinitionImpl(pojo));
             }
             for (TableDefinitionModel table : artifacts.getTables()) {
                 if (firstModel) {
