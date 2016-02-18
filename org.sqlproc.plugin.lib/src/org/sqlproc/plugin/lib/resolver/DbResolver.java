@@ -15,8 +15,8 @@ public interface DbResolver {
     public static final String IGNORE = "@Ignore";
 
     public enum DbType {
-        ORACLE("Oracle"), MY_SQL("MySQL"), HSQLDB("HSQLDB"), POSTGRESQL("PostgreSQL"), INFORMIX("Informix"), DB2("DB2"), MS_SQL(
-                "MSSQL");
+        ORACLE("Oracle"), MY_SQL("MySQL"), HSQLDB("HSQLDB"), POSTGRESQL("PostgreSQL"), INFORMIX("Informix"), DB2(
+                "DB2"), MS_SQL("MSSQL"), H2("H2");
         private static Map<String, DbType> identifierMap = new HashMap<String, DbType>();
 
         static {
@@ -24,6 +24,7 @@ public interface DbResolver {
                 identifierMap.put(value.getValue(), value);
             }
         }
+
         private String value;
 
         private DbType(String value) {

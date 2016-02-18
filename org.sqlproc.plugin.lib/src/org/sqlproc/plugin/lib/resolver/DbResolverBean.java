@@ -2241,6 +2241,16 @@ public class DbResolverBean implements DbResolver {
                 if (check != null)
                     mapOfCheckConstraints.put(constraintName, check);
             }
+        } else if (dbType == DbType.H2) {
+            String query = "select TABLE_NAME, CONSTRAINT_NAME, CHECK_EXPRESSION from INFORMATION_SCHEMA.CONSTRAINTS where CONSTRAINT_TYPE = 'CHECK' and TABLE_NAME = ?";
+            String query2 = "select TABLE_NAME, CONSTRAINT_NAME, CHECK_EXPRESSION from INFORMATION_SCHEMA.CONSTRAINTS where CONSTRAINT_TYPE = 'CHECK'";
+            Map<String, List<String>> map = getCheckConstraints(modelDatabaseValues, table, query, query2, false);
+            for (String constraintName : map.keySet()) {
+                DbCheckConstraint check = DbCheckConstraint.parseH2(constraintName, map.get(constraintName).get(0),
+                        map.get(constraintName).get(1));
+                if (check != null)
+                    mapOfCheckConstraints.put(constraintName, check);
+            }
         } else if (dbType == DbType.ORACLE) {
             String query = "select TABLE_NAME, CONSTRAINT_NAME, SEARCH_CONDITION from USER_CONSTRAINTS where TABLE_NAME not like 'BIN%' and CONSTRAINT_TYPE = 'C' and TABLE_NAME = ?";
             String query2 = "select TABLE_NAME, CONSTRAINT_NAME, SEARCH_CONDITION from USER_CONSTRAINTS where TABLE_NAME not like 'BIN%' and CONSTRAINT_TYPE = 'C'";

@@ -91,6 +91,39 @@ public class DbCheckConstraint {
         return null;
     }
 
+    static final Pattern H2_CHECK = Pattern.compile("(?i)\\((.*)\\s*IN\\s*\\(('?.*?'?\\s*,'?.*?'?\\s*)\\)*");
+
+    public static DbCheckConstraint parseH2(String name, String clause, String relTable) {
+        // (TYPE IN(0, 1, 2))
+        // (GENDER IN('M', 'F')
+        Matcher matcher = H2_CHECK.matcher(clause);
+        if (matcher.matches()) {
+            String[] names = matcher.group(1).trim().split("\\.");
+            String relCol = names[names.length - 1];
+            String enumName = relTable + "_" + relCol;
+            String[] constraintValues = matcher.group(2).trim().split(",");
+            List<String> values = new ArrayList<String>();
+            for (int j = 0; j < constraintValues.length; j++) {
+                String value = constraintValues[j].trim();
+                value = value.replaceAll("'|\\(|\\)", "");
+                values.add(value);
+            }
+            DbCheckConstraint dbCheckConstraint = new DbCheckConstraint();
+            dbCheckConstraint.setConstraintName(name);
+            dbCheckConstraint.setCheckClause(clause);
+            dbCheckConstraint.setEnumName(enumName);
+            dbCheckConstraint.setValues(values);
+            dbCheckConstraint.setTable(relTable);
+            dbCheckConstraint.setColumn(relCol);
+            return dbCheckConstraint;
+        }
+        return null;
+    }
+
+    public static void main(String args[]) {
+        parseH2("", "(TYPE IN(0, 1, 2))", "CONTACT");
+    }
+
     static final Pattern ORACLE_CHECK = Pattern
             .compile("(?i)(.*\\s*IS NULL OR\\s*\\()?([^\\)]*)\\s*IN\\s*\\(('?.*?'?,'?.*?'?)\\)\\)*");
 
