@@ -1895,6 +1895,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         String sequence = null;
         if (dbType == DbType.HSQLDB) {
             sequence = substituteName(SqlFeature.HSQLDB_DEFAULT_SEQ, sequenceName);
+        } else if (dbType == DbType.H2) {
+            sequence = substituteName(SqlFeature.H2_DEFAULT_SEQ, sequenceName);
         } else if (dbType == DbType.ORACLE) {
             sequence = substituteName(SqlFeature.ORACLE_DEFAULT_SEQ, sequenceName);
         } else if (dbType == DbType.POSTGRESQL) {
@@ -1934,6 +1936,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         String identity2 = null;
         if (dbType == DbType.HSQLDB) {
             identity = substituteName(SqlFeature.HSQLDB_DEFAULT_IDSEL, identityName);
+        } else if (dbType == DbType.H2) {
+            identity = substituteName(SqlFeature.H2_DEFAULT_IDSEL, identityName);
         } else if (dbType == DbType.MY_SQL) {
             identity = substituteName(SqlFeature.MYSQL_DEFAULT_IDSEL, identityName);
         } else if (dbType == DbType.INFORMIX) {

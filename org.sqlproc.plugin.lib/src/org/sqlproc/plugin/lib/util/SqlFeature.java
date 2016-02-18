@@ -9,6 +9,11 @@ public interface SqlFeature {
      */
     public static final String HSQLDB_DEFAULT_SEQ = "call next value for $n";
     /**
+     * <code>H2_DEFAULT_SEQ</code> is the default value related to the key <code>SEQ</code> in the case the filter value
+     * <code>H2</code> is used for the {@link SqlProcessorLoader} instance creation.
+     */
+    public static final String H2_DEFAULT_SEQ = "call next value for $n";
+    /**
      * <code>MYSQL_DEFAULT_SEQ</code> is the default value related to the key <code>SEQ</code> in the case the filter
      * value <code>MYSQL</code> is used for the {@link SqlProcessorLoader} instance creation.
      */
@@ -54,6 +59,11 @@ public interface SqlFeature {
      * filter value <code>HSQLDB</code> is used for the {@link SqlProcessorLoader} instance creation.
      */
     public static final String HSQLDB_DEFAULT_IDSEL = "call identity()";
+    /**
+     * <code>H2_DEFAULT_IDSEL</code> is the default value related to the key <code>IDSEL</code> in the case the filter
+     * value <code>H2</code> is used for the {@link SqlProcessorLoader} instance creation.
+     */
+    public static final String H2_DEFAULT_IDSEL = "call identity()";
     /**
      * <code>MYSQL_DEFAULT_IDSEL</code> is the default value related to the key <code>IDSEL</code> in the case the
      * filter value <code>MYSQL</code> is used for the {@link SqlProcessorLoader} instance creation.
