@@ -10,15 +10,22 @@ public class PojoDefinitionImpl implements PojoDefinition {
     String clazz;
     JvmParameterizedTypeReference classx;
 
-    public PojoDefinitionImpl(PojoDefinitionModel model) {
+    public PojoDefinitionImpl(PojoDefinitionModel model, PojoDefinition oldModel) {
         super();
         if (model != null) {
             this.name = model.getName();
-            System.out.println("MODEL name " + name);
+            System.out.println("model.name " + name);
             this.clazz = model.getClass_();
-            System.out.println("MODEL clazz " + clazz);
+            System.out.println("model.clazz " + clazz);
             this.classx = model.getClassx();
-            System.out.println("MODEL classx " + classx);
+            System.out.println("model.classx " + classx);
+            if (classx != null && oldModel != null && (oldModel instanceof PojoDefinitionImpl)
+                    && ((PojoDefinitionImpl) oldModel).classx != null) {
+                if (classx.toString().indexOf("JvmVoid") >= 0) {
+                    classx = ((PojoDefinitionImpl) oldModel).classx;
+                    System.out.println("model.old.classx " + classx);
+                }
+            }
         }
     }
 

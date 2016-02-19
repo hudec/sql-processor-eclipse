@@ -20,12 +20,19 @@ public class PojoDefinitionImpl implements PojoDefinition {
     public PojoDefinitionImpl(PojoDefinitionModel model, PojoDefinition oldModel) {
         super();
         if (model != null) {
-            this.name = model.getName();
-            System.out.println("META name " + name);
-            this.clazz = model.getClass_();
-            System.out.println("META clazz " + clazz);
-            this.classx = model.getClassx();
-            System.out.println("META classx " + classx);
+            name = model.getName();
+            System.out.println("meta.name " + name);
+            clazz = model.getClass_();
+            System.out.println("meta.clazz " + clazz);
+            classx = model.getClassx();
+            System.out.println("meta.classx " + classx);
+            if (classx != null && oldModel != null && (oldModel instanceof PojoDefinitionImpl)
+                    && ((PojoDefinitionImpl) oldModel).classx != null) {
+                if (classx.toString().indexOf("JvmVoid") >= 0) {
+                    classx = ((PojoDefinitionImpl) oldModel).classx;
+                    System.out.println("meta.old.classx " + classx);
+                }
+            }
         }
     }
 
