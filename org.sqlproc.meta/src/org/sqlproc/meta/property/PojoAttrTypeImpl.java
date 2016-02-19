@@ -24,10 +24,10 @@ public class PojoAttrTypeImpl implements PojoAttrType {
         this.type = pojoType.getType();
         // JvmPrimitiveTypeImplCustom
         this.nativeType = (type != null && type instanceof JvmPrimitiveType) ? true : false;
-        this.ref = (pojoType.getRef() != null) ? new PojoDefinitionImpl(pojoType.getRef()) : null;
+        this.ref = (pojoType.getRef() != null) ? new PojoDefinitionImpl(pojoType.getRef(), null) : null;
         this.array = pojoType.isArray();
         this.gtype = pojoType.getGtype();
-        this.gref = (pojoType.getGref() != null) ? new PojoDefinitionImpl(pojoType.getGref()) : null;
+        this.gref = (pojoType.getGref() != null) ? new PojoDefinitionImpl(pojoType.getGref(), null) : null;
     }
 
     @Override

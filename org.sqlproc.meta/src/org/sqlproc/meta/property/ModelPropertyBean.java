@@ -35,6 +35,7 @@ import org.sqlproc.meta.util.Utils;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PairValues;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
+import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.util.CommonUtils;
 
 import com.google.inject.Singleton;
@@ -143,9 +144,12 @@ public class ModelPropertyBean extends ModelProperty {
 
         if (artifacts.getProperties().isEmpty())
             return null;
+
+        // workaround for incorrect PojoDefinition loading
+        Map<String, PojoDefinition> oldPojos = modelValues != null ? modelValues.modelPojos : null;
+
         if (modelValues == null)
             modelValues = new ModelValues();
-
         modelValues.initModel();
         modelValues.initialized = false;
 
@@ -207,7 +211,8 @@ public class ModelPropertyBean extends ModelProperty {
                     firstModel = false;
                     modelValues.initModelModel();
                 }
-                modelValues.modelPojos.put(pojo.getName(), new PojoDefinitionImpl(pojo));
+                modelValues.modelPojos.put(pojo.getName(),
+                        new PojoDefinitionImpl(pojo, oldPojos != null ? oldPojos.get(pojo.getName()) : null));
             }
             for (TableDefinitionModel table : artifacts.getTables()) {
                 if (firstModel) {

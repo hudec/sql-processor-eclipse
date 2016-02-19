@@ -17,12 +17,15 @@ public class PojoDefinitionImpl implements PojoDefinition {
     // this.classx = classx;
     // }
 
-    public PojoDefinitionImpl(PojoDefinitionModel model) {
+    public PojoDefinitionImpl(PojoDefinitionModel model, PojoDefinition oldModel) {
         super();
         if (model != null) {
             this.name = model.getName();
+            System.out.println("META name " + name);
             this.clazz = model.getClass_();
+            System.out.println("META clazz " + clazz);
             this.classx = model.getClassx();
+            System.out.println("META classx " + classx);
         }
     }
 
@@ -43,5 +46,10 @@ public class PojoDefinitionImpl implements PojoDefinition {
     @Override
     public String getQualifiedName() {
         return (classx != null) ? classx.getQualifiedName() : clazz;
+    }
+
+    @Override
+    public String toString() {
+        return "meta.PojoDefinitionImpl [name=" + name + ", clazz=" + clazz + ", classx=" + classx + "]";
     }
 }

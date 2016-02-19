@@ -14,8 +14,11 @@ public class PojoDefinitionImpl implements PojoDefinition {
         super();
         if (model != null) {
             this.name = model.getName();
+            System.out.println("MODEL name " + name);
             this.clazz = model.getClass_();
+            System.out.println("MODEL clazz " + clazz);
             this.classx = model.getClassx();
+            System.out.println("MODEL classx " + classx);
         }
     }
 
@@ -36,5 +39,10 @@ public class PojoDefinitionImpl implements PojoDefinition {
     @Override
     public String getQualifiedName() {
         return (classx != null) ? classx.getQualifiedName() : clazz;
+    }
+
+    @Override
+    public String toString() {
+        return "model.PojoDefinitionImpl [name=" + name + ", clazz=" + clazz + ", classx=" + classx + "]";
     }
 }
