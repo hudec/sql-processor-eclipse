@@ -955,7 +955,12 @@ public class TableMetaGenerator extends TableBaseGenerator {
             Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), false);
             if (attr == null || attr.attribute.getIndex() == null)
                 continue;
-            buffer.append("\n  {#").append(constName(attr.attribute)).append(" order by %");
+            String name = (columnNames.containsKey(pojo)) ? columnNames.get(pojo).get(pentry.getKey()) : null;
+            if (name == null)
+                name = attr.attribute.getName();
+            else
+                name = columnToCamelCase(name);
+            buffer.append("\n  {#").append(constantName(name)).append(" order by %");
             if (prefix != null)
                 buffer.append(prefix).append(".");
             buffer.append(pentry.getKey());

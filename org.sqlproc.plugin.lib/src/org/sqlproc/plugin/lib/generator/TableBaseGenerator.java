@@ -1421,10 +1421,6 @@ public class TableBaseGenerator {
         }
     }
 
-    protected String constName(PojoAttribute attr) {
-        return constantName(attr.getName());
-    }
-
     protected String constName(Map<PojoAttribute, Boolean> l) {
         StringBuilder result = new StringBuilder("");
         boolean first = true;
