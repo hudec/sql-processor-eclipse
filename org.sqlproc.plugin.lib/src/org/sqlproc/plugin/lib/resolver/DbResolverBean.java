@@ -713,6 +713,10 @@ public class DbResolverBean implements DbResolver {
 
     @Override
     public List<String> getFunctions(EObject model) {
+        DbType dbType = getDbType(model);
+        if (dbType == DbType.H2)
+            return Collections.emptyList();
+
         String m = "getFunctions";
         debug.debug(m, ">>>");
         DatabaseDirectives modelDatabaseValues = getConnection(model);
@@ -728,7 +732,6 @@ public class DbResolverBean implements DbResolver {
         functionsForModel = Collections.synchronizedList(new ArrayList<String>());
         functions.put(modelDatabaseValues.dir, functionsForModel);
         if (modelDatabaseValues.connection != null) {
-            DbType dbType = getDbType(model);
             if (dbType == DbType.POSTGRESQL || dbType == DbType.INFORMIX)
                 return functionsForModel;
             ResultSet result = null;
@@ -929,6 +932,10 @@ public class DbResolverBean implements DbResolver {
 
     @Override
     public List<String> getFunColumns(EObject model, String table) {
+        DbType dbType = getDbType(model);
+        if (dbType == DbType.H2)
+            return Collections.emptyList();
+
         String m = "getFunColumns";
         debug.debug(m, ">>> " + table);
         if (table == null) {
@@ -958,7 +965,6 @@ public class DbResolverBean implements DbResolver {
             return columnsForModel;
         }
         if (modelDatabaseValues.connection != null) {
-            DbType dbType = getDbType(model);
             ResultSet result = null;
             try {
                 DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
@@ -1308,6 +1314,10 @@ public class DbResolverBean implements DbResolver {
 
     @Override
     public List<DbTable> getDbFunctions(EObject model, String table) {
+        DbType dbType = getDbType(model);
+        if (dbType == DbType.H2)
+            return Collections.emptyList();
+
         String m = "getDbFunctions";
         debug.debug(m, ">>> " + table);
         if (table == null) {
@@ -1337,7 +1347,6 @@ public class DbResolverBean implements DbResolver {
             return tablesForModel;
         }
         if (modelDatabaseValues.connection != null) {
-            DbType dbType = getDbType(model);
             if (dbType == DbType.POSTGRESQL || dbType == DbType.INFORMIX)
                 return tablesForModel;
             ResultSet result = null;
@@ -1379,6 +1388,10 @@ public class DbResolverBean implements DbResolver {
 
     @Override
     public List<DbColumn> getDbFunColumns(EObject model, String function) {
+        DbType dbType = getDbType(model);
+        if (dbType == DbType.H2)
+            return Collections.emptyList();
+
         String m = "getDbFunColumns";
         debug.debug(m, ">>> " + function);
         if (function == null) {
@@ -1408,7 +1421,6 @@ public class DbResolverBean implements DbResolver {
             return columnsForModel;
         }
         if (modelDatabaseValues.connection != null) {
-            DbType dbType = getDbType(model);
             ResultSet result = null;
             try {
                 DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();

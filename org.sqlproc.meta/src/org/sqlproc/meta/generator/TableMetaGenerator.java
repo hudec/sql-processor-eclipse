@@ -1114,12 +1114,14 @@ public class TableMetaGenerator extends TableBaseGenerator {
         buffer.append("call ").append(pojo).append("(");
         boolean first = true;
         List<String> warnings = new ArrayList<String>();
+        int ix = 0;
         for (Map.Entry<String, PojoAttribute> pentry : procedures.get(pojo).entrySet()) {
             if (FAKE_FUN_PROC_COLUMN_NAME.equals(pentry.getKey()))
                 continue;
             Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), true);
             if (attr == null)
                 continue;
+            ix++;
             String name = (columnNames.containsKey(attr.tableName))
                     ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
             if (name == null)
@@ -1193,7 +1195,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         name = attribute.getName();
                     else
                         name = columnToCamelCase(name);
-                    buffer.append(" ").append(attribute.getDbName()).append("$").append(name);
+                    String dbName = (dbType == DbType.H2) ? "" + ix : attribute.getDbName();
+                    buffer.append(" ").append(dbName).append("$").append(name);
                 }
                 buffer.append("\n;");
             } else {
