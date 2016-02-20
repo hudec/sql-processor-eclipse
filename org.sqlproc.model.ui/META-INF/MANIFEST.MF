@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SQL Processor Model Plugin UI
 Bundle-Vendor: SQL Processor Team
-Bundle-Version: 2.5.1.qualifier
+Bundle-Version: 2.5.1
 Bundle-SymbolicName: org.sqlproc.model.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model;visibility:=reexport,
@@ -19,7 +19,7 @@ Require-Bundle: org.sqlproc.model;visibility:=reexport,
  org.eclipse.jdt.debug.ui,
  org.eclipse.xtext.ui.codetemplates.ui,
  org.eclipse.compare,
- org.sqlproc.plugin.lib;bundle-version="2.5.1.qualifier"
+ org.sqlproc.plugin.lib;bundle-version="2.5.1"
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,
  org.eclipse.jdt.launching,
