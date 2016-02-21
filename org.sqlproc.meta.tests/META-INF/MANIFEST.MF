@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: SQL Processor Meta Query Language Plugin JUnit
 Bundle-Vendor: SQL Processor Team
-Bundle-Version: 2.5.1
+Bundle-Version: 2.5.2.qualifier
 Bundle-SymbolicName: org.sqlproc.meta.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.meta,
