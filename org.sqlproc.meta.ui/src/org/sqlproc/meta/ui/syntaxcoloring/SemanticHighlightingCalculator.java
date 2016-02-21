@@ -1,6 +1,5 @@
 package org.sqlproc.meta.ui.syntaxcoloring;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -26,7 +25,6 @@ import org.sqlproc.meta.processorMeta.MappingRule;
 import org.sqlproc.meta.processorMeta.MetaStatement;
 import org.sqlproc.meta.processorMeta.OptionalFeature;
 import org.sqlproc.meta.processorMeta.PojoDefinitionModel;
-import org.sqlproc.meta.processorMeta.PojoType;
 import org.sqlproc.meta.processorMeta.ProcedureDefinitionModel;
 import org.sqlproc.meta.processorMeta.TableDefinitionModel;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
@@ -135,17 +133,6 @@ public class SemanticHighlightingCalculator implements ISemanticHighlightingCalc
         if (name != null)
             return new Pair<String, String>(name, highlightingId);
         return null;
-    }
-
-    private List<Pair<String, String>> newPair(PojoType pojo, String highlightingId) {
-        List<Pair<String, String>> list = new ArrayList<Pair<String, String>>();
-        String name1 = (pojo != null && pojo.getRef() != null) ? pojo.getRef().getName() : null;
-        if (name1 != null)
-            list.add(new Pair<String, String>(name1, highlightingId));
-        String name2 = (pojo != null && pojo.getGref() != null) ? pojo.getGref().getName() : null;
-        if (name2 != null)
-            list.add(new Pair<String, String>(name2, highlightingId));
-        return list;
     }
 
     private void provideSimpleHighlighting(ICompositeNode node, IHighlightedPositionAcceptor acceptor,

@@ -18,10 +18,6 @@ import org.eclipse.xtext.common.types.JvmType;
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getRef <em>Ref</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getType <em>Type</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getGident <em>Gident</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getGref <em>Gref</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#getGtype <em>Gtype</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.PojoType#isArray <em>Array</em>}</li>
  * </ul>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType()
@@ -107,109 +103,5 @@ public interface PojoType extends EObject
    * @generated
    */
   void setType(JvmType value);
-
-  /**
-   * Returns the value of the '<em><b>Gident</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Gident</em>' containment reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Gident</em>' containment reference.
-   * @see #setGident(ValueType)
-   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType_Gident()
-   * @model containment="true"
-   * @generated
-   */
-  ValueType getGident();
-
-  /**
-   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.PojoType#getGident <em>Gident</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Gident</em>' containment reference.
-   * @see #getGident()
-   * @generated
-   */
-  void setGident(ValueType value);
-
-  /**
-   * Returns the value of the '<em><b>Gref</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Gref</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Gref</em>' reference.
-   * @see #setGref(PojoDefinitionModel)
-   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType_Gref()
-   * @model
-   * @generated
-   */
-  PojoDefinitionModel getGref();
-
-  /**
-   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.PojoType#getGref <em>Gref</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Gref</em>' reference.
-   * @see #getGref()
-   * @generated
-   */
-  void setGref(PojoDefinitionModel value);
-
-  /**
-   * Returns the value of the '<em><b>Gtype</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Gtype</em>' reference isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Gtype</em>' reference.
-   * @see #setGtype(JvmType)
-   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType_Gtype()
-   * @model
-   * @generated
-   */
-  JvmType getGtype();
-
-  /**
-   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.PojoType#getGtype <em>Gtype</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Gtype</em>' reference.
-   * @see #getGtype()
-   * @generated
-   */
-  void setGtype(JvmType value);
-
-  /**
-   * Returns the value of the '<em><b>Array</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Array</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Array</em>' attribute.
-   * @see #setArray(boolean)
-   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojoType_Array()
-   * @model
-   * @generated
-   */
-  boolean isArray();
-
-  /**
-   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.PojoType#isArray <em>Array</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Array</em>' attribute.
-   * @see #isArray()
-   * @generated
-   */
-  void setArray(boolean value);
 
 } // PojoType

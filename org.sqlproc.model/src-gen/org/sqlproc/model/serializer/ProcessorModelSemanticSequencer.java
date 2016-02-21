@@ -1725,7 +1725,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Constraint:
-	 *     (name=ValidID (class=QualifiedName | classx=JvmParameterizedTypeReference))
+	 *     (name=ValidID (class=QualifiedName | classx=[JvmType|QualifiedName]))
 	 */
 	protected void sequence_PojoDefinitionModel(EObject context, PojoDefinitionModel semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1891,7 +1891,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Constraint:
-	 *     (ident=ValueType | ref=[PojoDefinitionModel|ValidID] | type=JvmParameterizedTypeReference)
+	 *     (ident=ValueType | ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName])
 	 */
 	protected void sequence_PojoType(EObject context, PojoType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

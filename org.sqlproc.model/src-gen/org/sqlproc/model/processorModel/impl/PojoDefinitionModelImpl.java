@@ -3,7 +3,6 @@
 package org.sqlproc.model.processorModel.impl;
 
 import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
@@ -11,7 +10,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 
 import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
@@ -74,14 +73,14 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
   protected String class_ = CLASS_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getClassx() <em>Classx</em>}' containment reference.
+   * The cached value of the '{@link #getClassx() <em>Classx</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getClassx()
    * @generated
    * @ordered
    */
-  protected JvmParameterizedTypeReference classx;
+  protected JvmType classx;
 
   /**
    * <!-- begin-user-doc -->
@@ -155,7 +154,27 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmParameterizedTypeReference getClassx()
+  public JvmType getClassx()
+  {
+    if (classx != null && classx.eIsProxy())
+    {
+      InternalEObject oldClassx = (InternalEObject)classx;
+      classx = (JvmType)eResolveProxy(oldClassx);
+      if (classx != oldClassx)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, oldClassx, classx));
+      }
+    }
+    return classx;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmType basicGetClassx()
   {
     return classx;
   }
@@ -165,53 +184,12 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetClassx(JvmParameterizedTypeReference newClassx, NotificationChain msgs)
+  public void setClassx(JvmType newClassx)
   {
-    JvmParameterizedTypeReference oldClassx = classx;
+    JvmType oldClassx = classx;
     classx = newClassx;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, oldClassx, newClassx);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setClassx(JvmParameterizedTypeReference newClassx)
-  {
-    if (newClassx != classx)
-    {
-      NotificationChain msgs = null;
-      if (classx != null)
-        msgs = ((InternalEObject)classx).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, null, msgs);
-      if (newClassx != null)
-        msgs = ((InternalEObject)newClassx).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, null, msgs);
-      msgs = basicSetClassx(newClassx, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, newClassx, newClassx));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        return basicSetClassx(null, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, oldClassx, classx));
   }
 
   /**
@@ -229,7 +207,8 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASS:
         return getClass_();
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        return getClassx();
+        if (resolve) return getClassx();
+        return basicGetClassx();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -251,7 +230,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
         setClass((String)newValue);
         return;
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        setClassx((JvmParameterizedTypeReference)newValue);
+        setClassx((JvmType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -274,7 +253,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
         setClass(CLASS_EDEFAULT);
         return;
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        setClassx((JvmParameterizedTypeReference)null);
+        setClassx((JvmType)null);
         return;
     }
     super.eUnset(featureID);

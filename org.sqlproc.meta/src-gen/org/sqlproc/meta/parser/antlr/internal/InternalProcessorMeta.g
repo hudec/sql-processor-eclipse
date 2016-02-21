@@ -368,18 +368,18 @@ rulePojoType returns [EObject current=null]
     @init { enterRule(); 
     }
     @after { leaveRule(); }:
-(((this_COLON_0=RULE_COLON
+((this_COLON_0=RULE_COLON
     { 
-    newLeafNode(this_COLON_0, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_0_0_0()); 
+    newLeafNode(this_COLON_0, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_0_0()); 
     }
 this_COLON_1=RULE_COLON
     { 
-    newLeafNode(this_COLON_1, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_0_0_1()); 
+    newLeafNode(this_COLON_1, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_0_1()); 
     }
 (
 (
 		{ 
-	        newCompositeNode(grammarAccess.getPojoTypeAccess().getIdentValueTypeParserRuleCall_0_0_2_0()); 
+	        newCompositeNode(grammarAccess.getPojoTypeAccess().getIdentValueTypeParserRuleCall_0_2_0()); 
 	    }
 		lv_ident_2_0=ruleValueType		{
 	        if ($current==null) {
@@ -397,7 +397,7 @@ this_COLON_1=RULE_COLON
 ))
     |(this_COLON_3=RULE_COLON
     { 
-    newLeafNode(this_COLON_3, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_0_1_0()); 
+    newLeafNode(this_COLON_3, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_1_0()); 
     }
 (
 (
@@ -408,7 +408,7 @@ this_COLON_1=RULE_COLON
         }
 	otherlv_4=RULE_IDENT
 	{
-		newLeafNode(otherlv_4, grammarAccess.getPojoTypeAccess().getRefPojoDefinitionModelCrossReference_0_1_1_0()); 
+		newLeafNode(otherlv_4, grammarAccess.getPojoTypeAccess().getRefPojoDefinitionModelCrossReference_1_1_0()); 
 	}
 
 )
@@ -421,97 +421,14 @@ this_COLON_1=RULE_COLON
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getPojoTypeAccess().getTypeJvmTypeCrossReference_0_2_0()); 
+	        newCompositeNode(grammarAccess.getPojoTypeAccess().getTypeJvmTypeCrossReference_2_0()); 
 	    }
 		ruleQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))(this_LESS_THAN_6=RULE_LESS_THAN
-    { 
-    newLeafNode(this_LESS_THAN_6, grammarAccess.getPojoTypeAccess().getLESS_THANTerminalRuleCall_1_0()); 
-    }
-((this_COLON_7=RULE_COLON
-    { 
-    newLeafNode(this_COLON_7, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_1_1_0_0()); 
-    }
-this_COLON_8=RULE_COLON
-    { 
-    newLeafNode(this_COLON_8, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_1_1_0_1()); 
-    }
-(
-(
-		{ 
-	        newCompositeNode(grammarAccess.getPojoTypeAccess().getGidentValueTypeParserRuleCall_1_1_0_2_0()); 
-	    }
-		lv_gident_9_0=ruleValueType		{
-	        if ($current==null) {
-	            $current = createModelElementForParent(grammarAccess.getPojoTypeRule());
-	        }
-       		set(
-       			$current, 
-       			"gident",
-        		lv_gident_9_0, 
-        		"ValueType");
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
 ))
-    |(this_COLON_10=RULE_COLON
-    { 
-    newLeafNode(this_COLON_10, grammarAccess.getPojoTypeAccess().getCOLONTerminalRuleCall_1_1_1_0()); 
-    }
-(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPojoTypeRule());
-	        }
-        }
-	otherlv_11=RULE_IDENT
-	{
-		newLeafNode(otherlv_11, grammarAccess.getPojoTypeAccess().getGrefPojoDefinitionModelCrossReference_1_1_1_1_0()); 
-	}
-
-)
-))
-    |(
-(
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPojoTypeRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getPojoTypeAccess().getGtypeJvmTypeCrossReference_1_1_2_0()); 
-	    }
-		ruleQualifiedName		{ 
-	        afterParserOrEnumRuleCall();
-	    }
-
-)
-))this_MORE_THAN_13=RULE_MORE_THAN
-    { 
-    newLeafNode(this_MORE_THAN_13, grammarAccess.getPojoTypeAccess().getMORE_THANTerminalRuleCall_1_2()); 
-    }
-)?(
-(
-		lv_array_14_0=	'[]' 
-    {
-        newLeafNode(lv_array_14_0, grammarAccess.getPojoTypeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_2_0());
-    }
- 
-	    {
-	        if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPojoTypeRule());
-	        }
-       		setWithLastConsumed($current, "array", true, "[]");
-	    }
-
-)
-)?)
 ;
 
 

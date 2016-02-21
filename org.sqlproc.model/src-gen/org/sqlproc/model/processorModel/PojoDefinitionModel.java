@@ -4,7 +4,7 @@ package org.sqlproc.model.processorModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 
 /**
  * <!-- begin-user-doc -->
@@ -79,29 +79,29 @@ public interface PojoDefinitionModel extends EObject
   void setClass(String value);
 
   /**
-   * Returns the value of the '<em><b>Classx</b></em>' containment reference.
+   * Returns the value of the '<em><b>Classx</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Classx</em>' containment reference isn't clear,
+   * If the meaning of the '<em>Classx</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Classx</em>' containment reference.
-   * @see #setClassx(JvmParameterizedTypeReference)
+   * @return the value of the '<em>Classx</em>' reference.
+   * @see #setClassx(JvmType)
    * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoDefinitionModel_Classx()
-   * @model containment="true"
+   * @model
    * @generated
    */
-  JvmParameterizedTypeReference getClassx();
+  JvmType getClassx();
 
   /**
-   * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}' containment reference.
+   * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Classx</em>' containment reference.
+   * @param value the new value of the '<em>Classx</em>' reference.
    * @see #getClassx()
    * @generated
    */
-  void setClassx(JvmParameterizedTypeReference value);
+  void setClassx(JvmType value);
 
 } // PojoDefinitionModel

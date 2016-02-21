@@ -408,14 +408,10 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 			return getEQUALSToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getLBRACERule())
 			return getLBRACEToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getLESS_THANRule())
-			return getLESS_THANToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getLPARENRule())
 			return getLPARENToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getMINUSRule())
 			return getMINUSToken(semanticObject, ruleCall, node);
-		else if(ruleCall.getRule() == grammarAccess.getMORE_THANRule())
-			return getMORE_THANToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getNOTRule())
 			return getNOTToken(semanticObject, ruleCall, node);
 		else if(ruleCall.getRule() == grammarAccess.getPERCENTRule())
@@ -490,15 +486,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	}
 	
 	/**
-	 * terminal LESS_THAN:'<' ;
-	 */
-	protected String getLESS_THANToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "<";
-	}
-	
-	/**
 	 * terminal LPAREN:   '(' ;
 	 */
 	protected String getLPARENToken(EObject semanticObject, RuleCall ruleCall, INode node) {
@@ -514,15 +501,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		if (node != null)
 			return getTokenText(node);
 		return "-";
-	}
-	
-	/**
-	 * terminal MORE_THAN:'>' ;
-	 */
-	protected String getMORE_THANToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return ">";
 	}
 	
 	/**

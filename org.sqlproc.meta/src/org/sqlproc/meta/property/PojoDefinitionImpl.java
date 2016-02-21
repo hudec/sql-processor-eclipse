@@ -10,13 +10,6 @@ public class PojoDefinitionImpl implements PojoDefinition {
     String clazz;
     JvmType classx;
 
-    // public PojoDefinitionImpl(String name, String clazz, JvmType classx) {
-    // super();
-    // this.name = name;
-    // this.clazz = clazz;
-    // this.classx = classx;
-    // }
-
     public PojoDefinitionImpl(PojoDefinitionModel model, PojoDefinition oldModel) {
         super();
         if (model != null) {
@@ -45,10 +38,6 @@ public class PojoDefinitionImpl implements PojoDefinition {
     public String getClazz() {
         return clazz;
     }
-
-    // public JvmType getClassx() {
-    // return classx;
-    // }
 
     @Override
     public String getQualifiedName() {

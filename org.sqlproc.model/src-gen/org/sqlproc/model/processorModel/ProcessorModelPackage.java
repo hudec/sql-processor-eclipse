@@ -241,7 +241,7 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_TYPE__REF = 1;
 
   /**
-   * The feature id for the '<em><b>Type</b></em>' containment reference.
+   * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2181,7 +2181,7 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_DEFINITION_MODEL__CLASS = 1;
 
   /**
-   * The feature id for the '<em><b>Classx</b></em>' containment reference.
+   * The feature id for the '<em><b>Classx</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -4773,10 +4773,10 @@ public interface ProcessorModelPackage extends EPackage
   EReference getPojoType_Ref();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.sqlproc.model.processorModel.PojoType#getType <em>Type</em>}'.
+   * Returns the meta object for the reference '{@link org.sqlproc.model.processorModel.PojoType#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Type</em>'.
+   * @return the meta object for the reference '<em>Type</em>'.
    * @see org.sqlproc.model.processorModel.PojoType#getType()
    * @see #getPojoType()
    * @generated
@@ -6721,10 +6721,10 @@ public interface ProcessorModelPackage extends EPackage
   EAttribute getPojoDefinitionModel_Class();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}'.
+   * Returns the meta object for the reference '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Classx</em>'.
+   * @return the meta object for the reference '<em>Classx</em>'.
    * @see org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx()
    * @see #getPojoDefinitionModel()
    * @generated
@@ -8703,7 +8703,7 @@ public interface ProcessorModelPackage extends EPackage
     EReference POJO_TYPE__REF = eINSTANCE.getPojoType_Ref();
 
     /**
-     * The meta object literal for the '<em><b>Type</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Type</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
@@ -10207,7 +10207,7 @@ public interface ProcessorModelPackage extends EPackage
     EAttribute POJO_DEFINITION_MODEL__CLASS = eINSTANCE.getPojoDefinitionModel_Class();
 
     /**
-     * The meta object literal for the '<em><b>Classx</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>Classx</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmType;
 
 import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.model.processorModel.PojoType;
@@ -56,14 +56,14 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
   protected PojoDefinitionModel ref;
 
   /**
-   * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
+   * The cached value of the '{@link #getType() <em>Type</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getType()
    * @generated
    * @ordered
    */
-  protected JvmParameterizedTypeReference type;
+  protected JvmType type;
 
   /**
    * <!-- begin-user-doc -->
@@ -182,7 +182,27 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmParameterizedTypeReference getType()
+  public JvmType getType()
+  {
+    if (type != null && type.eIsProxy())
+    {
+      InternalEObject oldType = (InternalEObject)type;
+      type = (JvmType)eResolveProxy(oldType);
+      if (type != oldType)
+      {
+        if (eNotificationRequired())
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessorModelPackage.POJO_TYPE__TYPE, oldType, type));
+      }
+    }
+    return type;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public JvmType basicGetType()
   {
     return type;
   }
@@ -192,37 +212,12 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(JvmParameterizedTypeReference newType, NotificationChain msgs)
+  public void setType(JvmType newType)
   {
-    JvmParameterizedTypeReference oldType = type;
+    JvmType oldType = type;
     type = newType;
     if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_TYPE__TYPE, oldType, newType);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setType(JvmParameterizedTypeReference newType)
-  {
-    if (newType != type)
-    {
-      NotificationChain msgs = null;
-      if (type != null)
-        msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessorModelPackage.POJO_TYPE__TYPE, null, msgs);
-      if (newType != null)
-        msgs = ((InternalEObject)newType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessorModelPackage.POJO_TYPE__TYPE, null, msgs);
-      msgs = basicSetType(newType, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_TYPE__TYPE, newType, newType));
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_TYPE__TYPE, oldType, type));
   }
 
   /**
@@ -237,8 +232,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
     {
       case ProcessorModelPackage.POJO_TYPE__IDENT:
         return basicSetIdent(null, msgs);
-      case ProcessorModelPackage.POJO_TYPE__TYPE:
-        return basicSetType(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -259,7 +252,8 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
         if (resolve) return getRef();
         return basicGetRef();
       case ProcessorModelPackage.POJO_TYPE__TYPE:
-        return getType();
+        if (resolve) return getType();
+        return basicGetType();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -281,7 +275,7 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
         setRef((PojoDefinitionModel)newValue);
         return;
       case ProcessorModelPackage.POJO_TYPE__TYPE:
-        setType((JvmParameterizedTypeReference)newValue);
+        setType((JvmType)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -304,7 +298,7 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
         setRef((PojoDefinitionModel)null);
         return;
       case ProcessorModelPackage.POJO_TYPE__TYPE:
-        setType((JvmParameterizedTypeReference)null);
+        setType((JvmType)null);
         return;
     }
     super.eUnset(featureID);

@@ -2,6 +2,7 @@ grammar org.sqlproc.model.ProcessorModel with org.eclipse.xtext.xbase.annotation
 
 generate processorModel "http://www.sqlproc.org/model/ProcessorModel"
 import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
+import "http://www.eclipse.org/xtext/common/JavaVMTypes"
 
 Artifacts: {Artifacts}
 	( properties+=Property 
@@ -14,7 +15,7 @@ Artifacts: {Artifacts}
 
 ValueType: value = STRING | number = INT | id = QualifiedName;
 IndexType: number = INT | id = QualifiedName;
-PojoType: '::' ident=ValueType | ':' ref=[PojoDefinitionModel|ValidID] | type=JvmParameterizedTypeReference;
+PojoType: '::' ident=ValueType | ':' ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName];
 
 DatabaseCatalogAssignement: dbCatalog=ValueType;
 DatabaseSchemaAssignement: dbSchema=ValueType;
@@ -177,7 +178,7 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel:
-	'pojo' name=ValidID (':' (':')? class=(QualifiedName) | classx=JvmParameterizedTypeReference) ';';
+	'pojo' name=ValidID (':' (':')? class=(QualifiedName) | classx=[JvmType|QualifiedName]) ';';
 
 TableDefinitionModel:
 	'table' name=ValidID table=ValidID ';';

@@ -1,7 +1,7 @@
 grammar org.sqlproc.meta.ProcessorMeta hidden(ML_COMMENT, SL_COMMENT)
 
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
-import "http://www.eclipse.org/xtext/common/JavaVMTypes" as jvmTypes
+import "http://www.eclipse.org/xtext/common/JavaVMTypes"
 
 generate processorMeta "http://www.sqlproc.org/meta/ProcessorMeta"
 
@@ -13,8 +13,7 @@ Artifacts: {Artifacts}
 
 ValueType: value = STRING_VALUE | number = NUMBER | id = QualifiedName;
 PojoType:
-	(COLON COLON ident=ValueType | COLON ref=[PojoDefinitionModel|IDENT] | type=[jvmTypes::JvmType|QualifiedName])
-	(LESS_THAN (COLON COLON gident=ValueType | COLON gref=[PojoDefinitionModel|IDENT] | gtype=[jvmTypes::JvmType|QualifiedName]) MORE_THAN)? (array ?= '[]')?;
+	COLON COLON ident=ValueType | COLON ref=[PojoDefinitionModel|IDENT] | type=[JvmType|QualifiedName];
 
 DatabaseCatalogAssignement: dbCatalog=ValueType;
 DatabaseSchemaAssignement: dbSchema=ValueType;
@@ -177,7 +176,7 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	'pojo' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[jvmTypes::JvmType|QualifiedName]) SEMICOLON;
+	'pojo' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 
 TableDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
 	'table' name=IDENT table=IDENT SEMICOLON;

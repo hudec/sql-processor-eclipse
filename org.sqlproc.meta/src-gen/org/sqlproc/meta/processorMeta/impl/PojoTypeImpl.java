@@ -29,10 +29,6 @@ import org.sqlproc.meta.processorMeta.ValueType;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getIdent <em>Ident</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getRef <em>Ref</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getType <em>Type</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getGident <em>Gident</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getGref <em>Gref</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#getGtype <em>Gtype</em>}</li>
- *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojoTypeImpl#isArray <em>Array</em>}</li>
  * </ul>
  *
  * @generated
@@ -68,56 +64,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
    * @ordered
    */
   protected JvmType type;
-
-  /**
-   * The cached value of the '{@link #getGident() <em>Gident</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGident()
-   * @generated
-   * @ordered
-   */
-  protected ValueType gident;
-
-  /**
-   * The cached value of the '{@link #getGref() <em>Gref</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGref()
-   * @generated
-   * @ordered
-   */
-  protected PojoDefinitionModel gref;
-
-  /**
-   * The cached value of the '{@link #getGtype() <em>Gtype</em>}' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getGtype()
-   * @generated
-   * @ordered
-   */
-  protected JvmType gtype;
-
-  /**
-   * The default value of the '{@link #isArray() <em>Array</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isArray()
-   * @generated
-   * @ordered
-   */
-  protected static final boolean ARRAY_EDEFAULT = false;
-
-  /**
-   * The cached value of the '{@link #isArray() <em>Array</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #isArray()
-   * @generated
-   * @ordered
-   */
-  protected boolean array = ARRAY_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -279,163 +225,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
    * <!-- end-user-doc -->
    * @generated
    */
-  public ValueType getGident()
-  {
-    return gident;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetGident(ValueType newGident, NotificationChain msgs)
-  {
-    ValueType oldGident = gident;
-    gident = newGident;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJO_TYPE__GIDENT, oldGident, newGident);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGident(ValueType newGident)
-  {
-    if (newGident != gident)
-    {
-      NotificationChain msgs = null;
-      if (gident != null)
-        msgs = ((InternalEObject)gident).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessorMetaPackage.POJO_TYPE__GIDENT, null, msgs);
-      if (newGident != null)
-        msgs = ((InternalEObject)newGident).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessorMetaPackage.POJO_TYPE__GIDENT, null, msgs);
-      msgs = basicSetGident(newGident, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJO_TYPE__GIDENT, newGident, newGident));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PojoDefinitionModel getGref()
-  {
-    if (gref != null && gref.eIsProxy())
-    {
-      InternalEObject oldGref = (InternalEObject)gref;
-      gref = (PojoDefinitionModel)eResolveProxy(oldGref);
-      if (gref != oldGref)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessorMetaPackage.POJO_TYPE__GREF, oldGref, gref));
-      }
-    }
-    return gref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public PojoDefinitionModel basicGetGref()
-  {
-    return gref;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGref(PojoDefinitionModel newGref)
-  {
-    PojoDefinitionModel oldGref = gref;
-    gref = newGref;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJO_TYPE__GREF, oldGref, gref));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType getGtype()
-  {
-    if (gtype != null && gtype.eIsProxy())
-    {
-      InternalEObject oldGtype = (InternalEObject)gtype;
-      gtype = (JvmType)eResolveProxy(oldGtype);
-      if (gtype != oldGtype)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessorMetaPackage.POJO_TYPE__GTYPE, oldGtype, gtype));
-      }
-    }
-    return gtype;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetGtype()
-  {
-    return gtype;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setGtype(JvmType newGtype)
-  {
-    JvmType oldGtype = gtype;
-    gtype = newGtype;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJO_TYPE__GTYPE, oldGtype, gtype));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public boolean isArray()
-  {
-    return array;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setArray(boolean newArray)
-  {
-    boolean oldArray = array;
-    array = newArray;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJO_TYPE__ARRAY, oldArray, array));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -443,8 +232,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
     {
       case ProcessorMetaPackage.POJO_TYPE__IDENT:
         return basicSetIdent(null, msgs);
-      case ProcessorMetaPackage.POJO_TYPE__GIDENT:
-        return basicSetGident(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -467,16 +254,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
       case ProcessorMetaPackage.POJO_TYPE__TYPE:
         if (resolve) return getType();
         return basicGetType();
-      case ProcessorMetaPackage.POJO_TYPE__GIDENT:
-        return getGident();
-      case ProcessorMetaPackage.POJO_TYPE__GREF:
-        if (resolve) return getGref();
-        return basicGetGref();
-      case ProcessorMetaPackage.POJO_TYPE__GTYPE:
-        if (resolve) return getGtype();
-        return basicGetGtype();
-      case ProcessorMetaPackage.POJO_TYPE__ARRAY:
-        return isArray();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -499,18 +276,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
         return;
       case ProcessorMetaPackage.POJO_TYPE__TYPE:
         setType((JvmType)newValue);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__GIDENT:
-        setGident((ValueType)newValue);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__GREF:
-        setGref((PojoDefinitionModel)newValue);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__GTYPE:
-        setGtype((JvmType)newValue);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__ARRAY:
-        setArray((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -535,18 +300,6 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
       case ProcessorMetaPackage.POJO_TYPE__TYPE:
         setType((JvmType)null);
         return;
-      case ProcessorMetaPackage.POJO_TYPE__GIDENT:
-        setGident((ValueType)null);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__GREF:
-        setGref((PojoDefinitionModel)null);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__GTYPE:
-        setGtype((JvmType)null);
-        return;
-      case ProcessorMetaPackage.POJO_TYPE__ARRAY:
-        setArray(ARRAY_EDEFAULT);
-        return;
     }
     super.eUnset(featureID);
   }
@@ -567,33 +320,8 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
         return ref != null;
       case ProcessorMetaPackage.POJO_TYPE__TYPE:
         return type != null;
-      case ProcessorMetaPackage.POJO_TYPE__GIDENT:
-        return gident != null;
-      case ProcessorMetaPackage.POJO_TYPE__GREF:
-        return gref != null;
-      case ProcessorMetaPackage.POJO_TYPE__GTYPE:
-        return gtype != null;
-      case ProcessorMetaPackage.POJO_TYPE__ARRAY:
-        return array != ARRAY_EDEFAULT;
     }
     return super.eIsSet(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public String toString()
-  {
-    if (eIsProxy()) return super.toString();
-
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (array: ");
-    result.append(array);
-    result.append(')');
-    return result.toString();
   }
 
 } //PojoTypeImpl

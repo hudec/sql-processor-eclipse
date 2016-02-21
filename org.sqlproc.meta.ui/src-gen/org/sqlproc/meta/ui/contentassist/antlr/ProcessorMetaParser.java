@@ -39,8 +39,7 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 				{
 					put(grammarAccess.getArtifactsAccess().getAlternatives_2(), "rule__Artifacts__Alternatives_2");
 					put(grammarAccess.getValueTypeAccess().getAlternatives(), "rule__ValueType__Alternatives");
-					put(grammarAccess.getPojoTypeAccess().getAlternatives_0(), "rule__PojoType__Alternatives_0");
-					put(grammarAccess.getPojoTypeAccess().getAlternatives_1_1(), "rule__PojoType__Alternatives_1_1");
+					put(grammarAccess.getPojoTypeAccess().getAlternatives(), "rule__PojoType__Alternatives");
 					put(grammarAccess.getPropertyAccess().getAlternatives_1(), "rule__Property__Alternatives_1");
 					put(grammarAccess.getDatabasePropertyAccess().getAlternatives(), "rule__DatabaseProperty__Alternatives");
 					put(grammarAccess.getPojogenPropertyAccess().getAlternatives(), "rule__PojogenProperty__Alternatives");
@@ -92,12 +91,8 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getArtifactsAccess().getGroup_2_5(), "rule__Artifacts__Group_2_5__0");
 					put(grammarAccess.getArtifactsAccess().getGroup_2_6(), "rule__Artifacts__Group_2_6__0");
 					put(grammarAccess.getArtifactsAccess().getGroup_2_7(), "rule__Artifacts__Group_2_7__0");
-					put(grammarAccess.getPojoTypeAccess().getGroup(), "rule__PojoType__Group__0");
-					put(grammarAccess.getPojoTypeAccess().getGroup_0_0(), "rule__PojoType__Group_0_0__0");
-					put(grammarAccess.getPojoTypeAccess().getGroup_0_1(), "rule__PojoType__Group_0_1__0");
+					put(grammarAccess.getPojoTypeAccess().getGroup_0(), "rule__PojoType__Group_0__0");
 					put(grammarAccess.getPojoTypeAccess().getGroup_1(), "rule__PojoType__Group_1__0");
-					put(grammarAccess.getPojoTypeAccess().getGroup_1_1_0(), "rule__PojoType__Group_1_1_0__0");
-					put(grammarAccess.getPojoTypeAccess().getGroup_1_1_1(), "rule__PojoType__Group_1_1_1__0");
 					put(grammarAccess.getDriverMethodOutputAssignementAccess().getGroup(), "rule__DriverMethodOutputAssignement__Group__0");
 					put(grammarAccess.getSqlTypeAssignementAccess().getGroup(), "rule__SqlTypeAssignement__Group__0");
 					put(grammarAccess.getSqlTypeAssignementAccess().getGroup_1(), "rule__SqlTypeAssignement__Group_1__0");
@@ -393,13 +388,9 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getValueTypeAccess().getValueAssignment_0(), "rule__ValueType__ValueAssignment_0");
 					put(grammarAccess.getValueTypeAccess().getNumberAssignment_1(), "rule__ValueType__NumberAssignment_1");
 					put(grammarAccess.getValueTypeAccess().getIdAssignment_2(), "rule__ValueType__IdAssignment_2");
-					put(grammarAccess.getPojoTypeAccess().getIdentAssignment_0_0_2(), "rule__PojoType__IdentAssignment_0_0_2");
-					put(grammarAccess.getPojoTypeAccess().getRefAssignment_0_1_1(), "rule__PojoType__RefAssignment_0_1_1");
-					put(grammarAccess.getPojoTypeAccess().getTypeAssignment_0_2(), "rule__PojoType__TypeAssignment_0_2");
-					put(grammarAccess.getPojoTypeAccess().getGidentAssignment_1_1_0_2(), "rule__PojoType__GidentAssignment_1_1_0_2");
-					put(grammarAccess.getPojoTypeAccess().getGrefAssignment_1_1_1_1(), "rule__PojoType__GrefAssignment_1_1_1_1");
-					put(grammarAccess.getPojoTypeAccess().getGtypeAssignment_1_1_2(), "rule__PojoType__GtypeAssignment_1_1_2");
-					put(grammarAccess.getPojoTypeAccess().getArrayAssignment_2(), "rule__PojoType__ArrayAssignment_2");
+					put(grammarAccess.getPojoTypeAccess().getIdentAssignment_0_2(), "rule__PojoType__IdentAssignment_0_2");
+					put(grammarAccess.getPojoTypeAccess().getRefAssignment_1_1(), "rule__PojoType__RefAssignment_1_1");
+					put(grammarAccess.getPojoTypeAccess().getTypeAssignment_2(), "rule__PojoType__TypeAssignment_2");
 					put(grammarAccess.getDatabaseCatalogAssignementAccess().getDbCatalogAssignment(), "rule__DatabaseCatalogAssignement__DbCatalogAssignment");
 					put(grammarAccess.getDatabaseSchemaAssignementAccess().getDbSchemaAssignment(), "rule__DatabaseSchemaAssignement__DbSchemaAssignment");
 					put(grammarAccess.getDatabaseTypeAssignementAccess().getDbTypeAssignment(), "rule__DatabaseTypeAssignement__DbTypeAssignment");

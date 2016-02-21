@@ -231,49 +231,13 @@ public interface ProcessorMetaPackage extends EPackage
   int POJO_TYPE__TYPE = 2;
 
   /**
-   * The feature id for the '<em><b>Gident</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POJO_TYPE__GIDENT = 3;
-
-  /**
-   * The feature id for the '<em><b>Gref</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POJO_TYPE__GREF = 4;
-
-  /**
-   * The feature id for the '<em><b>Gtype</b></em>' reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POJO_TYPE__GTYPE = 5;
-
-  /**
-   * The feature id for the '<em><b>Array</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int POJO_TYPE__ARRAY = 6;
-
-  /**
    * The number of structural features of the '<em>Pojo Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POJO_TYPE_FEATURE_COUNT = 7;
+  int POJO_TYPE_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.DatabaseCatalogAssignementImpl <em>Database Catalog Assignement</em>}' class.
@@ -3700,50 +3664,6 @@ public interface ProcessorMetaPackage extends EPackage
   EReference getPojoType_Type();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.sqlproc.meta.processorMeta.PojoType#getGident <em>Gident</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Gident</em>'.
-   * @see org.sqlproc.meta.processorMeta.PojoType#getGident()
-   * @see #getPojoType()
-   * @generated
-   */
-  EReference getPojoType_Gident();
-
-  /**
-   * Returns the meta object for the reference '{@link org.sqlproc.meta.processorMeta.PojoType#getGref <em>Gref</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Gref</em>'.
-   * @see org.sqlproc.meta.processorMeta.PojoType#getGref()
-   * @see #getPojoType()
-   * @generated
-   */
-  EReference getPojoType_Gref();
-
-  /**
-   * Returns the meta object for the reference '{@link org.sqlproc.meta.processorMeta.PojoType#getGtype <em>Gtype</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Gtype</em>'.
-   * @see org.sqlproc.meta.processorMeta.PojoType#getGtype()
-   * @see #getPojoType()
-   * @generated
-   */
-  EReference getPojoType_Gtype();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.sqlproc.meta.processorMeta.PojoType#isArray <em>Array</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Array</em>'.
-   * @see org.sqlproc.meta.processorMeta.PojoType#isArray()
-   * @see #getPojoType()
-   * @generated
-   */
-  EAttribute getPojoType_Array();
-
-  /**
    * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.DatabaseCatalogAssignement <em>Database Catalog Assignement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -7046,38 +6966,6 @@ public interface ProcessorMetaPackage extends EPackage
      * @generated
      */
     EReference POJO_TYPE__TYPE = eINSTANCE.getPojoType_Type();
-
-    /**
-     * The meta object literal for the '<em><b>Gident</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference POJO_TYPE__GIDENT = eINSTANCE.getPojoType_Gident();
-
-    /**
-     * The meta object literal for the '<em><b>Gref</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference POJO_TYPE__GREF = eINSTANCE.getPojoType_Gref();
-
-    /**
-     * The meta object literal for the '<em><b>Gtype</b></em>' reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference POJO_TYPE__GTYPE = eINSTANCE.getPojoType_Gtype();
-
-    /**
-     * The meta object literal for the '<em><b>Array</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute POJO_TYPE__ARRAY = eINSTANCE.getPojoType_Array();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.DatabaseCatalogAssignementImpl <em>Database Catalog Assignement</em>}' class.
