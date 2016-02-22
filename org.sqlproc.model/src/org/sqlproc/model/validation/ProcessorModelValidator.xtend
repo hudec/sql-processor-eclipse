@@ -39,16 +39,7 @@ import org.sqlproc.plugin.lib.util.CommonUtils
 class ProcessorModelValidator extends AbstractProcessorModelValidator {
 
     @Inject
-    PojoResolverFactory pojoResolverFactory
-
-    @Inject
     DbResolver dbResolver
-
-    @Inject
-    IScopeProvider scopeProvider
-
-    @Inject
-    IQualifiedNameConverter qualifiedNameConverter
 
     @Inject
     ModelProperty modelProperty
@@ -58,10 +49,6 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
     	if (CommonUtils.skipVerification(pojoDefinition, modelProperty))
             return;
     	
-//    	val URI uri = pojoDefinition.eResource?.URI
-//        if (isResolvePojo(pojoDefinition) && !checkClass(getClass(pojoDefinition), uri))
-//            error("Class name : " + getClass(pojoDefinition) + " not exists",
-//                    ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
         val artifacts = getArtifacts(pojoDefinition)
         if (artifacts == null)
             return;
@@ -76,33 +63,6 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         }
     }
     
-    def checkClass(String className, URI uri) {
-        if (className == null || pojoResolverFactory.getPojoResolver() == null)
-            return true
-
-        val clazz = pojoResolverFactory.getPojoResolver().loadClass(className, uri)
-        return clazz != null
-    }
-
-    def isResolvePojo(EObject model) {
-        if (pojoResolverFactory.getPojoResolver() == null
-                || !pojoResolverFactory.getPojoResolver().isResolvePojo(model))
-            return false
-        return true
-
-    }
-
-    def isResolveDb(EObject model) {
-        return dbResolver.isResolveDb(model)
-    }
-
-//    def String getClass(PojoDefinitionModel pojo) {
-//        if (pojo.getClassx() != null)
-//            return pojo.getClassx().getQualifiedName()
-//        return pojo.getClass_()
-//    }
-
-
     @Check
     def checkUniqueProperty(Property property) {
         if (CommonUtils.skipVerification(property, modelProperty))
@@ -302,6 +262,10 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
 		        }
 	        }
         }
+    }
+    
+    def isResolveDb(EObject model) {
+        return dbResolver.isResolveDb(model)
     }
     
     def Artifacts getArtifacts(EObject model) {

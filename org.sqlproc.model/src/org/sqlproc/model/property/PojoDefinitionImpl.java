@@ -40,6 +40,11 @@ public class PojoDefinitionImpl implements PojoDefinition {
     }
 
     @Override
+    public JvmType getClassx() {
+        return classx;
+    }
+
+    @Override
     public String getQualifiedName() {
         return (classx != null) ? classx.getQualifiedName() : clazz;
     }

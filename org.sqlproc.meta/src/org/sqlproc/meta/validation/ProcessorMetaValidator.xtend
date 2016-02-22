@@ -49,6 +49,14 @@ import java.util.Map
 import java.beans.PropertyDescriptor
 import java.util.HashMap
 import org.sqlproc.meta.processorMeta.OrdSql
+import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmField
+import java.util.Set
+import org.eclipse.xtext.common.types.JvmFeature
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmType
+import org.eclipse.emf.ecore.InternalEObject
+import org.eclipse.emf.ecore.util.EcoreUtil
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -77,7 +85,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     ModelProperty modelProperty
 
 
-    val F_TYPES = <String>newArrayList("set", "update", "values", "where", "columns", "set=opt", "where=opt")
+    val F_TYPES = <String>newHashSet("set", "update", "values", "where", "columns", "set=opt", "where=opt")
 
     @Check
     def checkMetaSqlFtype(MetaSql metaSql) {
@@ -86,21 +94,11 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         if (CommonUtils.skipVerification(metaSql, modelProperty))
             return;
             
-        if (!findInListIgnoreCase(F_TYPES, metaSql.getFtype())) {
+        if (metaSql.getFtype() != null && !F_TYPES.contains(metaSql.getFtype().toLowerCase)) {
             error("Invalid ftype : " + metaSql.getFtype(), ProcessorMetaPackage.Literals.META_SQL__FTYPE)
         }
     }
 
-    def findInListIgnoreCase(List<String> list, String value) {
-        if (list == null)
-            return false
-        for (String item : list) {
-            if (item.equalsIgnoreCase(value))
-                return true
-        }
-        return false
-    }
-    
     @Check
     def checkUniqueMetaStatement(MetaStatement metaStatement) {
         if (CommonUtils.skipVerification(metaStatement, modelProperty))
@@ -197,13 +195,6 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         return false
     }
     
-    def checkClass(String className, URI uri) {
-        if (className == null || pojoResolverFactory.getPojoResolver() == null || className.equals("void"))
-            return true
-        val clazz = pojoResolverFactory.getPojoResolver().loadClass(className, uri)
-        return clazz != null
-    }
-
     @Check
     def checkUniquePojoDefinition(PojoDefinitionModel pojoDefinition) {
         if (CommonUtils.skipVerification(pojoDefinition, modelProperty))
@@ -212,10 +203,6 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         if (artifacts == null)
             return;
             
-    	val URI uri = pojoDefinition.eResource?.URI
-        if (isResolvePojo(pojoDefinition) && !checkClass(getClass(pojoDefinition), uri))
-            error("Class name : " + getClass(pojoDefinition) + " not exists",
-                    ProcessorMetaPackage.Literals.POJO_DEFINITION_MODEL__NAME)
         for (PojoDefinitionModel definition : artifacts.getPojos()) {
             if (definition != null && definition !== pojoDefinition) {
 	            if (pojoDefinition.getName().equals(definition.getName())) {
@@ -277,18 +264,6 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         return filteredModifiers
     }
 
-    def isResolvePojo(EObject model) {
-        if (pojoResolverFactory.getPojoResolver() == null
-                || !pojoResolverFactory.getPojoResolver().isResolvePojo(model))
-            return false
-        return true
-
-    }
-
-    def isResolveDb(EObject model) {
-        return dbResolver.isResolveDb(model)
-    }
-
     def String getClass(PojoDefinitionModel pojo) {
         if (pojo.getClassx() != null)
             return pojo.getClassx().getQualifiedName()
@@ -311,8 +286,8 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 
         var index = 0
         var String identPojoName
-        var String indexPojoName
         var PojoDefinition identPojo
+        var String indexPojoName
         var PojoDefinition indexPojo
         var String colPojoName
         var PojoDefinition colPojo
@@ -460,8 +435,13 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 
         val identifierName = identifier.name
         val identifierUsageClass = pojo.qualifiedName
+        var ValidationResult validationResult
         if (identifierUsageClass != null) {
-            switch (checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache)) {
+	        if (pojo.classx instanceof JvmDeclaredType)
+	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, identifierName)
+	        else
+	        	validationResult = checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache)
+	        switch (validationResult) {
             case ValidationResult.WARNING:
                 warning("Problem property : " + identifierName + "[" + identifierUsageClass + "]",
                         identifier, ProcessorMetaPackage.Literals.IDENTIFIER__NAME)
@@ -470,8 +450,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 					identifier, ProcessorMetaPackage.Literals.IDENTIFIER__NAME)
             }
             return
-        }
-
+		}
         if (pojoResolverFactory.getPojoResolver() != null) {
             error("Cannot check input form attribute : " + identifierName,
                     identifier, ProcessorMetaPackage.Literals.IDENTIFIER__NAME)
@@ -745,6 +724,54 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         return ValidationResult.OK
     }
 
+
+    def ValidationResult checkClassProperty(JvmDeclaredType jvmType, String property) {
+        if (property == null || Utils.isNumber(property) || pojoResolverFactory.getPojoResolver() == null)
+            return ValidationResult.OK
+        if (jvmType == null)
+            return ValidationResult.ERROR
+        	
+        var checkProperty = property
+        var pos1 = checkProperty.indexOf('=')
+        if (pos1 > 0) {
+            var pos2 = checkProperty.indexOf('.', pos1)
+            if (pos2 > pos1)
+                checkProperty = checkProperty.substring(0, pos1) + checkProperty.substring(pos2)
+        }
+        var innerProperty = null as String
+        pos1 = checkProperty.indexOf('.')
+        if (pos1 > 0) {
+            innerProperty = checkProperty.substring(pos1 + 1)
+            checkProperty = checkProperty.substring(0, pos1)
+        }
+        val Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty)
+        if (features == null || features.empty || !(features.head instanceof JvmField)) {
+        	if (jvmType.abstract)
+        		return ValidationResult.WARNING
+        	return ValidationResult.ERROR
+        }
+        if (innerProperty != null) {
+        	var JvmField field = features.head as JvmField
+        	if (field.type instanceof JvmParameterizedTypeReference) {
+	        	var JvmType type = (field.type as JvmParameterizedTypeReference).type
+	        	if (type != null && type.eIsProxy())
+	        		type = EcoreUtil.resolve(type, jvmType) as JvmType
+	        	if (type instanceof JvmDeclaredType)
+	        		return checkClassProperty(type, innerProperty)
+        	}
+			return ValidationResult.WARNING
+        }
+        return ValidationResult.OK
+    }
+
+    def Set<String> getFieldNamesForClass(JvmDeclaredType jvmType) {
+      val Set<String> result = <String>newHashSet();
+      for (JvmField field : jvmType.getDeclaredFields()) {
+        result.add(field.getSimpleName());
+      }
+      return result;
+    }
+    
     def ValidationResult checkOrderProperty(String className, String property, URI uri, 
     	Map<String, Map<String, String>> ordersCache, Map<String, Class<?>> classesCache
     ) {
@@ -936,5 +963,17 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         if (clazz == typeof(java.math.BigInteger))
             return true
         return false
+    }
+
+    def isResolvePojo(EObject model) {
+        if (pojoResolverFactory.getPojoResolver() == null
+                || !pojoResolverFactory.getPojoResolver().isResolvePojo(model))
+            return false
+        return true
+
+    }
+
+    def isResolveDb(EObject model) {
+        return dbResolver.isResolveDb(model)
     }
 }
