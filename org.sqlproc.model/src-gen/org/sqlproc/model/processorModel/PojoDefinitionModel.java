@@ -4,8 +4,6 @@ package org.sqlproc.model.processorModel;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmType;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Pojo Definition Model</b></em>'.
@@ -79,29 +77,29 @@ public interface PojoDefinitionModel extends EObject
   void setClass(String value);
 
   /**
-   * Returns the value of the '<em><b>Classx</b></em>' reference.
+   * Returns the value of the '<em><b>Classx</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Classx</em>' reference isn't clear,
+   * If the meaning of the '<em>Classx</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Classx</em>' reference.
-   * @see #setClassx(JvmType)
+   * @return the value of the '<em>Classx</em>' attribute.
+   * @see #setClassx(String)
    * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoDefinitionModel_Classx()
    * @model
    * @generated
    */
-  JvmType getClassx();
+  String getClassx();
 
   /**
-   * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}' reference.
+   * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Classx</em>' reference.
+   * @param value the new value of the '<em>Classx</em>' attribute.
    * @see #getClassx()
    * @generated
    */
-  void setClassx(JvmType value);
+  void setClassx(String value);
 
 } // PojoDefinitionModel

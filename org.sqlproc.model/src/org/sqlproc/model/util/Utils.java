@@ -107,7 +107,7 @@ public class Utils extends CommonUtils {
             return getPropertyValue(pv.getIdent());
         if (pv.getRef() != null) {
             if (pv.getRef().getClassx() != null)
-                return pv.getRef().getClassx().getQualifiedName();
+                return pv.getRef().getClassx();
             return pv.getRef().getClass_();
         }
         return null;

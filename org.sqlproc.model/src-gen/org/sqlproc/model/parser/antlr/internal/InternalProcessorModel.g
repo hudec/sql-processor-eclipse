@@ -6762,17 +6762,17 @@ rulePojoDefinitionModel returns [EObject current=null]
     |(
 (
 		{ 
-		  /* */ 
-		}
-		{
-			if ($current==null) {
-	            $current = createModelElement(grammarAccess.getPojoDefinitionModelRule());
-	        }
-        }
-		{ 
-	        newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassxJvmTypeCrossReference_2_1_0()); 
+	        newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0()); 
 	    }
-		ruleQualifiedName		{ 
+		lv_classx_5_0=ruleQualifiedName		{
+	        if ($current==null) {
+	            $current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+	        }
+       		set(
+       			$current, 
+       			"classx",
+        		lv_classx_5_0, 
+        		"QualifiedName");
 	        afterParserOrEnumRuleCall();
 	    }
 

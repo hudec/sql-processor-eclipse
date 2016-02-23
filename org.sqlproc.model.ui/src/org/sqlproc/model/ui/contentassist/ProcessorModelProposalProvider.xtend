@@ -62,7 +62,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 	}
 
 	def getClass(PojoDefinitionModel pojo) {
-		return if(pojo.getClassx() != null) pojo.getClassx().getQualifiedName() else pojo.getClass_()
+		return if(pojo.getClassx() != null) pojo.getClassx() else pojo.getClass_()
 	}
 
 	def isPrimitive(Class<?> clazz) {

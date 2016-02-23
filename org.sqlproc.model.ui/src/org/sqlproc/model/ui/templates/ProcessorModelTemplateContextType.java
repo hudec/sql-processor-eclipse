@@ -3,7 +3,6 @@ package org.sqlproc.model.ui.templates;
 import java.util.List;
 import java.util.Map;
 
-import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jface.text.templates.SimpleTemplateVariableResolver;
 import org.eclipse.jface.text.templates.TemplateContext;
@@ -52,7 +51,6 @@ public class ProcessorModelTemplateContextType extends XbaseTemplateContextType 
     @Override
     protected void addDefaultTemplateVariables() {
         super.addDefaultTemplateVariables();
-        super.addResolver(new PojoDefinitionsResolver());
         super.addResolver(new TablesDefinitionsResolver());
         super.addResolver(new ProceduresDefinitionsResolver());
         super.addResolver(new FunctionsDefinitionsResolver());
@@ -75,34 +73,6 @@ public class ProcessorModelTemplateContextType extends XbaseTemplateContextType 
         EObject object = xtextTemplateContext.getContentAssistContext().getCurrentModel();
         Package packagex = EcoreUtil2.getContainerOfType(object, Package.class);
         return packagex;
-    }
-
-    /*
-     * Template variable resolvers
-     */
-    public class PojoDefinitionsResolver extends SimpleTemplateVariableResolver {
-
-        public static final String NAME = "pojoDefinitions";
-
-        public PojoDefinitionsResolver() {
-            super(NAME, "PojoDefinitions");
-        }
-
-        @Override
-        protected String resolve(TemplateContext context) {
-            Artifacts artifacts = getArtifacts((XtextTemplateContext) context);
-            if (artifacts != null && modelProperty.isDoResolvePojo(artifacts)) {
-                URI uri = (artifacts.eResource() != null) ? artifacts.eResource().getURI() : null;
-                List<Class<?>> pojoClasses = pojoResolver.getPojoClasses(uri);
-                return CommonUtils.getPojoDefinitions(pojoClasses);
-            }
-            return super.resolve(context);
-        }
-
-        @Override
-        protected boolean isUnambiguous(TemplateContext context) {
-            return true;
-        }
     }
 
     public class TablesDefinitionsResolver extends SimpleTemplateVariableResolver {

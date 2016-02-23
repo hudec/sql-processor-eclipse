@@ -3909,15 +3909,14 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cClassAssignment_2_0_2 = (Assignment)cGroup_2_0.eContents().get(2);
 		private final RuleCall cClassQualifiedNameParserRuleCall_2_0_2_0 = (RuleCall)cClassAssignment_2_0_2.eContents().get(0);
 		private final Assignment cClassxAssignment_2_1 = (Assignment)cAlternatives_2.eContents().get(1);
-		private final CrossReference cClassxJvmTypeCrossReference_2_1_0 = (CrossReference)cClassxAssignment_2_1.eContents().get(0);
-		private final RuleCall cClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1 = (RuleCall)cClassxJvmTypeCrossReference_2_1_0.eContents().get(1);
+		private final RuleCall cClassxQualifiedNameParserRuleCall_2_1_0 = (RuleCall)cClassxAssignment_2_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//PojoDefinitionModel:
-		//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=[JvmType|QualifiedName]) ";";
+		//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=QualifiedName) ";";
 		@Override public ParserRule getRule() { return rule; }
 
-		//"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=[JvmType|QualifiedName]) ";"
+		//"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=QualifiedName) ";"
 		public Group getGroup() { return cGroup; }
 
 		//"pojo"
@@ -3929,7 +3928,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getNameValidIDParserRuleCall_1_0() { return cNameValidIDParserRuleCall_1_0; }
 
-		//":" ":"? class=QualifiedName | classx=[JvmType|QualifiedName]
+		//":" ":"? class=QualifiedName | classx=QualifiedName
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 
 		//":" ":"? class=QualifiedName
@@ -3947,14 +3946,11 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getClassQualifiedNameParserRuleCall_2_0_2_0() { return cClassQualifiedNameParserRuleCall_2_0_2_0; }
 
-		//classx=[JvmType|QualifiedName]
+		//classx=QualifiedName
 		public Assignment getClassxAssignment_2_1() { return cClassxAssignment_2_1; }
 
-		//[JvmType|QualifiedName]
-		public CrossReference getClassxJvmTypeCrossReference_2_1_0() { return cClassxJvmTypeCrossReference_2_1_0; }
-
 		//QualifiedName
-		public RuleCall getClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1() { return cClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1; }
+		public RuleCall getClassxQualifiedNameParserRuleCall_2_1_0() { return cClassxQualifiedNameParserRuleCall_2_1_0; }
 
 		//";"
 		public Keyword getSemicolonKeyword_3() { return cSemicolonKeyword_3; }
@@ -6988,7 +6984,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PojoDefinitionModel:
-	//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=[JvmType|QualifiedName]) ";";
+	//	"pojo" name=ValidID (":" ":"? class=QualifiedName | classx=QualifiedName) ";";
 	public PojoDefinitionModelElements getPojoDefinitionModelAccess() {
 		return pPojoDefinitionModel;
 	}

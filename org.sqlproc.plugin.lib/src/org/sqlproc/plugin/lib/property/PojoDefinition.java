@@ -4,11 +4,14 @@ import org.eclipse.xtext.common.types.JvmType;
 
 public interface PojoDefinition {
 
-    public String getName();
+    // public String getName();
 
-    public String getClazz();
+    // public String getClazz();
 
+    // ProcessorMetaValidator
     public JvmType getClassx();
 
+    // ProcessorMetaProposalProvider
+    // ProcessorMetaValidator
     public String getQualifiedName();
 }

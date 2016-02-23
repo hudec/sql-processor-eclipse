@@ -2181,7 +2181,7 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_DEFINITION_MODEL__CLASS = 1;
 
   /**
-   * The feature id for the '<em><b>Classx</b></em>' reference.
+   * The feature id for the '<em><b>Classx</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -6721,15 +6721,15 @@ public interface ProcessorModelPackage extends EPackage
   EAttribute getPojoDefinitionModel_Class();
 
   /**
-   * Returns the meta object for the reference '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}'.
+   * Returns the meta object for the attribute '{@link org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx <em>Classx</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Classx</em>'.
+   * @return the meta object for the attribute '<em>Classx</em>'.
    * @see org.sqlproc.model.processorModel.PojoDefinitionModel#getClassx()
    * @see #getPojoDefinitionModel()
    * @generated
    */
-  EReference getPojoDefinitionModel_Classx();
+  EAttribute getPojoDefinitionModel_Classx();
 
   /**
    * Returns the meta object for class '{@link org.sqlproc.model.processorModel.TableDefinitionModel <em>Table Definition Model</em>}'.
@@ -10207,12 +10207,12 @@ public interface ProcessorModelPackage extends EPackage
     EAttribute POJO_DEFINITION_MODEL__CLASS = eINSTANCE.getPojoDefinitionModel_Class();
 
     /**
-     * The meta object literal for the '<em><b>Classx</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Classx</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference POJO_DEFINITION_MODEL__CLASSX = eINSTANCE.getPojoDefinitionModel_Classx();
+    EAttribute POJO_DEFINITION_MODEL__CLASSX = eINSTANCE.getPojoDefinitionModel_Classx();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.model.processorModel.impl.TableDefinitionModelImpl <em>Table Definition Model</em>}' class.

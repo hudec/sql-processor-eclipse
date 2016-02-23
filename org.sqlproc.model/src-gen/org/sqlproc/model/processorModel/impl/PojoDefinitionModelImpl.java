@@ -5,12 +5,9 @@ package org.sqlproc.model.processorModel.impl;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.xtext.common.types.JvmType;
 
 import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
@@ -73,14 +70,24 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
   protected String class_ = CLASS_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getClassx() <em>Classx</em>}' reference.
+   * The default value of the '{@link #getClassx() <em>Classx</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getClassx()
    * @generated
    * @ordered
    */
-  protected JvmType classx;
+  protected static final String CLASSX_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getClassx() <em>Classx</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getClassx()
+   * @generated
+   * @ordered
+   */
+  protected String classx = CLASSX_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -154,27 +161,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmType getClassx()
-  {
-    if (classx != null && classx.eIsProxy())
-    {
-      InternalEObject oldClassx = (InternalEObject)classx;
-      classx = (JvmType)eResolveProxy(oldClassx);
-      if (classx != oldClassx)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, oldClassx, classx));
-      }
-    }
-    return classx;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public JvmType basicGetClassx()
+  public String getClassx()
   {
     return classx;
   }
@@ -184,9 +171,9 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setClassx(JvmType newClassx)
+  public void setClassx(String newClassx)
   {
-    JvmType oldClassx = classx;
+    String oldClassx = classx;
     classx = newClassx;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX, oldClassx, classx));
@@ -207,8 +194,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASS:
         return getClass_();
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        if (resolve) return getClassx();
-        return basicGetClassx();
+        return getClassx();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -230,7 +216,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
         setClass((String)newValue);
         return;
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        setClassx((JvmType)newValue);
+        setClassx((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -253,7 +239,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
         setClass(CLASS_EDEFAULT);
         return;
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        setClassx((JvmType)null);
+        setClassx(CLASSX_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -274,7 +260,7 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASS:
         return CLASS_EDEFAULT == null ? class_ != null : !CLASS_EDEFAULT.equals(class_);
       case ProcessorModelPackage.POJO_DEFINITION_MODEL__CLASSX:
-        return classx != null;
+        return CLASSX_EDEFAULT == null ? classx != null : !CLASSX_EDEFAULT.equals(classx);
     }
     return super.eIsSet(featureID);
   }
@@ -294,6 +280,8 @@ public class PojoDefinitionModelImpl extends MinimalEObjectImpl.Container implem
     result.append(name);
     result.append(", class: ");
     result.append(class_);
+    result.append(", classx: ");
+    result.append(classx);
     result.append(')');
     return result.toString();
   }

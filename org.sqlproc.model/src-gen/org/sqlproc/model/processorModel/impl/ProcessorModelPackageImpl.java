@@ -2974,9 +2974,9 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPojoDefinitionModel_Classx()
+  public EAttribute getPojoDefinitionModel_Classx()
   {
-    return (EReference)pojoDefinitionModelEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)pojoDefinitionModelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -4951,7 +4951,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     pojoDefinitionModelEClass = createEClass(POJO_DEFINITION_MODEL);
     createEAttribute(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__NAME);
     createEAttribute(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__CLASS);
-    createEReference(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__CLASSX);
+    createEAttribute(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__CLASSX);
 
     tableDefinitionModelEClass = createEClass(TABLE_DEFINITION_MODEL);
     createEAttribute(tableDefinitionModelEClass, TABLE_DEFINITION_MODEL__NAME);
@@ -5525,7 +5525,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEClass(pojoDefinitionModelEClass, PojoDefinitionModel.class, "PojoDefinitionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPojoDefinitionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoDefinitionModel_Class(), ecorePackage.getEString(), "class", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPojoDefinitionModel_Classx(), theTypesPackage.getJvmType(), null, "classx", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPojoDefinitionModel_Classx(), ecorePackage.getEString(), "classx", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableDefinitionModelEClass, TableDefinitionModel.class, "TableDefinitionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTableDefinitionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

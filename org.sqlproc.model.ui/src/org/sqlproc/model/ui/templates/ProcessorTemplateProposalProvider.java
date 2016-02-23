@@ -65,11 +65,8 @@ public class ProcessorTemplateProposalProvider extends DefaultTemplateProposalPr
 
         if (templateContext.getContextType().getId().equals(helper.getId(ga.getPropertyRule()))) {
 
-            Template template = new Template("pojos", "Pojos definitions", "pojosTemplateID", "${pojoDefinitions}",
-                    false);// auto-insertable?
-            TemplateProposal tp = createProposal(template, templateContext, context, getImage(template),
-                    getRelevance(template));
-            acceptor.accept(tp);
+            Template template;
+            TemplateProposal tp;
             template = new Template("tables", "Tables definitions", "uniqueTemplateID", "${tableDefinitions}", false);// auto-insertable?
             tp = createProposal(template, templateContext, context, getImage(template), getRelevance(template));
             acceptor.accept(tp);
@@ -142,8 +139,7 @@ public class ProcessorTemplateProposalProvider extends DefaultTemplateProposalPr
             + "pojogen-implements-interfaces java.io.Serializable;\n" + "pojogen-generate-operators;\n"
             + "pojogen-generate-validation-annotations;\n" + "\n" + "metagen-global-sequence TODO_SEQUENCE_NAME;\n";
 
-    static final String DB2 = "resolve-pojo-on;\n"
-            + "database-is-online;\n"
+    static final String DB2 = "resolve-pojo-on;\n" + "database-is-online;\n"
             + "database-jdbc-driver :com.ibm.db2.jcc.DB2Driver;\n"
             + "database-has-url jdbc:db2:\\//TODO_DB_SERVER:50001/TODO_DB_NAME:deferPrepares=0\\;progressiveStreaming=2\\;;\n"
             + "database-login-username TODO_DB_USER;\n" + "database-login-password TODO_DB_PASSWORD;\n"
@@ -152,8 +148,7 @@ public class ProcessorTemplateProposalProvider extends DefaultTemplateProposalPr
             + "pojogen-implements-interfaces java.io.Serializable;\n" + "pojogen-generate-operators;\n"
             + "pojogen-generate-validation-annotations;\n" + "\n" + "metagen-global-sequence TODO_SEQUENCE_NAME;\n";
 
-    static final String INFORMIX = "resolve-pojo-on;\n"
-            + "database-is-online;\n"
+    static final String INFORMIX = "resolve-pojo-on;\n" + "database-is-online;\n"
             + "database-jdbc-driver :com.informix.jdbc.IfxDriver;\n"
             + "database-has-url jdbc:informix-sqli:\\//TODO_DB_SERVER:1551/TODO_DB_NAME:informixserver=TODO_IFX_NAME\\;DB_LOCALE=en_US\\.57372;\n"
             + "database-login-username TODO_DB_USER;\n" + "database-login-password TODO_DB_PASSWORD;\n"

@@ -30,16 +30,6 @@ public class PojoDefinitionImpl implements PojoDefinition {
     }
 
     @Override
-    public String getName() {
-        return name;
-    }
-
-    @Override
-    public String getClazz() {
-        return clazz;
-    }
-
-    @Override
     public JvmType getClassx() {
         return classx;
     }

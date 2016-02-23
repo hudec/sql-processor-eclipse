@@ -12,8 +12,6 @@ import java.util.Collection
 import java.util.List
 
 import org.eclipse.emf.ecore.EObject
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.eclipse.xtext.scoping.IScopeProvider
 import org.sqlproc.meta.processorMeta.Artifacts
 import org.sqlproc.meta.processorMeta.Column
 import org.sqlproc.meta.processorMeta.Constant
@@ -55,8 +53,6 @@ import java.util.Set
 import org.eclipse.xtext.common.types.JvmFeature
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import org.eclipse.xtext.common.types.JvmType
-import org.eclipse.emf.ecore.InternalEObject
-import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmEnumerationType
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmTypeReference
@@ -77,12 +73,6 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 
     @Inject
     DbResolver dbResolver
-
-    @Inject
-    IScopeProvider scopeProvider
-
-    @Inject
-    IQualifiedNameConverter qualifiedNameConverter
 
     @Inject
     ModelProperty modelProperty

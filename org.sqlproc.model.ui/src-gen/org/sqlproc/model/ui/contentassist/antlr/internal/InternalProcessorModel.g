@@ -49974,12 +49974,8 @@ rule__PojoDefinitionModel__ClassxAssignment_2_1
     }
 :
 (
-{ before(grammarAccess.getPojoDefinitionModelAccess().getClassxJvmTypeCrossReference_2_1_0()); }
-(
-{ before(grammarAccess.getPojoDefinitionModelAccess().getClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1()); }
-	ruleQualifiedName{ after(grammarAccess.getPojoDefinitionModelAccess().getClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1()); }
-)
-{ after(grammarAccess.getPojoDefinitionModelAccess().getClassxJvmTypeCrossReference_2_1_0()); }
+{ before(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0()); }
+	ruleQualifiedName{ after(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0()); }
 )
 
 ;
