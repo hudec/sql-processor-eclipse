@@ -59,6 +59,7 @@ import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.emf.ecore.util.EcoreUtil
 import org.eclipse.xtext.common.types.JvmEnumerationType
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
+import org.eclipse.xtext.common.types.JvmTypeReference
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -357,6 +358,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
            	indexPojo = identPojo;
            	indexPojoName = identPojoName;
         }
+        val boolean newPojoValidator = modelProperty.isNewPojoValidator(statement)
         
         if (identPojo != null) {
         	val identifiers = statement.getAllContentsOfType(typeof(Identifier))
@@ -364,7 +366,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	val pojoName = identPojoName
         	identifiers.forEach[identifier |
         		//println("identifier for "+pojoName+" "+identifier)
-        		checkIdentifier(identifier, pojo, pojoName, statement, artifacts, uri, descriptorsCache, classesCache) 
+        		checkIdentifier(identifier, pojo, pojoName, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache) 
         	]
        	}
         if (indexPojo != null) {
@@ -373,7 +375,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	val pojoName = indexPojoName
         	orders.forEach[order |
         		//println("identifier for "+pojoName+" "+identifier)
-        		checkOrder(order, pojo, pojoName, statement, artifacts, uri, ordersCache, classesCache) 
+        		checkOrder(order, pojo, pojoName, statement, newPojoValidator, artifacts, uri, ordersCache, classesCache) 
         	]
         }
 
@@ -383,7 +385,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	val pojoName = colPojoName
         	columns.forEach[column |
         		//println("column for "+pojoName+" "+column)
-        		checkColumn(column, pojo, pojoName, statement, artifacts, uri, descriptorsCache, classesCache) 
+        		checkColumn(column, pojo, pojoName, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache) 
         	]
         }
 
@@ -393,7 +395,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	val pojoName = constPojoName
         	constants.forEach[constant |
         		//println("constant for "+pojoName+" "+constant)
-        		checkConstant(constant, pojo, pojoName, statement, artifacts, uri, descriptorsCache, classesCache) 
+        		checkConstant(constant, pojo, pojoName, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache) 
         	]
         }
         
@@ -429,7 +431,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         ]
     }
 
-    def checkIdentifier(Identifier identifier, PojoDefinition pojo, String pojoName, MetaStatement statement, 
+    def checkIdentifier(Identifier identifier, PojoDefinition pojo, String pojoName, MetaStatement statement, boolean newPojoValidator,
     	Artifacts artifacts, URI uri, Map<String, PropertyDescriptor[]> descriptorsCache, Map<String, Class<?>> classesCache
     ) {
         if (!isResolvePojo(identifier))
@@ -439,7 +441,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val identifierUsageClass = pojo.qualifiedName
         var ValidationResult validationResult
         if (identifierUsageClass != null) {
-	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(identifier))
+	        if (newPojoValidator && pojo.classx instanceof JvmDeclaredType)
 	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, identifierName)
 	        else
 	        	validationResult = checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache)
@@ -459,7 +461,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         }
     }
 
-    def checkOrder(OrdSql order, PojoDefinition pojo, String pojoName, MetaStatement statement, 
+    def checkOrder(OrdSql order, PojoDefinition pojo, String pojoName, MetaStatement statement, boolean newPojoValidator,
     	Artifacts artifacts, URI uri, Map<String, Map<String, String>> ordersCache, Map<String, Class<?>> classesCache
     ) {
         if (!isResolvePojo(order))
@@ -469,7 +471,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val identifierUsageClass = pojo.qualifiedName
         var ValidationResult validationResult
         if (identifierUsageClass != null) {
-        	if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(order))
+        	if (newPojoValidator && pojo.classx instanceof JvmDeclaredType)
 	        	validationResult = checkOrderProperty(pojo.classx as JvmDeclaredType, identifierName)
 	        else
 	        	checkOrderProperty(identifierUsageClass, identifierName, uri, ordersCache, classesCache)
@@ -490,7 +492,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         }
     }
 
-    def checkColumn(Column column, PojoDefinition pojo, String pojoName, MetaStatement statement, 
+    def checkColumn(Column column, PojoDefinition pojo, String pojoName, MetaStatement statement, boolean newPojoValidator,
     	Artifacts artifacts, URI uri, Map<String, PropertyDescriptor[]> descriptorsCache, Map<String, Class<?>> classesCache
     ) {
         if (!isResolvePojo(column))
@@ -502,7 +504,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val columnUsageClass = if (pojo != null) pojo.qualifiedName
         var ValidationResult validationResult
         if (columnUsageClass != null) {
-	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(column))
+	        if (newPojoValidator && pojo.classx instanceof JvmDeclaredType)
 	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, columnName)
 	        else
 	        	validationResult = checkClassProperty(columnUsageClass, columnName, uri, descriptorsCache, classesCache)
@@ -567,7 +569,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	column, ProcessorMetaPackage.Literals.COLUMN__COLUMNS)
     }
     
-    def checkConstant(Constant constant, PojoDefinition pojo, String pojoName, MetaStatement statement, 
+    def checkConstant(Constant constant, PojoDefinition pojo, String pojoName, MetaStatement statement, boolean newPojoValidator,
     	Artifacts artifacts, URI uri, Map<String, PropertyDescriptor[]> descriptorsCache, Map<String, Class<?>> classesCache
     ) {
         if (!isResolvePojo(constant))
@@ -576,7 +578,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val constantUsageClass = if (pojo != null) pojo.qualifiedName
         var ValidationResult validationResult
         if (constantUsageClass != null) {
-	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(constant))
+	        if (newPojoValidator && pojo.classx instanceof JvmDeclaredType)
 	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, constant.getName())
 	        else
 	        	validationResult = checkClassProperty(constantUsageClass, constant.getName(), uri, descriptorsCache, classesCache)
@@ -632,17 +634,18 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         }
 
         if (colPojo != null) {
+        	val boolean newPojoValidator = modelProperty.isNewPojoValidator(rule)
         	val columns = rule.getAllContentsOfType(typeof(MappingColumn))
         	val pojo = colPojo
         	val pojoName = colPojoName
         	columns.forEach[column |
         		//println("mapping column for "+pojoName+" "+column)
-        		checkMappingColumn(column, pojo, pojoName, rule, artifacts, uri, descriptorsCache, classesCache) 
+        		checkMappingColumn(column, pojo, pojoName, rule, newPojoValidator, artifacts, uri, descriptorsCache, classesCache) 
         	]
         }
     }
 
-    def checkMappingColumn(MappingColumn column, PojoDefinition pojo, String pojoName, MappingRule rule,
+    def checkMappingColumn(MappingColumn column, PojoDefinition pojo, String pojoName, MappingRule rule, boolean newPojoValidator,
     	Artifacts artifacts, URI uri, Map<String, PropertyDescriptor[]> descriptorsCache, Map<String, Class<?>> classesCache
     ) {
         if (!isResolvePojo(column))
@@ -654,7 +657,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val mappingUsageClass = pojo.qualifiedName
         var ValidationResult validationResult
         if (mappingUsageClass != null) {
-	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(column))
+	        if (newPojoValidator && pojo.classx instanceof JvmDeclaredType)
 	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, columnName)
 	        else
 	        	validationResult = checkClassProperty(mappingUsageClass, columnName, uri, descriptorsCache, classesCache)
@@ -775,15 +778,27 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         if (innerProperty != null) {
         	var JvmField field = features.head as JvmField
         	if (field.type instanceof JvmParameterizedTypeReference) {
-	        	var JvmType type = (field.type as JvmParameterizedTypeReference).type
-	        	if (!(type instanceof JvmDeclaredType) && type.eIsProxy())
-	        		type = EcoreUtil.resolve(type, jvmType) as JvmType
+	        	val JvmType type = (field.type as JvmParameterizedTypeReference).type
+//	        	if (!(type instanceof JvmDeclaredType) && type.eIsProxy())
+//	        		type = EcoreUtil.resolve(type, jvmType) as JvmType
 	        	if (!(type instanceof JvmDeclaredType)) {
 		        	print("checkClassProperty "+property+": ")
 		        	println(type)
 	        	}
-	        	else
-	        		return checkClassProperty(type as JvmDeclaredType, innerProperty)
+	        	else {
+					val List<JvmTypeReference> typeArgs = (field.type as JvmParameterizedTypeReference).getArguments()
+					if (typeArgs != null && !typeArgs.empty && typeArgs.head instanceof JvmParameterizedTypeReference) {
+						val JvmType type2 = (typeArgs.head as JvmParameterizedTypeReference).type
+						if (!(type2 instanceof JvmDeclaredType)) {
+		        			print("checkClassProperty2 "+property+": ")
+		        			println(type2)
+	        			}
+						else
+		        			return checkClassProperty(type2 as JvmDeclaredType, innerProperty)
+					}
+					else
+	        			return checkClassProperty(type as JvmDeclaredType, innerProperty)
+        		}
         	}
 			return ValidationResult.WARNING
         }
