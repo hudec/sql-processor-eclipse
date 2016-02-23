@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 
 public interface PojoResolver {
 
@@ -17,8 +16,6 @@ public interface PojoResolver {
     public PropertyDescriptor[] getPropertyDescriptors(String name, URI uri);
 
     public Map<String, String> getOrders(String name, URI uri);
-
-    boolean isResolvePojo(EObject model);
 
     List<Class<?>> getPojoClasses(URI uri);
 

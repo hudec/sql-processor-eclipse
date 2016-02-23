@@ -3,26 +3,18 @@
  */
 package org.sqlproc.model.ui.contentassist
 
-import static org.sqlproc.plugin.lib.util.Constants.*
-
-import java.lang.reflect.ParameterizedType
-import java.util.Collection
 import java.util.List
 import java.util.Set
 
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.Assignment
-import org.eclipse.xtext.RuleCall
-import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
 import org.sqlproc.model.processorModel.AnnotatedEntity
-import org.sqlproc.model.processorModel.Artifacts
 import org.sqlproc.model.processorModel.DatabaseProperty
 import org.sqlproc.model.processorModel.DriverMethodOutputAssignement
-import org.sqlproc.model.processorModel.Entity
 import org.sqlproc.model.processorModel.ExportAssignement
 import org.sqlproc.model.processorModel.ImportAssignement
 import org.sqlproc.model.processorModel.InheritanceAssignement
@@ -32,23 +24,13 @@ import org.sqlproc.model.processorModel.Package
 import org.sqlproc.model.processorModel.PojoDefinitionModel
 import org.sqlproc.model.processorModel.PojoEntity
 import org.sqlproc.model.processorModel.PojogenProperty
-import org.sqlproc.model.processorModel.ProcessorModelPackage
 import org.sqlproc.model.processorModel.ShowColumnTypeAssignement
-import org.sqlproc.model.processorModel.TableDefinitionModel
 import org.sqlproc.model.processorModel.Property
-import org.sqlproc.model.util.Utils
 import org.sqlproc.plugin.lib.resolver.DbResolver.DbType
 
 import com.google.inject.Inject
 
 import static extension org.eclipse.xtext.EcoreUtil2.*
-//import org.sqlproc.model.generator.ProcessorGeneratorUtils
-import org.sqlproc.model.processorModel.DirectiveProperties
-import org.sqlproc.model.processorModel.PojoDirective
-import java.util.TreeMap
-import org.eclipse.xtext.CrossReference
-import org.eclipse.emf.common.util.URI
-import org.sqlproc.plugin.lib.resolver.PojoResolver
 import org.sqlproc.plugin.lib.resolver.DbResolver
 
 /**
@@ -57,15 +39,7 @@ import org.sqlproc.plugin.lib.resolver.DbResolver
 class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvider {
 
 	@Inject
-	PojoResolver pojoResolver
-
-	@Inject
 	DbResolver dbResolver
-
-	@Inject
-	IQualifiedNameConverter qualifiedNameConverter
-
-	//@Inject extension ProcessorGeneratorUtils
 
 	val DEBUG_LEVELS = <String>newArrayList("DEBUG", "INFO", "FATAL", "ERROR", "WARN", "TRACE")
 
@@ -83,12 +57,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		sb.append(s)
 	}
 
-	def boolean isResolvePojo(EObject model) {
-		pojoResolver.isResolvePojo(model)
-
-	}
-
-	def boolean isResolveDb(EObject model) {
+		def boolean isResolveDb(EObject model) {
 		dbResolver.isResolveDb(model)
 	}
 
@@ -118,58 +87,6 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		if (clazz == typeof(java.math.BigInteger))
 			return true
 		return false
-	}
-
-	def String getClassName(String baseClass, String property, URI uri) {
-		if (baseClass == null || property == null)
-			return baseClass
-		var pos1 = property.indexOf('.')
-		if (pos1 == -1)
-			return baseClass
-		var checkProperty = property
-		pos1 = checkProperty.indexOf('=')
-		if (pos1 > 0) {
-			var pos2 = checkProperty.indexOf('.', pos1)
-			if (pos2 > pos1)
-				checkProperty = checkProperty.substring(0, pos1) + checkProperty.substring(pos2)
-		}
-		var innerProperty = null as String
-		pos1 = checkProperty.indexOf('.')
-		if (pos1 > 0) {
-			innerProperty = checkProperty.substring(pos1 + 1)
-			checkProperty = checkProperty.substring(0, pos1)
-		}
-		var descriptors = pojoResolver.getPropertyDescriptors(baseClass, uri)
-		if (descriptors == null)
-			return null
-		val _checkProperty = checkProperty
-		var innerDesriptor = descriptors.findFirst [ descriptor |
-			descriptor.name == _checkProperty
-		]
-		if (innerDesriptor == null)
-			return null
-		var innerClass = innerDesriptor.getPropertyType()
-		if (innerClass.isArray()) {
-			var type = innerDesriptor.getReadMethod().getGenericReturnType() as ParameterizedType
-			if (type.getActualTypeArguments() == null || type.getActualTypeArguments().length == 0)
-				return null
-			innerClass = type.getActualTypeArguments().head as Class<?>
-			if (isPrimitive(innerClass))
-				return null
-			return getClassName(innerClass.getName(), innerProperty, uri)
-		} else if (typeof(Collection).isAssignableFrom(innerClass)) {
-			var type = innerDesriptor.getReadMethod().getGenericReturnType() as ParameterizedType
-			if (type.getActualTypeArguments() == null || type.getActualTypeArguments().length == 0)
-				return null
-			innerClass = type.getActualTypeArguments().head as Class<?>
-			if (isPrimitive(innerClass))
-				return null
-			return getClassName(innerClass.getName(), innerProperty, uri)
-		} else {
-			if (isPrimitive(innerClass))
-				return null
-			return getClassName(innerClass.getName(), innerProperty, uri)
-		}
 	}
 
 	def acceptTables(EObject model, ContentAssistContext context, ICompletionProposalAcceptor acceptor, String suffix) {

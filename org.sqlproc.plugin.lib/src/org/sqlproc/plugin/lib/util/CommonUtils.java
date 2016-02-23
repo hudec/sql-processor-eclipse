@@ -381,4 +381,11 @@ public class CommonUtils {
             assert false;
         return modelProperty.skipVerification(model);
     }
+
+    public static boolean isResolvePojo(ModelProperty modelProperty, EObject model) {
+        if (!modelProperty.isDoResolvePojo(model)) {
+            return false;
+        }
+        return true;
+    }
 }

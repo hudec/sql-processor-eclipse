@@ -1025,11 +1025,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
 
     def isResolvePojo(EObject model) {
-        if (pojoResolverFactory.getPojoResolver() == null
-                || !pojoResolverFactory.getPojoResolver().isResolvePojo(model))
-            return false
-        return true
-
+        CommonUtils.isResolvePojo(modelProperty, model)
     }
 
     def isResolveDb(EObject model) {

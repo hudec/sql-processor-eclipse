@@ -46,6 +46,7 @@ import org.sqlproc.plugin.lib.resolver.PojoResolver
 import org.sqlproc.plugin.lib.resolver.DbResolver
 import org.sqlproc.plugin.lib.property.ModelProperty
 import org.sqlproc.plugin.lib.property.PojoDefinition
+import org.sqlproc.plugin.lib.util.CommonUtils
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
@@ -224,7 +225,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
     }
 
     def boolean isResolvePojo(EObject model) {
-        pojoResolver.isResolvePojo(model)
+        CommonUtils.isResolvePojo(modelProperty, model)
 
     }
 

@@ -213,8 +213,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
         boolean verFind = false;
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < columns.size(); i++) {
-            if (!idFind
-                    && (columns.get(i).toUpperCase().equals("ID") || columns.get(i).toUpperCase().indexOf("ID_") == 0)) {
+            if (!idFind && (columns.get(i).toUpperCase().equals("ID")
+                    || columns.get(i).toUpperCase().indexOf("ID_") == 0)) {
                 idFind = true;
                 continue;
             }
@@ -236,8 +236,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
         boolean verFind = false;
         StringBuilder builder = new StringBuilder();
         for (int i = 0; i < columns.size(); i++) {
-            if (!idFind
-                    && (columns.get(i).toUpperCase().equals("ID") || columns.get(i).toUpperCase().indexOf("ID_") == 0)) {
+            if (!idFind && (columns.get(i).toUpperCase().equals("ID")
+                    || columns.get(i).toUpperCase().indexOf("ID_") == 0)) {
                 idFind = true;
                 builder.append("\n  {& ").append("%" + columns.get(i)).append(" = :")
                         .append(toCamelCase(columns.get(i))).append(" }");
@@ -282,7 +282,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 return "%%" + pair.getSecond().getTable();
             }
@@ -305,7 +306,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getSelectColumns(dbColumns);
@@ -329,7 +331,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getPojoColumns(dbColumns);
@@ -353,7 +356,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getInsertColumns(dbColumns);
@@ -377,7 +381,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getUpdateColumns(dbColumns);
@@ -401,7 +406,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getCondColumns(dbColumns);
@@ -425,7 +431,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getVerUpdateColumns(dbColumns);
@@ -449,7 +456,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getOptUpdateColumns(dbColumns);
@@ -473,7 +481,8 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
 
         @Override
         protected String resolve(TemplateContext context) {
-            Pair<Artifacts, TableDefinition> pair = getTableDefinition(getMetaStatement((XtextTemplateContext) context));
+            Pair<Artifacts, TableDefinition> pair = getTableDefinition(
+                    getMetaStatement((XtextTemplateContext) context));
             if (pair != null && dbResolver.isResolveDb(pair.getFirst())) {
                 List<String> dbColumns = dbResolver.getColumns(pair.getFirst(), pair.getSecond().getTable());
                 return getOptCondColumns(dbColumns);
@@ -498,7 +507,7 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
         @Override
         protected String resolve(TemplateContext context) {
             Artifacts artifacts = getArtifacts((XtextTemplateContext) context);
-            if (artifacts != null && pojoResolver.isResolvePojo(artifacts)) {
+            if (artifacts != null && CommonUtils.isResolvePojo(modelProperty, artifacts)) {
                 URI uri = (artifacts.eResource() != null) ? artifacts.eResource().getURI() : null;
                 List<Class<?>> pojoClasses = pojoResolver.getPojoClasses(uri);
                 return getPojoDefinitions(pojoClasses);

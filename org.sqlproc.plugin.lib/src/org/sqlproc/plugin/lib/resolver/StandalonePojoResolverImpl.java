@@ -17,8 +17,6 @@ import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
-import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.util.MainUtils;
 
 import com.google.inject.Singleton;
@@ -28,11 +26,9 @@ public class StandalonePojoResolverImpl implements PojoResolver {
 
     protected Logger LOGGER = Logger.getLogger(StandalonePojoResolverImpl.class);
 
-    ModelProperty modelProperty;
     String source;
 
-    public StandalonePojoResolverImpl(ModelProperty modelProperty, String source) {
-        this.modelProperty = modelProperty;
+    public StandalonePojoResolverImpl(String source) {
         this.source = source;
     }
 
@@ -113,14 +109,6 @@ public class StandalonePojoResolverImpl implements PojoResolver {
             orderBeanClass = loadClass(beanClass.getName() + "$Order", uri);
         }
         return orders;
-    }
-
-    @Override
-    public boolean isResolvePojo(EObject model) {
-        if (!modelProperty.isDoResolvePojo(model)) {
-            return false;
-        }
-        return true;
     }
 
     @Override

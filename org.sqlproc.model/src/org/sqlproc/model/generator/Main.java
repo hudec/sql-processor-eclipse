@@ -159,7 +159,7 @@ public class Main {
             ModelProperty.ModelValues modelValues = ModelPropertyBean.loadModel(null, definitions);
             modelValues.doResolveDb = true;
             modelProperty.init(modelValues);
-            pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(modelProperty, source));
+            pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
             String dbSqlsBefore = MainUtils.loadDdl(source, ddl);
             dbResolver.init(modelProperty, null, dbSqlsBefore, null);
         }
@@ -218,7 +218,7 @@ public class Main {
         ModelProperty.ModelValues modelValues = ModelPropertyBean.loadModel(null, definitions);
         modelValues.doResolveDb = true;
         modelProperty.init(modelValues);
-        pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(modelProperty, source));
+        pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
         String dbSqlsBefore = MainUtils.loadDdl(source, ddl);
         dbResolver.init(modelProperty, null, dbSqlsBefore, null);
 

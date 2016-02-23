@@ -31,7 +31,6 @@ import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.jdt.core.ICompilationUnit;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.core.IPackageFragment;
@@ -41,19 +40,14 @@ import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.ui.IEditorPart;
 import org.eclipse.ui.IFileEditorInput;
 import org.eclipse.ui.PlatformUI;
-import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
 
-import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
 @Singleton
 public class WorkspacePojoResolverImpl implements PojoResolver {
 
     protected Logger LOGGER = Logger.getLogger(WorkspacePojoResolverImpl.class);
-
-    @Inject
-    ModelProperty modelProperty;
 
     private Map<String, URLClassLoader> allLoaders;
     private Set<String> nokLoaders = new HashSet<String>();
@@ -243,17 +237,6 @@ public class WorkspacePojoResolverImpl implements PojoResolver {
             orderBeanClass = loadClass(beanClass.getName() + "$Order", uri);
         }
         return orders;
-    }
-
-    @Override
-    public boolean isResolvePojo(EObject model) {
-        if (!modelProperty.isDoResolvePojo(model)) {
-            return false;
-        }
-        if (allLoaders == null) {
-            init();
-        }
-        return allLoaders != null;
     }
 
     @Override
