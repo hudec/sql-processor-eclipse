@@ -57,6 +57,8 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
 import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.emf.ecore.InternalEObject
 import org.eclipse.emf.ecore.util.EcoreUtil
+import org.eclipse.xtext.common.types.JvmEnumerationType
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -437,7 +439,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         val identifierUsageClass = pojo.qualifiedName
         var ValidationResult validationResult
         if (identifierUsageClass != null) {
-	        if (pojo.classx instanceof JvmDeclaredType)
+	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(identifier))
 	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, identifierName)
 	        else
 	        	validationResult = checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache)
@@ -465,8 +467,13 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 
         val identifierName = order.ident
         val identifierUsageClass = pojo.qualifiedName
+        var ValidationResult validationResult
         if (identifierUsageClass != null) {
-            switch (checkOrderProperty(identifierUsageClass, identifierName, uri, ordersCache, classesCache)) {
+        	if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(order))
+	        	validationResult = checkOrderProperty(pojo.classx as JvmDeclaredType, identifierName)
+	        else
+	        	checkOrderProperty(identifierUsageClass, identifierName, uri, ordersCache, classesCache)
+            switch (validationResult) {
             case ValidationResult.WARNING:
                 warning("Problem order : " + identifierName + "[" + identifierUsageClass + "]",
                         order, ProcessorMetaPackage.Literals.ORD_SQL__IDENT)
@@ -493,8 +500,13 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
             return;
 
         val columnUsageClass = if (pojo != null) pojo.qualifiedName
+        var ValidationResult validationResult
         if (columnUsageClass != null) {
-            switch (checkClassProperty(columnUsageClass, columnName, uri, descriptorsCache, classesCache)) {
+	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(column))
+	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, columnName)
+	        else
+	        	validationResult = checkClassProperty(columnUsageClass, columnName, uri, descriptorsCache, classesCache)
+            switch (validationResult) {
             case ValidationResult.WARNING:
                 warning("Problem property : " + columnName + "[" + columnUsageClass + "]",
                         column, ProcessorMetaPackage.Literals.COLUMN__COLUMNS)
@@ -562,8 +574,13 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
             return;
 
         val constantUsageClass = if (pojo != null) pojo.qualifiedName
+        var ValidationResult validationResult
         if (constantUsageClass != null) {
-            switch (checkClassProperty(constantUsageClass, constant.getName(), uri, descriptorsCache, classesCache)) {
+	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(constant))
+	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, constant.getName())
+	        else
+	        	validationResult = checkClassProperty(constantUsageClass, constant.getName(), uri, descriptorsCache, classesCache)
+            switch (validationResult) {
             case ValidationResult.WARNING:
                 warning("Problem property : " + constant.getName() + "[" + constantUsageClass + "]",
                         constant, ProcessorMetaPackage.Literals.CONSTANT__NAME)
@@ -635,8 +652,13 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
             return;
 
         val mappingUsageClass = pojo.qualifiedName
+        var ValidationResult validationResult
         if (mappingUsageClass != null) {
-            switch (checkClassProperty(mappingUsageClass, columnName, uri, descriptorsCache, classesCache)) {
+	        if (pojo.classx instanceof JvmDeclaredType && modelProperty.isNewPojoValidator(column))
+	        	validationResult = checkClassProperty(pojo.classx as JvmDeclaredType, columnName)
+	        else
+	        	validationResult = checkClassProperty(mappingUsageClass, columnName, uri, descriptorsCache, classesCache)
+            switch (validationResult) {
             case ValidationResult.WARNING:
                 warning("Problem property : " + columnName + "[" + mappingUsageClass + "]",
                         column, ProcessorMetaPackage.Literals.MAPPING_COLUMN__ITEMS)
@@ -726,7 +748,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 
 
     def ValidationResult checkClassProperty(JvmDeclaredType jvmType, String property) {
-        if (property == null || Utils.isNumber(property) || pojoResolverFactory.getPojoResolver() == null)
+        if (property == null || Utils.isNumber(property))
             return ValidationResult.OK
         if (jvmType == null)
             return ValidationResult.ERROR
@@ -754,10 +776,14 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	var JvmField field = features.head as JvmField
         	if (field.type instanceof JvmParameterizedTypeReference) {
 	        	var JvmType type = (field.type as JvmParameterizedTypeReference).type
-	        	if (type != null && type.eIsProxy())
+	        	if (!(type instanceof JvmDeclaredType) && type.eIsProxy())
 	        		type = EcoreUtil.resolve(type, jvmType) as JvmType
-	        	if (type instanceof JvmDeclaredType)
-	        		return checkClassProperty(type, innerProperty)
+	        	if (!(type instanceof JvmDeclaredType)) {
+		        	print("checkClassProperty "+property+": ")
+		        	println(type)
+	        	}
+	        	else
+	        		return checkClassProperty(type as JvmDeclaredType, innerProperty)
         	}
 			return ValidationResult.WARNING
         }
@@ -798,6 +824,24 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	return ValidationResult.OK 
         else 
         	return ValidationResult.ERROR 
+    }
+    
+    def ValidationResult checkOrderProperty(JvmDeclaredType jvmType, String property) {
+        if (property == null)
+            return ValidationResult.OK
+        if (jvmType == null)
+            return ValidationResult.ERROR
+        val Iterable<JvmFeature> features = jvmType.findAllFeaturesByName("ORDER_BY_" + property)
+        if (features == null || features.empty || !(features.head instanceof JvmField)) {
+        	val Iterable<JvmDeclaredType> nestedTypes = jvmType.findAllNestedTypesByName("Order");
+        	if (nestedTypes == null || nestedTypes.empty || !(nestedTypes.head instanceof JvmEnumerationType))
+	        	return ValidationResult.ERROR
+	        val JvmEnumerationType type = nestedTypes.head as JvmEnumerationType
+	        val Iterable<JvmFeature> features2 = type.findAllFeaturesByName(property)
+	        if (features2 == null || features2.empty || !(features2.head instanceof JvmEnumerationLiteral))
+	        	return ValidationResult.ERROR
+        }
+        return ValidationResult.OK 
     }
 
     @Check

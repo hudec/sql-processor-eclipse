@@ -59,6 +59,7 @@ Property: (condition=PropertyCondition)?
 	|name='compress-meta-directives'
 	|name='generate-from-to'
 	|name='case-format-library' caseFormatLibrary=ValueType
+	|name='new-pojo-validator'
 	) ';';
 
 DatabaseProperty:

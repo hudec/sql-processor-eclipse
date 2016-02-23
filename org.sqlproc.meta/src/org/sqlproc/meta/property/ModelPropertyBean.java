@@ -330,6 +330,8 @@ public class ModelPropertyBean extends ModelProperty {
                             .add(Utils.getPropertyValue(property.getDoNotVerifyResources().get(i)));
                 }
             }
+        } else if (NEW_POJO_VALIDATOR.equals(property.getName())) {
+            modelValues.newPojoValidator = true;
         }
     }
 

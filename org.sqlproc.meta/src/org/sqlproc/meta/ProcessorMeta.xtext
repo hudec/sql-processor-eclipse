@@ -57,6 +57,7 @@ Property: (condition=PropertyCondition WS*)?
 	|name='compress-meta-directives'
 	|name='generate-from-to'
 	|name='case-format-library' WS+ caseFormatLibrary=ValueType
+	|name='new-pojo-validator'
 	) SEMICOLON;
 
 DatabaseProperty:

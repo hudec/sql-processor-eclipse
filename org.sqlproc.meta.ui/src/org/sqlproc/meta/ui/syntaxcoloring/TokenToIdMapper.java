@@ -71,6 +71,7 @@ public class TokenToIdMapper extends DefaultAntlrTokenToAttributeIdMapper {
         keywords.add("'" + ModelProperty.VALIDATE_RESOURCES + "'");
         keywords.add("'" + ModelProperty.GENERATE_FROM_TO + "'");
         keywords.add("'" + ModelProperty.CASE_FORMAT_LIBRARY + "'");
+        keywords.add("'" + ModelProperty.NEW_POJO_VALIDATOR + "'");
 
         keywords.add("'" + ModelProperty.DATABASE + "-'");
         keywords.add("'" + ModelProperty.DATABASE_IS_ONLINE + "'");

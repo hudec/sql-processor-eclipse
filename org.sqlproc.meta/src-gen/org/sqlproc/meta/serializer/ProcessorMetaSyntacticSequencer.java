@@ -3017,6 +3017,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     condition=PropertyCondition (ambiguity) name='database-'
 	 *     condition=PropertyCondition (ambiguity) name='generate-from-to'
 	 *     condition=PropertyCondition (ambiguity) name='metagen-'
+	 *     condition=PropertyCondition (ambiguity) name='new-pojo-validator'
 	 *     condition=PropertyCondition (ambiguity) name='pojogen-'
 	 *     condition=PropertyCondition (ambiguity) name='replace-all-regex'
 	 *     condition=PropertyCondition (ambiguity) name='replace-all-replacement'

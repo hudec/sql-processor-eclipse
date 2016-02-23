@@ -2408,6 +2408,12 @@ rule__Property__Alternatives_1
 { after(grammarAccess.getPropertyAccess().getGroup_1_12()); }
 )
 
+    |(
+{ before(grammarAccess.getPropertyAccess().getNameAssignment_1_13()); }
+(rule__Property__NameAssignment_1_13)
+{ after(grammarAccess.getPropertyAccess().getNameAssignment_1_13()); }
+)
+
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -33874,6 +33880,29 @@ rule__Property__CaseFormatLibraryAssignment_1_12_2
 (
 { before(grammarAccess.getPropertyAccess().getCaseFormatLibraryValueTypeParserRuleCall_1_12_2_0()); }
 	ruleValueType{ after(grammarAccess.getPropertyAccess().getCaseFormatLibraryValueTypeParserRuleCall_1_12_2_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Property__NameAssignment_1_13
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPropertyAccess().getNameNewPojoValidatorKeyword_1_13_0()); }
+(
+{ before(grammarAccess.getPropertyAccess().getNameNewPojoValidatorKeyword_1_13_0()); }
+
+	'new-pojo-validator' 
+
+{ after(grammarAccess.getPropertyAccess().getNameNewPojoValidatorKeyword_1_13_0()); }
+)
+
+{ after(grammarAccess.getPropertyAccess().getNameNewPojoValidatorKeyword_1_13_0()); }
 )
 
 ;

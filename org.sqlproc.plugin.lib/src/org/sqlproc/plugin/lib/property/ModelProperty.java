@@ -25,6 +25,7 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String VALIDATE_RESOURCES = "validate-resources";
     public static final String GENERATE_FROM_TO = "generate-from-to";
     public static final String CASE_FORMAT_LIBRARY = "case-format-library";
+    public static final String NEW_POJO_VALIDATOR = "new-pojo-validator";
 
     public static final String DATABASE = "database";
     public static final String DATABASE_IS_ONLINE = "is-online";
@@ -148,6 +149,7 @@ public abstract class ModelProperty extends AdapterImpl {
         STANDARD_DIRECTIVES.add(VALIDATE_RESOURCES);
         STANDARD_DIRECTIVES.add(GENERATE_FROM_TO);
         STANDARD_DIRECTIVES.add(CASE_FORMAT_LIBRARY);
+        STANDARD_DIRECTIVES.add(NEW_POJO_VALIDATOR);
     }
 
     public static final List<String> DATABASE_DIRECTIVES = new ArrayList<String>();
@@ -185,6 +187,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public Set<String> doNotVerifyResources;
         public boolean doGenerateFromTo;
         public String caseFormatLibrary;
+        public boolean newPojoValidator;
         public String dbDriver;
         public String dbUrl;
         public String dbUsername;
@@ -308,6 +311,7 @@ public abstract class ModelProperty extends AdapterImpl {
             doNotVerifyResources = new HashSet<String>();
             doGenerateFromTo = false;
             caseFormatLibrary = null;
+            newPojoValidator = false;
             defaultAttrs.put(STANDARD, new HashSet<String>());
             conditionalAttrs.put(STANDARD, new HashSet<String>());
             systemEnvAttrs.put(STANDARD, new HashSet<String>());
@@ -461,6 +465,8 @@ public abstract class ModelProperty extends AdapterImpl {
                     doGenerateFromTo = true;
                 } else if (CASE_FORMAT_LIBRARY.equals(name)) {
                     caseFormatLibrary = CommonUtils.getPropertyValue(value);
+                } else if (NEW_POJO_VALIDATOR.equals(name)) {
+                    newPojoValidator = true;
                 }
             }
         }
@@ -581,6 +587,11 @@ public abstract class ModelProperty extends AdapterImpl {
     public String getCaseFormatLibrary(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.caseFormatLibrary : null;
+    }
+
+    public boolean isNewPojoValidator(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.newPojoValidator : false;
     }
 
     public Map<String, PojoAttrType> getSqlTypes(EObject model) {

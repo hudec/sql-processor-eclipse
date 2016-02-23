@@ -1341,6 +1341,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWSTerminalRuleCall_1_12_1 = (RuleCall)cGroup_1_12.eContents().get(1);
 		private final Assignment cCaseFormatLibraryAssignment_1_12_2 = (Assignment)cGroup_1_12.eContents().get(2);
 		private final RuleCall cCaseFormatLibraryValueTypeParserRuleCall_1_12_2_0 = (RuleCall)cCaseFormatLibraryAssignment_1_12_2.eContents().get(0);
+		private final Assignment cNameAssignment_1_13 = (Assignment)cAlternatives_1.eContents().get(13);
+		private final Keyword cNameNewPojoValidatorKeyword_1_13_0 = (Keyword)cNameAssignment_1_13.eContents().get(0);
 		private final RuleCall cSEMICOLONTerminalRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		
 		//Property:
@@ -1350,7 +1352,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	name="replace-all-replacement" WS+ replaceId=IDENT WS+ replacement=ValueType | name="replace-text" WS+ regex=ValueType
 		//	WS+ replacement=ValueType | name="validate-resources" (WS+ PLUS (WS+ doVerifyResources+=ValueType)+)? (WS+ MINUS (WS+
 		//	doNotVerifyResources+=ValueType)+)? | name="compress-meta-directives" | name="generate-from-to" |
-		//	name="case-format-library" WS+ caseFormatLibrary=ValueType) SEMICOLON;
+		//	name="case-format-library" WS+ caseFormatLibrary=ValueType | name="new-pojo-validator") SEMICOLON;
 		@Override public ParserRule getRule() { return rule; }
 
 		//(condition=PropertyCondition WS*)? (name="resolve-pojo-on" | name="resolve-pojo-off" | name="database-"
@@ -1359,7 +1361,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//name="replace-all-replacement" WS+ replaceId=IDENT WS+ replacement=ValueType | name="replace-text" WS+ regex=ValueType
 		//WS+ replacement=ValueType | name="validate-resources" (WS+ PLUS (WS+ doVerifyResources+=ValueType)+)? (WS+ MINUS (WS+
 		//doNotVerifyResources+=ValueType)+)? | name="compress-meta-directives" | name="generate-from-to" |
-		//name="case-format-library" WS+ caseFormatLibrary=ValueType) SEMICOLON
+		//name="case-format-library" WS+ caseFormatLibrary=ValueType | name="new-pojo-validator") SEMICOLON
 		public Group getGroup() { return cGroup; }
 
 		//(condition=PropertyCondition WS*)?
@@ -1380,7 +1382,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//WS+ replacement=ValueType | name="replace-text" WS+ regex=ValueType WS+ replacement=ValueType |
 		//name="validate-resources" (WS+ PLUS (WS+ doVerifyResources+=ValueType)+)? (WS+ MINUS (WS+
 		//doNotVerifyResources+=ValueType)+)? | name="compress-meta-directives" | name="generate-from-to" |
-		//name="case-format-library" WS+ caseFormatLibrary=ValueType
+		//name="case-format-library" WS+ caseFormatLibrary=ValueType | name="new-pojo-validator"
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 
 		//name="resolve-pojo-on"
@@ -1617,6 +1619,12 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 
 		//ValueType
 		public RuleCall getCaseFormatLibraryValueTypeParserRuleCall_1_12_2_0() { return cCaseFormatLibraryValueTypeParserRuleCall_1_12_2_0; }
+
+		//name="new-pojo-validator"
+		public Assignment getNameAssignment_1_13() { return cNameAssignment_1_13; }
+
+		//"new-pojo-validator"
+		public Keyword getNameNewPojoValidatorKeyword_1_13_0() { return cNameNewPojoValidatorKeyword_1_13_0; }
 
 		//SEMICOLON
 		public RuleCall getSEMICOLONTerminalRuleCall_2() { return cSEMICOLONTerminalRuleCall_2; }
@@ -8445,7 +8453,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	name="replace-all-replacement" WS+ replaceId=IDENT WS+ replacement=ValueType | name="replace-text" WS+ regex=ValueType
 	//	WS+ replacement=ValueType | name="validate-resources" (WS+ PLUS (WS+ doVerifyResources+=ValueType)+)? (WS+ MINUS (WS+
 	//	doNotVerifyResources+=ValueType)+)? | name="compress-meta-directives" | name="generate-from-to" |
-	//	name="case-format-library" WS+ caseFormatLibrary=ValueType) SEMICOLON;
+	//	name="case-format-library" WS+ caseFormatLibrary=ValueType | name="new-pojo-validator") SEMICOLON;
 	public PropertyElements getPropertyAccess() {
 		return pProperty;
 	}
