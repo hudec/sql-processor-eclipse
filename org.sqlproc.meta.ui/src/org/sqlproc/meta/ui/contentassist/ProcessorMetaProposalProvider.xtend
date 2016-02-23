@@ -225,8 +225,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
     }
 
     def boolean isResolvePojo(EObject model) {
-        CommonUtils.isResolvePojo(modelProperty, model)
-
+        modelProperty.isDoResolvePojo(model)
     }
 
     def boolean isResolveDb(EObject model) {
