@@ -109,7 +109,7 @@ public class PojoAttribute {
     }
 
     public String getWrapperClassName() {
-        return wrapperClassName;
+        return wrapperClassName != null ? wrapperClassName : className;
     }
 
     public void setWrapperClassName(String wrapperClassName) {
