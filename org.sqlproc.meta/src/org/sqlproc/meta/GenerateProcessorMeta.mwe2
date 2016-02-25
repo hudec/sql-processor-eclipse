@@ -4,9 +4,9 @@ import org.eclipse.emf.mwe.utils.*
 import org.eclipse.xtext.generator.*
 import org.eclipse.xtext.ui.generator.*
 
-var grammarURI = "classpath:/org/sqlproc/meta/ProcessorMeta.xtext"
+//var grammarURI = "classpath:/org/sqlproc/meta/ProcessorMeta.xtext"
 var projectName = "org.sqlproc.meta"
-//var grammarURI = "platform:/resource/${projectName}/src/org/sqlproc/meta/ProcessorMeta.xtext"
+var grammarURI = "platform:/resource/${projectName}/src/org/sqlproc/meta/ProcessorMeta.xtext"
 var fileExtensions = "meta"
 var runtimeProject = "../${projectName}"
 var generateXtendStub = true
@@ -14,7 +14,7 @@ var encoding = "UTF-8"
 
 Workflow {
 	bean = StandaloneSetup {
-		scanClassPath = true
+		//scanClassPath = true
 		// use an XtextResourceset throughout the process, which is able to resolve classpath:/ URIs.
     	resourceSet = org.eclipse.xtext.resource.XtextResourceSet:theResourceSet {}
     	
@@ -67,7 +67,9 @@ Workflow {
 			fragment = grammarAccess.GrammarAccessFragment auto-inject {}
 
 			// generates Java API for the generated EPackages
-			fragment = ecore.EMFGeneratorFragment auto-inject {}
+			fragment = ecore.EMFGeneratorFragment auto-inject {
+                	javaModelDirectory = "/${projectName}/src-gen"
+            }
 
 			// the old serialization component
 			// fragment = parseTreeConstructor.ParseTreeConstructorFragment auto-inject {}    
@@ -151,9 +153,6 @@ Workflow {
 
 			// generates the required bindings only if the grammar inherits from Xbase
 			fragment = xbase.XbaseGeneratorFragment auto-inject {}
-    		
-    		// generates the required bindings only if the grammar inherits from Xtype
-    		fragment = xbase.XtypeGeneratorFragment auto-inject {}
 
 			// provides a preference page for template proposals
 			fragment = templates.CodetemplatesGeneratorFragment auto-inject {}
