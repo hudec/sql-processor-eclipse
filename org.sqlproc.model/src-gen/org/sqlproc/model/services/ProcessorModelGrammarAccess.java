@@ -167,15 +167,26 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRefAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
 		private final CrossReference cRefPojoDefinitionModelCrossReference_1_1_0 = (CrossReference)cRefAssignment_1_1.eContents().get(0);
 		private final RuleCall cRefPojoDefinitionModelValidIDParserRuleCall_1_1_0_1 = (RuleCall)cRefPojoDefinitionModelCrossReference_1_1_0.eContents().get(1);
-		private final Assignment cTypeAssignment_2 = (Assignment)cAlternatives.eContents().get(2);
-		private final CrossReference cTypeJvmTypeCrossReference_2_0 = (CrossReference)cTypeAssignment_2.eContents().get(0);
-		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_2_0_1 = (RuleCall)cTypeJvmTypeCrossReference_2_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cAlternatives.eContents().get(2);
+		private final Assignment cTypeAssignment_2_0 = (Assignment)cGroup_2.eContents().get(0);
+		private final CrossReference cTypeJvmTypeCrossReference_2_0_0 = (CrossReference)cTypeAssignment_2_0.eContents().get(0);
+		private final RuleCall cTypeJvmTypeQualifiedNameParserRuleCall_2_0_0_1 = (RuleCall)cTypeJvmTypeCrossReference_2_0_0.eContents().get(1);
+		private final Group cGroup_2_1 = (Group)cGroup_2.eContents().get(1);
+		private final Keyword cLessThanSignKeyword_2_1_0 = (Keyword)cGroup_2_1.eContents().get(0);
+		private final Assignment cGtypeAssignment_2_1_1 = (Assignment)cGroup_2_1.eContents().get(1);
+		private final CrossReference cGtypeJvmTypeCrossReference_2_1_1_0 = (CrossReference)cGtypeAssignment_2_1_1.eContents().get(0);
+		private final RuleCall cGtypeJvmTypeQualifiedNameParserRuleCall_2_1_1_0_1 = (RuleCall)cGtypeJvmTypeCrossReference_2_1_1_0.eContents().get(1);
+		private final Keyword cGreaterThanSignKeyword_2_1_2 = (Keyword)cGroup_2_1.eContents().get(2);
+		private final Assignment cArrayAssignment_2_2 = (Assignment)cGroup_2.eContents().get(2);
+		private final Keyword cArrayLeftSquareBracketRightSquareBracketKeyword_2_2_0 = (Keyword)cArrayAssignment_2_2.eContents().get(0);
 		
 		//PojoType:
-		//	"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName];
+		//	"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName] ("<"
+		//	gtype=[JvmType|QualifiedName] ">")? array?="[]"?;
 		@Override public ParserRule getRule() { return rule; }
 
-		//"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName]
+		//"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName] ("<"
+		//gtype=[JvmType|QualifiedName] ">")? array?="[]"?
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//"::" ident=ValueType
@@ -205,14 +216,41 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getRefPojoDefinitionModelValidIDParserRuleCall_1_1_0_1() { return cRefPojoDefinitionModelValidIDParserRuleCall_1_1_0_1; }
 
+		//type=[JvmType|QualifiedName] ("<" gtype=[JvmType|QualifiedName] ">")? array?="[]"?
+		public Group getGroup_2() { return cGroup_2; }
+
 		//type=[JvmType|QualifiedName]
-		public Assignment getTypeAssignment_2() { return cTypeAssignment_2; }
+		public Assignment getTypeAssignment_2_0() { return cTypeAssignment_2_0; }
 
 		//[JvmType|QualifiedName]
-		public CrossReference getTypeJvmTypeCrossReference_2_0() { return cTypeJvmTypeCrossReference_2_0; }
+		public CrossReference getTypeJvmTypeCrossReference_2_0_0() { return cTypeJvmTypeCrossReference_2_0_0; }
 
 		//QualifiedName
-		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_2_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_2_0_1; }
+		public RuleCall getTypeJvmTypeQualifiedNameParserRuleCall_2_0_0_1() { return cTypeJvmTypeQualifiedNameParserRuleCall_2_0_0_1; }
+
+		//("<" gtype=[JvmType|QualifiedName] ">")?
+		public Group getGroup_2_1() { return cGroup_2_1; }
+
+		//"<"
+		public Keyword getLessThanSignKeyword_2_1_0() { return cLessThanSignKeyword_2_1_0; }
+
+		//gtype=[JvmType|QualifiedName]
+		public Assignment getGtypeAssignment_2_1_1() { return cGtypeAssignment_2_1_1; }
+
+		//[JvmType|QualifiedName]
+		public CrossReference getGtypeJvmTypeCrossReference_2_1_1_0() { return cGtypeJvmTypeCrossReference_2_1_1_0; }
+
+		//QualifiedName
+		public RuleCall getGtypeJvmTypeQualifiedNameParserRuleCall_2_1_1_0_1() { return cGtypeJvmTypeQualifiedNameParserRuleCall_2_1_1_0_1; }
+
+		//">"
+		public Keyword getGreaterThanSignKeyword_2_1_2() { return cGreaterThanSignKeyword_2_1_2; }
+
+		//array?="[]"?
+		public Assignment getArrayAssignment_2_2() { return cArrayAssignment_2_2; }
+
+		//"[]"
+		public Keyword getArrayLeftSquareBracketRightSquareBracketKeyword_2_2_0() { return cArrayLeftSquareBracketRightSquareBracketKeyword_2_2_0; }
 	}
 
 	public class DatabaseCatalogAssignementElements extends AbstractParserRuleElementFinder {
@@ -6604,7 +6642,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//PojoType:
-	//	"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName];
+	//	"::" ident=ValueType | ":" ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName] ("<"
+	//	gtype=[JvmType|QualifiedName] ">")? array?="[]"?;
 	public PojoTypeElements getPojoTypeAccess() {
 		return pPojoType;
 	}

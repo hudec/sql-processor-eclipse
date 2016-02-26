@@ -945,7 +945,7 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	
 	/**
 	 * Constraint:
-	 *     (ident=ValueType | ref=[PojoDefinitionModel|IDENT] | type=[JvmType|QualifiedName])
+	 *     (ident=ValueType | ref=[PojoDefinitionModel|IDENT] | (type=[JvmType|QualifiedName] gtype=[JvmType|QualifiedName]? array?='[]'?))
 	 */
 	protected void sequence_PojoType(EObject context, PojoType semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

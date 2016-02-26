@@ -93,6 +93,8 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getArtifactsAccess().getGroup_2_7(), "rule__Artifacts__Group_2_7__0");
 					put(grammarAccess.getPojoTypeAccess().getGroup_0(), "rule__PojoType__Group_0__0");
 					put(grammarAccess.getPojoTypeAccess().getGroup_1(), "rule__PojoType__Group_1__0");
+					put(grammarAccess.getPojoTypeAccess().getGroup_2(), "rule__PojoType__Group_2__0");
+					put(grammarAccess.getPojoTypeAccess().getGroup_2_1(), "rule__PojoType__Group_2_1__0");
 					put(grammarAccess.getDriverMethodOutputAssignementAccess().getGroup(), "rule__DriverMethodOutputAssignement__Group__0");
 					put(grammarAccess.getSqlTypeAssignementAccess().getGroup(), "rule__SqlTypeAssignement__Group__0");
 					put(grammarAccess.getSqlTypeAssignementAccess().getGroup_1(), "rule__SqlTypeAssignement__Group_1__0");
@@ -390,7 +392,9 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getValueTypeAccess().getIdAssignment_2(), "rule__ValueType__IdAssignment_2");
 					put(grammarAccess.getPojoTypeAccess().getIdentAssignment_0_2(), "rule__PojoType__IdentAssignment_0_2");
 					put(grammarAccess.getPojoTypeAccess().getRefAssignment_1_1(), "rule__PojoType__RefAssignment_1_1");
-					put(grammarAccess.getPojoTypeAccess().getTypeAssignment_2(), "rule__PojoType__TypeAssignment_2");
+					put(grammarAccess.getPojoTypeAccess().getTypeAssignment_2_0(), "rule__PojoType__TypeAssignment_2_0");
+					put(grammarAccess.getPojoTypeAccess().getGtypeAssignment_2_1_1(), "rule__PojoType__GtypeAssignment_2_1_1");
+					put(grammarAccess.getPojoTypeAccess().getArrayAssignment_2_2(), "rule__PojoType__ArrayAssignment_2_2");
 					put(grammarAccess.getDatabaseCatalogAssignementAccess().getDbCatalogAssignment(), "rule__DatabaseCatalogAssignement__DbCatalogAssignment");
 					put(grammarAccess.getDatabaseSchemaAssignementAccess().getDbSchemaAssignment(), "rule__DatabaseSchemaAssignement__DbSchemaAssignment");
 					put(grammarAccess.getDatabaseTypeAssignementAccess().getDbTypeAssignment(), "rule__DatabaseTypeAssignement__DbTypeAssignment");

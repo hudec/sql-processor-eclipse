@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature id="org.sqlproc.model.sdk"
 	label="SQL Processor Model Plugin SDK"
-	version="2.5.2.qualifier">
+	version="2.5.3.qualifier">
 	<url>
       <update label="SQL Processor Model Plugin Release Update Site" url="http://sql-processor.org/plugins/model-releases"/>
    </url>

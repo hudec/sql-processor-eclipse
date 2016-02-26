@@ -407,7 +407,7 @@ rulePojoType returns [EObject current=null]
 
 )
 ))
-    |(
+    |((
 (
 		{ 
 		  /* */ 
@@ -418,14 +418,55 @@ rulePojoType returns [EObject current=null]
 	        }
         }
 		{ 
-	        newCompositeNode(grammarAccess.getPojoTypeAccess().getTypeJvmTypeCrossReference_2_0()); 
+	        newCompositeNode(grammarAccess.getPojoTypeAccess().getTypeJvmTypeCrossReference_2_0_0()); 
 	    }
 		ruleQualifiedName		{ 
 	        afterParserOrEnumRuleCall();
 	    }
 
 )
-))
+)(	otherlv_5='<' 
+    {
+    	newLeafNode(otherlv_5, grammarAccess.getPojoTypeAccess().getLessThanSignKeyword_2_1_0());
+    }
+(
+(
+		{ 
+		  /* */ 
+		}
+		{
+			if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPojoTypeRule());
+	        }
+        }
+		{ 
+	        newCompositeNode(grammarAccess.getPojoTypeAccess().getGtypeJvmTypeCrossReference_2_1_1_0()); 
+	    }
+		ruleQualifiedName		{ 
+	        afterParserOrEnumRuleCall();
+	    }
+
+)
+)	otherlv_7='>' 
+    {
+    	newLeafNode(otherlv_7, grammarAccess.getPojoTypeAccess().getGreaterThanSignKeyword_2_1_2());
+    }
+)?(
+(
+		lv_array_8_0=	'[]' 
+    {
+        newLeafNode(lv_array_8_0, grammarAccess.getPojoTypeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_2_2_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPojoTypeRule());
+	        }
+       		setWithLastConsumed($current, "array", true, "[]");
+	    }
+
+)
+)?))
 ;
 
 

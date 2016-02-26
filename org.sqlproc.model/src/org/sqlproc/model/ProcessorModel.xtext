@@ -15,7 +15,8 @@ Artifacts: {Artifacts}
 
 ValueType: value = STRING | number = INT | id = QualifiedName;
 IndexType: number = INT | id = QualifiedName;
-PojoType: '::' ident=ValueType | ':' ref=[PojoDefinitionModel|ValidID] | type=[JvmType|QualifiedName];
+PojoType: '::' ident=ValueType | ':' ref=[PojoDefinitionModel|ValidID] | (type=[JvmType|QualifiedName]
+	('<' gtype=[JvmType|QualifiedName] '>')? (array ?= '[]')?);
 
 DatabaseCatalogAssignement: dbCatalog=ValueType;
 DatabaseSchemaAssignement: dbSchema=ValueType;

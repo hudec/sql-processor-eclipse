@@ -13,7 +13,8 @@ Artifacts: {Artifacts}
 
 ValueType: value = STRING_VALUE | number = NUMBER | id = QualifiedName;
 PojoType:
-	COLON COLON ident=ValueType | COLON ref=[PojoDefinitionModel|IDENT] | type=[JvmType|QualifiedName];
+	COLON COLON ident=ValueType | COLON ref=[PojoDefinitionModel|IDENT] | (type=[JvmType|QualifiedName]
+	(LESS_THAN gtype=[JvmType|QualifiedName] MORE_THAN)? (array ?= '[]')?);
 
 DatabaseCatalogAssignement: dbCatalog=ValueType;
 DatabaseSchemaAssignement: dbSchema=ValueType;

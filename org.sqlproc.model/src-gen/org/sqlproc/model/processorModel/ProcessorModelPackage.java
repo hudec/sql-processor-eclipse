@@ -250,13 +250,31 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_TYPE__TYPE = 2;
 
   /**
+   * The feature id for the '<em><b>Gtype</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POJO_TYPE__GTYPE = 3;
+
+  /**
+   * The feature id for the '<em><b>Array</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POJO_TYPE__ARRAY = 4;
+
+  /**
    * The number of structural features of the '<em>Pojo Type</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POJO_TYPE_FEATURE_COUNT = 3;
+  int POJO_TYPE_FEATURE_COUNT = 5;
 
   /**
    * The meta object id for the '{@link org.sqlproc.model.processorModel.impl.DatabaseCatalogAssignementImpl <em>Database Catalog Assignement</em>}' class.
@@ -4784,6 +4802,28 @@ public interface ProcessorModelPackage extends EPackage
   EReference getPojoType_Type();
 
   /**
+   * Returns the meta object for the reference '{@link org.sqlproc.model.processorModel.PojoType#getGtype <em>Gtype</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Gtype</em>'.
+   * @see org.sqlproc.model.processorModel.PojoType#getGtype()
+   * @see #getPojoType()
+   * @generated
+   */
+  EReference getPojoType_Gtype();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.model.processorModel.PojoType#isArray <em>Array</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Array</em>'.
+   * @see org.sqlproc.model.processorModel.PojoType#isArray()
+   * @see #getPojoType()
+   * @generated
+   */
+  EAttribute getPojoType_Array();
+
+  /**
    * Returns the meta object for class '{@link org.sqlproc.model.processorModel.DatabaseCatalogAssignement <em>Database Catalog Assignement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -8709,6 +8749,22 @@ public interface ProcessorModelPackage extends EPackage
      * @generated
      */
     EReference POJO_TYPE__TYPE = eINSTANCE.getPojoType_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Gtype</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POJO_TYPE__GTYPE = eINSTANCE.getPojoType_Gtype();
+
+    /**
+     * The meta object literal for the '<em><b>Array</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POJO_TYPE__ARRAY = eINSTANCE.getPojoType_Array();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.model.processorModel.impl.DatabaseCatalogAssignementImpl <em>Database Catalog Assignement</em>}' class.
