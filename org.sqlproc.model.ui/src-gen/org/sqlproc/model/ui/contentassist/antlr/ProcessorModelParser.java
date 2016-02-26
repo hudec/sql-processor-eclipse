@@ -306,7 +306,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_11(), "rule__PojoAttributeDirective__Group_11__0");
 					put(grammarAccess.getPojoAttributeDirectiveAccess().getGroup_12(), "rule__PojoAttributeDirective__Group_12__0");
 					put(grammarAccess.getPojoAttributeAccess().getGroup(), "rule__PojoAttribute__Group__0");
-					put(grammarAccess.getPojoAttributeAccess().getGroup_7(), "rule__PojoAttribute__Group_7__0");
+					put(grammarAccess.getPojoAttributeAccess().getGroup_8(), "rule__PojoAttribute__Group_8__0");
 					put(grammarAccess.getPojoProcedureAccess().getGroup(), "rule__PojoProcedure__Group__0");
 					put(grammarAccess.getPojoProcedureAccess().getGroup_7(), "rule__PojoProcedure__Group_7__0");
 					put(grammarAccess.getPojoProcedureAccess().getGroup_7_1(), "rule__PojoProcedure__Group_7_1__0");
@@ -937,8 +937,9 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojoAttributeAccess().getStaticAssignment_3(), "rule__PojoAttribute__StaticAssignment_3");
 					put(grammarAccess.getPojoAttributeAccess().getKindAssignment_4(), "rule__PojoAttribute__KindAssignment_4");
 					put(grammarAccess.getPojoAttributeAccess().getTypeAssignment_5(), "rule__PojoAttribute__TypeAssignment_5");
-					put(grammarAccess.getPojoAttributeAccess().getNameAssignment_6(), "rule__PojoAttribute__NameAssignment_6");
-					put(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_7_1(), "rule__PojoAttribute__InitExprAssignment_7_1");
+					put(grammarAccess.getPojoAttributeAccess().getArrayAssignment_6(), "rule__PojoAttribute__ArrayAssignment_6");
+					put(grammarAccess.getPojoAttributeAccess().getNameAssignment_7(), "rule__PojoAttribute__NameAssignment_7");
+					put(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_8_1(), "rule__PojoAttribute__InitExprAssignment_8_1");
 					put(grammarAccess.getPojoProcedureAccess().getAnnotationsAssignment_0(), "rule__PojoProcedure__AnnotationsAssignment_0");
 					put(grammarAccess.getPojoProcedureAccess().getFinalAssignment_1(), "rule__PojoProcedure__FinalAssignment_1");
 					put(grammarAccess.getPojoProcedureAccess().getStaticAssignment_2(), "rule__PojoProcedure__StaticAssignment_2");

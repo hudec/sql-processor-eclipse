@@ -25239,9 +25239,9 @@ rule__PojoAttribute__Group__6__Impl
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getNameAssignment_6()); }
-(rule__PojoAttribute__NameAssignment_6)
-{ after(grammarAccess.getPojoAttributeAccess().getNameAssignment_6()); }
+{ before(grammarAccess.getPojoAttributeAccess().getArrayAssignment_6()); }
+(rule__PojoAttribute__ArrayAssignment_6)?
+{ after(grammarAccess.getPojoAttributeAccess().getArrayAssignment_6()); }
 )
 
 ;
@@ -25256,6 +25256,7 @@ rule__PojoAttribute__Group__7
     }
 :
 	rule__PojoAttribute__Group__7__Impl
+	rule__PojoAttribute__Group__8
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -25267,9 +25268,37 @@ rule__PojoAttribute__Group__7__Impl
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getGroup_7()); }
-(rule__PojoAttribute__Group_7__0)?
-{ after(grammarAccess.getPojoAttributeAccess().getGroup_7()); }
+{ before(grammarAccess.getPojoAttributeAccess().getNameAssignment_7()); }
+(rule__PojoAttribute__NameAssignment_7)
+{ after(grammarAccess.getPojoAttributeAccess().getNameAssignment_7()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__PojoAttribute__Group__8
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+	rule__PojoAttribute__Group__8__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttribute__Group__8__Impl
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeAccess().getGroup_8()); }
+(rule__PojoAttribute__Group_8__0)?
+{ after(grammarAccess.getPojoAttributeAccess().getGroup_8()); }
 )
 
 ;
@@ -25294,27 +25323,29 @@ finally {
 
 
 
-rule__PojoAttribute__Group_7__0
+
+
+rule__PojoAttribute__Group_8__0
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__PojoAttribute__Group_7__0__Impl
-	rule__PojoAttribute__Group_7__1
+	rule__PojoAttribute__Group_8__0__Impl
+	rule__PojoAttribute__Group_8__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojoAttribute__Group_7__0__Impl
+rule__PojoAttribute__Group_8__0__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getEQUALSTerminalRuleCall_7_0()); }
+{ before(grammarAccess.getPojoAttributeAccess().getEQUALSTerminalRuleCall_8_0()); }
 	RULE_EQUALS
-{ after(grammarAccess.getPojoAttributeAccess().getEQUALSTerminalRuleCall_7_0()); }
+{ after(grammarAccess.getPojoAttributeAccess().getEQUALSTerminalRuleCall_8_0()); }
 )
 
 ;
@@ -25323,26 +25354,26 @@ finally {
 }
 
 
-rule__PojoAttribute__Group_7__1
+rule__PojoAttribute__Group_8__1
     @init {
 		int stackSize = keepStackSize();
     }
 :
-	rule__PojoAttribute__Group_7__1__Impl
+	rule__PojoAttribute__Group_8__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojoAttribute__Group_7__1__Impl
+rule__PojoAttribute__Group_8__1__Impl
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_7_1()); }
-(rule__PojoAttribute__InitExprAssignment_7_1)
-{ after(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_7_1()); }
+{ before(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_8_1()); }
+(rule__PojoAttribute__InitExprAssignment_8_1)
+{ after(grammarAccess.getPojoAttributeAccess().getInitExprAssignment_8_1()); }
 )
 
 ;
@@ -51185,8 +51216,8 @@ rule__PojoAttribute__TypeAssignment_5
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getTypeJvmTypeReferenceParserRuleCall_5_0()); }
-	ruleJvmTypeReference{ after(grammarAccess.getPojoAttributeAccess().getTypeJvmTypeReferenceParserRuleCall_5_0()); }
+{ before(grammarAccess.getPojoAttributeAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_5_0()); }
+	ruleJvmParameterizedTypeReference{ after(grammarAccess.getPojoAttributeAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_5_0()); }
 )
 
 ;
@@ -51194,14 +51225,22 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojoAttribute__NameAssignment_6
+rule__PojoAttribute__ArrayAssignment_6
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getNameValidIDParserRuleCall_6_0()); }
-	ruleValidID{ after(grammarAccess.getPojoAttributeAccess().getNameValidIDParserRuleCall_6_0()); }
+{ before(grammarAccess.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_6_0()); }
+(
+{ before(grammarAccess.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_6_0()); }
+
+	'[]' 
+
+{ after(grammarAccess.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_6_0()); }
+)
+
+{ after(grammarAccess.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_6_0()); }
 )
 
 ;
@@ -51209,14 +51248,29 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojoAttribute__InitExprAssignment_7_1
+rule__PojoAttribute__NameAssignment_7
     @init {
 		int stackSize = keepStackSize();
     }
 :
 (
-{ before(grammarAccess.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_7_1_0()); }
-	ruleXExpression{ after(grammarAccess.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_7_1_0()); }
+{ before(grammarAccess.getPojoAttributeAccess().getNameValidIDParserRuleCall_7_0()); }
+	ruleValidID{ after(grammarAccess.getPojoAttributeAccess().getNameValidIDParserRuleCall_7_0()); }
+)
+
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojoAttribute__InitExprAssignment_8_1
+    @init {
+		int stackSize = keepStackSize();
+    }
+:
+(
+{ before(grammarAccess.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_8_1_0()); }
+	ruleXExpression{ after(grammarAccess.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_8_1_0()); }
 )
 
 ;
@@ -51291,8 +51345,8 @@ rule__PojoProcedure__TypeAssignment_4
     }
 :
 (
-{ before(grammarAccess.getPojoProcedureAccess().getTypeJvmTypeReferenceParserRuleCall_4_0()); }
-	ruleJvmTypeReference{ after(grammarAccess.getPojoProcedureAccess().getTypeJvmTypeReferenceParserRuleCall_4_0()); }
+{ before(grammarAccess.getPojoProcedureAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_4_0()); }
+	ruleJvmParameterizedTypeReference{ after(grammarAccess.getPojoProcedureAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_4_0()); }
 )
 
 ;

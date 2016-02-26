@@ -2809,13 +2809,22 @@ public interface ProcessorModelPackage extends EPackage
   int POJO_ATTRIBUTE__TYPE = 5;
 
   /**
+   * The feature id for the '<em><b>Array</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POJO_ATTRIBUTE__ARRAY = 6;
+
+  /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POJO_ATTRIBUTE__NAME = 6;
+  int POJO_ATTRIBUTE__NAME = 7;
 
   /**
    * The feature id for the '<em><b>Init Expr</b></em>' containment reference.
@@ -2824,7 +2833,7 @@ public interface ProcessorModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POJO_ATTRIBUTE__INIT_EXPR = 7;
+  int POJO_ATTRIBUTE__INIT_EXPR = 8;
 
   /**
    * The number of structural features of the '<em>Pojo Attribute</em>' class.
@@ -2833,7 +2842,7 @@ public interface ProcessorModelPackage extends EPackage
    * @generated
    * @ordered
    */
-  int POJO_ATTRIBUTE_FEATURE_COUNT = 8;
+  int POJO_ATTRIBUTE_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.sqlproc.model.processorModel.impl.PojoProcedureImpl <em>Pojo Procedure</em>}' class.
@@ -7262,6 +7271,17 @@ public interface ProcessorModelPackage extends EPackage
   EReference getPojoAttribute_Type();
 
   /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.model.processorModel.PojoAttribute#isArray <em>Array</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Array</em>'.
+   * @see org.sqlproc.model.processorModel.PojoAttribute#isArray()
+   * @see #getPojoAttribute()
+   * @generated
+   */
+  EAttribute getPojoAttribute_Array();
+
+  /**
    * Returns the meta object for the attribute '{@link org.sqlproc.model.processorModel.PojoAttribute#getName <em>Name</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -10669,6 +10689,14 @@ public interface ProcessorModelPackage extends EPackage
      * @generated
      */
     EReference POJO_ATTRIBUTE__TYPE = eINSTANCE.getPojoAttribute_Type();
+
+    /**
+     * The meta object literal for the '<em><b>Array</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute POJO_ATTRIBUTE__ARRAY = eINSTANCE.getPojoAttribute_Array();
 
     /**
      * The meta object literal for the '<em><b>Name</b></em>' attribute feature.

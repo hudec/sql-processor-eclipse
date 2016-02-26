@@ -5392,21 +5392,23 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cKindAttrKeyword_4_0_0 = (Keyword)cKindAlternatives_4_0.eContents().get(0);
 		private final Keyword cKindSimpleKeyword_4_0_1 = (Keyword)cKindAlternatives_4_0.eContents().get(1);
 		private final Assignment cTypeAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_5_0 = (RuleCall)cTypeAssignment_5.eContents().get(0);
-		private final Assignment cNameAssignment_6 = (Assignment)cGroup.eContents().get(6);
-		private final RuleCall cNameValidIDParserRuleCall_6_0 = (RuleCall)cNameAssignment_6.eContents().get(0);
-		private final Group cGroup_7 = (Group)cGroup.eContents().get(7);
-		private final RuleCall cEQUALSTerminalRuleCall_7_0 = (RuleCall)cGroup_7.eContents().get(0);
-		private final Assignment cInitExprAssignment_7_1 = (Assignment)cGroup_7.eContents().get(1);
-		private final RuleCall cInitExprXExpressionParserRuleCall_7_1_0 = (RuleCall)cInitExprAssignment_7_1.eContents().get(0);
+		private final RuleCall cTypeJvmParameterizedTypeReferenceParserRuleCall_5_0 = (RuleCall)cTypeAssignment_5.eContents().get(0);
+		private final Assignment cArrayAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final Keyword cArrayLeftSquareBracketRightSquareBracketKeyword_6_0 = (Keyword)cArrayAssignment_6.eContents().get(0);
+		private final Assignment cNameAssignment_7 = (Assignment)cGroup.eContents().get(7);
+		private final RuleCall cNameValidIDParserRuleCall_7_0 = (RuleCall)cNameAssignment_7.eContents().get(0);
+		private final Group cGroup_8 = (Group)cGroup.eContents().get(8);
+		private final RuleCall cEQUALSTerminalRuleCall_8_0 = (RuleCall)cGroup_8.eContents().get(0);
+		private final Assignment cInitExprAssignment_8_1 = (Assignment)cGroup_8.eContents().get(1);
+		private final RuleCall cInitExprXExpressionParserRuleCall_8_1_0 = (RuleCall)cInitExprAssignment_8_1.eContents().get(0);
 		
 		//PojoAttribute:
 		//	annotations+=Annotation* directives+=PojoAttributeDirective* final?="final"? static?="static"? kind=("#Attr" //modifiers+=Modifier* 
-		//	| "#Simple") type=JvmTypeReference? name=ValidID (EQUALS initExpr=XExpression)?;
+		//	| "#Simple") type=JvmParameterizedTypeReference? array?="[]"? name=ValidID (EQUALS initExpr=XExpression)?;
 		@Override public ParserRule getRule() { return rule; }
 
 		//annotations+=Annotation* directives+=PojoAttributeDirective* final?="final"? static?="static"? kind=("#Attr" //modifiers+=Modifier* 
-		//| "#Simple") type=JvmTypeReference? name=ValidID (EQUALS initExpr=XExpression)?
+		//| "#Simple") type=JvmParameterizedTypeReference? array?="[]"? name=ValidID (EQUALS initExpr=XExpression)?
 		public Group getGroup() { return cGroup; }
 
 		//annotations+=Annotation*
@@ -5447,29 +5449,35 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"#Simple"
 		public Keyword getKindSimpleKeyword_4_0_1() { return cKindSimpleKeyword_4_0_1; }
 
-		//type=JvmTypeReference?
+		//type=JvmParameterizedTypeReference?
 		public Assignment getTypeAssignment_5() { return cTypeAssignment_5; }
 
-		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_5_0() { return cTypeJvmTypeReferenceParserRuleCall_5_0; }
+		//JvmParameterizedTypeReference
+		public RuleCall getTypeJvmParameterizedTypeReferenceParserRuleCall_5_0() { return cTypeJvmParameterizedTypeReferenceParserRuleCall_5_0; }
+
+		//array?="[]"?
+		public Assignment getArrayAssignment_6() { return cArrayAssignment_6; }
+
+		//"[]"
+		public Keyword getArrayLeftSquareBracketRightSquareBracketKeyword_6_0() { return cArrayLeftSquareBracketRightSquareBracketKeyword_6_0; }
 
 		//name=ValidID
-		public Assignment getNameAssignment_6() { return cNameAssignment_6; }
+		public Assignment getNameAssignment_7() { return cNameAssignment_7; }
 
 		//ValidID
-		public RuleCall getNameValidIDParserRuleCall_6_0() { return cNameValidIDParserRuleCall_6_0; }
+		public RuleCall getNameValidIDParserRuleCall_7_0() { return cNameValidIDParserRuleCall_7_0; }
 
 		//(EQUALS initExpr=XExpression)?
-		public Group getGroup_7() { return cGroup_7; }
+		public Group getGroup_8() { return cGroup_8; }
 
 		//EQUALS
-		public RuleCall getEQUALSTerminalRuleCall_7_0() { return cEQUALSTerminalRuleCall_7_0; }
+		public RuleCall getEQUALSTerminalRuleCall_8_0() { return cEQUALSTerminalRuleCall_8_0; }
 
 		//initExpr=XExpression
-		public Assignment getInitExprAssignment_7_1() { return cInitExprAssignment_7_1; }
+		public Assignment getInitExprAssignment_8_1() { return cInitExprAssignment_8_1; }
 
 		//XExpression
-		public RuleCall getInitExprXExpressionParserRuleCall_7_1_0() { return cInitExprXExpressionParserRuleCall_7_1_0; }
+		public RuleCall getInitExprXExpressionParserRuleCall_8_1_0() { return cInitExprXExpressionParserRuleCall_8_1_0; }
 	}
 
 	public class PojoProcedureElements extends AbstractParserRuleElementFinder {
@@ -5483,7 +5491,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cStaticStaticKeyword_2_0 = (Keyword)cStaticAssignment_2.eContents().get(0);
 		private final Keyword cProcKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cTypeJvmTypeReferenceParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
+		private final RuleCall cTypeJvmParameterizedTypeReferenceParserRuleCall_4_0 = (RuleCall)cTypeAssignment_4.eContents().get(0);
 		private final Assignment cNameAssignment_5 = (Assignment)cGroup.eContents().get(5);
 		private final RuleCall cNameValidIDParserRuleCall_5_0 = (RuleCall)cNameAssignment_5.eContents().get(0);
 		private final RuleCall cLPARENTerminalRuleCall_6 = (RuleCall)cGroup.eContents().get(6);
@@ -5500,12 +5508,12 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//PojoProcedure:
 		//	annotations+=Annotation* final?="final"? => static?="static"? //modifiers+=Modifier*
-		//	"#Proc" type=JvmTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
+		//	"#Proc" type=JvmParameterizedTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
 		//	params+=FullJvmFormalParameter)*)? RPAREN body=XBlockExpression;
 		@Override public ParserRule getRule() { return rule; }
 
 		//annotations+=Annotation* final?="final"? => static?="static"? //modifiers+=Modifier*
-		//"#Proc" type=JvmTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
+		//"#Proc" type=JvmParameterizedTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
 		//params+=FullJvmFormalParameter)*)? RPAREN body=XBlockExpression
 		public Group getGroup() { return cGroup; }
 
@@ -5531,11 +5539,11 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//"#Proc"
 		public Keyword getProcKeyword_3() { return cProcKeyword_3; }
 
-		//type=JvmTypeReference?
+		//type=JvmParameterizedTypeReference?
 		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
 
-		//JvmTypeReference
-		public RuleCall getTypeJvmTypeReferenceParserRuleCall_4_0() { return cTypeJvmTypeReferenceParserRuleCall_4_0; }
+		//JvmParameterizedTypeReference
+		public RuleCall getTypeJvmParameterizedTypeReferenceParserRuleCall_4_0() { return cTypeJvmParameterizedTypeReferenceParserRuleCall_4_0; }
 
 		//name=ValidID
 		public Assignment getNameAssignment_5() { return cNameAssignment_5; }
@@ -7206,7 +7214,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PojoAttribute:
 	//	annotations+=Annotation* directives+=PojoAttributeDirective* final?="final"? static?="static"? kind=("#Attr" //modifiers+=Modifier* 
-	//	| "#Simple") type=JvmTypeReference? name=ValidID (EQUALS initExpr=XExpression)?;
+	//	| "#Simple") type=JvmParameterizedTypeReference? array?="[]"? name=ValidID (EQUALS initExpr=XExpression)?;
 	public PojoAttributeElements getPojoAttributeAccess() {
 		return pPojoAttribute;
 	}
@@ -7217,7 +7225,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 
 	//PojoProcedure:
 	//	annotations+=Annotation* final?="final"? => static?="static"? //modifiers+=Modifier*
-	//	"#Proc" type=JvmTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
+	//	"#Proc" type=JvmParameterizedTypeReference? name=ValidID LPAREN (params+=FullJvmFormalParameter (COMMA
 	//	params+=FullJvmFormalParameter)*)? RPAREN body=XBlockExpression;
 	public PojoProcedureElements getPojoProcedureAccess() {
 		return pPojoProcedure;

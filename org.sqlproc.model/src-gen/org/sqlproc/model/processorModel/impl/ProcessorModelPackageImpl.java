@@ -3464,7 +3464,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPojoAttribute_Name()
+  public EAttribute getPojoAttribute_Array()
   {
     return (EAttribute)pojoAttributeEClass.getEStructuralFeatures().get(6);
   }
@@ -3474,9 +3474,19 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
+  public EAttribute getPojoAttribute_Name()
+  {
+    return (EAttribute)pojoAttributeEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EReference getPojoAttribute_InitExpr()
   {
-    return (EReference)pojoAttributeEClass.getEStructuralFeatures().get(7);
+    return (EReference)pojoAttributeEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -5036,6 +5046,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     createEAttribute(pojoAttributeEClass, POJO_ATTRIBUTE__STATIC);
     createEAttribute(pojoAttributeEClass, POJO_ATTRIBUTE__KIND);
     createEReference(pojoAttributeEClass, POJO_ATTRIBUTE__TYPE);
+    createEAttribute(pojoAttributeEClass, POJO_ATTRIBUTE__ARRAY);
     createEAttribute(pojoAttributeEClass, POJO_ATTRIBUTE__NAME);
     createEReference(pojoAttributeEClass, POJO_ATTRIBUTE__INIT_EXPR);
 
@@ -5611,7 +5622,8 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEAttribute(getPojoAttribute_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoAttribute_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoAttribute_Kind(), ecorePackage.getEString(), "kind", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPojoAttribute_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPojoAttribute_Type(), theTypesPackage.getJvmParameterizedTypeReference(), null, "type", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getPojoAttribute_Array(), ecorePackage.getEBoolean(), "array", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoAttribute_Name(), ecorePackage.getEString(), "name", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPojoAttribute_InitExpr(), theXbasePackage.getXExpression(), null, "initExpr", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -5619,7 +5631,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEReference(getPojoProcedure_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoProcedure_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoProcedure_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPojoProcedure_Type(), theTypesPackage.getJvmTypeReference(), null, "type", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPojoProcedure_Type(), theTypesPackage.getJvmParameterizedTypeReference(), null, "type", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoProcedure_Name(), ecorePackage.getEString(), "name", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPojoProcedure_Params(), theTypesPackage.getJvmFormalParameter(), null, "params", null, 0, -1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPojoProcedure_Body(), theXbasePackage.getXExpression(), null, "body", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

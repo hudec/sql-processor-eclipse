@@ -175,6 +175,10 @@ class PojoJvmModelInferrer {
    					_hasIds = true
    					
    				val type = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
+   				if (attr.array)
+   					type.addArrayTypeDimension.cloneWithProxies
+   				if (attr.name == 'iii')
+   					println
    				members += entity.toField(attr.name, type) [
    					documentation = attr.documentation
    					addAnnotationsX(attr.attributeAnnotations.map[a|a.annotation])

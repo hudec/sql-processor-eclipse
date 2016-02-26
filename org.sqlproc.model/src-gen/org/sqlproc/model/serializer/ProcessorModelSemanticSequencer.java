@@ -1713,7 +1713,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         final?='final'? 
 	 *         static?='static'? 
 	 *         (kind='#Attr' | kind='#Simple') 
-	 *         type=JvmTypeReference? 
+	 *         type=JvmParameterizedTypeReference? 
+	 *         array?='[]'? 
 	 *         name=ValidID 
 	 *         initExpr=XExpression?
 	 *     )
@@ -1878,7 +1879,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         annotations+=Annotation* 
 	 *         final?='final'? 
 	 *         static?='static'? 
-	 *         type=JvmTypeReference? 
+	 *         type=JvmParameterizedTypeReference? 
 	 *         name=ValidID 
 	 *         (params+=FullJvmFormalParameter params+=FullJvmFormalParameter*)? 
 	 *         body=XBlockExpression

@@ -7,7 +7,7 @@ import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -112,12 +112,12 @@ public interface PojoProcedure extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
+   * @see #setType(JvmParameterizedTypeReference)
    * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoProcedure_Type()
    * @model containment="true"
    * @generated
    */
-  JvmTypeReference getType();
+  JvmParameterizedTypeReference getType();
 
   /**
    * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoProcedure#getType <em>Type</em>}' containment reference.
@@ -127,7 +127,7 @@ public interface PojoProcedure extends EObject
    * @see #getType()
    * @generated
    */
-  void setType(JvmTypeReference value);
+  void setType(JvmParameterizedTypeReference value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

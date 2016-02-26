@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmFormalParameter;
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -106,7 +106,7 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
    * @generated
    * @ordered
    */
-  protected JvmTypeReference type;
+  protected JvmParameterizedTypeReference type;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -234,7 +234,7 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getType()
+  public JvmParameterizedTypeReference getType()
   {
     return type;
   }
@@ -244,9 +244,9 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
+  public NotificationChain basicSetType(JvmParameterizedTypeReference newType, NotificationChain msgs)
   {
-    JvmTypeReference oldType = type;
+    JvmParameterizedTypeReference oldType = type;
     type = newType;
     if (eNotificationRequired())
     {
@@ -261,7 +261,7 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(JvmTypeReference newType)
+  public void setType(JvmParameterizedTypeReference newType)
   {
     if (newType != type)
     {
@@ -434,7 +434,7 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
         setStatic((Boolean)newValue);
         return;
       case ProcessorModelPackage.POJO_PROCEDURE__TYPE:
-        setType((JvmTypeReference)newValue);
+        setType((JvmParameterizedTypeReference)newValue);
         return;
       case ProcessorModelPackage.POJO_PROCEDURE__NAME:
         setName((String)newValue);
@@ -470,7 +470,7 @@ public class PojoProcedureImpl extends MinimalEObjectImpl.Container implements P
         setStatic(STATIC_EDEFAULT);
         return;
       case ProcessorModelPackage.POJO_PROCEDURE__TYPE:
-        setType((JvmTypeReference)null);
+        setType((JvmParameterizedTypeReference)null);
         return;
       case ProcessorModelPackage.POJO_PROCEDURE__NAME:
         setName(NAME_EDEFAULT);

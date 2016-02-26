@@ -6,7 +6,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -25,6 +25,7 @@ import org.eclipse.xtext.xbase.XExpression;
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#isStatic <em>Static</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getKind <em>Kind</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getType <em>Type</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#isArray <em>Array</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoAttribute#getInitExpr <em>Init Expr</em>}</li>
  * </ul>
@@ -154,12 +155,12 @@ public interface PojoAttribute extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Type</em>' containment reference.
-   * @see #setType(JvmTypeReference)
+   * @see #setType(JvmParameterizedTypeReference)
    * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttribute_Type()
    * @model containment="true"
    * @generated
    */
-  JvmTypeReference getType();
+  JvmParameterizedTypeReference getType();
 
   /**
    * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoAttribute#getType <em>Type</em>}' containment reference.
@@ -169,7 +170,33 @@ public interface PojoAttribute extends EObject
    * @see #getType()
    * @generated
    */
-  void setType(JvmTypeReference value);
+  void setType(JvmParameterizedTypeReference value);
+
+  /**
+   * Returns the value of the '<em><b>Array</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Array</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Array</em>' attribute.
+   * @see #setArray(boolean)
+   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoAttribute_Array()
+   * @model
+   * @generated
+   */
+  boolean isArray();
+
+  /**
+   * Sets the value of the '{@link org.sqlproc.model.processorModel.PojoAttribute#isArray <em>Array</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Array</em>' attribute.
+   * @see #isArray()
+   * @generated
+   */
+  void setArray(boolean value);
 
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.

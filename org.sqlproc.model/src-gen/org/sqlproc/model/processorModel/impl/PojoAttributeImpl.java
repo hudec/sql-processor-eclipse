@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.eclipse.xtext.common.types.JvmTypeReference;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
 import org.eclipse.xtext.xbase.XExpression;
 
@@ -41,6 +41,7 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#isStatic <em>Static</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#getKind <em>Kind</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#isArray <em>Array</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoAttributeImpl#getInitExpr <em>Init Expr</em>}</li>
  * </ul>
@@ -137,7 +138,27 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
    * @generated
    * @ordered
    */
-  protected JvmTypeReference type;
+  protected JvmParameterizedTypeReference type;
+
+  /**
+   * The default value of the '{@link #isArray() <em>Array</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isArray()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ARRAY_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isArray() <em>Array</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isArray()
+   * @generated
+   * @ordered
+   */
+  protected boolean array = ARRAY_EDEFAULT;
 
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
@@ -292,7 +313,7 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public JvmTypeReference getType()
+  public JvmParameterizedTypeReference getType()
   {
     return type;
   }
@@ -302,9 +323,9 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(JvmTypeReference newType, NotificationChain msgs)
+  public NotificationChain basicSetType(JvmParameterizedTypeReference newType, NotificationChain msgs)
   {
-    JvmTypeReference oldType = type;
+    JvmParameterizedTypeReference oldType = type;
     type = newType;
     if (eNotificationRequired())
     {
@@ -319,7 +340,7 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(JvmTypeReference newType)
+  public void setType(JvmParameterizedTypeReference newType)
   {
     if (newType != type)
     {
@@ -333,6 +354,29 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
     }
     else if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_ATTRIBUTE__TYPE, newType, newType));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public boolean isArray()
+  {
+    return array;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setArray(boolean newArray)
+  {
+    boolean oldArray = array;
+    array = newArray;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorModelPackage.POJO_ATTRIBUTE__ARRAY, oldArray, array));
   }
 
   /**
@@ -450,6 +494,8 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
         return getKind();
       case ProcessorModelPackage.POJO_ATTRIBUTE__TYPE:
         return getType();
+      case ProcessorModelPackage.POJO_ATTRIBUTE__ARRAY:
+        return isArray();
       case ProcessorModelPackage.POJO_ATTRIBUTE__NAME:
         return getName();
       case ProcessorModelPackage.POJO_ATTRIBUTE__INIT_EXPR:
@@ -487,7 +533,10 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
         setKind((String)newValue);
         return;
       case ProcessorModelPackage.POJO_ATTRIBUTE__TYPE:
-        setType((JvmTypeReference)newValue);
+        setType((JvmParameterizedTypeReference)newValue);
+        return;
+      case ProcessorModelPackage.POJO_ATTRIBUTE__ARRAY:
+        setArray((Boolean)newValue);
         return;
       case ProcessorModelPackage.POJO_ATTRIBUTE__NAME:
         setName((String)newValue);
@@ -525,7 +574,10 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
         setKind(KIND_EDEFAULT);
         return;
       case ProcessorModelPackage.POJO_ATTRIBUTE__TYPE:
-        setType((JvmTypeReference)null);
+        setType((JvmParameterizedTypeReference)null);
+        return;
+      case ProcessorModelPackage.POJO_ATTRIBUTE__ARRAY:
+        setArray(ARRAY_EDEFAULT);
         return;
       case ProcessorModelPackage.POJO_ATTRIBUTE__NAME:
         setName(NAME_EDEFAULT);
@@ -559,6 +611,8 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
         return KIND_EDEFAULT == null ? kind != null : !KIND_EDEFAULT.equals(kind);
       case ProcessorModelPackage.POJO_ATTRIBUTE__TYPE:
         return type != null;
+      case ProcessorModelPackage.POJO_ATTRIBUTE__ARRAY:
+        return array != ARRAY_EDEFAULT;
       case ProcessorModelPackage.POJO_ATTRIBUTE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case ProcessorModelPackage.POJO_ATTRIBUTE__INIT_EXPR:
@@ -584,6 +638,8 @@ public class PojoAttributeImpl extends MinimalEObjectImpl.Container implements P
     result.append(static_);
     result.append(", kind: ");
     result.append(kind);
+    result.append(", array: ");
+    result.append(array);
     result.append(", name: ");
     result.append(name);
     result.append(')');

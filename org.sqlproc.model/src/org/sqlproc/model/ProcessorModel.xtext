@@ -281,14 +281,14 @@ PojoAttribute:
 	annotations+=Annotation* directives+=PojoAttributeDirective*
 	(final?='final'?) (static?='static'?) 
 	kind=('#Attr' | '#Simple') //modifiers+=Modifier* 
-	(type=JvmTypeReference)? name=ValidID (EQUALS initExpr=XExpression)?
+	(type=JvmParameterizedTypeReference)? (array ?= '[]')? name=ValidID (EQUALS initExpr=XExpression)?
 ;
 
 PojoProcedure:
 	annotations+=Annotation*
 	(final?='final')? (=> static?='static'?)
 	'#Proc' //modifiers+=Modifier*
-	(type=JvmTypeReference)? name=ValidID 
+	(type=JvmParameterizedTypeReference)? name=ValidID 
 	LPAREN (params+=FullJvmFormalParameter (COMMA params+=FullJvmFormalParameter)*)? RPAREN
 	body=XBlockExpression
 ;
