@@ -206,8 +206,12 @@ public class Utils extends CommonUtils {
     public static String getPropertyValue(PojoType pv) {
         if (pv == null)
             return null;
-        if (pv.getType() != null)
-            return pv.getType().getQualifiedName();
+        if (pv.getType() != null) {
+            String sType = pv.getType().getQualifiedName();
+            if (pv.isArray())
+                sType = sType + "[]";
+            return sType;
+        }
         if (pv.getIdent() != null)
             return getPropertyValue(pv.getIdent());
         if (pv.getRef() != null) {
