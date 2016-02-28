@@ -207,10 +207,14 @@ public class Utils extends CommonUtils {
         if (pv == null)
             return null;
         if (pv.getType() != null) {
-            String sType = pv.getType().getQualifiedName();
-            if (pv.isArray())
-                sType = sType + "[]";
-            return sType;
+            if (pv.getType() != null) {
+                StringBuilder sType = new StringBuilder(pv.getType().getQualifiedName());
+                if (pv.getGtype() != null)
+                    sType.append("<").append(pv.getGtype().getQualifiedName()).append(">");
+                if (pv.isArray())
+                    sType.append("[]");
+                return sType.toString();
+            }
         }
         if (pv.getIdent() != null)
             return getPropertyValue(pv.getIdent());
