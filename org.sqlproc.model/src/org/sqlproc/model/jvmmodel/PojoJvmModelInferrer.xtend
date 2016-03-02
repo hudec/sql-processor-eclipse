@@ -157,8 +157,10 @@ class PojoJvmModelInferrer {
    			val allRequiredAttributes = entity.allRequiredAttributes
    			if (!allRequiredAttributes.empty) {
 	   			members += entity.toConstructor [
-		   			for (attr : allRequiredAttributes)
-	   					parameters += entity.toParameter(attr.name, attr.type)
+		   			for (attr : allRequiredAttributes) {
+   						val type = if (attr.array) attr.type.addArrayTypeDimension.cloneWithProxies else attr.type
+	   					parameters += entity.toParameter(attr.name, type)
+   					}
 	   				addAnnotationsX(entity.constructorAnnotations.map[a|a.annotation])
 	   				body = '''
 	   				super(«FOR attr : entity.parentRequiredAttributes SEPARATOR ","»«attr.name»«ENDFOR»);
@@ -175,8 +177,6 @@ class PojoJvmModelInferrer {
    					_hasIds = true
    					
    				val type0 = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
-   				if (attr.name == 'iii')
-   					println
    				val type = if (attr.array) type0.addArrayTypeDimension.cloneWithProxies else type0
    				members += entity.toField(attr.name, type) [
    					documentation = attr.documentation
