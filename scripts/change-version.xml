@@ -4,8 +4,8 @@
 	
 	<!--property name="version.from" value="2.1.0-SNAPSHOT"/>
 	<property name="version.to" value="2.0.1"/-->
-	<property name="version.from2" value="2.5.3.qualifier"/>
-	<property name="version.to2" value="2.5.3"/>
+	<property name="version.from2" value="2.5.3"/>
+	<property name="version.to2" value="2.5.4.qualifier"/>
 	
 	<target name="change-version">
 		<!--replace dir=".." token="${version.from}" value="${version.to}">
