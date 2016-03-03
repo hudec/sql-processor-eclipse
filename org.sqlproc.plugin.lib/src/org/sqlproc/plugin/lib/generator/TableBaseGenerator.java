@@ -58,9 +58,9 @@ public class TableBaseGenerator {
 
         public String getName() {
             if (this == BYTE_ARRAY)
-                return "byte []";
+                return "byte[]";
             if (this == CHAR_ARRAY)
-                return "char []";
+                return "char[]";
             return name().toLowerCase();
         }
     }
