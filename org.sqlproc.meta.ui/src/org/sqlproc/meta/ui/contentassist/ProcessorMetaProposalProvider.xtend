@@ -14,7 +14,6 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.resource.ResourceSet
 import org.eclipse.xtext.Assignment
 import org.eclipse.xtext.RuleCall
-import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.eclipse.xtext.scoping.IScope
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor
@@ -45,8 +44,8 @@ import org.eclipse.emf.common.util.URI
 import org.sqlproc.plugin.lib.resolver.PojoResolver
 import org.sqlproc.plugin.lib.resolver.DbResolver
 import org.sqlproc.plugin.lib.property.ModelProperty
-import org.sqlproc.plugin.lib.property.PojoDefinition
-import org.sqlproc.plugin.lib.util.CommonUtils
+import org.eclipse.xtext.common.types.JvmDeclaredType
+import org.eclipse.xtext.common.types.JvmField
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
@@ -58,9 +57,6 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 
 	@Inject
 	DbResolver dbResolver
-
-	@Inject
-	IQualifiedNameConverter qualifiedNameConverter
 
     @Inject
     ModelProperty modelProperty;
@@ -151,21 +147,30 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 
         val pos = _prefix.lastIndexOf('.')
 		val prefix = if (pos > 0) _prefix.substring(0, pos + 1) else ""
-
-        if (pojoDefinition != null) {
-	        val URI uri = model.eResource?.URI
-            val clazz = getClassName(pojoDefinition.qualifiedName, prefix, uri)
-            if (clazz == null)
-                return false
-            val descriptors = pojoResolver.getPropertyDescriptors(clazz, uri)
-            if (descriptors == null)
-                return false
-            descriptors.filter["class" != name].forEach[descriptor |
+		
+		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
+			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
+	        type.allFeatures.filter[it instanceof JvmField].filter[!static].filter[!simpleName.startsWith("_")].forEach[feature |
+				val proposal = getValueConverter().toString(feature.simpleName, "IDENT")
+				acceptor.accept(createCompletionProposal(if (cutPrefix) proposal else prefix + proposal, context))
+	        ]
+		}
+		else {
+		    val URI uri = model.eResource?.URI
+	        val clazz = getClassName(pojoDefinition.qualifiedName, prefix, uri)
+	        if (clazz == null)
+	        	return false
+	        val descriptors = pojoResolver.getPropertyDescriptors(clazz, uri)
+	        if (descriptors == null)
+	        	return false
+	        	
+	        descriptors.filter["class" != name].forEach[descriptor |
 				val proposal = getValueConverter().toString(descriptor.getName(), "IDENT")
 				acceptor.accept(createCompletionProposal(if (cutPrefix) proposal else prefix + proposal, context))
-            ]
-            return true
+	        ]
         }
+        return true
     }
 
     override completeMappingColumnName_Name(EObject model, Assignment assignment, ContentAssistContext context,
