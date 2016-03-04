@@ -46,6 +46,11 @@ import org.sqlproc.plugin.lib.resolver.DbResolver
 import org.sqlproc.plugin.lib.property.ModelProperty
 import org.eclipse.xtext.common.types.JvmDeclaredType
 import org.eclipse.xtext.common.types.JvmField
+import org.eclipse.xtext.common.types.JvmFeature
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
+import org.eclipse.xtext.common.types.JvmType
+import org.eclipse.xtext.common.types.JvmEnumerationType
+import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 
 /**
  * see http://www.eclipse.org/Xtext/documentation.html#contentAssist on how to customize content assistant
@@ -151,9 +156,10 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
 		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
 			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
-	        type.allFeatures.filter[it instanceof JvmField].filter[!static].filter[!simpleName.startsWith("_")].forEach[feature |
+	        getAllFeatures(type, _prefix).forEach[feature |
 				val proposal = getValueConverter().toString(feature.simpleName, "IDENT")
-				acceptor.accept(createCompletionProposal(if (cutPrefix) proposal else prefix + proposal, context))
+				println(proposal)
+				acceptor.accept(createCompletionProposal(prefix + proposal, context))
 	        ]
 		}
 		else {
@@ -164,13 +170,29 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 	        val descriptors = pojoResolver.getPropertyDescriptors(clazz, uri)
 	        if (descriptors == null)
 	        	return false
-	        	
 	        descriptors.filter["class" != name].forEach[descriptor |
 				val proposal = getValueConverter().toString(descriptor.getName(), "IDENT")
 				acceptor.accept(createCompletionProposal(if (cutPrefix) proposal else prefix + proposal, context))
 	        ]
         }
         return true
+    }
+    
+    def Iterable<JvmFeature> getAllFeatures(JvmDeclaredType _type, String _prefix) {
+    	var JvmDeclaredType type = _type
+        val pos = _prefix.lastIndexOf('.')
+		if (pos > 0) {
+	        val Iterable<JvmFeature> features = type.findAllFeaturesByName(_prefix.substring(0, pos))
+        	if (features != null && !features.empty && (features.head instanceof JvmField)) {
+	        	var JvmField field = features.head as JvmField
+        		if (field.type instanceof JvmParameterizedTypeReference) {
+	        		val JvmType jvmType = (field.type as JvmParameterizedTypeReference).type
+	        		if (jvmType instanceof JvmDeclaredType)
+	        			type = jvmType as JvmDeclaredType
+	        	}
+        	}
+		}
+		type.allFeatures.filter[it instanceof JvmField].filter[!static].filter[!simpleName.startsWith("_")]
     }
 
     override completeMappingColumnName_Name(EObject model, Assignment assignment, ContentAssistContext context,
@@ -206,7 +228,16 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val _prefix = if (pos > 0) prefix.substring(0, pos + 1) else ""
         val _cutPrefix = cutPrefix
 
-        if (pojoDefinition != null) {
+		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
+			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
+	        getAllFeatures(type, _prefix).forEach[feature |
+				val proposal = getValueConverter().toString(feature.simpleName, "IDENT")
+				println(proposal)
+				acceptor.accept(createCompletionProposal(_prefix + proposal, context))
+	        ]
+		}
+		else {
 	        val URI uri = model.eResource?.URI
             val clazz = getClassName(pojoDefinition.qualifiedName, prefix, uri)
             if (clazz == null)
@@ -1108,6 +1139,10 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 		acceptFunctions(model, context, acceptor)
     }
 
+	static class Founder {
+		boolean found = false 
+	}
+	
 	override completeOrdSql_Ident(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
         if (!isResolvePojo(model)) {
             super.completeOrdSql_Ident(model, assignment, context, acceptor)
@@ -1127,15 +1162,37 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
 
-        if (pojoDefinition != null) {
+		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
+			val Founder founder = new Founder()
+			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
+			type.allFeatures.filter[it instanceof JvmField].filter[static].filter[simpleName.startsWith("ORDER_BY_")].forEach[feature |
+				founder.found = true
+				val proposal = getValueConverter().toString(feature.simpleName, "IDENT").substring(9)
+				println(proposal)
+				acceptor.accept(createCompletionProposal(proposal, context))
+	        ]
+	        if (!founder.found) {
+	        	val Iterable<JvmDeclaredType> nestedTypes = type.findAllNestedTypesByName("Order");
+	        	if (nestedTypes != null && !nestedTypes.empty && (nestedTypes.head instanceof JvmEnumerationType)) {
+			        val JvmEnumerationType enumType = nestedTypes.head as JvmEnumerationType
+		        	enumType.allFeatures.filter[it instanceof JvmEnumerationLiteral].forEach[feature |
+						val proposal = getValueConverter().toString(feature.simpleName, "IDENT")
+						println(proposal)
+						acceptor.accept(createCompletionProposal(proposal, context))
+		        	]
+	        	}
+	        }
+		}
+		else {
 	        val URI uri = model.eResource?.URI
             val clazz = pojoDefinition.qualifiedName
             val orders = pojoResolver.getOrders(clazz, uri)
             if (orders != null) {
             	orders.values.forEach[order |
-				val proposal = getValueConverter().toString(order, "IDENT")
-				acceptor.accept(createCompletionProposal(proposal, context))
-            ]
+					val proposal = getValueConverter().toString(order, "IDENT")
+					acceptor.accept(createCompletionProposal(proposal, context))
+            	]
             }
         }
 	}
