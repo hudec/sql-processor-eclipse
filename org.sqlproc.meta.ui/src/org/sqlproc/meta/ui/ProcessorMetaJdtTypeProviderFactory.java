@@ -4,44 +4,44 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLClassLoader;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Path;
-import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.jdt.core.IJavaProject;
 import org.eclipse.jdt.launching.JavaRuntime;
 import org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider;
 import org.eclipse.xtext.common.types.access.jdt.JdtTypeProviderFactory;
+import org.sqlproc.plugin.lib.resolver.ProcessorClassLoaders;
+
+import com.google.inject.Inject;
 
 public class ProcessorMetaJdtTypeProviderFactory extends JdtTypeProviderFactory {
 
     protected Logger LOGGER = Logger.getLogger(ProcessorMetaJdtTypeProviderFactory.class);
 
-    Map<ResourceSet, IJavaProject> projects = new HashMap<>();
+    @Inject
+    ProcessorClassLoaders processorMetaClassLoaders;
 
     @Override
     protected IJdtTypeProvider createJdtTypeProvider(IJavaProject javaProject, ResourceSet resourceSet) {
         IJdtTypeProvider jdtTypeProvider = super.createJdtTypeProvider(javaProject, resourceSet);
         System.out.println("AAAAA for " + resourceSet + " and " + javaProject + " is " + jdtTypeProvider);
-        if (javaProject != null && resourceSet != null)
-            projects.put(resourceSet, javaProject);
+        System.out.println("DDDDDD " + processorMetaClassLoaders);
+        if (javaProject != null && resourceSet != null) {
+            try {
+                processorMetaClassLoaders.getLoaders().put(resourceSet, getProjectClassLoader(javaProject));
+            } catch (CoreException e) {
+                e.printStackTrace();
+            }
+        }
         return jdtTypeProvider;
     }
 
-    private URLClassLoader getProjectClassLoader(final Resource resource) throws CoreException {
-        ResourceSet resourceSet = resource.getResourceSet();
-        IJavaProject javaProject = projects.get(resourceSet);
-        if (javaProject == null) {
-            System.out.println("XXXXXX " + resource);
-            return null;
-        }
-
+    private URLClassLoader getProjectClassLoader(final IJavaProject javaProject) throws CoreException {
         String[] classPathEntries = JavaRuntime.computeDefaultRuntimeClassPath(javaProject);
         List<URL> urlList = new ArrayList<URL>();
         for (int i = 0; i < classPathEntries.length; i++) {

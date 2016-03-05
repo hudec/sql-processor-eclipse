@@ -67,6 +67,7 @@ public class DbResolverBean implements DbResolver {
         public List<String> ddlsBefore1;
         public List<String> ddlsAfter;
         public Set<Short> indexTypes;
+        public boolean newPojoValidator;
 
         @Override
         public String toString() {
@@ -86,6 +87,9 @@ public class DbResolverBean implements DbResolver {
 
     @Inject
     PojoResolverFactory pojoResolverFactory;
+
+    @Inject
+    ProcessorClassLoaders processorMetaClassLoaders;
 
     private Class<?> driverClass = null;
     private String dbSqlsBefore = null;
@@ -176,32 +180,38 @@ public class DbResolverBean implements DbResolver {
             closeConnection(modelDatabaseValues);
             return null;
         }
+        System.out.println("EEEEEE " + processorMetaClassLoaders);
 
         modelDatabaseValues.doReconnect = (modelDatabaseValues.connection != null) ? false : true;
 
         debug = new Debug(modelProperty.getDbDebugLevel(model), modelProperty.getDbDebugScope(model), LOGGER);
 
-        String dbDriver = modelProperty.getDbDriver(model);
-        if (dbDriver != null) {
-            if (!dbDriver.equals(modelDatabaseValues.dbDriver)) {
-                modelDatabaseValues.dbDriver = dbDriver;
-                modelDatabaseValues.doReconnect = true;
+        modelDatabaseValues.newPojoValidator = modelProperty.isNewPojoValidator(model);
+
+        if (!modelDatabaseValues.newPojoValidator) {
+            String dbDriver = modelProperty.getDbDriver(model);
+            if (dbDriver != null) {
+                if (!dbDriver.equals(modelDatabaseValues.dbDriver)) {
+                    modelDatabaseValues.dbDriver = dbDriver;
+                    modelDatabaseValues.doReconnect = true;
+                }
+            } else {
+                modelDatabaseValues.dbDriver = null;
+                closeConnection(modelDatabaseValues);
+                return null;
             }
         } else {
-            modelDatabaseValues.dbDriver = null;
-            closeConnection(modelDatabaseValues);
-            return null;
-        }
-        PojoEntityType dbDriverPojo = modelProperty.getDbDrivePojo(model);
-        if (dbDriverPojo != null) {
-            if (dbDriverPojo != modelDatabaseValues.dbDriverPojo) {
-                modelDatabaseValues.dbDriverPojo = dbDriverPojo;
-                modelDatabaseValues.doReconnect = true;
+            PojoEntityType dbDriverPojo = modelProperty.getDbDrivePojo(model);
+            if (dbDriverPojo != null) {
+                if (dbDriverPojo != modelDatabaseValues.dbDriverPojo) {
+                    modelDatabaseValues.dbDriverPojo = dbDriverPojo;
+                    modelDatabaseValues.doReconnect = true;
+                }
+            } else {
+                modelDatabaseValues.dbDriverPojo = null;
+                closeConnection(modelDatabaseValues);
+                return null;
             }
-        } else {
-            modelDatabaseValues.dbDriverPojo = null;
-            closeConnection(modelDatabaseValues);
-            return null;
         }
         String dbUrl = modelProperty.getDbUrl(model);
         if (dbUrl != null) {
@@ -339,8 +349,12 @@ public class DbResolverBean implements DbResolver {
             debug.trace(m, "DATA START FOR " + modelDatabaseValues.dir);
             debug.info(m, "DATA START FOR " + modelDatabaseValues.toString());
             URI uri = (model.eResource() != null) ? model.eResource().getURI() : null;
-            Class<?> driverClass = (this.driverClass != null) ? this.driverClass
+
+            Class<?> driverClass = null;
+
+            driverClass = (this.driverClass != null) ? this.driverClass
                     : pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
+
             debug.trace(m, "DATA DRIVER " + driverClass);
             if (driverClass != null && Driver.class.isAssignableFrom(driverClass)) {
                 try {
