@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.net.URLClassLoader;
 import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -28,6 +29,7 @@ import java.util.TreeSet;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
@@ -89,7 +91,7 @@ public class DbResolverBean implements DbResolver {
     PojoResolverFactory pojoResolverFactory;
 
     @Inject
-    ProcessorClassLoaders processorMetaClassLoaders;
+    ProcessorClassLoaders processorClassLoaders;
 
     private Class<?> driverClass = null;
     private String dbSqlsBefore = null;
@@ -180,7 +182,6 @@ public class DbResolverBean implements DbResolver {
             closeConnection(modelDatabaseValues);
             return null;
         }
-        System.out.println("EEEEEE " + processorMetaClassLoaders);
 
         modelDatabaseValues.doReconnect = (modelDatabaseValues.connection != null) ? false : true;
 
@@ -350,11 +351,23 @@ public class DbResolverBean implements DbResolver {
             debug.info(m, "DATA START FOR " + modelDatabaseValues.toString());
             URI uri = (model.eResource() != null) ? model.eResource().getURI() : null;
 
-            Class<?> driverClass = null;
-
-            driverClass = (this.driverClass != null) ? this.driverClass
-                    : pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
-
+            Class<?> driverClass = this.driverClass;
+            if (driverClass == null) {
+                if (modelDatabaseValues.newPojoValidator && modelDatabaseValues.dbDriverPojo != null
+                        && modelDatabaseValues.dbDriverPojo.getType() != null) {
+                    ResourceSet resourceSet = modelDatabaseValues.dbDriverPojo.getType().eResource().getResourceSet();
+                    URLClassLoader classLoader = processorClassLoaders.getLoaders().get(resourceSet);
+                    if (classLoader != null)
+                        try {
+                            driverClass = classLoader
+                                    .loadClass(modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
+                        } catch (ClassNotFoundException e) {
+                            e.printStackTrace();
+                        }
+                } else {
+                    driverClass = pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
+                }
+            }
             debug.trace(m, "DATA DRIVER " + driverClass);
             if (driverClass != null && Driver.class.isAssignableFrom(driverClass)) {
                 try {

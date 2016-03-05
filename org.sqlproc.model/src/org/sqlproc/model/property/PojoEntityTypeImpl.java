@@ -1,5 +1,6 @@
 package org.sqlproc.model.property;
 
+import org.eclipse.xtext.common.types.JvmType;
 import org.sqlproc.model.processorModel.PojoType;
 import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
@@ -25,6 +26,10 @@ public class PojoEntityTypeImpl implements PojoEntityType {
             return Utils.getSimpleName(type.getRef().getClass_());
         }
         return null;
+    }
+
+    public JvmType getType() {
+        return type.getType();
     }
 
     @Override

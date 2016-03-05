@@ -1,6 +1,10 @@
 package org.sqlproc.plugin.lib.property;
 
+import org.eclipse.xtext.common.types.JvmType;
+
 public interface PojoEntityType {
 
-	public String getSimpleName();
+    public JvmType getType();
+
+    public String getSimpleName();
 }
