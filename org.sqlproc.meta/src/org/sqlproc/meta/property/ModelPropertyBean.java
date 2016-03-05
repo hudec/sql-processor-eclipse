@@ -360,6 +360,7 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.dbSchema = null;
         } else if (DATABASE_JDBC_DRIVER.equals(property.getName())) {
             modelValues.dbDriver = Utils.getPropertyValue(property.getDbDriver());
+            modelValues.dbDriverPojo = new PojoEntityTypeImpl(property.getDbDriver());
         } else if (DATABASE_EXECUTE_BEFORE.equals(property.getName())) {
             modelValues.dbSqlsBefore = Utils.getPropertyValue(property.getDbExecuteBefore());
         } else if (DATABASE_EXECUTE_AFTER.equals(property.getName())) {

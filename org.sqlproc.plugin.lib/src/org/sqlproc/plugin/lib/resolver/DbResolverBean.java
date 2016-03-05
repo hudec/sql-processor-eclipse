@@ -30,6 +30,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.util.StringInputStream;
 import org.sqlproc.plugin.lib.property.ModelProperty;
+import org.sqlproc.plugin.lib.property.PojoEntityType;
 import org.sqlproc.plugin.lib.util.Debug;
 
 import com.google.inject.Inject;
@@ -43,6 +44,7 @@ public class DbResolverBean implements DbResolver {
 
     public static class DatabaseDirectives {
         public String dbDriver;
+        public PojoEntityType dbDriverPojo;
         public String dbUrl;
         public String dbUsername;
         public String dbPassword;
@@ -68,13 +70,13 @@ public class DbResolverBean implements DbResolver {
 
         @Override
         public String toString() {
-            return "DatabaseValues [dbDriver=" + dbDriver + ", dbUrl=" + dbUrl + ", dbUsername=" + dbUsername
-                    + ", dbCatalog=" + dbCatalog + ", dbSchema=" + dbSchema + ", dbSqlsBefore=" + dbSqlsBefore
-                    + ", dbSqlsAfter=" + dbSqlsAfter + ", connection=" + connection + ", dbIndexTypes=" + dbIndexTypes
-                    + ", dbSkipIndexes=" + dbSkipIndexes + ", dbSkipProcedures=" + dbSkipProcedures
-                    + ", dbSkipCheckConstraints=" + dbSkipCheckConstraints + ", dbTakeComments=" + dbTakeComments
-                    + ", dbLowercaseNames=" + dbLowercaseNames + ", dbUppercaseNames=" + dbUppercaseNames + ", dbType="
-                    + dbType + ", dir=" + dir + "]";
+            return "DatabaseValues [dbDriver=" + dbDriver + ", dbDriverPojo=" + dbDriverPojo + ", dbUrl=" + dbUrl
+                    + ", dbUsername=" + dbUsername + ", dbCatalog=" + dbCatalog + ", dbSchema=" + dbSchema
+                    + ", dbSqlsBefore=" + dbSqlsBefore + ", dbSqlsAfter=" + dbSqlsAfter + ", connection=" + connection
+                    + ", dbIndexTypes=" + dbIndexTypes + ", dbSkipIndexes=" + dbSkipIndexes + ", dbSkipProcedures="
+                    + dbSkipProcedures + ", dbSkipCheckConstraints=" + dbSkipCheckConstraints + ", dbTakeComments="
+                    + dbTakeComments + ", dbLowercaseNames=" + dbLowercaseNames + ", dbUppercaseNames="
+                    + dbUppercaseNames + ", dbType=" + dbType + ", dir=" + dir + "]";
         }
 
     }
@@ -187,6 +189,17 @@ public class DbResolverBean implements DbResolver {
             }
         } else {
             modelDatabaseValues.dbDriver = null;
+            closeConnection(modelDatabaseValues);
+            return null;
+        }
+        PojoEntityType dbDriverPojo = modelProperty.getDbDrivePojo(model);
+        if (dbDriverPojo != null) {
+            if (dbDriverPojo != modelDatabaseValues.dbDriverPojo) {
+                modelDatabaseValues.dbDriverPojo = dbDriverPojo;
+                modelDatabaseValues.doReconnect = true;
+            }
+        } else {
+            modelDatabaseValues.dbDriverPojo = null;
             closeConnection(modelDatabaseValues);
             return null;
         }

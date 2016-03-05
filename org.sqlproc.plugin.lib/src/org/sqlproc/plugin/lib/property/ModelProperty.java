@@ -189,6 +189,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public String caseFormatLibrary;
         public boolean newPojoValidator;
         public String dbDriver;
+        public PojoEntityType dbDriverPojo;
         public String dbUrl;
         public String dbUsername;
         public String dbPassword;
@@ -320,6 +321,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public void initDatabaseModel() {
             doResolveDb = false;
             dbDriver = null;
+            dbDriverPojo = null;
             dbUrl = null;
             dbUsername = null;
             dbPassword = null;
@@ -1032,6 +1034,11 @@ public abstract class ModelProperty extends AdapterImpl {
     public String getDbDriver(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.dbDriver : null;
+    }
+
+    public PojoEntityType getDbDrivePojo(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.dbDriverPojo : null;
     }
 
     public String getDbUrl(EObject model) {
