@@ -4,6 +4,8 @@
 package org.sqlproc.meta.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
@@ -33,62 +35,72 @@ import com.google.inject.name.Names;
  * Use this class to register components to be used within the IDE.
  */
 public class ProcessorMetaUiModule extends org.sqlproc.meta.ui.AbstractProcessorMetaUiModule {
-	public ProcessorMetaUiModule(AbstractUIPlugin plugin) {
-		super(plugin);
-	}
+    public ProcessorMetaUiModule(AbstractUIPlugin plugin) {
+        super(plugin);
+    }
 
-	public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-		return PojoResolverFactoryBean.class;
-	}
+    public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+        return PojoResolverFactoryBean.class;
+    }
 
-	public Class<? extends PojoResolver> bindPojoResolver() {
-		return WorkspacePojoResolverImpl.class;
-	}
+    public Class<? extends PojoResolver> bindPojoResolver() {
+        return WorkspacePojoResolverImpl.class;
+    }
 
-	public Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
-		return HighlightingConfiguration.class;
-	}
+    public Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
+        return HighlightingConfiguration.class;
+    }
 
-	public Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
-		return TokenToIdMapper.class;
-	}
+    public Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
+        return TokenToIdMapper.class;
+    }
 
-	public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-		return SemanticHighlightingCalculator.class;
-	}
+    public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+        return SemanticHighlightingCalculator.class;
+    }
 
-	public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
-		return FixedOutlineFilterAndSorter.class;
-	}
+    public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
+        return FixedOutlineFilterAndSorter.class;
+    }
 
-	public void configureFilterOptionalFeaturesOutlineContribution(Binder binder) {
-		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterOptionalFeaturesContribution"))
-		        .to(FilterOptionalFeaturesContribution.class);
-	}
+    public void configureFilterOptionalFeaturesOutlineContribution(Binder binder) {
+        binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterOptionalFeaturesContribution"))
+                .to(FilterOptionalFeaturesContribution.class);
+    }
 
-	public void configureFilterMetaStatementsOutlineContribution(Binder binder) {
-		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMetaStatementsContribution"))
-		        .to((Class<? extends IOutlineContribution>) FilterMetaStatementsContribution.class);
-	}
+    public void configureFilterMetaStatementsOutlineContribution(Binder binder) {
+        binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMetaStatementsContribution"))
+                .to((Class<? extends IOutlineContribution>) FilterMetaStatementsContribution.class);
+    }
 
-	public void configureFilterMappingRulesOutlineContribution(Binder binder) {
-		binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMappingRulesContribution"))
-		        .to(FilterMappingRulesContribution.class);
-	}
+    public void configureFilterMappingRulesOutlineContribution(Binder binder) {
+        binder.bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMappingRulesContribution"))
+                .to(FilterMappingRulesContribution.class);
+    }
 
-	@Override
-	public void configure(Binder binder) {
-		super.configure(binder);
-		binder.bind(XtextTemplateContextType.class).to(ProcessorMetaTemplateContextType.class);
-	}
+    @Override
+    public void configure(Binder binder) {
+        super.configure(binder);
+        binder.bind(XtextTemplateContextType.class).to(ProcessorMetaTemplateContextType.class);
+    }
 
-	@Override
-	public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
-		return ProcessorTemplateProposalProvider.class;
-	}
+    @Override
+    public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+        return ProcessorTemplateProposalProvider.class;
+    }
 
-	@Override
-	public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
-		return ProcessorMetaResourceSetProvider.class;
-	}
+    @Override
+    public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
+        return ProcessorMetaResourceSetProvider.class;
+    }
+
+    @Override
+    public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return org.sqlproc.meta.ui.ProcessorMetaJdtTypeProviderFactory.class;
+    }
+
+    @Override
+    public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
+    }
 }

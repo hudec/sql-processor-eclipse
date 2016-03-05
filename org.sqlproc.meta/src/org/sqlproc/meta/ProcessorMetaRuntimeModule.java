@@ -3,6 +3,8 @@
  */
 package org.sqlproc.meta;
 
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.sqlproc.meta.property.ModelPropertyBean;
 import org.sqlproc.plugin.lib.property.ModelProperty;
@@ -16,25 +18,35 @@ import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean;
  */
 public class ProcessorMetaRuntimeModule extends org.sqlproc.meta.AbstractProcessorMetaRuntimeModule {
 
-	public Class<? extends ModelProperty> bindModelProperty() {
-		return ModelPropertyBean.class;
-	}
+    public Class<? extends ModelProperty> bindModelProperty() {
+        return ModelPropertyBean.class;
+    }
 
-	@Override
-	public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
-		return ProcessorNameProvider.class;
-	}
+    @Override
+    public Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+        return ProcessorNameProvider.class;
+    }
 
-	public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-		return PojoResolverFactoryBean.class;
-	}
+    public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+        return PojoResolverFactoryBean.class;
+    }
 
-	public Class<? extends DbResolver> bindDbResolver() {
-		return DbResolverBean.class;
-	}
+    public Class<? extends DbResolver> bindDbResolver() {
+        return DbResolverBean.class;
+    }
 
-	@Override
-	public Class<? extends IResourceFactory> bindIResourceFactory() {
-		return ProcessorResourceFactory.class;
-	}
+    @Override
+    public Class<? extends IResourceFactory> bindIResourceFactory() {
+        return ProcessorResourceFactory.class;
+    }
+
+    @Override
+    public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return org.sqlproc.meta.ProcessorMetaClasspathTypeProviderFactory.class;
+    }
+
+    @Override
+    public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return ProcessorMetaClasspathBasedTypeScopeProvider.class;
+    }
 }
