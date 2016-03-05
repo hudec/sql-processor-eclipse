@@ -14,8 +14,8 @@ public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProv
     @Override
     protected ClasspathTypeProvider createClasspathTypeProvider(ResourceSet resourceSet) {
         ClasspathTypeProvider classpathTypeProvider = super.createClasspathTypeProvider(resourceSet);
-        System.out.println(
-                "BBBBB for " + resourceSet + " and " + getClassLoader(resourceSet) + " is " + classpathTypeProvider);
+        // System.out.println(
+        // "BBBBB for " + resourceSet + " and " + getClassLoader(resourceSet) + " is " + classpathTypeProvider);
         return classpathTypeProvider;
     }
 

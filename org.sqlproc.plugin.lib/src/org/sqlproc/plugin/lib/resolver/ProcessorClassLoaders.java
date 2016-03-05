@@ -1,19 +1,29 @@
 package org.sqlproc.plugin.lib.resolver;
 
-import java.net.URLClassLoader;
-import java.util.HashMap;
-import java.util.Map;
+import java.io.InputStream;
 
-import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.emf.ecore.resource.Resource;
 
 import com.google.inject.Singleton;
 
 @Singleton
 public class ProcessorClassLoaders {
 
-    Map<ResourceSet, URLClassLoader> loaders = new HashMap<>();
+    PojoClassLoader pojoClassLoader;
 
-    public Map<ResourceSet, URLClassLoader> getLoaders() {
-        return loaders;
+    public PojoClassLoader getPojoClassLoader() {
+        return pojoClassLoader;
+    }
+
+    public void setPojoClassLoader(PojoClassLoader pojoClassLoader) {
+        this.pojoClassLoader = pojoClassLoader;
+    }
+
+    public Class<?> loadClass(Resource resource, String name) {
+        return pojoClassLoader.loadClass(resource, name);
+    }
+
+    public InputStream getFile(Resource resource, String filename) {
+        return pojoClassLoader.getFile(resource, filename);
     }
 }

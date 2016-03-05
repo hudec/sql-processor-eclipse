@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
-import java.net.URLClassLoader;
 import java.sql.BatchUpdateException;
 import java.sql.Connection;
 import java.sql.DatabaseMetaData;
@@ -29,7 +28,6 @@ import java.util.TreeSet;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.xtext.util.StringInputStream;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
@@ -355,15 +353,9 @@ public class DbResolverBean implements DbResolver {
             if (driverClass == null) {
                 if (modelDatabaseValues.newPojoValidator && modelDatabaseValues.dbDriverPojo != null
                         && modelDatabaseValues.dbDriverPojo.getType() != null) {
-                    ResourceSet resourceSet = modelDatabaseValues.dbDriverPojo.getType().eResource().getResourceSet();
-                    URLClassLoader classLoader = processorClassLoaders.getLoaders().get(resourceSet);
-                    if (classLoader != null)
-                        try {
-                            driverClass = classLoader
-                                    .loadClass(modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
-                        } catch (ClassNotFoundException e) {
-                            e.printStackTrace();
-                        }
+                    driverClass = processorClassLoaders.loadClass(
+                            modelDatabaseValues.dbDriverPojo.getType().eResource(),
+                            modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
                 } else {
                     driverClass = pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
                 }
@@ -386,8 +378,12 @@ public class DbResolverBean implements DbResolver {
                         is = new StringInputStream(this.dbSqlsBefore);
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsBefore != null
                             && modelDatabaseValues.dbSqlsBefore.trim().length() > 0) {
-                        is = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsBefore.trim(),
-                                uri);
+                        if (modelDatabaseValues.newPojoValidator)
+                            is = processorClassLoaders.getFile(model.eResource(),
+                                    modelDatabaseValues.dbSqlsBefore.trim());
+                        else
+                            is = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsBefore.trim(),
+                                    uri);
                     }
                     if (is != null) {
                         List<String> ddls = loadDDL(is);
@@ -415,8 +411,12 @@ public class DbResolverBean implements DbResolver {
                         is2 = new StringInputStream(this.dbSqlsBefore);
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsAfter != null
                             && modelDatabaseValues.dbSqlsAfter.trim().length() > 0) {
-                        is2 = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsAfter.trim(),
-                                uri);
+                        if (modelDatabaseValues.newPojoValidator)
+                            is2 = processorClassLoaders.getFile(model.eResource(),
+                                    modelDatabaseValues.dbSqlsAfter.trim());
+                        else
+                            is2 = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsAfter.trim(),
+                                    uri);
                     }
                     if (is2 != null) {
                         modelDatabaseValues.ddlsAfter = loadDDL(is);
