@@ -19,7 +19,8 @@ import org.sqlproc.plugin.lib.util.MainUtils;
 
 import com.google.inject.Inject;
 
-public class ProcessorModelClasspathTypeProviderFactory extends ClasspathTypeProviderFactory implements PojoClassLoader {
+public class ProcessorModelClasspathTypeProviderFactory extends ClasspathTypeProviderFactory
+        implements PojoClassLoader {
 
     protected Logger LOGGER = Logger.getLogger(ProcessorModelClasspathTypeProviderFactory.class);
 
@@ -28,6 +29,7 @@ public class ProcessorModelClasspathTypeProviderFactory extends ClasspathTypePro
 
     private Map<ResourceSet, ClassLoader> loaders = new HashMap<>();
 
+    @Inject
     public ProcessorModelClasspathTypeProviderFactory(ClassLoader classLoader, TypeResourceServices services) {
         super(classLoader, services);
     }

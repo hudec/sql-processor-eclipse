@@ -28,6 +28,7 @@ public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProv
 
     private Map<ResourceSet, ClassLoader> loaders = new HashMap<>();
 
+    @Inject
     public ProcessorMetaClasspathTypeProviderFactory(ClassLoader classLoader, TypeResourceServices services) {
         super(classLoader, services);
     }
