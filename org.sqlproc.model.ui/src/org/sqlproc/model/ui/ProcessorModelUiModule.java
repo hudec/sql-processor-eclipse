@@ -4,6 +4,8 @@
 package org.sqlproc.model.ui;
 
 import org.eclipse.ui.plugin.AbstractUIPlugin;
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.sqlproc.model.ui.resolver.WorkspacePojoResolverImpl;
@@ -61,5 +63,15 @@ public class ProcessorModelUiModule extends org.sqlproc.model.ui.AbstractProcess
     @Override
     public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
         return ProcessorTemplateProposalProvider.class;
+    }
+
+    @Override
+    public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return org.sqlproc.model.ui.ProcessorModelJdtTypeProviderFactory.class;
+    }
+
+    @Override
+    public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return ProcessorModelJdtBasedSimpleTypeScopeProvider.class;
     }
 }

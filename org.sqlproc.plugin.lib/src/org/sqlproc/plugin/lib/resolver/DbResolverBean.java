@@ -89,7 +89,7 @@ public class DbResolverBean implements DbResolver {
     PojoResolverFactory pojoResolverFactory;
 
     @Inject
-    ProcessorClassLoaders processorClassLoaders;
+    ProcessorClassLoader processorClassLoader;
 
     private Class<?> driverClass = null;
     private String dbSqlsBefore = null;
@@ -353,7 +353,7 @@ public class DbResolverBean implements DbResolver {
             if (driverClass == null) {
                 if (modelDatabaseValues.newPojoValidator && modelDatabaseValues.dbDriverPojo != null
                         && modelDatabaseValues.dbDriverPojo.getType() != null) {
-                    driverClass = processorClassLoaders.loadClass(
+                    driverClass = processorClassLoader.loadClass(
                             modelDatabaseValues.dbDriverPojo.getType().eResource(),
                             modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
                 } else {
@@ -379,7 +379,7 @@ public class DbResolverBean implements DbResolver {
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsBefore != null
                             && modelDatabaseValues.dbSqlsBefore.trim().length() > 0) {
                         if (modelDatabaseValues.newPojoValidator)
-                            is = processorClassLoaders.getFile(model.eResource(),
+                            is = processorClassLoader.loadFile(model.eResource(),
                                     modelDatabaseValues.dbSqlsBefore.trim());
                         else
                             is = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsBefore.trim(),
@@ -412,7 +412,7 @@ public class DbResolverBean implements DbResolver {
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsAfter != null
                             && modelDatabaseValues.dbSqlsAfter.trim().length() > 0) {
                         if (modelDatabaseValues.newPojoValidator)
-                            is2 = processorClassLoaders.getFile(model.eResource(),
+                            is2 = processorClassLoader.loadFile(model.eResource(),
                                     modelDatabaseValues.dbSqlsAfter.trim());
                         else
                             is2 = pojoResolverFactory.getPojoResolver().getFile(modelDatabaseValues.dbSqlsAfter.trim(),

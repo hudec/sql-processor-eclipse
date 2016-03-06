@@ -7,7 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import com.google.inject.Singleton;
 
 @Singleton
-public class ProcessorClassLoaders {
+public class ProcessorClassLoader {
 
     PojoClassLoader pojoClassLoader;
 
@@ -23,7 +23,7 @@ public class ProcessorClassLoaders {
         return pojoClassLoader.loadClass(resource, name);
     }
 
-    public InputStream getFile(Resource resource, String filename) {
-        return pojoClassLoader.getFile(resource, filename);
+    public InputStream loadFile(Resource resource, String filename) {
+        return pojoClassLoader.loadFile(resource, filename);
     }
 }

@@ -7,5 +7,5 @@ import org.eclipse.emf.ecore.resource.Resource;
 public interface PojoClassLoader {
     public Class<?> loadClass(Resource resource, String name);
 
-    public InputStream getFile(Resource resource, String filename);
+    public InputStream loadFile(Resource resource, String filename);
 }

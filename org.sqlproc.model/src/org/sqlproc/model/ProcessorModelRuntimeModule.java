@@ -3,6 +3,8 @@
  */
 package org.sqlproc.model;
 
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.eclipse.xtext.xbase.compiler.ErrorSafeExtensions;
 import org.sqlproc.model.generator.ProcessorModelErrorSafeExtensions;
@@ -58,5 +60,15 @@ public class ProcessorModelRuntimeModule extends org.sqlproc.model.AbstractProce
 
     public Class<? extends ErrorSafeExtensions> bindErrorSafeExtensions() {
         return ProcessorModelErrorSafeExtensions.class;
+    }
+
+    @Override
+    public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return org.sqlproc.model.ProcessorModelClasspathTypeProviderFactory.class;
+    }
+
+    @Override
+    public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return ProcessorModelClasspathBasedTypeScopeProvider.class;
     }
 }
