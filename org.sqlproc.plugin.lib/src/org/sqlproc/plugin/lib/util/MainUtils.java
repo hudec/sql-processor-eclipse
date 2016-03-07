@@ -97,7 +97,7 @@ public class MainUtils {
     }
 
     public static String getFile(String source, String file) {
-        if (file.startsWith("/"))
+        if (file.startsWith(File.separator))
             return file;
         return source + file;
     }
