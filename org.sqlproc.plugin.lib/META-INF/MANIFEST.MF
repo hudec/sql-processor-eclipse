@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SQL Processor Common Plugin Library
 Bundle-Vendor: SQL Processor Team
 Bundle-SymbolicName: org.sqlproc.plugin.lib
-Bundle-Version: 2.5.4.qualifier
+Bundle-Version: 2.5.4
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
