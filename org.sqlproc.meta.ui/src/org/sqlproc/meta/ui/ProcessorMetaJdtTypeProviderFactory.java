@@ -75,6 +75,7 @@ public class ProcessorMetaJdtTypeProviderFactory extends JdtTypeProviderFactory 
 
     @Override
     public Class<?> loadClass(Resource resource, String name) {
+        LOGGER.info("loadClass, resource=" + resource + ", name=" + name);
         if (resource == null)
             return null;
         ResourceSet resourceSet = resource.getResourceSet();

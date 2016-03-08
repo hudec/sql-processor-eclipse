@@ -43,6 +43,7 @@ public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProv
 
     @Override
     public Class<?> loadClass(Resource resource, String name) {
+        LOGGER.info("loadClass, resource=" + resource + ", name=" + name);
         if (resource == null)
             return null;
         ResourceSet resourceSet = resource.getResourceSet();
@@ -63,7 +64,10 @@ public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProv
     public InputStream loadFile(Resource resource, String filename) {
         if (resource == null)
             return null;
-        File file = new File(MainUtils.getFile("", filename));
+        String sResource = resource.getURI().toString();
+        int ix = sResource.lastIndexOf(File.separator);
+        String source = (ix >= 0) ? sResource.substring(0, ix + 1) : "";
+        File file = new File(MainUtils.getFile(source, filename));
         try {
             return new FileInputStream(file);
         } catch (FileNotFoundException e) {

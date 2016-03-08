@@ -6,5 +6,7 @@ public interface PojoEntityType {
 
     public JvmType getType();
 
+    public String getQualifiedName();
+
     public String getSimpleName();
 }

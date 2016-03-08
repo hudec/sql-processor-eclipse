@@ -26,6 +26,7 @@ import org.sqlproc.meta.property.ModelPropertyBean;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.resolver.DbResolver;
 import org.sqlproc.plugin.lib.resolver.PojoResolverFactory;
+import org.sqlproc.plugin.lib.resolver.StandalonePojoResolverImpl;
 import org.sqlproc.plugin.lib.util.MainUtils;
 import org.sqlproc.plugin.lib.util.Stats;
 
@@ -121,7 +122,7 @@ public class Main {
     protected void verify(String control, String metas, String source, boolean skipdb, String ddl)
             throws IOException, ClassNotFoundException {
 
-        System.out.println(pojoResolverFactory);
+        pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
 
         ResourceSet resourceSet = resourceSetProvider.get();
         Resource controlResource = resourceSet.getResource(URI.createURI(MainUtils.getFile(source, control)), true);
@@ -152,7 +153,6 @@ public class Main {
             ModelProperty.ModelValues modelValues = ModelPropertyBean.loadModel(null, definitions);
             modelValues.doResolveDb = true;
             modelProperty.init(modelValues);
-            // pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
             String dbSqlsBefore = MainUtils.loadDdl(source, ddl);
             dbResolver.init(modelProperty, null, dbSqlsBefore, null);
         }
@@ -169,6 +169,8 @@ public class Main {
 
     protected void generate(String control, String sql, String ddl, String source, String target, boolean merge)
             throws IOException, ClassNotFoundException {
+
+        pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
 
         ResourceSet resourceSet = resourceSetProvider.get();
         Resource controlResource = resourceSet.getResource(URI.createURI(MainUtils.getFile(source, control)), true);
@@ -198,7 +200,6 @@ public class Main {
         ModelProperty.ModelValues modelValues = ModelPropertyBean.loadModel(null, definitions);
         modelValues.doResolveDb = true;
         modelProperty.init(modelValues);
-        // pojoResolverFactory.setPojoResolver(new StandalonePojoResolverImpl(source));
         String dbSqlsBefore = MainUtils.loadDdl(source, ddl);
         dbResolver.init(modelProperty, null, dbSqlsBefore, null);
 

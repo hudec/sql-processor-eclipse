@@ -28,6 +28,20 @@ public class PojoEntityTypeImpl implements PojoEntityType {
         return null;
     }
 
+    @Override
+    public String getQualifiedName() {
+        if (type.getType() != null)
+            return type.getType().getQualifiedName();
+        if (type.getIdent() != null)
+            return Utils.getPropertyValue(type.getIdent());
+        if (type.getRef() != null) {
+            if (type.getRef().getClassx() != null)
+                return type.getRef().getClassx();
+            return type.getRef().getClass_();
+        }
+        return null;
+    }
+
     public JvmType getType() {
         return type.getType();
     }

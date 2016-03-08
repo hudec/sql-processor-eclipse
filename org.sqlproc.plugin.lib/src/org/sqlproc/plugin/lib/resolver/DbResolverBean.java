@@ -351,13 +351,22 @@ public class DbResolverBean implements DbResolver {
 
             Class<?> driverClass = this.driverClass;
             if (driverClass == null) {
-                if (modelDatabaseValues.newPojoValidator && modelDatabaseValues.dbDriverPojo != null
-                        && modelDatabaseValues.dbDriverPojo.getType() != null) {
+                boolean useNewPojoLoader = true;
+                if (!modelDatabaseValues.newPojoValidator)
+                    useNewPojoLoader = false;
+                else if (modelDatabaseValues.dbDriverPojo == null)
+                    useNewPojoLoader = false;
+                else if (modelDatabaseValues.dbDriverPojo.getType() == null)
+                    useNewPojoLoader = false;
+                if (useNewPojoLoader) {
                     System.out.println(modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
                     driverClass = processorClassLoader.loadClass(modelDatabaseValues.dbDriverPojo.getType().eResource(),
                             modelDatabaseValues.dbDriverPojo.getType().getQualifiedName());
                 } else {
-                    driverClass = pojoResolverFactory.getPojoResolver().loadClass(modelDatabaseValues.dbDriver, uri);
+                    driverClass = pojoResolverFactory.getPojoResolver()
+                            .loadClass((modelDatabaseValues.dbDriverPojo != null)
+                                    ? modelDatabaseValues.dbDriverPojo.getQualifiedName()
+                                    : modelDatabaseValues.dbDriver, uri);
                 }
             }
             debug.trace(m, "DATA DRIVER " + driverClass);

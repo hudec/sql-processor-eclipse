@@ -34,6 +34,7 @@ public class StandalonePojoResolverImpl implements PojoResolver {
 
     @Override
     public Class<?> loadClass(String name, URI uri) {
+        LOGGER.info("loadClass, name=" + name + ", uri=" + uri);
         try {
             Class<?> clazz = this.getClass().getClassLoader().loadClass(name);
             return clazz;
