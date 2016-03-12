@@ -1,0 +1,3 @@
+include 'org.sqlproc.meta'
+include 'org.sqlproc.meta.ide'
+include 'org.sqlproc.meta.idea'

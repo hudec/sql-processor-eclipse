@@ -1,0 +1,3 @@
+include 'org.sqlproc.model'
+include 'org.sqlproc.model.ide'
+include 'org.sqlproc.model.idea'

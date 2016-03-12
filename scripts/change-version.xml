@@ -2,19 +2,23 @@
 
 <project name="sqlep" default="change-version" basedir=".">
 	
-	<!--property name="version.from" value="2.1.0-SNAPSHOT"/>
-	<property name="version.to" value="2.0.1"/-->
-	<property name="version.from2" value="2.5.4.qualifier"/>
-	<property name="version.to2" value="2.5.4"/>
+	<property name="version.from" value="1.0.0-SNAPSHOT"/>
+	<property name="version.to" value="2.6.0-SNAPSHOT"/>
+	<property name="version.from2" value="1.0.0.qualifier"/>
+	<property name="version.to2" value="2.6.0.qualifier"/>
 	
 	<target name="change-version">
-		<!--replace dir=".." token="${version.from}" value="${version.to}">
+		<replace dir=".." token="${version.from}" value="${version.to}">
 			<include name="**/pom.xml"/>
+		</replace>
+
+		<replace dir=".." token="${version.from}" value="${version.to}">
+			<include name="**/build.gradle"/>
 		</replace>
 		
 		<replace dir=".." token="${version.from}" value="${version.to}">
 			<include name="*/.classpath"/>
-		</replace-->
+		</replace>
 		
 		<replace dir=".." token="${version.from}" value="${version.to}">
 			<include name="*/.settings/org.eclipse.wst.common.component"/>

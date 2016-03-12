@@ -1,0 +1,8 @@
+{
+	"1.0": {
+		"project_path": ":org.sqlproc.meta",
+		"project_dir": "/home/hudec/git/sql-processor-eclipse/org.sqlproc.meta.parent/org.sqlproc.meta",
+		"connection_project_dir": "/home/hudec/git/sql-processor-eclipse/org.sqlproc.meta.parent",
+		"connection_gradle_distribution": "GRADLE_DISTRIBUTION(WRAPPER)"
+	}
+}
