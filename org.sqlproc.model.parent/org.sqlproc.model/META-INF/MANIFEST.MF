@@ -17,15 +17,19 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.common.types,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.sqlproc.model.serializer,
+Export-Package: org.sqlproc.model,
+ org.sqlproc.model.generator,
  org.sqlproc.model.jvmmodel,
- org.sqlproc.model,
- org.sqlproc.model.processorModel.util,
  org.sqlproc.model.parser.antlr,
- org.sqlproc.model.processorModel,
- org.sqlproc.model.services,
- org.sqlproc.model.processorModel.impl,
- org.sqlproc.model.scoping,
  org.sqlproc.model.parser.antlr.internal,
- org.sqlproc.model.validation
+ org.sqlproc.model.processorModel,
+ org.sqlproc.model.processorModel.impl,
+ org.sqlproc.model.processorModel.util,
+ org.sqlproc.model.scoping,
+ org.sqlproc.model.serializer,
+ org.sqlproc.model.services,
+ org.sqlproc.model.validation,
+ org.sqlproc.plugin.lib.property,
+ org.sqlproc.plugin.lib.resolver,
+ org.sqlproc.plugin.lib.util
 Import-Package: org.apache.log4j

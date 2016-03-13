@@ -4,10 +4,47 @@
 package org.sqlproc.model.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactory
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean
+import org.sqlproc.plugin.lib.resolver.PojoResolver
+import org.sqlproc.model.ui.resolver.WorkspacePojoResolverImpl
+import org.sqlproc.model.ui.templates.ProcessorModelTemplateContextType
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider
+import org.sqlproc.model.ui.templates.ProcessorTemplateProposalProvider
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
  */
 @FinalFieldsConstructor
 class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
+
+    def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+        return typeof(PojoResolverFactoryBean);
+    }
+
+    def Class<? extends PojoResolver> bindPojoResolver() {
+        return typeof(WorkspacePojoResolverImpl);
+    }
+
+//    def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+//        return typeof(SemanticHighlightingCalculator);
+//    }
+
+    override Class<? extends org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType> bindXtextTemplateContextType() {
+        return typeof(ProcessorModelTemplateContextType);
+    }
+
+    override Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+        return typeof(ProcessorTemplateProposalProvider);
+    }
+
+    override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return typeof(org.sqlproc.model.ui.ProcessorModelJdtTypeProviderFactory);
+    }
+
+    override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return typeof(ProcessorModelJdtBasedSimpleTypeScopeProvider);
+    }
 }

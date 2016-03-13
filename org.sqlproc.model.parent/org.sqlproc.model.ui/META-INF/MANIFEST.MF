@@ -20,7 +20,10 @@ Require-Bundle: org.sqlproc.model,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.xbase.ui,
  org.eclipse.xtext.builder
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.launching,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.sqlproc.model.ui.quickfix,
  org.sqlproc.model.ui.contentassist,
