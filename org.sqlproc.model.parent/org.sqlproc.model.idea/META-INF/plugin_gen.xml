@@ -1,0 +1,93 @@
+<idea-plugin version="2">
+	<extensions defaultExtensionNs="org.eclipse.xtext.idea">
+		<package
+			uri="http://www.sqlproc.org/model/ProcessorModel"
+			class="org.sqlproc.model.processorModel.ProcessorModelPackage"
+		/>
+		<resourceFactory 
+			type="model"
+			class="org.eclipse.xtext.resource.IResourceFactory"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+		/>
+		<resourceServiceProvider
+			uriExtension="model"
+			class="org.eclipse.xtext.idea.resource.IResourceIdeaServiceProvider"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+		/>
+
+		<lang.setup
+			language="org.sqlproc.model.ProcessorModel"
+			implementationClass="org.sqlproc.model.idea.ProcessorModelIdeaSetup"
+		/>
+	</extensions>
+
+	<extensions defaultExtensionNs="com.intellij">
+		<psi.treeChangePreprocessor implementation="org.sqlproc.model.idea.lang.psi.ProcessorModelCodeBlockModificationListener"/>
+
+		<fileTypeFactory implementation="org.sqlproc.model.idea.lang.ProcessorModelFileTypeFactory"/>
+		<stubElementTypeHolder class="org.sqlproc.model.idea.lang.ProcessorModelElementTypeProvider"/>
+		<lang.ast.factory 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.lang.BaseXtextASTFactory"
+		/>
+		<lang.parserDefinition 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.sqlproc.model.idea.lang.parser.ProcessorModelParserDefinition"
+		/>
+		<lang.findUsagesProvider 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.findusages.BaseXtextFindUsageProvider"
+		/>
+		<lang.refactoringSupport 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.refactoring.BaseXtextRefactoringSupportProvider"
+		/>
+		<lang.namesValidator 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="com.intellij.lang.refactoring.NamesValidator"
+		/>
+		<lang.syntaxHighlighterFactory key="org.sqlproc.model.ProcessorModel" implementationClass="org.sqlproc.model.idea.highlighting.ProcessorModelSyntaxHighlighterFactory" />
+		<lang.braceMatcher 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="com.intellij.lang.PairedBraceMatcher"
+		/>
+		<annotator 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.annotation.IssueAnnotator"
+		/>
+		<completion.contributor language="org.sqlproc.model.ProcessorModel" implementationClass="org.sqlproc.model.idea.completion.ProcessorModelCompletionContributor"/>
+		<pom.declarationSearcher implementation="org.sqlproc.model.idea.lang.pom.ProcessorModelPomDeclarationSearcher"/>
+
+		<lang.psiStructureViewFactory 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="com.intellij.lang.PsiStructureViewFactory"
+		/>
+		<facetType implementation="org.sqlproc.model.idea.facet.ProcessorModelFacetType"/>
+		<lang.documentationProvider 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="org.eclipse.xtext.idea.documentation.IdeaDocumentationProvider"
+		/>
+		<colorSettingsPage implementation="org.sqlproc.model.idea.highlighting.ProcessorModelColorSettingsPage"/>
+		<highlightVisitor implementation="org.sqlproc.model.idea.highlighting.ProcessorModelSemanticHighlightVisitor"/>
+
+		<lang.formatter 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="com.intellij.formatting.FormattingModelBuilder"
+		/>
+		<lang.commenter 
+			language="org.sqlproc.model.ProcessorModel"
+			factoryClass="org.sqlproc.model.idea.ProcessorModelExtensionFactory"
+			implementationClass="com.intellij.lang.CodeDocumentationAwareCommenter"
+		/>
+	</extensions>
+</idea-plugin>

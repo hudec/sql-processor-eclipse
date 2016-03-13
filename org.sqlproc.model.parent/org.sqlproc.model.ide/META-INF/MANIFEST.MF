@@ -9,3 +9,6 @@ Require-Bundle: org.sqlproc.model,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Export-Package: org.sqlproc.model.ide.contentassist.antlr,
+ org.sqlproc.model.ide.contentassist.antlr.internal
+

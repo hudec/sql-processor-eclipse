@@ -257,7 +257,7 @@ PojoEntity:
 	'#Pojo' name=ValidID ('extends' superType=JvmParameterizedTypeReference)?
 	'{'
 		attributes+=PojoAttribute*
-		procedures+=PojoProcedure*
+//		procedures+=PojoProcedure*
 	'}'
 ;
 
@@ -303,7 +303,7 @@ EnumEntity:
 	'#Enum' name=ValidID 
 	'{'
 		attribute=EnumAttribute
-		procedures+=PojoProcedure*
+//		procedures+=PojoProcedure*
 	'}'
 ;
 
@@ -351,7 +351,7 @@ DaoEntity:
 	'#Dao' name=ValidID ('extends' superType=JvmParameterizedTypeReference)?
 	'{'
 		attributes+=PojoAttribute*
-		procedures+=PojoProcedure*
+//		procedures+=PojoProcedure*
 	'}'
 ;
 
