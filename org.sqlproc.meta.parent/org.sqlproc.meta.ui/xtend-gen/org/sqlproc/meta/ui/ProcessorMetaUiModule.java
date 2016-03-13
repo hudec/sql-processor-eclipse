@@ -96,7 +96,7 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
     return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorMetaUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public ProcessorMetaUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

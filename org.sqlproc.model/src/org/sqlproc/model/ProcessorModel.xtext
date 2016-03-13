@@ -1,7 +1,7 @@
 grammar org.sqlproc.model.ProcessorModel with org.eclipse.xtext.xbase.annotations.XbaseWithAnnotations
 
 generate processorModel "http://www.sqlproc.org/model/ProcessorModel"
-import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
+//import "http://www.eclipse.org/Xtext/Xbase/XAnnotations"
 import "http://www.eclipse.org/xtext/common/JavaVMTypes"
 
 Artifacts: {Artifacts}

@@ -19,6 +19,7 @@ import org.eclipse.xtext.builder.clustering.CurrentDescriptions;
 import org.eclipse.xtext.builder.impl.PersistentDataAwareDirtyResource;
 import org.eclipse.xtext.builder.nature.NatureAddingEditorCallback;
 import org.eclipse.xtext.builder.preferences.BuilderPreferenceAccess;
+import org.eclipse.xtext.common.types.ui.DefaultCommonTypesUiModule;
 import org.eclipse.xtext.generator.IContextualOutputConfigurationProvider;
 import org.eclipse.xtext.ide.LexerIdeBindings;
 import org.eclipse.xtext.ide.editor.contentassist.antlr.IContentAssistParser;
@@ -31,7 +32,6 @@ import org.eclipse.xtext.resource.IResourceDescriptions;
 import org.eclipse.xtext.resource.containers.IAllContainersState;
 import org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider;
 import org.eclipse.xtext.service.SingletonBinding;
-import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.xtext.ui.codetemplates.ui.AccessibleCodetemplatesActivator;
 import org.eclipse.xtext.ui.codetemplates.ui.partialEditing.IPartialEditingContentAssistContextFactory;
 import org.eclipse.xtext.ui.codetemplates.ui.partialEditing.PartialEditingContentAssistContextFactory;
@@ -80,7 +80,7 @@ import org.sqlproc.meta.ui.quickfix.ProcessorMetaQuickfixProvider;
  * Manual modifications go to {@link ProcessorMetaUiModule}.
  */
 @SuppressWarnings("all")
-public abstract class AbstractProcessorMetaUiModule extends DefaultUiModule {
+public abstract class AbstractProcessorMetaUiModule extends DefaultCommonTypesUiModule {
 
 	public AbstractProcessorMetaUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
@@ -130,11 +130,6 @@ public abstract class AbstractProcessorMetaUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.parser.antlr.XtextAntlrGeneratorFragment2
 	public void configureContentAssistLexerProvider(Binder binder) {
 		binder.bind(InternalProcessorMetaLexer.class).toProvider(LexerProvider.create(InternalProcessorMetaLexer.class));
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2
-	public Class<? extends PrefixMatcher> bindPrefixMatcher() {
-		return FQNPrefixMatcher.class;
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.exporting.QualifiedNamesFragment2
@@ -275,6 +270,11 @@ public abstract class AbstractProcessorMetaUiModule extends DefaultUiModule {
 	// contributed by org.eclipse.xtext.xtext.generator.ui.compare.CompareFragment2
 	public Class<? extends IViewerCreator> bindIViewerCreator() {
 		return DefaultViewerCreator.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.types.TypesGeneratorFragment2
+	public Class<? extends PrefixMatcher> bindPrefixMatcher() {
+		return FQNPrefixMatcher.class;
 	}
 	
 }

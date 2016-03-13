@@ -18,7 +18,6 @@ Require-Bundle: org.sqlproc.meta,
  org.eclipse.xtext.builder,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtext.common.types.ui
- 
 Import-Package: org.apache.log4j,
  org.eclipse.jdt.core,
  org.eclipse.jdt.launching,

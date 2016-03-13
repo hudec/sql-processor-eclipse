@@ -37,4 +37,5 @@ Export-Package: org.sqlproc.meta,
  org.sqlproc.meta.serializer,
  org.sqlproc.meta.services,
  org.sqlproc.meta.util,
- org.sqlproc.meta.validation
+ org.sqlproc.meta.validation,
+ org.sqlproc.meta.jvmmodel
