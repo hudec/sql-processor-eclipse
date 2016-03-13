@@ -4,6 +4,7 @@
 package org.sqlproc.meta.ui.labeling
 
 import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider
+import org.eclipse.xtext.resource.IEObjectDescription
 
 /**
  * Provides labels for IEObjectDescriptions and IResourceDescriptions.
@@ -12,13 +13,7 @@ import org.eclipse.xtext.ui.label.DefaultDescriptionLabelProvider
  */
 class ProcessorMetaDescriptionLabelProvider extends DefaultDescriptionLabelProvider {
 
-	// Labels and icons can be computed like this:
-	
-//	override text(IEObjectDescription ele) {
-//		ele.name.toString
-//	}
-//	 
-//	override image(IEObjectDescription ele) {
-//		ele.EClass.name + '.gif'
-//	}
+    override text(IEObjectDescription ele) {
+        "" + ele.name
+    }
 }

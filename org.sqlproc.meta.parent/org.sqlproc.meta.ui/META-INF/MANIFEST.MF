@@ -16,8 +16,13 @@ Require-Bundle: org.sqlproc.meta,
  org.eclipse.ui,
  org.eclipse.xtend.lib;resolution:=optional,
  org.eclipse.xtext.builder,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.common.types.ui
+ 
+Import-Package: org.apache.log4j,
+ org.eclipse.jdt.core,
+ org.eclipse.jdt.launching,
  org.eclipse.xtext.xbase.lib
-Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Export-Package: org.sqlproc.meta.ui.internal,
  org.sqlproc.meta.ui.contentassist,

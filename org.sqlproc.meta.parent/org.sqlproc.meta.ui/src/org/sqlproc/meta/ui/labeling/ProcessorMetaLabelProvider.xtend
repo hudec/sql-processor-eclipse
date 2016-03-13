@@ -6,6 +6,17 @@ package org.sqlproc.meta.ui.labeling
 import com.google.inject.Inject
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
+import org.sqlproc.meta.processorMeta.Artifacts
+import org.sqlproc.meta.processorMeta.MetaStatement
+import org.sqlproc.meta.processorMeta.MappingRule
+import org.sqlproc.meta.processorMeta.OptionalFeature
+import org.sqlproc.meta.processorMeta.Identifier
+import org.sqlproc.meta.processorMeta.Constant
+import org.sqlproc.meta.processorMeta.Column
+import org.sqlproc.meta.util.Utils
+import org.sqlproc.meta.processorMeta.MappingColumn
+import org.sqlproc.meta.processorMeta.DatabaseColumn
+import org.sqlproc.meta.processorMeta.DatabaseTable
 
 /**
  * Provides labels for EObjects.
@@ -15,17 +26,78 @@ import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider
 class ProcessorMetaLabelProvider extends DefaultEObjectLabelProvider {
 
 	@Inject
-	new(AdapterFactoryLabelProvider delegate) {
+	new(org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider delegate) {
 		super(delegate);
 	}
 
-	// Labels and icons can be computed like this:
-	
-//	def text(Greeting ele) {
-//		'A greeting to ' + ele.name
-//	}
-//
-//	def image(Greeting ele) {
-//		'Greeting.gif'
-//	}
-}
+    def text(Artifacts ele) {
+        "MODEL"
+    }
+
+    def text(MetaStatement ele) {
+        ele.name
+    }
+
+    def text(MappingRule ele) {
+        ele.name
+    }
+
+    def text(OptionalFeature ele) {
+        ele.name
+    }
+
+    def text(Identifier ele) {
+        ele.name
+    }
+
+    def text(Constant ele) {
+        ele.name
+    }
+
+    def text(Column ele) {
+        Utils.getName(ele)
+    }
+
+    def text(MappingColumn ele) {
+        Utils.getName(ele)
+    }
+
+    def text(DatabaseColumn ele) {
+        ele.name
+    }
+
+    def text(DatabaseTable ele) {
+        ele.name
+    }
+
+    def image(MetaStatement ele) {
+        "SQL.gif"
+    }
+
+    def image(MappingRule ele) {
+        "OUT.gif"
+    }
+
+    def image(OptionalFeature ele) {
+        "OPT.gif"
+    }
+
+    def image(Identifier ele) {
+        "IDNT.gif"
+    }
+
+    def image(Constant ele) {
+        "CNST.gif"
+    }
+
+    def image(Column ele) {
+        "COL.gif"
+    }
+
+    def image(MappingColumn ele) {
+        "COL.gif"
+    }
+
+    def image(DatabaseColumn ele) {
+        "DBCOL.gif"
+    }}

@@ -6,6 +6,17 @@ package org.sqlproc.meta.ui.labeling;
 import com.google.inject.Inject;
 import org.eclipse.emf.edit.ui.provider.AdapterFactoryLabelProvider;
 import org.eclipse.xtext.ui.label.DefaultEObjectLabelProvider;
+import org.sqlproc.meta.processorMeta.Artifacts;
+import org.sqlproc.meta.processorMeta.Column;
+import org.sqlproc.meta.processorMeta.Constant;
+import org.sqlproc.meta.processorMeta.DatabaseColumn;
+import org.sqlproc.meta.processorMeta.DatabaseTable;
+import org.sqlproc.meta.processorMeta.Identifier;
+import org.sqlproc.meta.processorMeta.MappingColumn;
+import org.sqlproc.meta.processorMeta.MappingRule;
+import org.sqlproc.meta.processorMeta.MetaStatement;
+import org.sqlproc.meta.processorMeta.OptionalFeature;
+import org.sqlproc.meta.util.Utils;
 
 /**
  * Provides labels for EObjects.
@@ -17,5 +28,77 @@ public class ProcessorMetaLabelProvider extends DefaultEObjectLabelProvider {
   @Inject
   public ProcessorMetaLabelProvider(final AdapterFactoryLabelProvider delegate) {
     super(delegate);
+  }
+  
+  public String text(final Artifacts ele) {
+    return "MODEL";
+  }
+  
+  public String text(final MetaStatement ele) {
+    return ele.getName();
+  }
+  
+  public String text(final MappingRule ele) {
+    return ele.getName();
+  }
+  
+  public String text(final OptionalFeature ele) {
+    return ele.getName();
+  }
+  
+  public String text(final Identifier ele) {
+    return ele.getName();
+  }
+  
+  public String text(final Constant ele) {
+    return ele.getName();
+  }
+  
+  public String text(final Column ele) {
+    return Utils.getName(ele);
+  }
+  
+  public String text(final MappingColumn ele) {
+    return Utils.getName(ele);
+  }
+  
+  public String text(final DatabaseColumn ele) {
+    return ele.getName();
+  }
+  
+  public String text(final DatabaseTable ele) {
+    return ele.getName();
+  }
+  
+  public String image(final MetaStatement ele) {
+    return "SQL.gif";
+  }
+  
+  public String image(final MappingRule ele) {
+    return "OUT.gif";
+  }
+  
+  public String image(final OptionalFeature ele) {
+    return "OPT.gif";
+  }
+  
+  public String image(final Identifier ele) {
+    return "IDNT.gif";
+  }
+  
+  public String image(final Constant ele) {
+    return "CNST.gif";
+  }
+  
+  public String image(final Column ele) {
+    return "COL.gif";
+  }
+  
+  public String image(final MappingColumn ele) {
+    return "COL.gif";
+  }
+  
+  public String image(final DatabaseColumn ele) {
+    return "DBCOL.gif";
   }
 }

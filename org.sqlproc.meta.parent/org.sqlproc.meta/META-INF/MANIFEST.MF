@@ -15,15 +15,19 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.emf.common,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
-Export-Package: org.sqlproc.meta.processorMeta.impl,
- org.sqlproc.meta.validation,
- org.sqlproc.meta,
- org.sqlproc.meta.scoping,
- org.sqlproc.meta.services,
+Export-Package: org.sqlproc.meta,
  org.sqlproc.meta.generator,
- org.sqlproc.meta.serializer,
  org.sqlproc.meta.parser.antlr,
  org.sqlproc.meta.parser.antlr.internal,
+ org.sqlproc.meta.processorMeta,
+ org.sqlproc.meta.processorMeta.impl,
  org.sqlproc.meta.processorMeta.util,
- org.sqlproc.meta.processorMeta
+ org.sqlproc.meta.scoping,
+ org.sqlproc.meta.serializer,
+ org.sqlproc.meta.services,
+ org.sqlproc.meta.util,
+ org.sqlproc.meta.validation,
+ org.sqlproc.plugin.lib.property,
+ org.sqlproc.plugin.lib.resolver,
+ org.sqlproc.plugin.lib.util
 Import-Package: org.apache.log4j

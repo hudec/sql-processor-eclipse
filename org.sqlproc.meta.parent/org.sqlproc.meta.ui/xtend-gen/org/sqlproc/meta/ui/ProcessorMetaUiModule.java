@@ -3,9 +3,34 @@
  */
 package org.sqlproc.meta.ui;
 
+import com.google.inject.Binder;
+import com.google.inject.binder.AnnotatedBindingBuilder;
+import com.google.inject.binder.LinkedBindingBuilder;
+import com.google.inject.name.Named;
+import com.google.inject.name.Names;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
+import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
+import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
+import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.sqlproc.meta.ui.AbstractProcessorMetaUiModule;
+import org.sqlproc.meta.ui.ProcessorMetaJdtBasedSimpleTypeScopeProvider;
+import org.sqlproc.meta.ui.ProcessorMetaJdtTypeProviderFactory;
+import org.sqlproc.meta.ui.ProcessorMetaResourceSetProvider;
+import org.sqlproc.meta.ui.outline.FilterMappingRulesContribution;
+import org.sqlproc.meta.ui.outline.FilterMetaStatementsContribution;
+import org.sqlproc.meta.ui.outline.FilterOptionalFeaturesContribution;
+import org.sqlproc.meta.ui.outline.FixedOutlineFilterAndSorter;
+import org.sqlproc.meta.ui.resolver.WorkspacePojoResolverImpl;
+import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType;
+import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider;
+import org.sqlproc.plugin.lib.resolver.PojoResolver;
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactory;
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean;
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -13,6 +38,64 @@ import org.sqlproc.meta.ui.AbstractProcessorMetaUiModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
+  public Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+    return PojoResolverFactoryBean.class;
+  }
+  
+  public Class<? extends PojoResolver> bindPojoResolver() {
+    return WorkspacePojoResolverImpl.class;
+  }
+  
+  public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
+    return FixedOutlineFilterAndSorter.class;
+  }
+  
+  public void configureFilterOptionalFeaturesOutlineContribution(final Binder binder) {
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterOptionalFeaturesContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterOptionalFeaturesContribution.class);
+  }
+  
+  public void configureFilterMetaStatementsOutlineContribution(final Binder binder) {
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterMetaStatementsContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterMetaStatementsContribution.class);
+  }
+  
+  public void configureFilterMappingRulesOutlineContribution(final Binder binder) {
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterMappingRulesContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterMappingRulesContribution.class);
+  }
+  
+  @Override
+  public void configure(final Binder binder) {
+    super.configure(binder);
+    AnnotatedBindingBuilder<XtextTemplateContextType> _bind = binder.<XtextTemplateContextType>bind(XtextTemplateContextType.class);
+    _bind.to(ProcessorMetaTemplateContextType.class);
+  }
+  
+  @Override
+  public Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
+    return ProcessorTemplateProposalProvider.class;
+  }
+  
+  @Override
+  public Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
+    return ProcessorMetaResourceSetProvider.class;
+  }
+  
+  public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+    return ProcessorMetaJdtTypeProviderFactory.class;
+  }
+  
+  public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+    return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
+  }
+  
   public ProcessorMetaUiModule(final AbstractUIPlugin arg0) {
     super(arg0);
   }
