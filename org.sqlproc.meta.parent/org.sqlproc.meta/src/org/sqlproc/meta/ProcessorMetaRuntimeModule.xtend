@@ -3,9 +3,48 @@
  */
 package org.sqlproc.meta
 
+import org.sqlproc.plugin.lib.property.ModelProperty
+import org.sqlproc.meta.property.ModelPropertyBean
+import org.sqlproc.meta.ProcessorNameProvider
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactory
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean
+import org.sqlproc.plugin.lib.resolver.DbResolver
+import org.sqlproc.plugin.lib.resolver.DbResolverBean
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
+import org.sqlproc.meta.ProcessorMetaClasspathBasedTypeScopeProvider
+import org.eclipse.xtext.resource.IResourceFactory
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
  */
 class ProcessorMetaRuntimeModule extends AbstractProcessorMetaRuntimeModule {
+	
+	def Class<? extends ModelProperty> bindModelProperty() {
+        return typeof(ModelPropertyBean);
+    }
+    
+    override Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
+        return typeof(ProcessorNameProvider);
+    }
+
+    def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
+        return typeof(PojoResolverFactoryBean);
+    }
+
+    def Class<? extends DbResolver> bindDbResolver() {
+        return typeof(DbResolverBean);
+    }
+
+    override Class<? extends IResourceFactory> bindIResourceFactory() {
+        return typeof(ProcessorResourceFactory);
+    }
+
+    def Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return typeof(org.sqlproc.meta.ProcessorMetaClasspathTypeProviderFactory);
+    }
+
+    def Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+        return typeof(ProcessorMetaClasspathBasedTypeScopeProvider);
+    }
 }

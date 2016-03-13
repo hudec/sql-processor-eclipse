@@ -3,6 +3,18 @@
  */
 package org.sqlproc.model.scoping
 
+import org.eclipse.xtext.scoping.IScope
+import org.sqlproc.model.processorModel.DirectiveProperties
+import org.eclipse.emf.ecore.EReference
+import org.eclipse.xtext.scoping.Scopes
+import org.sqlproc.model.processorModel.PojoEntity
+import com.google.inject.Inject
+import org.sqlproc.model.jvmmodel.ProcessorGeneratorUtils
+import org.eclipse.xtext.xbase.annotations.typesystem.XbaseWithAnnotationsBatchScopeProvider
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.xtext.EcoreUtil2
+import org.sqlproc.model.processorModel.ProcessorModelPackage
+import org.sqlproc.model.processorModel.DaoEntity
 
 /**
  * This class contains custom scoping description.
@@ -11,5 +23,31 @@ package org.sqlproc.model.scoping
  * on how and when to use it.
  */
 class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProvider {
+	
+	@Inject extension ProcessorGeneratorUtils
+	
+    override IScope getScope(EObject context, EReference reference) {
+
+        if (reference == ProcessorModelPackage.Literals.DIRECTIVE_PROPERTIES__FEATURES) {
+            val PojoEntity pojo = EcoreUtil2.getContainerOfType(context, PojoEntity)
+            //if (pojo.getSuperType() != null) {
+                // TODO - problem, ze Pojo rodice nemusi byt inicializovano
+                //val IScope scope = Scopes.scopeFor(allAttributes(pojo))
+                val IScope scope = Scopes.scopeFor(pojo.attributes)
+                return scope
+            //}
+        }
+        else if (reference == ProcessorModelPackage.Literals.DAO_DIRECTIVE_DISCRIMINATOR__ANCESTOR) {
+            val DaoEntity dao = EcoreUtil2.getContainerOfType(context, DaoEntity)
+            if (dao != null) {
+            	val PojoEntity pojo = dao.getPojo
+                val IScope scope = Scopes.scopeFor(allAttributes(pojo))
+                return scope
+            }
+        }
+        
+		val IScope _scope =  super.getScope(context, reference)
+        return _scope
+    }
 
 }
