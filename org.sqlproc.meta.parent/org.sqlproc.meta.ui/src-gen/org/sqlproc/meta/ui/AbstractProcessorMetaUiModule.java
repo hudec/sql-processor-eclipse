@@ -162,23 +162,6 @@ public abstract class AbstractProcessorMetaUiModule extends DefaultCommonTypesUi
 		return PersistentDataAwareDirtyResource.class;
 	}
 	
-	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
-	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
-		return BuilderParticipant.class;
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
-	public IWorkspaceRoot bindIWorkspaceRootToInstance() {
-		return ResourcesPlugin.getWorkspace().getRoot();
-	}
-	
-	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
-	public void configureBuilderPreferenceStoreInitializer(Binder binder) {
-		binder.bind(IPreferenceStoreInitializer.class)
-			.annotatedWith(Names.named("builderPreferenceInitializer"))
-			.to(BuilderPreferenceAccess.Initializer.class);
-	}
-	
 	// contributed by org.eclipse.xtext.xtext.generator.ui.labeling.LabelProviderFragment2
 	public Class<? extends ILabelProvider> bindILabelProvider() {
 		return ProcessorMetaLabelProvider.class;
@@ -275,6 +258,23 @@ public abstract class AbstractProcessorMetaUiModule extends DefaultCommonTypesUi
 	// contributed by org.eclipse.xtext.xtext.generator.types.TypesGeneratorFragment2
 	public Class<? extends PrefixMatcher> bindPrefixMatcher() {
 		return FQNPrefixMatcher.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
+	public Class<? extends IXtextBuilderParticipant> bindIXtextBuilderParticipant() {
+		return BuilderParticipant.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
+	public IWorkspaceRoot bindIWorkspaceRootToInstance() {
+		return ResourcesPlugin.getWorkspace().getRoot();
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
+	public void configureBuilderPreferenceStoreInitializer(Binder binder) {
+		binder.bind(IPreferenceStoreInitializer.class)
+			.annotatedWith(Names.named("builderPreferenceInitializer"))
+			.to(BuilderPreferenceAccess.Initializer.class);
 	}
 	
 }

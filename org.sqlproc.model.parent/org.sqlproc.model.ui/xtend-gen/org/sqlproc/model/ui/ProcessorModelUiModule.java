@@ -53,7 +53,7 @@ public class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
     return ProcessorModelJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorModelUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public ProcessorModelUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

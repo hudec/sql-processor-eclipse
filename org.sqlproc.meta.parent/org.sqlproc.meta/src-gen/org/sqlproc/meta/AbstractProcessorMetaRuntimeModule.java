@@ -181,14 +181,14 @@ public abstract class AbstractProcessorMetaRuntimeModule extends DefaultCommonTy
 		binder.bind(IResourceDescriptions.class).annotatedWith(Names.named(ResourceDescriptionsProvider.PERSISTED_DESCRIPTIONS)).to(ResourceSetBasedResourceDescriptions.class);
 	}
 	
-	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
-	public Class<? extends IGenerator2> bindIGenerator2() {
-		return ProcessorMetaGenerator.class;
-	}
-	
 	// contributed by org.eclipse.xtext.xtext.generator.types.TypesGeneratorFragment2
 	public Class<? extends IGlobalScopeProvider> bindIGlobalScopeProvider() {
 		return TypesAwareDefaultGlobalScopeProvider.class;
+	}
+	
+	// contributed by org.eclipse.xtext.xtext.generator.generator.GeneratorFragment2
+	public Class<? extends IGenerator2> bindIGenerator2() {
+		return ProcessorMetaGenerator.class;
 	}
 	
 }

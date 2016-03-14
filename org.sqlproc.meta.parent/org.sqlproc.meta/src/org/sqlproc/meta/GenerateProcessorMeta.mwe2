@@ -46,6 +46,9 @@ Workflow {
 			}
 			fragment = types.TypesGeneratorFragment2 {}
 			fragment = xbase.XbaseGeneratorFragment2 {} 
+			fragment = generator.GeneratorFragment2 {
+				generateJavaMain = true
+			}
 		}
 		standaloneSetup = {
 			scanClasspath = true
