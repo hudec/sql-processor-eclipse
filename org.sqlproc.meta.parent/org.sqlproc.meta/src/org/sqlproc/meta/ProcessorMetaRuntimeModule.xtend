@@ -12,8 +12,9 @@ import org.sqlproc.plugin.lib.resolver.DbResolver
 import org.sqlproc.plugin.lib.resolver.DbResolverBean
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
-import org.sqlproc.meta.ProcessorMetaClasspathBasedTypeScopeProvider
 import org.eclipse.xtext.resource.IResourceFactory
+import org.sqlproc.meta.scoping.ProcessorMetaClasspathTypeProviderFactory
+import org.sqlproc.meta.scoping.ProcessorMetaClasspathBasedTypeScopeProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -40,11 +41,11 @@ class ProcessorMetaRuntimeModule extends AbstractProcessorMetaRuntimeModule {
         return typeof(ProcessorResourceFactory);
     }
 
-    def Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(org.sqlproc.meta.ProcessorMetaClasspathTypeProviderFactory);
+    override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return typeof(ProcessorMetaClasspathTypeProviderFactory);
     }
 
-    def Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+    override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
         return typeof(ProcessorMetaClasspathBasedTypeScopeProvider);
     }
 }

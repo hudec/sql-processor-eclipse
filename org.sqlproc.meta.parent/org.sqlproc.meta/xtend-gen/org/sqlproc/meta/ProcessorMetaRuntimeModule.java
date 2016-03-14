@@ -8,11 +8,11 @@ import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.resource.IResourceFactory;
 import org.sqlproc.meta.AbstractProcessorMetaRuntimeModule;
-import org.sqlproc.meta.ProcessorMetaClasspathBasedTypeScopeProvider;
-import org.sqlproc.meta.ProcessorMetaClasspathTypeProviderFactory;
 import org.sqlproc.meta.ProcessorNameProvider;
 import org.sqlproc.meta.ProcessorResourceFactory;
 import org.sqlproc.meta.property.ModelPropertyBean;
+import org.sqlproc.meta.scoping.ProcessorMetaClasspathBasedTypeScopeProvider;
+import org.sqlproc.meta.scoping.ProcessorMetaClasspathTypeProviderFactory;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.resolver.DbResolver;
 import org.sqlproc.plugin.lib.resolver.DbResolverBean;
@@ -46,10 +46,12 @@ public class ProcessorMetaRuntimeModule extends AbstractProcessorMetaRuntimeModu
     return ProcessorResourceFactory.class;
   }
   
+  @Override
   public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
     return ProcessorMetaClasspathTypeProviderFactory.class;
   }
   
+  @Override
   public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
     return ProcessorMetaClasspathBasedTypeScopeProvider.class;
   }

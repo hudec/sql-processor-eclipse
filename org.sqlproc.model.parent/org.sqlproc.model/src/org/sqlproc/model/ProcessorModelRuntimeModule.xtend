@@ -15,6 +15,8 @@ import org.eclipse.xtext.xbase.compiler.ErrorSafeExtensions
 import org.sqlproc.model.generator.ProcessorModelErrorSafeExtensions
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
+import org.sqlproc.model.scoping.ProcessorModelClasspathTypeProviderFactory
+import org.sqlproc.model.scoping.ProcessorModelClasspathBasedTypeScopeProvider
 
 /**
  * Use this class to register components to be used at runtime / without the Equinox extension registry.
@@ -54,7 +56,7 @@ class ProcessorModelRuntimeModule extends AbstractProcessorModelRuntimeModule {
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(org.sqlproc.model.ProcessorModelClasspathTypeProviderFactory);
+        return typeof(ProcessorModelClasspathTypeProviderFactory);
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {

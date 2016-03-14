@@ -18,14 +18,14 @@ import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.sqlproc.meta.ui.AbstractProcessorMetaUiModule;
-import org.sqlproc.meta.ui.ProcessorMetaJdtBasedSimpleTypeScopeProvider;
-import org.sqlproc.meta.ui.ProcessorMetaJdtTypeProviderFactory;
 import org.sqlproc.meta.ui.ProcessorMetaResourceSetProvider;
 import org.sqlproc.meta.ui.outline.FilterMappingRulesContribution;
 import org.sqlproc.meta.ui.outline.FilterMetaStatementsContribution;
 import org.sqlproc.meta.ui.outline.FilterOptionalFeaturesContribution;
 import org.sqlproc.meta.ui.outline.FixedOutlineFilterAndSorter;
 import org.sqlproc.meta.ui.resolver.WorkspacePojoResolverImpl;
+import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider;
+import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory;
 import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType;
 import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
@@ -88,15 +88,17 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
     return ProcessorMetaResourceSetProvider.class;
   }
   
+  @Override
   public Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
     return ProcessorMetaJdtTypeProviderFactory.class;
   }
   
+  @Override
   public Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
     return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorMetaUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public ProcessorMetaUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

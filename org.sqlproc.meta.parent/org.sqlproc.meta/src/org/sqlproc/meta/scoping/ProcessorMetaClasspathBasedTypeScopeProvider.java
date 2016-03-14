@@ -1,4 +1,4 @@
-package org.sqlproc.model;
+package org.sqlproc.meta.scoping;
 
 import org.eclipse.xtext.common.types.access.ClasspathTypeProviderFactory;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
@@ -13,10 +13,10 @@ import org.eclipse.xtext.resource.IEObjectDescription;
 import com.google.common.base.Predicate;
 import com.google.inject.Inject;
 
-public class ProcessorModelClasspathBasedTypeScopeProvider extends AbstractTypeScopeProvider {
+public class ProcessorMetaClasspathBasedTypeScopeProvider extends AbstractTypeScopeProvider {
 
     @Inject
-    private ProcessorModelClasspathTypeProviderFactory typeProviderFactory;
+    private ProcessorMetaClasspathTypeProviderFactory typeProviderFactory;
 
     @Inject
     private IQualifiedNameConverter qualifiedNameConverter;
@@ -34,7 +34,7 @@ public class ProcessorModelClasspathBasedTypeScopeProvider extends AbstractTypeS
         return new ClasspathBasedConstructorScope(typeScope);
     }
 
-    public void setTypeProviderFactory(ProcessorModelClasspathTypeProviderFactory typeProviderFactory) {
+    public void setTypeProviderFactory(ProcessorMetaClasspathTypeProviderFactory typeProviderFactory) {
         this.typeProviderFactory = typeProviderFactory;
     }
 

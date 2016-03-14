@@ -10,9 +10,9 @@ import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.sqlproc.model.ui.AbstractProcessorModelUiModule;
-import org.sqlproc.model.ui.ProcessorModelJdtBasedSimpleTypeScopeProvider;
-import org.sqlproc.model.ui.ProcessorModelJdtTypeProviderFactory;
 import org.sqlproc.model.ui.resolver.WorkspacePojoResolverImpl;
+import org.sqlproc.model.ui.scoping.ProcessorModelJdtBasedSimpleTypeScopeProvider;
+import org.sqlproc.model.ui.scoping.ProcessorModelJdtTypeProviderFactory;
 import org.sqlproc.model.ui.templates.ProcessorModelTemplateContextType;
 import org.sqlproc.model.ui.templates.ProcessorTemplateProposalProvider;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
@@ -53,7 +53,7 @@ public class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
     return ProcessorModelJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorModelUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public ProcessorModelUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

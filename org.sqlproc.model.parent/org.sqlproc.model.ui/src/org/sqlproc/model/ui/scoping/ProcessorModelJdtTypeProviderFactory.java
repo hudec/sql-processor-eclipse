@@ -1,4 +1,4 @@
-package org.sqlproc.meta.ui;
+package org.sqlproc.model.ui.scoping;
 
 import java.io.InputStream;
 import java.net.MalformedURLException;
@@ -30,9 +30,9 @@ import org.sqlproc.plugin.lib.resolver.ProcessorClassLoader;
 
 import com.google.inject.Inject;
 
-public class ProcessorMetaJdtTypeProviderFactory extends JdtTypeProviderFactory implements PojoClassLoader {
+public class ProcessorModelJdtTypeProviderFactory extends JdtTypeProviderFactory implements PojoClassLoader {
 
-    protected Logger LOGGER = Logger.getLogger(ProcessorMetaJdtTypeProviderFactory.class);
+    protected Logger LOGGER = Logger.getLogger(ProcessorModelJdtTypeProviderFactory.class);
 
     @Inject
     ProcessorClassLoader processorClassLoader;

@@ -1,4 +1,4 @@
-package org.sqlproc.meta.ui;
+package org.sqlproc.meta.ui.scoping;
 
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.access.jdt.IJdtTypeProvider;

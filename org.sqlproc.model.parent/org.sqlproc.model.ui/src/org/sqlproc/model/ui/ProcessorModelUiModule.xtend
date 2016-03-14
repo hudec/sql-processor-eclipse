@@ -13,6 +13,8 @@ import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider
 import org.sqlproc.model.ui.templates.ProcessorTemplateProposalProvider
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
+import org.sqlproc.model.ui.scoping.ProcessorModelJdtTypeProviderFactory
+import org.sqlproc.model.ui.scoping.ProcessorModelJdtBasedSimpleTypeScopeProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -41,7 +43,7 @@ class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(org.sqlproc.model.ui.ProcessorModelJdtTypeProviderFactory);
+        return typeof(ProcessorModelJdtTypeProviderFactory);
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {

@@ -28,6 +28,8 @@ import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean;
 
 import com.google.inject.Binder;
 import com.google.inject.name.Names;
+import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory
+import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -87,11 +89,11 @@ class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
         return typeof(ProcessorMetaResourceSetProvider);
     }
 
-    def Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(org.sqlproc.meta.ui.ProcessorMetaJdtTypeProviderFactory);
+    override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
+        return typeof(ProcessorMetaJdtTypeProviderFactory);
     }
 
-    def Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
+    override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
         return typeof(ProcessorMetaJdtBasedSimpleTypeScopeProvider);
     }
 }

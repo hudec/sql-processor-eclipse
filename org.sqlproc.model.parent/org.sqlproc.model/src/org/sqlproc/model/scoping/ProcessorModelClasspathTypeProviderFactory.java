@@ -1,4 +1,4 @@
-package org.sqlproc.meta;
+package org.sqlproc.model.scoping;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -19,9 +19,10 @@ import org.sqlproc.plugin.lib.util.MainUtils;
 
 import com.google.inject.Inject;
 
-public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProviderFactory implements PojoClassLoader {
+public class ProcessorModelClasspathTypeProviderFactory extends ClasspathTypeProviderFactory
+        implements PojoClassLoader {
 
-    protected Logger LOGGER = Logger.getLogger(ProcessorMetaClasspathTypeProviderFactory.class);
+    protected Logger LOGGER = Logger.getLogger(ProcessorModelClasspathTypeProviderFactory.class);
 
     @Inject
     ProcessorClassLoader processorClassLoader;
@@ -29,7 +30,7 @@ public class ProcessorMetaClasspathTypeProviderFactory extends ClasspathTypeProv
     private Map<ResourceSet, ClassLoader> loaders = new HashMap<>();
 
     @Inject
-    public ProcessorMetaClasspathTypeProviderFactory(ClassLoader classLoader, TypeResourceServices services) {
+    public ProcessorModelClasspathTypeProviderFactory(ClassLoader classLoader, TypeResourceServices services) {
         super(classLoader, services);
     }
 
