@@ -2662,9 +2662,25 @@ ruleProperty returns [EObject current=null]
 	    }
 
 )
-))this_SEMICOLON_42=RULE_SEMICOLON
+)
+    |(
+(
+		lv_name_42_0=	'old-pojo-validator' 
+    {
+        newLeafNode(lv_name_42_0, grammarAccess.getPropertyAccess().getNameOldPojoValidatorKeyword_1_14_0());
+    }
+ 
+	    {
+	        if ($current==null) {
+	            $current = createModelElement(grammarAccess.getPropertyRule());
+	        }
+       		setWithLastConsumed($current, "name", lv_name_42_0, "old-pojo-validator");
+	    }
+
+)
+))this_SEMICOLON_43=RULE_SEMICOLON
     { 
-    newLeafNode(this_SEMICOLON_42, grammarAccess.getPropertyAccess().getSEMICOLONTerminalRuleCall_2()); 
+    newLeafNode(this_SEMICOLON_43, grammarAccess.getPropertyAccess().getSEMICOLONTerminalRuleCall_2()); 
     }
 )
 ;

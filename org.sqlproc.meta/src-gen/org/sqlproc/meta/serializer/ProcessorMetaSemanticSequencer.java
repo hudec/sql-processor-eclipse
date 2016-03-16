@@ -1081,7 +1081,8 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *             name='compress-meta-directives' | 
 	 *             name='generate-from-to' | 
 	 *             (name='case-format-library' caseFormatLibrary=ValueType) | 
-	 *             name='new-pojo-validator'
+	 *             name='new-pojo-validator' | 
+	 *             name='old-pojo-validator'
 	 *         )
 	 *     )
 	 */
