@@ -59,6 +59,7 @@ Property: (condition=PropertyCondition WS*)?
 	|name='generate-from-to'
 	|name='case-format-library' WS+ caseFormatLibrary=ValueType
 	|name='new-pojo-validator'
+	|name='old-pojo-validator'
 	) SEMICOLON;
 
 DatabaseProperty:
