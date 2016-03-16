@@ -26,6 +26,7 @@ import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
+import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
 import org.sqlproc.plugin.lib.property.ProcedureDefinition;
 import org.sqlproc.plugin.lib.property.TableDefinition;
@@ -83,75 +84,76 @@ public class TableBaseGenerator {
     protected boolean doCompressMetaDirectives;
     protected boolean doGenerateFromTo;
     protected String caseFormatLibrary;
-    protected Map<String, PojoAttrType> sqlTypes = new HashMap<String, PojoAttrType>();
-    protected Map<String, Map<String, PojoAttrType>> tableTypes = new HashMap<String, Map<String, PojoAttrType>>();
-    protected Map<String, Map<String, PojoAttrType>> columnTypes = new HashMap<String, Map<String, PojoAttrType>>();
+    protected Map<String, PojoAttrType> sqlTypes = new HashMap<>();
+    protected Map<String, Map<String, PojoAttrType>> tableTypes = new HashMap<>();
+    protected Map<String, Map<String, PojoAttrType>> columnTypes = new HashMap<>();
     protected Map<String, Map<String, PojoAttrType>> functionTypes = new HashMap<String, Map<String, PojoAttrType>>();
     protected Map<String, Map<String, PojoAttrType>> procedureTypes = new HashMap<String, Map<String, PojoAttrType>>();
     protected Map<String, String> tableNames = new HashMap<String, String>();
-    protected Map<String, Map<String, String>> columnNames = new HashMap<String, Map<String, String>>();
-    protected Set<String> ignoreTables = new HashSet<String>();
-    protected Set<String> onlyTables = new HashSet<String>();
-    protected Set<String> notAbstractTables = new HashSet<String>();
-    protected Set<String> createTables = new HashSet<String>();
-    protected Map<String, Set<String>> ignoreColumns = new HashMap<String, Set<String>>();
-    protected Map<String, Set<String>> requiredColumns = new HashMap<String, Set<String>>();
-    protected Map<String, Set<String>> notRequiredColumns = new HashMap<String, Set<String>>();
-    protected Map<String, Map<String, PojoAttrType>> createColumns = new HashMap<String, Map<String, PojoAttrType>>();
-    protected Map<String, Map<String, Map<String, String>>> ignoreExports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> ignoreImports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> createExports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> createImports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> create121Imports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> inheritImports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, String>>> manyToManyImports = new HashMap<String, Map<String, Map<String, String>>>();
-    protected Map<String, Map<String, Map<String, List<String>>>> inheritance = new HashMap<String, Map<String, Map<String, List<String>>>>();
-    protected Map<String, String> inheritanceColumns = new HashMap<String, String>();
-    protected Set<String> generateMethods = new HashSet<String>();
-    protected Map<String, ImplementsExtends> toImplements = new TreeMap<String, ImplementsExtends>();
+    protected Map<String, Map<String, String>> columnNames = new HashMap<>();
+    protected Set<String> ignoreTables = new HashSet<>();
+    protected Set<String> onlyTables = new HashSet<>();
+    protected Set<String> notAbstractTables = new HashSet<>();
+    protected Set<String> createTables = new HashSet<>();
+    protected Map<String, Set<String>> ignoreColumns = new HashMap<>();
+    protected Map<String, Set<String>> requiredColumns = new HashMap<>();
+    protected Map<String, Set<String>> notRequiredColumns = new HashMap<>();
+    protected Map<String, Map<String, PojoAttrType>> createColumns = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> ignoreExports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> ignoreImports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> createExports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> createImports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> create121Imports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> inheritImports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, String>>> manyToManyImports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, List<String>>>> inheritance = new HashMap<>();
+    protected Map<String, String> inheritanceColumns = new HashMap<>();
+    protected Set<String> generateMethods = new HashSet<>();
+    protected Map<String, ImplementsExtends> toImplements = new TreeMap<>();
     protected ImplementsExtends toExtends = null;
-    protected Map<String, List<String>> joinTables = new HashMap<String, List<String>>();
+    protected Map<String, List<String>> joinTables = new HashMap<>();
     protected boolean doGenerateWrappers;
     protected boolean doGenerateValidationAnnotations;
     protected boolean makeItFinal;
     protected String versionColumn;
-    protected Map<String, Set<String>> versionColumns = new HashMap<String, Set<String>>();
-    protected Map<String, Set<String>> notVersionColumns = new HashMap<String, Set<String>>();
+    protected Map<String, Set<String>> versionColumns = new HashMap<>();
+    protected Map<String, Set<String>> notVersionColumns = new HashMap<>();
     protected String generateOperators = null;
     protected Set<String> preserveForeignKeys = new HashSet<String>();
-    protected Map<String, PojoEntityType> pojosForProcedures = new HashMap<String, PojoEntityType>();
-    protected Map<String, PojoEntityType> pojosForFunctions = new HashMap<String, PojoEntityType>();
+    protected Map<String, PojoEntityType> pojosForProcedures = new HashMap<>();
+    protected Map<String, PojoEntityType> pojosForFunctions = new HashMap<>();
     protected Filter activeFilter = null;
-    protected Map<String, String> enumForCheckConstraints = new HashMap<String, String>();
+    protected Map<String, String> enumForCheckConstraints = new HashMap<>();
 
     protected Set<String> tables = new HashSet<String>();
-    protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<String, Map<String, PojoAttribute>>();
-    protected Map<String, Map<String, PojoAttribute>> procedures = new TreeMap<String, Map<String, PojoAttribute>>();
-    protected Map<String, Map<String, PojoAttribute>> functions = new TreeMap<String, Map<String, PojoAttribute>>();
+    protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<>();
+    protected Map<String, Map<String, PojoAttribute>> procedures = new TreeMap<>();
+    protected Map<String, Map<String, PojoAttribute>> functions = new TreeMap<>();
     protected Map<String, String> pojoExtends = new HashMap<String, String>();
-    protected Map<String, Set<String>> pojoInheritanceDiscriminator = new HashMap<String, Set<String>>();
-    protected Map<String, Set<String>> pojoInheritanceSimple = new HashMap<String, Set<String>>();
+    protected Map<String, Set<String>> pojoInheritanceDiscriminator = new HashMap<>();
+    protected Map<String, Set<String>> pojoInheritanceSimple = new HashMap<>();
     protected Map<String, String> pojoDiscriminators = new HashMap<String, String>();
-    protected Map<String, List<Map<PojoAttribute, Boolean>>> indexes = new TreeMap<String, List<Map<PojoAttribute, Boolean>>>();
+    protected Map<String, List<Map<PojoAttribute, Boolean>>> indexes = new TreeMap<>();
     protected Set<String> dbSequences = new TreeSet<String>();
     protected DbType dbType = null;
-    protected Map<String, List<EnumAttribute>> enums = new TreeMap<String, List<EnumAttribute>>();
+    protected Map<String, List<EnumAttribute>> enums = new TreeMap<>();
     protected Map<String, String> enumsTables = new HashMap<String, String>();
     protected Map<String, String> comments = new HashMap<String, String>();
     protected String pojoPackage;
 
-    protected Map<String, String> metaFunctionsResult = new HashMap<String, String>();
-    protected Map<String, String> metaProceduresResult = new HashMap<String, String>();
-    protected Map<String, String> metaFunctionsResultSet = new HashMap<String, String>();
-    protected Map<String, String> metaProceduresResultSet = new HashMap<String, String>();
+    protected Map<String, String> metaFunctionsResult = new HashMap<>();
+    protected Map<String, String> metaProceduresResult = new HashMap<>();
+    protected Map<String, String> metaFunctionsResultSet = new HashMap<>();
+    protected Map<String, String> metaProceduresResultSet = new HashMap<>();
 
     // protected Map<String, PojoDefinition> modelPojos = new TreeMap<String, PojoDefinition>();
-    protected Map<String, TableDefinition> modelTables = new TreeMap<String, TableDefinition>();
-    protected Map<String, ProcedureDefinition> modelProcedures = new TreeMap<String, ProcedureDefinition>();
-    protected Map<String, FunctionDefinition> modelFunctions = new TreeMap<String, FunctionDefinition>();
-    protected Map<String, TableDefinition> modelTablesInv = new TreeMap<String, TableDefinition>();
-    protected Map<String, ProcedureDefinition> modelProceduresInv = new TreeMap<String, ProcedureDefinition>();
-    protected Map<String, FunctionDefinition> modelFunctionsInv = new TreeMap<String, FunctionDefinition>();
+    protected Map<String, TableDefinition> modelTables = new TreeMap<>();
+    protected Map<String, PojoDefinition> modelAnnotations = new TreeMap<>();
+    protected Map<String, ProcedureDefinition> modelProcedures = new TreeMap<>();
+    protected Map<String, FunctionDefinition> modelFunctions = new TreeMap<>();
+    protected Map<String, TableDefinition> modelTablesInv = new TreeMap<>();
+    protected Map<String, ProcedureDefinition> modelProceduresInv = new TreeMap<>();
+    protected Map<String, FunctionDefinition> modelFunctionsInv = new TreeMap<>();
 
     public TableBaseGenerator(ModelProperty modelProperty, EObject model, List<String> dbSequences, DbType dbType) {
 
@@ -409,9 +411,9 @@ public class TableBaseGenerator {
         debug.debug("modelFunctions " + this.modelFunctions);
 
         for (String table : createTables) {
-            addTableDefinition(table, Collections.<DbColumn> emptyList(), Collections.<String> emptyList(),
-                    Collections.<DbExport> emptyList(), Collections.<DbImport> emptyList(),
-                    Collections.<DbIndex> emptyList(), Collections.<DbCheckConstraint> emptyList(), null);
+            addTableDefinition(table, Collections.<DbColumn>emptyList(), Collections.<String>emptyList(),
+                    Collections.<DbExport>emptyList(), Collections.<DbImport>emptyList(),
+                    Collections.<DbIndex>emptyList(), Collections.<DbCheckConstraint>emptyList(), null);
             tables.remove(table);
         }
     }

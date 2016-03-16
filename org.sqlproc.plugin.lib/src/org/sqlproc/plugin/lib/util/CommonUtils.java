@@ -211,7 +211,7 @@ public class CommonUtils {
 
         StringBuilder builder = new StringBuilder();
         for (Entry<String, String> pojo : map.entrySet()) {
-            builder.append("pojo ").append(Strings.toFirstUpper(pojo.getKey())).append(' ').append(pojo.getValue())
+            builder.append("is-pojo ").append(Strings.toFirstUpper(pojo.getKey())).append(' ').append(pojo.getValue())
                     .append(";\n");
         }
         return builder.toString();
@@ -236,7 +236,7 @@ public class CommonUtils {
 
         StringBuilder builder = new StringBuilder();
         for (Entry<String, String> table : map.entrySet()) {
-            builder.append("table ").append(table.getValue()).append(' ').append(table.getKey()).append(";\n");
+            builder.append("is-table ").append(table.getValue()).append(' ').append(table.getKey()).append(";\n");
         }
         return builder.toString();
     }
@@ -261,7 +261,7 @@ public class CommonUtils {
 
         StringBuilder builder = new StringBuilder();
         for (Entry<String, String> procedure : map.entrySet()) {
-            builder.append("procedure ").append(procedure.getValue()).append(' ').append(procedure.getKey())
+            builder.append("is-procedure ").append(procedure.getValue()).append(' ').append(procedure.getKey())
                     .append(";\n");
         }
         return builder.toString();
@@ -287,7 +287,8 @@ public class CommonUtils {
 
         StringBuilder builder = new StringBuilder();
         for (Entry<String, String> function : map.entrySet()) {
-            builder.append("function ").append(function.getValue()).append(' ').append(function.getKey()).append(";\n");
+            builder.append("is-function ").append(function.getValue()).append(' ').append(function.getKey())
+                    .append(";\n");
         }
         return builder.toString();
     }
