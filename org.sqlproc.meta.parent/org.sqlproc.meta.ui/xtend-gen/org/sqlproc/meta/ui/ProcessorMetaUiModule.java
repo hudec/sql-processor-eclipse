@@ -16,6 +16,7 @@ import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculat
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
@@ -30,6 +31,7 @@ import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider;
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory;
 import org.sqlproc.meta.ui.syntaxcoloring.HighlightingConfiguration;
 import org.sqlproc.meta.ui.syntaxcoloring.SemanticHighlightingCalculator;
+import org.sqlproc.meta.ui.syntaxcoloring.TokenToIdMapper;
 import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType;
 import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
@@ -52,6 +54,10 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
   
   public Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
     return HighlightingConfiguration.class;
+  }
+  
+  public Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
+    return TokenToIdMapper.class;
   }
   
   public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {

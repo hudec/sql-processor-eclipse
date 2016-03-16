@@ -31,6 +31,7 @@ import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider
 import org.sqlproc.meta.ui.syntaxcoloring.HighlightingConfiguration
 import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
 import org.sqlproc.meta.ui.syntaxcoloring.SemanticHighlightingCalculator
+import org.sqlproc.meta.ui.syntaxcoloring.TokenToIdMapper
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -50,10 +51,10 @@ class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
         return typeof(HighlightingConfiguration);
     }
 
-//    def Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
-//        return typeof(TokenToIdMapper);
-//    }
-//
+    def Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
+        return typeof(TokenToIdMapper);
+    }
+
     def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
         return typeof(SemanticHighlightingCalculator);
     }
