@@ -49,8 +49,8 @@ public class SemanticHighlightingCalculator implements ISemanticHighlightingCalc
     public void provideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor,
             CancelIndicator cancelIndicator) {
         // tohle je blbarna, jak dostat tridu z org.sqlproc.dsl.ui do org.sqlproc.dsl, mozna to jde jednoduseji
-        // if (pojoResolverFactory != null && pojoResolverFactory.getPojoResolver() == null)
-        // pojoResolverFactory.setPojoResolver(pojoResolver);
+        if (pojoResolverFactory != null && pojoResolverFactory.getPojoResolver() == null)
+            pojoResolverFactory.setPojoResolver(pojoResolver);
 
         if (resource == null)
             return;

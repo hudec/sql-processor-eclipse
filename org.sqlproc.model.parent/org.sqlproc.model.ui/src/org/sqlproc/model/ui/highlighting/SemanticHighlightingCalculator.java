@@ -13,6 +13,7 @@ import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.util.CancelIndicator;
 import org.eclipse.xtext.xbase.ide.highlighting.XbaseHighlightingCalculator;
 import org.sqlproc.model.processorModel.FunctionDefinitionModel;
+import org.sqlproc.model.processorModel.PojoAttribute;
 import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.model.processorModel.ProcedureDefinitionModel;
 import org.sqlproc.model.processorModel.TableDefinitionModel;
@@ -33,8 +34,8 @@ public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator 
     public void provideHighlightingFor(XtextResource resource, IHighlightedPositionAcceptor acceptor,
             CancelIndicator cancelIndicator) {
         // tohle je blbarna, jak dostat tridu z org.sqlproc.dsl.ui do org.sqlproc.dsl, mozna to jde jednoduseji
-        // if (pojoResolverFactory != null && pojoResolverFactory.getPojoResolver() == null)
-        // pojoResolverFactory.setPojoResolver(pojoResolver);
+        if (pojoResolverFactory != null && pojoResolverFactory.getPojoResolver() == null)
+            pojoResolverFactory.setPojoResolver(pojoResolver);
 
         if (resource == null)
             return;
@@ -47,22 +48,25 @@ public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator 
             ICompositeNode node = NodeModelUtils.getNode(current);
 
             if (current instanceof PojoDefinitionModel) {
-                PojoDefinitionModel pojo = (PojoDefinitionModel) current;
-                provideHighlightingForPojo(null, pojo.getName(), node, acceptor);
+                PojoDefinitionModel object = (PojoDefinitionModel) current;
+                provideHighlightingForNameIndetifier(null, object.getName(), node, acceptor);
             } else if (current instanceof TableDefinitionModel) {
-                TableDefinitionModel table = (TableDefinitionModel) current;
-                provideHighlightingForTable(null, table.getName(), node, acceptor);
+                TableDefinitionModel object = (TableDefinitionModel) current;
+                provideHighlightingForNameIndetifier(null, object.getName(), node, acceptor);
             } else if (current instanceof ProcedureDefinitionModel) {
-                ProcedureDefinitionModel procedure = (ProcedureDefinitionModel) current;
-                provideHighlightingForTable(null, procedure.getName(), node, acceptor);
+                ProcedureDefinitionModel object = (ProcedureDefinitionModel) current;
+                provideHighlightingForNameIndetifier(null, object.getName(), node, acceptor);
             } else if (current instanceof FunctionDefinitionModel) {
-                FunctionDefinitionModel function = (FunctionDefinitionModel) current;
-                provideHighlightingForTable(null, function.getName(), node, acceptor);
+                FunctionDefinitionModel object = (FunctionDefinitionModel) current;
+                provideHighlightingForNameIndetifier(null, object.getName(), node, acceptor);
+            } else if (current instanceof PojoAttribute) {
+                PojoAttribute object = (PojoAttribute) current;
+                provideHighlightingForNameIndetifier(null, object.getName(), node, acceptor);
             }
         }
     }
 
-    private void provideHighlightingForPojo(String name, String pojo, ICompositeNode node,
+    private void provideHighlightingForNameIndetifier(String name, String pojo, ICompositeNode node,
             IHighlightedPositionAcceptor acceptor) {
         if (name == null && pojo == null)
             return;
@@ -75,25 +79,6 @@ public class SemanticHighlightingCalculator extends XbaseHighlightingCalculator 
                     return;
             }
             if (equals(pojo, inode)) {
-                acceptor.addPosition(inode.getOffset(), inode.getLength(), HighlightingConfiguration.IDENTIFIER);
-                return;
-            }
-        }
-    }
-
-    private void provideHighlightingForTable(String name, String table, ICompositeNode node,
-            IHighlightedPositionAcceptor acceptor) {
-        if (name == null && table == null)
-            return;
-        Iterator<INode> iterator = new NodeTreeIterator(node);
-        while (iterator.hasNext()) {
-            INode inode = iterator.next();
-            if (equals(name, inode)) {
-                acceptor.addPosition(inode.getOffset(), inode.getLength(), HighlightingConfiguration.NAME);
-                if (table == null)
-                    return;
-            }
-            if (equals(table, inode)) {
                 acceptor.addPosition(inode.getOffset(), inode.getLength(), HighlightingConfiguration.IDENTIFIER);
                 return;
             }
