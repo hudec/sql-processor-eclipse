@@ -329,7 +329,9 @@ public class ModelPropertyBean extends ModelProperty {
                 }
             }
         } else if (NEW_POJO_VALIDATOR.equals(property.getName())) {
-            modelValues.newPojoValidator = true;
+            modelValues.oldPojoValidator = false;
+        } else if (OLD_POJO_VALIDATOR.equals(property.getName())) {
+            modelValues.oldPojoValidator = true;
         }
     }
 

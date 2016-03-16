@@ -1168,6 +1168,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cCaseFormatLibraryValueTypeParserRuleCall_1_12_1_0 = (RuleCall)cCaseFormatLibraryAssignment_1_12_1.eContents().get(0);
 		private final Assignment cNameAssignment_1_13 = (Assignment)cAlternatives_1.eContents().get(13);
 		private final Keyword cNameNewPojoValidatorKeyword_1_13_0 = (Keyword)cNameAssignment_1_13.eContents().get(0);
+		private final Assignment cNameAssignment_1_14 = (Assignment)cAlternatives_1.eContents().get(14);
+		private final Keyword cNameOldPojoValidatorKeyword_1_14_0 = (Keyword)cNameAssignment_1_14.eContents().get(0);
 		private final Keyword cSemicolonKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Property:
@@ -1184,7 +1186,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	| name='compress-meta-directives'
 		//	| name='generate-from-to'
 		//	| name='case-format-library' caseFormatLibrary=ValueType
-		//	| name='new-pojo-validator') ';';
+		//	| name='new-pojo-validator'
+		//	| name='old-pojo-validator') ';';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//condition=PropertyCondition? (name='resolve-pojo-on' | name='resolve-pojo-off' | name='database-'
@@ -1193,7 +1196,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//name='replace-all-replacement' replaceId=ValidID replacement=ValueType | name='replace-text' regex=ValueType
 		//replacement=ValueType | name='validate-resources' ('+' doVerifyResources+=ValueType+)? ('-'
 		//doNotVerifyResources+=ValueType+)? | name='compress-meta-directives' | name='generate-from-to' |
-		//name='case-format-library' caseFormatLibrary=ValueType | name='new-pojo-validator') ';'
+		//name='case-format-library' caseFormatLibrary=ValueType | name='new-pojo-validator' | name='old-pojo-validator') ';'
 		public Group getGroup() { return cGroup; }
 		
 		//condition=PropertyCondition?
@@ -1207,7 +1210,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//name='replace-all-regex' replaceId=ValidID regex=ValueType | name='replace-all-replacement' replaceId=ValidID
 		//replacement=ValueType | name='replace-text' regex=ValueType replacement=ValueType | name='validate-resources' ('+'
 		//doVerifyResources+=ValueType+)? ('-' doNotVerifyResources+=ValueType+)? | name='compress-meta-directives' |
-		//name='generate-from-to' | name='case-format-library' caseFormatLibrary=ValueType | name='new-pojo-validator'
+		//name='generate-from-to' | name='case-format-library' caseFormatLibrary=ValueType | name='new-pojo-validator' |
+		//name='old-pojo-validator'
 		public Alternatives getAlternatives_1() { return cAlternatives_1; }
 		
 		//name='resolve-pojo-on'
@@ -1410,6 +1414,12 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//'new-pojo-validator'
 		public Keyword getNameNewPojoValidatorKeyword_1_13_0() { return cNameNewPojoValidatorKeyword_1_13_0; }
+		
+		//name='old-pojo-validator'
+		public Assignment getNameAssignment_1_14() { return cNameAssignment_1_14; }
+		
+		//'old-pojo-validator'
+		public Keyword getNameOldPojoValidatorKeyword_1_14_0() { return cNameOldPojoValidatorKeyword_1_14_0; }
 		
 		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
@@ -6951,7 +6961,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	| name='compress-meta-directives'
 	//	| name='generate-from-to'
 	//	| name='case-format-library' caseFormatLibrary=ValueType
-	//	| name='new-pojo-validator') ';';
+	//	| name='new-pojo-validator'
+	//	| name='old-pojo-validator') ';';
 	public PropertyElements getPropertyAccess() {
 		return pProperty;
 	}

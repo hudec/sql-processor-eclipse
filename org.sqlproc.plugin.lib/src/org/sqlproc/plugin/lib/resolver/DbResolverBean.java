@@ -185,7 +185,7 @@ public class DbResolverBean implements DbResolver {
 
         debug = new Debug(modelProperty.getDbDebugLevel(model), modelProperty.getDbDebugScope(model), LOGGER);
 
-        modelDatabaseValues.newPojoValidator = modelProperty.isNewPojoValidator(model);
+        modelDatabaseValues.newPojoValidator = !modelProperty.isOldPojoValidator(model);
 
         if (!modelDatabaseValues.newPojoValidator) {
             String dbDriver = modelProperty.getDbDriver(model);

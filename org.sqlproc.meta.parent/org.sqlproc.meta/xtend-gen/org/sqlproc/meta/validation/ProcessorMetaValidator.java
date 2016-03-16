@@ -737,7 +737,8 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       indexPojo = identPojo;
       indexPojoName = identPojoName;
     }
-    final boolean newPojoValidator = this.modelProperty.isNewPojoValidator(statement);
+    boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(statement);
+    final boolean newPojoValidator = (!_isOldPojoValidator);
     boolean _notEquals = (!Objects.equal(identPojo, null));
     if (_notEquals) {
       final List<Identifier> identifiers = EcoreUtil2.<Identifier>getAllContentsOfType(statement, Identifier.class);
@@ -1279,7 +1280,8 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     boolean _notEquals = (!Objects.equal(colPojo, null));
     if (_notEquals) {
-      final boolean newPojoValidator = this.modelProperty.isNewPojoValidator(rule);
+      boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(rule);
+      final boolean newPojoValidator = (!_isOldPojoValidator);
       final List<MappingColumn> columns = EcoreUtil2.<MappingColumn>getAllContentsOfType(rule, MappingColumn.class);
       final PojoDefinition pojo = colPojo;
       final String pojoName = colPojoName;

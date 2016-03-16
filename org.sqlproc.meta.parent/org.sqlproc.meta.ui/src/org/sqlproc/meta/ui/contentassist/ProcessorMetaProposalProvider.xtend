@@ -154,7 +154,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val pos = _prefix.lastIndexOf('.')
 		val prefix = if (pos > 0) _prefix.substring(0, pos + 1) else ""
 		
-		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		val boolean newPojoValidator = !modelProperty.isOldPojoValidator(model)
 		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
 			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
 	        getAllFeatures(type, _prefix).forEach[feature |
@@ -229,7 +229,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val _prefix = if (pos > 0) prefix.substring(0, pos + 1) else ""
         val _cutPrefix = cutPrefix
 
-		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		val boolean newPojoValidator = !modelProperty.isOldPojoValidator(model)
 		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
 			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType
 	        getAllFeatures(type, _prefix).forEach[feature |
@@ -1163,7 +1163,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
 
-		val boolean newPojoValidator = modelProperty.isNewPojoValidator(model)
+		val boolean newPojoValidator = !modelProperty.isOldPojoValidator(model)
 		if (newPojoValidator && pojoDefinition.classx instanceof JvmDeclaredType) {
 			val Founder founder = new Founder()
 			val JvmDeclaredType type = pojoDefinition.classx as JvmDeclaredType

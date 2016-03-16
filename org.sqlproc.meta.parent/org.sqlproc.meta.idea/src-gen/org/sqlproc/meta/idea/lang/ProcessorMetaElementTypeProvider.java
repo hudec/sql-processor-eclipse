@@ -1820,6 +1820,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createProperty_NameNewPojoValidatorKeyword_1_13_0ElementType() {
 			return new IGrammarAwareElementType("Property_NameNewPojoValidatorKeyword_1_13_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPropertyAccess().getNameNewPojoValidatorKeyword_1_13_0());
 		}
+		public static IGrammarAwareElementType createProperty_NameAssignment_1_14ElementType() {
+			return new IGrammarAwareElementType("Property_NameAssignment_1_14_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPropertyAccess().getNameAssignment_1_14());
+		}
+		public static IGrammarAwareElementType createProperty_NameOldPojoValidatorKeyword_1_14_0ElementType() {
+			return new IGrammarAwareElementType("Property_NameOldPojoValidatorKeyword_1_14_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPropertyAccess().getNameOldPojoValidatorKeyword_1_14_0());
+		}
 		public static IGrammarAwareElementType createProperty_SEMICOLONTerminalRuleCall_2ElementType() {
 			return new IGrammarAwareElementType("Property_SEMICOLONTerminalRuleCall_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPropertyAccess().getSEMICOLONTerminalRuleCall_2());
 		}
@@ -1998,6 +2004,10 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	public static final IGrammarAwareElementType Property_NameAssignment_1_13_ELEMENT_TYPE = associate(PropertyFactory.createProperty_NameAssignment_1_13ElementType());
 
 	public static final IGrammarAwareElementType Property_NameNewPojoValidatorKeyword_1_13_0_ELEMENT_TYPE = associate(PropertyFactory.createProperty_NameNewPojoValidatorKeyword_1_13_0ElementType());
+
+	public static final IGrammarAwareElementType Property_NameAssignment_1_14_ELEMENT_TYPE = associate(PropertyFactory.createProperty_NameAssignment_1_14ElementType());
+
+	public static final IGrammarAwareElementType Property_NameOldPojoValidatorKeyword_1_14_0_ELEMENT_TYPE = associate(PropertyFactory.createProperty_NameOldPojoValidatorKeyword_1_14_0ElementType());
 
 	public static final IGrammarAwareElementType Property_SEMICOLONTerminalRuleCall_2_ELEMENT_TYPE = associate(PropertyFactory.createProperty_SEMICOLONTerminalRuleCall_2ElementType());
 
@@ -11048,6 +11058,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	
 	public IGrammarAwareElementType getProperty_NameNewPojoValidatorKeyword_1_13_0ElementType() {
 		return Property_NameNewPojoValidatorKeyword_1_13_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getProperty_NameAssignment_1_14ElementType() {
+		return Property_NameAssignment_1_14_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getProperty_NameOldPojoValidatorKeyword_1_14_0ElementType() {
+		return Property_NameOldPojoValidatorKeyword_1_14_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getProperty_SEMICOLONTerminalRuleCall_2ElementType() {

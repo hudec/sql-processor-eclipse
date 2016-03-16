@@ -2569,10 +2569,25 @@ ruleProperty returns [EObject current=null]
 					}
 				)
 			)
+			    |
+			(
+				(
+					lv_name_30_0='old-pojo-validator'
+					{
+						newLeafNode(lv_name_30_0, grammarAccess.getPropertyAccess().getNameOldPojoValidatorKeyword_1_14_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_30_0, "old-pojo-validator");
+					}
+				)
+			)
 		)
-		otherlv_30=';'
+		otherlv_31=';'
 		{
-			newLeafNode(otherlv_30, grammarAccess.getPropertyAccess().getSemicolonKeyword_2());
+			newLeafNode(otherlv_31, grammarAccess.getPropertyAccess().getSemicolonKeyword_2());
 		}
 	)
 ;

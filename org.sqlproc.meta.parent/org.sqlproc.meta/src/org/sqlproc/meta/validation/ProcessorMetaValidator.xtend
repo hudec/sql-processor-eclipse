@@ -348,7 +348,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
            	indexPojo = identPojo;
            	indexPojoName = identPojoName;
         }
-        val boolean newPojoValidator = modelProperty.isNewPojoValidator(statement)
+        val boolean newPojoValidator = !modelProperty.isOldPojoValidator(statement)
         
         if (identPojo != null) {
         	val identifiers = statement.getAllContentsOfType(typeof(Identifier))
@@ -624,7 +624,7 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         }
 
         if (colPojo != null) {
-        	val boolean newPojoValidator = modelProperty.isNewPojoValidator(rule)
+        	val boolean newPojoValidator = !modelProperty.isOldPojoValidator(rule)
         	val columns = rule.getAllContentsOfType(typeof(MappingColumn))
         	val pojo = colPojo
         	val pojoName = colPojoName

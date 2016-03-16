@@ -2752,13 +2752,31 @@ ruleProperty returns [Boolean current=false]
 					}
 				)
 			)
+			    |
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getProperty_NameOldPojoValidatorKeyword_1_14_0ElementType());
+					}
+					lv_name_42_0='old-pojo-validator'
+					{
+						doneLeaf(lv_name_42_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
 		)
 		{
 			markLeaf(elementTypeProvider.getProperty_SEMICOLONTerminalRuleCall_2ElementType());
 		}
-		this_SEMICOLON_42=RULE_SEMICOLON
+		this_SEMICOLON_43=RULE_SEMICOLON
 		{
-			doneLeaf(this_SEMICOLON_42);
+			doneLeaf(this_SEMICOLON_43);
 		}
 	)
 ;

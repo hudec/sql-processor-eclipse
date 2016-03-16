@@ -44,6 +44,7 @@ import org.eclipse.xtext.xbase.jvmmodel.IJvmModelInferrer;
 import org.eclipse.xtext.xbase.jvmmodel.JvmLocationInFileProvider;
 import org.eclipse.xtext.xbase.scoping.XImportSectionNamespaceScopeProvider;
 import org.eclipse.xtext.xbase.scoping.XbaseQualifiedNameProvider;
+import org.eclipse.xtext.xbase.scoping.batch.IBatchScopeProvider;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultBatchTypeResolver;
 import org.eclipse.xtext.xbase.typesystem.internal.DefaultReentrantTypeResolver;
 import org.eclipse.xtext.xbase.typesystem.internal.LogicalContainerAwareBatchTypeResolver;
@@ -152,7 +153,7 @@ public abstract class AbstractProcessorModelRuntimeModule extends DefaultXbaseWi
 	}
 	
 	// contributed by org.eclipse.xtext.xtext.generator.scoping.ImportNamespacesScopingFragment2
-	public Class<? extends IScopeProvider> bindIScopeProvider() {
+	public Class<? extends IBatchScopeProvider> bindIBatchScopeProvider() {
 		return ProcessorModelScopeProvider.class;
 	}
 	

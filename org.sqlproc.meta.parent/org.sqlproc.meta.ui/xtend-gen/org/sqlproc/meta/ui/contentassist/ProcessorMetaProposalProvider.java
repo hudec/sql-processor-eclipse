@@ -259,7 +259,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       _xifexpression_1 = "";
     }
     final String prefix = _xifexpression_1;
-    final boolean newPojoValidator = this.modelProperty.isNewPojoValidator(model);
+    boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(model);
+    final boolean newPojoValidator = (!_isOldPojoValidator);
     boolean _and = false;
     if (!newPojoValidator) {
       _and = false;
@@ -471,7 +472,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     }
     final String _prefix_1 = _xifexpression_1;
     final boolean _cutPrefix = cutPrefix;
-    final boolean newPojoValidator = this.modelProperty.isNewPojoValidator(model);
+    boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(model);
+    final boolean newPojoValidator = (!_isOldPojoValidator);
     boolean _and_1 = false;
     if (!newPojoValidator) {
       _and_1 = false;
@@ -2314,7 +2316,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       acceptor.accept(_createCompletionProposal);
       return;
     }
-    final boolean newPojoValidator = this.modelProperty.isNewPojoValidator(model);
+    boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(model);
+    final boolean newPojoValidator = (!_isOldPojoValidator);
     boolean _and = false;
     if (!newPojoValidator) {
       _and = false;

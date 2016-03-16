@@ -2312,7 +2312,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *             name='compress-meta-directives' | 
 	 *             name='generate-from-to' | 
 	 *             (name='case-format-library' caseFormatLibrary=ValueType) | 
-	 *             name='new-pojo-validator'
+	 *             name='new-pojo-validator' | 
+	 *             name='old-pojo-validator'
 	 *         )
 	 *     )
 	 */

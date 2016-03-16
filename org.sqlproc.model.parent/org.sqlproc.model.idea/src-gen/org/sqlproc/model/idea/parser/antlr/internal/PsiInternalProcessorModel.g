@@ -2268,13 +2268,31 @@ ruleProperty returns [Boolean current=false]
 					}
 				)
 			)
+			    |
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getProperty_NameOldPojoValidatorKeyword_1_14_0ElementType());
+					}
+					lv_name_30_0='old-pojo-validator'
+					{
+						doneLeaf(lv_name_30_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
 		)
 		{
 			markLeaf(elementTypeProvider.getProperty_SemicolonKeyword_2ElementType());
 		}
-		otherlv_30=';'
+		otherlv_31=';'
 		{
-			doneLeaf(otherlv_30);
+			doneLeaf(otherlv_31);
 		}
 	)
 ;
