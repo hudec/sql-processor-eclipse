@@ -1069,7 +1069,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         superType=JvmParameterizedTypeReference? 
-	 *         attributes+=PojoAttribute*
+	 *         attributes+=PojoAttribute* 
+	 *         procedures+=PojoProcedure*
 	 *     )
 	 */
 	protected void sequence_DaoEntity(ISerializationContext context, DaoEntity semanticObject) {
@@ -1362,7 +1363,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     EnumEntity returns EnumEntity
 	 *
 	 * Constraint:
-	 *     (directives+=EnumDirective* final?='final'? name=ValidID attribute=EnumAttribute)
+	 *     (directives+=EnumDirective* final?='final'? name=ValidID attribute=EnumAttribute procedures+=PojoProcedure*)
 	 */
 	protected void sequence_EnumEntity(ISerializationContext context, EnumEntity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2131,7 +2132,8 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         superType=JvmParameterizedTypeReference? 
-	 *         attributes+=PojoAttribute*
+	 *         attributes+=PojoAttribute* 
+	 *         procedures+=PojoProcedure*
 	 *     )
 	 */
 	protected void sequence_PojoEntity(ISerializationContext context, PojoEntity semanticObject) {
@@ -2145,7 +2147,6 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *
 	 * Constraint:
 	 *     (
-	 *         annotations+=Annotation* 
 	 *         final?='final'? 
 	 *         static?='static'? 
 	 *         type=JvmParameterizedTypeReference? 

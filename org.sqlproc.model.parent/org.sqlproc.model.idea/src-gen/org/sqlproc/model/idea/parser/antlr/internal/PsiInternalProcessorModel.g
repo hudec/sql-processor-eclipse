@@ -8162,12 +8162,27 @@ rulePojoEntity returns [Boolean current=false]
 				}
 			)
 		)*
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
+				}
+				lv_procedures_9_0=rulePojoProcedure
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)*
 		{
-			markLeaf(elementTypeProvider.getPojoEntity_RightCurlyBracketKeyword_8ElementType());
+			markLeaf(elementTypeProvider.getPojoEntity_RightCurlyBracketKeyword_9ElementType());
 		}
-		otherlv_9='}'
+		otherlv_10='}'
 		{
-			doneLeaf(otherlv_9);
+			doneLeaf(otherlv_10);
 		}
 	)
 ;
@@ -8821,6 +8836,165 @@ rulePojoAttribute returns [Boolean current=false]
 	)
 ;
 
+//Entry rule entryRulePojoProcedure
+entryRulePojoProcedure returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getPojoProcedureElementType()); }
+	iv_rulePojoProcedure=rulePojoProcedure
+	{ $current=$iv_rulePojoProcedure.current; }
+	EOF;
+
+// Rule PojoProcedure
+rulePojoProcedure returns [Boolean current=false]
+:
+	(
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getPojoProcedure_FinalFinalKeyword_0_0ElementType());
+				}
+				lv_final_0_0='final'
+				{
+					doneLeaf(lv_final_0_0);
+				}
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)?
+		(
+			((
+				'static'
+			)
+			)=>
+			(
+				{
+					markLeaf(elementTypeProvider.getPojoProcedure_StaticStaticKeyword_1_0ElementType());
+				}
+				lv_static_1_0='static'
+				{
+					doneLeaf(lv_static_1_0);
+				}
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)?
+		{
+			markLeaf(elementTypeProvider.getPojoProcedure_ProcKeyword_2ElementType());
+		}
+		otherlv_2='#Proc'
+		{
+			doneLeaf(otherlv_2);
+		}
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getPojoProcedure_TypeJvmParameterizedTypeReferenceParserRuleCall_3_0ElementType());
+				}
+				lv_type_3_0=ruleJvmParameterizedTypeReference
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)?
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getPojoProcedure_NameValidIDParserRuleCall_4_0ElementType());
+				}
+				lv_name_4_0=ruleValidID
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)
+		{
+			markLeaf(elementTypeProvider.getPojoProcedure_LPARENTerminalRuleCall_5ElementType());
+		}
+		this_LPAREN_5=RULE_LPAREN
+		{
+			doneLeaf(this_LPAREN_5);
+		}
+		(
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_6_0_0ElementType());
+					}
+					lv_params_6_0=ruleFullJvmFormalParameter
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojoProcedure_COMMATerminalRuleCall_6_1_0ElementType());
+				}
+				this_COMMA_7=RULE_COMMA
+				{
+					doneLeaf(this_COMMA_7);
+				}
+				(
+					(
+						{
+							markComposite(elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_6_1_1_0ElementType());
+						}
+						lv_params_8_0=ruleFullJvmFormalParameter
+						{
+							doneComposite();
+							if(!$current) {
+								associateWithSemanticElement();
+								$current = true;
+							}
+						}
+					)
+				)
+			)*
+		)?
+		{
+			markLeaf(elementTypeProvider.getPojoProcedure_RPARENTerminalRuleCall_7ElementType());
+		}
+		this_RPAREN_9=RULE_RPAREN
+		{
+			doneLeaf(this_RPAREN_9);
+		}
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getPojoProcedure_BodyXBlockExpressionParserRuleCall_8_0ElementType());
+				}
+				lv_body_10_0=ruleXBlockExpression
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)
+	)
+;
+
 //Entry rule entryRuleEnumDirective
 entryRuleEnumDirective returns [Boolean current=false]:
 	{ markComposite(elementTypeProvider.getEnumDirectiveElementType()); }
@@ -8967,12 +9141,27 @@ ruleEnumEntity returns [Boolean current=false]
 				}
 			)
 		)
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType());
+				}
+				lv_procedures_6_0=rulePojoProcedure
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)*
 		{
-			markLeaf(elementTypeProvider.getEnumEntity_RightCurlyBracketKeyword_6ElementType());
+			markLeaf(elementTypeProvider.getEnumEntity_RightCurlyBracketKeyword_7ElementType());
 		}
-		otherlv_6='}'
+		otherlv_7='}'
 		{
-			doneLeaf(otherlv_6);
+			doneLeaf(otherlv_7);
 		}
 	)
 ;
@@ -9890,12 +10079,27 @@ ruleDaoEntity returns [Boolean current=false]
 				}
 			)
 		)*
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
+				}
+				lv_procedures_9_0=rulePojoProcedure
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)*
 		{
-			markLeaf(elementTypeProvider.getDaoEntity_RightCurlyBracketKeyword_8ElementType());
+			markLeaf(elementTypeProvider.getDaoEntity_RightCurlyBracketKeyword_9ElementType());
 		}
-		otherlv_9='}'
+		otherlv_10='}'
 		{
-			doneLeaf(otherlv_9);
+			doneLeaf(otherlv_10);
 		}
 	)
 ;

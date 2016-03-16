@@ -23,6 +23,7 @@ import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Artifacts;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.Package;
+import org.sqlproc.model.processorModel.PojoProcedure;
 import org.sqlproc.model.util.Annotations;
 import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
@@ -637,10 +638,10 @@ public class TableDaoGenerator extends TablePojoGenerator {
                             // if (attr.isFinal())
                             map.put(attr.getName(), serializer.serialize(attr));
                         }
-                        // for (PojoProcedure proc : dao.getProcedures()) {
-                        // // if (proc.isFinal())
-                        // map.put(proc.getName(), serializer.serialize(proc));
-                        // }
+                        for (PojoProcedure proc : dao.getProcedures()) {
+                            // if (proc.isFinal())
+                            map.put(proc.getName(), serializer.serialize(proc));
+                        }
                     }
                 }
             }

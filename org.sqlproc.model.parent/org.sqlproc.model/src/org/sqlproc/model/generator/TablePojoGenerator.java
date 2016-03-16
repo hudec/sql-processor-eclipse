@@ -22,6 +22,7 @@ import org.sqlproc.model.processorModel.Artifacts;
 import org.sqlproc.model.processorModel.EnumEntity;
 import org.sqlproc.model.processorModel.Package;
 import org.sqlproc.model.processorModel.PojoEntity;
+import org.sqlproc.model.processorModel.PojoProcedure;
 import org.sqlproc.model.util.Annotations;
 import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.generator.TableBaseGenerator;
@@ -860,10 +861,10 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             if (attr.isFinal())
                                 map.put(attr.getName(), serializer.serialize(attr));
                         }
-                        // for (PojoProcedure proc : pojo.getProcedures()) {
-                        // // if (proc.isFinal())
-                        // map.put(proc.getName(), serializer.serialize(proc));
-                        // }
+                        for (PojoProcedure proc : pojo.getProcedures()) {
+                            // if (proc.isFinal())
+                            map.put(proc.getName(), serializer.serialize(proc));
+                        }
                     }
                 } else if (ape instanceof AnnotatedEntity
                         && ((AnnotatedEntity) ape).getEntity() instanceof EnumEntity) {
@@ -875,10 +876,10 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     } else {
                         Map<String, String> map;
                         finalFeatures.put(pojo.getName(), map = new LinkedHashMap<String, String>());
-                        // for (PojoProcedure proc : pojo.getProcedures()) {
-                        // // if (proc.isFinal())
-                        // map.put(proc.getName(), serializer.serialize(proc));
-                        // }
+                        for (PojoProcedure proc : pojo.getProcedures()) {
+                            // if (proc.isFinal())
+                            map.put(proc.getName(), serializer.serialize(proc));
+                        }
                     }
                 }
             }

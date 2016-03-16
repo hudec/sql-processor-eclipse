@@ -13,6 +13,7 @@ import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmFormalParameter;
 import org.eclipse.xtext.common.types.JvmMember;
 import org.eclipse.xtext.common.types.JvmOperation;
+import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmVisibility;
@@ -40,6 +41,7 @@ import org.sqlproc.model.processorModel.EnumAttributeDirective;
 import org.sqlproc.model.processorModel.EnumAttributeDirectiveValues;
 import org.sqlproc.model.processorModel.EnumAttributeValue;
 import org.sqlproc.model.processorModel.EnumEntity;
+import org.sqlproc.model.processorModel.PojoProcedure;
 
 /**
  * <p>Infers a JVM model from the source model.</p>
@@ -349,6 +351,40 @@ public class EnumJvmModelInferrer extends AbstractModelInferrer {
         };
         JvmOperation _method_3 = EnumJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getName", _typeRef_3, _function_6);
         EnumJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_6, _method_3);
+        EList<PojoProcedure> _procedures = entity.getProcedures();
+        for (final PojoProcedure proc : _procedures) {
+          EList<JvmMember> _members_7 = it.getMembers();
+          String _name = proc.getName();
+          JvmTypeReference _elvis = null;
+          JvmParameterizedTypeReference _type_3 = proc.getType();
+          if (_type_3 != null) {
+            _elvis = _type_3;
+          } else {
+            JvmTypeReference _inferredType = EnumJvmModelInferrer.this._processorTypesBuilder.inferredType();
+            _elvis = _inferredType;
+          }
+          final Procedure1<JvmOperation> _function_7 = new Procedure1<JvmOperation>() {
+            @Override
+            public void apply(final JvmOperation it) {
+              String _documentation = EnumJvmModelInferrer.this._processorTypesBuilder.getDocumentation(proc);
+              EnumJvmModelInferrer.this._processorTypesBuilder.setDocumentation(it, _documentation);
+              boolean _isStatic = proc.isStatic();
+              it.setStatic(_isStatic);
+              EList<JvmFormalParameter> _params = proc.getParams();
+              for (final JvmFormalParameter param : _params) {
+                EList<JvmFormalParameter> _parameters = it.getParameters();
+                String _name = param.getName();
+                JvmTypeReference _parameterType = param.getParameterType();
+                JvmFormalParameter _parameter = EnumJvmModelInferrer.this._processorTypesBuilder.toParameter(param, _name, _parameterType);
+                EnumJvmModelInferrer.this._processorTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+              }
+              XExpression _body = proc.getBody();
+              EnumJvmModelInferrer.this._processorTypesBuilder.setBody(it, _body);
+            }
+          };
+          JvmOperation _method_4 = EnumJvmModelInferrer.this._processorTypesBuilder.toMethod(proc, _name, _elvis, _function_7);
+          EnumJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_7, _method_4);
+        }
       }
     };
     acceptor.<JvmEnumerationType>accept(entityType, _function_1);

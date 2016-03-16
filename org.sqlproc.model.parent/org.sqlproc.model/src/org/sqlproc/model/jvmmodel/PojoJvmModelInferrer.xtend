@@ -215,18 +215,18 @@ class PojoJvmModelInferrer {
    				}
    			}
    			
-//   			for (proc : entity.procedures) {
-//   				members += proc.toMethod(proc.name, proc.type ?: inferredType) [
-//   					documentation = proc.documentation
-//   					addAnnotationsX(proc.annotations.map[a|a.annotation])
-//   					static = proc.static
-//   					//final = proc.final
-//   					for (param : proc.params) {
-//   						parameters += param.toParameter(param.name, param.parameterType)
-//   					}
-//   					body = proc.body
-//   				]
-//			}
+   			for (proc : entity.procedures) {
+   				members += proc.toMethod(proc.name, proc.type ?: inferredType) [
+   					documentation = proc.documentation
+   					//addAnnotationsX(proc.annotations.map[a|a.annotation])
+   					static = proc.static
+   					//final = proc.final
+   					for (param : proc.params) {
+   						parameters += param.toParameter(param.name, param.parameterType)
+   					}
+   					body = proc.body
+   				]
+			}
 
 			val processingIdsList = entity.processingIdsAttributes
 			if (!processingIdsList.isEmpty) {

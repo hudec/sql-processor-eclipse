@@ -52,6 +52,7 @@ import org.sqlproc.model.processorModel.Implements;
 import org.sqlproc.model.processorModel.PojoAttribute;
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey;
 import org.sqlproc.model.processorModel.PojoEntity;
+import org.sqlproc.model.processorModel.PojoProcedure;
 import org.sqlproc.model.processorModel.ProcedureCallQuery;
 import org.sqlproc.model.processorModel.ProcedureUpdate;
 
@@ -765,6 +766,40 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
               DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, _setter);
             }
           }
+        }
+        EList<PojoProcedure> _procedures = entity.getProcedures();
+        for (final PojoProcedure proc : _procedures) {
+          EList<JvmMember> _members_17 = it.getMembers();
+          String _name = proc.getName();
+          JvmTypeReference _elvis = null;
+          JvmParameterizedTypeReference _type_1 = proc.getType();
+          if (_type_1 != null) {
+            _elvis = _type_1;
+          } else {
+            JvmTypeReference _inferredType = DaoJvmModelInferrer.this._processorTypesBuilder.inferredType();
+            _elvis = _inferredType;
+          }
+          final Procedure1<JvmOperation> _function_8 = new Procedure1<JvmOperation>() {
+            @Override
+            public void apply(final JvmOperation it) {
+              String _documentation = DaoJvmModelInferrer.this._processorTypesBuilder.getDocumentation(proc);
+              DaoJvmModelInferrer.this._processorTypesBuilder.setDocumentation(it, _documentation);
+              boolean _isStatic = proc.isStatic();
+              it.setStatic(_isStatic);
+              EList<JvmFormalParameter> _params = proc.getParams();
+              for (final JvmFormalParameter param : _params) {
+                EList<JvmFormalParameter> _parameters = it.getParameters();
+                String _name = param.getName();
+                JvmTypeReference _parameterType = param.getParameterType();
+                JvmFormalParameter _parameter = DaoJvmModelInferrer.this._processorTypesBuilder.toParameter(param, _name, _parameterType);
+                DaoJvmModelInferrer.this._processorTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+              }
+              XExpression _body = proc.getBody();
+              DaoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _body);
+            }
+          };
+          JvmOperation _method = DaoJvmModelInferrer.this._processorTypesBuilder.toMethod(proc, _name, _elvis, _function_8);
+          DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_17, _method);
         }
       }
     };

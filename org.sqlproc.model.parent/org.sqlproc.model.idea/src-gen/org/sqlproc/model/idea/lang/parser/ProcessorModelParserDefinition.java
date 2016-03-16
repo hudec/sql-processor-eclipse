@@ -581,6 +581,9 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
+			if (elementType == elementTypeProvider.getPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
 			if (elementType == elementTypeProvider.getPojoAttributeDirectiveElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
@@ -647,19 +650,16 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojoProcedureElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoProcedure_AnnotationsAnnotationParserRuleCall_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoProcedure_TypeJvmParameterizedTypeReferenceParserRuleCall_3_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoProcedure_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType()) {
-				return new PsiEObjectImpl(node) {};
-			}
-			if (elementType == elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_7_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_6_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_7_1_1_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoProcedure_ParamsFullJvmFormalParameterParserRuleCall_6_1_1_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoProcedure_BodyXBlockExpressionParserRuleCall_9_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoProcedure_BodyXBlockExpressionParserRuleCall_8_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumDirectiveElementType()) {
@@ -675,6 +675,9 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumEntity_AttributeEnumAttributeParserRuleCall_5_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumAttributeValueElementType()) {
@@ -780,6 +783,9 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getAnnotationDirectiveElementType()) {

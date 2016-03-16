@@ -278,6 +278,7 @@
     <genClasses ecoreClass="ProcessorModel.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//Entity/final"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//Entity/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//Entity/procedures"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorModel.ecore#//DirectiveProperties">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//DirectiveProperties/features"/>
@@ -302,7 +303,6 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//PojoAttribute/initExpr"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorModel.ecore#//PojoProcedure">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//PojoProcedure/annotations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//PojoProcedure/final"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//PojoProcedure/static"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//PojoProcedure/type"/>

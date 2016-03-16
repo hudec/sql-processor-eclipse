@@ -3295,6 +3295,16 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getEntity_Procedures()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getDirectiveProperties()
   {
     return directivePropertiesEClass;
@@ -3495,19 +3505,9 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPojoProcedure_Annotations()
-  {
-    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getPojoProcedure_Final()
   {
-    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -3517,7 +3517,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EAttribute getPojoProcedure_Static()
   {
-    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -3527,7 +3527,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EReference getPojoProcedure_Type()
   {
-    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(3);
+    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3537,7 +3537,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EAttribute getPojoProcedure_Name()
   {
-    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)pojoProcedureEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -3547,7 +3547,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EReference getPojoProcedure_Params()
   {
-    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(5);
+    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -3557,7 +3557,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EReference getPojoProcedure_Body()
   {
-    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(6);
+    return (EReference)pojoProcedureEClass.getEStructuralFeatures().get(5);
   }
 
   /**
@@ -5015,6 +5015,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     entityEClass = createEClass(ENTITY);
     createEAttribute(entityEClass, ENTITY__FINAL);
     createEAttribute(entityEClass, ENTITY__NAME);
+    createEReference(entityEClass, ENTITY__PROCEDURES);
 
     directivePropertiesEClass = createEClass(DIRECTIVE_PROPERTIES);
     createEReference(directivePropertiesEClass, DIRECTIVE_PROPERTIES__FEATURES);
@@ -5041,7 +5042,6 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     createEReference(pojoAttributeEClass, POJO_ATTRIBUTE__INIT_EXPR);
 
     pojoProcedureEClass = createEClass(POJO_PROCEDURE);
-    createEReference(pojoProcedureEClass, POJO_PROCEDURE__ANNOTATIONS);
     createEAttribute(pojoProcedureEClass, POJO_PROCEDURE__FINAL);
     createEAttribute(pojoProcedureEClass, POJO_PROCEDURE__STATIC);
     createEReference(pojoProcedureEClass, POJO_PROCEDURE__TYPE);
@@ -5591,6 +5591,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Procedures(), this.getPojoProcedure(), null, "procedures", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(directivePropertiesEClass, DirectiveProperties.class, "DirectiveProperties", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDirectiveProperties_Features(), this.getPojoAttribute(), null, "features", null, 0, -1, DirectiveProperties.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -5617,7 +5618,6 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEReference(getPojoAttribute_InitExpr(), theXbasePackage.getXExpression(), null, "initExpr", null, 0, 1, PojoAttribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(pojoProcedureEClass, PojoProcedure.class, "PojoProcedure", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getPojoProcedure_Annotations(), this.getAnnotation(), null, "annotations", null, 0, -1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoProcedure_Final(), ecorePackage.getEBoolean(), "final", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoProcedure_Static(), ecorePackage.getEBoolean(), "static", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPojoProcedure_Type(), theTypesPackage.getJvmParameterizedTypeReference(), null, "type", null, 0, 1, PojoProcedure.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
