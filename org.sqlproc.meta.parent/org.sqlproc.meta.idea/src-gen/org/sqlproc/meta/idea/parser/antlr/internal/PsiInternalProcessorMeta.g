@@ -2063,54 +2063,28 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0ElementType());
-				}
-				lv_dbColumn_0_0=RULE_IDENT
-				{
-					if(!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-				{
-					doneLeaf(lv_dbColumn_0_0);
-				}
-			)
-		)
-		(
-			{
-				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_1ElementType());
-			}
-			this_WS_1=RULE_WS
-			{
-				doneLeaf(this_WS_1);
-			}
-		)+
-		(
-			(
-				{
 					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
 				}
 				{
-					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0ElementType());
+					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_0_0ElementType());
 				}
-				otherlv_2=RULE_IDENT
+				otherlv_0=RULE_IDENT
 				{
-					doneLeaf(otherlv_2);
+					doneLeaf(otherlv_0);
 				}
 			)
 		)
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_3_0ElementType());
+					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_1_0ElementType());
 				}
-				this_WS_3=RULE_WS
+				this_WS_1=RULE_WS
 				{
-					doneLeaf(this_WS_3);
+					doneLeaf(this_WS_1);
 				}
 			)+
 			(
@@ -2122,11 +2096,11 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 						}
 					}
 					{
-						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0ElementType());
+						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_1_1_0ElementType());
 					}
-					otherlv_4=RULE_IDENT
+					otherlv_2=RULE_IDENT
 					{
-						doneLeaf(otherlv_4);
+						doneLeaf(otherlv_2);
 					}
 				)
 			)
@@ -2134,36 +2108,36 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_4_0ElementType());
+					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_2_0ElementType());
 				}
-				this_WS_5=RULE_WS
+				this_WS_3=RULE_WS
 				{
-					doneLeaf(this_WS_5);
+					doneLeaf(this_WS_3);
 				}
 			)+
 			{
-				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1ElementType());
+				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_PLUSTerminalRuleCall_2_1ElementType());
 			}
-			this_PLUS_6=RULE_PLUS
+			this_PLUS_4=RULE_PLUS
 			{
-				doneLeaf(this_PLUS_6);
+				doneLeaf(this_PLUS_4);
 			}
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0ElementType());
+						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0ElementType());
 					}
-					this_WS_7=RULE_WS
+					this_WS_5=RULE_WS
 					{
-						doneLeaf(this_WS_7);
+						doneLeaf(this_WS_5);
 					}
 				)+
 				(
 					(
 						{
-							markLeaf(elementTypeProvider.getColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0ElementType());
+							markLeaf(elementTypeProvider.getColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_2_2_1_0ElementType());
 						}
-						lv_dbTables_8_0=RULE_IDENT
+						lv_dbTables_6_0=RULE_IDENT
 						{
 							if(!$current) {
 								associateWithSemanticElement();
@@ -2171,7 +2145,7 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 							}
 						}
 						{
-							doneLeaf(lv_dbTables_8_0);
+							doneLeaf(lv_dbTables_6_0);
 						}
 					)
 				)
@@ -2180,36 +2154,36 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_5_0ElementType());
+					markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_3_0ElementType());
 				}
-				this_WS_9=RULE_WS
+				this_WS_7=RULE_WS
 				{
-					doneLeaf(this_WS_9);
+					doneLeaf(this_WS_7);
 				}
 			)+
 			{
-				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1ElementType());
+				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_MINUSTerminalRuleCall_3_1ElementType());
 			}
-			this_MINUS_10=RULE_MINUS
+			this_MINUS_8=RULE_MINUS
 			{
-				doneLeaf(this_MINUS_10);
+				doneLeaf(this_MINUS_8);
 			}
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0ElementType());
+						markLeaf(elementTypeProvider.getColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0ElementType());
 					}
-					this_WS_11=RULE_WS
+					this_WS_9=RULE_WS
 					{
-						doneLeaf(this_WS_11);
+						doneLeaf(this_WS_9);
 					}
 				)+
 				(
 					(
 						{
-							markLeaf(elementTypeProvider.getColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0ElementType());
+							markLeaf(elementTypeProvider.getColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_3_2_1_0ElementType());
 						}
-						lv_dbNotTables_12_0=RULE_IDENT
+						lv_dbNotTables_10_0=RULE_IDENT
 						{
 							if(!$current) {
 								associateWithSemanticElement();
@@ -2217,7 +2191,7 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 							}
 						}
 						{
-							doneLeaf(lv_dbNotTables_12_0);
+							doneLeaf(lv_dbNotTables_10_0);
 						}
 					)
 				)
@@ -6407,9 +6381,35 @@ rulePojogenProperty returns [Boolean current=false]
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType());
+						markLeaf(elementTypeProvider.getPojogenProperty_DbColumnIDENTTerminalRuleCall_44_2_0ElementType());
 					}
-					lv_columnAnnotations_180_0=ruleColumnAnnotationAssignement
+					lv_dbColumn_180_0=RULE_IDENT
+					{
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+					{
+						doneLeaf(lv_dbColumn_180_0);
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_WSTerminalRuleCall_44_3ElementType());
+				}
+				this_WS_181=RULE_WS
+				{
+					doneLeaf(this_WS_181);
+				}
+			)+
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0ElementType());
+					}
+					lv_columnAnnotations_182_0=ruleColumnAnnotationAssignement
 					{
 						doneComposite();
 						if(!$current) {

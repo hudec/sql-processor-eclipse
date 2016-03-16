@@ -9065,9 +9065,9 @@ rule__ColumnAnnotationAssignement__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnAssignment_0()); }
-	(rule__ColumnAnnotationAssignement__DbColumnAssignment_0)
-	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnAssignment_0()); }
+	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_0()); }
+	(rule__ColumnAnnotationAssignement__AnnotationsAssignment_0)
+	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_0()); }
 )
 ;
 finally {
@@ -9093,7 +9093,7 @@ rule__ColumnAnnotationAssignement__Group__1__Impl
 :
 (
 	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_1()); }
-	(rule__ColumnAnnotationAssignement__AnnotationsAssignment_1)
+	(rule__ColumnAnnotationAssignement__AnnotationsAssignment_1)*
 	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_1()); }
 )
 ;
@@ -9119,9 +9119,9 @@ rule__ColumnAnnotationAssignement__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_2()); }
-	(rule__ColumnAnnotationAssignement__AnnotationsAssignment_2)*
-	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_2()); }
+	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_2()); }
+	(rule__ColumnAnnotationAssignement__Group_2__0)?
+	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_2()); }
 )
 ;
 finally {
@@ -9134,7 +9134,6 @@ rule__ColumnAnnotationAssignement__Group__3
 	}
 :
 	rule__ColumnAnnotationAssignement__Group__3__Impl
-	rule__ColumnAnnotationAssignement__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -9155,26 +9154,61 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColumnAnnotationAssignement__Group__4
+
+rule__ColumnAnnotationAssignement__Group_2__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__ColumnAnnotationAssignement__Group__4__Impl
+	rule__ColumnAnnotationAssignement__Group_2__0__Impl
+	rule__ColumnAnnotationAssignement__Group_2__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColumnAnnotationAssignement__Group__4__Impl
+rule__ColumnAnnotationAssignement__Group_2__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_4()); }
-	(rule__ColumnAnnotationAssignement__Group_4__0)?
-	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_4()); }
+	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_2_0()); }
+	'+'
+	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_2_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnAnnotationAssignement__Group_2__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ColumnAnnotationAssignement__Group_2__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ColumnAnnotationAssignement__Group_2__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	(
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_2_1()); }
+		(rule__ColumnAnnotationAssignement__DbTablesAssignment_2_1)
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_2_1()); }
+	)
+	(
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_2_1()); }
+		(rule__ColumnAnnotationAssignement__DbTablesAssignment_2_1)*
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_2_1()); }
+	)
 )
 ;
 finally {
@@ -9200,9 +9234,9 @@ rule__ColumnAnnotationAssignement__Group_3__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_3_0()); }
-	'+'
-	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_3_0()); }
+	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_3_0()); }
+	'-'
+	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_3_0()); }
 )
 ;
 finally {
@@ -9227,75 +9261,14 @@ rule__ColumnAnnotationAssignement__Group_3__1__Impl
 :
 (
 	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1()); }
-		(rule__ColumnAnnotationAssignement__DbTablesAssignment_3_1)
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1()); }
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_3_1()); }
+		(rule__ColumnAnnotationAssignement__DbNotTablesAssignment_3_1)
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_3_1()); }
 	)
 	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1()); }
-		(rule__ColumnAnnotationAssignement__DbTablesAssignment_3_1)*
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1()); }
-	)
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__ColumnAnnotationAssignement__Group_4__0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__ColumnAnnotationAssignement__Group_4__0__Impl
-	rule__ColumnAnnotationAssignement__Group_4__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ColumnAnnotationAssignement__Group_4__0__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_4_0()); }
-	'-'
-	{ after(grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_4_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ColumnAnnotationAssignement__Group_4__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__ColumnAnnotationAssignement__Group_4__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ColumnAnnotationAssignement__Group_4__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1()); }
-		(rule__ColumnAnnotationAssignement__DbNotTablesAssignment_4_1)
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1()); }
-	)
-	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1()); }
-		(rule__ColumnAnnotationAssignement__DbNotTablesAssignment_4_1)*
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1()); }
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_3_1()); }
+		(rule__ColumnAnnotationAssignement__DbNotTablesAssignment_3_1)*
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_3_1()); }
 	)
 )
 ;
@@ -14212,6 +14185,7 @@ rule__PojogenProperty__Group_44__1
 	}
 :
 	rule__PojogenProperty__Group_44__1__Impl
+	rule__PojogenProperty__Group_44__2
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -14223,9 +14197,35 @@ rule__PojogenProperty__Group_44__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_1()); }
-	(rule__PojogenProperty__ColumnAnnotationsAssignment_44_1)
-	{ after(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_1()); }
+	{ before(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_44_1()); }
+	(rule__PojogenProperty__DbColumnAssignment_44_1)
+	{ after(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_44_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojogenProperty__Group_44__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__PojogenProperty__Group_44__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojogenProperty__Group_44__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_2()); }
+	(rule__PojogenProperty__ColumnAnnotationsAssignment_44_2)
+	{ after(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_2()); }
 )
 ;
 finally {
@@ -40152,15 +40152,19 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColumnAnnotationAssignement__DbColumnAssignment_0
+rule__ColumnAnnotationAssignement__AnnotationsAssignment_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnValidIDParserRuleCall_0_0()); }
-		ruleValidID
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnValidIDParserRuleCall_0_0()); }
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0()); }
+		(
+			{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_0_0_1()); }
+			ruleValidID
+			{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_0_0_1()); }
+		)
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0()); }
 	)
 ;
 finally {
@@ -40186,49 +40190,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColumnAnnotationAssignement__AnnotationsAssignment_2
+rule__ColumnAnnotationAssignement__DbTablesAssignment_2_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0()); }
-		(
-			{ before(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_2_0_1()); }
-			ruleValidID
-			{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_2_0_1()); }
-		)
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0()); }
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_2_1_0()); }
+		ruleValidID
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_2_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__ColumnAnnotationAssignement__DbTablesAssignment_3_1
+rule__ColumnAnnotationAssignement__DbNotTablesAssignment_3_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_3_1_0()); }
+		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_3_1_0()); }
 		ruleValidID
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_3_1_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ColumnAnnotationAssignement__DbNotTablesAssignment_4_1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_4_1_0()); }
-		ruleValidID
-		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_4_1_0()); }
+		{ after(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_3_1_0()); }
 	)
 ;
 finally {
@@ -43218,15 +43203,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojogenProperty__ColumnAnnotationsAssignment_44_1
+rule__PojogenProperty__DbColumnAssignment_44_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0()); }
+		{ before(grammarAccess.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_44_1_0()); }
+		ruleValidID
+		{ after(grammarAccess.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_44_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojogenProperty__ColumnAnnotationsAssignment_44_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0()); }
 		ruleColumnAnnotationAssignement
-		{ after(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0()); }
+		{ after(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0()); }
 	)
 ;
 finally {

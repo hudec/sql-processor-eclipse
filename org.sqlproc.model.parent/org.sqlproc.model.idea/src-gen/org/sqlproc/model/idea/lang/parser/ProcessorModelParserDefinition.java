@@ -365,7 +365,7 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojogenProperty_ActiveFilterValueTypeParserRuleCall_41_1_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getMetaSqlTypeAssignementElementType()) {

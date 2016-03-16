@@ -39,7 +39,7 @@ ImplementsAssignement: toImplement=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (
 ExtendsAssignement: toExtends=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 ImplementsAssignementGenerics: toImplement=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 ExtendsAssignementGenerics: toExtends=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
-ColumnAnnotationAssignement: dbColumn=IDENT WS+ annotations+=[AnnotationDefinitionModel|IDENT] (WS+ annotations+=[AnnotationDefinitionModel|IDENT])* 
+ColumnAnnotationAssignement: annotations+=[AnnotationDefinitionModel|IDENT] (WS+ annotations+=[AnnotationDefinitionModel|IDENT])* 
 	(WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?
 ;
 
@@ -135,7 +135,7 @@ PojogenProperty:
 	|name='active-filter' WS+ activeFilter=ValueType
 	|name='package' WS+ pckg=QualifiedName
 	|name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
-	|name='column-annotations' WS+ columnAnnotations=ColumnAnnotationAssignement
+	|name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=IDENT ('->' extension=IDENT)?;

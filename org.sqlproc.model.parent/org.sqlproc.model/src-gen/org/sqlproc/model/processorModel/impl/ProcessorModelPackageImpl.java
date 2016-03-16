@@ -1971,19 +1971,9 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getColumnAnnotationAssignement_DbColumn()
-  {
-    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EReference getColumnAnnotationAssignement_Annotations()
   {
-    return (EReference)columnAnnotationAssignementEClass.getEStructuralFeatures().get(1);
+    return (EReference)columnAnnotationAssignementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1993,7 +1983,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EAttribute getColumnAnnotationAssignement_DbTables()
   {
-    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -2003,7 +1993,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
    */
   public EAttribute getColumnAnnotationAssignement_DbNotTables()
   {
-    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -4988,7 +4978,6 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     createEAttribute(extendsAssignementGenericsEClass, EXTENDS_ASSIGNEMENT_GENERICS__DB_NOT_TABLES);
 
     columnAnnotationAssignementEClass = createEClass(COLUMN_ANNOTATION_ASSIGNEMENT);
-    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN);
     createEReference(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS);
     createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES);
     createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES);
@@ -5577,7 +5566,6 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     initEAttribute(getExtendsAssignementGenerics_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ExtendsAssignementGenerics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(columnAnnotationAssignementEClass, ColumnAnnotationAssignement.class, "ColumnAnnotationAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getColumnAnnotationAssignement_DbColumn(), ecorePackage.getEString(), "dbColumn", null, 0, 1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getColumnAnnotationAssignement_Annotations(), this.getAnnotationDefinitionModel(), null, "annotations", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnAnnotationAssignement_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getColumnAnnotationAssignement_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -1724,15 +1724,17 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getColumnAnnotationAssignement_DbColumnValidIDParserRuleCall_0_0ElementType());
-				}
-				lv_dbColumn_0_0=ruleValidID
-				{
-					doneComposite();
-					if(!$current) {
+					if (!$current) {
 						associateWithSemanticElement();
 						$current = true;
 					}
+				}
+				{
+					markComposite(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_0_0ElementType());
+				}
+				ruleValidID
+				{
+					doneComposite();
 				}
 			)
 		)
@@ -1752,38 +1754,21 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 					doneComposite();
 				}
 			)
-		)
-		(
-			(
-				{
-					if (!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-				{
-					markComposite(elementTypeProvider.getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0ElementType());
-				}
-				ruleValidID
-				{
-					doneComposite();
-				}
-			)
 		)*
 		(
 			{
-				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_PlusSignKeyword_3_0ElementType());
+				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_PlusSignKeyword_2_0ElementType());
 			}
-			otherlv_3='+'
+			otherlv_2='+'
 			{
-				doneLeaf(otherlv_3);
+				doneLeaf(otherlv_2);
 			}
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getColumnAnnotationAssignement_DbTablesValidIDParserRuleCall_3_1_0ElementType());
+						markComposite(elementTypeProvider.getColumnAnnotationAssignement_DbTablesValidIDParserRuleCall_2_1_0ElementType());
 					}
-					lv_dbTables_4_0=ruleValidID
+					lv_dbTables_3_0=ruleValidID
 					{
 						doneComposite();
 						if(!$current) {
@@ -1796,18 +1781,18 @@ ruleColumnAnnotationAssignement returns [Boolean current=false]
 		)?
 		(
 			{
-				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_HyphenMinusKeyword_4_0ElementType());
+				markLeaf(elementTypeProvider.getColumnAnnotationAssignement_HyphenMinusKeyword_3_0ElementType());
 			}
-			otherlv_5='-'
+			otherlv_4='-'
 			{
-				doneLeaf(otherlv_5);
+				doneLeaf(otherlv_4);
 			}
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getColumnAnnotationAssignement_DbNotTablesValidIDParserRuleCall_4_1_0ElementType());
+						markComposite(elementTypeProvider.getColumnAnnotationAssignement_DbNotTablesValidIDParserRuleCall_3_1_0ElementType());
 					}
-					lv_dbNotTables_6_0=ruleValidID
+					lv_dbNotTables_5_0=ruleValidID
 					{
 						doneComposite();
 						if(!$current) {
@@ -4970,9 +4955,24 @@ rulePojogenProperty returns [Boolean current=false]
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0ElementType());
+						markComposite(elementTypeProvider.getPojogenProperty_DbColumnValidIDParserRuleCall_44_1_0ElementType());
 					}
-					lv_columnAnnotations_112_0=ruleColumnAnnotationAssignement
+					lv_dbColumn_112_0=ruleValidID
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType());
+					}
+					lv_columnAnnotations_113_0=ruleColumnAnnotationAssignement
 					{
 						doneComposite();
 						if(!$current) {

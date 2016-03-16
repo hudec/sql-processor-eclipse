@@ -698,6 +698,11 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.enumForCheckConstraints.put(property.getDbCheckConstraints().get(i),
                         property.getEnumName());
             }
+        } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
+                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
+                    property.getColumnAnnotations().getDbNotTables());
+            modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
         }
     }
 

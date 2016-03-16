@@ -32,12 +32,11 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_Artifacts_WSTerminalRuleCall_2_6_1_a;
 	protected AbstractElementAlias match_Artifacts_WSTerminalRuleCall_2_7_1_a;
 	protected AbstractElementAlias match_Artifacts_WSTerminalRuleCall_2_8_1_a;
-	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_p;
+	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_0_p;
+	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_0_p;
+	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0_p;
 	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p;
-	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_p;
-	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_p;
-	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_p;
-	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_p;
+	protected AbstractElementAlias match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0_p;
 	protected AbstractElementAlias match_DaogenProperty_WSTerminalRuleCall_0_1_0_p;
 	protected AbstractElementAlias match_DaogenProperty_WSTerminalRuleCall_10_1_p;
 	protected AbstractElementAlias match_DaogenProperty_WSTerminalRuleCall_11_1_p;
@@ -190,6 +189,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_43_1_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_43_3_0_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_44_1_p;
+	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_44_3_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_4_1_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_4_3_0_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_5_1_p;
@@ -233,12 +233,11 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_Artifacts_WSTerminalRuleCall_2_6_1_a = new TokenAlias(true, true, grammarAccess.getArtifactsAccess().getWSTerminalRuleCall_2_6_1());
 		match_Artifacts_WSTerminalRuleCall_2_7_1_a = new TokenAlias(true, true, grammarAccess.getArtifactsAccess().getWSTerminalRuleCall_2_7_1());
 		match_Artifacts_WSTerminalRuleCall_2_8_1_a = new TokenAlias(true, true, grammarAccess.getArtifactsAccess().getWSTerminalRuleCall_2_8_1());
-		match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_1());
+		match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_1_0());
+		match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_2_0());
+		match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_2_2_0());
 		match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_0());
-		match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_0());
-		match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_2_0());
-		match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_0());
-		match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_2_0());
+		match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0_p = new TokenAlias(true, false, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_2_0());
 		match_DaogenProperty_WSTerminalRuleCall_0_1_0_p = new TokenAlias(true, false, grammarAccess.getDaogenPropertyAccess().getWSTerminalRuleCall_0_1_0());
 		match_DaogenProperty_WSTerminalRuleCall_10_1_p = new TokenAlias(true, false, grammarAccess.getDaogenPropertyAccess().getWSTerminalRuleCall_10_1());
 		match_DaogenProperty_WSTerminalRuleCall_11_1_p = new TokenAlias(true, false, grammarAccess.getDaogenPropertyAccess().getWSTerminalRuleCall_11_1());
@@ -391,6 +390,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_PojogenProperty_WSTerminalRuleCall_43_1_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_43_1());
 		match_PojogenProperty_WSTerminalRuleCall_43_3_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_43_3_0());
 		match_PojogenProperty_WSTerminalRuleCall_44_1_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_44_1());
+		match_PojogenProperty_WSTerminalRuleCall_44_3_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_44_3());
 		match_PojogenProperty_WSTerminalRuleCall_4_1_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_4_1());
 		match_PojogenProperty_WSTerminalRuleCall_4_3_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_4_3_0());
 		match_PojogenProperty_WSTerminalRuleCall_5_1_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_5_1());
@@ -652,18 +652,16 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_Artifacts_WSTerminalRuleCall_2_7_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Artifacts_WSTerminalRuleCall_2_8_1_a.equals(syntax))
 				emit_Artifacts_WSTerminalRuleCall_2_8_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_p.equals(syntax))
-				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_1_0_p.equals(syntax))
+				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_0_p.equals(syntax))
+				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0_p.equals(syntax))
+				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p.equals(syntax))
 				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_p.equals(syntax))
-				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_p.equals(syntax))
-				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_p.equals(syntax))
-				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_p.equals(syntax))
-				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_ColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0_p.equals(syntax))
+				emit_ColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_DaogenProperty_WSTerminalRuleCall_0_1_0_p.equals(syntax))
 				emit_DaogenProperty_WSTerminalRuleCall_0_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_DaogenProperty_WSTerminalRuleCall_10_1_p.equals(syntax))
@@ -968,6 +966,8 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_PojogenProperty_WSTerminalRuleCall_43_3_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_44_1_p.equals(syntax))
 				emit_PojogenProperty_WSTerminalRuleCall_44_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PojogenProperty_WSTerminalRuleCall_44_3_p.equals(syntax))
+				emit_PojogenProperty_WSTerminalRuleCall_44_3_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_4_1_p.equals(syntax))
 				emit_PojogenProperty_WSTerminalRuleCall_4_1_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_4_3_0_p.equals(syntax))
@@ -1245,20 +1245,9 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     WS+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     dbColumn=IDENT (ambiguity) annotations+=[AnnotationDefinitionModel|IDENT]
-	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_1_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     WS+
-	 *
-	 * This ambiguous syntax occurs at:
 	 *     annotations+=[AnnotationDefinitionModel|IDENT] (ambiguity) annotations+=[AnnotationDefinitionModel|IDENT]
 	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_1_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -1269,7 +1258,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 * This ambiguous syntax occurs at:
 	 *     annotations+=[AnnotationDefinitionModel|IDENT] (ambiguity) PLUS WS+ dbTables+=IDENT
 	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -1281,7 +1270,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     annotations+=[AnnotationDefinitionModel|IDENT] WS+ PLUS (ambiguity) dbTables+=IDENT
 	 *     dbTables+=IDENT (ambiguity) dbTables+=IDENT
 	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_2_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -1293,7 +1282,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     annotations+=[AnnotationDefinitionModel|IDENT] (ambiguity) MINUS WS+ dbNotTables+=IDENT
 	 *     dbTables+=IDENT (ambiguity) MINUS WS+ dbNotTables+=IDENT
 	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -1306,7 +1295,7 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     dbNotTables+=IDENT (ambiguity) dbNotTables+=IDENT
 	 *     dbTables+=IDENT WS+ MINUS (ambiguity) dbNotTables+=IDENT
 	 */
-	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_ColumnAnnotationAssignement_WSTerminalRuleCall_3_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -3062,9 +3051,20 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     WS+
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     name='column-annotations' (ambiguity) columnAnnotations=ColumnAnnotationAssignement
+	 *     name='column-annotations' (ambiguity) dbColumn=IDENT
 	 */
 	protected void emit_PojogenProperty_WSTerminalRuleCall_44_1_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     WS+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     dbColumn=IDENT (ambiguity) columnAnnotations=ColumnAnnotationAssignement
+	 */
+	protected void emit_PojogenProperty_WSTerminalRuleCall_44_3_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

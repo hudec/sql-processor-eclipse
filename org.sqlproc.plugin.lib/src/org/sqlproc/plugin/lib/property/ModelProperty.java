@@ -253,6 +253,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public String activeFilter;
         public String pckg;
         public Map<String, String> enumForCheckConstraints;
+        public Map<String, ColumnAnnotations> columnAnnotations;
 
         public PairValues metaGlobalSequence;
         public Map<String, PairValues> metaTablesSequence;
@@ -393,6 +394,7 @@ public abstract class ModelProperty extends AdapterImpl {
             enumForCheckConstraints = new HashMap<String, String>();
             defaultAttrs.put(POJOGEN, new HashSet<String>());
             conditionalAttrs.put(POJOGEN, new HashSet<String>());
+            columnAnnotations = new HashMap<String, ColumnAnnotations>();
         }
 
         public void initMetagenModel() {
@@ -803,6 +805,12 @@ public abstract class ModelProperty extends AdapterImpl {
     public Set<String> getPreserveForeignKeys(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.preserveForeignKeys : Collections.<String>emptySet();
+    }
+
+    public Map<String, ColumnAnnotations> getColumnAnnotations(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.columnAnnotations
+                : Collections.<String, ColumnAnnotations>emptyMap();
     }
 
     public PairValues getMetaGlobalIdentity(EObject model) {

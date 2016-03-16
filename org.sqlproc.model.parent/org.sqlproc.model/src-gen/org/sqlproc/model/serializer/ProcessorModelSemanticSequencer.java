@@ -945,13 +945,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     ColumnAnnotationAssignement returns ColumnAnnotationAssignement
 	 *
 	 * Constraint:
-	 *     (
-	 *         dbColumn=ValidID 
-	 *         annotations+=[AnnotationDefinitionModel|ValidID] 
-	 *         annotations+=[AnnotationDefinitionModel|ValidID]* 
-	 *         dbTables+=ValidID* 
-	 *         dbNotTables+=ValidID*
-	 *     )
+	 *     (annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* dbTables+=ValidID* dbNotTables+=ValidID*)
 	 */
 	protected void sequence_ColumnAnnotationAssignement(ISerializationContext context, ColumnAnnotationAssignement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -2261,7 +2255,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+) | 
-	 *         (name='column-annotations' columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

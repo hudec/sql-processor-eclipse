@@ -5,13 +5,10 @@ package org.sqlproc.meta.processorMeta.impl;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.Notification;
-
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.util.EDataTypeEList;
@@ -29,7 +26,6 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl#getDbTables <em>Db Tables</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl#getDbNotTables <em>Db Not Tables</em>}</li>
@@ -39,26 +35,6 @@ import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
  */
 public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Container implements ColumnAnnotationAssignement
 {
-  /**
-   * The default value of the '{@link #getDbColumn() <em>Db Column</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDbColumn()
-   * @generated
-   * @ordered
-   */
-  protected static final String DB_COLUMN_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getDbColumn() <em>Db Column</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getDbColumn()
-   * @generated
-   * @ordered
-   */
-  protected String dbColumn = DB_COLUMN_EDEFAULT;
-
   /**
    * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' reference list.
    * <!-- begin-user-doc -->
@@ -115,29 +91,6 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getDbColumn()
-  {
-    return dbColumn;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setDbColumn(String newDbColumn)
-  {
-    String oldDbColumn = dbColumn;
-    dbColumn = newDbColumn;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN, oldDbColumn, dbColumn));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EList<AnnotationDefinitionModel> getAnnotations()
   {
     if (annotations == null)
@@ -185,8 +138,6 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN:
-        return getDbColumn();
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS:
         return getAnnotations();
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES:
@@ -208,9 +159,6 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN:
-        setDbColumn((String)newValue);
-        return;
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS:
         getAnnotations().clear();
         getAnnotations().addAll((Collection<? extends AnnotationDefinitionModel>)newValue);
@@ -237,9 +185,6 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN:
-        setDbColumn(DB_COLUMN_EDEFAULT);
-        return;
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS:
         getAnnotations().clear();
         return;
@@ -263,8 +208,6 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
   {
     switch (featureID)
     {
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN:
-        return DB_COLUMN_EDEFAULT == null ? dbColumn != null : !DB_COLUMN_EDEFAULT.equals(dbColumn);
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS:
         return annotations != null && !annotations.isEmpty();
       case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES:
@@ -286,9 +229,7 @@ public class ColumnAnnotationAssignementImpl extends MinimalEObjectImpl.Containe
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (dbColumn: ");
-    result.append(dbColumn);
-    result.append(", dbTables: ");
+    result.append(" (dbTables: ");
     result.append(dbTables);
     result.append(", dbNotTables: ");
     result.append(dbNotTables);

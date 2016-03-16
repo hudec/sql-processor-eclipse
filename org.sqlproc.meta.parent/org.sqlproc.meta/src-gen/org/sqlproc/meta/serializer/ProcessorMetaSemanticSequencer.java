@@ -343,13 +343,7 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     ColumnAnnotationAssignement returns ColumnAnnotationAssignement
 	 *
 	 * Constraint:
-	 *     (
-	 *         dbColumn=IDENT 
-	 *         annotations+=[AnnotationDefinitionModel|IDENT] 
-	 *         annotations+=[AnnotationDefinitionModel|IDENT]* 
-	 *         dbTables+=IDENT* 
-	 *         dbNotTables+=IDENT*
-	 *     )
+	 *     (annotations+=[AnnotationDefinitionModel|IDENT] annotations+=[AnnotationDefinitionModel|IDENT]* dbTables+=IDENT* dbNotTables+=IDENT*)
 	 */
 	protected void sequence_ColumnAnnotationAssignement(ISerializationContext context, ColumnAnnotationAssignement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1192,7 +1186,7 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+) | 
-	 *         (name='column-annotations' columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

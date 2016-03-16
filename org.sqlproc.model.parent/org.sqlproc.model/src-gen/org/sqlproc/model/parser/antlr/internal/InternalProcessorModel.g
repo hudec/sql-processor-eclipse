@@ -2017,18 +2017,15 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnValidIDParserRuleCall_0_0());
-				}
-				lv_dbColumn_0_0=ruleValidID
-				{
 					if ($current==null) {
-						$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
 					}
-					set(
-						$current,
-						"dbColumn",
-						lv_dbColumn_0_0,
-						"org.eclipse.xtext.xbase.Xtype.ValidID");
+				}
+				{
+					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0());
+				}
+				ruleValidID
+				{
 					afterParserOrEnumRuleCall();
 				}
 			)
@@ -2048,34 +2045,18 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)
-		(
-			(
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
-					}
-				}
-				{
-					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0());
-				}
-				ruleValidID
-				{
-					afterParserOrEnumRuleCall();
-				}
-			)
 		)*
 		(
-			otherlv_3='+'
+			otherlv_2='+'
 			{
-				newLeafNode(otherlv_3, grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_3_0());
+				newLeafNode(otherlv_2, grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_2_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_2_1_0());
 					}
-					lv_dbTables_4_0=ruleValidID
+					lv_dbTables_3_0=ruleValidID
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
@@ -2083,7 +2064,7 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 						add(
 							$current,
 							"dbTables",
-							lv_dbTables_4_0,
+							lv_dbTables_3_0,
 							"org.eclipse.xtext.xbase.Xtype.ValidID");
 						afterParserOrEnumRuleCall();
 					}
@@ -2091,16 +2072,16 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 			)+
 		)?
 		(
-			otherlv_5='-'
+			otherlv_4='-'
 			{
-				newLeafNode(otherlv_5, grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_4_0());
+				newLeafNode(otherlv_4, grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_4_1_0());
+						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_3_1_0());
 					}
-					lv_dbNotTables_6_0=ruleValidID
+					lv_dbNotTables_5_0=ruleValidID
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
@@ -2108,7 +2089,7 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 						add(
 							$current,
 							"dbNotTables",
-							lv_dbNotTables_6_0,
+							lv_dbNotTables_5_0,
 							"org.eclipse.xtext.xbase.Xtype.ValidID");
 						afterParserOrEnumRuleCall();
 					}
@@ -5397,9 +5378,28 @@ rulePojogenProperty returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0());
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_44_1_0());
 					}
-					lv_columnAnnotations_112_0=ruleColumnAnnotationAssignement
+					lv_dbColumn_112_0=ruleValidID
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"dbColumn",
+							lv_dbColumn_112_0,
+							"org.eclipse.xtext.xbase.Xtype.ValidID");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0());
+					}
+					lv_columnAnnotations_113_0=ruleColumnAnnotationAssignement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
@@ -5407,7 +5407,7 @@ rulePojogenProperty returns [EObject current=null]
 						set(
 							$current,
 							"columnAnnotations",
-							lv_columnAnnotations_112_0,
+							lv_columnAnnotations_113_0,
 							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
 						afterParserOrEnumRuleCall();
 					}

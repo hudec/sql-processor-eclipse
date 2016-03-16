@@ -16,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbColumn <em>Db Column</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbTables <em>Db Tables</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbNotTables <em>Db Not Tables</em>}</li>
@@ -28,32 +27,6 @@ import org.eclipse.emf.ecore.EObject;
  */
 public interface ColumnAnnotationAssignement extends EObject
 {
-  /**
-   * Returns the value of the '<em><b>Db Column</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Db Column</em>' attribute isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Db Column</em>' attribute.
-   * @see #setDbColumn(String)
-   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getColumnAnnotationAssignement_DbColumn()
-   * @model
-   * @generated
-   */
-  String getDbColumn();
-
-  /**
-   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbColumn <em>Db Column</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Db Column</em>' attribute.
-   * @see #getDbColumn()
-   * @generated
-   */
-  void setDbColumn(String value);
-
   /**
    * Returns the value of the '<em><b>Annotations</b></em>' reference list.
    * The list contents are of type {@link org.sqlproc.meta.processorMeta.AnnotationDefinitionModel}.

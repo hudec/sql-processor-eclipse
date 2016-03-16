@@ -1070,39 +1070,40 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class ColumnAnnotationAssignementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Assignment cDbColumnAssignment_0 = (Assignment)cGroup.eContents().get(0);
-		private final RuleCall cDbColumnValidIDParserRuleCall_0_0 = (RuleCall)cDbColumnAssignment_0.eContents().get(0);
+		private final Assignment cAnnotationsAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final CrossReference cAnnotationsAnnotationDefinitionModelCrossReference_0_0 = (CrossReference)cAnnotationsAssignment_0.eContents().get(0);
+		private final RuleCall cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_0_0_1 = (RuleCall)cAnnotationsAnnotationDefinitionModelCrossReference_0_0.eContents().get(1);
 		private final Assignment cAnnotationsAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cAnnotationsAnnotationDefinitionModelCrossReference_1_0 = (CrossReference)cAnnotationsAssignment_1.eContents().get(0);
 		private final RuleCall cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_1_0_1 = (RuleCall)cAnnotationsAnnotationDefinitionModelCrossReference_1_0.eContents().get(1);
-		private final Assignment cAnnotationsAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final CrossReference cAnnotationsAnnotationDefinitionModelCrossReference_2_0 = (CrossReference)cAnnotationsAssignment_2.eContents().get(0);
-		private final RuleCall cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_2_0_1 = (RuleCall)cAnnotationsAnnotationDefinitionModelCrossReference_2_0.eContents().get(1);
+		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
+		private final Keyword cPlusSignKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cDbTablesAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cDbTablesValidIDParserRuleCall_2_1_0 = (RuleCall)cDbTablesAssignment_2_1.eContents().get(0);
 		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cPlusSignKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cDbTablesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cDbTablesValidIDParserRuleCall_3_1_0 = (RuleCall)cDbTablesAssignment_3_1.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cHyphenMinusKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Assignment cDbNotTablesAssignment_4_1 = (Assignment)cGroup_4.eContents().get(1);
-		private final RuleCall cDbNotTablesValidIDParserRuleCall_4_1_0 = (RuleCall)cDbNotTablesAssignment_4_1.eContents().get(0);
+		private final Keyword cHyphenMinusKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
+		private final Assignment cDbNotTablesAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
+		private final RuleCall cDbNotTablesValidIDParserRuleCall_3_1_0 = (RuleCall)cDbNotTablesAssignment_3_1.eContents().get(0);
 		
 		//ColumnAnnotationAssignement:
-		//	dbColumn=ValidID annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]*
-		//	('+' dbTables+=ValidID+)? ('-' dbNotTables+=ValidID+)?;
+		//	annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* ('+'
+		//	dbTables+=ValidID+)? ('-' dbNotTables+=ValidID+)?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//dbColumn=ValidID annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* ('+'
+		//annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* ('+'
 		//dbTables+=ValidID+)? ('-' dbNotTables+=ValidID+)?
 		public Group getGroup() { return cGroup; }
 		
-		//dbColumn=ValidID
-		public Assignment getDbColumnAssignment_0() { return cDbColumnAssignment_0; }
+		//annotations+=[AnnotationDefinitionModel|ValidID]
+		public Assignment getAnnotationsAssignment_0() { return cAnnotationsAssignment_0; }
+		
+		//[AnnotationDefinitionModel|ValidID]
+		public CrossReference getAnnotationsAnnotationDefinitionModelCrossReference_0_0() { return cAnnotationsAnnotationDefinitionModelCrossReference_0_0; }
 		
 		//ValidID
-		public RuleCall getDbColumnValidIDParserRuleCall_0_0() { return cDbColumnValidIDParserRuleCall_0_0; }
+		public RuleCall getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_0_0_1() { return cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_0_0_1; }
 		
-		//annotations+=[AnnotationDefinitionModel|ValidID]
+		//annotations+=[AnnotationDefinitionModel|ValidID]*
 		public Assignment getAnnotationsAssignment_1() { return cAnnotationsAssignment_1; }
 		
 		//[AnnotationDefinitionModel|ValidID]
@@ -1111,38 +1112,29 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_1_0_1() { return cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_1_0_1; }
 		
-		//annotations+=[AnnotationDefinitionModel|ValidID]*
-		public Assignment getAnnotationsAssignment_2() { return cAnnotationsAssignment_2; }
-		
-		//[AnnotationDefinitionModel|ValidID]
-		public CrossReference getAnnotationsAnnotationDefinitionModelCrossReference_2_0() { return cAnnotationsAnnotationDefinitionModelCrossReference_2_0; }
-		
-		//ValidID
-		public RuleCall getAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_2_0_1() { return cAnnotationsAnnotationDefinitionModelValidIDParserRuleCall_2_0_1; }
-		
 		//('+' dbTables+=ValidID+)?
-		public Group getGroup_3() { return cGroup_3; }
+		public Group getGroup_2() { return cGroup_2; }
 		
 		//'+'
-		public Keyword getPlusSignKeyword_3_0() { return cPlusSignKeyword_3_0; }
+		public Keyword getPlusSignKeyword_2_0() { return cPlusSignKeyword_2_0; }
 		
 		//dbTables+=ValidID+
-		public Assignment getDbTablesAssignment_3_1() { return cDbTablesAssignment_3_1; }
+		public Assignment getDbTablesAssignment_2_1() { return cDbTablesAssignment_2_1; }
 		
 		//ValidID
-		public RuleCall getDbTablesValidIDParserRuleCall_3_1_0() { return cDbTablesValidIDParserRuleCall_3_1_0; }
+		public RuleCall getDbTablesValidIDParserRuleCall_2_1_0() { return cDbTablesValidIDParserRuleCall_2_1_0; }
 		
 		//('-' dbNotTables+=ValidID+)?
-		public Group getGroup_4() { return cGroup_4; }
+		public Group getGroup_3() { return cGroup_3; }
 		
 		//'-'
-		public Keyword getHyphenMinusKeyword_4_0() { return cHyphenMinusKeyword_4_0; }
+		public Keyword getHyphenMinusKeyword_3_0() { return cHyphenMinusKeyword_3_0; }
 		
 		//dbNotTables+=ValidID+
-		public Assignment getDbNotTablesAssignment_4_1() { return cDbNotTablesAssignment_4_1; }
+		public Assignment getDbNotTablesAssignment_3_1() { return cDbNotTablesAssignment_3_1; }
 		
 		//ValidID
-		public RuleCall getDbNotTablesValidIDParserRuleCall_4_1_0() { return cDbNotTablesValidIDParserRuleCall_4_1_0; }
+		public RuleCall getDbNotTablesValidIDParserRuleCall_3_1_0() { return cDbNotTablesValidIDParserRuleCall_3_1_0; }
 	}
 	public class PropertyConditionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.PropertyCondition");
@@ -2165,8 +2157,10 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Group cGroup_44 = (Group)cAlternatives.eContents().get(44);
 		private final Assignment cNameAssignment_44_0 = (Assignment)cGroup_44.eContents().get(0);
 		private final Keyword cNameColumnAnnotationsKeyword_44_0_0 = (Keyword)cNameAssignment_44_0.eContents().get(0);
-		private final Assignment cColumnAnnotationsAssignment_44_1 = (Assignment)cGroup_44.eContents().get(1);
-		private final RuleCall cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0 = (RuleCall)cColumnAnnotationsAssignment_44_1.eContents().get(0);
+		private final Assignment cDbColumnAssignment_44_1 = (Assignment)cGroup_44.eContents().get(1);
+		private final RuleCall cDbColumnValidIDParserRuleCall_44_1_0 = (RuleCall)cDbColumnAssignment_44_1.eContents().get(0);
+		private final Assignment cColumnAnnotationsAssignment_44_2 = (Assignment)cGroup_44.eContents().get(2);
+		private final RuleCall cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0 = (RuleCall)cColumnAnnotationsAssignment_44_2.eContents().get(0);
 		
 		//PojogenProperty:
 		//	name='types-sqltypes' sqlTypes+=SqlTypeAssignement+
@@ -2213,7 +2207,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//	| name='active-filter' activeFilter=ValueType
 		//	| name='package' pckg=QualifiedName
 		//	| name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+
-		//	| name='column-annotations' columnAnnotations=ColumnAnnotationAssignement;
+		//	| name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name='types-sqltypes' sqlTypes+=SqlTypeAssignement+ | name='types-in-table' dbTable=ValidID
@@ -2245,7 +2239,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//name='pojos-for-procedures' procPojos+=ProcedurePojoAssignement+ | name='pojos-for-functions'
 		//funPojos+=FunctionPojoAssignement+ | name='active-filter' activeFilter=ValueType | name='package' pckg=QualifiedName |
 		//name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+ | name='column-annotations'
-		//columnAnnotations=ColumnAnnotationAssignement
+		//dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//name='types-sqltypes' sqlTypes+=SqlTypeAssignement+
@@ -3037,7 +3031,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//ValidID
 		public RuleCall getDbCheckConstraintsValidIDParserRuleCall_43_2_0() { return cDbCheckConstraintsValidIDParserRuleCall_43_2_0; }
 		
-		//name='column-annotations' columnAnnotations=ColumnAnnotationAssignement
+		//name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement
 		public Group getGroup_44() { return cGroup_44; }
 		
 		//name='column-annotations'
@@ -3046,11 +3040,17 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		//'column-annotations'
 		public Keyword getNameColumnAnnotationsKeyword_44_0_0() { return cNameColumnAnnotationsKeyword_44_0_0; }
 		
+		//dbColumn=ValidID
+		public Assignment getDbColumnAssignment_44_1() { return cDbColumnAssignment_44_1; }
+		
+		//ValidID
+		public RuleCall getDbColumnValidIDParserRuleCall_44_1_0() { return cDbColumnValidIDParserRuleCall_44_1_0; }
+		
 		//columnAnnotations=ColumnAnnotationAssignement
-		public Assignment getColumnAnnotationsAssignment_44_1() { return cColumnAnnotationsAssignment_44_1; }
+		public Assignment getColumnAnnotationsAssignment_44_2() { return cColumnAnnotationsAssignment_44_2; }
 		
 		//ColumnAnnotationAssignement
-		public RuleCall getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0() { return cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0; }
+		public RuleCall getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0() { return cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0; }
 	}
 	public class MetaSqlTypeAssignementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.MetaSqlTypeAssignement");
@@ -7134,8 +7134,8 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ColumnAnnotationAssignement:
-	//	dbColumn=ValidID annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]*
-	//	('+' dbTables+=ValidID+)? ('-' dbNotTables+=ValidID+)?;
+	//	annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* ('+'
+	//	dbTables+=ValidID+)? ('-' dbNotTables+=ValidID+)?;
 	public ColumnAnnotationAssignementElements getColumnAnnotationAssignementAccess() {
 		return pColumnAnnotationAssignement;
 	}
@@ -7254,7 +7254,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	//	| name='active-filter' activeFilter=ValueType
 	//	| name='package' pckg=QualifiedName
 	//	| name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+
-	//	| name='column-annotations' columnAnnotations=ColumnAnnotationAssignement;
+	//	| name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement;
 	public PojogenPropertyElements getPojogenPropertyAccess() {
 		return pPojogenProperty;
 	}

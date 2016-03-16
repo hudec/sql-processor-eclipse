@@ -126,7 +126,6 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ExtendsAssignementGenerics/dbNotTables"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//ColumnAnnotationAssignement">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbColumn"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//ColumnAnnotationAssignement/annotations"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbTables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbNotTables"/>

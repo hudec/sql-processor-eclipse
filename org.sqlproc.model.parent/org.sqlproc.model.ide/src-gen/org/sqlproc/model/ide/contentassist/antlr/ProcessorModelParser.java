@@ -140,8 +140,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getGroup_1(), "rule__ExtendsAssignementGenerics__Group_1__0");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getGroup_2(), "rule__ExtendsAssignementGenerics__Group_2__0");
 					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup(), "rule__ColumnAnnotationAssignement__Group__0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_2(), "rule__ColumnAnnotationAssignement__Group_2__0");
 					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_3(), "rule__ColumnAnnotationAssignement__Group_3__0");
-					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_4(), "rule__ColumnAnnotationAssignement__Group_4__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup(), "rule__PropertyCondition__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup_1_2(), "rule__Property__Group_1_2__0");
@@ -618,11 +618,10 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getToExtendsAssignment_0(), "rule__ExtendsAssignementGenerics__ToExtendsAssignment_0");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getDbTablesAssignment_1_1(), "rule__ExtendsAssignementGenerics__DbTablesAssignment_1_1");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getDbNotTablesAssignment_2_1(), "rule__ExtendsAssignementGenerics__DbNotTablesAssignment_2_1");
-					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnAssignment_0(), "rule__ColumnAnnotationAssignement__DbColumnAssignment_0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_0(), "rule__ColumnAnnotationAssignement__AnnotationsAssignment_0");
 					put(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_1(), "rule__ColumnAnnotationAssignement__AnnotationsAssignment_1");
-					put(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_2(), "rule__ColumnAnnotationAssignement__AnnotationsAssignment_2");
-					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1(), "rule__ColumnAnnotationAssignement__DbTablesAssignment_3_1");
-					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1(), "rule__ColumnAnnotationAssignement__DbNotTablesAssignment_4_1");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_2_1(), "rule__ColumnAnnotationAssignement__DbTablesAssignment_2_1");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_3_1(), "rule__ColumnAnnotationAssignement__DbNotTablesAssignment_3_1");
 					put(grammarAccess.getPropertyConditionAccess().getNameAssignment_1(), "rule__PropertyCondition__NameAssignment_1");
 					put(grammarAccess.getPropertyConditionAccess().getValueAssignment_3(), "rule__PropertyCondition__ValueAssignment_3");
 					put(grammarAccess.getPropertyAccess().getConditionAssignment_0(), "rule__Property__ConditionAssignment_0");
@@ -800,7 +799,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getEnumNameAssignment_43_1(), "rule__PojogenProperty__EnumNameAssignment_43_1");
 					put(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsAssignment_43_2(), "rule__PojogenProperty__DbCheckConstraintsAssignment_43_2");
 					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44_0(), "rule__PojogenProperty__NameAssignment_44_0");
-					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_1(), "rule__PojogenProperty__ColumnAnnotationsAssignment_44_1");
+					put(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_44_1(), "rule__PojogenProperty__DbColumnAssignment_44_1");
+					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_2(), "rule__PojogenProperty__ColumnAnnotationsAssignment_44_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__MetaSqlTypeAssignement__SqlTypeAssignment_0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__MetaSqlTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getExtensionAssignment_3_1(), "rule__MetaSqlTypeAssignement__ExtensionAssignment_3_1");

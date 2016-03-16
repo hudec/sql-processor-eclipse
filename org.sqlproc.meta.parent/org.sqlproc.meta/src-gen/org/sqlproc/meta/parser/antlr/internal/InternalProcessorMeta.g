@@ -2164,46 +2164,22 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 	(
 		(
 			(
-				lv_dbColumn_0_0=RULE_IDENT
-				{
-					newLeafNode(lv_dbColumn_0_0, grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnIDENTTerminalRuleCall_0_0());
-				}
-				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
-					}
-					setWithLastConsumed(
-						$current,
-						"dbColumn",
-						lv_dbColumn_0_0,
-						"org.sqlproc.meta.ProcessorMeta.IDENT");
-				}
-			)
-		)
-		(
-			this_WS_1=RULE_WS
-			{
-				newLeafNode(this_WS_1, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_1());
-			}
-		)+
-		(
-			(
 				{
 					if ($current==null) {
 						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
 					}
 				}
-				otherlv_2=RULE_IDENT
+				otherlv_0=RULE_IDENT
 				{
-					newLeafNode(otherlv_2, grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0());
+					newLeafNode(otherlv_0, grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0());
 				}
 			)
 		)
 		(
 			(
-				this_WS_3=RULE_WS
+				this_WS_1=RULE_WS
 				{
-					newLeafNode(this_WS_3, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_0());
+					newLeafNode(this_WS_1, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_1_0());
 				}
 			)+
 			(
@@ -2213,36 +2189,36 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 							$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
 						}
 					}
-					otherlv_4=RULE_IDENT
+					otherlv_2=RULE_IDENT
 					{
-						newLeafNode(otherlv_4, grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_3_1_0());
+						newLeafNode(otherlv_2, grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_1_1_0());
 					}
 				)
 			)
 		)*
 		(
 			(
-				this_WS_5=RULE_WS
+				this_WS_3=RULE_WS
 				{
-					newLeafNode(this_WS_5, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_0());
+					newLeafNode(this_WS_3, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_2_0());
 				}
 			)+
-			this_PLUS_6=RULE_PLUS
+			this_PLUS_4=RULE_PLUS
 			{
-				newLeafNode(this_PLUS_6, grammarAccess.getColumnAnnotationAssignementAccess().getPLUSTerminalRuleCall_4_1());
+				newLeafNode(this_PLUS_4, grammarAccess.getColumnAnnotationAssignementAccess().getPLUSTerminalRuleCall_2_1());
 			}
 			(
 				(
-					this_WS_7=RULE_WS
+					this_WS_5=RULE_WS
 					{
-						newLeafNode(this_WS_7, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_2_0());
+						newLeafNode(this_WS_5, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_2_2_0());
 					}
 				)+
 				(
 					(
-						lv_dbTables_8_0=RULE_IDENT
+						lv_dbTables_6_0=RULE_IDENT
 						{
-							newLeafNode(lv_dbTables_8_0, grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesIDENTTerminalRuleCall_4_2_1_0());
+							newLeafNode(lv_dbTables_6_0, grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesIDENTTerminalRuleCall_2_2_1_0());
 						}
 						{
 							if ($current==null) {
@@ -2251,7 +2227,7 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 							addWithLastConsumed(
 								$current,
 								"dbTables",
-								lv_dbTables_8_0,
+								lv_dbTables_6_0,
 								"org.sqlproc.meta.ProcessorMeta.IDENT");
 						}
 					)
@@ -2260,27 +2236,27 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 		)?
 		(
 			(
-				this_WS_9=RULE_WS
+				this_WS_7=RULE_WS
 				{
-					newLeafNode(this_WS_9, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_0());
+					newLeafNode(this_WS_7, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_0());
 				}
 			)+
-			this_MINUS_10=RULE_MINUS
+			this_MINUS_8=RULE_MINUS
 			{
-				newLeafNode(this_MINUS_10, grammarAccess.getColumnAnnotationAssignementAccess().getMINUSTerminalRuleCall_5_1());
+				newLeafNode(this_MINUS_8, grammarAccess.getColumnAnnotationAssignementAccess().getMINUSTerminalRuleCall_3_1());
 			}
 			(
 				(
-					this_WS_11=RULE_WS
+					this_WS_9=RULE_WS
 					{
-						newLeafNode(this_WS_11, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_2_0());
+						newLeafNode(this_WS_9, grammarAccess.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_2_0());
 					}
 				)+
 				(
 					(
-						lv_dbNotTables_12_0=RULE_IDENT
+						lv_dbNotTables_10_0=RULE_IDENT
 						{
-							newLeafNode(lv_dbNotTables_12_0, grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesIDENTTerminalRuleCall_5_2_1_0());
+							newLeafNode(lv_dbNotTables_10_0, grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesIDENTTerminalRuleCall_3_2_1_0());
 						}
 						{
 							if ($current==null) {
@@ -2289,7 +2265,7 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 							addWithLastConsumed(
 								$current,
 								"dbNotTables",
-								lv_dbNotTables_12_0,
+								lv_dbNotTables_10_0,
 								"org.sqlproc.meta.ProcessorMeta.IDENT");
 						}
 					)
@@ -6198,10 +6174,34 @@ rulePojogenProperty returns [EObject current=null]
 			)+
 			(
 				(
+					lv_dbColumn_180_0=RULE_IDENT
 					{
-						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0());
+						newLeafNode(lv_dbColumn_180_0, grammarAccess.getPojogenPropertyAccess().getDbColumnIDENTTerminalRuleCall_44_2_0());
 					}
-					lv_columnAnnotations_180_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"dbColumn",
+							lv_dbColumn_180_0,
+							"org.sqlproc.meta.ProcessorMeta.IDENT");
+					}
+				)
+			)
+			(
+				this_WS_181=RULE_WS
+				{
+					newLeafNode(this_WS_181, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_44_3());
+				}
+			)+
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0());
+					}
+					lv_columnAnnotations_182_0=ruleColumnAnnotationAssignement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
@@ -6209,7 +6209,7 @@ rulePojogenProperty returns [EObject current=null]
 						set(
 							$current,
 							"columnAnnotations",
-							lv_columnAnnotations_180_0,
+							lv_columnAnnotations_182_0,
 							"org.sqlproc.meta.ProcessorMeta.ColumnAnnotationAssignement");
 						afterParserOrEnumRuleCall();
 					}
