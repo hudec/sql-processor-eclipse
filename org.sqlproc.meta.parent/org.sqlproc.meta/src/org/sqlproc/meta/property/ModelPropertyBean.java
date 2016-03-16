@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.parser.IParseResult;
 import org.eclipse.xtext.resource.XtextResource;
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.DaogenProperty;
 import org.sqlproc.meta.processorMeta.DatabaseProperty;
@@ -147,6 +148,7 @@ public class ModelPropertyBean extends ModelProperty {
 
         // workaround for incorrect PojoDefinition loading
         Map<String, PojoDefinition> oldPojos = modelValues != null ? modelValues.modelPojos : null;
+        Map<String, PojoDefinition> oldAnnotations = modelValues != null ? modelValues.modelAnnotations : null;
 
         if (modelValues == null)
             modelValues = new ModelValues();
@@ -213,6 +215,14 @@ public class ModelPropertyBean extends ModelProperty {
                 }
                 modelValues.modelPojos.put(pojo.getName(),
                         new PojoDefinitionImpl(pojo, oldPojos != null ? oldPojos.get(pojo.getName()) : null));
+            }
+            for (AnnotationDefinitionModel pojo : artifacts.getAnnotations()) {
+                if (firstModel) {
+                    firstModel = false;
+                    modelValues.initModelModel();
+                }
+                modelValues.modelAnnotations.put(pojo.getName(), new PojoDefinitionImpl(pojo,
+                        oldAnnotations != null ? oldAnnotations.get(pojo.getName()) : null));
             }
             for (TableDefinitionModel table : artifacts.getTables()) {
                 if (firstModel) {

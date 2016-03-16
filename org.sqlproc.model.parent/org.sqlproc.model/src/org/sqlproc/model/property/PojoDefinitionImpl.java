@@ -1,8 +1,8 @@
-package org.sqlproc.meta.property;
+package org.sqlproc.model.property;
 
 import org.eclipse.xtext.common.types.JvmType;
-import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
-import org.sqlproc.meta.processorMeta.PojoDefinitionModel;
+import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
+import org.sqlproc.model.processorModel.PojoDefinitionModel;
 import org.sqlproc.plugin.lib.property.PojoDefinition;
 
 public class PojoDefinitionImpl implements PojoDefinition {
@@ -18,7 +18,8 @@ public class PojoDefinitionImpl implements PojoDefinition {
             System.out.println("meta.name " + name);
             clazz = model.getClass_();
             System.out.println("meta.clazz " + clazz);
-            classx = model.getClassx();
+            if (model.getClassx() != null)
+                clazz = model.getClassx();
             System.out.println("meta.classx " + classx);
             if (classx != null && oldModel != null && (oldModel instanceof PojoDefinitionImpl)
                     && ((PojoDefinitionImpl) oldModel).classx != null) {
