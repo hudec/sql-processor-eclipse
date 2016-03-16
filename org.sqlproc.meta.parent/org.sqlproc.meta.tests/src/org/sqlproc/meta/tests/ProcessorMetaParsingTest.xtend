@@ -21,10 +21,9 @@ class ProcessorMetaParsingTest{
 
 	@Test 
 	def void loadModel() {
-		val result = parseHelper.parse('''
-			Hello Xtext!
-		''')
-		Assert.assertNotNull(result)
+		val artifacts = parseHelper.parse('''
+			resolve-pojo-on;
+			database-is-online;		''')
+		Assert.assertEquals(2, artifacts.properties.size)
 	}
-
 }
