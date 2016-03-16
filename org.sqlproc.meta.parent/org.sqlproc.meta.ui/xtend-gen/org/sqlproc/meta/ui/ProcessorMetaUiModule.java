@@ -12,9 +12,11 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
 import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.sqlproc.meta.ui.AbstractProcessorMetaUiModule;
@@ -26,6 +28,8 @@ import org.sqlproc.meta.ui.outline.FixedOutlineFilterAndSorter;
 import org.sqlproc.meta.ui.resolver.WorkspacePojoResolverImpl;
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider;
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory;
+import org.sqlproc.meta.ui.syntaxcoloring.HighlightingConfiguration;
+import org.sqlproc.meta.ui.syntaxcoloring.SemanticHighlightingCalculator;
 import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType;
 import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider;
 import org.sqlproc.plugin.lib.resolver.PojoResolver;
@@ -44,6 +48,14 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
   
   public Class<? extends PojoResolver> bindPojoResolver() {
     return WorkspacePojoResolverImpl.class;
+  }
+  
+  public Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
+    return HighlightingConfiguration.class;
+  }
+  
+  public Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+    return SemanticHighlightingCalculator.class;
   }
   
   public Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
@@ -98,7 +110,7 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
     return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorMetaUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public ProcessorMetaUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

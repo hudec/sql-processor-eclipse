@@ -4,7 +4,6 @@
 package org.sqlproc.meta.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
-import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
@@ -12,7 +11,6 @@ import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
 import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
 import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.eclipse.xtext.ui.resource.IResourceSetProvider;
 import org.sqlproc.meta.ui.outline.FilterMappingRulesContribution;
@@ -30,6 +28,9 @@ import com.google.inject.Binder;
 import com.google.inject.name.Names;
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider
+import org.sqlproc.meta.ui.syntaxcoloring.HighlightingConfiguration
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
+import org.sqlproc.meta.ui.syntaxcoloring.SemanticHighlightingCalculator
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -45,17 +46,17 @@ class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
         return typeof(WorkspacePojoResolverImpl);
     }
 
-//    def Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
-//        return typeof(HighlightingConfiguration);
-//    }
-//
+    def Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
+        return typeof(HighlightingConfiguration);
+    }
+
 //    def Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
 //        return typeof(TokenToIdMapper);
 //    }
 //
-//    def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-//        return typeof(SemanticHighlightingCalculator);
-//    }
+    def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
+        return typeof(SemanticHighlightingCalculator);
+    }
 
     def Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
         return typeof(FixedOutlineFilterAndSorter);
