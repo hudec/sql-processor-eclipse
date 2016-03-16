@@ -34,11 +34,6 @@ import com.google.inject.Inject;
 
 public class SemanticHighlightingCalculator implements ISemanticHighlightingCalculator {
 
-    public static final String CARET = "^";
-    public static final String STRING = "$";
-    public static final String LPAREN = "(";
-    public static final String RPAREN = ")";
-
     @Inject
     PojoResolver pojoResolver;
 
