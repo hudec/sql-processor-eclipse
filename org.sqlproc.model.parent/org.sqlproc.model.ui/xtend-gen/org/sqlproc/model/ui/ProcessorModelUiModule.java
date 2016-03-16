@@ -7,9 +7,13 @@ import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
 import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator;
 import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
 import org.sqlproc.model.ui.AbstractProcessorModelUiModule;
+import org.sqlproc.model.ui.highlighting.HighlightingConfiguration;
+import org.sqlproc.model.ui.highlighting.SemanticHighlightingCalculator;
 import org.sqlproc.model.ui.resolver.WorkspacePojoResolverImpl;
 import org.sqlproc.model.ui.scoping.ProcessorModelJdtBasedSimpleTypeScopeProvider;
 import org.sqlproc.model.ui.scoping.ProcessorModelJdtTypeProviderFactory;
@@ -34,6 +38,16 @@ public class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
   }
   
   @Override
+  public Class<? extends ISemanticHighlightingCalculator> bindIdeSemanticHighlightingCalculator() {
+    return SemanticHighlightingCalculator.class;
+  }
+  
+  @Override
+  public Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+    return HighlightingConfiguration.class;
+  }
+  
+  @Override
   public Class<? extends XtextTemplateContextType> bindXtextTemplateContextType() {
     return ProcessorModelTemplateContextType.class;
   }
@@ -53,7 +67,7 @@ public class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
     return ProcessorModelJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorModelUiModule(final AbstractUIPlugin arg0) {
-    super(arg0);
+  public ProcessorModelUiModule(final AbstractUIPlugin plugin) {
+    super(plugin);
   }
 }

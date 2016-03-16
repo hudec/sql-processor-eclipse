@@ -24,42 +24,42 @@ import org.sqlproc.model.scoping.ProcessorModelClasspathBasedTypeScopeProvider
 class ProcessorModelRuntimeModule extends AbstractProcessorModelRuntimeModule {
 
     override Class<? extends org.eclipse.xtext.generator.IGenerator> bindIGenerator() {
-        return typeof(ProcessorModelGenerator);
+        return typeof(ProcessorModelGenerator)
     }
 
     def Class<? extends ModelProperty> bindModelProperty() {
-        return typeof(ModelPropertyBean);
+        return typeof(ModelPropertyBean)
     }
 
     def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-        return typeof(PojoResolverFactoryBean);
+        return typeof(PojoResolverFactoryBean)
     }
 
     def Class<? extends DbResolver> bindDbResolver() {
-        return typeof(DbResolverBean);
+        return typeof(DbResolverBean)
     }
 
     override Class<? extends IResourceFactory> bindIResourceFactory() {
-        return typeof(ProcessorResourceFactory);
+        return typeof(ProcessorResourceFactory)
     }
 
     override Class<? extends org.eclipse.xtext.xbase.scoping.batch.XbaseBatchScopeProvider> bindXbaseBatchScopeProvider() {
-        return typeof(org.sqlproc.model.scoping.ProcessorModelScopeProvider);
+        return typeof(org.sqlproc.model.scoping.ProcessorModelScopeProvider)
     }
 
     override Class<? extends org.eclipse.xtext.resource.IDefaultResourceDescriptionStrategy> bindIDefaultResourceDescriptionStrategy() {
-        return typeof(ProcesorModelResourceDescriptionStrategy);
+        return typeof(ProcesorModelResourceDescriptionStrategy)
     }
 
     def Class<? extends ErrorSafeExtensions> bindErrorSafeExtensions() {
-        return typeof(ProcessorModelErrorSafeExtensions);
+        return typeof(ProcessorModelErrorSafeExtensions)
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(ProcessorModelClasspathTypeProviderFactory);
+        return typeof(ProcessorModelClasspathTypeProviderFactory)
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
-        return typeof(ProcessorModelClasspathBasedTypeScopeProvider);
+        return typeof(ProcessorModelClasspathBasedTypeScopeProvider)
     }
 }

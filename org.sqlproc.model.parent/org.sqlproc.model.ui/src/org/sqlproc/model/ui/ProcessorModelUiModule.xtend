@@ -15,6 +15,11 @@ import org.eclipse.xtext.common.types.access.IJvmTypeProvider
 import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
 import org.sqlproc.model.ui.scoping.ProcessorModelJdtTypeProviderFactory
 import org.sqlproc.model.ui.scoping.ProcessorModelJdtBasedSimpleTypeScopeProvider
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
+import org.sqlproc.model.ui.highlighting.HighlightingConfiguration
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
+import org.sqlproc.model.ui.highlighting.SemanticHighlightingCalculator
+import org.eclipse.xtext.ide.editor.syntaxcoloring.ISemanticHighlightingCalculator
 
 /**
  * Use this class to register components to be used within the Eclipse IDE.
@@ -23,30 +28,34 @@ import org.sqlproc.model.ui.scoping.ProcessorModelJdtBasedSimpleTypeScopeProvide
 class ProcessorModelUiModule extends AbstractProcessorModelUiModule {
 
     def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-        return typeof(PojoResolverFactoryBean);
+        return typeof(PojoResolverFactoryBean)
     }
 
     def Class<? extends PojoResolver> bindPojoResolver() {
-        return typeof(WorkspacePojoResolverImpl);
+        return typeof(WorkspacePojoResolverImpl)
     }
+    
+	override Class<? extends ISemanticHighlightingCalculator> bindIdeSemanticHighlightingCalculator() {
+		return typeof(SemanticHighlightingCalculator)
+	}
 
-//    def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-//        return typeof(SemanticHighlightingCalculator);
-//    }
+	override Class<? extends IHighlightingConfiguration> bindIHighlightingConfiguration() {
+		return typeof(HighlightingConfiguration)
+	}
 
     override Class<? extends org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType> bindXtextTemplateContextType() {
-        return typeof(ProcessorModelTemplateContextType);
+        return typeof(ProcessorModelTemplateContextType)
     }
 
     override Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
-        return typeof(ProcessorTemplateProposalProvider);
+        return typeof(ProcessorTemplateProposalProvider)
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(ProcessorModelJdtTypeProviderFactory);
+        return typeof(ProcessorModelJdtTypeProviderFactory)
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
-        return typeof(ProcessorModelJdtBasedSimpleTypeScopeProvider);
+        return typeof(ProcessorModelJdtBasedSimpleTypeScopeProvider)
     }
 }

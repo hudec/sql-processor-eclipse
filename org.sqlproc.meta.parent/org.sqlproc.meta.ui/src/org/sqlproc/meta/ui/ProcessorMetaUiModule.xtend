@@ -4,28 +4,28 @@
 package org.sqlproc.meta.ui
 
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor
-import org.eclipse.xtext.common.types.access.IJvmTypeProvider;
-import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider;
-import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider;
-import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution;
-import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper;
-import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration;
-import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
-import org.eclipse.xtext.ui.resource.IResourceSetProvider;
-import org.sqlproc.meta.ui.outline.FilterMappingRulesContribution;
-import org.sqlproc.meta.ui.outline.FilterMetaStatementsContribution;
-import org.sqlproc.meta.ui.outline.FilterOptionalFeaturesContribution;
-import org.sqlproc.meta.ui.outline.FixedOutlineFilterAndSorter;
-import org.sqlproc.meta.ui.resolver.WorkspacePojoResolverImpl;
-import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType;
-import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider;
-import org.sqlproc.plugin.lib.resolver.PojoResolver;
-import org.sqlproc.plugin.lib.resolver.PojoResolverFactory;
-import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean;
+import org.eclipse.xtext.common.types.access.IJvmTypeProvider
+import org.eclipse.xtext.common.types.xtext.AbstractTypeScopeProvider
+import org.eclipse.xtext.ui.editor.contentassist.ITemplateProposalProvider
+import org.eclipse.xtext.ui.editor.outline.actions.IOutlineContribution
+import org.eclipse.xtext.ui.editor.outline.impl.OutlineFilterAndSorter
+import org.eclipse.xtext.ui.editor.syntaxcoloring.DefaultAntlrTokenToAttributeIdMapper
+import org.eclipse.xtext.ui.editor.syntaxcoloring.IHighlightingConfiguration
+import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType
+import org.eclipse.xtext.ui.resource.IResourceSetProvider
+import org.sqlproc.meta.ui.outline.FilterMappingRulesContribution
+import org.sqlproc.meta.ui.outline.FilterMetaStatementsContribution
+import org.sqlproc.meta.ui.outline.FilterOptionalFeaturesContribution
+import org.sqlproc.meta.ui.outline.FixedOutlineFilterAndSorter
+import org.sqlproc.meta.ui.resolver.WorkspacePojoResolverImpl
+import org.sqlproc.meta.ui.templates.ProcessorMetaTemplateContextType
+import org.sqlproc.meta.ui.templates.ProcessorTemplateProposalProvider
+import org.sqlproc.plugin.lib.resolver.PojoResolver
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactory
+import org.sqlproc.plugin.lib.resolver.PojoResolverFactoryBean
 
-import com.google.inject.Binder;
-import com.google.inject.name.Names;
+import com.google.inject.Binder
+import com.google.inject.name.Names
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtTypeProviderFactory
 import org.sqlproc.meta.ui.scoping.ProcessorMetaJdtBasedSimpleTypeScopeProvider
 import org.sqlproc.meta.ui.syntaxcoloring.HighlightingConfiguration
@@ -40,62 +40,62 @@ import org.sqlproc.meta.ui.syntaxcoloring.TokenToIdMapper
 class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
 	
     def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-        return typeof(PojoResolverFactoryBean);
+        return typeof(PojoResolverFactoryBean)
     }
 
     def Class<? extends PojoResolver> bindPojoResolver() {
-        return typeof(WorkspacePojoResolverImpl);
+        return typeof(WorkspacePojoResolverImpl)
     }
 
     def Class<? extends IHighlightingConfiguration> bindISemanticHighlightingConfiguration() {
-        return typeof(HighlightingConfiguration);
+        return typeof(HighlightingConfiguration)
     }
 
     def Class<? extends DefaultAntlrTokenToAttributeIdMapper> bindDefaultAntlrTokenToAttributeIdMapper() {
-        return typeof(TokenToIdMapper);
+        return typeof(TokenToIdMapper)
     }
 
     def Class<? extends ISemanticHighlightingCalculator> bindISemanticHighlightingCalculator() {
-        return typeof(SemanticHighlightingCalculator);
+        return typeof(SemanticHighlightingCalculator)
     }
 
     def Class<? extends OutlineFilterAndSorter> bindOutlineFilterAndSorter() {
-        return typeof(FixedOutlineFilterAndSorter);
+        return typeof(FixedOutlineFilterAndSorter)
     }
 
     def void configureFilterOptionalFeaturesOutlineContribution(Binder binder) {
         binder.bind(typeof(IOutlineContribution)).annotatedWith(Names.named("FilterOptionalFeaturesContribution"))
-                .to(typeof(FilterOptionalFeaturesContribution));
+                .to(typeof(FilterOptionalFeaturesContribution))
     }
 
     def void configureFilterMetaStatementsOutlineContribution(Binder binder) {
         binder.bind(typeof(IOutlineContribution)).annotatedWith(Names.named("FilterMetaStatementsContribution"))
-                .to(typeof(FilterMetaStatementsContribution));
+                .to(typeof(FilterMetaStatementsContribution))
     }
 
     def void configureFilterMappingRulesOutlineContribution(Binder binder) {
         binder.bind(typeof(IOutlineContribution)).annotatedWith(Names.named("FilterMappingRulesContribution"))
-                .to(typeof(FilterMappingRulesContribution));
+                .to(typeof(FilterMappingRulesContribution))
     }
 
     override void configure(Binder binder) {
-        super.configure(binder);
-        binder.bind(typeof(XtextTemplateContextType)).to(typeof(ProcessorMetaTemplateContextType));
+        super.configure(binder)
+        binder.bind(typeof(XtextTemplateContextType)).to(typeof(ProcessorMetaTemplateContextType))
     }
 
     override Class<? extends ITemplateProposalProvider> bindITemplateProposalProvider() {
-        return typeof(ProcessorTemplateProposalProvider);
+        return typeof(ProcessorTemplateProposalProvider)
     }
 
     override Class<? extends IResourceSetProvider> bindIResourceSetProvider() {
-        return typeof(ProcessorMetaResourceSetProvider);
+        return typeof(ProcessorMetaResourceSetProvider)
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(ProcessorMetaJdtTypeProviderFactory);
+        return typeof(ProcessorMetaJdtTypeProviderFactory)
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
-        return typeof(ProcessorMetaJdtBasedSimpleTypeScopeProvider);
+        return typeof(ProcessorMetaJdtBasedSimpleTypeScopeProvider)
     }
 }

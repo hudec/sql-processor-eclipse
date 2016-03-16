@@ -22,30 +22,30 @@ import org.sqlproc.meta.scoping.ProcessorMetaClasspathBasedTypeScopeProvider
 class ProcessorMetaRuntimeModule extends AbstractProcessorMetaRuntimeModule {
 	
 	def Class<? extends ModelProperty> bindModelProperty() {
-        return typeof(ModelPropertyBean);
+        return typeof(ModelPropertyBean)
     }
     
     override Class<? extends org.eclipse.xtext.naming.IQualifiedNameProvider> bindIQualifiedNameProvider() {
-        return typeof(ProcessorNameProvider);
+        return typeof(ProcessorNameProvider)
     }
 
     def Class<? extends PojoResolverFactory> bindPojoResolverFactory() {
-        return typeof(PojoResolverFactoryBean);
+        return typeof(PojoResolverFactoryBean)
     }
 
     def Class<? extends DbResolver> bindDbResolver() {
-        return typeof(DbResolverBean);
+        return typeof(DbResolverBean)
     }
 
     override Class<? extends IResourceFactory> bindIResourceFactory() {
-        return typeof(ProcessorResourceFactory);
+        return typeof(ProcessorResourceFactory)
     }
 
     override Class<? extends IJvmTypeProvider.Factory> bindIJvmTypeProvider$Factory() {
-        return typeof(ProcessorMetaClasspathTypeProviderFactory);
+        return typeof(ProcessorMetaClasspathTypeProviderFactory)
     }
 
     override Class<? extends AbstractTypeScopeProvider> bindAbstractTypeScopeProvider() {
-        return typeof(ProcessorMetaClasspathBasedTypeScopeProvider);
+        return typeof(ProcessorMetaClasspathBasedTypeScopeProvider)
     }
 }
