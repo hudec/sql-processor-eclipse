@@ -86,13 +86,22 @@ public interface ProcessorMetaPackage extends EPackage
   int ARTIFACTS__POJOS = 1;
 
   /**
+   * The feature id for the '<em><b>Annotations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ARTIFACTS__ANNOTATIONS = 2;
+
+  /**
    * The feature id for the '<em><b>Tables</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ARTIFACTS__TABLES = 2;
+  int ARTIFACTS__TABLES = 3;
 
   /**
    * The feature id for the '<em><b>Procedures</b></em>' containment reference list.
@@ -101,7 +110,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS__PROCEDURES = 3;
+  int ARTIFACTS__PROCEDURES = 4;
 
   /**
    * The feature id for the '<em><b>Functions</b></em>' containment reference list.
@@ -110,7 +119,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS__FUNCTIONS = 4;
+  int ARTIFACTS__FUNCTIONS = 5;
 
   /**
    * The feature id for the '<em><b>Statements</b></em>' containment reference list.
@@ -119,7 +128,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS__STATEMENTS = 5;
+  int ARTIFACTS__STATEMENTS = 6;
 
   /**
    * The feature id for the '<em><b>Mappings</b></em>' containment reference list.
@@ -128,7 +137,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS__MAPPINGS = 6;
+  int ARTIFACTS__MAPPINGS = 7;
 
   /**
    * The feature id for the '<em><b>Features</b></em>' containment reference list.
@@ -137,7 +146,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS__FEATURES = 7;
+  int ARTIFACTS__FEATURES = 8;
 
   /**
    * The number of structural features of the '<em>Artifacts</em>' class.
@@ -146,7 +155,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ARTIFACTS_FEATURE_COUNT = 8;
+  int ARTIFACTS_FEATURE_COUNT = 9;
 
   /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.ValueTypeImpl <em>Value Type</em>}' class.
@@ -1146,6 +1155,61 @@ public interface ProcessorMetaPackage extends EPackage
   int EXTENDS_ASSIGNEMENT_GENERICS_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl <em>Column Annotation Assignement</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl
+   * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getColumnAnnotationAssignement()
+   * @generated
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT = 26;
+
+  /**
+   * The feature id for the '<em><b>Db Column</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN = 0;
+
+  /**
+   * The feature id for the '<em><b>Annotations</b></em>' reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS = 1;
+
+  /**
+   * The feature id for the '<em><b>Db Tables</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES = 2;
+
+  /**
+   * The feature id for the '<em><b>Db Not Tables</b></em>' attribute list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = 3;
+
+  /**
+   * The number of structural features of the '<em>Column Annotation Assignement</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int COLUMN_ANNOTATION_ASSIGNEMENT_FEATURE_COUNT = 4;
+
+  /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl <em>Property Condition</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1153,7 +1217,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getPropertyCondition()
    * @generated
    */
-  int PROPERTY_CONDITION = 26;
+  int PROPERTY_CONDITION = 27;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1190,7 +1254,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getProperty()
    * @generated
    */
-  int PROPERTY = 27;
+  int PROPERTY = 28;
 
   /**
    * The feature id for the '<em><b>Condition</b></em>' containment reference.
@@ -1317,7 +1381,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getDatabaseProperty()
    * @generated
    */
-  int DATABASE_PROPERTY = 28;
+  int DATABASE_PROPERTY = 29;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1471,7 +1535,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getPojogenProperty()
    * @generated
    */
-  int POJOGEN_PROPERTY = 29;
+  int POJOGEN_PROPERTY = 30;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1762,13 +1826,22 @@ public interface ProcessorMetaPackage extends EPackage
   int POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS = 31;
 
   /**
+   * The feature id for the '<em><b>Column Annotations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int POJOGEN_PROPERTY__COLUMN_ANNOTATIONS = 32;
+
+  /**
    * The number of structural features of the '<em>Pojogen Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int POJOGEN_PROPERTY_FEATURE_COUNT = 32;
+  int POJOGEN_PROPERTY_FEATURE_COUNT = 33;
 
   /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.MetaSqlTypeAssignementImpl <em>Meta Sql Type Assignement</em>}' class.
@@ -1778,7 +1851,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMetaSqlTypeAssignement()
    * @generated
    */
-  int META_SQL_TYPE_ASSIGNEMENT = 30;
+  int META_SQL_TYPE_ASSIGNEMENT = 31;
 
   /**
    * The feature id for the '<em><b>Sql Type</b></em>' containment reference.
@@ -1824,7 +1897,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMetaTypeAssignement()
    * @generated
    */
-  int META_TYPE_ASSIGNEMENT = 31;
+  int META_TYPE_ASSIGNEMENT = 32;
 
   /**
    * The feature id for the '<em><b>Db Column</b></em>' attribute.
@@ -1870,7 +1943,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMetagenProperty()
    * @generated
    */
-  int METAGEN_PROPERTY = 32;
+  int METAGEN_PROPERTY = 33;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2033,7 +2106,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getDaogenProperty()
    * @generated
    */
-  int DAOGEN_PROPERTY = 33;
+  int DAOGEN_PROPERTY = 34;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2160,7 +2233,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getPojoDefinitionModel()
    * @generated
    */
-  int POJO_DEFINITION_MODEL = 34;
+  int POJO_DEFINITION_MODEL = 35;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2199,6 +2272,52 @@ public interface ProcessorMetaPackage extends EPackage
   int POJO_DEFINITION_MODEL_FEATURE_COUNT = 3;
 
   /**
+   * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.AnnotationDefinitionModelImpl <em>Annotation Definition Model</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.sqlproc.meta.processorMeta.impl.AnnotationDefinitionModelImpl
+   * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getAnnotationDefinitionModel()
+   * @generated
+   */
+  int ANNOTATION_DEFINITION_MODEL = 36;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_DEFINITION_MODEL__NAME = 0;
+
+  /**
+   * The feature id for the '<em><b>Class</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_DEFINITION_MODEL__CLASS = 1;
+
+  /**
+   * The feature id for the '<em><b>Classx</b></em>' reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_DEFINITION_MODEL__CLASSX = 2;
+
+  /**
+   * The number of structural features of the '<em>Annotation Definition Model</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ANNOTATION_DEFINITION_MODEL_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.TableDefinitionModelImpl <em>Table Definition Model</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2206,7 +2325,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getTableDefinitionModel()
    * @generated
    */
-  int TABLE_DEFINITION_MODEL = 35;
+  int TABLE_DEFINITION_MODEL = 37;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2243,7 +2362,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getProcedureDefinitionModel()
    * @generated
    */
-  int PROCEDURE_DEFINITION_MODEL = 36;
+  int PROCEDURE_DEFINITION_MODEL = 38;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2280,7 +2399,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getFunctionDefinitionModel()
    * @generated
    */
-  int FUNCTION_DEFINITION_MODEL = 37;
+  int FUNCTION_DEFINITION_MODEL = 39;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2317,7 +2436,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMetaStatement()
    * @generated
    */
-  int META_STATEMENT = 38;
+  int META_STATEMENT = 40;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2372,7 +2491,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getSql()
    * @generated
    */
-  int SQL = 39;
+  int SQL = 41;
 
   /**
    * The feature id for the '<em><b>Sqls</b></em>' containment reference list.
@@ -2400,7 +2519,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getSqlFragment()
    * @generated
    */
-  int SQL_FRAGMENT = 40;
+  int SQL_FRAGMENT = 42;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2500,7 +2619,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMetaSql()
    * @generated
    */
-  int META_SQL = 41;
+  int META_SQL = 43;
 
   /**
    * The feature id for the '<em><b>Ifs</b></em>' containment reference list.
@@ -2564,7 +2683,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIfSql()
    * @generated
    */
-  int IF_SQL = 42;
+  int IF_SQL = 44;
 
   /**
    * The feature id for the '<em><b>Sqls</b></em>' containment reference list.
@@ -2592,7 +2711,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIfSqlFragment()
    * @generated
    */
-  int IF_SQL_FRAGMENT = 43;
+  int IF_SQL_FRAGMENT = 45;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2692,7 +2811,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIfMetaSql()
    * @generated
    */
-  int IF_META_SQL = 44;
+  int IF_META_SQL = 46;
 
   /**
    * The feature id for the '<em><b>Ifs</b></em>' containment reference list.
@@ -2738,7 +2857,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIfSqlCond()
    * @generated
    */
-  int IF_SQL_COND = 45;
+  int IF_SQL_COND = 47;
 
   /**
    * The feature id for the '<em><b>Bool1</b></em>' containment reference.
@@ -2784,7 +2903,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIfSqlBool()
    * @generated
    */
-  int IF_SQL_BOOL = 46;
+  int IF_SQL_BOOL = 48;
 
   /**
    * The feature id for the '<em><b>Not</b></em>' attribute.
@@ -2839,7 +2958,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getOrdSql()
    * @generated
    */
-  int ORD_SQL = 47;
+  int ORD_SQL = 49;
 
   /**
    * The feature id for the '<em><b>Ident</b></em>' attribute.
@@ -2876,7 +2995,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getOrdSql2()
    * @generated
    */
-  int ORD_SQL2 = 48;
+  int ORD_SQL2 = 50;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -2931,7 +3050,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getColumn()
    * @generated
    */
-  int COLUMN = 49;
+  int COLUMN = 51;
 
   /**
    * The feature id for the '<em><b>Columns</b></em>' containment reference list.
@@ -2959,7 +3078,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getExtendedColumn()
    * @generated
    */
-  int EXTENDED_COLUMN = 50;
+  int EXTENDED_COLUMN = 52;
 
   /**
    * The feature id for the '<em><b>Col</b></em>' containment reference.
@@ -2996,7 +3115,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getExtendedColumnName()
    * @generated
    */
-  int EXTENDED_COLUMN_NAME = 51;
+  int EXTENDED_COLUMN_NAME = 53;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3024,7 +3143,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getConstant()
    * @generated
    */
-  int CONSTANT = 52;
+  int CONSTANT = 54;
 
   /**
    * The feature id for the '<em><b>Case</b></em>' attribute.
@@ -3070,7 +3189,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIdentifier()
    * @generated
    */
-  int IDENTIFIER = 53;
+  int IDENTIFIER = 55;
 
   /**
    * The feature id for the '<em><b>Mode</b></em>' attribute.
@@ -3125,7 +3244,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getConstantOperator()
    * @generated
    */
-  int CONSTANT_OPERATOR = 54;
+  int CONSTANT_OPERATOR = 56;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3153,7 +3272,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getIdentifierOperator()
    * @generated
    */
-  int IDENTIFIER_OPERATOR = 55;
+  int IDENTIFIER_OPERATOR = 57;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3181,7 +3300,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getDatabaseColumn()
    * @generated
    */
-  int DATABASE_COLUMN = 56;
+  int DATABASE_COLUMN = 58;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3209,7 +3328,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getDatabaseTable()
    * @generated
    */
-  int DATABASE_TABLE = 57;
+  int DATABASE_TABLE = 59;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3237,7 +3356,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMappingRule()
    * @generated
    */
-  int MAPPING_RULE = 58;
+  int MAPPING_RULE = 60;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3292,7 +3411,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMapping()
    * @generated
    */
-  int MAPPING = 59;
+  int MAPPING = 61;
 
   /**
    * The feature id for the '<em><b>Mapping Items</b></em>' containment reference list.
@@ -3320,7 +3439,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMappingItem()
    * @generated
    */
-  int MAPPING_ITEM = 60;
+  int MAPPING_ITEM = 62;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3357,7 +3476,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMappingColumn()
    * @generated
    */
-  int MAPPING_COLUMN = 61;
+  int MAPPING_COLUMN = 63;
 
   /**
    * The feature id for the '<em><b>Items</b></em>' containment reference list.
@@ -3385,7 +3504,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getExtendedMappingItem()
    * @generated
    */
-  int EXTENDED_MAPPING_ITEM = 62;
+  int EXTENDED_MAPPING_ITEM = 64;
 
   /**
    * The feature id for the '<em><b>Attr</b></em>' containment reference.
@@ -3422,7 +3541,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getMappingColumnName()
    * @generated
    */
-  int MAPPING_COLUMN_NAME = 63;
+  int MAPPING_COLUMN_NAME = 65;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3450,7 +3569,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getOptionalFeature()
    * @generated
    */
-  int OPTIONAL_FEATURE = 64;
+  int OPTIONAL_FEATURE = 66;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3529,6 +3648,17 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    */
   EReference getArtifacts_Pojos();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link org.sqlproc.meta.processorMeta.Artifacts#getAnnotations <em>Annotations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Annotations</em>'.
+   * @see org.sqlproc.meta.processorMeta.Artifacts#getAnnotations()
+   * @see #getArtifacts()
+   * @generated
+   */
+  EReference getArtifacts_Annotations();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.sqlproc.meta.processorMeta.Artifacts#getTables <em>Tables</em>}'.
@@ -4485,6 +4615,60 @@ public interface ProcessorMetaPackage extends EPackage
   EAttribute getExtendsAssignementGenerics_DbNotTables();
 
   /**
+   * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement <em>Column Annotation Assignement</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Column Annotation Assignement</em>'.
+   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement
+   * @generated
+   */
+  EClass getColumnAnnotationAssignement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbColumn <em>Db Column</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Db Column</em>'.
+   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbColumn()
+   * @see #getColumnAnnotationAssignement()
+   * @generated
+   */
+  EAttribute getColumnAnnotationAssignement_DbColumn();
+
+  /**
+   * Returns the meta object for the reference list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getAnnotations <em>Annotations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference list '<em>Annotations</em>'.
+   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getAnnotations()
+   * @see #getColumnAnnotationAssignement()
+   * @generated
+   */
+  EReference getColumnAnnotationAssignement_Annotations();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbTables <em>Db Tables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Db Tables</em>'.
+   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbTables()
+   * @see #getColumnAnnotationAssignement()
+   * @generated
+   */
+  EAttribute getColumnAnnotationAssignement_DbTables();
+
+  /**
+   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbNotTables <em>Db Not Tables</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute list '<em>Db Not Tables</em>'.
+   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbNotTables()
+   * @see #getColumnAnnotationAssignement()
+   * @generated
+   */
+  EAttribute getColumnAnnotationAssignement_DbNotTables();
+
+  /**
    * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.PropertyCondition <em>Property Condition</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5196,6 +5380,17 @@ public interface ProcessorMetaPackage extends EPackage
   EAttribute getPojogenProperty_DbCheckConstraints();
 
   /**
+   * Returns the meta object for the containment reference '{@link org.sqlproc.meta.processorMeta.PojogenProperty#getColumnAnnotations <em>Column Annotations</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Column Annotations</em>'.
+   * @see org.sqlproc.meta.processorMeta.PojogenProperty#getColumnAnnotations()
+   * @see #getPojogenProperty()
+   * @generated
+   */
+  EReference getPojogenProperty_ColumnAnnotations();
+
+  /**
    * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.MetaSqlTypeAssignement <em>Meta Sql Type Assignement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -5651,6 +5846,49 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    */
   EReference getPojoDefinitionModel_Classx();
+
+  /**
+   * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.AnnotationDefinitionModel <em>Annotation Definition Model</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Annotation Definition Model</em>'.
+   * @see org.sqlproc.meta.processorMeta.AnnotationDefinitionModel
+   * @generated
+   */
+  EClass getAnnotationDefinitionModel();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getName()
+   * @see #getAnnotationDefinitionModel()
+   * @generated
+   */
+  EAttribute getAnnotationDefinitionModel_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getClass_ <em>Class</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Class</em>'.
+   * @see org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getClass_()
+   * @see #getAnnotationDefinitionModel()
+   * @generated
+   */
+  EAttribute getAnnotationDefinitionModel_Class();
+
+  /**
+   * Returns the meta object for the reference '{@link org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getClassx <em>Classx</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the reference '<em>Classx</em>'.
+   * @see org.sqlproc.meta.processorMeta.AnnotationDefinitionModel#getClassx()
+   * @see #getAnnotationDefinitionModel()
+   * @generated
+   */
+  EReference getAnnotationDefinitionModel_Classx();
 
   /**
    * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.TableDefinitionModel <em>Table Definition Model</em>}'.
@@ -6893,6 +7131,14 @@ public interface ProcessorMetaPackage extends EPackage
     EReference ARTIFACTS__POJOS = eINSTANCE.getArtifacts_Pojos();
 
     /**
+     * The meta object literal for the '<em><b>Annotations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ARTIFACTS__ANNOTATIONS = eINSTANCE.getArtifacts_Annotations();
+
+    /**
      * The meta object literal for the '<em><b>Tables</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -7655,6 +7901,48 @@ public interface ProcessorMetaPackage extends EPackage
     EAttribute EXTENDS_ASSIGNEMENT_GENERICS__DB_NOT_TABLES = eINSTANCE.getExtendsAssignementGenerics_DbNotTables();
 
     /**
+     * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl <em>Column Annotation Assignement</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl
+     * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getColumnAnnotationAssignement()
+     * @generated
+     */
+    EClass COLUMN_ANNOTATION_ASSIGNEMENT = eINSTANCE.getColumnAnnotationAssignement();
+
+    /**
+     * The meta object literal for the '<em><b>Db Column</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN = eINSTANCE.getColumnAnnotationAssignement_DbColumn();
+
+    /**
+     * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS = eINSTANCE.getColumnAnnotationAssignement_Annotations();
+
+    /**
+     * The meta object literal for the '<em><b>Db Tables</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES = eINSTANCE.getColumnAnnotationAssignement_DbTables();
+
+    /**
+     * The meta object literal for the '<em><b>Db Not Tables</b></em>' attribute list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = eINSTANCE.getColumnAnnotationAssignement_DbNotTables();
+
+    /**
      * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl <em>Property Condition</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8183,6 +8471,14 @@ public interface ProcessorMetaPackage extends EPackage
     EAttribute POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS = eINSTANCE.getPojogenProperty_DbCheckConstraints();
 
     /**
+     * The meta object literal for the '<em><b>Column Annotations</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference POJOGEN_PROPERTY__COLUMN_ANNOTATIONS = eINSTANCE.getPojogenProperty_ColumnAnnotations();
+
+    /**
      * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.MetaSqlTypeAssignementImpl <em>Meta Sql Type Assignement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -8527,6 +8823,40 @@ public interface ProcessorMetaPackage extends EPackage
      * @generated
      */
     EReference POJO_DEFINITION_MODEL__CLASSX = eINSTANCE.getPojoDefinitionModel_Classx();
+
+    /**
+     * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.AnnotationDefinitionModelImpl <em>Annotation Definition Model</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.sqlproc.meta.processorMeta.impl.AnnotationDefinitionModelImpl
+     * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getAnnotationDefinitionModel()
+     * @generated
+     */
+    EClass ANNOTATION_DEFINITION_MODEL = eINSTANCE.getAnnotationDefinitionModel();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ANNOTATION_DEFINITION_MODEL__NAME = eINSTANCE.getAnnotationDefinitionModel_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Class</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ANNOTATION_DEFINITION_MODEL__CLASS = eINSTANCE.getAnnotationDefinitionModel_Class();
+
+    /**
+     * The meta object literal for the '<em><b>Classx</b></em>' reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ANNOTATION_DEFINITION_MODEL__CLASSX = eINSTANCE.getAnnotationDefinitionModel_Classx();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.TableDefinitionModelImpl <em>Table Definition Model</em>}' class.

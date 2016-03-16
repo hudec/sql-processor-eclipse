@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
 import org.sqlproc.model.processorModel.AnnotationDirectiveConflict;
@@ -20,6 +21,7 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
+import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirective;
@@ -374,6 +376,13 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ProcessorModelPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
+      {
+        ColumnAnnotationAssignement columnAnnotationAssignement = (ColumnAnnotationAssignement)theEObject;
+        T result = caseColumnAnnotationAssignement(columnAnnotationAssignement);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ProcessorModelPackage.PROPERTY_CONDITION:
       {
         PropertyCondition propertyCondition = (PropertyCondition)theEObject;
@@ -434,6 +443,13 @@ public class ProcessorModelSwitch<T> extends Switch<T>
       {
         PojoDefinitionModel pojoDefinitionModel = (PojoDefinitionModel)theEObject;
         T result = casePojoDefinitionModel(pojoDefinitionModel);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProcessorModelPackage.ANNOTATION_DEFINITION_MODEL:
+      {
+        AnnotationDefinitionModel annotationDefinitionModel = (AnnotationDefinitionModel)theEObject;
+        T result = caseAnnotationDefinitionModel(annotationDefinitionModel);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1467,6 +1483,22 @@ public class ProcessorModelSwitch<T> extends Switch<T>
   }
 
   /**
+   * Returns the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+  {
+    return null;
+  }
+
+  /**
    * Returns the result of interpreting the object as an instance of '<em>Property Condition</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
@@ -1606,6 +1638,22 @@ public class ProcessorModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePojoDefinitionModel(PojoDefinitionModel object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Annotation Definition Model</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Annotation Definition Model</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnnotationDefinitionModel(AnnotationDefinitionModel object)
   {
     return null;
   }

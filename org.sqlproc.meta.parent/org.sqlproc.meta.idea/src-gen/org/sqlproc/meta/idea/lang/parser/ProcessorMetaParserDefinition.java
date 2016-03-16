@@ -44,22 +44,25 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 			if (elementType == elementTypeProvider.getArtifacts_PojosPojoDefinitionModelParserRuleCall_2_1_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_StatementsMetaStatementParserRuleCall_2_5_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_MappingsMappingRuleParserRuleCall_2_6_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_StatementsMetaStatementParserRuleCall_2_6_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getArtifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getArtifacts_MappingsMappingRuleParserRuleCall_2_7_0_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getArtifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getValueTypeElementType()) {
@@ -183,6 +186,9 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getExtendsAssignementGenerics_ToExtendsPojoTypeParserRuleCall_0_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getColumnAnnotationAssignementElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPropertyConditionElementType()) {
@@ -362,6 +368,9 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 			if (elementType == elementTypeProvider.getPojogenProperty_ActiveFilterValueTypeParserRuleCall_41_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
 			if (elementType == elementTypeProvider.getMetaSqlTypeAssignementElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
@@ -417,6 +426,9 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPojoDefinitionModelElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getAnnotationDefinitionModelElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getTableDefinitionModelElementType()) {

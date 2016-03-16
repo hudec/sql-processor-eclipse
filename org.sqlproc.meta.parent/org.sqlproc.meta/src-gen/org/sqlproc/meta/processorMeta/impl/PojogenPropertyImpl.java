@@ -20,6 +20,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.DebugLevelAssignement;
@@ -81,6 +82,7 @@ import org.sqlproc.meta.processorMeta.ValueType;
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getPckg <em>Pckg</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getEnumName <em>Enum Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getDbCheckConstraints <em>Db Check Constraints</em>}</li>
+ *   <li>{@link org.sqlproc.meta.processorMeta.impl.PojogenPropertyImpl#getColumnAnnotations <em>Column Annotations</em>}</li>
  * </ul>
  *
  * @generated
@@ -496,6 +498,16 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * @ordered
    */
   protected EList<String> dbCheckConstraints;
+
+  /**
+   * The cached value of the '{@link #getColumnAnnotations() <em>Column Annotations</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getColumnAnnotations()
+   * @generated
+   * @ordered
+   */
+  protected ColumnAnnotationAssignement columnAnnotations;
 
   /**
    * <!-- begin-user-doc -->
@@ -1290,6 +1302,54 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
+  public ColumnAnnotationAssignement getColumnAnnotations()
+  {
+    return columnAnnotations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetColumnAnnotations(ColumnAnnotationAssignement newColumnAnnotations, NotificationChain msgs)
+  {
+    ColumnAnnotationAssignement oldColumnAnnotations = columnAnnotations;
+    columnAnnotations = newColumnAnnotations;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS, oldColumnAnnotations, newColumnAnnotations);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setColumnAnnotations(ColumnAnnotationAssignement newColumnAnnotations)
+  {
+    if (newColumnAnnotations != columnAnnotations)
+    {
+      NotificationChain msgs = null;
+      if (columnAnnotations != null)
+        msgs = ((InternalEObject)columnAnnotations).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS, null, msgs);
+      if (newColumnAnnotations != null)
+        msgs = ((InternalEObject)newColumnAnnotations).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS, null, msgs);
+      msgs = basicSetColumnAnnotations(newColumnAnnotations, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS, newColumnAnnotations, newColumnAnnotations));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
@@ -1331,6 +1391,8 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         return ((InternalEList<?>)getFunPojos()).basicRemove(otherEnd, msgs);
       case ProcessorMetaPackage.POJOGEN_PROPERTY__ACTIVE_FILTER:
         return basicSetActiveFilter(null, msgs);
+      case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
+        return basicSetColumnAnnotations(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -1409,6 +1471,8 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         return getEnumName();
       case ProcessorMetaPackage.POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS:
         return getDbCheckConstraints();
+      case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
+        return getColumnAnnotations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -1536,6 +1600,9 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         getDbCheckConstraints().clear();
         getDbCheckConstraints().addAll((Collection<? extends String>)newValue);
         return;
+      case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
+        setColumnAnnotations((ColumnAnnotationAssignement)newValue);
+        return;
     }
     super.eSet(featureID, newValue);
   }
@@ -1646,6 +1713,9 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
       case ProcessorMetaPackage.POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS:
         getDbCheckConstraints().clear();
         return;
+      case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
+        setColumnAnnotations((ColumnAnnotationAssignement)null);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -1724,6 +1794,8 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         return ENUM_NAME_EDEFAULT == null ? enumName != null : !ENUM_NAME_EDEFAULT.equals(enumName);
       case ProcessorMetaPackage.POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS:
         return dbCheckConstraints != null && !dbCheckConstraints.isEmpty();
+      case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
+        return columnAnnotations != null;
     }
     return super.eIsSet(featureID);
   }

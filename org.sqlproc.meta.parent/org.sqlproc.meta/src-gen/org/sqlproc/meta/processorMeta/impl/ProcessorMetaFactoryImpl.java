@@ -91,6 +91,7 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
       case ProcessorMetaPackage.EXTENDS_ASSIGNEMENT: return createExtendsAssignement();
       case ProcessorMetaPackage.IMPLEMENTS_ASSIGNEMENT_GENERICS: return createImplementsAssignementGenerics();
       case ProcessorMetaPackage.EXTENDS_ASSIGNEMENT_GENERICS: return createExtendsAssignementGenerics();
+      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT: return createColumnAnnotationAssignement();
       case ProcessorMetaPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case ProcessorMetaPackage.PROPERTY: return createProperty();
       case ProcessorMetaPackage.DATABASE_PROPERTY: return createDatabaseProperty();
@@ -100,6 +101,7 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
       case ProcessorMetaPackage.METAGEN_PROPERTY: return createMetagenProperty();
       case ProcessorMetaPackage.DAOGEN_PROPERTY: return createDaogenProperty();
       case ProcessorMetaPackage.POJO_DEFINITION_MODEL: return createPojoDefinitionModel();
+      case ProcessorMetaPackage.ANNOTATION_DEFINITION_MODEL: return createAnnotationDefinitionModel();
       case ProcessorMetaPackage.TABLE_DEFINITION_MODEL: return createTableDefinitionModel();
       case ProcessorMetaPackage.PROCEDURE_DEFINITION_MODEL: return createProcedureDefinitionModel();
       case ProcessorMetaPackage.FUNCTION_DEFINITION_MODEL: return createFunctionDefinitionModel();
@@ -426,6 +428,17 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
+  public ColumnAnnotationAssignement createColumnAnnotationAssignement()
+  {
+    ColumnAnnotationAssignementImpl columnAnnotationAssignement = new ColumnAnnotationAssignementImpl();
+    return columnAnnotationAssignement;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public PropertyCondition createPropertyCondition()
   {
     PropertyConditionImpl propertyCondition = new PropertyConditionImpl();
@@ -518,6 +531,17 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
   {
     PojoDefinitionModelImpl pojoDefinitionModel = new PojoDefinitionModelImpl();
     return pojoDefinitionModel;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AnnotationDefinitionModel createAnnotationDefinitionModel()
+  {
+    AnnotationDefinitionModelImpl annotationDefinitionModel = new AnnotationDefinitionModelImpl();
+    return annotationDefinitionModel;
   }
 
   /**

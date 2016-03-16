@@ -17,6 +17,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.FunctionDefinitionModel;
 import org.sqlproc.meta.processorMeta.MappingRule;
@@ -38,6 +39,7 @@ import org.sqlproc.meta.processorMeta.TableDefinitionModel;
  * <ul>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getPojos <em>Pojos</em>}</li>
+ *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getTables <em>Tables</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getProcedures <em>Procedures</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.impl.ArtifactsImpl#getFunctions <em>Functions</em>}</li>
@@ -69,6 +71,16 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
    * @ordered
    */
   protected EList<PojoDefinitionModel> pojos;
+
+  /**
+   * The cached value of the '{@link #getAnnotations() <em>Annotations</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getAnnotations()
+   * @generated
+   * @ordered
+   */
+  protected EList<AnnotationDefinitionModel> annotations;
 
   /**
    * The cached value of the '{@link #getTables() <em>Tables</em>}' containment reference list.
@@ -184,6 +196,20 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
    * <!-- end-user-doc -->
    * @generated
    */
+  public EList<AnnotationDefinitionModel> getAnnotations()
+  {
+    if (annotations == null)
+    {
+      annotations = new EObjectContainmentEList<AnnotationDefinitionModel>(AnnotationDefinitionModel.class, this, ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS);
+    }
+    return annotations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EList<TableDefinitionModel> getTables()
   {
     if (tables == null)
@@ -277,6 +303,8 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
       case ProcessorMetaPackage.ARTIFACTS__POJOS:
         return ((InternalEList<?>)getPojos()).basicRemove(otherEnd, msgs);
+      case ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS:
+        return ((InternalEList<?>)getAnnotations()).basicRemove(otherEnd, msgs);
       case ProcessorMetaPackage.ARTIFACTS__TABLES:
         return ((InternalEList<?>)getTables()).basicRemove(otherEnd, msgs);
       case ProcessorMetaPackage.ARTIFACTS__PROCEDURES:
@@ -307,6 +335,8 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
         return getProperties();
       case ProcessorMetaPackage.ARTIFACTS__POJOS:
         return getPojos();
+      case ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS:
+        return getAnnotations();
       case ProcessorMetaPackage.ARTIFACTS__TABLES:
         return getTables();
       case ProcessorMetaPackage.ARTIFACTS__PROCEDURES:
@@ -341,6 +371,10 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
       case ProcessorMetaPackage.ARTIFACTS__POJOS:
         getPojos().clear();
         getPojos().addAll((Collection<? extends PojoDefinitionModel>)newValue);
+        return;
+      case ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS:
+        getAnnotations().clear();
+        getAnnotations().addAll((Collection<? extends AnnotationDefinitionModel>)newValue);
         return;
       case ProcessorMetaPackage.ARTIFACTS__TABLES:
         getTables().clear();
@@ -386,6 +420,9 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
       case ProcessorMetaPackage.ARTIFACTS__POJOS:
         getPojos().clear();
         return;
+      case ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS:
+        getAnnotations().clear();
+        return;
       case ProcessorMetaPackage.ARTIFACTS__TABLES:
         getTables().clear();
         return;
@@ -422,6 +459,8 @@ public class ArtifactsImpl extends MinimalEObjectImpl.Container implements Artif
         return properties != null && !properties.isEmpty();
       case ProcessorMetaPackage.ARTIFACTS__POJOS:
         return pojos != null && !pojos.isEmpty();
+      case ProcessorMetaPackage.ARTIFACTS__ANNOTATIONS:
+        return annotations != null && !annotations.isEmpty();
       case ProcessorMetaPackage.ARTIFACTS__TABLES:
         return tables != null && !tables.isEmpty();
       case ProcessorMetaPackage.ARTIFACTS__PROCEDURES:

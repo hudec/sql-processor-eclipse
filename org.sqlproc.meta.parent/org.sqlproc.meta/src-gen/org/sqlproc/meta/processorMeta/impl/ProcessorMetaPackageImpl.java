@@ -12,8 +12,10 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
+import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -275,6 +277,13 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass columnAnnotationAssignementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass propertyConditionEClass = null;
 
   /**
@@ -332,6 +341,13 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * @generated
    */
   private EClass pojoDefinitionModelEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass annotationDefinitionModelEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -644,7 +660,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Tables()
+  public EReference getArtifacts_Annotations()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(2);
   }
@@ -654,7 +670,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Procedures()
+  public EReference getArtifacts_Tables()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(3);
   }
@@ -664,7 +680,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Functions()
+  public EReference getArtifacts_Procedures()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(4);
   }
@@ -674,7 +690,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Statements()
+  public EReference getArtifacts_Functions()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(5);
   }
@@ -684,7 +700,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Mappings()
+  public EReference getArtifacts_Statements()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(6);
   }
@@ -694,9 +710,19 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getArtifacts_Features()
+  public EReference getArtifacts_Mappings()
   {
     return (EReference)artifactsEClass.getEStructuralFeatures().get(7);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getArtifacts_Features()
+  {
+    return (EReference)artifactsEClass.getEStructuralFeatures().get(8);
   }
 
   /**
@@ -1534,6 +1560,56 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
+  public EClass getColumnAnnotationAssignement()
+  {
+    return columnAnnotationAssignementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColumnAnnotationAssignement_DbColumn()
+  {
+    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getColumnAnnotationAssignement_Annotations()
+  {
+    return (EReference)columnAnnotationAssignementEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColumnAnnotationAssignement_DbTables()
+  {
+    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getColumnAnnotationAssignement_DbNotTables()
+  {
+    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getPropertyCondition()
   {
     return propertyConditionEClass;
@@ -2184,6 +2260,16 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
+  public EReference getPojogenProperty_ColumnAnnotations()
+  {
+    return (EReference)pojogenPropertyEClass.getEStructuralFeatures().get(32);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public EClass getMetaSqlTypeAssignement()
   {
     return metaSqlTypeAssignementEClass;
@@ -2597,6 +2683,46 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
   public EReference getPojoDefinitionModel_Classx()
   {
     return (EReference)pojoDefinitionModelEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAnnotationDefinitionModel()
+  {
+    return annotationDefinitionModelEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAnnotationDefinitionModel_Name()
+  {
+    return (EAttribute)annotationDefinitionModelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getAnnotationDefinitionModel_Class()
+  {
+    return (EAttribute)annotationDefinitionModelEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getAnnotationDefinitionModel_Classx()
+  {
+    return (EReference)annotationDefinitionModelEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3742,6 +3868,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     artifactsEClass = createEClass(ARTIFACTS);
     createEReference(artifactsEClass, ARTIFACTS__PROPERTIES);
     createEReference(artifactsEClass, ARTIFACTS__POJOS);
+    createEReference(artifactsEClass, ARTIFACTS__ANNOTATIONS);
     createEReference(artifactsEClass, ARTIFACTS__TABLES);
     createEReference(artifactsEClass, ARTIFACTS__PROCEDURES);
     createEReference(artifactsEClass, ARTIFACTS__FUNCTIONS);
@@ -3857,6 +3984,12 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     createEAttribute(extendsAssignementGenericsEClass, EXTENDS_ASSIGNEMENT_GENERICS__DB_TABLES);
     createEAttribute(extendsAssignementGenericsEClass, EXTENDS_ASSIGNEMENT_GENERICS__DB_NOT_TABLES);
 
+    columnAnnotationAssignementEClass = createEClass(COLUMN_ANNOTATION_ASSIGNEMENT);
+    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_COLUMN);
+    createEReference(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS);
+    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES);
+    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES);
+
     propertyConditionEClass = createEClass(PROPERTY_CONDITION);
     createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__NAME);
     createEReference(propertyConditionEClass, PROPERTY_CONDITION__VALUE);
@@ -3925,6 +4058,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     createEAttribute(pojogenPropertyEClass, POJOGEN_PROPERTY__PCKG);
     createEAttribute(pojogenPropertyEClass, POJOGEN_PROPERTY__ENUM_NAME);
     createEAttribute(pojogenPropertyEClass, POJOGEN_PROPERTY__DB_CHECK_CONSTRAINTS);
+    createEReference(pojogenPropertyEClass, POJOGEN_PROPERTY__COLUMN_ANNOTATIONS);
 
     metaSqlTypeAssignementEClass = createEClass(META_SQL_TYPE_ASSIGNEMENT);
     createEReference(metaSqlTypeAssignementEClass, META_SQL_TYPE_ASSIGNEMENT__SQL_TYPE);
@@ -3972,6 +4106,11 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     createEAttribute(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__NAME);
     createEAttribute(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__CLASS);
     createEReference(pojoDefinitionModelEClass, POJO_DEFINITION_MODEL__CLASSX);
+
+    annotationDefinitionModelEClass = createEClass(ANNOTATION_DEFINITION_MODEL);
+    createEAttribute(annotationDefinitionModelEClass, ANNOTATION_DEFINITION_MODEL__NAME);
+    createEAttribute(annotationDefinitionModelEClass, ANNOTATION_DEFINITION_MODEL__CLASS);
+    createEReference(annotationDefinitionModelEClass, ANNOTATION_DEFINITION_MODEL__CLASSX);
 
     tableDefinitionModelEClass = createEClass(TABLE_DEFINITION_MODEL);
     createEAttribute(tableDefinitionModelEClass, TABLE_DEFINITION_MODEL__NAME);
@@ -4152,6 +4291,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEClass(artifactsEClass, Artifacts.class, "Artifacts", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getArtifacts_Properties(), this.getProperty(), null, "properties", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getArtifacts_Pojos(), this.getPojoDefinitionModel(), null, "pojos", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getArtifacts_Annotations(), this.getAnnotationDefinitionModel(), null, "annotations", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getArtifacts_Tables(), this.getTableDefinitionModel(), null, "tables", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getArtifacts_Procedures(), this.getProcedureDefinitionModel(), null, "procedures", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getArtifacts_Functions(), this.getFunctionDefinitionModel(), null, "functions", null, 0, -1, Artifacts.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4267,6 +4407,12 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEAttribute(getExtendsAssignementGenerics_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, ExtendsAssignementGenerics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExtendsAssignementGenerics_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ExtendsAssignementGenerics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
+    initEClass(columnAnnotationAssignementEClass, ColumnAnnotationAssignement.class, "ColumnAnnotationAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getColumnAnnotationAssignement_DbColumn(), ecorePackage.getEString(), "dbColumn", null, 0, 1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getColumnAnnotationAssignement_Annotations(), this.getAnnotationDefinitionModel(), null, "annotations", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColumnAnnotationAssignement_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getColumnAnnotationAssignement_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
     initEClass(propertyConditionEClass, PropertyCondition.class, "PropertyCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPropertyCondition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPropertyCondition_Value(), this.getValueType(), null, "value", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4335,6 +4481,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEAttribute(getPojogenProperty_Pckg(), ecorePackage.getEString(), "pckg", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojogenProperty_EnumName(), ecorePackage.getEString(), "enumName", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojogenProperty_DbCheckConstraints(), ecorePackage.getEString(), "dbCheckConstraints", null, 0, -1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPojogenProperty_ColumnAnnotations(), this.getColumnAnnotationAssignement(), null, "columnAnnotations", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaSqlTypeAssignementEClass, MetaSqlTypeAssignement.class, "MetaSqlTypeAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetaSqlTypeAssignement_SqlType(), this.getValueType(), null, "sqlType", null, 0, 1, MetaSqlTypeAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4382,6 +4529,11 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEAttribute(getPojoDefinitionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojoDefinitionModel_Class(), ecorePackage.getEString(), "class", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getPojoDefinitionModel_Classx(), theTypesPackage.getJvmType(), null, "classx", null, 0, 1, PojoDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(annotationDefinitionModelEClass, AnnotationDefinitionModel.class, "AnnotationDefinitionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getAnnotationDefinitionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, AnnotationDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAnnotationDefinitionModel_Class(), ecorePackage.getEString(), "class", null, 0, 1, AnnotationDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAnnotationDefinitionModel_Classx(), theTypesPackage.getJvmType(), null, "classx", null, 0, 1, AnnotationDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(tableDefinitionModelEClass, TableDefinitionModel.class, "TableDefinitionModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getTableDefinitionModel_Name(), ecorePackage.getEString(), "name", null, 0, 1, TableDefinitionModel.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

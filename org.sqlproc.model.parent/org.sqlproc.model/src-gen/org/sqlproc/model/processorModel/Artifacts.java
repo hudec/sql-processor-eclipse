@@ -18,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getProperties <em>Properties</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getPojos <em>Pojos</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getAnnotations <em>Annotations</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getTables <em>Tables</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getProcedures <em>Procedures</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Artifacts#getFunctions <em>Functions</em>}</li>
@@ -61,6 +62,22 @@ public interface Artifacts extends EObject
    * @generated
    */
   EList<PojoDefinitionModel> getPojos();
+
+  /**
+   * Returns the value of the '<em><b>Annotations</b></em>' containment reference list.
+   * The list contents are of type {@link org.sqlproc.model.processorModel.AnnotationDefinitionModel}.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Annotations</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Annotations</em>' containment reference list.
+   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getArtifacts_Annotations()
+   * @model containment="true"
+   * @generated
+   */
+  EList<AnnotationDefinitionModel> getAnnotations();
 
   /**
    * Returns the value of the '<em><b>Tables</b></em>' containment reference list.

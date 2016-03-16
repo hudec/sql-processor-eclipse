@@ -7,6 +7,7 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes"
 Artifacts: {Artifacts}
 	( properties+=Property 
 	| pojos+=PojoDefinitionModel
+	| annotations+=AnnotationDefinitionModel
 	| tables+=TableDefinitionModel
     | procedures+=ProcedureDefinitionModel 
     | functions+=FunctionDefinitionModel
@@ -41,6 +42,9 @@ ImplementsAssignement: toImplement=PojoType ('+' (dbTables+=ValidID)+)? ('-' (db
 ExtendsAssignement: toExtends=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
 ImplementsAssignementGenerics: toImplement=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
 ExtendsAssignementGenerics: toExtends=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
+ColumnAnnotationAssignement: dbColumn=ValidID annotations+=[AnnotationDefinitionModel|ValidID] ( annotations+=[AnnotationDefinitionModel|ValidID])* 
+	('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?
+;
 
 PropertyCondition:
 	'{' name=ValidID EQUALS value=ValueType '}'
@@ -134,6 +138,7 @@ PojogenProperty:
 	|name='active-filter' activeFilter=ValueType
 	|name='package' pckg=QualifiedName
 	|name='enum-for-check-constraints' enumName=ValidID (dbCheckConstraints+=ValidID)+
+	|name='column-annotations' columnAnnotations=ColumnAnnotationAssignement
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=ValidID ('->' extension=ValidID)?;
@@ -162,7 +167,7 @@ MetagenProperty:
 	|name='optimize-insert' (dbTables+=ValidID)*
 	|name='optional-features' dbStatement=ValidID (optionalFeatures+=ValueType)+
 	|name='active-filter' activeFilter=ValueType
-	|name='insert-skip-default-values' (WS+ '+' (WS+ dbTables+=ValidID)+)? (WS+ '-' (WS+ dbNotTables+=ValidID)+)?
+	|name='insert-skip-default-values' ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?
 	);
 
 DaogenProperty:
@@ -181,16 +186,19 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel:
-	'pojo' name=ValidID (':' (':')? class=(QualifiedName) | classx=(QualifiedName)) ';';
+	('pojo' | 'is-pojo') name=ValidID (':' (':')? class=(QualifiedName) | classx=(QualifiedName)) ';';
+
+AnnotationDefinitionModel:
+	'is-annotation' name=ValidID (':' (':')? class=(QualifiedName) | classx=[JvmType|QualifiedName]) ';';
 
 TableDefinitionModel:
-	'table' name=ValidID table=ValidID ';';
+	('table' | 'is-table') name=ValidID table=ValidID ';';
 
 ProcedureDefinitionModel:
-	'procedure' name=ValidID table=ValidID ';';
+	('procedure' | 'is-procedure') name=ValidID table=ValidID ';';
 
 FunctionDefinitionModel:
-	'function' name=ValidID table=ValidID ';';
+	('function' | 'is-function') name=ValidID table=ValidID ';';
 
 PackageDirective: 
 {PackageDirectiveImplementation} '#Implementation' LPAREN implementation=QualifiedName RPAREN

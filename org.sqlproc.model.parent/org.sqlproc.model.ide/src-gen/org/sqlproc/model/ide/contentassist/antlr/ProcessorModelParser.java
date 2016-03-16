@@ -44,7 +44,12 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getAlternatives(), "rule__PojogenProperty__Alternatives");
 					put(grammarAccess.getMetagenPropertyAccess().getAlternatives(), "rule__MetagenProperty__Alternatives");
 					put(grammarAccess.getDaogenPropertyAccess().getAlternatives(), "rule__DaogenProperty__Alternatives");
+					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_0(), "rule__PojoDefinitionModel__Alternatives_0");
 					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_2(), "rule__PojoDefinitionModel__Alternatives_2");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getAlternatives_2(), "rule__AnnotationDefinitionModel__Alternatives_2");
+					put(grammarAccess.getTableDefinitionModelAccess().getAlternatives_0(), "rule__TableDefinitionModel__Alternatives_0");
+					put(grammarAccess.getProcedureDefinitionModelAccess().getAlternatives_0(), "rule__ProcedureDefinitionModel__Alternatives_0");
+					put(grammarAccess.getFunctionDefinitionModelAccess().getAlternatives_0(), "rule__FunctionDefinitionModel__Alternatives_0");
 					put(grammarAccess.getAbstractEntityAccess().getAlternatives(), "rule__AbstractEntity__Alternatives");
 					put(grammarAccess.getImplementsExtendsDirectiveAccess().getAlternatives(), "rule__ImplementsExtendsDirective__Alternatives");
 					put(grammarAccess.getEntityAccess().getAlternatives(), "rule__Entity__Alternatives");
@@ -134,6 +139,9 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getGroup(), "rule__ExtendsAssignementGenerics__Group__0");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getGroup_1(), "rule__ExtendsAssignementGenerics__Group_1__0");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getGroup_2(), "rule__ExtendsAssignementGenerics__Group_2__0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup(), "rule__ColumnAnnotationAssignement__Group__0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_3(), "rule__ColumnAnnotationAssignement__Group_3__0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getGroup_4(), "rule__ColumnAnnotationAssignement__Group_4__0");
 					put(grammarAccess.getPropertyConditionAccess().getGroup(), "rule__PropertyCondition__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup(), "rule__Property__Group__0");
 					put(grammarAccess.getPropertyAccess().getGroup_1_2(), "rule__Property__Group_1_2__0");
@@ -204,6 +212,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_41(), "rule__PojogenProperty__Group_41__0");
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_42(), "rule__PojogenProperty__Group_42__0");
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_43(), "rule__PojogenProperty__Group_43__0");
+					put(grammarAccess.getPojogenPropertyAccess().getGroup_44(), "rule__PojogenProperty__Group_44__0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getGroup(), "rule__MetaSqlTypeAssignement__Group__0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getGroup_3(), "rule__MetaSqlTypeAssignement__Group_3__0");
 					put(grammarAccess.getMetaTypeAssignementAccess().getGroup(), "rule__MetaTypeAssignement__Group__0");
@@ -233,9 +242,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_21(), "rule__MetagenProperty__Group_21__0");
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_22(), "rule__MetagenProperty__Group_22__0");
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_1(), "rule__MetagenProperty__Group_22_1__0");
-					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_1_2(), "rule__MetagenProperty__Group_22_1_2__0");
 					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_2(), "rule__MetagenProperty__Group_22_2__0");
-					put(grammarAccess.getMetagenPropertyAccess().getGroup_22_2_2(), "rule__MetagenProperty__Group_22_2_2__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_0(), "rule__DaogenProperty__Group_0__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_1(), "rule__DaogenProperty__Group_1__0");
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_2(), "rule__DaogenProperty__Group_2__0");
@@ -249,6 +256,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getDaogenPropertyAccess().getGroup_11(), "rule__DaogenProperty__Group_11__0");
 					put(grammarAccess.getPojoDefinitionModelAccess().getGroup(), "rule__PojoDefinitionModel__Group__0");
 					put(grammarAccess.getPojoDefinitionModelAccess().getGroup_2_0(), "rule__PojoDefinitionModel__Group_2_0__0");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getGroup(), "rule__AnnotationDefinitionModel__Group__0");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getGroup_2_0(), "rule__AnnotationDefinitionModel__Group_2_0__0");
 					put(grammarAccess.getTableDefinitionModelAccess().getGroup(), "rule__TableDefinitionModel__Group__0");
 					put(grammarAccess.getProcedureDefinitionModelAccess().getGroup(), "rule__ProcedureDefinitionModel__Group__0");
 					put(grammarAccess.getFunctionDefinitionModelAccess().getGroup(), "rule__FunctionDefinitionModel__Group__0");
@@ -544,10 +553,11 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getQualifiedNameInStaticImportAccess().getGroup(), "rule__QualifiedNameInStaticImport__Group__0");
 					put(grammarAccess.getArtifactsAccess().getPropertiesAssignment_1_0(), "rule__Artifacts__PropertiesAssignment_1_0");
 					put(grammarAccess.getArtifactsAccess().getPojosAssignment_1_1(), "rule__Artifacts__PojosAssignment_1_1");
-					put(grammarAccess.getArtifactsAccess().getTablesAssignment_1_2(), "rule__Artifacts__TablesAssignment_1_2");
-					put(grammarAccess.getArtifactsAccess().getProceduresAssignment_1_3(), "rule__Artifacts__ProceduresAssignment_1_3");
-					put(grammarAccess.getArtifactsAccess().getFunctionsAssignment_1_4(), "rule__Artifacts__FunctionsAssignment_1_4");
-					put(grammarAccess.getArtifactsAccess().getPackagesAssignment_1_5(), "rule__Artifacts__PackagesAssignment_1_5");
+					put(grammarAccess.getArtifactsAccess().getAnnotationsAssignment_1_2(), "rule__Artifacts__AnnotationsAssignment_1_2");
+					put(grammarAccess.getArtifactsAccess().getTablesAssignment_1_3(), "rule__Artifacts__TablesAssignment_1_3");
+					put(grammarAccess.getArtifactsAccess().getProceduresAssignment_1_4(), "rule__Artifacts__ProceduresAssignment_1_4");
+					put(grammarAccess.getArtifactsAccess().getFunctionsAssignment_1_5(), "rule__Artifacts__FunctionsAssignment_1_5");
+					put(grammarAccess.getArtifactsAccess().getPackagesAssignment_1_6(), "rule__Artifacts__PackagesAssignment_1_6");
 					put(grammarAccess.getValueTypeAccess().getValueAssignment_0(), "rule__ValueType__ValueAssignment_0");
 					put(grammarAccess.getValueTypeAccess().getNumberAssignment_1(), "rule__ValueType__NumberAssignment_1");
 					put(grammarAccess.getValueTypeAccess().getIdAssignment_2(), "rule__ValueType__IdAssignment_2");
@@ -608,6 +618,11 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getToExtendsAssignment_0(), "rule__ExtendsAssignementGenerics__ToExtendsAssignment_0");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getDbTablesAssignment_1_1(), "rule__ExtendsAssignementGenerics__DbTablesAssignment_1_1");
 					put(grammarAccess.getExtendsAssignementGenericsAccess().getDbNotTablesAssignment_2_1(), "rule__ExtendsAssignementGenerics__DbNotTablesAssignment_2_1");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnAssignment_0(), "rule__ColumnAnnotationAssignement__DbColumnAssignment_0");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_1(), "rule__ColumnAnnotationAssignement__AnnotationsAssignment_1");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_2(), "rule__ColumnAnnotationAssignement__AnnotationsAssignment_2");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesAssignment_3_1(), "rule__ColumnAnnotationAssignement__DbTablesAssignment_3_1");
+					put(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_4_1(), "rule__ColumnAnnotationAssignement__DbNotTablesAssignment_4_1");
 					put(grammarAccess.getPropertyConditionAccess().getNameAssignment_1(), "rule__PropertyCondition__NameAssignment_1");
 					put(grammarAccess.getPropertyConditionAccess().getValueAssignment_3(), "rule__PropertyCondition__ValueAssignment_3");
 					put(grammarAccess.getPropertyAccess().getConditionAssignment_0(), "rule__Property__ConditionAssignment_0");
@@ -784,6 +799,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_43_0(), "rule__PojogenProperty__NameAssignment_43_0");
 					put(grammarAccess.getPojogenPropertyAccess().getEnumNameAssignment_43_1(), "rule__PojogenProperty__EnumNameAssignment_43_1");
 					put(grammarAccess.getPojogenPropertyAccess().getDbCheckConstraintsAssignment_43_2(), "rule__PojogenProperty__DbCheckConstraintsAssignment_43_2");
+					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44_0(), "rule__PojogenProperty__NameAssignment_44_0");
+					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_1(), "rule__PojogenProperty__ColumnAnnotationsAssignment_44_1");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__MetaSqlTypeAssignement__SqlTypeAssignment_0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__MetaSqlTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getExtensionAssignment_3_1(), "rule__MetaSqlTypeAssignement__ExtensionAssignment_3_1");
@@ -847,8 +864,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMetagenPropertyAccess().getNameAssignment_21_0(), "rule__MetagenProperty__NameAssignment_21_0");
 					put(grammarAccess.getMetagenPropertyAccess().getActiveFilterAssignment_21_1(), "rule__MetagenProperty__ActiveFilterAssignment_21_1");
 					put(grammarAccess.getMetagenPropertyAccess().getNameAssignment_22_0(), "rule__MetagenProperty__NameAssignment_22_0");
-					put(grammarAccess.getMetagenPropertyAccess().getDbTablesAssignment_22_1_2_1(), "rule__MetagenProperty__DbTablesAssignment_22_1_2_1");
-					put(grammarAccess.getMetagenPropertyAccess().getDbNotTablesAssignment_22_2_2_1(), "rule__MetagenProperty__DbNotTablesAssignment_22_2_2_1");
+					put(grammarAccess.getMetagenPropertyAccess().getDbTablesAssignment_22_1_1(), "rule__MetagenProperty__DbTablesAssignment_22_1_1");
+					put(grammarAccess.getMetagenPropertyAccess().getDbNotTablesAssignment_22_2_1(), "rule__MetagenProperty__DbNotTablesAssignment_22_2_1");
 					put(grammarAccess.getDaogenPropertyAccess().getNameAssignment_0_0(), "rule__DaogenProperty__NameAssignment_0_0");
 					put(grammarAccess.getDaogenPropertyAccess().getDbTablesAssignment_0_1(), "rule__DaogenProperty__DbTablesAssignment_0_1");
 					put(grammarAccess.getDaogenPropertyAccess().getNameAssignment_1_0(), "rule__DaogenProperty__NameAssignment_1_0");
@@ -876,6 +893,9 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojoDefinitionModelAccess().getNameAssignment_1(), "rule__PojoDefinitionModel__NameAssignment_1");
 					put(grammarAccess.getPojoDefinitionModelAccess().getClassAssignment_2_0_2(), "rule__PojoDefinitionModel__ClassAssignment_2_0_2");
 					put(grammarAccess.getPojoDefinitionModelAccess().getClassxAssignment_2_1(), "rule__PojoDefinitionModel__ClassxAssignment_2_1");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getNameAssignment_1(), "rule__AnnotationDefinitionModel__NameAssignment_1");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getClassAssignment_2_0_2(), "rule__AnnotationDefinitionModel__ClassAssignment_2_0_2");
+					put(grammarAccess.getAnnotationDefinitionModelAccess().getClassxAssignment_2_1(), "rule__AnnotationDefinitionModel__ClassxAssignment_2_1");
 					put(grammarAccess.getTableDefinitionModelAccess().getNameAssignment_1(), "rule__TableDefinitionModel__NameAssignment_1");
 					put(grammarAccess.getTableDefinitionModelAccess().getTableAssignment_2(), "rule__TableDefinitionModel__TableAssignment_2");
 					put(grammarAccess.getProcedureDefinitionModelAccess().getNameAssignment_1(), "rule__ProcedureDefinitionModel__NameAssignment_1");

@@ -9,6 +9,7 @@
     <genClasses ecoreClass="ProcessorMeta.ecore#//Artifacts">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/properties"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/pojos"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/annotations"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/tables"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/procedures"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//Artifacts/functions"/>
@@ -124,6 +125,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ExtendsAssignementGenerics/dbTables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ExtendsAssignementGenerics/dbNotTables"/>
     </genClasses>
+    <genClasses ecoreClass="ProcessorMeta.ecore#//ColumnAnnotationAssignement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbColumn"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//ColumnAnnotationAssignement/annotations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbTables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//ColumnAnnotationAssignement/dbNotTables"/>
+    </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//PropertyCondition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PropertyCondition/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//PropertyCondition/value"/>
@@ -192,6 +199,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PojogenProperty/pckg"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PojogenProperty/enumName"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PojogenProperty/dbCheckConstraints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//PojogenProperty/columnAnnotations"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//MetaSqlTypeAssignement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//MetaSqlTypeAssignement/sqlType"/>
@@ -239,6 +247,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PojoDefinitionModel/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//PojoDefinitionModel/class"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//PojoDefinitionModel/classx"/>
+    </genClasses>
+    <genClasses ecoreClass="ProcessorMeta.ecore#//AnnotationDefinitionModel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//AnnotationDefinitionModel/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//AnnotationDefinitionModel/class"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorMeta.ecore#//AnnotationDefinitionModel/classx"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorMeta.ecore#//TableDefinitionModel">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorMeta.ecore#//TableDefinitionModel/name"/>

@@ -6,8 +6,8 @@ import "http://www.eclipse.org/xtext/common/JavaVMTypes"
 generate processorMeta "http://www.sqlproc.org/meta/ProcessorMeta"
 
 Artifacts: {Artifacts}
-    WS* (properties+=Property WS*|pojos+=PojoDefinitionModel WS*|tables+=TableDefinitionModel WS*
-    	|procedures+=ProcedureDefinitionModel WS*|functions+=FunctionDefinitionModel WS*
+    WS* (properties+=Property WS*|pojos+=PojoDefinitionModel WS*|annotations+=AnnotationDefinitionModel WS*
+    	|tables+=TableDefinitionModel WS*|procedures+=ProcedureDefinitionModel WS*|functions+=FunctionDefinitionModel WS*
     	|statements+=MetaStatement WS*|mappings+=MappingRule WS*|features+=OptionalFeature WS*
     )*;
 
@@ -39,6 +39,9 @@ ImplementsAssignement: toImplement=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (
 ExtendsAssignement: toExtends=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 ImplementsAssignementGenerics: toImplement=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
 ExtendsAssignementGenerics: toExtends=PojoType (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?;
+ColumnAnnotationAssignement: dbColumn=IDENT WS+ annotations+=[AnnotationDefinitionModel|IDENT] (WS+ annotations+=[AnnotationDefinitionModel|IDENT])* 
+	(WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)?
+;
 
 PropertyCondition:
 	LBRACE WS* name=IDENT WS+ EQUALS WS+ value=ValueType WS* RBRACE
@@ -132,6 +135,7 @@ PojogenProperty:
 	|name='active-filter' WS+ activeFilter=ValueType
 	|name='package' WS+ pckg=QualifiedName
 	|name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
+	|name='column-annotations' WS+ columnAnnotations=ColumnAnnotationAssignement
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=IDENT ('->' extension=IDENT)?;
@@ -179,16 +183,19 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	'pojo' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
+	('pojo' | 'is-pojo') name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
+
+AnnotationDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
+	'is-annotation' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 
 TableDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	'table' name=IDENT table=IDENT SEMICOLON;
+	('table' | 'is-table') name=IDENT table=IDENT SEMICOLON;
 
 ProcedureDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	'procedure' name=IDENT table=IDENT SEMICOLON;
+	('procedure' | 'is-procedure') name=IDENT table=IDENT SEMICOLON;
 
 FunctionDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	'function' name=IDENT table=IDENT SEMICOLON;
+	('function' | 'is-function') name=IDENT table=IDENT SEMICOLON;
 
 MetaStatement:
 	name=IDENT LPAREN type=STATEMENT_TYPE (COMMA modifiers+=StatementModifier)* RPAREN EQUALS statement=Sql SEMICOLON;

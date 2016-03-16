@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
 import org.sqlproc.model.processorModel.AnnotationDirectiveConflict;
@@ -22,6 +23,7 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
+import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirective;
@@ -323,6 +325,11 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
         return createExtendsAssignementGenericsAdapter();
       }
       @Override
+      public Adapter caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+      {
+        return createColumnAnnotationAssignementAdapter();
+      }
+      @Override
       public Adapter casePropertyCondition(PropertyCondition object)
       {
         return createPropertyConditionAdapter();
@@ -366,6 +373,11 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
       public Adapter casePojoDefinitionModel(PojoDefinitionModel object)
       {
         return createPojoDefinitionModelAdapter();
+      }
+      @Override
+      public Adapter caseAnnotationDefinitionModel(AnnotationDefinitionModel object)
+      {
+        return createAnnotationDefinitionModelAdapter();
       }
       @Override
       public Adapter caseTableDefinitionModel(TableDefinitionModel object)
@@ -1180,6 +1192,21 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.ColumnAnnotationAssignement <em>Column Annotation Assignement</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.sqlproc.model.processorModel.ColumnAnnotationAssignement
+   * @generated
+   */
+  public Adapter createColumnAnnotationAssignementAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.PropertyCondition <em>Property Condition</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -1310,6 +1337,21 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createPojoDefinitionModelAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.AnnotationDefinitionModel <em>Annotation Definition Model</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see org.sqlproc.model.processorModel.AnnotationDefinitionModel
+   * @generated
+   */
+  public Adapter createAnnotationDefinitionModelAdapter()
   {
     return null;
   }

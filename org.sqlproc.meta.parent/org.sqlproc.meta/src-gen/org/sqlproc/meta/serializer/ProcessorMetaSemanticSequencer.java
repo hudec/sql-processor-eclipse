@@ -14,8 +14,10 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
+import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -96,11 +98,17 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == ProcessorMetaPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case ProcessorMetaPackage.ANNOTATION_DEFINITION_MODEL:
+				sequence_AnnotationDefinitionModel(context, (AnnotationDefinitionModel) semanticObject); 
+				return; 
 			case ProcessorMetaPackage.ARTIFACTS:
 				sequence_Artifacts(context, (Artifacts) semanticObject); 
 				return; 
 			case ProcessorMetaPackage.COLUMN:
 				sequence_Column(context, (Column) semanticObject); 
+				return; 
+			case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
+				sequence_ColumnAnnotationAssignement(context, (ColumnAnnotationAssignement) semanticObject); 
 				return; 
 			case ProcessorMetaPackage.COLUMN_ASSIGNEMENT:
 				sequence_ColumnAssignement(context, (ColumnAssignement) semanticObject); 
@@ -298,12 +306,25 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	
 	/**
 	 * Contexts:
+	 *     AnnotationDefinitionModel returns AnnotationDefinitionModel
+	 *
+	 * Constraint:
+	 *     (name=IDENT (class=IDENT | class=IDENT_DOT | classx=[JvmType|QualifiedName]))
+	 */
+	protected void sequence_AnnotationDefinitionModel(ISerializationContext context, AnnotationDefinitionModel semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     Artifacts returns Artifacts
 	 *
 	 * Constraint:
 	 *     (
 	 *         properties+=Property | 
 	 *         pojos+=PojoDefinitionModel | 
+	 *         annotations+=AnnotationDefinitionModel | 
 	 *         tables+=TableDefinitionModel | 
 	 *         procedures+=ProcedureDefinitionModel | 
 	 *         functions+=FunctionDefinitionModel | 
@@ -313,6 +334,24 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     )*
 	 */
 	protected void sequence_Artifacts(ISerializationContext context, Artifacts semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
+	 *     ColumnAnnotationAssignement returns ColumnAnnotationAssignement
+	 *
+	 * Constraint:
+	 *     (
+	 *         dbColumn=IDENT 
+	 *         annotations+=[AnnotationDefinitionModel|IDENT] 
+	 *         annotations+=[AnnotationDefinitionModel|IDENT]* 
+	 *         dbTables+=IDENT* 
+	 *         dbNotTables+=IDENT*
+	 *     )
+	 */
+	protected void sequence_ColumnAnnotationAssignement(ISerializationContext context, ColumnAnnotationAssignement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1152,7 +1191,8 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='pojos-for-functions' funPojos+=FunctionPojoAssignement+) | 
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
-	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+)
+	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+) | 
+	 *         (name='column-annotations' columnAnnotations=ColumnAnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

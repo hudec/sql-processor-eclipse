@@ -127,9 +127,29 @@ ruleArtifacts returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getArtifactsAccess().getTablesTableDefinitionModelParserRuleCall_1_2_0());
+						newCompositeNode(grammarAccess.getArtifactsAccess().getAnnotationsAnnotationDefinitionModelParserRuleCall_1_2_0());
 					}
-					lv_tables_3_0=ruleTableDefinitionModel
+					lv_annotations_3_0=ruleAnnotationDefinitionModel
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getArtifactsRule());
+						}
+						add(
+							$current,
+							"annotations",
+							lv_annotations_3_0,
+							"org.sqlproc.model.ProcessorModel.AnnotationDefinitionModel");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getArtifactsAccess().getTablesTableDefinitionModelParserRuleCall_1_3_0());
+					}
+					lv_tables_4_0=ruleTableDefinitionModel
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getArtifactsRule());
@@ -137,7 +157,7 @@ ruleArtifacts returns [EObject current=null]
 						add(
 							$current,
 							"tables",
-							lv_tables_3_0,
+							lv_tables_4_0,
 							"org.sqlproc.model.ProcessorModel.TableDefinitionModel");
 						afterParserOrEnumRuleCall();
 					}
@@ -147,9 +167,9 @@ ruleArtifacts returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getArtifactsAccess().getProceduresProcedureDefinitionModelParserRuleCall_1_3_0());
+						newCompositeNode(grammarAccess.getArtifactsAccess().getProceduresProcedureDefinitionModelParserRuleCall_1_4_0());
 					}
-					lv_procedures_4_0=ruleProcedureDefinitionModel
+					lv_procedures_5_0=ruleProcedureDefinitionModel
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getArtifactsRule());
@@ -157,7 +177,7 @@ ruleArtifacts returns [EObject current=null]
 						add(
 							$current,
 							"procedures",
-							lv_procedures_4_0,
+							lv_procedures_5_0,
 							"org.sqlproc.model.ProcessorModel.ProcedureDefinitionModel");
 						afterParserOrEnumRuleCall();
 					}
@@ -167,9 +187,9 @@ ruleArtifacts returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getArtifactsAccess().getFunctionsFunctionDefinitionModelParserRuleCall_1_4_0());
+						newCompositeNode(grammarAccess.getArtifactsAccess().getFunctionsFunctionDefinitionModelParserRuleCall_1_5_0());
 					}
-					lv_functions_5_0=ruleFunctionDefinitionModel
+					lv_functions_6_0=ruleFunctionDefinitionModel
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getArtifactsRule());
@@ -177,7 +197,7 @@ ruleArtifacts returns [EObject current=null]
 						add(
 							$current,
 							"functions",
-							lv_functions_5_0,
+							lv_functions_6_0,
 							"org.sqlproc.model.ProcessorModel.FunctionDefinitionModel");
 						afterParserOrEnumRuleCall();
 					}
@@ -187,9 +207,9 @@ ruleArtifacts returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getArtifactsAccess().getPackagesPackageParserRuleCall_1_5_0());
+						newCompositeNode(grammarAccess.getArtifactsAccess().getPackagesPackageParserRuleCall_1_6_0());
 					}
-					lv_packages_6_0=rulePackage
+					lv_packages_7_0=rulePackage
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getArtifactsRule());
@@ -197,7 +217,7 @@ ruleArtifacts returns [EObject current=null]
 						add(
 							$current,
 							"packages",
-							lv_packages_6_0,
+							lv_packages_7_0,
 							"org.sqlproc.model.ProcessorModel.Package");
 						afterParserOrEnumRuleCall();
 					}
@@ -1969,6 +1989,126 @@ ruleExtendsAssignementGenerics returns [EObject current=null]
 							$current,
 							"dbNotTables",
 							lv_dbNotTables_4_0,
+							"org.eclipse.xtext.xbase.Xtype.ValidID");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+	)
+;
+
+// Entry rule entryRuleColumnAnnotationAssignement
+entryRuleColumnAnnotationAssignement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getColumnAnnotationAssignementRule()); }
+	iv_ruleColumnAnnotationAssignement=ruleColumnAnnotationAssignement
+	{ $current=$iv_ruleColumnAnnotationAssignement.current; }
+	EOF;
+
+// Rule ColumnAnnotationAssignement
+ruleColumnAnnotationAssignement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbColumnValidIDParserRuleCall_0_0());
+				}
+				lv_dbColumn_0_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+					}
+					set(
+						$current,
+						"dbColumn",
+						lv_dbColumn_0_0,
+						"org.eclipse.xtext.xbase.Xtype.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_1_0());
+				}
+				ruleValidID
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
+					}
+				}
+				{
+					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0());
+				}
+				ruleValidID
+				{
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)*
+		(
+			otherlv_3='+'
+			{
+				newLeafNode(otherlv_3, grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_3_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_3_1_0());
+					}
+					lv_dbTables_4_0=ruleValidID
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+						}
+						add(
+							$current,
+							"dbTables",
+							lv_dbTables_4_0,
+							"org.eclipse.xtext.xbase.Xtype.ValidID");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)+
+		)?
+		(
+			otherlv_5='-'
+			{
+				newLeafNode(otherlv_5, grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_4_0());
+			}
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_4_1_0());
+					}
+					lv_dbNotTables_6_0=ruleValidID
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+						}
+						add(
+							$current,
+							"dbNotTables",
+							lv_dbNotTables_6_0,
 							"org.eclipse.xtext.xbase.Xtype.ValidID");
 						afterParserOrEnumRuleCall();
 					}
@@ -5238,6 +5378,42 @@ rulePojogenProperty returns [EObject current=null]
 				)
 			)+
 		)
+		    |
+		(
+			(
+				(
+					lv_name_111_0='column-annotations'
+					{
+						newLeafNode(lv_name_111_0, grammarAccess.getPojogenPropertyAccess().getNameColumnAnnotationsKeyword_44_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_111_0, "column-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_1_0());
+					}
+					lv_columnAnnotations_112_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_112_0,
+							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 
@@ -6483,80 +6659,52 @@ ruleMetagenProperty returns [EObject current=null]
 				)
 			)
 			(
-				(
-					this_WS_61=RULE_WS
-					{
-						newLeafNode(this_WS_61, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_0());
-					}
-				)+
-				otherlv_62='+'
+				otherlv_61='+'
 				{
-					newLeafNode(otherlv_62, grammarAccess.getMetagenPropertyAccess().getPlusSignKeyword_22_1_1());
+					newLeafNode(otherlv_61, grammarAccess.getMetagenPropertyAccess().getPlusSignKeyword_22_1_0());
 				}
 				(
 					(
-						this_WS_63=RULE_WS
 						{
-							newLeafNode(this_WS_63, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_1_2_0());
+							newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbTablesValidIDParserRuleCall_22_1_1_0());
 						}
-					)+
-					(
-						(
-							{
-								newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbTablesValidIDParserRuleCall_22_1_2_1_0());
+						lv_dbTables_62_0=ruleValidID
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
 							}
-							lv_dbTables_64_0=ruleValidID
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
-								}
-								add(
-									$current,
-									"dbTables",
-									lv_dbTables_64_0,
-									"org.eclipse.xtext.xbase.Xtype.ValidID");
-								afterParserOrEnumRuleCall();
-							}
-						)
+							add(
+								$current,
+								"dbTables",
+								lv_dbTables_62_0,
+								"org.eclipse.xtext.xbase.Xtype.ValidID");
+							afterParserOrEnumRuleCall();
+						}
 					)
 				)+
 			)?
 			(
-				(
-					this_WS_65=RULE_WS
-					{
-						newLeafNode(this_WS_65, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_0());
-					}
-				)+
-				otherlv_66='-'
+				otherlv_63='-'
 				{
-					newLeafNode(otherlv_66, grammarAccess.getMetagenPropertyAccess().getHyphenMinusKeyword_22_2_1());
+					newLeafNode(otherlv_63, grammarAccess.getMetagenPropertyAccess().getHyphenMinusKeyword_22_2_0());
 				}
 				(
 					(
-						this_WS_67=RULE_WS
 						{
-							newLeafNode(this_WS_67, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_22_2_2_0());
+							newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbNotTablesValidIDParserRuleCall_22_2_1_0());
 						}
-					)+
-					(
-						(
-							{
-								newCompositeNode(grammarAccess.getMetagenPropertyAccess().getDbNotTablesValidIDParserRuleCall_22_2_2_1_0());
+						lv_dbNotTables_64_0=ruleValidID
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
 							}
-							lv_dbNotTables_68_0=ruleValidID
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getMetagenPropertyRule());
-								}
-								add(
-									$current,
-									"dbNotTables",
-									lv_dbNotTables_68_0,
-									"org.eclipse.xtext.xbase.Xtype.ValidID");
-								afterParserOrEnumRuleCall();
-							}
-						)
+							add(
+								$current,
+								"dbNotTables",
+								lv_dbNotTables_64_0,
+								"org.eclipse.xtext.xbase.Xtype.ValidID");
+							afterParserOrEnumRuleCall();
+						}
 					)
 				)+
 			)?
@@ -7028,19 +7176,125 @@ rulePojoDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='pojo'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0());
-		}
+		(
+			otherlv_0='pojo'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0());
+			}
+			    |
+			otherlv_1='is-pojo'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_1_0=ruleValidID
+				lv_name_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+					}
+					set(
+						$current,
+						"name",
+						lv_name_2_0,
+						"org.eclipse.xtext.xbase.Xtype.ValidID");
+					afterParserOrEnumRuleCall();
+				}
+			)
+		)
+		(
+			(
+				otherlv_3=':'
+				{
+					newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0());
+				}
+				(
+					otherlv_4=':'
+					{
+						newLeafNode(otherlv_4, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
+					}
+				)?
+				(
+					(
+						{
+							newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_2_0());
+						}
+						lv_class_5_0=ruleQualifiedName
+						{
+							if ($current==null) {
+								$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+							}
+							set(
+								$current,
+								"class",
+								lv_class_5_0,
+								"org.eclipse.xtext.xbase.Xbase.QualifiedName");
+							afterParserOrEnumRuleCall();
+						}
+					)
+				)
+			)
+			    |
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0());
+					}
+					lv_classx_6_0=ruleQualifiedName
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+						}
+						set(
+							$current,
+							"classx",
+							lv_classx_6_0,
+							"org.eclipse.xtext.xbase.Xbase.QualifiedName");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		otherlv_7=';'
+		{
+			newLeafNode(otherlv_7, grammarAccess.getPojoDefinitionModelAccess().getSemicolonKeyword_3());
+		}
+	)
+;
+
+// Entry rule entryRuleAnnotationDefinitionModel
+entryRuleAnnotationDefinitionModel returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnnotationDefinitionModelRule()); }
+	iv_ruleAnnotationDefinitionModel=ruleAnnotationDefinitionModel
+	{ $current=$iv_ruleAnnotationDefinitionModel.current; }
+	EOF;
+
+// Rule AnnotationDefinitionModel
+ruleAnnotationDefinitionModel returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		otherlv_0='is-annotation'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getAnnotationDefinitionModelAccess().getIsAnnotationKeyword_0());
+		}
+		(
+			(
+				{
+					newCompositeNode(grammarAccess.getAnnotationDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
+				}
+				lv_name_1_0=ruleValidID
+				{
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getAnnotationDefinitionModelRule());
 					}
 					set(
 						$current,
@@ -7055,23 +7309,23 @@ rulePojoDefinitionModel returns [EObject current=null]
 			(
 				otherlv_2=':'
 				{
-					newLeafNode(otherlv_2, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0());
+					newLeafNode(otherlv_2, grammarAccess.getAnnotationDefinitionModelAccess().getColonKeyword_2_0_0());
 				}
 				(
 					otherlv_3=':'
 					{
-						newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
+						newLeafNode(otherlv_3, grammarAccess.getAnnotationDefinitionModelAccess().getColonKeyword_2_0_1());
 					}
 				)?
 				(
 					(
 						{
-							newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_2_0());
+							newCompositeNode(grammarAccess.getAnnotationDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_2_0());
 						}
 						lv_class_4_0=ruleQualifiedName
 						{
 							if ($current==null) {
-								$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+								$current = createModelElementForParent(grammarAccess.getAnnotationDefinitionModelRule());
 							}
 							set(
 								$current,
@@ -7087,18 +7341,15 @@ rulePojoDefinitionModel returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0());
-					}
-					lv_classx_5_0=ruleQualifiedName
-					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
+							$current = createModelElement(grammarAccess.getAnnotationDefinitionModelRule());
 						}
-						set(
-							$current,
-							"classx",
-							lv_classx_5_0,
-							"org.eclipse.xtext.xbase.Xbase.QualifiedName");
+					}
+					{
+						newCompositeNode(grammarAccess.getAnnotationDefinitionModelAccess().getClassxJvmTypeCrossReference_2_1_0());
+					}
+					ruleQualifiedName
+					{
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -7106,7 +7357,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 		)
 		otherlv_6=';'
 		{
-			newLeafNode(otherlv_6, grammarAccess.getPojoDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_6, grammarAccess.getAnnotationDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7127,16 +7378,23 @@ ruleTableDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='table'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0());
-		}
+		(
+			otherlv_0='table'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0());
+			}
+			    |
+			otherlv_1='is-table'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getTableDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_1_0=ruleValidID
+				lv_name_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTableDefinitionModelRule());
@@ -7144,7 +7402,7 @@ ruleTableDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7155,7 +7413,7 @@ ruleTableDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getTableDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_2_0=ruleValidID
+				lv_table_3_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTableDefinitionModelRule());
@@ -7163,15 +7421,15 @@ ruleTableDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_2_0,
+						lv_table_3_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=';'
+		otherlv_4=';'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getTableDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getTableDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7192,16 +7450,23 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='procedure'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0());
-		}
+		(
+			otherlv_0='procedure'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0());
+			}
+			    |
+			otherlv_1='is-procedure'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getProcedureDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_1_0=ruleValidID
+				lv_name_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProcedureDefinitionModelRule());
@@ -7209,7 +7474,7 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7220,7 +7485,7 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getProcedureDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_2_0=ruleValidID
+				lv_table_3_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProcedureDefinitionModelRule());
@@ -7228,15 +7493,15 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_2_0,
+						lv_table_3_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=';'
+		otherlv_4=';'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getProcedureDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getProcedureDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7257,16 +7522,23 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		otherlv_0='function'
-		{
-			newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0());
-		}
+		(
+			otherlv_0='function'
+			{
+				newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0());
+			}
+			    |
+			otherlv_1='is-function'
+			{
+				newLeafNode(otherlv_1, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1());
+			}
+		)
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getFunctionDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_1_0=ruleValidID
+				lv_name_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFunctionDefinitionModelRule());
@@ -7274,7 +7546,7 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_1_0,
+						lv_name_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7285,7 +7557,7 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getFunctionDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_2_0=ruleValidID
+				lv_table_3_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFunctionDefinitionModelRule());
@@ -7293,15 +7565,15 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_2_0,
+						lv_table_3_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_3=';'
+		otherlv_4=';'
 		{
-			newLeafNode(otherlv_3, grammarAccess.getFunctionDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_4, grammarAccess.getFunctionDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;

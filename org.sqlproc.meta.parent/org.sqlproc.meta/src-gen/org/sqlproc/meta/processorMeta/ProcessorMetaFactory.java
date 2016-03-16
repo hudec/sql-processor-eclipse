@@ -258,6 +258,15 @@ public interface ProcessorMetaFactory extends EFactory
   ExtendsAssignementGenerics createExtendsAssignementGenerics();
 
   /**
+   * Returns a new object of class '<em>Column Annotation Assignement</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Column Annotation Assignement</em>'.
+   * @generated
+   */
+  ColumnAnnotationAssignement createColumnAnnotationAssignement();
+
+  /**
    * Returns a new object of class '<em>Property Condition</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -337,6 +346,15 @@ public interface ProcessorMetaFactory extends EFactory
    * @generated
    */
   PojoDefinitionModel createPojoDefinitionModel();
+
+  /**
+   * Returns a new object of class '<em>Annotation Definition Model</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotation Definition Model</em>'.
+   * @generated
+   */
+  AnnotationDefinitionModel createAnnotationDefinitionModel();
 
   /**
    * Returns a new object of class '<em>Table Definition Model</em>'.

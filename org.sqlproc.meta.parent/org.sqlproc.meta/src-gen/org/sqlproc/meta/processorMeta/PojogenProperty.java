@@ -48,6 +48,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getPckg <em>Pckg</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getEnumName <em>Enum Name</em>}</li>
  *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getDbCheckConstraints <em>Db Check Constraints</em>}</li>
+ *   <li>{@link org.sqlproc.meta.processorMeta.PojogenProperty#getColumnAnnotations <em>Column Annotations</em>}</li>
  * </ul>
  *
  * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojogenProperty()
@@ -727,5 +728,31 @@ public interface PojogenProperty extends EObject
    * @generated
    */
   EList<String> getDbCheckConstraints();
+
+  /**
+   * Returns the value of the '<em><b>Column Annotations</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Column Annotations</em>' containment reference isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Column Annotations</em>' containment reference.
+   * @see #setColumnAnnotations(ColumnAnnotationAssignement)
+   * @see org.sqlproc.meta.processorMeta.ProcessorMetaPackage#getPojogenProperty_ColumnAnnotations()
+   * @model containment="true"
+   * @generated
+   */
+  ColumnAnnotationAssignement getColumnAnnotations();
+
+  /**
+   * Sets the value of the '{@link org.sqlproc.meta.processorMeta.PojogenProperty#getColumnAnnotations <em>Column Annotations</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Column Annotations</em>' containment reference.
+   * @see #getColumnAnnotations()
+   * @generated
+   */
+  void setColumnAnnotations(ColumnAnnotationAssignement value);
 
 } // PojogenProperty

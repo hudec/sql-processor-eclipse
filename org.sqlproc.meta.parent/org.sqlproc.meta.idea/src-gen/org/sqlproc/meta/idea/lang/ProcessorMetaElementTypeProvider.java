@@ -70,11 +70,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_2ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_2());
 		}
-		public static IGrammarAwareElementType createArtifacts_TablesAssignment_2_2_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_TablesAssignment_2_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getTablesAssignment_2_2_0());
+		public static IGrammarAwareElementType createArtifacts_AnnotationsAssignment_2_2_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_AnnotationsAssignment_2_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getAnnotationsAssignment_2_2_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getTablesTableDefinitionModelParserRuleCall_2_2_0_0());
+		public static IGrammarAwareElementType createArtifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getAnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_2_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_2_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_2_1());
@@ -82,11 +82,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_3ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_3_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_3());
 		}
-		public static IGrammarAwareElementType createArtifacts_ProceduresAssignment_2_3_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_ProceduresAssignment_2_3_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getProceduresAssignment_2_3_0());
+		public static IGrammarAwareElementType createArtifacts_TablesAssignment_2_3_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_TablesAssignment_2_3_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getTablesAssignment_2_3_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0());
+		public static IGrammarAwareElementType createArtifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getTablesTableDefinitionModelParserRuleCall_2_3_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_3_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_3_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_3_1());
@@ -94,11 +94,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_4ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_4_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_4());
 		}
-		public static IGrammarAwareElementType createArtifacts_FunctionsAssignment_2_4_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_FunctionsAssignment_2_4_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFunctionsAssignment_2_4_0());
+		public static IGrammarAwareElementType createArtifacts_ProceduresAssignment_2_4_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_ProceduresAssignment_2_4_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getProceduresAssignment_2_4_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0());
+		public static IGrammarAwareElementType createArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_4_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_4_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_4_1());
@@ -106,11 +106,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_5ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_5_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_5());
 		}
-		public static IGrammarAwareElementType createArtifacts_StatementsAssignment_2_5_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_StatementsAssignment_2_5_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getStatementsAssignment_2_5_0());
+		public static IGrammarAwareElementType createArtifacts_FunctionsAssignment_2_5_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_FunctionsAssignment_2_5_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFunctionsAssignment_2_5_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_StatementsMetaStatementParserRuleCall_2_5_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_StatementsMetaStatementParserRuleCall_2_5_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getStatementsMetaStatementParserRuleCall_2_5_0_0());
+		public static IGrammarAwareElementType createArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_5_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_5_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_5_1());
@@ -118,11 +118,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_6ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_6_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_6());
 		}
-		public static IGrammarAwareElementType createArtifacts_MappingsAssignment_2_6_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_MappingsAssignment_2_6_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getMappingsAssignment_2_6_0());
+		public static IGrammarAwareElementType createArtifacts_StatementsAssignment_2_6_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_StatementsAssignment_2_6_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getStatementsAssignment_2_6_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_MappingsMappingRuleParserRuleCall_2_6_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_MappingsMappingRuleParserRuleCall_2_6_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getMappingsMappingRuleParserRuleCall_2_6_0_0());
+		public static IGrammarAwareElementType createArtifacts_StatementsMetaStatementParserRuleCall_2_6_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_StatementsMetaStatementParserRuleCall_2_6_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getStatementsMetaStatementParserRuleCall_2_6_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_6_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_6_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_6_1());
@@ -130,14 +130,26 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createArtifacts_Group_2_7ElementType() {
 			return new IGrammarAwareElementType("Artifacts_Group_2_7_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_7());
 		}
-		public static IGrammarAwareElementType createArtifacts_FeaturesAssignment_2_7_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_FeaturesAssignment_2_7_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFeaturesAssignment_2_7_0());
+		public static IGrammarAwareElementType createArtifacts_MappingsAssignment_2_7_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_MappingsAssignment_2_7_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getMappingsAssignment_2_7_0());
 		}
-		public static IGrammarAwareElementType createArtifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0ElementType() {
-			return new IGrammarAwareElementType("Artifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFeaturesOptionalFeatureParserRuleCall_2_7_0_0());
+		public static IGrammarAwareElementType createArtifacts_MappingsMappingRuleParserRuleCall_2_7_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_MappingsMappingRuleParserRuleCall_2_7_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getMappingsMappingRuleParserRuleCall_2_7_0_0());
 		}
 		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_7_1ElementType() {
 			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_7_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_7_1());
+		}
+		public static IGrammarAwareElementType createArtifacts_Group_2_8ElementType() {
+			return new IGrammarAwareElementType("Artifacts_Group_2_8_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getGroup_2_8());
+		}
+		public static IGrammarAwareElementType createArtifacts_FeaturesAssignment_2_8_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_FeaturesAssignment_2_8_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFeaturesAssignment_2_8_0());
+		}
+		public static IGrammarAwareElementType createArtifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0ElementType() {
+			return new IGrammarAwareElementType("Artifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getFeaturesOptionalFeatureParserRuleCall_2_8_0_0());
+		}
+		public static IGrammarAwareElementType createArtifacts_WSTerminalRuleCall_2_8_1ElementType() {
+			return new IGrammarAwareElementType("Artifacts_WSTerminalRuleCall_2_8_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getArtifactsAccess().getWSTerminalRuleCall_2_8_1());
 		}
 	}
 
@@ -169,51 +181,59 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_2_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_2ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_TablesAssignment_2_2_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_TablesAssignment_2_2_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_AnnotationsAssignment_2_2_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_AnnotationsAssignment_2_2_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_2_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_2_1ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_3_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_3ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_ProceduresAssignment_2_3_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_ProceduresAssignment_2_3_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_TablesAssignment_2_3_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_TablesAssignment_2_3_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_3_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_3_1ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_4_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_4ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_FunctionsAssignment_2_4_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FunctionsAssignment_2_4_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_ProceduresAssignment_2_4_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_ProceduresAssignment_2_4_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_4_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_4_1ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_5_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_5ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_StatementsAssignment_2_5_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_StatementsAssignment_2_5_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_FunctionsAssignment_2_5_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FunctionsAssignment_2_5_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_StatementsMetaStatementParserRuleCall_2_5_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_StatementsMetaStatementParserRuleCall_2_5_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_5_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_5_1ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_6_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_6ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_MappingsAssignment_2_6_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_MappingsAssignment_2_6_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_StatementsAssignment_2_6_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_StatementsAssignment_2_6_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_MappingsMappingRuleParserRuleCall_2_6_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_MappingsMappingRuleParserRuleCall_2_6_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_StatementsMetaStatementParserRuleCall_2_6_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_StatementsMetaStatementParserRuleCall_2_6_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_6_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_6_1ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_Group_2_7_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_7ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_FeaturesAssignment_2_7_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FeaturesAssignment_2_7_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_MappingsAssignment_2_7_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_MappingsAssignment_2_7_0ElementType());
 
-	public static final IGrammarAwareElementType Artifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0ElementType());
+	public static final IGrammarAwareElementType Artifacts_MappingsMappingRuleParserRuleCall_2_7_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_MappingsMappingRuleParserRuleCall_2_7_0_0ElementType());
 
 	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_7_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_7_1ElementType());
+
+	public static final IGrammarAwareElementType Artifacts_Group_2_8_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_Group_2_8ElementType());
+
+	public static final IGrammarAwareElementType Artifacts_FeaturesAssignment_2_8_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FeaturesAssignment_2_8_0ElementType());
+
+	public static final IGrammarAwareElementType Artifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0ElementType());
+
+	public static final IGrammarAwareElementType Artifacts_WSTerminalRuleCall_2_8_1_ELEMENT_TYPE = associate(ArtifactsFactory.createArtifacts_WSTerminalRuleCall_2_8_1ElementType());
 
 	private static class ValueTypeFactory {
 		public static IGrammarAwareElementType createValueTypeElementType() {
@@ -1489,6 +1509,144 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	public static final IGrammarAwareElementType ExtendsAssignementGenerics_DbNotTablesAssignment_2_2_1_ELEMENT_TYPE = associate(ExtendsAssignementGenericsFactory.createExtendsAssignementGenerics_DbNotTablesAssignment_2_2_1ElementType());
 
 	public static final IGrammarAwareElementType ExtendsAssignementGenerics_DbNotTablesIDENTTerminalRuleCall_2_2_1_0_ELEMENT_TYPE = associate(ExtendsAssignementGenericsFactory.createExtendsAssignementGenerics_DbNotTablesIDENTTerminalRuleCall_2_2_1_0ElementType());
+
+	private static class ColumnAnnotationAssignementFactory {
+		public static IGrammarAwareElementType createColumnAnnotationAssignementElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementRule());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_GroupElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbColumnAssignment_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbColumnAssignment_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbColumnAssignment_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbColumnIDENTTerminalRuleCall_0_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAssignment_2ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAssignment_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_2());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_2_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_Group_3ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_3_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup_3());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_3_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_3_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAssignment_3_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAssignment_3_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAssignment_3_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_3_1_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_Group_4ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_4_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup_4());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_4_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getPLUSTerminalRuleCall_4_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_Group_4_2ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_4_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup_4_2());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_4_2_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbTablesAssignment_4_2_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbTablesAssignment_4_2_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbTablesAssignment_4_2_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbTablesIDENTTerminalRuleCall_4_2_1_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_Group_5ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_5_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup_5());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_5_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getMINUSTerminalRuleCall_5_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_Group_5_2ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_Group_5_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getGroup_5_2());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getWSTerminalRuleCall_5_2_0());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbNotTablesAssignment_5_2_1());
+		}
+		public static IGrammarAwareElementType createColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0ElementType() {
+			return new IGrammarAwareElementType("ColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getColumnAnnotationAssignementAccess().getDbNotTablesIDENTTerminalRuleCall_5_2_1_0());
+		}
+	}
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignementElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_GroupElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbColumnAssignment_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbColumnAssignment_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAssignment_2_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAssignment_2ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_3_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_Group_3ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_3_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAssignment_3_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAssignment_3_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_4_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_Group_4ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_4_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_4_2_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_Group_4_2ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbTablesAssignment_4_2_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbTablesAssignment_4_2_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_5_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_Group_5ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_5_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_Group_5_2_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_Group_5_2ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1ElementType());
+
+	public static final IGrammarAwareElementType ColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0_ELEMENT_TYPE = associate(ColumnAnnotationAssignementFactory.createColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0ElementType());
 
 	private static class PropertyConditionFactory {
 		public static IGrammarAwareElementType createPropertyConditionElementType() {
@@ -3622,6 +3780,24 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojogenProperty_DbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0ElementType() {
 			return new IGrammarAwareElementType("PojogenProperty_DbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getDbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0());
 		}
+		public static IGrammarAwareElementType createPojogenProperty_Group_44ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_Group_44_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getGroup_44());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameAssignment_44_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameAssignment_44_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameAssignment_44_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameColumnAnnotationsKeyword_44_0_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameColumnAnnotationsKeyword_44_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameColumnAnnotationsKeyword_44_0_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_WSTerminalRuleCall_44_1ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_WSTerminalRuleCall_44_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getWSTerminalRuleCall_44_1());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsAssignment_44_2ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsAssignment_44_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_2());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0());
+		}
 	}
 
 	public static final IGrammarAwareElementType PojogenProperty_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenPropertyElementType());
@@ -4351,6 +4527,18 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	public static final IGrammarAwareElementType PojogenProperty_DbCheckConstraintsAssignment_43_3_1_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbCheckConstraintsAssignment_43_3_1ElementType());
 
 	public static final IGrammarAwareElementType PojogenProperty_DbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_Group_44_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_Group_44ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameAssignment_44_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameAssignment_44_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameColumnAnnotationsKeyword_44_0_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameColumnAnnotationsKeyword_44_0_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_WSTerminalRuleCall_44_1_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_WSTerminalRuleCall_44_1ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAssignment_44_2_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAssignment_44_2ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType());
 
 	private static class MetaSqlTypeAssignementFactory {
 		public static IGrammarAwareElementType createMetaSqlTypeAssignementElementType() {
@@ -5891,8 +6079,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojoDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("PojoDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createPojoDefinitionModel_PojoKeyword_0ElementType() {
-			return new IGrammarAwareElementType("PojoDefinitionModel_PojoKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getPojoKeyword_0());
+		public static IGrammarAwareElementType createPojoDefinitionModel_Alternatives_0ElementType() {
+			return new IGrammarAwareElementType("PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getAlternatives_0());
+		}
+		public static IGrammarAwareElementType createPojoDefinitionModel_PojoKeyword_0_0ElementType() {
+			return new IGrammarAwareElementType("PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getPojoKeyword_0_0());
+		}
+		public static IGrammarAwareElementType createPojoDefinitionModel_IsPojoKeyword_0_1ElementType() {
+			return new IGrammarAwareElementType("PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1());
 		}
 		public static IGrammarAwareElementType createPojoDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("PojoDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getNameAssignment_1());
@@ -5942,7 +6136,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PojoDefinitionModel_Group_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType PojoDefinitionModel_PojoKeyword_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_PojoKeyword_0ElementType());
+	public static final IGrammarAwareElementType PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_Alternatives_0ElementType());
+
+	public static final IGrammarAwareElementType PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_PojoKeyword_0_0ElementType());
+
+	public static final IGrammarAwareElementType PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_IsPojoKeyword_0_1ElementType());
 
 	public static final IGrammarAwareElementType PojoDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_NameAssignment_1ElementType());
 
@@ -5972,6 +6170,94 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PojoDefinitionModel_SEMICOLONTerminalRuleCall_3_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
 
+	private static class AnnotationDefinitionModelFactory {
+		public static IGrammarAwareElementType createAnnotationDefinitionModelElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelRule());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_GroupElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getGroup());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_IsAnnotationKeyword_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_IsAnnotationKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getIsAnnotationKeyword_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_NameAssignment_1ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getNameAssignment_1());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_Alternatives_2ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_Alternatives_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getAlternatives_2());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_Group_2_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_Group_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getGroup_2_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_1());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassAssignment_2_0_2ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassAssignment_2_0_2_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassAssignment_2_0_2());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassAlternatives_2_0_2_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassAlternatives_2_0_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassAlternatives_2_0_2_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassIDENTTerminalRuleCall_2_0_2_0_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassIDENT_DOTTerminalRuleCall_2_0_2_0_1());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassxAssignment_2_1ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassxAssignment_2_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassxAssignment_2_1());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassxJvmTypeCrossReference_2_1_0());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1());
+		}
+		public static IGrammarAwareElementType createAnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType() {
+			return new IGrammarAwareElementType("AnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotationDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
+		}
+	}
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModelElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_Group_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_GroupElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_IsAnnotationKeyword_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_IsAnnotationKeyword_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_NameAssignment_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_Alternatives_2_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_Alternatives_2ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_Group_2_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_Group_2_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassAssignment_2_0_2_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassAssignment_2_0_2ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassAlternatives_2_0_2_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassAlternatives_2_0_2_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassxAssignment_2_1_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassxAssignment_2_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3_ELEMENT_TYPE = associate(AnnotationDefinitionModelFactory.createAnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
+
 	private static class TableDefinitionModelFactory {
 		public static IGrammarAwareElementType createTableDefinitionModelElementType() {
 			return new IGrammarAwareElementType("TableDefinitionModel_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelRule());
@@ -5979,8 +6265,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createTableDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("TableDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createTableDefinitionModel_TableKeyword_0ElementType() {
-			return new IGrammarAwareElementType("TableDefinitionModel_TableKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getTableKeyword_0());
+		public static IGrammarAwareElementType createTableDefinitionModel_Alternatives_0ElementType() {
+			return new IGrammarAwareElementType("TableDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getAlternatives_0());
+		}
+		public static IGrammarAwareElementType createTableDefinitionModel_TableKeyword_0_0ElementType() {
+			return new IGrammarAwareElementType("TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getTableKeyword_0_0());
+		}
+		public static IGrammarAwareElementType createTableDefinitionModel_IsTableKeyword_0_1ElementType() {
+			return new IGrammarAwareElementType("TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getIsTableKeyword_0_1());
 		}
 		public static IGrammarAwareElementType createTableDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("TableDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getNameAssignment_1());
@@ -6003,7 +6295,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType TableDefinitionModel_Group_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType TableDefinitionModel_TableKeyword_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_TableKeyword_0ElementType());
+	public static final IGrammarAwareElementType TableDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_Alternatives_0ElementType());
+
+	public static final IGrammarAwareElementType TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_TableKeyword_0_0ElementType());
+
+	public static final IGrammarAwareElementType TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_IsTableKeyword_0_1ElementType());
 
 	public static final IGrammarAwareElementType TableDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_NameAssignment_1ElementType());
 
@@ -6022,8 +6318,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createProcedureDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("ProcedureDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createProcedureDefinitionModel_ProcedureKeyword_0ElementType() {
-			return new IGrammarAwareElementType("ProcedureDefinitionModel_ProcedureKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getProcedureKeyword_0());
+		public static IGrammarAwareElementType createProcedureDefinitionModel_Alternatives_0ElementType() {
+			return new IGrammarAwareElementType("ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getAlternatives_0());
+		}
+		public static IGrammarAwareElementType createProcedureDefinitionModel_ProcedureKeyword_0_0ElementType() {
+			return new IGrammarAwareElementType("ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0());
+		}
+		public static IGrammarAwareElementType createProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType() {
+			return new IGrammarAwareElementType("ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1());
 		}
 		public static IGrammarAwareElementType createProcedureDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("ProcedureDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getNameAssignment_1());
@@ -6046,7 +6348,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType ProcedureDefinitionModel_Group_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType ProcedureDefinitionModel_ProcedureKeyword_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_ProcedureKeyword_0ElementType());
+	public static final IGrammarAwareElementType ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_Alternatives_0ElementType());
+
+	public static final IGrammarAwareElementType ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_ProcedureKeyword_0_0ElementType());
+
+	public static final IGrammarAwareElementType ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType());
 
 	public static final IGrammarAwareElementType ProcedureDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_NameAssignment_1ElementType());
 
@@ -6065,8 +6371,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createFunctionDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("FunctionDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createFunctionDefinitionModel_FunctionKeyword_0ElementType() {
-			return new IGrammarAwareElementType("FunctionDefinitionModel_FunctionKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getFunctionKeyword_0());
+		public static IGrammarAwareElementType createFunctionDefinitionModel_Alternatives_0ElementType() {
+			return new IGrammarAwareElementType("FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getAlternatives_0());
+		}
+		public static IGrammarAwareElementType createFunctionDefinitionModel_FunctionKeyword_0_0ElementType() {
+			return new IGrammarAwareElementType("FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0());
+		}
+		public static IGrammarAwareElementType createFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType() {
+			return new IGrammarAwareElementType("FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1());
 		}
 		public static IGrammarAwareElementType createFunctionDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("FunctionDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getNameAssignment_1());
@@ -6089,7 +6401,11 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType FunctionDefinitionModel_Group_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType FunctionDefinitionModel_FunctionKeyword_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_FunctionKeyword_0ElementType());
+	public static final IGrammarAwareElementType FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_Alternatives_0ElementType());
+
+	public static final IGrammarAwareElementType FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_FunctionKeyword_0_0ElementType());
+
+	public static final IGrammarAwareElementType FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType());
 
 	public static final IGrammarAwareElementType FunctionDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_NameAssignment_1ElementType());
 
@@ -9608,12 +9924,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_2_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_TablesAssignment_2_2_0ElementType() {
-		return Artifacts_TablesAssignment_2_2_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_AnnotationsAssignment_2_2_0ElementType() {
+		return Artifacts_AnnotationsAssignment_2_2_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0ElementType() {
-		return Artifacts_TablesTableDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0ElementType() {
+		return Artifacts_AnnotationsAnnotationDefinitionModelParserRuleCall_2_2_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_2_1ElementType() {
@@ -9624,12 +9940,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_3_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_ProceduresAssignment_2_3_0ElementType() {
-		return Artifacts_ProceduresAssignment_2_3_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_TablesAssignment_2_3_0ElementType() {
+		return Artifacts_TablesAssignment_2_3_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0ElementType() {
-		return Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0ElementType() {
+		return Artifacts_TablesTableDefinitionModelParserRuleCall_2_3_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_3_1ElementType() {
@@ -9640,12 +9956,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_4_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_FunctionsAssignment_2_4_0ElementType() {
-		return Artifacts_FunctionsAssignment_2_4_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_ProceduresAssignment_2_4_0ElementType() {
+		return Artifacts_ProceduresAssignment_2_4_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0ElementType() {
-		return Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0ElementType() {
+		return Artifacts_ProceduresProcedureDefinitionModelParserRuleCall_2_4_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_4_1ElementType() {
@@ -9656,12 +9972,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_5_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_StatementsAssignment_2_5_0ElementType() {
-		return Artifacts_StatementsAssignment_2_5_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_FunctionsAssignment_2_5_0ElementType() {
+		return Artifacts_FunctionsAssignment_2_5_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_StatementsMetaStatementParserRuleCall_2_5_0_0ElementType() {
-		return Artifacts_StatementsMetaStatementParserRuleCall_2_5_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0ElementType() {
+		return Artifacts_FunctionsFunctionDefinitionModelParserRuleCall_2_5_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_5_1ElementType() {
@@ -9672,12 +9988,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_6_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_MappingsAssignment_2_6_0ElementType() {
-		return Artifacts_MappingsAssignment_2_6_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_StatementsAssignment_2_6_0ElementType() {
+		return Artifacts_StatementsAssignment_2_6_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_MappingsMappingRuleParserRuleCall_2_6_0_0ElementType() {
-		return Artifacts_MappingsMappingRuleParserRuleCall_2_6_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_StatementsMetaStatementParserRuleCall_2_6_0_0ElementType() {
+		return Artifacts_StatementsMetaStatementParserRuleCall_2_6_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_6_1ElementType() {
@@ -9688,16 +10004,32 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return Artifacts_Group_2_7_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_FeaturesAssignment_2_7_0ElementType() {
-		return Artifacts_FeaturesAssignment_2_7_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_MappingsAssignment_2_7_0ElementType() {
+		return Artifacts_MappingsAssignment_2_7_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getArtifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0ElementType() {
-		return Artifacts_FeaturesOptionalFeatureParserRuleCall_2_7_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getArtifacts_MappingsMappingRuleParserRuleCall_2_7_0_0ElementType() {
+		return Artifacts_MappingsMappingRuleParserRuleCall_2_7_0_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_7_1ElementType() {
 		return Artifacts_WSTerminalRuleCall_2_7_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getArtifacts_Group_2_8ElementType() {
+		return Artifacts_Group_2_8_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getArtifacts_FeaturesAssignment_2_8_0ElementType() {
+		return Artifacts_FeaturesAssignment_2_8_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getArtifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0ElementType() {
+		return Artifacts_FeaturesOptionalFeatureParserRuleCall_2_8_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getArtifacts_WSTerminalRuleCall_2_8_1ElementType() {
+		return Artifacts_WSTerminalRuleCall_2_8_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getValueTypeElementType() {
@@ -10658,6 +10990,114 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	
 	public IGrammarAwareElementType getExtendsAssignementGenerics_DbNotTablesIDENTTerminalRuleCall_2_2_1_0ElementType() {
 		return ExtendsAssignementGenerics_DbNotTablesIDENTTerminalRuleCall_2_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignementElementType() {
+		return ColumnAnnotationAssignement_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_GroupElementType() {
+		return ColumnAnnotationAssignement_Group_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbColumnAssignment_0ElementType() {
+		return ColumnAnnotationAssignement_DbColumnAssignment_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0ElementType() {
+		return ColumnAnnotationAssignement_DbColumnIDENTTerminalRuleCall_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_1ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAssignment_2ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAssignment_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_2_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_Group_3ElementType() {
+		return ColumnAnnotationAssignement_Group_3_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_3_0ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_3_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAssignment_3_1ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAssignment_3_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelCrossReference_3_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1ElementType() {
+		return ColumnAnnotationAssignement_AnnotationsAnnotationDefinitionModelIDENTTerminalRuleCall_3_1_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_Group_4ElementType() {
+		return ColumnAnnotationAssignement_Group_4_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_4_0ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_4_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1ElementType() {
+		return ColumnAnnotationAssignement_PLUSTerminalRuleCall_4_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_Group_4_2ElementType() {
+		return ColumnAnnotationAssignement_Group_4_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_4_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbTablesAssignment_4_2_1ElementType() {
+		return ColumnAnnotationAssignement_DbTablesAssignment_4_2_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0ElementType() {
+		return ColumnAnnotationAssignement_DbTablesIDENTTerminalRuleCall_4_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_Group_5ElementType() {
+		return ColumnAnnotationAssignement_Group_5_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_5_0ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_5_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1ElementType() {
+		return ColumnAnnotationAssignement_MINUSTerminalRuleCall_5_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_Group_5_2ElementType() {
+		return ColumnAnnotationAssignement_Group_5_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0ElementType() {
+		return ColumnAnnotationAssignement_WSTerminalRuleCall_5_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1ElementType() {
+		return ColumnAnnotationAssignement_DbNotTablesAssignment_5_2_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0ElementType() {
+		return ColumnAnnotationAssignement_DbNotTablesIDENTTerminalRuleCall_5_2_1_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPropertyConditionElementType() {
@@ -12940,6 +13380,30 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return PojogenProperty_DbCheckConstraintsIDENTTerminalRuleCall_43_3_1_0_ELEMENT_TYPE;
 	}
 	
+	public IGrammarAwareElementType getPojogenProperty_Group_44ElementType() {
+		return PojogenProperty_Group_44_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameAssignment_44_0ElementType() {
+		return PojogenProperty_NameAssignment_44_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameColumnAnnotationsKeyword_44_0_0ElementType() {
+		return PojogenProperty_NameColumnAnnotationsKeyword_44_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_WSTerminalRuleCall_44_1ElementType() {
+		return PojogenProperty_WSTerminalRuleCall_44_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsAssignment_44_2ElementType() {
+		return PojogenProperty_ColumnAnnotationsAssignment_44_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType() {
+		return PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE;
+	}
+	
 	public IGrammarAwareElementType getMetaSqlTypeAssignementElementType() {
 		return MetaSqlTypeAssignement_ELEMENT_TYPE;
 	}
@@ -14164,8 +14628,16 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return PojoDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoDefinitionModel_PojoKeyword_0ElementType() {
-		return PojoDefinitionModel_PojoKeyword_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoDefinitionModel_Alternatives_0ElementType() {
+		return PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojoDefinitionModel_PojoKeyword_0_0ElementType() {
+		return PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojoDefinitionModel_IsPojoKeyword_0_1ElementType() {
+		return PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPojoDefinitionModel_NameAssignment_1ElementType() {
@@ -14224,6 +14696,74 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return PojoDefinitionModel_SEMICOLONTerminalRuleCall_3_ELEMENT_TYPE;
 	}
 	
+	public IGrammarAwareElementType getAnnotationDefinitionModelElementType() {
+		return AnnotationDefinitionModel_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_GroupElementType() {
+		return AnnotationDefinitionModel_Group_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_IsAnnotationKeyword_0ElementType() {
+		return AnnotationDefinitionModel_IsAnnotationKeyword_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_NameAssignment_1ElementType() {
+		return AnnotationDefinitionModel_NameAssignment_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType() {
+		return AnnotationDefinitionModel_NameIDENTTerminalRuleCall_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_Alternatives_2ElementType() {
+		return AnnotationDefinitionModel_Alternatives_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_Group_2_0ElementType() {
+		return AnnotationDefinitionModel_Group_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0ElementType() {
+		return AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1ElementType() {
+		return AnnotationDefinitionModel_COLONTerminalRuleCall_2_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassAssignment_2_0_2ElementType() {
+		return AnnotationDefinitionModel_ClassAssignment_2_0_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassAlternatives_2_0_2_0ElementType() {
+		return AnnotationDefinitionModel_ClassAlternatives_2_0_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0ElementType() {
+		return AnnotationDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1ElementType() {
+		return AnnotationDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassxAssignment_2_1ElementType() {
+		return AnnotationDefinitionModel_ClassxAssignment_2_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0ElementType() {
+		return AnnotationDefinitionModel_ClassxJvmTypeCrossReference_2_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1ElementType() {
+		return AnnotationDefinitionModel_ClassxJvmTypeQualifiedNameParserRuleCall_2_1_0_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType() {
+		return AnnotationDefinitionModel_SEMICOLONTerminalRuleCall_3_ELEMENT_TYPE;
+	}
+	
 	public IGrammarAwareElementType getTableDefinitionModelElementType() {
 		return TableDefinitionModel_ELEMENT_TYPE;
 	}
@@ -14232,8 +14772,16 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return TableDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getTableDefinitionModel_TableKeyword_0ElementType() {
-		return TableDefinitionModel_TableKeyword_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getTableDefinitionModel_Alternatives_0ElementType() {
+		return TableDefinitionModel_Alternatives_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getTableDefinitionModel_TableKeyword_0_0ElementType() {
+		return TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getTableDefinitionModel_IsTableKeyword_0_1ElementType() {
+		return TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getTableDefinitionModel_NameAssignment_1ElementType() {
@@ -14264,8 +14812,16 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return ProcedureDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getProcedureDefinitionModel_ProcedureKeyword_0ElementType() {
-		return ProcedureDefinitionModel_ProcedureKeyword_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getProcedureDefinitionModel_Alternatives_0ElementType() {
+		return ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getProcedureDefinitionModel_ProcedureKeyword_0_0ElementType() {
+		return ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType() {
+		return ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getProcedureDefinitionModel_NameAssignment_1ElementType() {
@@ -14296,8 +14852,16 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return FunctionDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getFunctionDefinitionModel_FunctionKeyword_0ElementType() {
-		return FunctionDefinitionModel_FunctionKeyword_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getFunctionDefinitionModel_Alternatives_0ElementType() {
+		return FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFunctionDefinitionModel_FunctionKeyword_0_0ElementType() {
+		return FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType() {
+		return FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getFunctionDefinitionModel_NameAssignment_1ElementType() {
