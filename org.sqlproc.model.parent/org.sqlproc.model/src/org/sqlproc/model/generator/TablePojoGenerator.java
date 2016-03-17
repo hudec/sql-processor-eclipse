@@ -26,10 +26,12 @@ import org.sqlproc.model.processorModel.PojoProcedure;
 import org.sqlproc.model.util.Annotations;
 import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.generator.TableBaseGenerator;
+import org.sqlproc.plugin.lib.property.ColumnAnnotations;
 import org.sqlproc.plugin.lib.property.EnumAttribute;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
+import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.resolver.DbResolver;
 import org.sqlproc.plugin.lib.resolver.DbResolver.DbType;
 import org.sqlproc.plugin.lib.util.Stats;
@@ -447,6 +449,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             }
                         }
                     }
+                    addColumnAnnotations(pojoName, name, bufferPartial);
                     {
                         bufferMetaAttr = new StringBuilder();
                         if (attribute.isDef()) {
@@ -551,6 +554,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" // ").append(attribute.getCompleteSqlType());
                 }
                 if (pkAttribute != null) {
+                    addColumnAnnotations(pojoName, "ids", bufferPartial);
                     bufferPartial.append(NLINDENT).append(INDENT).append("#Attr boolean onlyIds");
                     bufferPartial.append(NLINDENT).append(INDENT).append("#Attr java.util.List <")
                             .append(pkAttribute.getWrapperClassName()).append("> ids");
@@ -833,6 +837,32 @@ public class TablePojoGenerator extends TableBaseGenerator {
             }
         }
         return null;
+    }
+
+    protected void addColumnAnnotations(String pojoName, String attrName, StringBuilder buffer) {
+
+        ColumnAnnotations ca = columnAnnotations.get(attrName);
+        if (ca == null)
+            ca = columnAnnotations2.get(attrName);
+        if (ca != null) {
+            boolean doit = false;
+            if (ca.getDbTables() != null && !ca.getDbTables().isEmpty()) {
+                if (ca.getDbTables().contains(pojoName))
+                    doit = true;
+            } else if (ca.getDbNotTables() != null && !ca.getDbNotTables().isEmpty()) {
+                if (!ca.getDbNotTables().contains(pojoName))
+                    doit = true;
+            } else
+                doit = true;
+            if (doit) {
+                for (String annotationName : ca.getAnnotations()) {
+                    PojoDefinition annotation = modelAnnotations.get(annotationName);
+                    if (annotation != null) {
+                        buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
+                    }
+                }
+            }
+        }
     }
 
     public static String generatePojo(Artifacts artifacts, Package packagex, ISerializer serializer,

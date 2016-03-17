@@ -7,6 +7,7 @@ import java.util.TreeSet;
 
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.plugin.lib.property.ColumnAnnotations;
+import org.sqlproc.plugin.lib.util.CommonUtils;
 
 public class ColumnAnnotationsImpl implements ColumnAnnotations {
 
@@ -22,7 +23,11 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
             this.annotations.add(annotation.getName());
         }
         this.dbTables.addAll(dbTables);
+        for (String dbTable : this.dbTables)
+            this.dbTables.add(CommonUtils.tableToCamelCase(dbTable));
         this.dbNotTables.addAll(dbNotTables);
+        for (String dbTable : this.dbNotTables)
+            this.dbNotTables.add(CommonUtils.tableToCamelCase(dbTable));
     }
 
     public String getDbColumn() {

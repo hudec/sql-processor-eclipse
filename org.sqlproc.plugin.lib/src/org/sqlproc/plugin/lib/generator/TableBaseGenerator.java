@@ -20,6 +20,7 @@ import java.util.TreeSet;
 import org.apache.log4j.Logger;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.scoping.IScopeProvider;
+import org.sqlproc.plugin.lib.property.ColumnAnnotations;
 import org.sqlproc.plugin.lib.property.EnumAttribute;
 import org.sqlproc.plugin.lib.property.FunctionDefinition;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
@@ -39,6 +40,7 @@ import org.sqlproc.plugin.lib.resolver.DbIndex.DbIndexDetail;
 import org.sqlproc.plugin.lib.resolver.DbResolver;
 import org.sqlproc.plugin.lib.resolver.DbResolver.DbType;
 import org.sqlproc.plugin.lib.resolver.DbTable;
+import org.sqlproc.plugin.lib.util.CommonUtils;
 import org.sqlproc.plugin.lib.util.Debug;
 import org.sqlproc.plugin.lib.util.Stats;
 
@@ -87,9 +89,9 @@ public class TableBaseGenerator {
     protected Map<String, PojoAttrType> sqlTypes = new HashMap<>();
     protected Map<String, Map<String, PojoAttrType>> tableTypes = new HashMap<>();
     protected Map<String, Map<String, PojoAttrType>> columnTypes = new HashMap<>();
-    protected Map<String, Map<String, PojoAttrType>> functionTypes = new HashMap<String, Map<String, PojoAttrType>>();
-    protected Map<String, Map<String, PojoAttrType>> procedureTypes = new HashMap<String, Map<String, PojoAttrType>>();
-    protected Map<String, String> tableNames = new HashMap<String, String>();
+    protected Map<String, Map<String, PojoAttrType>> functionTypes = new HashMap<>();
+    protected Map<String, Map<String, PojoAttrType>> procedureTypes = new HashMap<>();
+    protected Map<String, String> tableNames = new HashMap<>();
     protected Map<String, Map<String, String>> columnNames = new HashMap<>();
     protected Set<String> ignoreTables = new HashSet<>();
     protected Set<String> onlyTables = new HashSet<>();
@@ -124,6 +126,8 @@ public class TableBaseGenerator {
     protected Map<String, PojoEntityType> pojosForFunctions = new HashMap<>();
     protected Filter activeFilter = null;
     protected Map<String, String> enumForCheckConstraints = new HashMap<>();
+    protected Map<String, ColumnAnnotations> columnAnnotations = new TreeMap<>();
+    protected Map<String, ColumnAnnotations> columnAnnotations2 = new TreeMap<>();
 
     protected Set<String> tables = new HashSet<String>();
     protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<>();
@@ -137,8 +141,8 @@ public class TableBaseGenerator {
     protected Set<String> dbSequences = new TreeSet<String>();
     protected DbType dbType = null;
     protected Map<String, List<EnumAttribute>> enums = new TreeMap<>();
-    protected Map<String, String> enumsTables = new HashMap<String, String>();
-    protected Map<String, String> comments = new HashMap<String, String>();
+    protected Map<String, String> enumsTables = new HashMap<>();
+    protected Map<String, String> comments = new HashMap<>();
     protected String pojoPackage;
 
     protected Map<String, String> metaFunctionsResult = new HashMap<>();
@@ -306,6 +310,13 @@ public class TableBaseGenerator {
         if (enumForCheckConstraints != null) {
             this.enumForCheckConstraints.putAll(enumForCheckConstraints);
         }
+        Map<String, ColumnAnnotations> columnAnnotations = modelProperty.getColumnAnnotations(model);
+        if (columnAnnotations != null) {
+            this.columnAnnotations.putAll(columnAnnotations);
+            for (Entry<String, ColumnAnnotations> e : columnAnnotations.entrySet()) {
+                this.columnAnnotations2.put(columnToCamelCase(e.getKey()), e.getValue());
+            }
+        }
         pojoPackage = modelProperty.getPackage(model);
 
         for (Map.Entry<String, Map<String, Map<String, String>>> inheritImport : this.inheritImports.entrySet()) {
@@ -342,6 +353,10 @@ public class TableBaseGenerator {
         // if (modelPojos != null) {
         // this.modelPojos.putAll(modelPojos);
         // }
+        Map<String, PojoDefinition> modelAnnotations = modelProperty.getModelAnnotations(model);
+        if (modelAnnotations != null) {
+            this.modelAnnotations.putAll(modelAnnotations);
+        }
         Map<String, TableDefinition> modelTables = modelProperty.getModelTables(model);
         if (modelTables != null) {
             this.modelTables.putAll(modelTables);
@@ -404,8 +419,11 @@ public class TableBaseGenerator {
         debug.debug("versionColumns " + this.versionColumns);
         debug.debug("notVersionColumns " + this.notVersionColumns);
         debug.debug("activeFilter " + this.activeFilter);
+        debug.debug("columnAnnotations " + this.columnAnnotations);
+        debug.debug("columnAnnotations2 " + this.columnAnnotations2);
         debug.debug("enumForCheckConstraints " + this.enumForCheckConstraints);
         // debug.debug("modelPojos " + this.modelPojos);
+        debug.debug("modelAnnotations " + this.modelAnnotations);
         debug.debug("modelTables " + this.modelTables);
         debug.debug("modelProcedures " + this.modelProcedures);
         debug.debug("modelFunctions " + this.modelFunctions);
@@ -1041,28 +1059,7 @@ public class TableBaseGenerator {
             else
                 return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.UPPER_CAMEL, value);
         } else
-            return _tableToCamelCase(value);
-    }
-
-    protected String _tableToCamelCase(String value) {
-        if (value == null)
-            return null;
-        String[] parts = value.split("_");
-        String camelCaseString = "";
-        for (String part : parts) {
-            if (camelCaseString.length() == 0)
-                if (part.length() > 1)
-                    camelCaseString = camelCaseString + part.substring(0, 1).toUpperCase()
-                            + part.substring(1).toLowerCase();
-                else
-                    camelCaseString = camelCaseString + part.toUpperCase();
-            else if (part.length() == 1)
-                camelCaseString = camelCaseString + part.toUpperCase();
-            else if (part.length() > 1)
-                camelCaseString = camelCaseString + part.substring(0, 1).toUpperCase()
-                        + part.substring(1).toLowerCase();
-        }
-        return camelCaseString;
+            return CommonUtils.tableToCamelCase(value);
     }
 
     // TODO
@@ -1073,24 +1070,7 @@ public class TableBaseGenerator {
             else
                 return CaseFormat.LOWER_UNDERSCORE.to(CaseFormat.LOWER_CAMEL, value);
         } else
-            return _columnToCamelCase(value);
-    }
-
-    protected String _columnToCamelCase(String value) {
-        if (value == null)
-            return null;
-        String[] parts = value.split("_");
-        String camelCaseString = "";
-        for (String part : parts) {
-            if (camelCaseString.length() == 0)
-                camelCaseString = camelCaseString + part.toLowerCase();
-            else if (part.length() == 1)
-                camelCaseString = camelCaseString + part.toUpperCase();
-            else if (part.length() > 1)
-                camelCaseString = camelCaseString + part.substring(0, 1).toUpperCase()
-                        + part.substring(1).toLowerCase();
-        }
-        return camelCaseString;
+            return CommonUtils.columnToCamelCase(value);
     }
 
     // TODO
