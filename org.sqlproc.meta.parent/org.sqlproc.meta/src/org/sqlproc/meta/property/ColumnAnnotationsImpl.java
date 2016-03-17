@@ -23,10 +23,10 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
             this.annotations.add(annotation.getName());
         }
         this.dbTables.addAll(dbTables);
-        for (String dbTable : this.dbTables)
+        for (String dbTable : dbTables)
             this.dbTables.add(CommonUtils.tableToCamelCase(dbTable));
         this.dbNotTables.addAll(dbNotTables);
-        for (String dbTable : this.dbNotTables)
+        for (String dbTable : dbNotTables)
             this.dbNotTables.add(CommonUtils.tableToCamelCase(dbTable));
     }
 

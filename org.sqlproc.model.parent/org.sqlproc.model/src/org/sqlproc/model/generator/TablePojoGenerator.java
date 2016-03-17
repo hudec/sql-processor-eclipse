@@ -449,7 +449,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                             }
                         }
                     }
-                    addColumnAnnotations(pojoName, name, bufferPartial);
+                    addColumnAnnotations(realPojoName, name, bufferPartial);
                     {
                         bufferMetaAttr = new StringBuilder();
                         if (attribute.isDef()) {
@@ -554,7 +554,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         bufferPartial.append(" // ").append(attribute.getCompleteSqlType());
                 }
                 if (pkAttribute != null) {
-                    addColumnAnnotations(pojoName, "ids", bufferPartial);
+                    addColumnAnnotations(realPojoName, "ids", bufferPartial);
                     bufferPartial.append(NLINDENT).append(INDENT).append("#Attr boolean onlyIds");
                     bufferPartial.append(NLINDENT).append(INDENT).append("#Attr java.util.List <")
                             .append(pkAttribute.getWrapperClassName()).append("> ids");
