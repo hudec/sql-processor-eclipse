@@ -254,6 +254,8 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_43(), "rule__PojogenProperty__Group_43__0");
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_43_3(), "rule__PojogenProperty__Group_43_3__0");
 					put(grammarAccess.getPojogenPropertyAccess().getGroup_44(), "rule__PojogenProperty__Group_44__0");
+					put(grammarAccess.getPojogenPropertyAccess().getGroup_45(), "rule__PojogenProperty__Group_45__0");
+					put(grammarAccess.getPojogenPropertyAccess().getGroup_46(), "rule__PojogenProperty__Group_46__0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getGroup(), "rule__MetaSqlTypeAssignement__Group__0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getGroup_3(), "rule__MetaSqlTypeAssignement__Group_3__0");
 					put(grammarAccess.getMetaTypeAssignementAccess().getGroup(), "rule__MetaTypeAssignement__Group__0");
@@ -643,6 +645,12 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_44_0(), "rule__PojogenProperty__NameAssignment_44_0");
 					put(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_44_2(), "rule__PojogenProperty__DbColumnAssignment_44_2");
 					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_44_4(), "rule__PojogenProperty__ColumnAnnotationsAssignment_44_4");
+					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_45_0(), "rule__PojogenProperty__NameAssignment_45_0");
+					put(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_45_2(), "rule__PojogenProperty__DbColumnAssignment_45_2");
+					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_45_4(), "rule__PojogenProperty__ColumnAnnotationsAssignment_45_4");
+					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_46_0(), "rule__PojogenProperty__NameAssignment_46_0");
+					put(grammarAccess.getPojogenPropertyAccess().getDbColumnAssignment_46_2(), "rule__PojogenProperty__DbColumnAssignment_46_2");
+					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_46_4(), "rule__PojogenProperty__ColumnAnnotationsAssignment_46_4");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__MetaSqlTypeAssignement__SqlTypeAssignment_0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__MetaSqlTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getExtensionAssignment_3_1(), "rule__MetaSqlTypeAssignement__ExtensionAssignment_3_1");

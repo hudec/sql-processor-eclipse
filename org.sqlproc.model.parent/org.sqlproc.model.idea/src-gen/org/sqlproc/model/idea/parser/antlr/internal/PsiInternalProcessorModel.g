@@ -4983,6 +4983,106 @@ rulePojogenProperty returns [Boolean current=false]
 				)
 			)
 		)
+		    |
+		(
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_NameGetterAnnotationsKeyword_45_0_0ElementType());
+					}
+					lv_name_114_0='getter-annotations'
+					{
+						doneLeaf(lv_name_114_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_DbColumnValidIDParserRuleCall_45_1_0ElementType());
+					}
+					lv_dbColumn_115_0=ruleValidID
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0ElementType());
+					}
+					lv_columnAnnotations_116_0=ruleColumnAnnotationAssignement
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_NameSetterAnnotationsKeyword_46_0_0ElementType());
+					}
+					lv_name_117_0='setter-annotations'
+					{
+						doneLeaf(lv_name_117_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_DbColumnValidIDParserRuleCall_46_1_0ElementType());
+					}
+					lv_dbColumn_118_0=ruleValidID
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0ElementType());
+					}
+					lv_columnAnnotations_119_0=ruleColumnAnnotationAssignement
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)
 	)
 ;
 

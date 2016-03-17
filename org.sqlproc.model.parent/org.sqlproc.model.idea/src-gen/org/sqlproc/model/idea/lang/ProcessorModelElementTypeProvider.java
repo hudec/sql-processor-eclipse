@@ -3062,6 +3062,48 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType() {
 			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0());
 		}
+		public static IGrammarAwareElementType createPojogenProperty_Group_45ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_Group_45_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getGroup_45());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameAssignment_45_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameAssignment_45_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameAssignment_45_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameGetterAnnotationsKeyword_45_0_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameGetterAnnotationsKeyword_45_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameGetterAnnotationsKeyword_45_0_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_DbColumnAssignment_45_1ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_DbColumnAssignment_45_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getDbColumnAssignment_45_1());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_DbColumnValidIDParserRuleCall_45_1_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_DbColumnValidIDParserRuleCall_45_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_45_1_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsAssignment_45_2ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsAssignment_45_2_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsAssignment_45_2());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_Group_46ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_Group_46_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getGroup_46());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameAssignment_46_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameAssignment_46_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameAssignment_46_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameSetterAnnotationsKeyword_46_0_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameSetterAnnotationsKeyword_46_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameSetterAnnotationsKeyword_46_0_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_DbColumnAssignment_46_1ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_DbColumnAssignment_46_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getDbColumnAssignment_46_1());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_DbColumnValidIDParserRuleCall_46_1_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_DbColumnValidIDParserRuleCall_46_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_46_1_0());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsAssignment_46_2ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsAssignment_46_2_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsAssignment_46_2());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0());
+		}
 	}
 
 	public static final IGrammarAwareElementType PojogenProperty_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenPropertyElementType());
@@ -3607,6 +3649,34 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAssignment_44_2_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAssignment_44_2ElementType());
 
 	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_Group_45_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_Group_45ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameAssignment_45_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameAssignment_45_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameGetterAnnotationsKeyword_45_0_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameGetterAnnotationsKeyword_45_0_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_DbColumnAssignment_45_1_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbColumnAssignment_45_1ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_DbColumnValidIDParserRuleCall_45_1_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbColumnValidIDParserRuleCall_45_1_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAssignment_45_2_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAssignment_45_2ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_Group_46_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_Group_46ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameAssignment_46_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameAssignment_46_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameSetterAnnotationsKeyword_46_0_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameSetterAnnotationsKeyword_46_0_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_DbColumnAssignment_46_1_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbColumnAssignment_46_1ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_DbColumnValidIDParserRuleCall_46_1_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_DbColumnValidIDParserRuleCall_46_1_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAssignment_46_2_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAssignment_46_2ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0ElementType());
 
 	private static class MetaSqlTypeAssignementFactory {
 		public static IGrammarAwareElementType createMetaSqlTypeAssignementElementType() {
@@ -15683,6 +15753,62 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 	
 	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType() {
 		return PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_Group_45ElementType() {
+		return PojogenProperty_Group_45_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameAssignment_45_0ElementType() {
+		return PojogenProperty_NameAssignment_45_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameGetterAnnotationsKeyword_45_0_0ElementType() {
+		return PojogenProperty_NameGetterAnnotationsKeyword_45_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_DbColumnAssignment_45_1ElementType() {
+		return PojogenProperty_DbColumnAssignment_45_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_DbColumnValidIDParserRuleCall_45_1_0ElementType() {
+		return PojogenProperty_DbColumnValidIDParserRuleCall_45_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsAssignment_45_2ElementType() {
+		return PojogenProperty_ColumnAnnotationsAssignment_45_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0ElementType() {
+		return PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_Group_46ElementType() {
+		return PojogenProperty_Group_46_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameAssignment_46_0ElementType() {
+		return PojogenProperty_NameAssignment_46_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameSetterAnnotationsKeyword_46_0_0ElementType() {
+		return PojogenProperty_NameSetterAnnotationsKeyword_46_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_DbColumnAssignment_46_1ElementType() {
+		return PojogenProperty_DbColumnAssignment_46_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_DbColumnValidIDParserRuleCall_46_1_0ElementType() {
+		return PojogenProperty_DbColumnValidIDParserRuleCall_46_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsAssignment_46_2ElementType() {
+		return PojogenProperty_ColumnAnnotationsAssignment_46_2_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0ElementType() {
+		return PojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getMetaSqlTypeAssignementElementType() {

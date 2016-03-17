@@ -2255,7 +2255,9 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+) | 
-	 *         (name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement) | 
+	 *         (name='getter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement) | 
+	 *         (name='setter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

@@ -5414,6 +5414,116 @@ rulePojogenProperty returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				(
+					lv_name_114_0='getter-annotations'
+					{
+						newLeafNode(lv_name_114_0, grammarAccess.getPojogenPropertyAccess().getNameGetterAnnotationsKeyword_45_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_114_0, "getter-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_45_1_0());
+					}
+					lv_dbColumn_115_0=ruleValidID
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"dbColumn",
+							lv_dbColumn_115_0,
+							"org.eclipse.xtext.xbase.Xtype.ValidID");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0());
+					}
+					lv_columnAnnotations_116_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_116_0,
+							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_117_0='setter-annotations'
+					{
+						newLeafNode(lv_name_117_0, grammarAccess.getPojogenPropertyAccess().getNameSetterAnnotationsKeyword_46_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_117_0, "setter-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getDbColumnValidIDParserRuleCall_46_1_0());
+					}
+					lv_dbColumn_118_0=ruleValidID
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"dbColumn",
+							lv_dbColumn_118_0,
+							"org.eclipse.xtext.xbase.Xtype.ValidID");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0());
+					}
+					lv_columnAnnotations_119_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_119_0,
+							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 

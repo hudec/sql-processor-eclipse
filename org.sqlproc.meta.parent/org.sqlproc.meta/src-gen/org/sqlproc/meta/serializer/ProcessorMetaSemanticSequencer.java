@@ -1186,7 +1186,9 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+) | 
-	 *         (name='column-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement) | 
+	 *         (name='getter-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement) | 
+	 *         (name='setter-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

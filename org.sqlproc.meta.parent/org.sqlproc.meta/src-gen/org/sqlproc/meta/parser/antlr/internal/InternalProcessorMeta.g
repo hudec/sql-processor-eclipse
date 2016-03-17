@@ -6216,6 +6216,138 @@ rulePojogenProperty returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				(
+					lv_name_183_0='getter-annotations'
+					{
+						newLeafNode(lv_name_183_0, grammarAccess.getPojogenPropertyAccess().getNameGetterAnnotationsKeyword_45_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_183_0, "getter-annotations");
+					}
+				)
+			)
+			(
+				this_WS_184=RULE_WS
+				{
+					newLeafNode(this_WS_184, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_45_1());
+				}
+			)+
+			(
+				(
+					lv_dbColumn_185_0=RULE_IDENT
+					{
+						newLeafNode(lv_dbColumn_185_0, grammarAccess.getPojogenPropertyAccess().getDbColumnIDENTTerminalRuleCall_45_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"dbColumn",
+							lv_dbColumn_185_0,
+							"org.sqlproc.meta.ProcessorMeta.IDENT");
+					}
+				)
+			)
+			(
+				this_WS_186=RULE_WS
+				{
+					newLeafNode(this_WS_186, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_45_3());
+				}
+			)+
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0());
+					}
+					lv_columnAnnotations_187_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_187_0,
+							"org.sqlproc.meta.ProcessorMeta.ColumnAnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_188_0='setter-annotations'
+					{
+						newLeafNode(lv_name_188_0, grammarAccess.getPojogenPropertyAccess().getNameSetterAnnotationsKeyword_46_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_188_0, "setter-annotations");
+					}
+				)
+			)
+			(
+				this_WS_189=RULE_WS
+				{
+					newLeafNode(this_WS_189, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_46_1());
+				}
+			)+
+			(
+				(
+					lv_dbColumn_190_0=RULE_IDENT
+					{
+						newLeafNode(lv_dbColumn_190_0, grammarAccess.getPojogenPropertyAccess().getDbColumnIDENTTerminalRuleCall_46_2_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed(
+							$current,
+							"dbColumn",
+							lv_dbColumn_190_0,
+							"org.sqlproc.meta.ProcessorMeta.IDENT");
+					}
+				)
+			)
+			(
+				this_WS_191=RULE_WS
+				{
+					newLeafNode(this_WS_191, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_46_3());
+				}
+			)+
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0());
+					}
+					lv_columnAnnotations_192_0=ruleColumnAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_192_0,
+							"org.sqlproc.meta.ProcessorMeta.ColumnAnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
 	)
 ;
 

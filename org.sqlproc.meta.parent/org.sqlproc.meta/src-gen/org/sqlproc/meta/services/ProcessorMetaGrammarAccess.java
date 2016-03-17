@@ -2600,6 +2600,24 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWSTerminalRuleCall_44_3 = (RuleCall)cGroup_44.eContents().get(3);
 		private final Assignment cColumnAnnotationsAssignment_44_4 = (Assignment)cGroup_44.eContents().get(4);
 		private final RuleCall cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0 = (RuleCall)cColumnAnnotationsAssignment_44_4.eContents().get(0);
+		private final Group cGroup_45 = (Group)cAlternatives.eContents().get(45);
+		private final Assignment cNameAssignment_45_0 = (Assignment)cGroup_45.eContents().get(0);
+		private final Keyword cNameGetterAnnotationsKeyword_45_0_0 = (Keyword)cNameAssignment_45_0.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_45_1 = (RuleCall)cGroup_45.eContents().get(1);
+		private final Assignment cDbColumnAssignment_45_2 = (Assignment)cGroup_45.eContents().get(2);
+		private final RuleCall cDbColumnIDENTTerminalRuleCall_45_2_0 = (RuleCall)cDbColumnAssignment_45_2.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_45_3 = (RuleCall)cGroup_45.eContents().get(3);
+		private final Assignment cColumnAnnotationsAssignment_45_4 = (Assignment)cGroup_45.eContents().get(4);
+		private final RuleCall cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0 = (RuleCall)cColumnAnnotationsAssignment_45_4.eContents().get(0);
+		private final Group cGroup_46 = (Group)cAlternatives.eContents().get(46);
+		private final Assignment cNameAssignment_46_0 = (Assignment)cGroup_46.eContents().get(0);
+		private final Keyword cNameSetterAnnotationsKeyword_46_0_0 = (Keyword)cNameAssignment_46_0.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_46_1 = (RuleCall)cGroup_46.eContents().get(1);
+		private final Assignment cDbColumnAssignment_46_2 = (Assignment)cGroup_46.eContents().get(2);
+		private final RuleCall cDbColumnIDENTTerminalRuleCall_46_2_0 = (RuleCall)cDbColumnAssignment_46_2.eContents().get(0);
+		private final RuleCall cWSTerminalRuleCall_46_3 = (RuleCall)cGroup_46.eContents().get(3);
+		private final Assignment cColumnAnnotationsAssignment_46_4 = (Assignment)cGroup_46.eContents().get(4);
+		private final RuleCall cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0 = (RuleCall)cColumnAnnotationsAssignment_46_4.eContents().get(0);
 		
 		//PojogenProperty:
 		//	name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -2646,7 +2664,9 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	| name='active-filter' WS+ activeFilter=ValueType
 		//	| name='package' WS+ pckg=QualifiedName
 		//	| name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
-		//	| name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement;
+		//	| name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+		//	| name='getter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+		//	| name='setter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+ | name='types-in-table' WS+ dbTable=IDENT (WS+
@@ -2680,7 +2700,9 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//procPojos+=ProcedurePojoAssignement)+ | name='pojos-for-functions' (WS+ funPojos+=FunctionPojoAssignement)+ |
 		//name='active-filter' WS+ activeFilter=ValueType | name='package' WS+ pckg=QualifiedName |
 		//name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+ | name='column-annotations' WS+
-		//dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+		//dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement | name='getter-annotations' WS+ dbColumn=IDENT WS+
+		//columnAnnotations=ColumnAnnotationAssignement | name='setter-annotations' WS+ dbColumn=IDENT WS+
+		//columnAnnotations=ColumnAnnotationAssignement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -3795,6 +3817,60 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//ColumnAnnotationAssignement
 		public RuleCall getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0() { return cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0; }
+		
+		//name='getter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+		public Group getGroup_45() { return cGroup_45; }
+		
+		//name='getter-annotations'
+		public Assignment getNameAssignment_45_0() { return cNameAssignment_45_0; }
+		
+		//'getter-annotations'
+		public Keyword getNameGetterAnnotationsKeyword_45_0_0() { return cNameGetterAnnotationsKeyword_45_0_0; }
+		
+		//WS+
+		public RuleCall getWSTerminalRuleCall_45_1() { return cWSTerminalRuleCall_45_1; }
+		
+		//dbColumn=IDENT
+		public Assignment getDbColumnAssignment_45_2() { return cDbColumnAssignment_45_2; }
+		
+		//IDENT
+		public RuleCall getDbColumnIDENTTerminalRuleCall_45_2_0() { return cDbColumnIDENTTerminalRuleCall_45_2_0; }
+		
+		//WS+
+		public RuleCall getWSTerminalRuleCall_45_3() { return cWSTerminalRuleCall_45_3; }
+		
+		//columnAnnotations=ColumnAnnotationAssignement
+		public Assignment getColumnAnnotationsAssignment_45_4() { return cColumnAnnotationsAssignment_45_4; }
+		
+		//ColumnAnnotationAssignement
+		public RuleCall getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0() { return cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0; }
+		
+		//name='setter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+		public Group getGroup_46() { return cGroup_46; }
+		
+		//name='setter-annotations'
+		public Assignment getNameAssignment_46_0() { return cNameAssignment_46_0; }
+		
+		//'setter-annotations'
+		public Keyword getNameSetterAnnotationsKeyword_46_0_0() { return cNameSetterAnnotationsKeyword_46_0_0; }
+		
+		//WS+
+		public RuleCall getWSTerminalRuleCall_46_1() { return cWSTerminalRuleCall_46_1; }
+		
+		//dbColumn=IDENT
+		public Assignment getDbColumnAssignment_46_2() { return cDbColumnAssignment_46_2; }
+		
+		//IDENT
+		public RuleCall getDbColumnIDENTTerminalRuleCall_46_2_0() { return cDbColumnIDENTTerminalRuleCall_46_2_0; }
+		
+		//WS+
+		public RuleCall getWSTerminalRuleCall_46_3() { return cWSTerminalRuleCall_46_3; }
+		
+		//columnAnnotations=ColumnAnnotationAssignement
+		public Assignment getColumnAnnotationsAssignment_46_4() { return cColumnAnnotationsAssignment_46_4; }
+		
+		//ColumnAnnotationAssignement
+		public RuleCall getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0() { return cColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0; }
 	}
 	public class MetaSqlTypeAssignementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.MetaSqlTypeAssignement");
@@ -8868,7 +8944,9 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	| name='active-filter' WS+ activeFilter=ValueType
 	//	| name='package' WS+ pckg=QualifiedName
 	//	| name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+
-	//	| name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement;
+	//	| name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+	//	| name='getter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement
+	//	| name='setter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=ColumnAnnotationAssignement;
 	public PojogenPropertyElements getPojogenPropertyAccess() {
 		return pPojogenProperty;
 	}

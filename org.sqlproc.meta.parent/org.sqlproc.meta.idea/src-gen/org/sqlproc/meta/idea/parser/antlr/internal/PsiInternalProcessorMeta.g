@@ -6420,6 +6420,146 @@ rulePojogenProperty returns [Boolean current=false]
 				)
 			)
 		)
+		    |
+		(
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_NameGetterAnnotationsKeyword_45_0_0ElementType());
+					}
+					lv_name_183_0='getter-annotations'
+					{
+						doneLeaf(lv_name_183_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_WSTerminalRuleCall_45_1ElementType());
+				}
+				this_WS_184=RULE_WS
+				{
+					doneLeaf(this_WS_184);
+				}
+			)+
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_DbColumnIDENTTerminalRuleCall_45_2_0ElementType());
+					}
+					lv_dbColumn_185_0=RULE_IDENT
+					{
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+					{
+						doneLeaf(lv_dbColumn_185_0);
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_WSTerminalRuleCall_45_3ElementType());
+				}
+				this_WS_186=RULE_WS
+				{
+					doneLeaf(this_WS_186);
+				}
+			)+
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0ElementType());
+					}
+					lv_columnAnnotations_187_0=ruleColumnAnnotationAssignement
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_NameSetterAnnotationsKeyword_46_0_0ElementType());
+					}
+					lv_name_188_0='setter-annotations'
+					{
+						doneLeaf(lv_name_188_0);
+					}
+					{
+						if (!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_WSTerminalRuleCall_46_1ElementType());
+				}
+				this_WS_189=RULE_WS
+				{
+					doneLeaf(this_WS_189);
+				}
+			)+
+			(
+				(
+					{
+						markLeaf(elementTypeProvider.getPojogenProperty_DbColumnIDENTTerminalRuleCall_46_2_0ElementType());
+					}
+					lv_dbColumn_190_0=RULE_IDENT
+					{
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+					{
+						doneLeaf(lv_dbColumn_190_0);
+					}
+				)
+			)
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_WSTerminalRuleCall_46_3ElementType());
+				}
+				this_WS_191=RULE_WS
+				{
+					doneLeaf(this_WS_191);
+				}
+			)+
+			(
+				(
+					{
+						markComposite(elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0ElementType());
+					}
+					lv_columnAnnotations_192_0=ruleColumnAnnotationAssignement
+					{
+						doneComposite();
+						if(!$current) {
+							associateWithSemanticElement();
+							$current = true;
+						}
+					}
+				)
+			)
+		)
 	)
 ;
 

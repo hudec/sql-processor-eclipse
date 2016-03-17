@@ -368,6 +368,12 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
 			if (elementType == elementTypeProvider.getMetaSqlTypeAssignementElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
