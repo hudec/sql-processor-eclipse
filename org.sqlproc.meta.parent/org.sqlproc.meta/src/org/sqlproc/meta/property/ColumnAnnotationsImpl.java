@@ -40,20 +40,20 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
                 _type = _type | type;
             this.annotations.put(name, _type);
             for (String dbTable : dbTables) {
-                Set<String> _dbTables = this.dbTables.get(name);
+                Set<String> _dbTables = this.dbTables.get(name + type);
                 if (_dbTables == null)
                     _dbTables = new HashSet<>();
                 _dbTables.add(dbTable);
                 _dbTables.add(CommonUtils.tableToCamelCase(dbTable));
-                this.dbTables.put(name, _dbTables);
+                this.dbTables.put(name + type, _dbTables);
             }
             for (String dbTable : dbNotTables) {
-                Set<String> _dbTables = this.dbNotTables.get(name);
+                Set<String> _dbTables = this.dbNotTables.get(name + type);
                 if (_dbTables == null)
                     _dbTables = new HashSet<>();
                 _dbTables.add(dbTable);
                 _dbTables.add(CommonUtils.tableToCamelCase(dbTable));
-                this.dbNotTables.put(name, _dbTables);
+                this.dbNotTables.put(name + type, _dbTables);
             }
         }
     }

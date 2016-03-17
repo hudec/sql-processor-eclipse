@@ -852,25 +852,38 @@ public class TablePojoGenerator extends TableBaseGenerator {
             PojoDefinition annotation = modelAnnotations.get(e.getKey());
             if (annotation != null) {
                 boolean doit = false;
-                if (ca.getDbTables(e.getKey()) != null && !ca.getDbTables(e.getKey()).isEmpty()) {
-                    if (ca.getDbTables(e.getKey()).contains(pojoName))
-                        doit = true;
-                } else if (ca.getDbNotTables(e.getKey()) != null && !ca.getDbNotTables(e.getKey()).isEmpty()) {
-                    if (!ca.getDbNotTables(e.getKey()).contains(pojoName))
-                        doit = true;
-                } else
+                if ((e.getValue() & ColumnAnnotations.IS_ANNOTATION) != 0
+                        && doAddColumnAnnotations(ca, pojoName, e.getKey(), ColumnAnnotations.IS_ANNOTATION)) {
+                    buffer.append(NLINDENT).append(INDENT).append("#Attribute");
                     doit = true;
-                if (doit) {
-                    if ((e.getValue() & ColumnAnnotations.IS_ANNOTATION) != 0)
-                        buffer.append(NLINDENT).append(INDENT).append("#Attribute");
-                    if ((e.getValue() & ColumnAnnotations.IS_GETTER) != 0)
-                        buffer.append(NLINDENT).append(INDENT).append("#Getter");
-                    if ((e.getValue() & ColumnAnnotations.IS_SETTER) != 0)
-                        buffer.append(NLINDENT).append(INDENT).append("#Setter");
-                    buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
                 }
+                if ((e.getValue() & ColumnAnnotations.IS_GETTER) != 0
+                        && doAddColumnAnnotations(ca, pojoName, e.getKey(), ColumnAnnotations.IS_GETTER)) {
+                    buffer.append(NLINDENT).append(INDENT).append("#Getter");
+                    doit = true;
+                }
+                if ((e.getValue() & ColumnAnnotations.IS_SETTER) != 0
+                        && doAddColumnAnnotations(ca, pojoName, e.getKey(), ColumnAnnotations.IS_SETTER)) {
+                    buffer.append(NLINDENT).append(INDENT).append("#Setter");
+                    doit = true;
+                }
+                if (doit)
+                    buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
             }
         }
+    }
+
+    protected boolean doAddColumnAnnotations(ColumnAnnotations ca, String pojoName, String name, Integer type) {
+        boolean doit = false;
+        if (ca.getDbTables(name + type) != null && !ca.getDbTables(name + type).isEmpty()) {
+            if (ca.getDbTables(name + type).contains(pojoName))
+                doit = true;
+        } else if (ca.getDbNotTables(name + type) != null && !ca.getDbNotTables(name + type).isEmpty()) {
+            if (!ca.getDbNotTables(name + type).contains(pojoName))
+                doit = true;
+        } else
+            doit = true;
+        return doit;
     }
 
     public static String generatePojo(Artifacts artifacts, Package packagex, ISerializer serializer,
