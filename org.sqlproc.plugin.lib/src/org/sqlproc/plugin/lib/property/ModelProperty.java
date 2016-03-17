@@ -95,6 +95,8 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String POJOGEN_PACKAGE = "package";
     public static final String POJOGEN_ENUM_FOR_CHECK_CONSTRAINTS = "enum-for-check-constraints";
     public static final String POJOGEN_COLUMN_ANNOTATIONS = "column-annotations";
+    public static final String POJOGEN_GETTER_ANNOTATIONS = "getter-annotations";
+    public static final String POJOGEN_SETTER_ANNOTATIONS = "setter-annotations";
 
     public static final String METAGEN = "metagen";
     public static final String METAGEN_GLOBAL_SEQUENCE = "global-sequence";

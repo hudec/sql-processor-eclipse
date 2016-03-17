@@ -701,7 +701,17 @@ public class ModelPropertyBean extends ModelProperty {
         } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
             ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
                     property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
-                    property.getColumnAnnotations().getDbNotTables());
+                    property.getColumnAnnotations().getDbNotTables(), false, false);
+            modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
+        } else if (POJOGEN_GETTER_ANNOTATIONS.equals(property.getName())) {
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
+                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
+                    property.getColumnAnnotations().getDbNotTables(), true, false);
+            modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
+        } else if (POJOGEN_SETTER_ANNOTATIONS.equals(property.getName())) {
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
+                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
+                    property.getColumnAnnotations().getDbNotTables(), false, true);
             modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
         }
     }

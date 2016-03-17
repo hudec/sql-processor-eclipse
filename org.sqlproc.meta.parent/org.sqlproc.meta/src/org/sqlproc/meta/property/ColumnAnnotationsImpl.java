@@ -15,9 +15,11 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
     Set<String> annotations = new TreeSet<String>();
     List<String> dbTables = new ArrayList<String>();
     List<String> dbNotTables = new ArrayList<String>();
+    boolean isGetter;
+    boolean isSetter;
 
     public ColumnAnnotationsImpl(String dbColumn, List<AnnotationDefinitionModel> annotations, List<String> dbTables,
-            List<String> dbNotTables) {
+            List<String> dbNotTables, boolean isGetter, boolean isSetter) {
         this.dbColumn = dbColumn;
         for (AnnotationDefinitionModel annotation : annotations) {
             this.annotations.add(annotation.getName());
@@ -28,6 +30,8 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
         this.dbNotTables.addAll(dbNotTables);
         for (String dbTable : dbNotTables)
             this.dbNotTables.add(CommonUtils.tableToCamelCase(dbTable));
+        this.isGetter = isGetter;
+        this.isSetter = isSetter;
     }
 
     public String getDbColumn() {
@@ -49,8 +53,18 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
     }
 
     @Override
+    public boolean isGetter() {
+        return isGetter;
+    }
+
+    @Override
+    public boolean isSetter() {
+        return isSetter;
+    }
+
+    @Override
     public String toString() {
         return "ColumnAnnotationsImpl [dbColumn=" + dbColumn + ", annotations=" + annotations + ", dbTables=" + dbTables
-                + ", dbNotTables=" + dbNotTables + "]";
+                + ", dbNotTables=" + dbNotTables + ", isGetter=" + isGetter + ", isSetter=" + isSetter + "]";
     }
 }

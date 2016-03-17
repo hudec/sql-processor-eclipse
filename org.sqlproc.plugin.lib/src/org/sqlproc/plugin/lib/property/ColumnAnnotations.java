@@ -12,4 +12,8 @@ public interface ColumnAnnotations {
     public List<String> getDbTables();
 
     public List<String> getDbNotTables();
+
+    public boolean isGetter();
+
+    public boolean isSetter();
 }
