@@ -17,6 +17,7 @@ public class ColumnAnnotationsImpl implements ColumnAnnotations {
     List<String> dbNotTables = new ArrayList<String>();
     boolean isGetter;
     boolean isSetter;
+    boolean isAttribute;
 
     public ColumnAnnotationsImpl(String dbColumn, List<AnnotationDefinitionModel> annotations, List<String> dbTables,
             List<String> dbNotTables, boolean isGetter, boolean isSetter) {

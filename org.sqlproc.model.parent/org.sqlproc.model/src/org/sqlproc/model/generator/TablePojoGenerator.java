@@ -859,6 +859,10 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 for (String annotationName : ca.getAnnotations()) {
                     PojoDefinition annotation = modelAnnotations.get(annotationName);
                     if (annotation != null) {
+                        if (ca.isGetter())
+                            buffer.append(NLINDENT).append(INDENT).append("#Getter");
+                        if (ca.isSetter())
+                            buffer.append(NLINDENT).append(INDENT).append("#Setter");
                         buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
                     }
                 }
