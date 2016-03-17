@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="org.sqlproc.meta.web-2.6.0-SNAPSHOT">
+        <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
+        <wb-resource deploy-path="/" source-path="/WebRoot" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src-gen"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/xtend-gen"/>
+        <dependent-module archiveName="org.sqlproc.meta-2.6.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.sqlproc.meta/org.sqlproc.meta">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="org.sqlproc.meta.ide-2.6.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/org.sqlproc.meta.ide/org.sqlproc.meta.ide">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <property name="context-root" value="org.sqlproc.meta.web"/>
+        <property name="java-output-path" value="/org.sqlproc.meta.web/target/classes"/>
+    </wb-module>
+</project-modules>
