@@ -845,26 +845,29 @@ public class TablePojoGenerator extends TableBaseGenerator {
         ColumnAnnotations ca = columnAnnotations.get(attrName);
         if (ca == null)
             ca = columnAnnotations2.get(attrName);
-        if (ca != null) {
-            boolean doit = false;
-            if (ca.getDbTables() != null && !ca.getDbTables().isEmpty()) {
-                if (ca.getDbTables().contains(pojoName))
+        if (ca == null)
+            return;
+
+        for (Entry<String, Integer> e : ca.getAnnotations().entrySet()) {
+            PojoDefinition annotation = modelAnnotations.get(e.getKey());
+            if (annotation != null) {
+                boolean doit = false;
+                if (ca.getDbTables(e.getKey()) != null && !ca.getDbTables(e.getKey()).isEmpty()) {
+                    if (ca.getDbTables(e.getKey()).contains(pojoName))
+                        doit = true;
+                } else if (ca.getDbNotTables(e.getKey()) != null && !ca.getDbNotTables(e.getKey()).isEmpty()) {
+                    if (!ca.getDbNotTables(e.getKey()).contains(pojoName))
+                        doit = true;
+                } else
                     doit = true;
-            } else if (ca.getDbNotTables() != null && !ca.getDbNotTables().isEmpty()) {
-                if (!ca.getDbNotTables().contains(pojoName))
-                    doit = true;
-            } else
-                doit = true;
-            if (doit) {
-                for (String annotationName : ca.getAnnotations()) {
-                    PojoDefinition annotation = modelAnnotations.get(annotationName);
-                    if (annotation != null) {
-                        if (ca.isGetter())
-                            buffer.append(NLINDENT).append(INDENT).append("#Getter");
-                        if (ca.isSetter())
-                            buffer.append(NLINDENT).append(INDENT).append("#Setter");
-                        buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
-                    }
+                if (doit) {
+                    if ((e.getValue() & ColumnAnnotations.IS_ANNOTATION) != 0)
+                        buffer.append(NLINDENT).append(INDENT).append("#Attribute");
+                    if ((e.getValue() & ColumnAnnotations.IS_GETTER) != 0)
+                        buffer.append(NLINDENT).append(INDENT).append("#Getter");
+                    if ((e.getValue() & ColumnAnnotations.IS_SETTER) != 0)
+                        buffer.append(NLINDENT).append(INDENT).append("#Setter");
+                    buffer.append(NLINDENT).append(INDENT).append("@").append(annotation.getQualifiedName());
                 }
             }
         }

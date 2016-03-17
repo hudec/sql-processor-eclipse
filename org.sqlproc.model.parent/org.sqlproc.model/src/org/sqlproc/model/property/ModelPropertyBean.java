@@ -33,6 +33,7 @@ import org.sqlproc.model.processorModel.Property;
 import org.sqlproc.model.processorModel.PropertyCondition;
 import org.sqlproc.model.processorModel.TableDefinitionModel;
 import org.sqlproc.model.util.Utils;
+import org.sqlproc.plugin.lib.property.ColumnAnnotations;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PairValues;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
@@ -699,19 +700,25 @@ public class ModelPropertyBean extends ModelProperty {
                         property.getEnumName());
             }
         } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
-            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
-                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
-                    property.getColumnAnnotations().getDbNotTables(), false, false);
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
+                    (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
+                    property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
+                    property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
+                    ColumnAnnotations.IS_ANNOTATION);
             modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
         } else if (POJOGEN_GETTER_ANNOTATIONS.equals(property.getName())) {
-            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
-                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
-                    property.getColumnAnnotations().getDbNotTables(), true, false);
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
+                    (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
+                    property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
+                    property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
+                    ColumnAnnotations.IS_GETTER);
             modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
         } else if (POJOGEN_SETTER_ANNOTATIONS.equals(property.getName())) {
-            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(property.getDbColumn(),
-                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
-                    property.getColumnAnnotations().getDbNotTables(), false, true);
+            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
+                    (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
+                    property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
+                    property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
+                    ColumnAnnotations.IS_SETTER);
             modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
         }
     }
