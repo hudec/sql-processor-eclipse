@@ -57,6 +57,7 @@ import org.eclipse.xtext.common.types.JvmEnumerationType
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmPrimitiveType
+import org.eclipse.xtext.common.types.JvmOperation
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -760,8 +761,10 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
             innerProperty = checkProperty.substring(pos1 + 1)
             checkProperty = checkProperty.substring(0, pos1)
         }
-        val Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty)
-        if (features == null || features.empty || !(features.head instanceof JvmField)) {
+        var Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty)
+        if (features == null || features.empty || !(features.head instanceof JvmField))
+        	features = jvmType.findAllFeaturesByName("get"+checkProperty.toFirstUpper)
+        if (features == null || features.empty || (!(features.head instanceof JvmOperation) && !(features.head instanceof JvmField))) {
         	if (jvmType instanceof JvmPrimitiveType || isPrimitive(jvmType.qualifiedName))
         		return ValidationResult.OK
         	if (jvmType.abstract)
@@ -769,6 +772,8 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         	return ValidationResult.ERROR
         }
         if (innerProperty != null) {
+        	if (features.head instanceof JvmOperation)
+        		return ValidationResult.ERROR
         	var JvmField field = features.head as JvmField
         	if (field.type instanceof JvmParameterizedTypeReference) {
 	        	val JvmType type = (field.type as JvmParameterizedTypeReference).type

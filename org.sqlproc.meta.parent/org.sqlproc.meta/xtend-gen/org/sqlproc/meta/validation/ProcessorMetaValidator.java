@@ -36,6 +36,7 @@ import org.eclipse.xtext.common.types.JvmEnumerationLiteral;
 import org.eclipse.xtext.common.types.JvmEnumerationType;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.common.types.JvmField;
+import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmType;
@@ -48,6 +49,7 @@ import org.eclipse.xtext.xbase.lib.InputOutput;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -1563,7 +1565,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       String _substring_3 = checkProperty.substring(0, pos1);
       checkProperty = _substring_3;
     }
-    final Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty);
+    Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty);
     boolean _or_1 = false;
     boolean _or_2 = false;
     boolean _equals_2 = Objects.equal(features, null);
@@ -1581,15 +1583,45 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       _or_1 = _not;
     }
     if (_or_1) {
-      boolean _or_3 = false;
+      String _firstUpper = StringExtensions.toFirstUpper(checkProperty);
+      String _plus_1 = ("get" + _firstUpper);
+      Iterable<JvmFeature> _findAllFeaturesByName = jvmType.findAllFeaturesByName(_plus_1);
+      features = _findAllFeaturesByName;
+    }
+    boolean _or_3 = false;
+    boolean _or_4 = false;
+    boolean _equals_3 = Objects.equal(features, null);
+    if (_equals_3) {
+      _or_4 = true;
+    } else {
+      boolean _isEmpty_1 = IterableExtensions.isEmpty(features);
+      _or_4 = _isEmpty_1;
+    }
+    if (_or_4) {
+      _or_3 = true;
+    } else {
+      boolean _and = false;
+      JvmFeature _head_1 = IterableExtensions.<JvmFeature>head(features);
+      boolean _not_1 = (!(_head_1 instanceof JvmOperation));
+      if (!_not_1) {
+        _and = false;
+      } else {
+        JvmFeature _head_2 = IterableExtensions.<JvmFeature>head(features);
+        boolean _not_2 = (!(_head_2 instanceof JvmField));
+        _and = _not_2;
+      }
+      _or_3 = _and;
+    }
+    if (_or_3) {
+      boolean _or_5 = false;
       if ((jvmType instanceof JvmPrimitiveType)) {
-        _or_3 = true;
+        _or_5 = true;
       } else {
         String _qualifiedName = jvmType.getQualifiedName();
         boolean _isPrimitive = this.isPrimitive(_qualifiedName);
-        _or_3 = _isPrimitive;
+        _or_5 = _isPrimitive;
       }
-      if (_or_3) {
+      if (_or_5) {
         return ValidationResult.OK;
       }
       boolean _isAbstract = jvmType.isAbstract();
@@ -1600,8 +1632,12 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     boolean _notEquals = (!Objects.equal(innerProperty, null));
     if (_notEquals) {
-      JvmFeature _head_1 = IterableExtensions.<JvmFeature>head(features);
-      JvmField field = ((JvmField) _head_1);
+      JvmFeature _head_3 = IterableExtensions.<JvmFeature>head(features);
+      if ((_head_3 instanceof JvmOperation)) {
+        return ValidationResult.ERROR;
+      }
+      JvmFeature _head_4 = IterableExtensions.<JvmFeature>head(features);
+      JvmField field = ((JvmField) _head_4);
       JvmTypeReference _type = field.getType();
       if ((_type instanceof JvmParameterizedTypeReference)) {
         JvmTypeReference _type_1 = field.getType();
@@ -1612,25 +1648,25 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         } else {
           JvmTypeReference _type_2 = field.getType();
           final List<JvmTypeReference> typeArgs = ((JvmParameterizedTypeReference) _type_2).getArguments();
-          boolean _and = false;
           boolean _and_1 = false;
+          boolean _and_2 = false;
           boolean _notEquals_1 = (!Objects.equal(typeArgs, null));
           if (!_notEquals_1) {
+            _and_2 = false;
+          } else {
+            boolean _isEmpty_2 = typeArgs.isEmpty();
+            boolean _not_3 = (!_isEmpty_2);
+            _and_2 = _not_3;
+          }
+          if (!_and_2) {
             _and_1 = false;
           } else {
-            boolean _isEmpty_1 = typeArgs.isEmpty();
-            boolean _not_1 = (!_isEmpty_1);
-            _and_1 = _not_1;
+            JvmTypeReference _head_5 = IterableExtensions.<JvmTypeReference>head(typeArgs);
+            _and_1 = (_head_5 instanceof JvmParameterizedTypeReference);
           }
-          if (!_and_1) {
-            _and = false;
-          } else {
-            JvmTypeReference _head_2 = IterableExtensions.<JvmTypeReference>head(typeArgs);
-            _and = (_head_2 instanceof JvmParameterizedTypeReference);
-          }
-          if (_and) {
-            JvmTypeReference _head_3 = IterableExtensions.<JvmTypeReference>head(typeArgs);
-            final JvmType type2 = ((JvmParameterizedTypeReference) _head_3).getType();
+          if (_and_1) {
+            JvmTypeReference _head_6 = IterableExtensions.<JvmTypeReference>head(typeArgs);
+            final JvmType type2 = ((JvmParameterizedTypeReference) _head_6).getType();
             if ((!(type2 instanceof JvmDeclaredType))) {
               InputOutput.<String>print((("checkClassProperty2 " + property) + ": "));
               InputOutput.<JvmType>println(type2);
