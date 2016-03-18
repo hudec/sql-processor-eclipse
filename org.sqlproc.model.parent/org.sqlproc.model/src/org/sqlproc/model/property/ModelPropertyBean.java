@@ -3,6 +3,7 @@ package org.sqlproc.model.property;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -500,7 +501,7 @@ public class ModelPropertyBean extends ModelProperty {
             }
         } else if (POJOGEN_CREATE_COLUMNS.equals(property.getName())) {
             if (!modelValues.createColumns.containsKey(property.getDbTable()))
-                modelValues.createColumns.put(property.getDbTable(), new HashMap<String, PojoAttrType>());
+                modelValues.createColumns.put(property.getDbTable(), new LinkedHashMap<String, PojoAttrType>());
             for (int i = 0, m = property.getColumnTypes().size(); i < m; i++) {
                 PojoAttrTypeImpl type = new PojoAttrTypeImpl(property.getColumnTypes().get(i).getDbColumn(), null,
                         property.getColumnTypes().get(i).getType());
@@ -529,22 +530,22 @@ public class ModelPropertyBean extends ModelProperty {
             }
         } else if (POJOGEN_CREATE_EXPORTS.equals(property.getName())) {
             if (!modelValues.createExports.containsKey(property.getDbTable()))
-                modelValues.createExports.put(property.getDbTable(), new HashMap<String, Map<String, String>>());
+                modelValues.createExports.put(property.getDbTable(), new LinkedHashMap<String, Map<String, String>>());
             Map<String, Map<String, String>> exports = modelValues.createExports.get(property.getDbTable());
             for (int i = 0, m = property.getExports().size(); i < m; i++) {
                 ExportAssignement export = property.getExports().get(i);
                 if (!exports.containsKey(export.getDbColumn()))
-                    exports.put(export.getDbColumn(), new HashMap<String, String>());
+                    exports.put(export.getDbColumn(), new LinkedHashMap<String, String>());
                 exports.get(export.getDbColumn()).put(export.getFkTable(), export.getFkColumn());
             }
         } else if (POJOGEN_CREATE_IMPORTS.equals(property.getName())) {
             if (!modelValues.createImports.containsKey(property.getDbTable()))
-                modelValues.createImports.put(property.getDbTable(), new HashMap<String, Map<String, String>>());
+                modelValues.createImports.put(property.getDbTable(), new LinkedHashMap<String, Map<String, String>>());
             Map<String, Map<String, String>> imports = modelValues.createImports.get(property.getDbTable());
             for (int i = 0, m = property.getImports().size(); i < m; i++) {
                 ImportAssignement _import = property.getImports().get(i);
                 if (!imports.containsKey(_import.getDbColumn()))
-                    imports.put(_import.getDbColumn(), new HashMap<String, String>());
+                    imports.put(_import.getDbColumn(), new LinkedHashMap<String, String>());
                 imports.get(_import.getDbColumn()).put(_import.getPkTable(), _import.getPkColumn());
             }
         } else if (POJOGEN_CREATE_121_IMPORTS.equals(property.getName())) {
