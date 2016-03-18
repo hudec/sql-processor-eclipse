@@ -56,6 +56,7 @@ import org.eclipse.xtext.common.types.JvmType
 import org.eclipse.xtext.common.types.JvmEnumerationType
 import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmTypeReference
+import org.eclipse.xtext.common.types.JvmPrimitiveType
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -761,6 +762,8 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         }
         val Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty)
         if (features == null || features.empty || !(features.head instanceof JvmField)) {
+        	if (jvmType instanceof JvmPrimitiveType || isPrimitive(jvmType.qualifiedName))
+        		return ValidationResult.OK
         	if (jvmType.abstract)
         		return ValidationResult.WARNING
         	return ValidationResult.ERROR
@@ -1010,6 +1013,44 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
         if (clazz == typeof(java.math.BigDecimal))
             return true
         if (clazz == typeof(java.math.BigInteger))
+            return true
+        return false
+    }
+
+    def isPrimitive(String name) {
+        if (name == null)
+            return true
+        if (name == 'java.lang.String')
+            return true
+        if (name == 'java.lang.Byte')
+            return true
+        if (name == 'java.lang.Short')
+            return true
+        if (name == 'java.lang.Integer')
+            return true
+        if (name == 'java.lang.Long')
+            return true
+        if (name == 'java.lang.Double')
+            return true
+        if (name == 'java.lang.Float')
+            return true
+        if (name == 'java.lang.Boolean')
+            return true
+        if (name == 'java.util.Date')
+            return true
+        if (name == 'java.sql.Date')
+            return true
+        if (name == 'java.sql.Time')
+            return true
+        if (name == 'java.sql.Timestamp')
+            return true
+        if (name == 'java.sql.Blob')
+            return true
+        if (name == 'java.sql.Clob')
+            return true
+        if (name == 'java.math.BigDecimal')
+            return true
+        if (name == 'java.math.BigInteger')
             return true
         return false
     }

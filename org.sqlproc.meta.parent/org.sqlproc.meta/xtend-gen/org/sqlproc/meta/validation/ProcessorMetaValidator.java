@@ -37,6 +37,7 @@ import org.eclipse.xtext.common.types.JvmEnumerationType;
 import org.eclipse.xtext.common.types.JvmFeature;
 import org.eclipse.xtext.common.types.JvmField;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
+import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.validation.Check;
@@ -1580,6 +1581,17 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       _or_1 = _not;
     }
     if (_or_1) {
+      boolean _or_3 = false;
+      if ((jvmType instanceof JvmPrimitiveType)) {
+        _or_3 = true;
+      } else {
+        String _qualifiedName = jvmType.getQualifiedName();
+        boolean _isPrimitive = this.isPrimitive(_qualifiedName);
+        _or_3 = _isPrimitive;
+      }
+      if (_or_3) {
+        return ValidationResult.OK;
+      }
       boolean _isAbstract = jvmType.isAbstract();
       if (_isAbstract) {
         return ValidationResult.WARNING;
@@ -2097,6 +2109,78 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return true;
     }
     boolean _equals_16 = Objects.equal(clazz, BigInteger.class);
+    if (_equals_16) {
+      return true;
+    }
+    return false;
+  }
+  
+  public boolean isPrimitive(final String name) {
+    boolean _equals = Objects.equal(name, null);
+    if (_equals) {
+      return true;
+    }
+    boolean _equals_1 = Objects.equal(name, "java.lang.String");
+    if (_equals_1) {
+      return true;
+    }
+    boolean _equals_2 = Objects.equal(name, "java.lang.Byte");
+    if (_equals_2) {
+      return true;
+    }
+    boolean _equals_3 = Objects.equal(name, "java.lang.Short");
+    if (_equals_3) {
+      return true;
+    }
+    boolean _equals_4 = Objects.equal(name, "java.lang.Integer");
+    if (_equals_4) {
+      return true;
+    }
+    boolean _equals_5 = Objects.equal(name, "java.lang.Long");
+    if (_equals_5) {
+      return true;
+    }
+    boolean _equals_6 = Objects.equal(name, "java.lang.Double");
+    if (_equals_6) {
+      return true;
+    }
+    boolean _equals_7 = Objects.equal(name, "java.lang.Float");
+    if (_equals_7) {
+      return true;
+    }
+    boolean _equals_8 = Objects.equal(name, "java.lang.Boolean");
+    if (_equals_8) {
+      return true;
+    }
+    boolean _equals_9 = Objects.equal(name, "java.util.Date");
+    if (_equals_9) {
+      return true;
+    }
+    boolean _equals_10 = Objects.equal(name, "java.sql.Date");
+    if (_equals_10) {
+      return true;
+    }
+    boolean _equals_11 = Objects.equal(name, "java.sql.Time");
+    if (_equals_11) {
+      return true;
+    }
+    boolean _equals_12 = Objects.equal(name, "java.sql.Timestamp");
+    if (_equals_12) {
+      return true;
+    }
+    boolean _equals_13 = Objects.equal(name, "java.sql.Blob");
+    if (_equals_13) {
+      return true;
+    }
+    boolean _equals_14 = Objects.equal(name, "java.sql.Clob");
+    if (_equals_14) {
+      return true;
+    }
+    boolean _equals_15 = Objects.equal(name, "java.math.BigDecimal");
+    if (_equals_15) {
+      return true;
+    }
+    boolean _equals_16 = Objects.equal(name, "java.math.BigInteger");
     if (_equals_16) {
       return true;
     }
