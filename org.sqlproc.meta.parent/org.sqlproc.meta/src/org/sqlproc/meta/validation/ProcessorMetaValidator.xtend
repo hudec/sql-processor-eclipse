@@ -58,6 +58,7 @@ import org.eclipse.xtext.common.types.JvmEnumerationLiteral
 import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.common.types.JvmPrimitiveType
 import org.eclipse.xtext.common.types.JvmOperation
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel
 
 enum ValidationResult {
 	OK, WARNING, ERROR
@@ -203,6 +204,25 @@ class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
 	            if (pojoDefinition.getName().equals(definition.getName())) {
 	                error("Duplicate name : " + pojoDefinition.getName(),
 	                        ProcessorMetaPackage.Literals.POJO_DEFINITION_MODEL__NAME)
+	                return
+	            }
+            }
+        }
+    }
+    
+    @Check
+    def checkUniqueAnnotationDefinition(AnnotationDefinitionModel annotationDefinition) {
+        if (CommonUtils.skipVerification(annotationDefinition, modelProperty))
+            return;
+        val artifacts = getArtifacts(annotationDefinition)
+        if (artifacts == null)
+            return;
+            
+        for (AnnotationDefinitionModel definition : artifacts.annotations) {
+            if (definition != null && definition !== annotationDefinition) {
+	            if (annotationDefinition.getName().equals(definition.getName())) {
+	                error("Duplicate name : " + annotationDefinition.getName(),
+	                        ProcessorMetaPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME)
 	                return
 	            }
             }

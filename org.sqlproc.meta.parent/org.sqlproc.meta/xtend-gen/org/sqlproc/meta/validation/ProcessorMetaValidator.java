@@ -50,6 +50,7 @@ import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
+import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -442,6 +443,41 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           String _plus = ("Duplicate name : " + _name_2);
           this.error(_plus, 
             ProcessorMetaPackage.Literals.POJO_DEFINITION_MODEL__NAME);
+          return;
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueAnnotationDefinition(final AnnotationDefinitionModel annotationDefinition) {
+    boolean _skipVerification = CommonUtils.skipVerification(annotationDefinition, this.modelProperty);
+    if (_skipVerification) {
+      return;
+    }
+    final Artifacts artifacts = this.getArtifacts(annotationDefinition);
+    boolean _equals = Objects.equal(artifacts, null);
+    if (_equals) {
+      return;
+    }
+    EList<AnnotationDefinitionModel> _annotations = artifacts.getAnnotations();
+    for (final AnnotationDefinitionModel definition : _annotations) {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(definition, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        _and = (definition != annotationDefinition);
+      }
+      if (_and) {
+        String _name = annotationDefinition.getName();
+        String _name_1 = definition.getName();
+        boolean _equals_1 = _name.equals(_name_1);
+        if (_equals_1) {
+          String _name_2 = annotationDefinition.getName();
+          String _plus = ("Duplicate name : " + _name_2);
+          this.error(_plus, 
+            ProcessorMetaPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME);
           return;
         }
       }

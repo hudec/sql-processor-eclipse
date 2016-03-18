@@ -12,6 +12,7 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.validation.Check;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.Artifacts;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.Entity;
@@ -71,6 +72,41 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
           String _plus = ("Duplicate name : " + _name_2);
           this.error(_plus, 
             ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME);
+          return;
+        }
+      }
+    }
+  }
+  
+  @Check
+  public void checkUniqueAnnotationDefinition(final AnnotationDefinitionModel annotationDefinition) {
+    boolean _skipVerification = CommonUtils.skipVerification(annotationDefinition, this.modelProperty);
+    if (_skipVerification) {
+      return;
+    }
+    final Artifacts artifacts = this.getArtifacts(annotationDefinition);
+    boolean _equals = Objects.equal(artifacts, null);
+    if (_equals) {
+      return;
+    }
+    EList<AnnotationDefinitionModel> _annotations = artifacts.getAnnotations();
+    for (final AnnotationDefinitionModel definition : _annotations) {
+      boolean _and = false;
+      boolean _notEquals = (!Objects.equal(definition, null));
+      if (!_notEquals) {
+        _and = false;
+      } else {
+        _and = (definition != annotationDefinition);
+      }
+      if (_and) {
+        String _name = annotationDefinition.getName();
+        String _name_1 = definition.getName();
+        boolean _equals_1 = _name.equals(_name_1);
+        if (_equals_1) {
+          String _name_2 = annotationDefinition.getName();
+          String _plus = ("Duplicate name : " + _name_2);
+          this.error(_plus, 
+            ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME);
           return;
         }
       }

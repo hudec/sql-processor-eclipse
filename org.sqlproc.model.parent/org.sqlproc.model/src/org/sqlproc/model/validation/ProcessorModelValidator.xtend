@@ -6,13 +6,9 @@ package org.sqlproc.model.validation
 import org.eclipse.xtext.validation.Check
 import org.sqlproc.model.processorModel.PojoDefinitionModel
 import org.sqlproc.model.processorModel.ProcessorModelPackage
-import org.eclipse.emf.common.util.URI
 import org.sqlproc.model.processorModel.Artifacts
 import com.google.inject.Inject
-import org.sqlproc.plugin.lib.resolver.PojoResolverFactory
 import org.sqlproc.plugin.lib.resolver.DbResolver
-import org.eclipse.xtext.scoping.IScopeProvider
-import org.eclipse.xtext.naming.IQualifiedNameConverter
 import org.sqlproc.plugin.lib.property.ModelProperty
 import org.eclipse.emf.ecore.EObject
 import static extension org.eclipse.xtext.EcoreUtil2.*
@@ -30,6 +26,7 @@ import org.sqlproc.model.processorModel.DaoEntity
 import org.sqlproc.model.processorModel.PojoAttribute
 import org.sqlproc.model.processorModel.Entity
 import org.sqlproc.plugin.lib.util.CommonUtils
+import org.sqlproc.model.processorModel.AnnotationDefinitionModel
 
 /**
  * Custom validation rules. 
@@ -57,6 +54,25 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
 	            if (pojoDefinition.getName().equals(definition.getName())) {
 	                error("Duplicate name : " + pojoDefinition.getName(),
 	                        ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
+	                return
+	            }
+            }
+        }
+    }
+    
+    @Check
+    def checkUniqueAnnotationDefinition(AnnotationDefinitionModel annotationDefinition) {
+        if (CommonUtils.skipVerification(annotationDefinition, modelProperty))
+            return;
+        val artifacts = getArtifacts(annotationDefinition)
+        if (artifacts == null)
+            return;
+            
+        for (AnnotationDefinitionModel definition : artifacts.annotations) {
+            if (definition != null && definition !== annotationDefinition) {
+	            if (annotationDefinition.getName().equals(definition.getName())) {
+	                error("Duplicate name : " + annotationDefinition.getName(),
+	                        ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME)
 	                return
 	            }
             }
