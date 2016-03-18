@@ -91,7 +91,7 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
       case ProcessorMetaPackage.EXTENDS_ASSIGNEMENT: return createExtendsAssignement();
       case ProcessorMetaPackage.IMPLEMENTS_ASSIGNEMENT_GENERICS: return createImplementsAssignementGenerics();
       case ProcessorMetaPackage.EXTENDS_ASSIGNEMENT_GENERICS: return createExtendsAssignementGenerics();
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT: return createColumnAnnotationAssignement();
+      case ProcessorMetaPackage.ANNOTATION_ASSIGNEMENT: return createAnnotationAssignement();
       case ProcessorMetaPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case ProcessorMetaPackage.PROPERTY: return createProperty();
       case ProcessorMetaPackage.DATABASE_PROPERTY: return createDatabaseProperty();
@@ -428,10 +428,10 @@ public class ProcessorMetaFactoryImpl extends EFactoryImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnAnnotationAssignement createColumnAnnotationAssignement()
+  public AnnotationAssignement createAnnotationAssignement()
   {
-    ColumnAnnotationAssignementImpl columnAnnotationAssignement = new ColumnAnnotationAssignementImpl();
-    return columnAnnotationAssignement;
+    AnnotationAssignementImpl annotationAssignement = new AnnotationAssignementImpl();
+    return annotationAssignement;
   }
 
   /**

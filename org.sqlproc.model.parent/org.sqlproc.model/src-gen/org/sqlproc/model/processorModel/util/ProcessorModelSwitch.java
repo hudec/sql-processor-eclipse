@@ -11,6 +11,7 @@ import org.eclipse.emf.ecore.util.Switch;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
@@ -21,7 +22,6 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
-import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirective;
@@ -376,10 +376,10 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProcessorModelPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
+      case ProcessorModelPackage.ANNOTATION_ASSIGNEMENT:
       {
-        ColumnAnnotationAssignement columnAnnotationAssignement = (ColumnAnnotationAssignement)theEObject;
-        T result = caseColumnAnnotationAssignement(columnAnnotationAssignement);
+        AnnotationAssignement annotationAssignement = (AnnotationAssignement)theEObject;
+        T result = caseAnnotationAssignement(annotationAssignement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1483,17 +1483,17 @@ public class ProcessorModelSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Annotation Assignement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Annotation Assignement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+  public T caseAnnotationAssignement(AnnotationAssignement object)
   {
     return null;
   }

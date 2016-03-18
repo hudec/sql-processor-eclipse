@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
@@ -23,7 +24,6 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
-import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirective;
@@ -325,9 +325,9 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
         return createExtendsAssignementGenericsAdapter();
       }
       @Override
-      public Adapter caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+      public Adapter caseAnnotationAssignement(AnnotationAssignement object)
       {
-        return createColumnAnnotationAssignementAdapter();
+        return createAnnotationAssignementAdapter();
       }
       @Override
       public Adapter casePropertyCondition(PropertyCondition object)
@@ -1192,16 +1192,16 @@ public class ProcessorModelAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.ColumnAnnotationAssignement <em>Column Annotation Assignement</em>}'.
+   * Creates a new adapter for an object of class '{@link org.sqlproc.model.processorModel.AnnotationAssignement <em>Annotation Assignement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.sqlproc.model.processorModel.ColumnAnnotationAssignement
+   * @see org.sqlproc.model.processorModel.AnnotationAssignement
    * @generated
    */
-  public Adapter createColumnAnnotationAssignementAdapter()
+  public Adapter createAnnotationAssignementAdapter()
   {
     return null;
   }

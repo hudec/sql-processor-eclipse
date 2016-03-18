@@ -12,10 +12,10 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 import org.eclipse.xtext.common.types.TypesPackage;
 
+import org.sqlproc.meta.processorMeta.AnnotationAssignement;
 import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
-import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -277,7 +277,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass columnAnnotationAssignementEClass = null;
+  private EClass annotationAssignementEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -1560,9 +1560,9 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getColumnAnnotationAssignement()
+  public EClass getAnnotationAssignement()
   {
-    return columnAnnotationAssignementEClass;
+    return annotationAssignementEClass;
   }
 
   /**
@@ -1570,9 +1570,9 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getColumnAnnotationAssignement_Annotations()
+  public EReference getAnnotationAssignement_Annotations()
   {
-    return (EReference)columnAnnotationAssignementEClass.getEStructuralFeatures().get(0);
+    return (EReference)annotationAssignementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -1580,9 +1580,9 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getColumnAnnotationAssignement_DbTables()
+  public EAttribute getAnnotationAssignement_DbTables()
   {
-    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(1);
+    return (EAttribute)annotationAssignementEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1590,9 +1590,9 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getColumnAnnotationAssignement_DbNotTables()
+  public EAttribute getAnnotationAssignement_DbNotTables()
   {
-    return (EAttribute)columnAnnotationAssignementEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)annotationAssignementEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -3974,10 +3974,10 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     createEAttribute(extendsAssignementGenericsEClass, EXTENDS_ASSIGNEMENT_GENERICS__DB_TABLES);
     createEAttribute(extendsAssignementGenericsEClass, EXTENDS_ASSIGNEMENT_GENERICS__DB_NOT_TABLES);
 
-    columnAnnotationAssignementEClass = createEClass(COLUMN_ANNOTATION_ASSIGNEMENT);
-    createEReference(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS);
-    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES);
-    createEAttribute(columnAnnotationAssignementEClass, COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES);
+    annotationAssignementEClass = createEClass(ANNOTATION_ASSIGNEMENT);
+    createEReference(annotationAssignementEClass, ANNOTATION_ASSIGNEMENT__ANNOTATIONS);
+    createEAttribute(annotationAssignementEClass, ANNOTATION_ASSIGNEMENT__DB_TABLES);
+    createEAttribute(annotationAssignementEClass, ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES);
 
     propertyConditionEClass = createEClass(PROPERTY_CONDITION);
     createEAttribute(propertyConditionEClass, PROPERTY_CONDITION__NAME);
@@ -4396,10 +4396,10 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEAttribute(getExtendsAssignementGenerics_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, ExtendsAssignementGenerics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getExtendsAssignementGenerics_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ExtendsAssignementGenerics.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(columnAnnotationAssignementEClass, ColumnAnnotationAssignement.class, "ColumnAnnotationAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getColumnAnnotationAssignement_Annotations(), this.getAnnotationDefinitionModel(), null, "annotations", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getColumnAnnotationAssignement_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getColumnAnnotationAssignement_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, ColumnAnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(annotationAssignementEClass, AnnotationAssignement.class, "AnnotationAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAnnotationAssignement_Annotations(), this.getAnnotationDefinitionModel(), null, "annotations", null, 0, -1, AnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAnnotationAssignement_DbTables(), ecorePackage.getEString(), "dbTables", null, 0, -1, AnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getAnnotationAssignement_DbNotTables(), ecorePackage.getEString(), "dbNotTables", null, 0, -1, AnnotationAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyConditionEClass, PropertyCondition.class, "PropertyCondition", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPropertyCondition_Name(), ecorePackage.getEString(), "name", null, 0, 1, PropertyCondition.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -4469,7 +4469,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     initEAttribute(getPojogenProperty_Pckg(), ecorePackage.getEString(), "pckg", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojogenProperty_EnumName(), ecorePackage.getEString(), "enumName", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPojogenProperty_DbCheckConstraints(), ecorePackage.getEString(), "dbCheckConstraints", null, 0, -1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getPojogenProperty_ColumnAnnotations(), this.getColumnAnnotationAssignement(), null, "columnAnnotations", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getPojogenProperty_ColumnAnnotations(), this.getAnnotationAssignement(), null, "columnAnnotations", null, 0, 1, PojogenProperty.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(metaSqlTypeAssignementEClass, MetaSqlTypeAssignement.class, "MetaSqlTypeAssignement", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getMetaSqlTypeAssignement_SqlType(), this.getValueType(), null, "sqlType", null, 0, 1, MetaSqlTypeAssignement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

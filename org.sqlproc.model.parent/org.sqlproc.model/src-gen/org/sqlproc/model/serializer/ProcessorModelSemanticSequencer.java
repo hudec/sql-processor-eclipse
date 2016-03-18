@@ -64,6 +64,7 @@ import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
 import org.sqlproc.model.processorModel.AnnotationDirectiveConflict;
@@ -73,7 +74,6 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
-import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirectiveCrud;
@@ -188,6 +188,9 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 			case ProcessorModelPackage.ANNOTATION:
 				sequence_Annotation(context, (Annotation) semanticObject); 
 				return; 
+			case ProcessorModelPackage.ANNOTATION_ASSIGNEMENT:
+				sequence_AnnotationAssignement(context, (AnnotationAssignement) semanticObject); 
+				return; 
 			case ProcessorModelPackage.ANNOTATION_DEFINITION_MODEL:
 				sequence_AnnotationDefinitionModel(context, (AnnotationDefinitionModel) semanticObject); 
 				return; 
@@ -214,9 +217,6 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 				return; 
 			case ProcessorModelPackage.ARTIFACTS:
 				sequence_Artifacts(context, (Artifacts) semanticObject); 
-				return; 
-			case ProcessorModelPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
-				sequence_ColumnAnnotationAssignement(context, (ColumnAnnotationAssignement) semanticObject); 
 				return; 
 			case ProcessorModelPackage.COLUMN_ASSIGNEMENT:
 				sequence_ColumnAssignement(context, (ColumnAssignement) semanticObject); 
@@ -814,6 +814,18 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Contexts:
+	 *     AnnotationAssignement returns AnnotationAssignement
+	 *
+	 * Constraint:
+	 *     (annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* dbTables+=ValidID* dbNotTables+=ValidID*)
+	 */
+	protected void sequence_AnnotationAssignement(ISerializationContext context, AnnotationAssignement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     AnnotationDefinitionModel returns AnnotationDefinitionModel
 	 *
 	 * Constraint:
@@ -936,18 +948,6 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     )*
 	 */
 	protected void sequence_Artifacts(ISerializationContext context, Artifacts semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ColumnAnnotationAssignement returns ColumnAnnotationAssignement
-	 *
-	 * Constraint:
-	 *     (annotations+=[AnnotationDefinitionModel|ValidID] annotations+=[AnnotationDefinitionModel|ValidID]* dbTables+=ValidID* dbNotTables+=ValidID*)
-	 */
-	protected void sequence_ColumnAnnotationAssignement(ISerializationContext context, ColumnAnnotationAssignement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -2255,9 +2255,13 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=ValidID dbCheckConstraints+=ValidID+) | 
-	 *         (name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement) | 
-	 *         (name='getter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement) | 
-	 *         (name='setter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement) | 
+	 *         (name='getter-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement) | 
+	 *         (name='setter-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement) | 
+	 *         (name='conflict-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='static-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='constructor-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='pojo-annotations' columnAnnotations=AnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

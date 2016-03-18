@@ -258,13 +258,13 @@ public interface ProcessorMetaFactory extends EFactory
   ExtendsAssignementGenerics createExtendsAssignementGenerics();
 
   /**
-   * Returns a new object of class '<em>Column Annotation Assignement</em>'.
+   * Returns a new object of class '<em>Annotation Assignement</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Column Annotation Assignement</em>'.
+   * @return a new object of class '<em>Annotation Assignement</em>'.
    * @generated
    */
-  ColumnAnnotationAssignement createColumnAnnotationAssignement();
+  AnnotationAssignement createAnnotationAssignement();
 
   /**
    * Returns a new object of class '<em>Property Condition</em>'.

@@ -1998,15 +1998,15 @@ ruleExtendsAssignementGenerics returns [EObject current=null]
 	)
 ;
 
-// Entry rule entryRuleColumnAnnotationAssignement
-entryRuleColumnAnnotationAssignement returns [EObject current=null]:
-	{ newCompositeNode(grammarAccess.getColumnAnnotationAssignementRule()); }
-	iv_ruleColumnAnnotationAssignement=ruleColumnAnnotationAssignement
-	{ $current=$iv_ruleColumnAnnotationAssignement.current; }
+// Entry rule entryRuleAnnotationAssignement
+entryRuleAnnotationAssignement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getAnnotationAssignementRule()); }
+	iv_ruleAnnotationAssignement=ruleAnnotationAssignement
+	{ $current=$iv_ruleAnnotationAssignement.current; }
 	EOF;
 
-// Rule ColumnAnnotationAssignement
-ruleColumnAnnotationAssignement returns [EObject current=null]
+// Rule AnnotationAssignement
+ruleAnnotationAssignement returns [EObject current=null]
 @init {
 	enterRule();
 }
@@ -2018,11 +2018,11 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
+						$current = createModelElement(grammarAccess.getAnnotationAssignementRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0());
+					newCompositeNode(grammarAccess.getAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_0_0());
 				}
 				ruleValidID
 				{
@@ -2034,11 +2034,11 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 			(
 				{
 					if ($current==null) {
-						$current = createModelElement(grammarAccess.getColumnAnnotationAssignementRule());
+						$current = createModelElement(grammarAccess.getAnnotationAssignementRule());
 					}
 				}
 				{
-					newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_1_0());
+					newCompositeNode(grammarAccess.getAnnotationAssignementAccess().getAnnotationsAnnotationDefinitionModelCrossReference_1_0());
 				}
 				ruleValidID
 				{
@@ -2049,17 +2049,17 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 		(
 			otherlv_2='+'
 			{
-				newLeafNode(otherlv_2, grammarAccess.getColumnAnnotationAssignementAccess().getPlusSignKeyword_2_0());
+				newLeafNode(otherlv_2, grammarAccess.getAnnotationAssignementAccess().getPlusSignKeyword_2_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_2_1_0());
+						newCompositeNode(grammarAccess.getAnnotationAssignementAccess().getDbTablesValidIDParserRuleCall_2_1_0());
 					}
 					lv_dbTables_3_0=ruleValidID
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+							$current = createModelElementForParent(grammarAccess.getAnnotationAssignementRule());
 						}
 						add(
 							$current,
@@ -2074,17 +2074,17 @@ ruleColumnAnnotationAssignement returns [EObject current=null]
 		(
 			otherlv_4='-'
 			{
-				newLeafNode(otherlv_4, grammarAccess.getColumnAnnotationAssignementAccess().getHyphenMinusKeyword_3_0());
+				newLeafNode(otherlv_4, grammarAccess.getAnnotationAssignementAccess().getHyphenMinusKeyword_3_0());
 			}
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getColumnAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_3_1_0());
+						newCompositeNode(grammarAccess.getAnnotationAssignementAccess().getDbNotTablesValidIDParserRuleCall_3_1_0());
 					}
 					lv_dbNotTables_5_0=ruleValidID
 					{
 						if ($current==null) {
-							$current = createModelElementForParent(grammarAccess.getColumnAnnotationAssignementRule());
+							$current = createModelElementForParent(grammarAccess.getAnnotationAssignementRule());
 						}
 						add(
 							$current,
@@ -5397,9 +5397,9 @@ rulePojogenProperty returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_2_0());
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_44_2_0());
 					}
-					lv_columnAnnotations_113_0=ruleColumnAnnotationAssignement
+					lv_columnAnnotations_113_0=ruleAnnotationAssignement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
@@ -5408,7 +5408,7 @@ rulePojogenProperty returns [EObject current=null]
 							$current,
 							"columnAnnotations",
 							lv_columnAnnotations_113_0,
-							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -5452,9 +5452,9 @@ rulePojogenProperty returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_2_0());
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_45_2_0());
 					}
-					lv_columnAnnotations_116_0=ruleColumnAnnotationAssignement
+					lv_columnAnnotations_116_0=ruleAnnotationAssignement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
@@ -5463,7 +5463,7 @@ rulePojogenProperty returns [EObject current=null]
 							$current,
 							"columnAnnotations",
 							lv_columnAnnotations_116_0,
-							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
 						afterParserOrEnumRuleCall();
 					}
 				)
@@ -5507,9 +5507,9 @@ rulePojogenProperty returns [EObject current=null]
 			(
 				(
 					{
-						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_2_0());
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_46_2_0());
 					}
-					lv_columnAnnotations_119_0=ruleColumnAnnotationAssignement
+					lv_columnAnnotations_119_0=ruleAnnotationAssignement
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
@@ -5518,7 +5518,151 @@ rulePojogenProperty returns [EObject current=null]
 							$current,
 							"columnAnnotations",
 							lv_columnAnnotations_119_0,
-							"org.sqlproc.model.ProcessorModel.ColumnAnnotationAssignement");
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_120_0='conflict-annotations'
+					{
+						newLeafNode(lv_name_120_0, grammarAccess.getPojogenPropertyAccess().getNameConflictAnnotationsKeyword_47_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_120_0, "conflict-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_47_1_0());
+					}
+					lv_columnAnnotations_121_0=ruleAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_121_0,
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_122_0='static-annotations'
+					{
+						newLeafNode(lv_name_122_0, grammarAccess.getPojogenPropertyAccess().getNameStaticAnnotationsKeyword_48_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_122_0, "static-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_48_1_0());
+					}
+					lv_columnAnnotations_123_0=ruleAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_123_0,
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_124_0='constructor-annotations'
+					{
+						newLeafNode(lv_name_124_0, grammarAccess.getPojogenPropertyAccess().getNameConstructorAnnotationsKeyword_49_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_124_0, "constructor-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_49_1_0());
+					}
+					lv_columnAnnotations_125_0=ruleAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_125_0,
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
+						afterParserOrEnumRuleCall();
+					}
+				)
+			)
+		)
+		    |
+		(
+			(
+				(
+					lv_name_126_0='pojo-annotations'
+					{
+						newLeafNode(lv_name_126_0, grammarAccess.getPojogenPropertyAccess().getNamePojoAnnotationsKeyword_50_0_0());
+					}
+					{
+						if ($current==null) {
+							$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+						}
+						setWithLastConsumed($current, "name", lv_name_126_0, "pojo-annotations");
+					}
+				)
+			)
+			(
+				(
+					{
+						newCompositeNode(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_50_1_0());
+					}
+					lv_columnAnnotations_127_0=ruleAnnotationAssignement
+					{
+						if ($current==null) {
+							$current = createModelElementForParent(grammarAccess.getPojogenPropertyRule());
+						}
+						set(
+							$current,
+							"columnAnnotations",
+							lv_columnAnnotations_127_0,
+							"org.sqlproc.model.ProcessorModel.AnnotationAssignement");
 						afterParserOrEnumRuleCall();
 					}
 				)

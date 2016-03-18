@@ -42,7 +42,7 @@ ImplementsAssignement: toImplement=PojoType ('+' (dbTables+=ValidID)+)? ('-' (db
 ExtendsAssignement: toExtends=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
 ImplementsAssignementGenerics: toImplement=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
 ExtendsAssignementGenerics: toExtends=PojoType ('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?;
-ColumnAnnotationAssignement: annotations+=[AnnotationDefinitionModel|ValidID] ( annotations+=[AnnotationDefinitionModel|ValidID])* 
+AnnotationAssignement: annotations+=[AnnotationDefinitionModel|ValidID] ( annotations+=[AnnotationDefinitionModel|ValidID])* 
 	('+' (dbTables+=ValidID)+)? ('-' (dbNotTables+=ValidID)+)?
 ;
 
@@ -138,9 +138,13 @@ PojogenProperty:
 	|name='active-filter' activeFilter=ValueType
 	|name='package' pckg=QualifiedName
 	|name='enum-for-check-constraints' enumName=ValidID (dbCheckConstraints+=ValidID)+
-	|name='column-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement
-	|name='getter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement
-	|name='setter-annotations' dbColumn=ValidID columnAnnotations=ColumnAnnotationAssignement
+	|name='column-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement
+	|name='getter-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement
+	|name='setter-annotations' dbColumn=ValidID columnAnnotations=AnnotationAssignement
+	|name='conflict-annotations' columnAnnotations=AnnotationAssignement
+	|name='static-annotations' columnAnnotations=AnnotationAssignement
+	|name='constructor-annotations' columnAnnotations=AnnotationAssignement
+	|name='pojo-annotations' columnAnnotations=AnnotationAssignement
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=ValidID ('->' extension=ValidID)?;

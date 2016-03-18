@@ -156,7 +156,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbNotTables" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="ColumnAnnotationAssignement">
+  <eClassifiers xsi:type="ecore:EClass" name="AnnotationAssignement">
     <eStructuralFeatures xsi:type="ecore:EReference" name="annotations" unique="false"
         upperBound="-1" eType="#//AnnotationDefinitionModel"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbTables" unique="false"
@@ -280,7 +280,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="enumName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="dbCheckConstraints" unique="false"
         upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="columnAnnotations" eType="#//ColumnAnnotationAssignement"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="columnAnnotations" eType="#//AnnotationAssignement"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MetaSqlTypeAssignement">

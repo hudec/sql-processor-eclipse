@@ -852,8 +852,8 @@ public class TablePojoGenerator extends TableBaseGenerator {
             PojoDefinition annotation = modelAnnotations.get(e.getKey());
             if (annotation != null) {
                 boolean doit = false;
-                if ((e.getValue() & ColumnAnnotations.IS_ANNOTATION) != 0
-                        && doAddColumnAnnotations(ca, pojoName, e.getKey(), ColumnAnnotations.IS_ANNOTATION)) {
+                if ((e.getValue() & ColumnAnnotations.IS_ATTRIBUTE) != 0
+                        && doAddColumnAnnotations(ca, pojoName, e.getKey(), ColumnAnnotations.IS_ATTRIBUTE)) {
                     buffer.append(NLINDENT).append(INDENT).append("#Attribute");
                     doit = true;
                 }

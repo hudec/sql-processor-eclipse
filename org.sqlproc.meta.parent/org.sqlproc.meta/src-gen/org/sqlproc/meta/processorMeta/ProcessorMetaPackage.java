@@ -1155,14 +1155,14 @@ public interface ProcessorMetaPackage extends EPackage
   int EXTENDS_ASSIGNEMENT_GENERICS_FEATURE_COUNT = 3;
 
   /**
-   * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl <em>Column Annotation Assignement</em>}' class.
+   * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.AnnotationAssignementImpl <em>Annotation Assignement</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl
-   * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getColumnAnnotationAssignement()
+   * @see org.sqlproc.meta.processorMeta.impl.AnnotationAssignementImpl
+   * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getAnnotationAssignement()
    * @generated
    */
-  int COLUMN_ANNOTATION_ASSIGNEMENT = 26;
+  int ANNOTATION_ASSIGNEMENT = 26;
 
   /**
    * The feature id for the '<em><b>Annotations</b></em>' reference list.
@@ -1171,7 +1171,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS = 0;
+  int ANNOTATION_ASSIGNEMENT__ANNOTATIONS = 0;
 
   /**
    * The feature id for the '<em><b>Db Tables</b></em>' attribute list.
@@ -1180,7 +1180,7 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES = 1;
+  int ANNOTATION_ASSIGNEMENT__DB_TABLES = 1;
 
   /**
    * The feature id for the '<em><b>Db Not Tables</b></em>' attribute list.
@@ -1189,16 +1189,16 @@ public interface ProcessorMetaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = 2;
+  int ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = 2;
 
   /**
-   * The number of structural features of the '<em>Column Annotation Assignement</em>' class.
+   * The number of structural features of the '<em>Annotation Assignement</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int COLUMN_ANNOTATION_ASSIGNEMENT_FEATURE_COUNT = 3;
+  int ANNOTATION_ASSIGNEMENT_FEATURE_COUNT = 3;
 
   /**
    * The meta object id for the '{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl <em>Property Condition</em>}' class.
@@ -4606,47 +4606,47 @@ public interface ProcessorMetaPackage extends EPackage
   EAttribute getExtendsAssignementGenerics_DbNotTables();
 
   /**
-   * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement <em>Column Annotation Assignement</em>}'.
+   * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.AnnotationAssignement <em>Annotation Assignement</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Column Annotation Assignement</em>'.
-   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement
+   * @return the meta object for class '<em>Annotation Assignement</em>'.
+   * @see org.sqlproc.meta.processorMeta.AnnotationAssignement
    * @generated
    */
-  EClass getColumnAnnotationAssignement();
+  EClass getAnnotationAssignement();
 
   /**
-   * Returns the meta object for the reference list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getAnnotations <em>Annotations</em>}'.
+   * Returns the meta object for the reference list '{@link org.sqlproc.meta.processorMeta.AnnotationAssignement#getAnnotations <em>Annotations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the reference list '<em>Annotations</em>'.
-   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getAnnotations()
-   * @see #getColumnAnnotationAssignement()
+   * @see org.sqlproc.meta.processorMeta.AnnotationAssignement#getAnnotations()
+   * @see #getAnnotationAssignement()
    * @generated
    */
-  EReference getColumnAnnotationAssignement_Annotations();
+  EReference getAnnotationAssignement_Annotations();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbTables <em>Db Tables</em>}'.
+   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.AnnotationAssignement#getDbTables <em>Db Tables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Db Tables</em>'.
-   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbTables()
-   * @see #getColumnAnnotationAssignement()
+   * @see org.sqlproc.meta.processorMeta.AnnotationAssignement#getDbTables()
+   * @see #getAnnotationAssignement()
    * @generated
    */
-  EAttribute getColumnAnnotationAssignement_DbTables();
+  EAttribute getAnnotationAssignement_DbTables();
 
   /**
-   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbNotTables <em>Db Not Tables</em>}'.
+   * Returns the meta object for the attribute list '{@link org.sqlproc.meta.processorMeta.AnnotationAssignement#getDbNotTables <em>Db Not Tables</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute list '<em>Db Not Tables</em>'.
-   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement#getDbNotTables()
-   * @see #getColumnAnnotationAssignement()
+   * @see org.sqlproc.meta.processorMeta.AnnotationAssignement#getDbNotTables()
+   * @see #getAnnotationAssignement()
    * @generated
    */
-  EAttribute getColumnAnnotationAssignement_DbNotTables();
+  EAttribute getAnnotationAssignement_DbNotTables();
 
   /**
    * Returns the meta object for class '{@link org.sqlproc.meta.processorMeta.PropertyCondition <em>Property Condition</em>}'.
@@ -7881,14 +7881,14 @@ public interface ProcessorMetaPackage extends EPackage
     EAttribute EXTENDS_ASSIGNEMENT_GENERICS__DB_NOT_TABLES = eINSTANCE.getExtendsAssignementGenerics_DbNotTables();
 
     /**
-     * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl <em>Column Annotation Assignement</em>}' class.
+     * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.AnnotationAssignementImpl <em>Annotation Assignement</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.sqlproc.meta.processorMeta.impl.ColumnAnnotationAssignementImpl
-     * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getColumnAnnotationAssignement()
+     * @see org.sqlproc.meta.processorMeta.impl.AnnotationAssignementImpl
+     * @see org.sqlproc.meta.processorMeta.impl.ProcessorMetaPackageImpl#getAnnotationAssignement()
      * @generated
      */
-    EClass COLUMN_ANNOTATION_ASSIGNEMENT = eINSTANCE.getColumnAnnotationAssignement();
+    EClass ANNOTATION_ASSIGNEMENT = eINSTANCE.getAnnotationAssignement();
 
     /**
      * The meta object literal for the '<em><b>Annotations</b></em>' reference list feature.
@@ -7896,7 +7896,7 @@ public interface ProcessorMetaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference COLUMN_ANNOTATION_ASSIGNEMENT__ANNOTATIONS = eINSTANCE.getColumnAnnotationAssignement_Annotations();
+    EReference ANNOTATION_ASSIGNEMENT__ANNOTATIONS = eINSTANCE.getAnnotationAssignement_Annotations();
 
     /**
      * The meta object literal for the '<em><b>Db Tables</b></em>' attribute list feature.
@@ -7904,7 +7904,7 @@ public interface ProcessorMetaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COLUMN_ANNOTATION_ASSIGNEMENT__DB_TABLES = eINSTANCE.getColumnAnnotationAssignement_DbTables();
+    EAttribute ANNOTATION_ASSIGNEMENT__DB_TABLES = eINSTANCE.getAnnotationAssignement_DbTables();
 
     /**
      * The meta object literal for the '<em><b>Db Not Tables</b></em>' attribute list feature.
@@ -7912,7 +7912,7 @@ public interface ProcessorMetaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute COLUMN_ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = eINSTANCE.getColumnAnnotationAssignement_DbNotTables();
+    EAttribute ANNOTATION_ASSIGNEMENT__DB_NOT_TABLES = eINSTANCE.getAnnotationAssignement_DbNotTables();
 
     /**
      * The meta object literal for the '{@link org.sqlproc.meta.processorMeta.impl.PropertyConditionImpl <em>Property Condition</em>}' class.

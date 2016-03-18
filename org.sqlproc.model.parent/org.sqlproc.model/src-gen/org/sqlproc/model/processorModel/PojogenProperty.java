@@ -738,12 +738,12 @@ public interface PojogenProperty extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Column Annotations</em>' containment reference.
-   * @see #setColumnAnnotations(ColumnAnnotationAssignement)
+   * @see #setColumnAnnotations(AnnotationAssignement)
    * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojogenProperty_ColumnAnnotations()
    * @model containment="true"
    * @generated
    */
-  ColumnAnnotationAssignement getColumnAnnotations();
+  AnnotationAssignement getColumnAnnotations();
 
   /**
    * Sets the value of the '{@link org.sqlproc.model.processorModel.PojogenProperty#getColumnAnnotations <em>Column Annotations</em>}' containment reference.
@@ -753,6 +753,6 @@ public interface PojogenProperty extends EObject
    * @see #getColumnAnnotations()
    * @generated
    */
-  void setColumnAnnotations(ColumnAnnotationAssignement value);
+  void setColumnAnnotations(AnnotationAssignement value);
 
 } // PojogenProperty

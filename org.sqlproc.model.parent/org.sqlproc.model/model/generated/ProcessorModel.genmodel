@@ -127,10 +127,10 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//ExtendsAssignementGenerics/dbTables"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//ExtendsAssignementGenerics/dbNotTables"/>
     </genClasses>
-    <genClasses ecoreClass="ProcessorModel.ecore#//ColumnAnnotationAssignement">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//ColumnAnnotationAssignement/annotations"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//ColumnAnnotationAssignement/dbTables"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//ColumnAnnotationAssignement/dbNotTables"/>
+    <genClasses ecoreClass="ProcessorModel.ecore#//AnnotationAssignement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference ProcessorModel.ecore#//AnnotationAssignement/annotations"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//AnnotationAssignement/dbTables"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//AnnotationAssignement/dbNotTables"/>
     </genClasses>
     <genClasses ecoreClass="ProcessorModel.ecore#//PropertyCondition">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute ProcessorModel.ecore#//PropertyCondition/name"/>

@@ -97,6 +97,10 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String POJOGEN_COLUMN_ANNOTATIONS = "column-annotations";
     public static final String POJOGEN_GETTER_ANNOTATIONS = "getter-annotations";
     public static final String POJOGEN_SETTER_ANNOTATIONS = "setter-annotations";
+    public static final String POJOGEN_CONFLICT_ANNOTATIONS = "conflict-annotations";
+    public static final String POJOGEN_STATIC_ANNOTATIONS = "static-annotations";
+    public static final String POJOGEN_CONSTRUCTOR_ANNOTATIONS = "constructor-annotations";
+    public static final String POJOGEN_POJO_ANNOTATIONS = "pojo-annotations";
 
     public static final String METAGEN = "metagen";
     public static final String METAGEN_GLOBAL_SEQUENCE = "global-sequence";
@@ -256,6 +260,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public String pckg;
         public Map<String, String> enumForCheckConstraints;
         public Map<String, ColumnAnnotations> columnAnnotations;
+        public PojoAnnotations pojoAnnotations;
 
         public PairValues metaGlobalSequence;
         public Map<String, PairValues> metaTablesSequence;
@@ -397,6 +402,7 @@ public abstract class ModelProperty extends AdapterImpl {
             defaultAttrs.put(POJOGEN, new HashSet<String>());
             conditionalAttrs.put(POJOGEN, new HashSet<String>());
             columnAnnotations = new HashMap<String, ColumnAnnotations>();
+            pojoAnnotations = null;
         }
 
         public void initMetagenModel() {
@@ -813,6 +819,11 @@ public abstract class ModelProperty extends AdapterImpl {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.columnAnnotations
                 : Collections.<String, ColumnAnnotations>emptyMap();
+    }
+
+    public PojoAnnotations getPojoAnnotations(EObject model) {
+        ModelValues modelValues = getModelValues(model);
+        return (modelValues != null) ? modelValues.pojoAnnotations : null;
     }
 
     public PairValues getMetaGlobalIdentity(EObject model) {

@@ -206,9 +206,9 @@ public class ProcessorMetaAdapterFactory extends AdapterFactoryImpl
         return createExtendsAssignementGenericsAdapter();
       }
       @Override
-      public Adapter caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+      public Adapter caseAnnotationAssignement(AnnotationAssignement object)
       {
-        return createColumnAnnotationAssignementAdapter();
+        return createAnnotationAssignementAdapter();
       }
       @Override
       public Adapter casePropertyCondition(PropertyCondition object)
@@ -823,16 +823,16 @@ public class ProcessorMetaAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement <em>Column Annotation Assignement</em>}'.
+   * Creates a new adapter for an object of class '{@link org.sqlproc.meta.processorMeta.AnnotationAssignement <em>Annotation Assignement</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement
+   * @see org.sqlproc.meta.processorMeta.AnnotationAssignement
    * @generated
    */
-  public Adapter createColumnAnnotationAssignementAdapter()
+  public Adapter createAnnotationAssignementAdapter()
   {
     return null;
   }

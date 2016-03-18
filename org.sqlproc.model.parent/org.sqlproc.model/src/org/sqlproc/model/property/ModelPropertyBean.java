@@ -36,6 +36,7 @@ import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.ColumnAnnotations;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PairValues;
+import org.sqlproc.plugin.lib.property.PojoAnnotations;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
 import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.util.CommonUtils;
@@ -699,27 +700,37 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.enumForCheckConstraints.put(property.getDbCheckConstraints().get(i),
                         property.getEnumName());
             }
-        } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
+        } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())
+                || POJOGEN_GETTER_ANNOTATIONS.equals(property.getName())
+                || POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
+            int type = ColumnAnnotations.IS_ATTRIBUTE;
+            if (POJOGEN_GETTER_ANNOTATIONS.equals(property.getName()))
+                type = ColumnAnnotations.IS_GETTER;
+            else if (POJOGEN_SETTER_ANNOTATIONS.equals(property.getName()))
+                type = ColumnAnnotations.IS_SETTER;
+
             ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
                     (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
                     property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
                     property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
-                    ColumnAnnotations.IS_ANNOTATION);
+                    type);
             modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
-        } else if (POJOGEN_GETTER_ANNOTATIONS.equals(property.getName())) {
-            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
-                    (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
+        } else if (POJOGEN_CONFLICT_ANNOTATIONS.equals(property.getName())
+                || POJOGEN_STATIC_ANNOTATIONS.equals(property.getName())
+                || POJOGEN_CONSTRUCTOR_ANNOTATIONS.equals(property.getName())
+                || POJOGEN_POJO_ANNOTATIONS.equals(property.getName())) {
+            int type = PojoAnnotations.IS_STANDARD;
+            if (POJOGEN_CONFLICT_ANNOTATIONS.equals(property.getName()))
+                type = PojoAnnotations.IS_CONFLICT;
+            else if (POJOGEN_CONSTRUCTOR_ANNOTATIONS.equals(property.getName()))
+                type = PojoAnnotations.IS_CONSTRUCTOR;
+            else if (POJOGEN_STATIC_ANNOTATIONS.equals(property.getName()))
+                type = PojoAnnotations.IS_STATIC;
+
+            modelValues.pojoAnnotations = new PojoAnnotationsImpl((PojoAnnotationsImpl) modelValues.pojoAnnotations,
                     property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
                     property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
-                    ColumnAnnotations.IS_GETTER);
-            modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
-        } else if (POJOGEN_SETTER_ANNOTATIONS.equals(property.getName())) {
-            ColumnAnnotationsImpl ie = new ColumnAnnotationsImpl(
-                    (ColumnAnnotationsImpl) modelValues.columnAnnotations.get(property.getDbColumn()),
-                    property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
-                    property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
-                    ColumnAnnotations.IS_SETTER);
-            modelValues.columnAnnotations.put(ie.getDbColumn(), ie);
+                    type);
         }
     }
 

@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EDataTypeEList;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
+import org.sqlproc.meta.processorMeta.AnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.DebugLevelAssignement;
@@ -507,7 +507,7 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * @generated
    * @ordered
    */
-  protected ColumnAnnotationAssignement columnAnnotations;
+  protected AnnotationAssignement columnAnnotations;
 
   /**
    * <!-- begin-user-doc -->
@@ -1302,7 +1302,7 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnAnnotationAssignement getColumnAnnotations()
+  public AnnotationAssignement getColumnAnnotations()
   {
     return columnAnnotations;
   }
@@ -1312,9 +1312,9 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetColumnAnnotations(ColumnAnnotationAssignement newColumnAnnotations, NotificationChain msgs)
+  public NotificationChain basicSetColumnAnnotations(AnnotationAssignement newColumnAnnotations, NotificationChain msgs)
   {
-    ColumnAnnotationAssignement oldColumnAnnotations = columnAnnotations;
+    AnnotationAssignement oldColumnAnnotations = columnAnnotations;
     columnAnnotations = newColumnAnnotations;
     if (eNotificationRequired())
     {
@@ -1329,7 +1329,7 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setColumnAnnotations(ColumnAnnotationAssignement newColumnAnnotations)
+  public void setColumnAnnotations(AnnotationAssignement newColumnAnnotations)
   {
     if (newColumnAnnotations != columnAnnotations)
     {
@@ -1601,7 +1601,7 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         getDbCheckConstraints().addAll((Collection<? extends String>)newValue);
         return;
       case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
-        setColumnAnnotations((ColumnAnnotationAssignement)newValue);
+        setColumnAnnotations((AnnotationAssignement)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -1714,7 +1714,7 @@ public class PojogenPropertyImpl extends MinimalEObjectImpl.Container implements
         getDbCheckConstraints().clear();
         return;
       case ProcessorMetaPackage.POJOGEN_PROPERTY__COLUMN_ANNOTATIONS:
-        setColumnAnnotations((ColumnAnnotationAssignement)null);
+        setColumnAnnotations((AnnotationAssignement)null);
         return;
     }
     super.eUnset(featureID);

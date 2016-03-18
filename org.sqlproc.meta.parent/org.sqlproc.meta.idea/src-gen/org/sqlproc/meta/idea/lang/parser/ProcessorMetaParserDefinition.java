@@ -188,7 +188,7 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 			if (elementType == elementTypeProvider.getExtendsAssignementGenerics_ToExtendsPojoTypeParserRuleCall_0_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getColumnAnnotationAssignementElementType()) {
+			if (elementType == elementTypeProvider.getAnnotationAssignementElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPropertyConditionElementType()) {
@@ -368,13 +368,25 @@ public class ProcessorMetaParserDefinition extends AbstractXtextParserDefinition
 			if (elementType == elementTypeProvider.getPojogenProperty_ActiveFilterValueTypeParserRuleCall_41_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_44_4_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_44_4_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_45_4_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_45_4_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsColumnAnnotationAssignementParserRuleCall_46_4_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_46_4_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_47_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_48_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_49_2_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getMetaSqlTypeAssignementElementType()) {

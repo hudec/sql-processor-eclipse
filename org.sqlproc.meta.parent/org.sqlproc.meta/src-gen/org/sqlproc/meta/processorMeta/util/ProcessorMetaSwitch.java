@@ -255,10 +255,10 @@ public class ProcessorMetaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
+      case ProcessorMetaPackage.ANNOTATION_ASSIGNEMENT:
       {
-        ColumnAnnotationAssignement columnAnnotationAssignement = (ColumnAnnotationAssignement)theEObject;
-        T result = caseColumnAnnotationAssignement(columnAnnotationAssignement);
+        AnnotationAssignement annotationAssignement = (AnnotationAssignement)theEObject;
+        T result = caseAnnotationAssignement(annotationAssignement);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -963,17 +963,17 @@ public class ProcessorMetaSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Annotation Assignement</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Column Annotation Assignement</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Annotation Assignement</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseColumnAnnotationAssignement(ColumnAnnotationAssignement object)
+  public T caseAnnotationAssignement(AnnotationAssignement object)
   {
     return null;
   }

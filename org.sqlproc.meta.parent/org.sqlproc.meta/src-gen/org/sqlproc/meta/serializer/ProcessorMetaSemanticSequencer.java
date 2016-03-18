@@ -14,10 +14,10 @@ import org.eclipse.xtext.serializer.ISerializationContext;
 import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
 import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
+import org.sqlproc.meta.processorMeta.AnnotationAssignement;
 import org.sqlproc.meta.processorMeta.AnnotationDefinitionModel;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.Column;
-import org.sqlproc.meta.processorMeta.ColumnAnnotationAssignement;
 import org.sqlproc.meta.processorMeta.ColumnAssignement;
 import org.sqlproc.meta.processorMeta.ColumnTypeAssignement;
 import org.sqlproc.meta.processorMeta.Constant;
@@ -98,6 +98,9 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == ProcessorMetaPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case ProcessorMetaPackage.ANNOTATION_ASSIGNEMENT:
+				sequence_AnnotationAssignement(context, (AnnotationAssignement) semanticObject); 
+				return; 
 			case ProcessorMetaPackage.ANNOTATION_DEFINITION_MODEL:
 				sequence_AnnotationDefinitionModel(context, (AnnotationDefinitionModel) semanticObject); 
 				return; 
@@ -106,9 +109,6 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 				return; 
 			case ProcessorMetaPackage.COLUMN:
 				sequence_Column(context, (Column) semanticObject); 
-				return; 
-			case ProcessorMetaPackage.COLUMN_ANNOTATION_ASSIGNEMENT:
-				sequence_ColumnAnnotationAssignement(context, (ColumnAnnotationAssignement) semanticObject); 
 				return; 
 			case ProcessorMetaPackage.COLUMN_ASSIGNEMENT:
 				sequence_ColumnAssignement(context, (ColumnAssignement) semanticObject); 
@@ -306,6 +306,18 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	
 	/**
 	 * Contexts:
+	 *     AnnotationAssignement returns AnnotationAssignement
+	 *
+	 * Constraint:
+	 *     (annotations+=[AnnotationDefinitionModel|IDENT] annotations+=[AnnotationDefinitionModel|IDENT]* dbTables+=IDENT* dbNotTables+=IDENT*)
+	 */
+	protected void sequence_AnnotationAssignement(ISerializationContext context, AnnotationAssignement semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     AnnotationDefinitionModel returns AnnotationDefinitionModel
 	 *
 	 * Constraint:
@@ -334,18 +346,6 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *     )*
 	 */
 	protected void sequence_Artifacts(ISerializationContext context, Artifacts semanticObject) {
-		genericSequencer.createSequence(context, semanticObject);
-	}
-	
-	
-	/**
-	 * Contexts:
-	 *     ColumnAnnotationAssignement returns ColumnAnnotationAssignement
-	 *
-	 * Constraint:
-	 *     (annotations+=[AnnotationDefinitionModel|IDENT] annotations+=[AnnotationDefinitionModel|IDENT]* dbTables+=IDENT* dbNotTables+=IDENT*)
-	 */
-	protected void sequence_ColumnAnnotationAssignement(ISerializationContext context, ColumnAnnotationAssignement semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
 	}
 	
@@ -1186,9 +1186,13 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='active-filter' activeFilter=ValueType) | 
 	 *         (name='package' pckg=QualifiedName) | 
 	 *         (name='enum-for-check-constraints' enumName=IDENT dbCheckConstraints+=IDENT+) | 
-	 *         (name='column-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement) | 
-	 *         (name='getter-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement) | 
-	 *         (name='setter-annotations' dbColumn=IDENT columnAnnotations=ColumnAnnotationAssignement)
+	 *         (name='column-annotations' dbColumn=IDENT columnAnnotations=AnnotationAssignement) | 
+	 *         (name='getter-annotations' dbColumn=IDENT columnAnnotations=AnnotationAssignement) | 
+	 *         (name='setter-annotations' dbColumn=IDENT columnAnnotations=AnnotationAssignement) | 
+	 *         (name='conflict-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='static-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='constructor-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         (name='pojo-annotations' columnAnnotations=AnnotationAssignement)
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {

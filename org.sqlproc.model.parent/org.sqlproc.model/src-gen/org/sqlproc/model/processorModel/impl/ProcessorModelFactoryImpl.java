@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.Annotation;
+import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
@@ -24,7 +25,6 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveSetter;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStandard;
 import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.Artifacts;
-import org.sqlproc.model.processorModel.ColumnAnnotationAssignement;
 import org.sqlproc.model.processorModel.ColumnAssignement;
 import org.sqlproc.model.processorModel.ColumnTypeAssignement;
 import org.sqlproc.model.processorModel.DaoDirective;
@@ -207,7 +207,7 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
       case ProcessorModelPackage.EXTENDS_ASSIGNEMENT: return createExtendsAssignement();
       case ProcessorModelPackage.IMPLEMENTS_ASSIGNEMENT_GENERICS: return createImplementsAssignementGenerics();
       case ProcessorModelPackage.EXTENDS_ASSIGNEMENT_GENERICS: return createExtendsAssignementGenerics();
-      case ProcessorModelPackage.COLUMN_ANNOTATION_ASSIGNEMENT: return createColumnAnnotationAssignement();
+      case ProcessorModelPackage.ANNOTATION_ASSIGNEMENT: return createAnnotationAssignement();
       case ProcessorModelPackage.PROPERTY_CONDITION: return createPropertyCondition();
       case ProcessorModelPackage.PROPERTY: return createProperty();
       case ProcessorModelPackage.DATABASE_PROPERTY: return createDatabaseProperty();
@@ -602,10 +602,10 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
    * <!-- end-user-doc -->
    * @generated
    */
-  public ColumnAnnotationAssignement createColumnAnnotationAssignement()
+  public AnnotationAssignement createAnnotationAssignement()
   {
-    ColumnAnnotationAssignementImpl columnAnnotationAssignement = new ColumnAnnotationAssignementImpl();
-    return columnAnnotationAssignement;
+    AnnotationAssignementImpl annotationAssignement = new AnnotationAssignementImpl();
+    return annotationAssignement;
   }
 
   /**
