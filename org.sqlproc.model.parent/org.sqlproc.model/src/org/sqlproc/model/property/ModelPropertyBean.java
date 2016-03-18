@@ -702,7 +702,7 @@ public class ModelPropertyBean extends ModelProperty {
             }
         } else if (POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())
                 || POJOGEN_GETTER_ANNOTATIONS.equals(property.getName())
-                || POJOGEN_COLUMN_ANNOTATIONS.equals(property.getName())) {
+                || POJOGEN_SETTER_ANNOTATIONS.equals(property.getName())) {
             int type = ColumnAnnotations.IS_ATTRIBUTE;
             if (POJOGEN_GETTER_ANNOTATIONS.equals(property.getName()))
                 type = ColumnAnnotations.IS_GETTER;

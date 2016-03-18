@@ -25,6 +25,7 @@ import org.sqlproc.plugin.lib.property.EnumAttribute;
 import org.sqlproc.plugin.lib.property.FunctionDefinition;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
+import org.sqlproc.plugin.lib.property.PojoAnnotations;
 import org.sqlproc.plugin.lib.property.PojoAttrType;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
 import org.sqlproc.plugin.lib.property.PojoDefinition;
@@ -128,6 +129,7 @@ public class TableBaseGenerator {
     protected Map<String, String> enumForCheckConstraints = new HashMap<>();
     protected Map<String, ColumnAnnotations> columnAnnotations = new TreeMap<>();
     protected Map<String, ColumnAnnotations> columnAnnotations2 = new TreeMap<>();
+    protected PojoAnnotations pojoAnnotations = null;
 
     protected Set<String> tables = new HashSet<String>();
     protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<>();
@@ -317,6 +319,7 @@ public class TableBaseGenerator {
                 this.columnAnnotations2.put(columnToCamelCase(e.getKey()), e.getValue());
             }
         }
+        pojoAnnotations = modelProperty.getPojoAnnotations(model);
         pojoPackage = modelProperty.getPackage(model);
 
         for (Map.Entry<String, Map<String, Map<String, String>>> inheritImport : this.inheritImports.entrySet()) {
@@ -421,6 +424,7 @@ public class TableBaseGenerator {
         debug.debug("activeFilter " + this.activeFilter);
         debug.debug("columnAnnotations " + this.columnAnnotations);
         debug.debug("columnAnnotations2 " + this.columnAnnotations2);
+        debug.debug("pojoAnnotations " + this.pojoAnnotations);
         debug.debug("enumForCheckConstraints " + this.enumForCheckConstraints);
         // debug.debug("modelPojos " + this.modelPojos);
         debug.debug("modelAnnotations " + this.modelAnnotations);
