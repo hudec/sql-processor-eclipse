@@ -230,12 +230,12 @@ class PojoJvmModelInferrer {
 
 			val processingIdsList = entity.processingIdsAttributes
 			if (!processingIdsList.isEmpty) {
-	   			val method = entity.toMethod('getProcessingIdForAttributes', typeRef(StringBuilder)) [
+	   			val method = entity.toMethod('getProcessingIdForAttributes_', typeRef(StringBuilder)) [
 	   				body = '''
 						StringBuilder result = new StringBuilder("«simpleName»");
 						«FOR f2:processingIdsList»
 						«IF f2.isNative»result.append("@").append("«f2.name»");«ELSE»if («f2.name» != null)
-							result.append("@").append(«IF f2.isPojo»"{").append(«f2.name».getProcessingIdForAttributes()).append("}"«ELSE»"«f2.name»"«ENDIF»);«ENDIF»
+							result.append("@").append(«IF f2.isPojo»"{").append(«f2.name».getProcessingIdForAttributes_()).append("}"«ELSE»"«f2.name»"«ENDIF»);«ENDIF»
 						«ENDFOR»
 						«IF entity.parent != null»
 						result.append("@@").append(super.getProcessingIdForAttributes());
@@ -305,10 +305,10 @@ class PojoJvmModelInferrer {
 	   			for (attr: isDefList)
 	   				isDefType.members += entity.toEnumerationLiteral(attr.name)
 				val identifierSetType = typeRef(java.util.Set, typeRef(String))
-				members += entity.toField('nullValues', identifierSetType) [
+				members += entity.toField('nullValues_', identifierSetType) [
  					initializer = ''' new «HASH_SET»<String>()'''
 	   			]
-	   			members += entity.toMethod('setNull', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setNull_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(isDefType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -316,19 +316,19 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (Attribute attribute : attributes)
-							nullValues.add(attribute.name());
+							nullValues_.add(attribute.name());
    					'''
    				]	
-	   			members += entity.toMethod('_setNull', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(isDefType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						setNull(attributes);
+						setNull_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearNull', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearNull_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(isDefType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -336,97 +336,97 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (Attribute attribute : attributes)
-							nullValues.remove(attribute.name());
+							nullValues_.remove(attribute.name());
    					'''
    				]	
-	   			members += entity.toMethod('_clearNull', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(isDefType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						clearNull(attributes);
+						clearNull_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('setNull', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setNull_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (String attribute : attributes)
-							nullValues.add(attribute);
+							nullValues_.add(attribute);
    					'''
    				]	
-	   			members += entity.toMethod('_setNull', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						setNull(attributes);
+						setNull_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearNull', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearNull_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (String attribute : attributes)
-							nullValues.remove(attribute);
+							nullValues_.remove(attribute);
    					'''
    				]	
-	   			members += entity.toMethod('_clearNull', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						clearNull(attributes);
+						clearNull_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('isNull', typeRef(Boolean)) [
+	   			members += entity.toMethod('isNull_', typeRef(Boolean)) [
    					parameters += entity.toParameter("attribute", typeRef(isDefType).cloneWithProxies)
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
 						if (attribute == null)
 							throw new IllegalArgumentException();
-						return nullValues.contains(attribute.name());
+						return nullValues_.contains(attribute.name());
    					'''
    				]	
-	   			members += entity.toMethod('isNull', typeRef(Boolean)) [
+	   			members += entity.toMethod('isNull_', typeRef(Boolean)) [
    					parameters += entity.toParameter("attrName", typeRef(String))
    					body = '''
 						if (attrName == null)
 							throw new IllegalArgumentException();
-						return nullValues.contains(attrName);
+						return nullValues_.contains(attrName);
    					'''
    				]	
-	   			members += entity.toMethod('isDef', typeRef(Boolean)) [
+	   			members += entity.toMethod('isDef_', typeRef(Boolean)) [
    					parameters += entity.toParameter("attrName", typeRef(String))
    					parameters += entity.toParameter("isAttrNotNull", typeRef(Boolean))
    					body = '''
 						if (attrName == null)
 							throw new IllegalArgumentException();
-						if (nullValues.contains(attrName))
+						if (nullValues_.contains(attrName))
 							return true;
 						if (isAttrNotNull != null)
 							return isAttrNotNull;
 						return false;
    					'''
    				]	
-	   			members += entity.toMethod('clearAllNull', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearAllNull_', typeRef(Void.TYPE)) [
    					body = '''
-						nullValues = new «HASH_SET»<String>();
+						nullValues_ = new «HASH_SET»<String>();
    					'''
    				]	
 				if (!processingIdsList.isEmpty) {
-		   			members += entity.toMethod('getProcessingIdForNulls', typeRef(StringBuilder)) [
+		   			members += entity.toMethod('getProcessingIdForNulls_', typeRef(StringBuilder)) [
 	   					body = '''
-							if (nullValues == null || nullValues.isEmpty())
+							if (nullValues_ == null || nullValues_.isEmpty())
 								return null;
 							StringBuilder result = new StringBuilder("NULL");
 							for (Attribute attribute : Attribute.values()) {
-								if (nullValues.contains(attribute.name()))
+								if (nullValues_.contains(attribute.name()))
 									result.append("@").append(attribute.name());
 							}
 							return result;
@@ -451,23 +451,23 @@ class PojoJvmModelInferrer {
 	   			for (attr: toInitList)
 	   				toInitType.members += entity.toEnumerationLiteral(attr.name)
 				val identifierSetType = typeRef(java.util.Set, typeRef(String))
-				members += entity.toField('initAssociations', identifierSetType) [
+				members += entity.toField('initAssociations_', identifierSetType) [
  					initializer = ''' new «HASH_SET»<String>()'''
 	   			]
-	   			members += entity.toMethod('getInitAssociations', identifierSetType.cloneWithProxies) [
+	   			members += entity.toMethod('getInitAssociations_', identifierSetType.cloneWithProxies) [
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						return this.initAssociations;
+						return this.initAssociations_;
    					'''
    				]	
-	   			members += entity.toMethod('setInitAssociations', typeRef(Void.TYPE)) [
-   					parameters += entity.toParameter("initAssociations", identifierSetType.cloneWithProxies)
+	   			members += entity.toMethod('setInitAssociations_', typeRef(Void.TYPE)) [
+   					parameters += entity.toParameter("initAssociations_", identifierSetType.cloneWithProxies)
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						this.initAssociations = initAssociations;
+						this.initAssociations_ = initAssociations_;
    					'''
    				]	
-	   			members += entity.toMethod('setInit', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setInit_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("associations", typeRef(toInitType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -475,19 +475,19 @@ class PojoJvmModelInferrer {
 						if (associations == null)
 							throw new IllegalArgumentException();
 						for (Association association : associations)
-							initAssociations.add(association.name());
+							initAssociations_.add(association.name());
    					'''
    				]	
-	   			members += entity.toMethod('_setInit', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(toInitType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						setInit(associations);
+						setInit_(associations);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearInit', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearInit_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("associations", typeRef(toInitType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -495,84 +495,84 @@ class PojoJvmModelInferrer {
 						if (associations == null)
 							throw new IllegalArgumentException();
 						for (Association association : associations)
-							initAssociations.remove(association.name());
+							initAssociations_.remove(association.name());
    					'''
    				]	
-	   			members += entity.toMethod('_clearInit', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(toInitType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						clearInit(associations);
+						clearInit_(associations);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('setInit', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setInit_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("associations", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (associations == null)
 							throw new IllegalArgumentException();
 						for (String association : associations)
-							initAssociations.add(association);
+							initAssociations_.add(association);
    					'''
    				]	
-	   			members += entity.toMethod('_setInit', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						setInit(associations);
+						setInit_(associations);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearInit', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearInit_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("associations", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (associations == null)
 							throw new IllegalArgumentException();
 						for (String association : associations)
-							initAssociations.remove(association);
+							initAssociations_.remove(association);
    					'''
    				]	
-	   			members += entity.toMethod('_clearInit', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						clearInit(associations);
+						clearInit_(associations);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('toInit', typeRef(Boolean)) [
+	   			members += entity.toMethod('toInit_', typeRef(Boolean)) [
    					parameters += entity.toParameter("association", typeRef(toInitType).cloneWithProxies)
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
 						if (association == null)
 							throw new IllegalArgumentException();
-						return initAssociations.contains(association.name());
+						return initAssociations_.contains(association.name());
    					'''
    				]	
-	   			members += entity.toMethod('toInit', typeRef(Boolean)) [
+	   			members += entity.toMethod('toInit_', typeRef(Boolean)) [
    					parameters += entity.toParameter("association", typeRef(String))
    					body = '''
 						if (association == null)
 							throw new IllegalArgumentException();
-						return initAssociations.contains(association);
+						return initAssociations_.contains(association);
    					'''
    				]	
-	   			members += entity.toMethod('clearAllInit', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearAllInit_', typeRef(Void.TYPE)) [
    					body = '''
-						initAssociations = new «HASH_SET»<String>();
+						initAssociations_ = new «HASH_SET»<String>();
    					'''
    				]	
 				if (!processingIdsList.isEmpty) {
-		   			members += entity.toMethod('getProcessingIdForAssociations', typeRef(StringBuilder)) [
+		   			members += entity.toMethod('getProcessingIdForAssociations_', typeRef(StringBuilder)) [
 	   					body = '''
-							if (initAssociations == null || initAssociations.isEmpty())
+							if (initAssociations_ == null || initAssociations_.isEmpty())
 								return null;
 							StringBuilder result = new StringBuilder("ASSOC");
 							for (Association association : Association.values()) {
-								if (initAssociations.contains(association.name()))
+								if (initAssociations_.contains(association.name()))
 									result.append("@").append(association.name());
 							}
 							return result;
@@ -595,16 +595,16 @@ class PojoJvmModelInferrer {
 	   			for (attr: entity.attributes)
 	   				opAttrType.members += entity.toEnumerationLiteral(attr.name)
 				val identifierMapType = typeRef(java.util.Map, typeRef(String), typeRef(String))
-				members += entity.toField('operators', identifierMapType) [
+				members += entity.toField('operators_', identifierMapType) [
  					initializer = ''' new «HASH_MAP»<String, String>()'''
 	   			]
-	   			members += entity.toMethod('getOperators', identifierMapType) [
+	   			members += entity.toMethod('getOperators_', identifierMapType) [
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						return operators;
+						return operators_;
    					'''
    				]
-	   			members += entity.toMethod('setOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
@@ -613,20 +613,20 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (OpAttribute attribute : attributes)
-							operators.put(attribute.name(), operator);
+							operators_.put(attribute.name(), operator);
    					'''
    				]	
-	   			members += entity.toMethod('_setOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						setOp(operator, attributes);
+						setOp_(operator, attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -634,19 +634,19 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (OpAttribute attribute : attributes)
-							operators.remove(attribute.name());
+							operators_.remove(attribute.name());
    					'''
    				]	
-	   			members += entity.toMethod('_clearOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						clearOp(attributes);
+						clearOp_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('setOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
@@ -654,37 +654,37 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (String attribute : attributes)
-							operators.put(attribute, operator);
+							operators_.put(attribute, operator);
    					'''
    				]	
-	   			members += entity.toMethod('_setOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						setOp(operator, attributes);
+						setOp_(operator, attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (String attribute : attributes)
-							operators.remove(attribute);
+							operators_.remove(attribute);
    					'''
    				]	
-	   			members += entity.toMethod('_clearOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_clearOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						clearOp(attributes);
+						clearOp_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('setNullOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setNullOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -692,50 +692,50 @@ class PojoJvmModelInferrer {
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (OpAttribute attribute : attributes)
-							operators.put(attribute.name(), "is null");
+							operators_.put(attribute.name(), "is null");
    					'''
    				]	
-	   			members += entity.toMethod('_setNullOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setNullOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
    					body = '''
-						setNullOp(attributes);
+						setNullOp_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('setNullOp', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('setNullOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
 						if (attributes == null)
 							throw new IllegalArgumentException();
 						for (String attribute : attributes)
-							operators.put(attribute, "is null");
+							operators_.put(attribute, "is null");
    					'''
    				]	
-	   			members += entity.toMethod('_setNullOp', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('_setNullOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
-						setNullOp(attributes);
+						setNullOp_(attributes);
 						return this;
    					'''
    				]	
-	   			members += entity.toMethod('clearAllOps', typeRef(Void.TYPE)) [
+	   			members += entity.toMethod('clearAllOps_', typeRef(Void.TYPE)) [
    					body = '''
-						operators = new «HASH_MAP»<String, String>();
+						operators_ = new «HASH_MAP»<String, String>();
    					'''
    				]	
 				if (!processingIdsList.isEmpty) {
-		   			members += entity.toMethod('getProcessingIdForOperators', typeRef(StringBuilder)) [
+		   			members += entity.toMethod('getProcessingIdForOperators_', typeRef(StringBuilder)) [
 	   					body = '''
-							if (operators == null || operators.isEmpty())
+							if (operators_ == null || operators_.isEmpty())
 								return null;
 							StringBuilder result = new StringBuilder("OPER");
 							for (OpAttribute opAttribute : OpAttribute.values()) {
-								if (operators.containsKey(opAttribute.name()))
-									result.append("@").append(opAttribute.name()).append("=").append(operators.get(opAttribute.name()));
+								if (operators_.containsKey(opAttribute.name()))
+									result.append("@").append(opAttribute.name()).append("=").append(operators_.get(opAttribute.name()));
 							}
 							return result;
 	   					'''
@@ -745,7 +745,7 @@ class PojoJvmModelInferrer {
 			
 			if (!processingIdsList.isEmpty) {
 				val hasIds = _hasIds
-	   			val method = entity.toMethod('getProcessingId', typeRef(String)) [
+	   			val method = entity.toMethod('getProcessingId_', typeRef(String)) [
    					parameters += entity.toParameter("moreAttributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
 	   				body = '''
@@ -753,19 +753,19 @@ class PojoJvmModelInferrer {
 						if (ids_ != null && !ids_.isEmpty())
 							return null;
 						«ENDIF»
-						StringBuilder result = getProcessingIdForAttributes();
+						StringBuilder result = getProcessingIdForAttributes_();
 						«IF !isDefList.isEmpty»
-						StringBuilder processingIdForNulls = getProcessingIdForNulls();
+						StringBuilder processingIdForNulls = getProcessingIdForNulls_();
 						if (processingIdForNulls != null)
 							result.append(",").append(processingIdForNulls);
 						«ENDIF»
 						«IF !toInitList.isEmpty»
-						StringBuilder processingIdForAssociations = getProcessingIdForAssociations();
+						StringBuilder processingIdForAssociations = getProcessingIdForAssociations_();
 						if (processingIdForAssociations != null)
 							result.append(",").append(processingIdForAssociations);
 						«ENDIF»
 						«IF entity.hasOperators»
-						StringBuilder processingIdForOperators = getProcessingIdForOperators();
+						StringBuilder processingIdForOperators = getProcessingIdForOperators_();
 						if (processingIdForOperators != null)
 							result.append(",").append(processingIdForOperators);
 						«ENDIF»

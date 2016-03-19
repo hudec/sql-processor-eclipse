@@ -752,10 +752,10 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				«pojoAttrName».setOnlyIds_(true);
-				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations();
-				«pojoAttrName».setInitAssociations(new «HASH_SET»<String>());
+				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations_();
+				«pojoAttrName».setInitAssociations_(new «HASH_SET»<String>());
 				final «LIST»<«wrapperPrimitive(pkType)»> ids_ = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
-				«pojoAttrName».setInitAssociations(initAssociations);
+				«pojoAttrName».setInitAssociations_(initAssociations);
 
 				List<«pojo.name»> «pojoAttrName»List = new «ARRAY_LIST»<«pojo.name»>();
 				if (!ids_.isEmpty()) {

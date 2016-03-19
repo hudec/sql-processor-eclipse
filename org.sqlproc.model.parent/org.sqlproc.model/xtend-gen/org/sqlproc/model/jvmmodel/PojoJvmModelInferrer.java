@@ -699,7 +699,7 @@ public class PojoJvmModelInferrer {
                               _builder.append("\"{\").append(");
                               String _name_2 = f2.getName();
                               _builder.append(_name_2, "\t");
-                              _builder.append(".getProcessingIdForAttributes()).append(\"}\"");
+                              _builder.append(".getProcessingIdForAttributes_()).append(\"}\"");
                             } else {
                               _builder.append("\"");
                               String _name_3 = f2.getName();
@@ -728,7 +728,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          final JvmOperation method = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForAttributes", _typeRef_5, _function_11);
+          final JvmOperation method = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForAttributes_", _typeRef_5, _function_11);
           EList<JvmMember> _members_10 = it.getMembers();
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_10, method);
         }
@@ -998,7 +998,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setInitializer(it, _client);
             }
           };
-          JvmField _field_3 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "nullValues", identifierSetType, _function_17);
+          JvmField _field_3 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "nullValues_", identifierSetType, _function_17);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmField>operator_add(_members_17, _field_3);
           EList<JvmMember> _members_18 = it.getMembers();
           JvmTypeReference _typeRef_11 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1032,14 +1032,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (Attribute attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("nullValues.add(attribute.name());");
+                  _builder.append("nullValues_.add(attribute.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_2 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNull", _typeRef_11, _function_18);
+          JvmOperation _method_2 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNull_", _typeRef_11, _function_18);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, _method_2);
           EList<JvmMember> _members_19 = it.getMembers();
           JvmTypeReference _typeRef_12 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1066,7 +1066,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setNull(attributes);");
+                  _builder.append("setNull_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1075,7 +1075,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_3 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNull", _cloneWithProxies_3, _function_19);
+          JvmOperation _method_3 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNull_", _cloneWithProxies_3, _function_19);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, _method_3);
           EList<JvmMember> _members_20 = it.getMembers();
           JvmTypeReference _typeRef_13 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1109,14 +1109,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (Attribute attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("nullValues.remove(attribute.name());");
+                  _builder.append("nullValues_.remove(attribute.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearNull", _typeRef_13, _function_20);
+          JvmOperation _method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearNull_", _typeRef_13, _function_20);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_20, _method_4);
           EList<JvmMember> _members_21 = it.getMembers();
           JvmTypeReference _typeRef_14 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1143,7 +1143,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearNull(attributes);");
+                  _builder.append("clearNull_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1152,7 +1152,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_5 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearNull", _cloneWithProxies_4, _function_21);
+          JvmOperation _method_5 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearNull_", _cloneWithProxies_4, _function_21);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_21, _method_5);
           EList<JvmMember> _members_22 = it.getMembers();
           JvmTypeReference _typeRef_15 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1176,14 +1176,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("nullValues.add(attribute);");
+                  _builder.append("nullValues_.add(attribute);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_6 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNull", _typeRef_15, _function_22);
+          JvmOperation _method_6 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNull_", _typeRef_15, _function_22);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_22, _method_6);
           EList<JvmMember> _members_23 = it.getMembers();
           JvmTypeReference _typeRef_16 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1200,7 +1200,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setNull(attributes);");
+                  _builder.append("setNull_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1209,7 +1209,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_7 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNull", _cloneWithProxies_5, _function_23);
+          JvmOperation _method_7 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNull_", _cloneWithProxies_5, _function_23);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_23, _method_7);
           EList<JvmMember> _members_24 = it.getMembers();
           JvmTypeReference _typeRef_17 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1233,14 +1233,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("nullValues.remove(attribute);");
+                  _builder.append("nullValues_.remove(attribute);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_8 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearNull", _typeRef_17, _function_24);
+          JvmOperation _method_8 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearNull_", _typeRef_17, _function_24);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_24, _method_8);
           EList<JvmMember> _members_25 = it.getMembers();
           JvmTypeReference _typeRef_18 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1257,7 +1257,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearNull(attributes);");
+                  _builder.append("clearNull_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1266,7 +1266,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_9 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearNull", _cloneWithProxies_6, _function_25);
+          JvmOperation _method_9 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearNull_", _cloneWithProxies_6, _function_25);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_25, _method_9);
           EList<JvmMember> _members_26 = it.getMembers();
           JvmTypeReference _typeRef_19 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Boolean.class);
@@ -1295,14 +1295,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("\t");
                   _builder.append("throw new IllegalArgumentException();");
                   _builder.newLine();
-                  _builder.append("return nullValues.contains(attribute.name());");
+                  _builder.append("return nullValues_.contains(attribute.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_10 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isNull", _typeRef_19, _function_26);
+          JvmOperation _method_10 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isNull_", _typeRef_19, _function_26);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_26, _method_10);
           EList<JvmMember> _members_27 = it.getMembers();
           JvmTypeReference _typeRef_20 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Boolean.class);
@@ -1321,14 +1321,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("\t");
                   _builder.append("throw new IllegalArgumentException();");
                   _builder.newLine();
-                  _builder.append("return nullValues.contains(attrName);");
+                  _builder.append("return nullValues_.contains(attrName);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_11 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isNull", _typeRef_20, _function_27);
+          JvmOperation _method_11 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isNull_", _typeRef_20, _function_27);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_27, _method_11);
           EList<JvmMember> _members_28 = it.getMembers();
           JvmTypeReference _typeRef_21 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Boolean.class);
@@ -1351,7 +1351,7 @@ public class PojoJvmModelInferrer {
                   _builder.append("\t");
                   _builder.append("throw new IllegalArgumentException();");
                   _builder.newLine();
-                  _builder.append("if (nullValues.contains(attrName))");
+                  _builder.append("if (nullValues_.contains(attrName))");
                   _builder.newLine();
                   _builder.append("\t");
                   _builder.append("return true;");
@@ -1368,7 +1368,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_12 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isDef", _typeRef_21, _function_28);
+          JvmOperation _method_12 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "isDef_", _typeRef_21, _function_28);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_28, _method_12);
           EList<JvmMember> _members_29 = it.getMembers();
           JvmTypeReference _typeRef_22 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1378,7 +1378,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("nullValues = new ");
+                  _builder.append("nullValues_ = new ");
                   _builder.append(PojoJvmModelInferrer.this.HASH_SET, "");
                   _builder.append("<String>();");
                   _builder.newLineIfNotEmpty();
@@ -1387,7 +1387,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_13 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllNull", _typeRef_22, _function_29);
+          JvmOperation _method_13 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllNull_", _typeRef_22, _function_29);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_29, _method_13);
           boolean _isEmpty_9 = processingIdsList.isEmpty();
           boolean _not_9 = (!_isEmpty_9);
@@ -1400,7 +1400,7 @@ public class PojoJvmModelInferrer {
                 StringConcatenationClient _client = new StringConcatenationClient() {
                   @Override
                   protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                    _builder.append("if (nullValues == null || nullValues.isEmpty())");
+                    _builder.append("if (nullValues_ == null || nullValues_.isEmpty())");
                     _builder.newLine();
                     _builder.append("\t");
                     _builder.append("return null;");
@@ -1410,7 +1410,7 @@ public class PojoJvmModelInferrer {
                     _builder.append("for (Attribute attribute : Attribute.values()) {");
                     _builder.newLine();
                     _builder.append("\t");
-                    _builder.append("if (nullValues.contains(attribute.name()))");
+                    _builder.append("if (nullValues_.contains(attribute.name()))");
                     _builder.newLine();
                     _builder.append("\t\t");
                     _builder.append("result.append(\"@\").append(attribute.name());");
@@ -1424,7 +1424,7 @@ public class PojoJvmModelInferrer {
                 PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
               }
             };
-            JvmOperation _method_14 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForNulls", _typeRef_23, _function_30);
+            JvmOperation _method_14 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForNulls_", _typeRef_23, _function_30);
             PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_30, _method_14);
           }
         }
@@ -1483,7 +1483,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setInitializer(it, _client);
             }
           };
-          JvmField _field_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "initAssociations", identifierSetType_1, _function_33);
+          JvmField _field_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "initAssociations_", identifierSetType_1, _function_33);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmField>operator_add(_members_35, _field_4);
           EList<JvmMember> _members_36 = it.getMembers();
           JvmTypeReference _cloneWithProxies_7 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(identifierSetType_1);
@@ -1502,14 +1502,14 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("return this.initAssociations;");
+                  _builder.append("return this.initAssociations_;");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_15 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getInitAssociations", _cloneWithProxies_7, _function_34);
+          JvmOperation _method_15 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getInitAssociations_", _cloneWithProxies_7, _function_34);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_36, _method_15);
           EList<JvmMember> _members_37 = it.getMembers();
           JvmTypeReference _typeRef_25 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1518,7 +1518,7 @@ public class PojoJvmModelInferrer {
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
               JvmTypeReference _cloneWithProxies = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(identifierSetType_1);
-              JvmFormalParameter _parameter = PojoJvmModelInferrer.this._processorTypesBuilder.toParameter(entity, "initAssociations", _cloneWithProxies);
+              JvmFormalParameter _parameter = PojoJvmModelInferrer.this._processorTypesBuilder.toParameter(entity, "initAssociations_", _cloneWithProxies);
               PojoJvmModelInferrer.this._processorTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
               List<Annotation> _conflictAnnotations = PojoJvmModelInferrer.this._processorGeneratorUtils.conflictAnnotations(entity);
               final Function1<Annotation, XAnnotation> _function = new Function1<Annotation, XAnnotation>() {
@@ -1532,14 +1532,14 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("this.initAssociations = initAssociations;");
+                  _builder.append("this.initAssociations_ = initAssociations_;");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_16 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInitAssociations", _typeRef_25, _function_35);
+          JvmOperation _method_16 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInitAssociations_", _typeRef_25, _function_35);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_37, _method_16);
           EList<JvmMember> _members_38 = it.getMembers();
           JvmTypeReference _typeRef_26 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1573,14 +1573,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (Association association : associations)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("initAssociations.add(association.name());");
+                  _builder.append("initAssociations_.add(association.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_17 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInit", _typeRef_26, _function_36);
+          JvmOperation _method_17 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInit_", _typeRef_26, _function_36);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_38, _method_17);
           EList<JvmMember> _members_39 = it.getMembers();
           JvmTypeReference _typeRef_27 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1607,7 +1607,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setInit(associations);");
+                  _builder.append("setInit_(associations);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1616,7 +1616,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_18 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setInit", _cloneWithProxies_8, _function_37);
+          JvmOperation _method_18 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setInit_", _cloneWithProxies_8, _function_37);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_39, _method_18);
           EList<JvmMember> _members_40 = it.getMembers();
           JvmTypeReference _typeRef_28 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1650,14 +1650,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (Association association : associations)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("initAssociations.remove(association.name());");
+                  _builder.append("initAssociations_.remove(association.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_19 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearInit", _typeRef_28, _function_38);
+          JvmOperation _method_19 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearInit_", _typeRef_28, _function_38);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_40, _method_19);
           EList<JvmMember> _members_41 = it.getMembers();
           JvmTypeReference _typeRef_29 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1684,7 +1684,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearInit(associations);");
+                  _builder.append("clearInit_(associations);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1693,7 +1693,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_20 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearInit", _cloneWithProxies_9, _function_39);
+          JvmOperation _method_20 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearInit_", _cloneWithProxies_9, _function_39);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_41, _method_20);
           EList<JvmMember> _members_42 = it.getMembers();
           JvmTypeReference _typeRef_30 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1717,14 +1717,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String association : associations)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("initAssociations.add(association);");
+                  _builder.append("initAssociations_.add(association);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_21 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInit", _typeRef_30, _function_40);
+          JvmOperation _method_21 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setInit_", _typeRef_30, _function_40);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_42, _method_21);
           EList<JvmMember> _members_43 = it.getMembers();
           JvmTypeReference _typeRef_31 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1741,7 +1741,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setInit(associations);");
+                  _builder.append("setInit_(associations);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1750,7 +1750,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_22 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setInit", _cloneWithProxies_10, _function_41);
+          JvmOperation _method_22 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setInit_", _cloneWithProxies_10, _function_41);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_43, _method_22);
           EList<JvmMember> _members_44 = it.getMembers();
           JvmTypeReference _typeRef_32 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1774,14 +1774,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String association : associations)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("initAssociations.remove(association);");
+                  _builder.append("initAssociations_.remove(association);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_23 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearInit", _typeRef_32, _function_42);
+          JvmOperation _method_23 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearInit_", _typeRef_32, _function_42);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_44, _method_23);
           EList<JvmMember> _members_45 = it.getMembers();
           JvmTypeReference _typeRef_33 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -1798,7 +1798,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearInit(associations);");
+                  _builder.append("clearInit_(associations);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -1807,7 +1807,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_24 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearInit", _cloneWithProxies_11, _function_43);
+          JvmOperation _method_24 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearInit_", _cloneWithProxies_11, _function_43);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_45, _method_24);
           EList<JvmMember> _members_46 = it.getMembers();
           JvmTypeReference _typeRef_34 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Boolean.class);
@@ -1836,14 +1836,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("\t");
                   _builder.append("throw new IllegalArgumentException();");
                   _builder.newLine();
-                  _builder.append("return initAssociations.contains(association.name());");
+                  _builder.append("return initAssociations_.contains(association.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_25 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "toInit", _typeRef_34, _function_44);
+          JvmOperation _method_25 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "toInit_", _typeRef_34, _function_44);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_46, _method_25);
           EList<JvmMember> _members_47 = it.getMembers();
           JvmTypeReference _typeRef_35 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Boolean.class);
@@ -1862,14 +1862,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("\t");
                   _builder.append("throw new IllegalArgumentException();");
                   _builder.newLine();
-                  _builder.append("return initAssociations.contains(association);");
+                  _builder.append("return initAssociations_.contains(association);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_26 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "toInit", _typeRef_35, _function_45);
+          JvmOperation _method_26 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "toInit_", _typeRef_35, _function_45);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_47, _method_26);
           EList<JvmMember> _members_48 = it.getMembers();
           JvmTypeReference _typeRef_36 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -1879,7 +1879,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("initAssociations = new ");
+                  _builder.append("initAssociations_ = new ");
                   _builder.append(PojoJvmModelInferrer.this.HASH_SET, "");
                   _builder.append("<String>();");
                   _builder.newLineIfNotEmpty();
@@ -1888,7 +1888,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_27 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllInit", _typeRef_36, _function_46);
+          JvmOperation _method_27 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllInit_", _typeRef_36, _function_46);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_48, _method_27);
           boolean _isEmpty_12 = processingIdsList.isEmpty();
           boolean _not_12 = (!_isEmpty_12);
@@ -1901,7 +1901,7 @@ public class PojoJvmModelInferrer {
                 StringConcatenationClient _client = new StringConcatenationClient() {
                   @Override
                   protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                    _builder.append("if (initAssociations == null || initAssociations.isEmpty())");
+                    _builder.append("if (initAssociations_ == null || initAssociations_.isEmpty())");
                     _builder.newLine();
                     _builder.append("\t");
                     _builder.append("return null;");
@@ -1911,7 +1911,7 @@ public class PojoJvmModelInferrer {
                     _builder.append("for (Association association : Association.values()) {");
                     _builder.newLine();
                     _builder.append("\t");
-                    _builder.append("if (initAssociations.contains(association.name()))");
+                    _builder.append("if (initAssociations_.contains(association.name()))");
                     _builder.newLine();
                     _builder.append("\t\t");
                     _builder.append("result.append(\"@\").append(association.name());");
@@ -1925,7 +1925,7 @@ public class PojoJvmModelInferrer {
                 PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
               }
             };
-            JvmOperation _method_28 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForAssociations", _typeRef_37, _function_47);
+            JvmOperation _method_28 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForAssociations_", _typeRef_37, _function_47);
             PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_49, _method_28);
           }
         }
@@ -1984,7 +1984,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setInitializer(it, _client);
             }
           };
-          JvmField _field_5 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "operators", identifierMapType, _function_50);
+          JvmField _field_5 = PojoJvmModelInferrer.this._processorTypesBuilder.toField(entity, "operators_", identifierMapType, _function_50);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmField>operator_add(_members_54, _field_5);
           EList<JvmMember> _members_55 = it.getMembers();
           final Procedure1<JvmOperation> _function_51 = new Procedure1<JvmOperation>() {
@@ -2002,14 +2002,14 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("return operators;");
+                  _builder.append("return operators_;");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_29 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getOperators", identifierMapType, _function_51);
+          JvmOperation _method_29 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getOperators_", identifierMapType, _function_51);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_55, _method_29);
           EList<JvmMember> _members_56 = it.getMembers();
           JvmTypeReference _typeRef_40 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2047,14 +2047,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (OpAttribute attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.put(attribute.name(), operator);");
+                  _builder.append("operators_.put(attribute.name(), operator);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_30 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp", _typeRef_40, _function_52);
+          JvmOperation _method_30 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_40, _function_52);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_56, _method_30);
           EList<JvmMember> _members_57 = it.getMembers();
           JvmTypeReference _typeRef_41 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2085,7 +2085,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setOp(operator, attributes);");
+                  _builder.append("setOp_(operator, attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2094,7 +2094,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_31 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp", _cloneWithProxies_12, _function_53);
+          JvmOperation _method_31 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_12, _function_53);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_57, _method_31);
           EList<JvmMember> _members_58 = it.getMembers();
           JvmTypeReference _typeRef_42 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2128,14 +2128,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (OpAttribute attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.remove(attribute.name());");
+                  _builder.append("operators_.remove(attribute.name());");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_32 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp", _typeRef_42, _function_54);
+          JvmOperation _method_32 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_42, _function_54);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_58, _method_32);
           EList<JvmMember> _members_59 = it.getMembers();
           JvmTypeReference _typeRef_43 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2162,7 +2162,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearOp(attributes);");
+                  _builder.append("clearOp_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2171,7 +2171,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_33 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp", _cloneWithProxies_13, _function_55);
+          JvmOperation _method_33 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_13, _function_55);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_59, _method_33);
           EList<JvmMember> _members_60 = it.getMembers();
           JvmTypeReference _typeRef_44 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2199,14 +2199,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.put(attribute, operator);");
+                  _builder.append("operators_.put(attribute, operator);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_34 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp", _typeRef_44, _function_56);
+          JvmOperation _method_34 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_44, _function_56);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_60, _method_34);
           EList<JvmMember> _members_61 = it.getMembers();
           JvmTypeReference _typeRef_45 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2227,7 +2227,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setOp(operator, attributes);");
+                  _builder.append("setOp_(operator, attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2236,7 +2236,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_35 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp", _cloneWithProxies_14, _function_57);
+          JvmOperation _method_35 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_14, _function_57);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_61, _method_35);
           EList<JvmMember> _members_62 = it.getMembers();
           JvmTypeReference _typeRef_46 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2260,14 +2260,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.remove(attribute);");
+                  _builder.append("operators_.remove(attribute);");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_36 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp", _typeRef_46, _function_58);
+          JvmOperation _method_36 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_46, _function_58);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_62, _method_36);
           EList<JvmMember> _members_63 = it.getMembers();
           JvmTypeReference _typeRef_47 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2284,7 +2284,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("clearOp(attributes);");
+                  _builder.append("clearOp_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2293,7 +2293,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_37 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp", _cloneWithProxies_15, _function_59);
+          JvmOperation _method_37 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_15, _function_59);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_63, _method_37);
           EList<JvmMember> _members_64 = it.getMembers();
           JvmTypeReference _typeRef_48 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2327,14 +2327,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (OpAttribute attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.put(attribute.name(), \"is null\");");
+                  _builder.append("operators_.put(attribute.name(), \"is null\");");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_38 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp", _typeRef_48, _function_60);
+          JvmOperation _method_38 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_48, _function_60);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_64, _method_38);
           EList<JvmMember> _members_65 = it.getMembers();
           JvmTypeReference _typeRef_49 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2361,7 +2361,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setNullOp(attributes);");
+                  _builder.append("setNullOp_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2370,7 +2370,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_39 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp", _cloneWithProxies_16, _function_61);
+          JvmOperation _method_39 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_16, _function_61);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_65, _method_39);
           EList<JvmMember> _members_66 = it.getMembers();
           JvmTypeReference _typeRef_50 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2394,14 +2394,14 @@ public class PojoJvmModelInferrer {
                   _builder.append("for (String attribute : attributes)");
                   _builder.newLine();
                   _builder.append("\t");
-                  _builder.append("operators.put(attribute, \"is null\");");
+                  _builder.append("operators_.put(attribute, \"is null\");");
                   _builder.newLine();
                 }
               };
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_40 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp", _typeRef_50, _function_62);
+          JvmOperation _method_40 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_50, _function_62);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_66, _method_40);
           EList<JvmMember> _members_67 = it.getMembers();
           JvmTypeReference _typeRef_51 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -2418,7 +2418,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("setNullOp(attributes);");
+                  _builder.append("setNullOp_(attributes);");
                   _builder.newLine();
                   _builder.append("return this;");
                   _builder.newLine();
@@ -2427,7 +2427,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_41 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp", _cloneWithProxies_17, _function_63);
+          JvmOperation _method_41 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_17, _function_63);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_67, _method_41);
           EList<JvmMember> _members_68 = it.getMembers();
           JvmTypeReference _typeRef_52 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
@@ -2437,7 +2437,7 @@ public class PojoJvmModelInferrer {
               StringConcatenationClient _client = new StringConcatenationClient() {
                 @Override
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                  _builder.append("operators = new ");
+                  _builder.append("operators_ = new ");
                   _builder.append(PojoJvmModelInferrer.this.HASH_MAP, "");
                   _builder.append("<String, String>();");
                   _builder.newLineIfNotEmpty();
@@ -2446,7 +2446,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_42 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllOps", _typeRef_52, _function_64);
+          JvmOperation _method_42 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllOps_", _typeRef_52, _function_64);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_68, _method_42);
           boolean _isEmpty_14 = processingIdsList.isEmpty();
           boolean _not_14 = (!_isEmpty_14);
@@ -2459,7 +2459,7 @@ public class PojoJvmModelInferrer {
                 StringConcatenationClient _client = new StringConcatenationClient() {
                   @Override
                   protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
-                    _builder.append("if (operators == null || operators.isEmpty())");
+                    _builder.append("if (operators_ == null || operators_.isEmpty())");
                     _builder.newLine();
                     _builder.append("\t");
                     _builder.append("return null;");
@@ -2469,10 +2469,10 @@ public class PojoJvmModelInferrer {
                     _builder.append("for (OpAttribute opAttribute : OpAttribute.values()) {");
                     _builder.newLine();
                     _builder.append("\t");
-                    _builder.append("if (operators.containsKey(opAttribute.name()))");
+                    _builder.append("if (operators_.containsKey(opAttribute.name()))");
                     _builder.newLine();
                     _builder.append("\t\t");
-                    _builder.append("result.append(\"@\").append(opAttribute.name()).append(\"=\").append(operators.get(opAttribute.name()));");
+                    _builder.append("result.append(\"@\").append(opAttribute.name()).append(\"=\").append(operators_.get(opAttribute.name()));");
                     _builder.newLine();
                     _builder.append("}");
                     _builder.newLine();
@@ -2483,7 +2483,7 @@ public class PojoJvmModelInferrer {
                 PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
               }
             };
-            JvmOperation _method_43 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForOperators", _typeRef_53, _function_65);
+            JvmOperation _method_43 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForOperators_", _typeRef_53, _function_65);
             PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_69, _method_43);
           }
         }
@@ -2513,13 +2513,13 @@ public class PojoJvmModelInferrer {
                       _builder.newLine();
                     }
                   }
-                  _builder.append("StringBuilder result = getProcessingIdForAttributes();");
+                  _builder.append("StringBuilder result = getProcessingIdForAttributes_();");
                   _builder.newLine();
                   {
                     boolean _isEmpty = isDefList.isEmpty();
                     boolean _not = (!_isEmpty);
                     if (_not) {
-                      _builder.append("StringBuilder processingIdForNulls = getProcessingIdForNulls();");
+                      _builder.append("StringBuilder processingIdForNulls = getProcessingIdForNulls_();");
                       _builder.newLine();
                       _builder.append("if (processingIdForNulls != null)");
                       _builder.newLine();
@@ -2532,7 +2532,7 @@ public class PojoJvmModelInferrer {
                     boolean _isEmpty_1 = toInitList.isEmpty();
                     boolean _not_1 = (!_isEmpty_1);
                     if (_not_1) {
-                      _builder.append("StringBuilder processingIdForAssociations = getProcessingIdForAssociations();");
+                      _builder.append("StringBuilder processingIdForAssociations = getProcessingIdForAssociations_();");
                       _builder.newLine();
                       _builder.append("if (processingIdForAssociations != null)");
                       _builder.newLine();
@@ -2544,7 +2544,7 @@ public class PojoJvmModelInferrer {
                   {
                     boolean _hasOperators = PojoJvmModelInferrer.this._processorGeneratorUtils.hasOperators(entity);
                     if (_hasOperators) {
-                      _builder.append("StringBuilder processingIdForOperators = getProcessingIdForOperators();");
+                      _builder.append("StringBuilder processingIdForOperators = getProcessingIdForOperators_();");
                       _builder.newLine();
                       _builder.append("if (processingIdForOperators != null)");
                       _builder.newLine();
@@ -2573,7 +2573,7 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          final JvmOperation method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingId", _typeRef_54, _function_66);
+          final JvmOperation method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingId_", _typeRef_54, _function_66);
           EList<JvmMember> _members_70 = it.getMembers();
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_70, method_4);
         }

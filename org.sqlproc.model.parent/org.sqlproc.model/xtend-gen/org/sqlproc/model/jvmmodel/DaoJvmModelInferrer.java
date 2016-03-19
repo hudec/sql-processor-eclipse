@@ -2175,10 +2175,10 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append(DaoJvmModelInferrer.this.SET, "");
             _builder.append("<String> initAssociations = ");
             _builder.append(pojoAttrName, "");
-            _builder.append(".getInitAssociations();");
+            _builder.append(".getInitAssociations_();");
             _builder.newLineIfNotEmpty();
             _builder.append(pojoAttrName, "");
-            _builder.append(".setInitAssociations(new ");
+            _builder.append(".setInitAssociations_(new ");
             _builder.append(DaoJvmModelInferrer.this.HASH_SET, "");
             _builder.append("<String>());");
             _builder.newLineIfNotEmpty();
@@ -2197,7 +2197,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append(", sqlControl);");
             _builder.newLineIfNotEmpty();
             _builder.append(pojoAttrName, "");
-            _builder.append(".setInitAssociations(initAssociations);");
+            _builder.append(".setInitAssociations_(initAssociations);");
             _builder.newLineIfNotEmpty();
             _builder.newLine();
             _builder.append("List<");
