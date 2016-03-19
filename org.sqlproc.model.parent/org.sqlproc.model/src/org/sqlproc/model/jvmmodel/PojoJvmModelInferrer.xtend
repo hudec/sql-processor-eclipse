@@ -173,7 +173,7 @@ class PojoJvmModelInferrer {
    			
    			var _hasIds = false
    			for (attr : entity.attributes) {
-   				if (attr.name == "ids")
+   				if (attr.name == "ids_")
    					_hasIds = true
    					
    				val type0 = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
@@ -750,7 +750,7 @@ class PojoJvmModelInferrer {
 	   				varArgs = true
 	   				body = '''
 						«IF hasIds»
-						if (ids != null && !ids.isEmpty())
+						if (ids_ != null && !ids_.isEmpty())
 							return null;
 						«ENDIF»
 						StringBuilder result = getProcessingIdForAttributes();

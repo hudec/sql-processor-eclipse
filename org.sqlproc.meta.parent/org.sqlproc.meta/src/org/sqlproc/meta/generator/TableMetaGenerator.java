@@ -380,7 +380,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
         String primaryKey = getPrimaryKey(pojo);
         buffer.append("\n  select ");
         if (doGenerateFromTo && select && primaryKey != null)
-            buffer.append("{? :onlyIds | %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
+            buffer.append("{? :onlyIds_ | %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
                     .append(" @id(id) |\n    ");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
                 ? pojoExtends.get(header.table.tableName) : null;
@@ -513,7 +513,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     header.extendTable.tablePrefix, true, select);
         if (doGenerateFromTo && select && primaryKey != null)
             buffer.append("\n    {& %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
-                    .append(" in :ids }");
+                    .append(" in :ids_ }");
         buffer.append("\n  }");
         if (select) {
             if (generateMethods.contains(METHOD_INDEX) && indexes.containsKey(pojo))

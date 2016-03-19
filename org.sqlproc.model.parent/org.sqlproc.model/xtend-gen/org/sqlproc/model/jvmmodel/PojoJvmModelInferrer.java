@@ -440,7 +440,7 @@ public class PojoJvmModelInferrer {
         for (final PojoAttribute attr_2 : _attributes_2) {
           {
             String _name = attr_2.getName();
-            boolean _equals_1 = Objects.equal(_name, "ids");
+            boolean _equals_1 = Objects.equal(_name, "ids_");
             if (_equals_1) {
               _hasIds = true;
             }
@@ -2506,7 +2506,7 @@ public class PojoJvmModelInferrer {
                 protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
                   {
                     if (hasIds) {
-                      _builder.append("if (ids != null && !ids.isEmpty())");
+                      _builder.append("if (ids_ != null && !ids_.isEmpty())");
                       _builder.newLine();
                       _builder.append("\t");
                       _builder.append("return null;");

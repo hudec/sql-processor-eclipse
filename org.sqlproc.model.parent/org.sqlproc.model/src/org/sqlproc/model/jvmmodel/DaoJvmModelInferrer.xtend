@@ -751,14 +751,14 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				}
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
-				«pojoAttrName».setOnlyIds(true);
+				«pojoAttrName».setOnlyIds_(true);
 				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations();
 				«pojoAttrName».setInitAssociations(new «HASH_SET»<String>());
-				final «LIST»<«wrapperPrimitive(pkType)»> ids = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
+				final «LIST»<«wrapperPrimitive(pkType)»> ids_ = sqlEngine«pojo.name».query(sqlSession, «pkType».class, «pojoAttrName», sqlControl);
 				«pojoAttrName».setInitAssociations(initAssociations);
 
 				List<«pojo.name»> «pojoAttrName»List = new «ARRAY_LIST»<«pojo.name»>();
-				if (!ids.isEmpty()) {
+				if (!ids_.isEmpty()) {
 					«SQL_STANDARD_CONTROL» sqlc = new «SQL_STANDARD_CONTROL»(sqlControl);
 					sqlc.setFirstResult(0);
 					sqlc.setMaxResults(0);
@@ -771,8 +771,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 							return true;
 						}
 					};
-					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»()._setIds(ids), sqlc, sqlRowProcessor);
-					for («pkType» id : ids)
+					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»()._setIds_(ids_), sqlc, sqlRowProcessor);
+					for («pkType» id : ids_)
 						«pojoAttrName»List.add(map.get(id));
 				}
 				if (logger.isTraceEnabled()) {

@@ -2170,7 +2170,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append(", sqlControl);");
             _builder.newLineIfNotEmpty();
             _builder.append(pojoAttrName, "");
-            _builder.append(".setOnlyIds(true);");
+            _builder.append(".setOnlyIds_(true);");
             _builder.newLineIfNotEmpty();
             _builder.append(DaoJvmModelInferrer.this.SET, "");
             _builder.append("<String> initAssociations = ");
@@ -2187,7 +2187,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append("<");
             String _wrapperPrimitive = DaoJvmModelInferrer.this._processorGeneratorUtils.wrapperPrimitive(pkType);
             _builder.append(_wrapperPrimitive, "");
-            _builder.append("> ids = sqlEngine");
+            _builder.append("> ids_ = sqlEngine");
             String _name_2 = pojo.getName();
             _builder.append(_name_2, "");
             _builder.append(".query(sqlSession, ");
@@ -2212,7 +2212,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append(_name_4, "");
             _builder.append(">();");
             _builder.newLineIfNotEmpty();
-            _builder.append("if (!ids.isEmpty()) {");
+            _builder.append("if (!ids_.isEmpty()) {");
             _builder.newLine();
             _builder.append("\t");
             _builder.append(DaoJvmModelInferrer.this.SQL_STANDARD_CONTROL, "\t");
@@ -2296,12 +2296,12 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             _builder.append(".class, new ");
             String _name_13 = pojo.getName();
             _builder.append(_name_13, "\t");
-            _builder.append("()._setIds(ids), sqlc, sqlRowProcessor);");
+            _builder.append("()._setIds_(ids_), sqlc, sqlRowProcessor);");
             _builder.newLineIfNotEmpty();
             _builder.append("\t");
             _builder.append("for (");
             _builder.append(pkType, "\t");
-            _builder.append(" id : ids)");
+            _builder.append(" id : ids_)");
             _builder.newLineIfNotEmpty();
             _builder.append("\t\t");
             _builder.append(pojoAttrName, "\t\t");
