@@ -2981,7 +2981,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                 _builder.append(pojoAttrName, "");
                 _builder.append(" != null && ");
                 _builder.append(pojoAttrName, "");
-                _builder.append(".toInit(");
+                _builder.append(".toInit_(");
                 String _name = pojo.getName();
                 _builder.append(_name, "");
                 _builder.append(".Association.");

@@ -717,7 +717,7 @@ public class PojoJvmModelInferrer {
                     PojoEntity _parent = PojoJvmModelInferrer.this._processorGeneratorUtils.getParent(entity);
                     boolean _notEquals = (!Objects.equal(_parent, null));
                     if (_notEquals) {
-                      _builder.append("result.append(\"@@\").append(super.getProcessingIdForAttributes());");
+                      _builder.append("result.append(\"@@\").append(super.getProcessingIdForAttributes_());");
                       _builder.newLine();
                     }
                   }

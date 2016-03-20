@@ -1008,7 +1008,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				return sqlControl;
 			«MAP»<String, Class<?>> moreResultClasses = null;
 			«FOR f:moreResultClasses.entrySet»
-			if («pojoAttrName» != null && «pojoAttrName».toInit(«pojo.name».Association.«f.key».name())) {
+			if («pojoAttrName» != null && «pojoAttrName».toInit_(«pojo.name».Association.«f.key».name())) {
 				if (moreResultClasses == null)
 					moreResultClasses = new «HASH_MAP»<String, Class<?>>();
 				«FOR a:f.value.entrySet»
