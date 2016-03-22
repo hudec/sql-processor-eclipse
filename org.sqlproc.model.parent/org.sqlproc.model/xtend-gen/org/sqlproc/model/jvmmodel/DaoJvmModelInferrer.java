@@ -4,6 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -656,6 +657,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
           EList<JvmMember> _members_16 = it.getMembers();
           DaoJvmModelInferrer.this.inferMoreResultClasses(entity, entityType, simpleName, pojo, pojoType, _members_16, moreResultClasses);
         }
+        final HashSet<String> procNames = new HashSet<String>();
         EList<AnnotatedFeature> _features = entity.getFeatures();
         final Function1<AnnotatedFeature, Feature> _function_8 = new Function1<AnnotatedFeature, Feature>() {
           @Override
@@ -753,7 +755,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _getter = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, _function_10);
+              JvmOperation _getter = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, procNames, _function_10);
               DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, _getter);
               EList<JvmMember> _members_19 = it.getMembers();
               String _name_3 = attr.getName();
@@ -773,7 +775,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _setter = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, _function_11);
+              JvmOperation _setter = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, procNames, _function_11);
               DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, _setter);
             }
           }

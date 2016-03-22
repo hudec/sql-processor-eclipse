@@ -28,6 +28,7 @@ import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator
 import org.sqlproc.model.processorModel.PojoProcedure
+import org.eclipse.xtext.common.types.JvmOperation
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -171,7 +172,8 @@ class PojoJvmModelInferrer {
 					'''
 	   			]
    			}
-   			
+
+			var procNames = entity.features.map[feature].filter(PojoProcedure).map[name].toSet
    			var _hasIds = false
    			for (attr : entity.features.map[feature].filter(PojoAttribute)) {
    				if (attr.name == "ids_")
@@ -197,15 +199,15 @@ class PojoJvmModelInferrer {
 					}
    				]
    				if (!attr.static) {
-	   				members += attr.toGetter(attr.name, attr.name, type) [
+	   				members += attr.toGetter(attr.name, attr.name, type, procNames) [
 	   					addAnnotationsX(attr.getterAnnotations.map[a|a.annotation])
 	   				]
 	   				members += attr.toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
-	   								attr.createColumn1, attr.createColumn2) [
+	   								attr.createColumn1, attr.createColumn2, procNames) [
 	   					addAnnotationsX(attr.setterAnnotations.map[a|a.annotation])
 	   				]
 	   				members += attr._toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
-	   								attr.createColumn1, attr.createColumn2)
+	   								attr.createColumn1, attr.createColumn2, procNames)
 		   			val operSuffix = entity.operatorsSuffix
 		   			if (operSuffix != null) {
 	   					members += entity.toField(attr.name + operSuffix, typeRef(String)) []

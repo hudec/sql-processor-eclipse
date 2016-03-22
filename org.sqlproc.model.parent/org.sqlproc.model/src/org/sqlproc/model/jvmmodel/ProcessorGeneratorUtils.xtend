@@ -61,7 +61,6 @@ import org.sqlproc.model.processorModel.PojoDirectiveProcessingId
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo
 import org.sqlproc.model.processorModel.AnnotatedFeature
 import org.eclipse.xtext.EcoreUtil2
-import com.google.common.collect.Lists
 
 class ProcessorGeneratorUtils {
 
@@ -270,13 +269,13 @@ class ProcessorGeneratorUtils {
 			val d = it as PojoDirectiveIndex
 			if (d.index != null) {
 				if (d.index.id != null)
-					result.put(d.index.id, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+					result.put(d.index.id, d.proplist.features.filter(PojoAttribute).toList)
 				else
-					result.put(""+d.index.number, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+					result.put(""+d.index.number, d.proplist.features.filter(PojoAttribute).toList)
 			}
 			else {
 				val name = constName(d.proplist.features)
-				result.put(name, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+				result.put(name, d.proplist.features.filter(PojoAttribute).toList)
 			}
 		]
         return result
@@ -288,13 +287,13 @@ class ProcessorGeneratorUtils {
 			val d = it as PojoDirectiveEnumIndex
 			if (d.index != null) {
 				if (d.index.id != null)
-					result.put(d.index.id, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+					result.put(d.index.id, d.proplist.features.filter(PojoAttribute).toList)
 				else
-					result.put(""+d.index.number, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+					result.put(""+d.index.number, d.proplist.features.filter(PojoAttribute).toList)
 			}
 			else {
 				val name = constName(d.proplist.features)
-				result.put(name, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
+				result.put(name, d.proplist.features.filter(PojoAttribute).toList)
 			}
 		]
         return result
@@ -546,8 +545,7 @@ class ProcessorGeneratorUtils {
     	if (superType == null)
     		return null;
     	if (superType instanceof DaoEntity)
-    		return superType as DaoEntity
-    	val Package pkg = getContainerOfType(pojo, Package)
+    		return superType as DaoEntity    	val Package pkg = getContainerOfType(pojo, Package)
     	val DaoEntity _dao =  pkg?.eAllOfType(DaoEntity)?.findFirst[d|d.name == superType.simpleName]
     	if (_dao != null)
     		return _dao

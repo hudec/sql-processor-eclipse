@@ -5,8 +5,6 @@ package org.sqlproc.model.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.common.collect.Lists;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -774,8 +772,8 @@ public class ProcessorGeneratorUtils {
             DirectiveProperties _proplist = d.getProplist();
             EList<Feature> _features = _proplist.getFeatures();
             Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-            ArrayList<PojoAttribute> _newArrayList = Lists.<PojoAttribute>newArrayList(_filter);
-            result.put(_id_1, _newArrayList);
+            List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
+            result.put(_id_1, _list);
           } else {
             IndexType _index_3 = d.getIndex();
             int _number = _index_3.getNumber();
@@ -783,8 +781,8 @@ public class ProcessorGeneratorUtils {
             DirectiveProperties _proplist_1 = d.getProplist();
             EList<Feature> _features_1 = _proplist_1.getFeatures();
             Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-            ArrayList<PojoAttribute> _newArrayList_1 = Lists.<PojoAttribute>newArrayList(_filter_1);
-            result.put(_plus, _newArrayList_1);
+            List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_1);
+            result.put(_plus, _list_1);
           }
         } else {
           DirectiveProperties _proplist_2 = d.getProplist();
@@ -793,8 +791,8 @@ public class ProcessorGeneratorUtils {
           DirectiveProperties _proplist_3 = d.getProplist();
           EList<Feature> _features_3 = _proplist_3.getFeatures();
           Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-          ArrayList<PojoAttribute> _newArrayList_2 = Lists.<PojoAttribute>newArrayList(_filter_2);
-          result.put(name, _newArrayList_2);
+          List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_2);
+          result.put(name, _list_2);
         }
       }
     };
@@ -831,8 +829,8 @@ public class ProcessorGeneratorUtils {
             DirectiveProperties _proplist = d.getProplist();
             EList<Feature> _features = _proplist.getFeatures();
             Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-            ArrayList<PojoAttribute> _newArrayList = Lists.<PojoAttribute>newArrayList(_filter);
-            result.put(_id_1, _newArrayList);
+            List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
+            result.put(_id_1, _list);
           } else {
             IndexType _index_3 = d.getIndex();
             int _number = _index_3.getNumber();
@@ -840,8 +838,8 @@ public class ProcessorGeneratorUtils {
             DirectiveProperties _proplist_1 = d.getProplist();
             EList<Feature> _features_1 = _proplist_1.getFeatures();
             Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-            ArrayList<PojoAttribute> _newArrayList_1 = Lists.<PojoAttribute>newArrayList(_filter_1);
-            result.put(_plus, _newArrayList_1);
+            List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_1);
+            result.put(_plus, _list_1);
           }
         } else {
           DirectiveProperties _proplist_2 = d.getProplist();
@@ -850,8 +848,8 @@ public class ProcessorGeneratorUtils {
           DirectiveProperties _proplist_3 = d.getProplist();
           EList<Feature> _features_3 = _proplist_3.getFeatures();
           Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-          ArrayList<PojoAttribute> _newArrayList_2 = Lists.<PojoAttribute>newArrayList(_filter_2);
-          result.put(name, _newArrayList_2);
+          List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_2);
+          result.put(name, _list_2);
         }
       }
     };

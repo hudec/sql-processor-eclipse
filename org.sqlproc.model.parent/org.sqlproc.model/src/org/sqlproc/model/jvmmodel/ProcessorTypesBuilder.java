@@ -1,5 +1,7 @@
 package org.sqlproc.model.jvmmodel;
 
+import java.util.Set;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmOperation;
 import org.eclipse.xtext.common.types.JvmTypeReference;
@@ -30,8 +32,8 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
     private XtypeFactory xtypesFactory = XtypeFactory.eINSTANCE;
 
     public JvmOperation toGetter(/* @Nullable */final EObject sourceElement, /* @Nullable */final String propertyName,
-    /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef,
-    /* @Nullable */Procedure1<? super JvmOperation> initializer) {
+            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef,
+            /* @Nullable */final Set<String> procNames, /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
         JvmOperation result = typesFactory.createJvmOperation();
@@ -60,20 +62,20 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
 
     /* @Nullable */
     public JvmOperation toSetterExt(/* @Nullable */final EObject sourceElement, /* @Nullable */
-            final String propertyName,
-            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
-            /* @Nullable */final String updateColumn1, /* @Nullable */final PojoAttribute updateColumn2,
-            /* @Nullable */final PojoAttribute createColumn1, /* @Nullable */final String createColumn2) {
-        return toSetterExt(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, updateColumn1,
-                updateColumn2, createColumn1, createColumn2, null);
+            final String propertyName, /* @Nullable */final String fieldName,
+            /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */final String updateColumn1,
+            /* @Nullable */final PojoAttribute updateColumn2, /* @Nullable */final PojoAttribute createColumn1,
+            /* @Nullable */final String createColumn2, /* @Nullable */final Set<String> procNames) {
+        return toSetterExt(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, updateColumn1, updateColumn2,
+                createColumn1, createColumn2, procNames, null);
     }
 
     /* @Nullable */
     public JvmOperation toSetter(/* @Nullable */final EObject sourceElement, /* @Nullable */
-            final String propertyName,
-            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
+            final String propertyName, /* @Nullable */final String fieldName,
+            /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */final Set<String> procNames,
             /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
@@ -96,11 +98,11 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
 
     /* @Nullable */
     public JvmOperation toSetterExt(/* @Nullable */final EObject sourceElement, /* @Nullable */
-            final String propertyName,
-            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
-            /* @Nullable */final String updateColumn1, /* @Nullable */final PojoAttribute updateColumn2,
-            /* @Nullable */final PojoAttribute createColumn1, /* @Nullable */final String createColumn2,
+            final String propertyName, /* @Nullable */final String fieldName,
+            /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */final String updateColumn1,
+            /* @Nullable */final PojoAttribute updateColumn2, /* @Nullable */final PojoAttribute createColumn1,
+            /* @Nullable */final String createColumn2, /* @Nullable */final Set<String> procNames,
             /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
@@ -117,8 +119,8 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
                     if (updateColumn1 != null && updateColumn2 != null) {
                         p.newLine().append("if (this.").append(fieldName).append(" != null)");
                         p.increaseIndentation();
-                        p.newLine().append("this.").append(updateColumn2.getName()).append(" = this.")
-                                .append(fieldName).append(".get").append(_toFirstUpper(updateColumn1)).append("();");
+                        p.newLine().append("this.").append(updateColumn2.getName()).append(" = this.").append(fieldName)
+                                .append(".get").append(_toFirstUpper(updateColumn1)).append("();");
                         p.decreaseIndentation();
                     }
                     if (createColumn1 != null && createColumn2 != null) {
@@ -139,22 +141,22 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
 
     /* @Nullable */
     public JvmOperation _toSetterExt(/* @Nullable */final EObject sourceElement, /* @Nullable */
-            final String propertyName,
-            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
-            /* @Nullable */final String updateColumn1, /* @Nullable */final PojoAttribute updateColumn2,
-            /* @Nullable */final PojoAttribute createColumn1, /* @Nullable */final String createColumn2) {
+            final String propertyName, /* @Nullable */final String fieldName,
+            /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */final String updateColumn1,
+            /* @Nullable */final PojoAttribute updateColumn2, /* @Nullable */final PojoAttribute createColumn1,
+            /* @Nullable */final String createColumn2, /* @Nullable */final Set<String> procNames) {
         return _toSetterExt(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, updateColumn1,
-                updateColumn2, createColumn1, createColumn2, null);
+                updateColumn2, createColumn1, createColumn2, procNames, null);
     }
 
     /* @Nullable */
     public JvmOperation _toSetterExt(/* @Nullable */final EObject sourceElement, /* @Nullable */
-            final String propertyName,
-            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
-            /* @Nullable */final String updateColumn1, /* @Nullable */final PojoAttribute updateColumn2,
-            /* @Nullable */final PojoAttribute createColumn1, /* @Nullable */final String createColumn2,
+            final String propertyName, /* @Nullable */final String fieldName,
+            /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */final String updateColumn1,
+            /* @Nullable */final PojoAttribute updateColumn2, /* @Nullable */final PojoAttribute createColumn1,
+            /* @Nullable */final String createColumn2, /* @Nullable */final Set<String> procNames,
             /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
@@ -171,8 +173,8 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
                     if (updateColumn1 != null && updateColumn2 != null) {
                         p.newLine().append("if (this.").append(fieldName).append(" != null)");
                         p.increaseIndentation();
-                        p.newLine().append("this.").append(updateColumn2.getName()).append(" = this.")
-                                .append(fieldName).append(".get").append(_toFirstUpper(updateColumn1)).append("();");
+                        p.newLine().append("this.").append(updateColumn2.getName()).append(" = this.").append(fieldName)
+                                .append(".get").append(_toFirstUpper(updateColumn1)).append("();");
                         p.decreaseIndentation();
                     }
                     if (createColumn1 != null && createColumn2 != null) {
@@ -194,16 +196,15 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
 
     /* @Nullable */
     public JvmOperation _toSetter(/* @Nullable */final EObject sourceElement, /* @Nullable */final String propertyName,
-    /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
             JvmTypeReference typeEntityRef) {
         return _toSetter(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, null);
     }
 
     /* @Nullable */
     public JvmOperation _toSetter(/* @Nullable */final EObject sourceElement, /* @Nullable */final String propertyName,
-    /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef,
-            /* @Nullable */Procedure1<? super JvmOperation> initializer) {
+            /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
+            JvmTypeReference typeEntityRef, /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
         JvmOperation result = typesFactory.createJvmOperation();

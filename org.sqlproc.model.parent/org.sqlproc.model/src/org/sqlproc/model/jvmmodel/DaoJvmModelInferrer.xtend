@@ -36,6 +36,7 @@ import org.sqlproc.model.processorModel.FunctionQuery
 import org.sqlproc.model.processorModel.DaoFunProcDirective
 import org.eclipse.xtext.naming.QualifiedName
 import org.sqlproc.model.processorModel.PojoProcedure
+import java.util.HashSet
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -296,7 +297,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    				inferMoreResultClasses(entity, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
 			}
 
-   			
+   			val procNames = new HashSet<String>()
    			for (attr : entity.features.map[feature].filter(PojoAttribute)) {
    				val type = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
    				members += entity.toField(attr.name, type) [
@@ -314,10 +315,10 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
  					}
    				]
    				if (!attr.static) {
-	   				members += attr.toGetter(attr.name, attr.name, type) [
+	   				members += attr.toGetter(attr.name, attr.name, type, procNames) [
 	   					addAnnotations(attr.getterAnnotations.map[a|a.annotation])
 	   				]
-	   				members += attr.toSetter(attr.name, attr.name, type, typeRef(entityType)) [
+	   				members += attr.toSetter(attr.name, attr.name, type, typeRef(entityType), procNames) [
 	   					addAnnotations(attr.setterAnnotations.map[a|a.annotation])
 	   				]
    				}
