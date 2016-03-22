@@ -1,6 +1,7 @@
 package org.sqlproc.model.jvmmodel;
 
 import com.google.common.base.Objects;
+import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
 import java.util.List;
@@ -36,6 +37,7 @@ import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.sqlproc.model.jvmmodel.ProcessorGeneratorUtils;
 import org.sqlproc.model.jvmmodel.ProcessorTypesBuilder;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.DaoDirective;
 import org.sqlproc.model.processorModel.DaoDirectiveCrud;
@@ -44,6 +46,7 @@ import org.sqlproc.model.processorModel.DaoDirectiveQuery;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.DaoFunProcDirective;
 import org.sqlproc.model.processorModel.Extends;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.FunProcType;
 import org.sqlproc.model.processorModel.FunctionCall;
 import org.sqlproc.model.processorModel.FunctionCallQuery;
@@ -653,8 +656,16 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
           EList<JvmMember> _members_16 = it.getMembers();
           DaoJvmModelInferrer.this.inferMoreResultClasses(entity, entityType, simpleName, pojo, pojoType, _members_16, moreResultClasses);
         }
-        EList<PojoAttribute> _attributes = entity.getAttributes();
-        for (final PojoAttribute attr : _attributes) {
+        EList<AnnotatedFeature> _features = entity.getFeatures();
+        final Function1<AnnotatedFeature, Feature> _function_8 = new Function1<AnnotatedFeature, Feature>() {
+          @Override
+          public Feature apply(final AnnotatedFeature it) {
+            return it.getFeature();
+          }
+        };
+        List<Feature> _map_1 = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function_8);
+        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map_1, PojoAttribute.class);
+        for (final PojoAttribute attr : _filter) {
           {
             JvmTypeReference _elvis = null;
             JvmTypeReference _elvis_1 = null;
@@ -678,7 +689,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             final JvmTypeReference type = _elvis;
             EList<JvmMember> _members_17 = it.getMembers();
             String _name = attr.getName();
-            final Procedure1<JvmField> _function_8 = new Procedure1<JvmField>() {
+            final Procedure1<JvmField> _function_9 = new Procedure1<JvmField>() {
               @Override
               public void apply(final JvmField it) {
                 String _documentation = DaoJvmModelInferrer.this._processorTypesBuilder.getDocumentation(attr);
@@ -720,7 +731,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                 }
               }
             };
-            JvmField _field_4 = DaoJvmModelInferrer.this._processorTypesBuilder.toField(entity, _name, type, _function_8);
+            JvmField _field_4 = DaoJvmModelInferrer.this._processorTypesBuilder.toField(entity, _name, type, _function_9);
             DaoJvmModelInferrer.this._processorTypesBuilder.<JvmField>operator_add(_members_17, _field_4);
             boolean _isStatic = attr.isStatic();
             boolean _not_2 = (!_isStatic);
@@ -728,7 +739,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
               EList<JvmMember> _members_18 = it.getMembers();
               String _name_1 = attr.getName();
               String _name_2 = attr.getName();
-              final Procedure1<JvmOperation> _function_9 = new Procedure1<JvmOperation>() {
+              final Procedure1<JvmOperation> _function_10 = new Procedure1<JvmOperation>() {
                 @Override
                 public void apply(final JvmOperation it) {
                   List<Annotation> _terAnnotations = DaoJvmModelInferrer.this._processorGeneratorUtils.getterAnnotations(attr);
@@ -742,13 +753,13 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _getter = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, _function_9);
+              JvmOperation _getter = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, _function_10);
               DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, _getter);
               EList<JvmMember> _members_19 = it.getMembers();
               String _name_3 = attr.getName();
               String _name_4 = attr.getName();
               JvmTypeReference _typeRef_9 = DaoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-              final Procedure1<JvmOperation> _function_10 = new Procedure1<JvmOperation>() {
+              final Procedure1<JvmOperation> _function_11 = new Procedure1<JvmOperation>() {
                 @Override
                 public void apply(final JvmOperation it) {
                   List<Annotation> _setterAnnotations = DaoJvmModelInferrer.this._processorGeneratorUtils.setterAnnotations(attr);
@@ -762,13 +773,21 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _setter = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, _function_10);
+              JvmOperation _setter = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, _function_11);
               DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, _setter);
             }
           }
         }
-        EList<PojoProcedure> _procedures = entity.getProcedures();
-        for (final PojoProcedure proc : _procedures) {
+        EList<AnnotatedFeature> _features_1 = entity.getFeatures();
+        final Function1<AnnotatedFeature, Feature> _function_9 = new Function1<AnnotatedFeature, Feature>() {
+          @Override
+          public Feature apply(final AnnotatedFeature it) {
+            return it.getFeature();
+          }
+        };
+        List<Feature> _map_2 = ListExtensions.<AnnotatedFeature, Feature>map(_features_1, _function_9);
+        Iterable<PojoProcedure> _filter_1 = Iterables.<PojoProcedure>filter(_map_2, PojoProcedure.class);
+        for (final PojoProcedure proc : _filter_1) {
           EList<JvmMember> _members_17 = it.getMembers();
           String _name = proc.getName();
           JvmTypeReference _elvis = null;
@@ -779,7 +798,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             JvmTypeReference _inferredType = DaoJvmModelInferrer.this._processorTypesBuilder.inferredType();
             _elvis = _inferredType;
           }
-          final Procedure1<JvmOperation> _function_8 = new Procedure1<JvmOperation>() {
+          final Procedure1<JvmOperation> _function_10 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               String _documentation = DaoJvmModelInferrer.this._processorTypesBuilder.getDocumentation(proc);
@@ -798,7 +817,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
               DaoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _body);
             }
           };
-          JvmOperation _method = DaoJvmModelInferrer.this._processorTypesBuilder.toMethod(proc, _name, _elvis, _function_8);
+          JvmOperation _method = DaoJvmModelInferrer.this._processorTypesBuilder.toMethod(proc, _name, _elvis, _function_10);
           DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_17, _method);
         }
       }

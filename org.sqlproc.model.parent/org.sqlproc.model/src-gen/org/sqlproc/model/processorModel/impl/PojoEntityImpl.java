@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 
-import org.sqlproc.model.processorModel.PojoAttribute;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.PojoDirective;
 import org.sqlproc.model.processorModel.PojoEntity;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
@@ -36,7 +36,7 @@ import org.sqlproc.model.processorModel.ProcessorModelPackage;
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoEntityImpl#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoEntityImpl#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.impl.PojoEntityImpl#getSuperType <em>Super Type</em>}</li>
- *   <li>{@link org.sqlproc.model.processorModel.impl.PojoEntityImpl#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.impl.PojoEntityImpl#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @generated
@@ -84,14 +84,14 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
   protected JvmParameterizedTypeReference superType;
 
   /**
-   * The cached value of the '{@link #getAttributes() <em>Attributes</em>}' containment reference list.
+   * The cached value of the '{@link #getFeatures() <em>Features</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAttributes()
+   * @see #getFeatures()
    * @generated
    * @ordered
    */
-  protected EList<PojoAttribute> attributes;
+  protected EList<AnnotatedFeature> features;
 
   /**
    * <!-- begin-user-doc -->
@@ -204,13 +204,13 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PojoAttribute> getAttributes()
+  public EList<AnnotatedFeature> getFeatures()
   {
-    if (attributes == null)
+    if (features == null)
     {
-      attributes = new EObjectContainmentEList<PojoAttribute>(PojoAttribute.class, this, ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES);
+      features = new EObjectContainmentEList<AnnotatedFeature>(AnnotatedFeature.class, this, ProcessorModelPackage.POJO_ENTITY__FEATURES);
     }
-    return attributes;
+    return features;
   }
 
   /**
@@ -227,8 +227,8 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
         return ((InternalEList<?>)getDirectives()).basicRemove(otherEnd, msgs);
       case ProcessorModelPackage.POJO_ENTITY__SUPER_TYPE:
         return basicSetSuperType(null, msgs);
-      case ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES:
-        return ((InternalEList<?>)getAttributes()).basicRemove(otherEnd, msgs);
+      case ProcessorModelPackage.POJO_ENTITY__FEATURES:
+        return ((InternalEList<?>)getFeatures()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -249,8 +249,8 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
         return isAbstract();
       case ProcessorModelPackage.POJO_ENTITY__SUPER_TYPE:
         return getSuperType();
-      case ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES:
-        return getAttributes();
+      case ProcessorModelPackage.POJO_ENTITY__FEATURES:
+        return getFeatures();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -276,9 +276,9 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
       case ProcessorModelPackage.POJO_ENTITY__SUPER_TYPE:
         setSuperType((JvmParameterizedTypeReference)newValue);
         return;
-      case ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES:
-        getAttributes().clear();
-        getAttributes().addAll((Collection<? extends PojoAttribute>)newValue);
+      case ProcessorModelPackage.POJO_ENTITY__FEATURES:
+        getFeatures().clear();
+        getFeatures().addAll((Collection<? extends AnnotatedFeature>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -303,8 +303,8 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
       case ProcessorModelPackage.POJO_ENTITY__SUPER_TYPE:
         setSuperType((JvmParameterizedTypeReference)null);
         return;
-      case ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES:
-        getAttributes().clear();
+      case ProcessorModelPackage.POJO_ENTITY__FEATURES:
+        getFeatures().clear();
         return;
     }
     super.eUnset(featureID);
@@ -326,8 +326,8 @@ public class PojoEntityImpl extends EntityImpl implements PojoEntity
         return abstract_ != ABSTRACT_EDEFAULT;
       case ProcessorModelPackage.POJO_ENTITY__SUPER_TYPE:
         return superType != null;
-      case ProcessorModelPackage.POJO_ENTITY__ATTRIBUTES:
-        return attributes != null && !attributes.isEmpty();
+      case ProcessorModelPackage.POJO_ENTITY__FEATURES:
+        return features != null && !features.isEmpty();
     }
     return super.eIsSet(featureID);
   }

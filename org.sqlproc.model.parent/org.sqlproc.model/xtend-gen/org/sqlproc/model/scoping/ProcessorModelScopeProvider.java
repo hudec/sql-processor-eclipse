@@ -13,8 +13,12 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScope;
 import org.eclipse.xtext.scoping.Scopes;
 import org.eclipse.xtext.xbase.lib.Extension;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.sqlproc.model.jvmmodel.ProcessorGeneratorUtils;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.DaoEntity;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.PojoAttribute;
 import org.sqlproc.model.processorModel.PojoEntity;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
@@ -37,8 +41,15 @@ public class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProv
     boolean _equals = Objects.equal(reference, ProcessorModelPackage.Literals.DIRECTIVE_PROPERTIES__FEATURES);
     if (_equals) {
       final PojoEntity pojo = EcoreUtil2.<PojoEntity>getContainerOfType(context, PojoEntity.class);
-      EList<PojoAttribute> _attributes = pojo.getAttributes();
-      final IScope scope = Scopes.scopeFor(_attributes);
+      EList<AnnotatedFeature> _features = pojo.getFeatures();
+      final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+        @Override
+        public Feature apply(final AnnotatedFeature it) {
+          return it.getFeature();
+        }
+      };
+      List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+      final IScope scope = Scopes.scopeFor(_map);
       return scope;
     } else {
       boolean _equals_1 = Objects.equal(reference, ProcessorModelPackage.Literals.DAO_DIRECTIVE_DISCRIMINATOR__ANCESTOR);

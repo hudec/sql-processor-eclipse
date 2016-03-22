@@ -21,12 +21,11 @@ import org.sqlproc.model.processorModel.PojoEntity
 import org.sqlproc.model.processorModel.Package
 import org.sqlproc.model.processorModel.AbstractEntity
 import org.sqlproc.model.processorModel.AnnotatedEntity
-import org.sqlproc.model.processorModel.EnumEntity
 import org.sqlproc.model.processorModel.DaoEntity
-import org.sqlproc.model.processorModel.PojoAttribute
 import org.sqlproc.model.processorModel.Entity
 import org.sqlproc.plugin.lib.util.CommonUtils
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel
+import org.sqlproc.model.processorModel.Feature
 
 /**
  * Custom validation rules. 
@@ -49,13 +48,10 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         val artifacts = getArtifacts(pojoDefinition)
         if (artifacts == null)
             return;
-        for (PojoDefinitionModel definition : artifacts.getPojos()) {
-            if (definition != null && definition !== pojoDefinition) {
-	            if (pojoDefinition.getName().equals(definition.getName())) {
-	                error("Duplicate name : " + pojoDefinition.getName(),
-	                        ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
-	                return
-	            }
+        for (PojoDefinitionModel definition : artifacts.pojos) {
+            if (definition != null && definition !== pojoDefinition && pojoDefinition.name == definition.name) {
+                error("Duplicate name : " + pojoDefinition.name, ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
+                return
             }
         }
     }
@@ -69,12 +65,9 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
             return;
             
         for (AnnotationDefinitionModel definition : artifacts.annotations) {
-            if (definition != null && definition !== annotationDefinition) {
-	            if (annotationDefinition.getName().equals(definition.getName())) {
-	                error("Duplicate name : " + annotationDefinition.getName(),
-	                        ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME)
-	                return
-	            }
+            if (definition != null && definition !== annotationDefinition && annotationDefinition.name == definition.name) {
+                error("Duplicate name : " + annotationDefinition.name, ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME)
+                return
             }
         }
     }
@@ -87,12 +80,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (artifacts == null)
             return;
 
-        for (Property prop : artifacts.getProperties()) {
-            if (prop != null && prop !== property) {
-	            if (prop.getName().equals(property.getName()) && !prop.getName().startsWith("pojogen")
-	                    && !prop.getName().startsWith("database") && !prop.getName().startsWith("metagen")
-	                    && !prop.getName().startsWith("daogen") && !prop.getName().startsWith("replace-text")) {
-	                error("Duplicate name : " + property.getName(), ProcessorModelPackage.Literals.PROPERTY__NAME)
+        for (Property prop : artifacts.properties) {
+            if (prop != null && prop !== property && prop.name == property.name) {
+	            if (!prop.name.startsWith("pojogen") && !prop.name.startsWith("database") && !prop.name.startsWith("metagen")
+	                && !prop.name.startsWith("daogen") && !prop.name.startsWith("replace-text")) {
+	                error("Duplicate name : " + property.name, ProcessorModelPackage.Literals.PROPERTY__NAME)
 	                return
 	            }
             }
@@ -107,18 +99,14 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (artifacts == null)
             return;
 
-        for (TableDefinitionModel table : artifacts.getTables()) {
-            if (table != null && table !== tableDefinition) {
-	            if (tableDefinition.getName().equals(table.getName())) {
-	                error("Duplicate name : " + tableDefinition.getName() + "[table]",
-	                        ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__NAME)
-	                return
-				}
-	           }
+        for (TableDefinitionModel table : artifacts.tables) {
+            if (table != null && table !== tableDefinition && tableDefinition.name ==table.name) {
+                error("Duplicate name : " + tableDefinition.name + "[table]", ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__NAME)
+                return
+           }
         }
-        if (isResolveDb(tableDefinition) && !dbResolver.checkTable(tableDefinition, tableDefinition.getTable())) {
-            error("Cannot find table in DB : " + tableDefinition.getTable(),
-                    ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__TABLE)
+        if (isResolveDb(tableDefinition) && !dbResolver.checkTable(tableDefinition, tableDefinition.table)) {
+            error("Cannot find table in DB : " + tableDefinition.table, ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__TABLE)
         }
     }
 
@@ -130,19 +118,14 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (artifacts == null)
             return;
 
-        for (ProcedureDefinitionModel procedure : artifacts.getProcedures()) {
-            if (procedure != null && procedure !== procedureDefinition) {
-	            if (procedureDefinition.getName().equals(procedure.getName())) {
-	                error("Duplicate name : " + procedureDefinition.getName() + "[procedure]",
-	                        ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME)
-	                return
-	            }
+        for (ProcedureDefinitionModel procedure : artifacts.procedures) {
+            if (procedure != null && procedure !== procedureDefinition && procedureDefinition.name == procedure.name) {
+                error("Duplicate name : " + procedureDefinition.name + "[procedure]", ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME)
+                return
 	        }
         }
-        if (isResolveDb(procedureDefinition)
-                && !dbResolver.checkProcedure(procedureDefinition, procedureDefinition.getTable())) {
-            error("Cannot find procedure in DB : " + procedureDefinition.getTable(),
-                    ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME)
+        if (isResolveDb(procedureDefinition) && !dbResolver.checkProcedure(procedureDefinition, procedureDefinition.table)) {
+            error("Cannot find procedure in DB : " + procedureDefinition.table, ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME)
         }
     }
 
@@ -154,37 +137,32 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (artifacts == null)
             return;
 
-        for (FunctionDefinitionModel function : artifacts.getFunctions()) {
-            if (function != null && function !== functionDefinition) {
-	            if (functionDefinition.getName().equals(function.getName())) {
-	                error("Duplicate name : " + functionDefinition.getName() + "[function]",
-	                        ProcessorModelPackage.Literals.FUNCTION_DEFINITION_MODEL__NAME)
-	                return
-	            }
+        for (FunctionDefinitionModel function : artifacts.functions) {
+            if (function != null && function !== functionDefinition && functionDefinition.name == function.name) {
+                error("Duplicate name : " + functionDefinition.name + "[function]", ProcessorModelPackage.Literals.FUNCTION_DEFINITION_MODEL__NAME)
+                return
 	    	}
         }
     }
     
     @Check
-    def checkUniquePojoEntity(PojoEntity pojoEntity) {
-        if (CommonUtils.skipVerification(pojoEntity, modelProperty))
+    def checkUniquePojoEntity(Entity entity) {
+        if (CommonUtils.skipVerification(entity, modelProperty))
             return;
-        val artifacts = getArtifacts(pojoEntity)
+        val artifacts = getArtifacts(entity)
         if (artifacts == null)
             return;
 
-        for (Package pkg : artifacts.getPackages()) {
+        for (Package pkg : artifacts.packages) {
             if (pkg != null) {
-	            for (AbstractEntity entity : pkg.getElements()) {
-	                if (entity != null && (entity instanceof AnnotatedEntity)) {
-		                val aentity = entity as AnnotatedEntity
-		                if (aentity.entity != null && aentity.entity instanceof PojoEntity) {
-		                	val pentity = aentity.entity as PojoEntity
-			                if (pentity !== pojoEntity) {
-				                if (pojoEntity.getName().equals(pentity.getName())) {
-				                    error("Duplicate name : " + pojoEntity.getName(), ProcessorModelPackage.Literals.ENTITY__NAME)
-				                    return
-				                }
+	            for (AbstractEntity abstractEntity : pkg.elements) {
+	                if (abstractEntity != null && (abstractEntity instanceof AnnotatedEntity)) {
+		                val annotatedEntity = abstractEntity as AnnotatedEntity
+		                if (annotatedEntity.entity != null) {
+	                		val _entity = annotatedEntity.entity as Entity
+		                	if (_entity != null && _entity !== entity && entity.name == _entity.name) {
+			                    error("Duplicate name : " + entity.name, ProcessorModelPackage.Literals.ENTITY__NAME)
+			                    return
 			                }
 		                }
 					}
@@ -194,86 +172,26 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
 
     @Check
-    def checkUniqueEnumEntity(EnumEntity enumEntity) {
-        if (CommonUtils.skipVerification(enumEntity, modelProperty))
-            return;
-        val artifacts = getArtifacts(enumEntity)
-        if (artifacts == null)
-            return;
-
-        for (Package pkg : artifacts.getPackages()) {
-            if (pkg != null) {
-	            for (AbstractEntity entity : pkg.getElements()) {
-	            	if (entity != null && (entity instanceof AnnotatedEntity)) {
-		                val aentity = entity as AnnotatedEntity
-		                if (aentity.entity != null && aentity.entity instanceof EnumEntity) {
-			                val pentity = aentity.entity as EnumEntity
-			                if (pentity != enumEntity) {
-				                if (enumEntity.getName().equals(pentity.getName())) {
-				                    error("Duplicate name : " + enumEntity.getName(), ProcessorModelPackage.Literals.ENTITY__NAME)
-				                    return
-				                }
-							}
-						}
-					}
-	            }
-            }
-        }
-    }
-
-    @Check
-    def checkUniqueDaoEntity(DaoEntity daoEntity) {
-        if (CommonUtils.skipVerification(daoEntity, modelProperty))
-            return;
-        val artifacts = getArtifacts(daoEntity)
-        if (artifacts == null)
-            return;
-
-        for (Package pkg : artifacts.getPackages()) {
-            if (pkg != null) {
-	            for (AbstractEntity entity : pkg.getElements()) {
-	            	if (entity != null && (entity instanceof AnnotatedEntity)) {
-		                val aentity = entity as AnnotatedEntity
-		                if (aentity.entity != null && aentity.entity instanceof DaoEntity) {
-			                val pentity = aentity.entity as DaoEntity
-			                if (pentity != daoEntity) {
-				                if (daoEntity.getName().equals(pentity.getName())) {
-				                    error("Duplicate name : " + daoEntity.getName(), ProcessorModelPackage.Literals.ENTITY__NAME)
-				                    return
-				                }
-							}
-						}
-					}
-	            }
-            }
-        }
-    }
-
-    @Check
-    def checkUniquePojoAttribute(PojoAttribute pojoProperty) {
-        if (CommonUtils.skipVerification(pojoProperty, modelProperty))
+    def checkUniquePojoAttribute(Feature feature) {
+        if (CommonUtils.skipVerification(feature, modelProperty))
             return;
             
-        val entity = pojoProperty.getContainerOfType(typeof(Entity))
+        val entity = feature.getContainerOfType(typeof(Entity))
         if (entity != null) {
         	if (entity instanceof PojoEntity) {
         		val pentity = entity as PojoEntity
-		        for (PojoAttribute property : pentity.getAttributes()) {
-		            if (property != null && property !== pojoProperty) {
-			            if (pojoProperty.getName().equals(property.getName())) {
-			                error("Duplicate name : " + pojoProperty.getName(), ProcessorModelPackage.Literals.POJO_ATTRIBUTE__NAME)
-			                return
-			            }
+		        for (Feature _feature : pentity.features.map[feature]) {
+		            if (_feature != null && _feature !== feature && feature.name == _feature.name) {
+		                error("Duplicate name : " + feature.name, ProcessorModelPackage.Literals.FEATURE__NAME)
+		                return
 		            }
 		        }
         	} else if (entity instanceof DaoEntity) {
         		val pentity = entity as DaoEntity
-		        for (PojoAttribute property : pentity.getAttributes()) {
-		            if (property != null && property !== pojoProperty) {
-			            if (pojoProperty.getName().equals(property.getName())) {
-			                error("Duplicate name : " + pojoProperty.getName(), ProcessorModelPackage.Literals.POJO_ATTRIBUTE__NAME)
-			                return
-			            }
+		        for (Feature _feature : pentity.features.map[feature]) {
+		            if (_feature != null && _feature !== feature && feature.name == _feature.name) {
+		                error("Duplicate name : " + feature.name, ProcessorModelPackage.Literals.FEATURE__NAME)
+		                return
 		            }
 		        }
 	        }

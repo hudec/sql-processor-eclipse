@@ -5,7 +5,8 @@ package org.sqlproc.model.jvmmodel;
 
 import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
-import com.google.inject.Inject;
+import com.google.common.collect.Lists;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
@@ -17,16 +18,14 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
 import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
-import org.eclipse.xtext.naming.IQualifiedNameConverter;
-import org.eclipse.xtext.naming.IQualifiedNameProvider;
-import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
-import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
 import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
@@ -49,6 +48,7 @@ import org.sqlproc.model.processorModel.Entity;
 import org.sqlproc.model.processorModel.EnumDirective;
 import org.sqlproc.model.processorModel.EnumEntity;
 import org.sqlproc.model.processorModel.Extends;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.Implements;
 import org.sqlproc.model.processorModel.ImplementsExtendsDirective;
 import org.sqlproc.model.processorModel.ImplementsExtendsDirectiveExceptDaos;
@@ -89,16 +89,6 @@ import org.sqlproc.plugin.lib.util.CommonUtils;
 
 @SuppressWarnings("all")
 public class ProcessorGeneratorUtils {
-  @Inject
-  @Extension
-  private IQualifiedNameProvider _iQualifiedNameProvider;
-  
-  @Inject
-  private IScopeProvider scopeProvider;
-  
-  @Inject
-  private IQualifiedNameConverter qualifiedNameConverter;
-  
   public boolean isGenerics(final Implements impl) {
     EList<ImplementsExtendsDirective> _directives = impl.getDirectives();
     ImplementsExtendsDirective _findFirst = null;
@@ -711,21 +701,28 @@ public class ProcessorGeneratorUtils {
   }
   
   public PojoAttribute getOptLock(final PojoEntity pojo) {
-    EList<PojoAttribute> _attributes = null;
+    EList<AnnotatedFeature> _features = null;
     if (pojo!=null) {
-      _attributes=pojo.getAttributes();
+      _features=pojo.getFeatures();
     }
-    PojoAttribute _findFirst = null;
-    if (_attributes!=null) {
-      final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    List<Feature> _map = null;
+    if (_features!=null) {
+      final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
         @Override
-        public Boolean apply(final PojoAttribute x) {
-          return Boolean.valueOf(ProcessorGeneratorUtils.this.isOptLock(x));
+        public Feature apply(final AnnotatedFeature it) {
+          return it.getFeature();
         }
       };
-      _findFirst=IterableExtensions.<PojoAttribute>findFirst(_attributes, _function);
+      _map=ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     }
-    final PojoAttribute fea = _findFirst;
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
+      @Override
+      public Boolean apply(final PojoAttribute x) {
+        return Boolean.valueOf(ProcessorGeneratorUtils.this.isOptLock(x));
+      }
+    };
+    final PojoAttribute fea = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(fea, null));
     if (_notEquals) {
       return fea;
@@ -775,23 +772,29 @@ public class ProcessorGeneratorUtils {
             IndexType _index_2 = d.getIndex();
             String _id_1 = _index_2.getId();
             DirectiveProperties _proplist = d.getProplist();
-            EList<PojoAttribute> _features = _proplist.getFeatures();
-            result.put(_id_1, _features);
+            EList<Feature> _features = _proplist.getFeatures();
+            Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+            ArrayList<PojoAttribute> _newArrayList = Lists.<PojoAttribute>newArrayList(_filter);
+            result.put(_id_1, _newArrayList);
           } else {
             IndexType _index_3 = d.getIndex();
             int _number = _index_3.getNumber();
             String _plus = ("" + Integer.valueOf(_number));
             DirectiveProperties _proplist_1 = d.getProplist();
-            EList<PojoAttribute> _features_1 = _proplist_1.getFeatures();
-            result.put(_plus, _features_1);
+            EList<Feature> _features_1 = _proplist_1.getFeatures();
+            Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
+            ArrayList<PojoAttribute> _newArrayList_1 = Lists.<PojoAttribute>newArrayList(_filter_1);
+            result.put(_plus, _newArrayList_1);
           }
         } else {
           DirectiveProperties _proplist_2 = d.getProplist();
-          EList<PojoAttribute> _features_2 = _proplist_2.getFeatures();
+          EList<Feature> _features_2 = _proplist_2.getFeatures();
           final String name = ProcessorGeneratorUtils.this.constName(_features_2);
           DirectiveProperties _proplist_3 = d.getProplist();
-          EList<PojoAttribute> _features_3 = _proplist_3.getFeatures();
-          result.put(name, _features_3);
+          EList<Feature> _features_3 = _proplist_3.getFeatures();
+          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
+          ArrayList<PojoAttribute> _newArrayList_2 = Lists.<PojoAttribute>newArrayList(_filter_2);
+          result.put(name, _newArrayList_2);
         }
       }
     };
@@ -826,23 +829,29 @@ public class ProcessorGeneratorUtils {
             IndexType _index_2 = d.getIndex();
             String _id_1 = _index_2.getId();
             DirectiveProperties _proplist = d.getProplist();
-            EList<PojoAttribute> _features = _proplist.getFeatures();
-            result.put(_id_1, _features);
+            EList<Feature> _features = _proplist.getFeatures();
+            Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+            ArrayList<PojoAttribute> _newArrayList = Lists.<PojoAttribute>newArrayList(_filter);
+            result.put(_id_1, _newArrayList);
           } else {
             IndexType _index_3 = d.getIndex();
             int _number = _index_3.getNumber();
             String _plus = ("" + Integer.valueOf(_number));
             DirectiveProperties _proplist_1 = d.getProplist();
-            EList<PojoAttribute> _features_1 = _proplist_1.getFeatures();
-            result.put(_plus, _features_1);
+            EList<Feature> _features_1 = _proplist_1.getFeatures();
+            Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
+            ArrayList<PojoAttribute> _newArrayList_1 = Lists.<PojoAttribute>newArrayList(_filter_1);
+            result.put(_plus, _newArrayList_1);
           }
         } else {
           DirectiveProperties _proplist_2 = d.getProplist();
-          EList<PojoAttribute> _features_2 = _proplist_2.getFeatures();
+          EList<Feature> _features_2 = _proplist_2.getFeatures();
           final String name = ProcessorGeneratorUtils.this.constName(_features_2);
           DirectiveProperties _proplist_3 = d.getProplist();
-          EList<PojoAttribute> _features_3 = _proplist_3.getFeatures();
-          result.put(name, _features_3);
+          EList<Feature> _features_3 = _proplist_3.getFeatures();
+          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
+          ArrayList<PojoAttribute> _newArrayList_2 = Lists.<PojoAttribute>newArrayList(_filter_2);
+          result.put(name, _newArrayList_2);
         }
       }
     };
@@ -868,8 +877,9 @@ public class ProcessorGeneratorUtils {
       public void apply(final PojoDirective it) {
         final PojoDirectiveToString d = ((PojoDirectiveToString) it);
         DirectiveProperties _proplist = d.getProplist();
-        EList<PojoAttribute> _features = _proplist.getFeatures();
-        result.addAll(_features);
+        EList<Feature> _features = _proplist.getFeatures();
+        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+        Iterables.<PojoAttribute>addAll(result, _filter);
       }
     };
     IterableExtensions.<PojoDirective>forEach(_filter, _function_1);
@@ -894,8 +904,9 @@ public class ProcessorGeneratorUtils {
       public void apply(final PojoDirective it) {
         final PojoDirectiveProcessingId d = ((PojoDirectiveProcessingId) it);
         DirectiveProperties _proplist = d.getProplist();
-        EList<PojoAttribute> _features = _proplist.getFeatures();
-        result.addAll(_features);
+        EList<Feature> _features = _proplist.getFeatures();
+        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+        Iterables.<PojoAttribute>addAll(result, _filter);
       }
     };
     IterableExtensions.<PojoDirective>forEach(_filter, _function_1);
@@ -920,8 +931,9 @@ public class ProcessorGeneratorUtils {
       public void apply(final PojoDirective it) {
         final PojoDirectiveEquals d = ((PojoDirectiveEquals) it);
         DirectiveProperties _proplist = d.getProplist();
-        EList<PojoAttribute> _features = _proplist.getFeatures();
-        result.addAll(_features);
+        EList<Feature> _features = _proplist.getFeatures();
+        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+        Iterables.<PojoAttribute>addAll(result, _filter);
       }
     };
     IterableExtensions.<PojoDirective>forEach(_filter, _function_1);
@@ -946,8 +958,9 @@ public class ProcessorGeneratorUtils {
       public void apply(final PojoDirective it) {
         final PojoDirectiveHashCode d = ((PojoDirectiveHashCode) it);
         DirectiveProperties _proplist = d.getProplist();
-        EList<PojoAttribute> _features = _proplist.getFeatures();
-        result.addAll(_features);
+        EList<Feature> _features = _proplist.getFeatures();
+        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+        Iterables.<PojoAttribute>addAll(result, _filter);
       }
     };
     IterableExtensions.<PojoDirective>forEach(_filter, _function_1);
@@ -1008,15 +1021,23 @@ public class ProcessorGeneratorUtils {
       List<PojoAttribute> _allRequiredAttributes = this.allRequiredAttributes(se);
       features.addAll(_allRequiredAttributes);
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isRequired(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
     features.addAll(_list);
     return features;
   }
@@ -1027,15 +1048,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return features;
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isRequired(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
     features.addAll(_list);
     return features;
   }
@@ -1060,8 +1089,16 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_attributes);
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1078,15 +1115,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return result;
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Procedure1<PojoAttribute> _function = new Procedure1<PojoAttribute>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Procedure1<PojoAttribute> _function_1 = new Procedure1<PojoAttribute>() {
       @Override
       public void apply(final PojoAttribute it) {
         String _name = it.getName();
         result.put(_name, it);
       }
     };
-    IterableExtensions.<PojoAttribute>forEach(_attributes, _function);
+    IterableExtensions.<PojoAttribute>forEach(_filter, _function_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1102,15 +1147,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isToInit(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1126,15 +1179,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isEnumInit(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1150,15 +1211,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isIsDef(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1174,15 +1243,23 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isEnumDef(x));
       }
     };
-    Iterable<PojoAttribute> _filter = IterableExtensions.<PojoAttribute>filter(_attributes, _function);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
+    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
@@ -1194,8 +1271,16 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean hasIsDef(final PojoEntity pojo) {
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute f) {
         boolean _or = false;
@@ -1209,7 +1294,7 @@ public class ProcessorGeneratorUtils {
         return Boolean.valueOf(_or);
       }
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_attributes, _function);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return true;
@@ -1229,8 +1314,16 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean hasToInit(final PojoEntity pojo) {
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute f) {
         boolean _or = false;
@@ -1244,7 +1337,7 @@ public class ProcessorGeneratorUtils {
         return Boolean.valueOf(_or);
       }
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_attributes, _function);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return true;
@@ -1269,15 +1362,23 @@ public class ProcessorGeneratorUtils {
     if (_or) {
       return null;
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute x) {
         String _name = x.getName();
         return Boolean.valueOf(Objects.equal(_name, name));
       }
     };
-    final PojoAttribute feature = IterableExtensions.<PojoAttribute>findFirst(_attributes, _function);
+    final PojoAttribute feature = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(feature, null));
     if (_notEquals) {
       return feature;
@@ -1295,14 +1396,22 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return null;
     }
-    EList<PojoAttribute> _attributes = pojo.getAttributes();
-    final Function1<PojoAttribute, Boolean> _function = new Function1<PojoAttribute, Boolean>() {
+    EList<AnnotatedFeature> _features = pojo.getFeatures();
+    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+      @Override
+      public Feature apply(final AnnotatedFeature it) {
+        return it.getFeature();
+      }
+    };
+    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
+    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
       @Override
       public Boolean apply(final PojoAttribute f) {
         return Boolean.valueOf(ProcessorGeneratorUtils.this.isPrimaryKey(f));
       }
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_attributes, _function);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return result;
@@ -1936,7 +2045,8 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = prop.getAnnotations();
+    final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
+    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
       @Override
       public Boolean apply(final Annotation x) {
@@ -1975,7 +2085,8 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = prop.getAnnotations();
+    final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
+    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
       @Override
       public Boolean apply(final Annotation x) {
@@ -2027,7 +2138,8 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = prop.getAnnotations();
+    final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
+    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
       @Override
       public Boolean apply(final Annotation x) {
@@ -2798,14 +2910,14 @@ public class ProcessorGeneratorUtils {
     return name;
   }
   
-  public String constName(final Object l) {
-    if (l instanceof List) {
-      return _constName((List<PojoAttribute>)l);
-    } else if (l instanceof PojoAttribute) {
-      return _constName((PojoAttribute)l);
+  public String constName(final Object attr) {
+    if (attr instanceof PojoAttribute) {
+      return _constName((PojoAttribute)attr);
+    } else if (attr instanceof List) {
+      return _constName((List<PojoAttribute>)attr);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(l).toString());
+        Arrays.<Object>asList(attr).toString());
     }
   }
 }

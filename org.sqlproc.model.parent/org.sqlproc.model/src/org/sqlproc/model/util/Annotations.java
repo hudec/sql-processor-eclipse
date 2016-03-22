@@ -8,6 +8,7 @@ import java.util.Map;
 import org.eclipse.xtext.serializer.ISerializer;
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.AnnotationDirective;
 import org.sqlproc.model.processorModel.AnnotationDirectiveAttribute;
@@ -20,7 +21,6 @@ import org.sqlproc.model.processorModel.AnnotationDirectiveStatic;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.Entity;
 import org.sqlproc.model.processorModel.EnumEntity;
-import org.sqlproc.model.processorModel.PojoAttribute;
 import org.sqlproc.model.processorModel.PojoEntity;
 import org.sqlproc.plugin.lib.util.CommonUtils;
 
@@ -237,21 +237,24 @@ public class Annotations {
             }
         }
         if (pojo != null) {
-            for (PojoAttribute feature : pojo.getAttributes()) {
+            for (AnnotatedFeature feature : pojo.getFeatures()) {
                 if (feature.getAnnotations() != null && !feature.getAnnotations().isEmpty()) {
                     for (Annotation an : feature.getAnnotations()) {
                         if (!an.isFinal())
                             continue;
                         if (an.getDirectives() == null || an.getDirectives().isEmpty()) {
-                            as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.attributeAnnotations);
+                            as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                    as.attributeAnnotations);
                         } else {
                             for (AnnotationDirective dir : an.getDirectives()) {
                                 if (dir instanceof AnnotationDirectiveSetter) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.setterAnnotations);
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                            as.setterAnnotations);
                                 } else if (dir instanceof AnnotationDirectiveGetter) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.getterAnnotations);
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                            as.getterAnnotations);
                                 } else if (dir instanceof AnnotationDirectiveAttribute) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(),
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
                                             as.attributeAnnotations);
                                 }
                             }
@@ -270,21 +273,24 @@ public class Annotations {
             // }
         }
         if (dao != null) {
-            for (PojoAttribute feature : dao.getAttributes()) {
+            for (AnnotatedFeature feature : dao.getFeatures()) {
                 if (feature.getAnnotations() != null && !feature.getAnnotations().isEmpty()) {
                     for (Annotation an : feature.getAnnotations()) {
                         if (!an.isFinal())
                             continue;
                         if (an.getDirectives() == null || an.getDirectives().isEmpty()) {
-                            as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.attributeAnnotations);
+                            as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                    as.attributeAnnotations);
                         } else {
                             for (AnnotationDirective dir : an.getDirectives()) {
                                 if (dir instanceof AnnotationDirectiveSetter) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.setterAnnotations);
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                            as.setterAnnotations);
                                 } else if (dir instanceof AnnotationDirectiveGetter) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(), as.getterAnnotations);
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
+                                            as.getterAnnotations);
                                 } else if (dir instanceof AnnotationDirectiveAttribute) {
-                                    as.addAnnotation(name, feature.getName(), an.getAnnotation(),
+                                    as.addAnnotation(name, feature.getFeature().getName(), an.getAnnotation(),
                                             as.attributeAnnotations);
                                 }
                             }

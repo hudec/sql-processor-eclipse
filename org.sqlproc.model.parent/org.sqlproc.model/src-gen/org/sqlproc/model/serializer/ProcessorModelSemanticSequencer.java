@@ -63,6 +63,7 @@ import org.eclipse.xtext.xtype.XImportDeclaration;
 import org.eclipse.xtext.xtype.XImportSection;
 import org.eclipse.xtext.xtype.XtypePackage;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
@@ -184,6 +185,9 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 			switch (semanticObject.eClass().getClassifierID()) {
 			case ProcessorModelPackage.ANNOTATED_ENTITY:
 				sequence_AnnotatedEntity(context, (AnnotatedEntity) semanticObject); 
+				return; 
+			case ProcessorModelPackage.ANNOTATED_FEATURE:
+				sequence_AnnotatedFeature(context, (AnnotatedFeature) semanticObject); 
 				return; 
 			case ProcessorModelPackage.ANNOTATION:
 				sequence_Annotation(context, (Annotation) semanticObject); 
@@ -814,6 +818,18 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Contexts:
+	 *     AnnotatedFeature returns AnnotatedFeature
+	 *
+	 * Constraint:
+	 *     (annotations+=Annotation* feature=Feature)
+	 */
+	protected void sequence_AnnotatedFeature(ISerializationContext context, AnnotatedFeature semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * Contexts:
 	 *     AnnotationAssignement returns AnnotationAssignement
 	 *
 	 * Constraint:
@@ -1102,8 +1118,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         superType=JvmParameterizedTypeReference? 
-	 *         attributes+=PojoAttribute* 
-	 *         procedures+=PojoProcedure*
+	 *         features+=AnnotatedFeature*
 	 *     )
 	 */
 	protected void sequence_DaoEntity(ISerializationContext context, DaoEntity semanticObject) {
@@ -1281,7 +1296,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     DirectiveProperties returns DirectiveProperties
 	 *
 	 * Constraint:
-	 *     (features+=[PojoAttribute|ValidID] features+=[PojoAttribute|ValidID]*)
+	 *     (features+=[Feature|ValidID] features+=[Feature|ValidID]*)
 	 */
 	protected void sequence_DirectiveProperties(ISerializationContext context, DirectiveProperties semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1396,7 +1411,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *     EnumEntity returns EnumEntity
 	 *
 	 * Constraint:
-	 *     (directives+=EnumDirective* final?='final'? name=ValidID attribute=EnumAttribute procedures+=PojoProcedure*)
+	 *     (directives+=EnumDirective* final?='final'? name=ValidID attribute=EnumAttribute)
 	 */
 	protected void sequence_EnumEntity(ISerializationContext context, EnumEntity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -1977,11 +1992,11 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Contexts:
+	 *     Feature returns PojoAttribute
 	 *     PojoAttribute returns PojoAttribute
 	 *
 	 * Constraint:
 	 *     (
-	 *         annotations+=Annotation* 
 	 *         directives+=PojoAttributeDirective* 
 	 *         final?='final'? 
 	 *         static?='static'? 
@@ -2165,8 +2180,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	 *         abstract?='abstract'? 
 	 *         name=ValidID 
 	 *         superType=JvmParameterizedTypeReference? 
-	 *         attributes+=PojoAttribute* 
-	 *         procedures+=PojoProcedure*
+	 *         features+=AnnotatedFeature*
 	 *     )
 	 */
 	protected void sequence_PojoEntity(ISerializationContext context, PojoEntity semanticObject) {
@@ -2176,6 +2190,7 @@ public class ProcessorModelSemanticSequencer extends XbaseWithAnnotationsSemanti
 	
 	/**
 	 * Contexts:
+	 *     Feature returns PojoProcedure
 	 *     PojoProcedure returns PojoProcedure
 	 *
 	 * Constraint:

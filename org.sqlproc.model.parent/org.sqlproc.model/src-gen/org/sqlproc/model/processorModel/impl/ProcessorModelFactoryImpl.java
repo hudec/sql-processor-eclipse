@@ -13,6 +13,7 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
@@ -59,6 +60,7 @@ import org.sqlproc.model.processorModel.ExportAssignement;
 import org.sqlproc.model.processorModel.Extends;
 import org.sqlproc.model.processorModel.ExtendsAssignement;
 import org.sqlproc.model.processorModel.ExtendsAssignementGenerics;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.FunProcType;
 import org.sqlproc.model.processorModel.FunctionCall;
 import org.sqlproc.model.processorModel.FunctionCallQuery;
@@ -232,6 +234,8 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
       case ProcessorModelPackage.DIRECTIVE_PROPERTIES: return createDirectiveProperties();
       case ProcessorModelPackage.POJO_DIRECTIVE: return createPojoDirective();
       case ProcessorModelPackage.POJO_ENTITY: return createPojoEntity();
+      case ProcessorModelPackage.ANNOTATED_FEATURE: return createAnnotatedFeature();
+      case ProcessorModelPackage.FEATURE: return createFeature();
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE: return createPojoAttributeDirective();
       case ProcessorModelPackage.POJO_ATTRIBUTE: return createPojoAttribute();
       case ProcessorModelPackage.POJO_PROCEDURE: return createPojoProcedure();
@@ -870,6 +874,28 @@ public class ProcessorModelFactoryImpl extends EFactoryImpl implements Processor
   {
     PojoEntityImpl pojoEntity = new PojoEntityImpl();
     return pojoEntity;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public AnnotatedFeature createAnnotatedFeature()
+  {
+    AnnotatedFeatureImpl annotatedFeature = new AnnotatedFeatureImpl();
+    return annotatedFeature;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public Feature createFeature()
+  {
+    FeatureImpl feature = new FeatureImpl();
+    return feature;
   }
 
   /**

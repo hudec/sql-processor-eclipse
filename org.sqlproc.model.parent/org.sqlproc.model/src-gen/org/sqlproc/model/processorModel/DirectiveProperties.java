@@ -27,7 +27,7 @@ public interface DirectiveProperties extends EObject
 {
   /**
    * Returns the value of the '<em><b>Features</b></em>' reference list.
-   * The list contents are of type {@link org.sqlproc.model.processorModel.PojoAttribute}.
+   * The list contents are of type {@link org.sqlproc.model.processorModel.Feature}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Features</em>' reference list isn't clear,
@@ -39,6 +39,6 @@ public interface DirectiveProperties extends EObject
    * @model
    * @generated
    */
-  EList<PojoAttribute> getFeatures();
+  EList<Feature> getFeatures();
 
 } // DirectiveProperties

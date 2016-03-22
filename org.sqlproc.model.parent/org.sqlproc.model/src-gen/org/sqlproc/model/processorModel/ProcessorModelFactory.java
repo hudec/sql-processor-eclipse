@@ -492,6 +492,24 @@ public interface ProcessorModelFactory extends EFactory
   PojoEntity createPojoEntity();
 
   /**
+   * Returns a new object of class '<em>Annotated Feature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Annotated Feature</em>'.
+   * @generated
+   */
+  AnnotatedFeature createAnnotatedFeature();
+
+  /**
+   * Returns a new object of class '<em>Feature</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Feature</em>'.
+   * @generated
+   */
+  Feature createFeature();
+
+  /**
    * Returns a new object of class '<em>Pojo Attribute Directive</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

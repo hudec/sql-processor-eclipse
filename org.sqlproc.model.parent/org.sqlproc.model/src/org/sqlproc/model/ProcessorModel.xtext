@@ -251,7 +251,7 @@ Entity:
 ;
 
 DirectiveProperties:
-	features+=[PojoAttribute|ValidID] (COMMA features+=[PojoAttribute|ValidID])*
+	features+=[Feature|ValidID] (COMMA features+=[Feature|ValidID])*
 ;
 
 PojoDirective: 
@@ -271,9 +271,17 @@ PojoEntity:
 	(final?='final')? (abstract?='abstract')? 
 	'#Pojo' name=ValidID ('extends' superType=JvmParameterizedTypeReference)?
 	'{'
-		attributes+=PojoAttribute*
-  		procedures+=PojoProcedure*
+		features+=AnnotatedFeature*
 	'}'
+;
+
+AnnotatedFeature: 
+	annotations+=Annotation* 
+	feature=Feature
+;
+
+Feature: 
+	PojoAttribute | PojoProcedure
 ;
 
 PojoAttributeDirective: 
@@ -293,7 +301,7 @@ PojoAttributeDirective:
 ;
 
 PojoAttribute:
-	annotations+=Annotation* directives+=PojoAttributeDirective*
+	directives+=PojoAttributeDirective*
 	(final?='final'?) (static?='static'?) 
 	kind=('#Attr' | '#Simple') //modifiers+=Modifier* 
 	(type=JvmParameterizedTypeReference)? (array ?= '[]')? name=ValidID (EQUALS initExpr=XExpression)?
@@ -317,7 +325,6 @@ EnumEntity:
 	'#Enum' name=ValidID 
 	'{'
 		attribute=EnumAttribute
-  		procedures+=PojoProcedure*
 	'}'
 ;
 
@@ -364,8 +371,7 @@ DaoEntity:
 	(final?='final')? (abstract?='abstract')? 
 	'#Dao' name=ValidID ('extends' superType=JvmParameterizedTypeReference)?
 	'{'
-		attributes+=PojoAttribute*
-  		procedures+=PojoProcedure*
+		features+=AnnotatedFeature*
 	'}'
 ;
 

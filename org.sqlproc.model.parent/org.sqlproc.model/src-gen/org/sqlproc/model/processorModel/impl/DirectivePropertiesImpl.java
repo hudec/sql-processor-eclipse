@@ -14,7 +14,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import org.sqlproc.model.processorModel.DirectiveProperties;
-import org.sqlproc.model.processorModel.PojoAttribute;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
 
 /**
@@ -40,7 +40,7 @@ public class DirectivePropertiesImpl extends MinimalEObjectImpl.Container implem
    * @generated
    * @ordered
    */
-  protected EList<PojoAttribute> features;
+  protected EList<Feature> features;
 
   /**
    * <!-- begin-user-doc -->
@@ -68,11 +68,11 @@ public class DirectivePropertiesImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<PojoAttribute> getFeatures()
+  public EList<Feature> getFeatures()
   {
     if (features == null)
     {
-      features = new EObjectResolvingEList<PojoAttribute>(PojoAttribute.class, this, ProcessorModelPackage.DIRECTIVE_PROPERTIES__FEATURES);
+      features = new EObjectResolvingEList<Feature>(Feature.class, this, ProcessorModelPackage.DIRECTIVE_PROPERTIES__FEATURES);
     }
     return features;
   }
@@ -106,7 +106,7 @@ public class DirectivePropertiesImpl extends MinimalEObjectImpl.Container implem
     {
       case ProcessorModelPackage.DIRECTIVE_PROPERTIES__FEATURES:
         getFeatures().clear();
-        getFeatures().addAll((Collection<? extends PojoAttribute>)newValue);
+        getFeatures().addAll((Collection<? extends Feature>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

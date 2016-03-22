@@ -8016,7 +8016,7 @@ ruleDirectiveProperties returns [Boolean current=false]
 					}
 				}
 				{
-					markComposite(elementTypeProvider.getDirectiveProperties_FeaturesPojoAttributeCrossReference_0_0ElementType());
+					markComposite(elementTypeProvider.getDirectiveProperties_FeaturesFeatureCrossReference_0_0ElementType());
 				}
 				ruleValidID
 				{
@@ -8041,7 +8041,7 @@ ruleDirectiveProperties returns [Boolean current=false]
 						}
 					}
 					{
-						markComposite(elementTypeProvider.getDirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0ElementType());
+						markComposite(elementTypeProvider.getDirectiveProperties_FeaturesFeatureCrossReference_1_1_0ElementType());
 					}
 					ruleValidID
 					{
@@ -8648,9 +8648,45 @@ rulePojoEntity returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType());
+					markComposite(elementTypeProvider.getPojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType());
 				}
-				lv_attributes_8_0=rulePojoAttribute
+				lv_features_8_0=ruleAnnotatedFeature
+				{
+					doneComposite();
+					if(!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)*
+		{
+			markLeaf(elementTypeProvider.getPojoEntity_RightCurlyBracketKeyword_8ElementType());
+		}
+		otherlv_9='}'
+		{
+			doneLeaf(otherlv_9);
+		}
+	)
+;
+
+//Entry rule entryRuleAnnotatedFeature
+entryRuleAnnotatedFeature returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getAnnotatedFeatureElementType()); }
+	iv_ruleAnnotatedFeature=ruleAnnotatedFeature
+	{ $current=$iv_ruleAnnotatedFeature.current; }
+	EOF;
+
+// Rule AnnotatedFeature
+ruleAnnotatedFeature returns [Boolean current=false]
+:
+	(
+		(
+			(
+				{
+					markComposite(elementTypeProvider.getAnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0ElementType());
+				}
+				lv_annotations_0_0=ruleAnnotation
 				{
 					doneComposite();
 					if(!$current) {
@@ -8663,9 +8699,9 @@ rulePojoEntity returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
+					markComposite(elementTypeProvider.getAnnotatedFeature_FeatureFeatureParserRuleCall_1_0ElementType());
 				}
-				lv_procedures_9_0=rulePojoProcedure
+				lv_feature_1_0=ruleFeature
 				{
 					doneComposite();
 					if(!$current) {
@@ -8674,13 +8710,37 @@ rulePojoEntity returns [Boolean current=false]
 					}
 				}
 			)
-		)*
+		)
+	)
+;
+
+//Entry rule entryRuleFeature
+entryRuleFeature returns [Boolean current=false]:
+	{ markComposite(elementTypeProvider.getFeatureElementType()); }
+	iv_ruleFeature=ruleFeature
+	{ $current=$iv_ruleFeature.current; }
+	EOF;
+
+// Rule Feature
+ruleFeature returns [Boolean current=false]
+:
+	(
 		{
-			markLeaf(elementTypeProvider.getPojoEntity_RightCurlyBracketKeyword_9ElementType());
+			markComposite(elementTypeProvider.getFeature_PojoAttributeParserRuleCall_0ElementType());
 		}
-		otherlv_10='}'
+		this_PojoAttribute_0=rulePojoAttribute
 		{
-			doneLeaf(otherlv_10);
+			$current = $this_PojoAttribute_0.current;
+			doneComposite();
+		}
+		    |
+		{
+			markComposite(elementTypeProvider.getFeature_PojoProcedureParserRuleCall_1ElementType());
+		}
+		this_PojoProcedure_1=rulePojoProcedure
+		{
+			$current = $this_PojoProcedure_1.current;
+			doneComposite();
 		}
 	)
 ;
@@ -9166,9 +9226,9 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoAttribute_AnnotationsAnnotationParserRuleCall_0_0ElementType());
+					markComposite(elementTypeProvider.getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0ElementType());
 				}
-				lv_annotations_0_0=ruleAnnotation
+				lv_directives_0_0=rulePojoAttributeDirective
 				{
 					doneComposite();
 					if(!$current) {
@@ -9181,26 +9241,11 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0ElementType());
+					markLeaf(elementTypeProvider.getPojoAttribute_FinalFinalKeyword_1_0ElementType());
 				}
-				lv_directives_1_0=rulePojoAttributeDirective
+				lv_final_1_0='final'
 				{
-					doneComposite();
-					if(!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-			)
-		)*
-		(
-			(
-				{
-					markLeaf(elementTypeProvider.getPojoAttribute_FinalFinalKeyword_2_0ElementType());
-				}
-				lv_final_2_0='final'
-				{
-					doneLeaf(lv_final_2_0);
+					doneLeaf(lv_final_1_0);
 				}
 				{
 					if (!$current) {
@@ -9213,11 +9258,11 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getPojoAttribute_StaticStaticKeyword_3_0ElementType());
+					markLeaf(elementTypeProvider.getPojoAttribute_StaticStaticKeyword_2_0ElementType());
 				}
-				lv_static_3_0='static'
+				lv_static_2_0='static'
 				{
-					doneLeaf(lv_static_3_0);
+					doneLeaf(lv_static_2_0);
 				}
 				{
 					if (!$current) {
@@ -9231,11 +9276,11 @@ rulePojoAttribute returns [Boolean current=false]
 			(
 				(
 					{
-						markLeaf(elementTypeProvider.getPojoAttribute_KindAttrKeyword_4_0_0ElementType());
+						markLeaf(elementTypeProvider.getPojoAttribute_KindAttrKeyword_3_0_0ElementType());
 					}
-					lv_kind_4_1='#Attr'
+					lv_kind_3_1='#Attr'
 					{
-						doneLeaf(lv_kind_4_1);
+						doneLeaf(lv_kind_3_1);
 					}
 					{
 						if (!$current) {
@@ -9245,11 +9290,11 @@ rulePojoAttribute returns [Boolean current=false]
 					}
 					    |
 					{
-						markLeaf(elementTypeProvider.getPojoAttribute_KindSimpleKeyword_4_0_1ElementType());
+						markLeaf(elementTypeProvider.getPojoAttribute_KindSimpleKeyword_3_0_1ElementType());
 					}
-					lv_kind_4_2='#Simple'
+					lv_kind_3_2='#Simple'
 					{
-						doneLeaf(lv_kind_4_2);
+						doneLeaf(lv_kind_3_2);
 					}
 					{
 						if (!$current) {
@@ -9263,9 +9308,9 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0ElementType());
+					markComposite(elementTypeProvider.getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType());
 				}
-				lv_type_5_0=ruleJvmParameterizedTypeReference
+				lv_type_4_0=ruleJvmParameterizedTypeReference
 				{
 					doneComposite();
 					if(!$current) {
@@ -9278,11 +9323,11 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markLeaf(elementTypeProvider.getPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0ElementType());
+					markLeaf(elementTypeProvider.getPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0ElementType());
 				}
-				lv_array_6_0='[]'
+				lv_array_5_0='[]'
 				{
-					doneLeaf(lv_array_6_0);
+					doneLeaf(lv_array_5_0);
 				}
 				{
 					if (!$current) {
@@ -9295,9 +9340,9 @@ rulePojoAttribute returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getPojoAttribute_NameValidIDParserRuleCall_7_0ElementType());
+					markComposite(elementTypeProvider.getPojoAttribute_NameValidIDParserRuleCall_6_0ElementType());
 				}
-				lv_name_7_0=ruleValidID
+				lv_name_6_0=ruleValidID
 				{
 					doneComposite();
 					if(!$current) {
@@ -9309,18 +9354,18 @@ rulePojoAttribute returns [Boolean current=false]
 		)
 		(
 			{
-				markLeaf(elementTypeProvider.getPojoAttribute_EQUALSTerminalRuleCall_8_0ElementType());
+				markLeaf(elementTypeProvider.getPojoAttribute_EQUALSTerminalRuleCall_7_0ElementType());
 			}
-			this_EQUALS_8=RULE_EQUALS
+			this_EQUALS_7=RULE_EQUALS
 			{
-				doneLeaf(this_EQUALS_8);
+				doneLeaf(this_EQUALS_7);
 			}
 			(
 				(
 					{
-						markComposite(elementTypeProvider.getPojoAttribute_InitExprXExpressionParserRuleCall_8_1_0ElementType());
+						markComposite(elementTypeProvider.getPojoAttribute_InitExprXExpressionParserRuleCall_7_1_0ElementType());
 					}
-					lv_initExpr_9_0=ruleXExpression
+					lv_initExpr_8_0=ruleXExpression
 					{
 						doneComposite();
 						if(!$current) {
@@ -9639,27 +9684,12 @@ ruleEnumEntity returns [Boolean current=false]
 				}
 			)
 		)
-		(
-			(
-				{
-					markComposite(elementTypeProvider.getEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType());
-				}
-				lv_procedures_6_0=rulePojoProcedure
-				{
-					doneComposite();
-					if(!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-			)
-		)*
 		{
-			markLeaf(elementTypeProvider.getEnumEntity_RightCurlyBracketKeyword_7ElementType());
+			markLeaf(elementTypeProvider.getEnumEntity_RightCurlyBracketKeyword_6ElementType());
 		}
-		otherlv_7='}'
+		otherlv_6='}'
 		{
-			doneLeaf(otherlv_7);
+			doneLeaf(otherlv_6);
 		}
 	)
 ;
@@ -10565,24 +10595,9 @@ ruleDaoEntity returns [Boolean current=false]
 		(
 			(
 				{
-					markComposite(elementTypeProvider.getDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType());
+					markComposite(elementTypeProvider.getDaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType());
 				}
-				lv_attributes_8_0=rulePojoAttribute
-				{
-					doneComposite();
-					if(!$current) {
-						associateWithSemanticElement();
-						$current = true;
-					}
-				}
-			)
-		)*
-		(
-			(
-				{
-					markComposite(elementTypeProvider.getDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
-				}
-				lv_procedures_9_0=rulePojoProcedure
+				lv_features_8_0=ruleAnnotatedFeature
 				{
 					doneComposite();
 					if(!$current) {
@@ -10593,11 +10608,11 @@ ruleDaoEntity returns [Boolean current=false]
 			)
 		)*
 		{
-			markLeaf(elementTypeProvider.getDaoEntity_RightCurlyBracketKeyword_9ElementType());
+			markLeaf(elementTypeProvider.getDaoEntity_RightCurlyBracketKeyword_8ElementType());
 		}
-		otherlv_10='}'
+		otherlv_9='}'
 		{
-			doneLeaf(otherlv_10);
+			doneLeaf(otherlv_9);
 		}
 	)
 ;

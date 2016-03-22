@@ -5879,11 +5879,11 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createDirectiveProperties_FeaturesAssignment_0ElementType() {
 			return new IGrammarAwareElementType("DirectiveProperties_FeaturesAssignment_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesAssignment_0());
 		}
-		public static IGrammarAwareElementType createDirectiveProperties_FeaturesPojoAttributeCrossReference_0_0ElementType() {
-			return new IGrammarAwareElementType("DirectiveProperties_FeaturesPojoAttributeCrossReference_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesPojoAttributeCrossReference_0_0());
+		public static IGrammarAwareElementType createDirectiveProperties_FeaturesFeatureCrossReference_0_0ElementType() {
+			return new IGrammarAwareElementType("DirectiveProperties_FeaturesFeatureCrossReference_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesFeatureCrossReference_0_0());
 		}
-		public static IGrammarAwareElementType createDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1ElementType() {
-			return new IGrammarAwareElementType("DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesPojoAttributeValidIDParserRuleCall_0_0_1());
+		public static IGrammarAwareElementType createDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1ElementType() {
+			return new IGrammarAwareElementType("DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesFeatureValidIDParserRuleCall_0_0_1());
 		}
 		public static IGrammarAwareElementType createDirectiveProperties_Group_1ElementType() {
 			return new IGrammarAwareElementType("DirectiveProperties_Group_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getGroup_1());
@@ -5894,11 +5894,11 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createDirectiveProperties_FeaturesAssignment_1_1ElementType() {
 			return new IGrammarAwareElementType("DirectiveProperties_FeaturesAssignment_1_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesAssignment_1_1());
 		}
-		public static IGrammarAwareElementType createDirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0ElementType() {
-			return new IGrammarAwareElementType("DirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesPojoAttributeCrossReference_1_1_0());
+		public static IGrammarAwareElementType createDirectiveProperties_FeaturesFeatureCrossReference_1_1_0ElementType() {
+			return new IGrammarAwareElementType("DirectiveProperties_FeaturesFeatureCrossReference_1_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesFeatureCrossReference_1_1_0());
 		}
-		public static IGrammarAwareElementType createDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1ElementType() {
-			return new IGrammarAwareElementType("DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1());
+		public static IGrammarAwareElementType createDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1ElementType() {
+			return new IGrammarAwareElementType("DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDirectivePropertiesAccess().getFeaturesFeatureValidIDParserRuleCall_1_1_0_1());
 		}
 	}
 
@@ -5908,9 +5908,9 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType DirectiveProperties_FeaturesAssignment_0_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesAssignment_0ElementType());
 
-	public static final IGrammarAwareElementType DirectiveProperties_FeaturesPojoAttributeCrossReference_0_0_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesPojoAttributeCrossReference_0_0ElementType());
+	public static final IGrammarAwareElementType DirectiveProperties_FeaturesFeatureCrossReference_0_0_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesFeatureCrossReference_0_0ElementType());
 
-	public static final IGrammarAwareElementType DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1ElementType());
+	public static final IGrammarAwareElementType DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1ElementType());
 
 	public static final IGrammarAwareElementType DirectiveProperties_Group_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_Group_1ElementType());
 
@@ -5918,9 +5918,9 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType DirectiveProperties_FeaturesAssignment_1_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesAssignment_1_1ElementType());
 
-	public static final IGrammarAwareElementType DirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0ElementType());
+	public static final IGrammarAwareElementType DirectiveProperties_FeaturesFeatureCrossReference_1_1_0_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesFeatureCrossReference_1_1_0ElementType());
 
-	public static final IGrammarAwareElementType DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1ElementType());
+	public static final IGrammarAwareElementType DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE = associate(DirectivePropertiesFactory.createDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1ElementType());
 
 	private static class PojoDirectiveFactory {
 		public static IGrammarAwareElementType createPojoDirectiveElementType() {
@@ -6344,20 +6344,14 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojoEntity_LeftCurlyBracketKeyword_6ElementType() {
 			return new IGrammarAwareElementType("PojoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getLeftCurlyBracketKeyword_6());
 		}
-		public static IGrammarAwareElementType createPojoEntity_AttributesAssignment_7ElementType() {
-			return new IGrammarAwareElementType("PojoEntity_AttributesAssignment_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getAttributesAssignment_7());
+		public static IGrammarAwareElementType createPojoEntity_FeaturesAssignment_7ElementType() {
+			return new IGrammarAwareElementType("PojoEntity_FeaturesAssignment_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getFeaturesAssignment_7());
 		}
-		public static IGrammarAwareElementType createPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType() {
-			return new IGrammarAwareElementType("PojoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getAttributesPojoAttributeParserRuleCall_7_0());
+		public static IGrammarAwareElementType createPojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType() {
+			return new IGrammarAwareElementType("PojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getFeaturesAnnotatedFeatureParserRuleCall_7_0());
 		}
-		public static IGrammarAwareElementType createPojoEntity_ProceduresAssignment_8ElementType() {
-			return new IGrammarAwareElementType("PojoEntity_ProceduresAssignment_8_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getProceduresAssignment_8());
-		}
-		public static IGrammarAwareElementType createPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType() {
-			return new IGrammarAwareElementType("PojoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getProceduresPojoProcedureParserRuleCall_8_0());
-		}
-		public static IGrammarAwareElementType createPojoEntity_RightCurlyBracketKeyword_9ElementType() {
-			return new IGrammarAwareElementType("PojoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getRightCurlyBracketKeyword_9());
+		public static IGrammarAwareElementType createPojoEntity_RightCurlyBracketKeyword_8ElementType() {
+			return new IGrammarAwareElementType("PojoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoEntityAccess().getRightCurlyBracketKeyword_8());
 		}
 	}
 
@@ -6393,15 +6387,67 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PojoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_LeftCurlyBracketKeyword_6ElementType());
 
-	public static final IGrammarAwareElementType PojoEntity_AttributesAssignment_7_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_AttributesAssignment_7ElementType());
+	public static final IGrammarAwareElementType PojoEntity_FeaturesAssignment_7_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_FeaturesAssignment_7ElementType());
 
-	public static final IGrammarAwareElementType PojoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType());
+	public static final IGrammarAwareElementType PojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType());
 
-	public static final IGrammarAwareElementType PojoEntity_ProceduresAssignment_8_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_ProceduresAssignment_8ElementType());
+	public static final IGrammarAwareElementType PojoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_RightCurlyBracketKeyword_8ElementType());
 
-	public static final IGrammarAwareElementType PojoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
+	private static class AnnotatedFeatureFactory {
+		public static IGrammarAwareElementType createAnnotatedFeatureElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureRule());
+		}
+		public static IGrammarAwareElementType createAnnotatedFeature_GroupElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_Group_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureAccess().getGroup());
+		}
+		public static IGrammarAwareElementType createAnnotatedFeature_AnnotationsAssignment_0ElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_AnnotationsAssignment_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureAccess().getAnnotationsAssignment_0());
+		}
+		public static IGrammarAwareElementType createAnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0ElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureAccess().getAnnotationsAnnotationParserRuleCall_0_0());
+		}
+		public static IGrammarAwareElementType createAnnotatedFeature_FeatureAssignment_1ElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_FeatureAssignment_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureAccess().getFeatureAssignment_1());
+		}
+		public static IGrammarAwareElementType createAnnotatedFeature_FeatureFeatureParserRuleCall_1_0ElementType() {
+			return new IGrammarAwareElementType("AnnotatedFeature_FeatureFeatureParserRuleCall_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getAnnotatedFeatureAccess().getFeatureFeatureParserRuleCall_1_0());
+		}
+	}
 
-	public static final IGrammarAwareElementType PojoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE = associate(PojoEntityFactory.createPojoEntity_RightCurlyBracketKeyword_9ElementType());
+	public static final IGrammarAwareElementType AnnotatedFeature_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeatureElementType());
+
+	public static final IGrammarAwareElementType AnnotatedFeature_Group_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeature_GroupElementType());
+
+	public static final IGrammarAwareElementType AnnotatedFeature_AnnotationsAssignment_0_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeature_AnnotationsAssignment_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0ElementType());
+
+	public static final IGrammarAwareElementType AnnotatedFeature_FeatureAssignment_1_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeature_FeatureAssignment_1ElementType());
+
+	public static final IGrammarAwareElementType AnnotatedFeature_FeatureFeatureParserRuleCall_1_0_ELEMENT_TYPE = associate(AnnotatedFeatureFactory.createAnnotatedFeature_FeatureFeatureParserRuleCall_1_0ElementType());
+
+	private static class FeatureFactory {
+		public static IGrammarAwareElementType createFeatureElementType() {
+			return new IGrammarAwareElementType("Feature_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getFeatureRule());
+		}
+		public static IGrammarAwareElementType createFeature_AlternativesElementType() {
+			return new IGrammarAwareElementType("Feature_Alternatives_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getFeatureAccess().getAlternatives());
+		}
+		public static IGrammarAwareElementType createFeature_PojoAttributeParserRuleCall_0ElementType() {
+			return new IGrammarAwareElementType("Feature_PojoAttributeParserRuleCall_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getFeatureAccess().getPojoAttributeParserRuleCall_0());
+		}
+		public static IGrammarAwareElementType createFeature_PojoProcedureParserRuleCall_1ElementType() {
+			return new IGrammarAwareElementType("Feature_PojoProcedureParserRuleCall_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getFeatureAccess().getPojoProcedureParserRuleCall_1());
+		}
+	}
+
+	public static final IGrammarAwareElementType Feature_ELEMENT_TYPE = associate(FeatureFactory.createFeatureElementType());
+
+	public static final IGrammarAwareElementType Feature_Alternatives_ELEMENT_TYPE = associate(FeatureFactory.createFeature_AlternativesElementType());
+
+	public static final IGrammarAwareElementType Feature_PojoAttributeParserRuleCall_0_ELEMENT_TYPE = associate(FeatureFactory.createFeature_PojoAttributeParserRuleCall_0ElementType());
+
+	public static final IGrammarAwareElementType Feature_PojoProcedureParserRuleCall_1_ELEMENT_TYPE = associate(FeatureFactory.createFeature_PojoProcedureParserRuleCall_1ElementType());
 
 	private static class PojoAttributeDirectiveFactory {
 		public static IGrammarAwareElementType createPojoAttributeDirectiveElementType() {
@@ -6798,71 +6844,65 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojoAttribute_GroupElementType() {
 			return new IGrammarAwareElementType("PojoAttribute_Group_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_AnnotationsAssignment_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_AnnotationsAssignment_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getAnnotationsAssignment_0());
+		public static IGrammarAwareElementType createPojoAttribute_DirectivesAssignment_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_DirectivesAssignment_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getDirectivesAssignment_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_AnnotationsAnnotationParserRuleCall_0_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getAnnotationsAnnotationParserRuleCall_0_0());
+		public static IGrammarAwareElementType createPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getDirectivesPojoAttributeDirectiveParserRuleCall_0_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_DirectivesAssignment_1ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_DirectivesAssignment_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getDirectivesAssignment_1());
+		public static IGrammarAwareElementType createPojoAttribute_FinalAssignment_1ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_FinalAssignment_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getFinalAssignment_1());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getDirectivesPojoAttributeDirectiveParserRuleCall_1_0());
+		public static IGrammarAwareElementType createPojoAttribute_FinalFinalKeyword_1_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_FinalFinalKeyword_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getFinalFinalKeyword_1_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_FinalAssignment_2ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_FinalAssignment_2_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getFinalAssignment_2());
+		public static IGrammarAwareElementType createPojoAttribute_StaticAssignment_2ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_StaticAssignment_2_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getStaticAssignment_2());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_FinalFinalKeyword_2_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_FinalFinalKeyword_2_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getFinalFinalKeyword_2_0());
+		public static IGrammarAwareElementType createPojoAttribute_StaticStaticKeyword_2_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_StaticStaticKeyword_2_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getStaticStaticKeyword_2_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_StaticAssignment_3ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_StaticAssignment_3_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getStaticAssignment_3());
+		public static IGrammarAwareElementType createPojoAttribute_KindAssignment_3ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_KindAssignment_3_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAssignment_3());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_StaticStaticKeyword_3_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_StaticStaticKeyword_3_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getStaticStaticKeyword_3_0());
+		public static IGrammarAwareElementType createPojoAttribute_KindAlternatives_3_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_KindAlternatives_3_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAlternatives_3_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_KindAssignment_4ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_KindAssignment_4_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAssignment_4());
+		public static IGrammarAwareElementType createPojoAttribute_KindAttrKeyword_3_0_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_KindAttrKeyword_3_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAttrKeyword_3_0_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_KindAlternatives_4_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_KindAlternatives_4_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAlternatives_4_0());
+		public static IGrammarAwareElementType createPojoAttribute_KindSimpleKeyword_3_0_1ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_KindSimpleKeyword_3_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindSimpleKeyword_3_0_1());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_KindAttrKeyword_4_0_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_KindAttrKeyword_4_0_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindAttrKeyword_4_0_0());
+		public static IGrammarAwareElementType createPojoAttribute_TypeAssignment_4ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_TypeAssignment_4_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getTypeAssignment_4());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_KindSimpleKeyword_4_0_1ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_KindSimpleKeyword_4_0_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getKindSimpleKeyword_4_0_1());
+		public static IGrammarAwareElementType createPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_4_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_TypeAssignment_5ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_TypeAssignment_5_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getTypeAssignment_5());
+		public static IGrammarAwareElementType createPojoAttribute_ArrayAssignment_5ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_ArrayAssignment_5_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getArrayAssignment_5());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getTypeJvmParameterizedTypeReferenceParserRuleCall_5_0());
+		public static IGrammarAwareElementType createPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_5_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_ArrayAssignment_6ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_ArrayAssignment_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getArrayAssignment_6());
+		public static IGrammarAwareElementType createPojoAttribute_NameAssignment_6ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_NameAssignment_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getNameAssignment_6());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getArrayLeftSquareBracketRightSquareBracketKeyword_6_0());
+		public static IGrammarAwareElementType createPojoAttribute_NameValidIDParserRuleCall_6_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_NameValidIDParserRuleCall_6_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getNameValidIDParserRuleCall_6_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_NameAssignment_7ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_NameAssignment_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getNameAssignment_7());
+		public static IGrammarAwareElementType createPojoAttribute_Group_7ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_Group_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getGroup_7());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_NameValidIDParserRuleCall_7_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_NameValidIDParserRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getNameValidIDParserRuleCall_7_0());
+		public static IGrammarAwareElementType createPojoAttribute_EQUALSTerminalRuleCall_7_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_EQUALSTerminalRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getEQUALSTerminalRuleCall_7_0());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_Group_8ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_Group_8_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getGroup_8());
+		public static IGrammarAwareElementType createPojoAttribute_InitExprAssignment_7_1ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_InitExprAssignment_7_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getInitExprAssignment_7_1());
 		}
-		public static IGrammarAwareElementType createPojoAttribute_EQUALSTerminalRuleCall_8_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_EQUALSTerminalRuleCall_8_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getEQUALSTerminalRuleCall_8_0());
-		}
-		public static IGrammarAwareElementType createPojoAttribute_InitExprAssignment_8_1ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_InitExprAssignment_8_1_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getInitExprAssignment_8_1());
-		}
-		public static IGrammarAwareElementType createPojoAttribute_InitExprXExpressionParserRuleCall_8_1_0ElementType() {
-			return new IGrammarAwareElementType("PojoAttribute_InitExprXExpressionParserRuleCall_8_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_8_1_0());
+		public static IGrammarAwareElementType createPojoAttribute_InitExprXExpressionParserRuleCall_7_1_0ElementType() {
+			return new IGrammarAwareElementType("PojoAttribute_InitExprXExpressionParserRuleCall_7_1_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoAttributeAccess().getInitExprXExpressionParserRuleCall_7_1_0());
 		}
 	}
 
@@ -6870,49 +6910,45 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PojoAttribute_Group_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_GroupElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_AnnotationsAssignment_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_AnnotationsAssignment_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_DirectivesAssignment_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_DirectivesAssignment_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_AnnotationsAnnotationParserRuleCall_0_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_DirectivesAssignment_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_DirectivesAssignment_1ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_FinalAssignment_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_FinalAssignment_1ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_FinalFinalKeyword_1_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_FinalFinalKeyword_1_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_FinalAssignment_2_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_FinalAssignment_2ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_StaticAssignment_2_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_StaticAssignment_2ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_FinalFinalKeyword_2_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_FinalFinalKeyword_2_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_StaticStaticKeyword_2_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_StaticStaticKeyword_2_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_StaticAssignment_3_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_StaticAssignment_3ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_KindAssignment_3_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAssignment_3ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_StaticStaticKeyword_3_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_StaticStaticKeyword_3_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_KindAlternatives_3_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAlternatives_3_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_KindAssignment_4_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAssignment_4ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_KindAttrKeyword_3_0_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAttrKeyword_3_0_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_KindAlternatives_4_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAlternatives_4_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_KindSimpleKeyword_3_0_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindSimpleKeyword_3_0_1ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_KindAttrKeyword_4_0_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindAttrKeyword_4_0_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_TypeAssignment_4_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_TypeAssignment_4ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_KindSimpleKeyword_4_0_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_KindSimpleKeyword_4_0_1ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_TypeAssignment_5_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_TypeAssignment_5ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_ArrayAssignment_5_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_ArrayAssignment_5ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_ArrayAssignment_6_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_ArrayAssignment_6ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_NameAssignment_6_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_NameAssignment_6ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_NameValidIDParserRuleCall_6_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_NameValidIDParserRuleCall_6_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_NameAssignment_7_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_NameAssignment_7ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_Group_7_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_Group_7ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_NameValidIDParserRuleCall_7_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_NameValidIDParserRuleCall_7_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_EQUALSTerminalRuleCall_7_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_EQUALSTerminalRuleCall_7_0ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_Group_8_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_Group_8ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_InitExprAssignment_7_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_InitExprAssignment_7_1ElementType());
 
-	public static final IGrammarAwareElementType PojoAttribute_EQUALSTerminalRuleCall_8_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_EQUALSTerminalRuleCall_8_0ElementType());
-
-	public static final IGrammarAwareElementType PojoAttribute_InitExprAssignment_8_1_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_InitExprAssignment_8_1ElementType());
-
-	public static final IGrammarAwareElementType PojoAttribute_InitExprXExpressionParserRuleCall_8_1_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_InitExprXExpressionParserRuleCall_8_1_0ElementType());
+	public static final IGrammarAwareElementType PojoAttribute_InitExprXExpressionParserRuleCall_7_1_0_ELEMENT_TYPE = associate(PojoAttributeFactory.createPojoAttribute_InitExprXExpressionParserRuleCall_7_1_0ElementType());
 
 	private static class PojoProcedureFactory {
 		public static IGrammarAwareElementType createPojoProcedureElementType() {
@@ -7107,14 +7143,8 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createEnumEntity_AttributeEnumAttributeParserRuleCall_5_0ElementType() {
 			return new IGrammarAwareElementType("EnumEntity_AttributeEnumAttributeParserRuleCall_5_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumEntityAccess().getAttributeEnumAttributeParserRuleCall_5_0());
 		}
-		public static IGrammarAwareElementType createEnumEntity_ProceduresAssignment_6ElementType() {
-			return new IGrammarAwareElementType("EnumEntity_ProceduresAssignment_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumEntityAccess().getProceduresAssignment_6());
-		}
-		public static IGrammarAwareElementType createEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType() {
-			return new IGrammarAwareElementType("EnumEntity_ProceduresPojoProcedureParserRuleCall_6_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumEntityAccess().getProceduresPojoProcedureParserRuleCall_6_0());
-		}
-		public static IGrammarAwareElementType createEnumEntity_RightCurlyBracketKeyword_7ElementType() {
-			return new IGrammarAwareElementType("EnumEntity_RightCurlyBracketKeyword_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumEntityAccess().getRightCurlyBracketKeyword_7());
+		public static IGrammarAwareElementType createEnumEntity_RightCurlyBracketKeyword_6ElementType() {
+			return new IGrammarAwareElementType("EnumEntity_RightCurlyBracketKeyword_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getEnumEntityAccess().getRightCurlyBracketKeyword_6());
 		}
 	}
 
@@ -7142,11 +7172,7 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType EnumEntity_AttributeEnumAttributeParserRuleCall_5_0_ELEMENT_TYPE = associate(EnumEntityFactory.createEnumEntity_AttributeEnumAttributeParserRuleCall_5_0ElementType());
 
-	public static final IGrammarAwareElementType EnumEntity_ProceduresAssignment_6_ELEMENT_TYPE = associate(EnumEntityFactory.createEnumEntity_ProceduresAssignment_6ElementType());
-
-	public static final IGrammarAwareElementType EnumEntity_ProceduresPojoProcedureParserRuleCall_6_0_ELEMENT_TYPE = associate(EnumEntityFactory.createEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType());
-
-	public static final IGrammarAwareElementType EnumEntity_RightCurlyBracketKeyword_7_ELEMENT_TYPE = associate(EnumEntityFactory.createEnumEntity_RightCurlyBracketKeyword_7ElementType());
+	public static final IGrammarAwareElementType EnumEntity_RightCurlyBracketKeyword_6_ELEMENT_TYPE = associate(EnumEntityFactory.createEnumEntity_RightCurlyBracketKeyword_6ElementType());
 
 	private static class EnumAttributeValueFactory {
 		public static IGrammarAwareElementType createEnumAttributeValueElementType() {
@@ -7823,20 +7849,14 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createDaoEntity_LeftCurlyBracketKeyword_6ElementType() {
 			return new IGrammarAwareElementType("DaoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getLeftCurlyBracketKeyword_6());
 		}
-		public static IGrammarAwareElementType createDaoEntity_AttributesAssignment_7ElementType() {
-			return new IGrammarAwareElementType("DaoEntity_AttributesAssignment_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getAttributesAssignment_7());
+		public static IGrammarAwareElementType createDaoEntity_FeaturesAssignment_7ElementType() {
+			return new IGrammarAwareElementType("DaoEntity_FeaturesAssignment_7_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getFeaturesAssignment_7());
 		}
-		public static IGrammarAwareElementType createDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType() {
-			return new IGrammarAwareElementType("DaoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getAttributesPojoAttributeParserRuleCall_7_0());
+		public static IGrammarAwareElementType createDaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType() {
+			return new IGrammarAwareElementType("DaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getFeaturesAnnotatedFeatureParserRuleCall_7_0());
 		}
-		public static IGrammarAwareElementType createDaoEntity_ProceduresAssignment_8ElementType() {
-			return new IGrammarAwareElementType("DaoEntity_ProceduresAssignment_8_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getProceduresAssignment_8());
-		}
-		public static IGrammarAwareElementType createDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType() {
-			return new IGrammarAwareElementType("DaoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getProceduresPojoProcedureParserRuleCall_8_0());
-		}
-		public static IGrammarAwareElementType createDaoEntity_RightCurlyBracketKeyword_9ElementType() {
-			return new IGrammarAwareElementType("DaoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getRightCurlyBracketKeyword_9());
+		public static IGrammarAwareElementType createDaoEntity_RightCurlyBracketKeyword_8ElementType() {
+			return new IGrammarAwareElementType("DaoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE", ProcessorModelLanguage.INSTANCE, GRAMMAR_ACCESS.getDaoEntityAccess().getRightCurlyBracketKeyword_8());
 		}
 	}
 
@@ -7872,15 +7892,11 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType DaoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_LeftCurlyBracketKeyword_6ElementType());
 
-	public static final IGrammarAwareElementType DaoEntity_AttributesAssignment_7_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_AttributesAssignment_7ElementType());
+	public static final IGrammarAwareElementType DaoEntity_FeaturesAssignment_7_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_FeaturesAssignment_7ElementType());
 
-	public static final IGrammarAwareElementType DaoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType());
+	public static final IGrammarAwareElementType DaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType());
 
-	public static final IGrammarAwareElementType DaoEntity_ProceduresAssignment_8_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_ProceduresAssignment_8ElementType());
-
-	public static final IGrammarAwareElementType DaoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType());
-
-	public static final IGrammarAwareElementType DaoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_RightCurlyBracketKeyword_9ElementType());
+	public static final IGrammarAwareElementType DaoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE = associate(DaoEntityFactory.createDaoEntity_RightCurlyBracketKeyword_8ElementType());
 
 	private static class AnnotationDirectiveFactory {
 		public static IGrammarAwareElementType createAnnotationDirectiveElementType() {
@@ -17635,12 +17651,12 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return DirectiveProperties_FeaturesAssignment_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDirectiveProperties_FeaturesPojoAttributeCrossReference_0_0ElementType() {
-		return DirectiveProperties_FeaturesPojoAttributeCrossReference_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDirectiveProperties_FeaturesFeatureCrossReference_0_0ElementType() {
+		return DirectiveProperties_FeaturesFeatureCrossReference_0_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1ElementType() {
-		return DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_0_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1ElementType() {
+		return DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_0_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getDirectiveProperties_Group_1ElementType() {
@@ -17655,12 +17671,12 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return DirectiveProperties_FeaturesAssignment_1_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0ElementType() {
-		return DirectiveProperties_FeaturesPojoAttributeCrossReference_1_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDirectiveProperties_FeaturesFeatureCrossReference_1_1_0ElementType() {
+		return DirectiveProperties_FeaturesFeatureCrossReference_1_1_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1ElementType() {
-		return DirectiveProperties_FeaturesPojoAttributeValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1ElementType() {
+		return DirectiveProperties_FeaturesFeatureValidIDParserRuleCall_1_1_0_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPojoDirectiveElementType() {
@@ -18023,24 +18039,56 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return PojoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoEntity_AttributesAssignment_7ElementType() {
-		return PojoEntity_AttributesAssignment_7_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoEntity_FeaturesAssignment_7ElementType() {
+		return PojoEntity_FeaturesAssignment_7_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType() {
-		return PojoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType() {
+		return PojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoEntity_ProceduresAssignment_8ElementType() {
-		return PojoEntity_ProceduresAssignment_8_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoEntity_RightCurlyBracketKeyword_8ElementType() {
+		return PojoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType() {
-		return PojoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getAnnotatedFeatureElementType() {
+		return AnnotatedFeature_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoEntity_RightCurlyBracketKeyword_9ElementType() {
-		return PojoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE;
+	public IGrammarAwareElementType getAnnotatedFeature_GroupElementType() {
+		return AnnotatedFeature_Group_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotatedFeature_AnnotationsAssignment_0ElementType() {
+		return AnnotatedFeature_AnnotationsAssignment_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0ElementType() {
+		return AnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotatedFeature_FeatureAssignment_1ElementType() {
+		return AnnotatedFeature_FeatureAssignment_1_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getAnnotatedFeature_FeatureFeatureParserRuleCall_1_0ElementType() {
+		return AnnotatedFeature_FeatureFeatureParserRuleCall_1_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFeatureElementType() {
+		return Feature_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFeature_AlternativesElementType() {
+		return Feature_Alternatives_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFeature_PojoAttributeParserRuleCall_0ElementType() {
+		return Feature_PojoAttributeParserRuleCall_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getFeature_PojoProcedureParserRuleCall_1ElementType() {
+		return Feature_PojoProcedureParserRuleCall_1_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPojoAttributeDirectiveElementType() {
@@ -18359,92 +18407,84 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return PojoAttribute_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_AnnotationsAssignment_0ElementType() {
-		return PojoAttribute_AnnotationsAssignment_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_DirectivesAssignment_0ElementType() {
+		return PojoAttribute_DirectivesAssignment_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_AnnotationsAnnotationParserRuleCall_0_0ElementType() {
-		return PojoAttribute_AnnotationsAnnotationParserRuleCall_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0ElementType() {
+		return PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_DirectivesAssignment_1ElementType() {
-		return PojoAttribute_DirectivesAssignment_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_FinalAssignment_1ElementType() {
+		return PojoAttribute_FinalAssignment_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0ElementType() {
-		return PojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_FinalFinalKeyword_1_0ElementType() {
+		return PojoAttribute_FinalFinalKeyword_1_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_FinalAssignment_2ElementType() {
-		return PojoAttribute_FinalAssignment_2_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_StaticAssignment_2ElementType() {
+		return PojoAttribute_StaticAssignment_2_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_FinalFinalKeyword_2_0ElementType() {
-		return PojoAttribute_FinalFinalKeyword_2_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_StaticStaticKeyword_2_0ElementType() {
+		return PojoAttribute_StaticStaticKeyword_2_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_StaticAssignment_3ElementType() {
-		return PojoAttribute_StaticAssignment_3_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_KindAssignment_3ElementType() {
+		return PojoAttribute_KindAssignment_3_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_StaticStaticKeyword_3_0ElementType() {
-		return PojoAttribute_StaticStaticKeyword_3_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_KindAlternatives_3_0ElementType() {
+		return PojoAttribute_KindAlternatives_3_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_KindAssignment_4ElementType() {
-		return PojoAttribute_KindAssignment_4_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_KindAttrKeyword_3_0_0ElementType() {
+		return PojoAttribute_KindAttrKeyword_3_0_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_KindAlternatives_4_0ElementType() {
-		return PojoAttribute_KindAlternatives_4_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_KindSimpleKeyword_3_0_1ElementType() {
+		return PojoAttribute_KindSimpleKeyword_3_0_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_KindAttrKeyword_4_0_0ElementType() {
-		return PojoAttribute_KindAttrKeyword_4_0_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_TypeAssignment_4ElementType() {
+		return PojoAttribute_TypeAssignment_4_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_KindSimpleKeyword_4_0_1ElementType() {
-		return PojoAttribute_KindSimpleKeyword_4_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType() {
+		return PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_TypeAssignment_5ElementType() {
-		return PojoAttribute_TypeAssignment_5_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_ArrayAssignment_5ElementType() {
+		return PojoAttribute_ArrayAssignment_5_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0ElementType() {
-		return PojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0ElementType() {
+		return PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_5_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_ArrayAssignment_6ElementType() {
-		return PojoAttribute_ArrayAssignment_6_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_NameAssignment_6ElementType() {
+		return PojoAttribute_NameAssignment_6_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0ElementType() {
-		return PojoAttribute_ArrayLeftSquareBracketRightSquareBracketKeyword_6_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_NameValidIDParserRuleCall_6_0ElementType() {
+		return PojoAttribute_NameValidIDParserRuleCall_6_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_NameAssignment_7ElementType() {
-		return PojoAttribute_NameAssignment_7_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_Group_7ElementType() {
+		return PojoAttribute_Group_7_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_NameValidIDParserRuleCall_7_0ElementType() {
-		return PojoAttribute_NameValidIDParserRuleCall_7_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_EQUALSTerminalRuleCall_7_0ElementType() {
+		return PojoAttribute_EQUALSTerminalRuleCall_7_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_Group_8ElementType() {
-		return PojoAttribute_Group_8_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_InitExprAssignment_7_1ElementType() {
+		return PojoAttribute_InitExprAssignment_7_1_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoAttribute_EQUALSTerminalRuleCall_8_0ElementType() {
-		return PojoAttribute_EQUALSTerminalRuleCall_8_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getPojoAttribute_InitExprAssignment_8_1ElementType() {
-		return PojoAttribute_InitExprAssignment_8_1_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getPojoAttribute_InitExprXExpressionParserRuleCall_8_1_0ElementType() {
-		return PojoAttribute_InitExprXExpressionParserRuleCall_8_1_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoAttribute_InitExprXExpressionParserRuleCall_7_1_0ElementType() {
+		return PojoAttribute_InitExprXExpressionParserRuleCall_7_1_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPojoProcedureElementType() {
@@ -18615,16 +18655,8 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return EnumEntity_AttributeEnumAttributeParserRuleCall_5_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getEnumEntity_ProceduresAssignment_6ElementType() {
-		return EnumEntity_ProceduresAssignment_6_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType() {
-		return EnumEntity_ProceduresPojoProcedureParserRuleCall_6_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getEnumEntity_RightCurlyBracketKeyword_7ElementType() {
-		return EnumEntity_RightCurlyBracketKeyword_7_ELEMENT_TYPE;
+	public IGrammarAwareElementType getEnumEntity_RightCurlyBracketKeyword_6ElementType() {
+		return EnumEntity_RightCurlyBracketKeyword_6_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getEnumAttributeValueElementType() {
@@ -19175,24 +19207,16 @@ public class ProcessorModelElementTypeProvider implements IElementTypeProvider {
 		return DaoEntity_LeftCurlyBracketKeyword_6_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDaoEntity_AttributesAssignment_7ElementType() {
-		return DaoEntity_AttributesAssignment_7_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDaoEntity_FeaturesAssignment_7ElementType() {
+		return DaoEntity_FeaturesAssignment_7_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType() {
-		return DaoEntity_AttributesPojoAttributeParserRuleCall_7_0_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType() {
+		return DaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getDaoEntity_ProceduresAssignment_8ElementType() {
-		return DaoEntity_ProceduresAssignment_8_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType() {
-		return DaoEntity_ProceduresPojoProcedureParserRuleCall_8_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getDaoEntity_RightCurlyBracketKeyword_9ElementType() {
-		return DaoEntity_RightCurlyBracketKeyword_9_ELEMENT_TYPE;
+	public IGrammarAwareElementType getDaoEntity_RightCurlyBracketKeyword_8ElementType() {
+		return DaoEntity_RightCurlyBracketKeyword_8_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getAnnotationDirectiveElementType() {

@@ -3,9 +3,11 @@
  */
 package org.sqlproc.model.idea;
 
+import org.sqlproc.model.idea.AbstractProcessorModelIdeaModule;
+
 /**
  * Use this class to register components to be used within IntelliJ IDEA.
  */
 @SuppressWarnings("all")
-public class ProcessorModelIdeaModule /* implements AbstractProcessorModelIdeaModule  */{
+public class ProcessorModelIdeaModule extends AbstractProcessorModelIdeaModule {
 }

@@ -4,13 +4,11 @@
 package org.sqlproc.model.scoping
 
 import org.eclipse.xtext.scoping.IScope
-import org.sqlproc.model.processorModel.DirectiveProperties
 import org.eclipse.emf.ecore.EReference
 import org.eclipse.xtext.scoping.Scopes
 import org.sqlproc.model.processorModel.PojoEntity
 import com.google.inject.Inject
 import org.sqlproc.model.jvmmodel.ProcessorGeneratorUtils
-import org.eclipse.xtext.xbase.annotations.typesystem.XbaseWithAnnotationsBatchScopeProvider
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.EcoreUtil2
 import org.sqlproc.model.processorModel.ProcessorModelPackage
@@ -33,7 +31,7 @@ class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProvider {
             //if (pojo.getSuperType() != null) {
                 // TODO - problem, ze Pojo rodice nemusi byt inicializovano
                 //val IScope scope = Scopes.scopeFor(allAttributes(pojo))
-                val IScope scope = Scopes.scopeFor(pojo.attributes)
+                val IScope scope = Scopes.scopeFor(pojo.features.map[feature])
                 return scope
             //}
         }

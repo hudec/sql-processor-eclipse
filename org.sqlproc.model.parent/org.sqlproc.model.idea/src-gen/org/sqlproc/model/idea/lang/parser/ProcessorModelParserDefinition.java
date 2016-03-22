@@ -608,10 +608,25 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojoEntity_SuperTypeJvmParameterizedTypeReferenceParserRuleCall_5_1_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getAnnotatedFeatureElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getAnnotatedFeature_AnnotationsAnnotationParserRuleCall_0_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getAnnotatedFeature_FeatureFeatureParserRuleCall_1_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType()) {
+			if (elementType == elementTypeProvider.getFeatureElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getFeature_PojoAttributeParserRuleCall_0ElementType()) {
+				return new PsiNamedEObjectImpl(node) {};
+			}
+			if (elementType == elementTypeProvider.getFeature_PojoProcedureParserRuleCall_1ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPojoAttributeDirectiveElementType()) {
@@ -665,16 +680,13 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getPojoAttributeElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoAttribute_AnnotationsAnnotationParserRuleCall_0_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_0_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoAttribute_DirectivesPojoAttributeDirectiveParserRuleCall_1_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_4_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getPojoAttribute_TypeJvmParameterizedTypeReferenceParserRuleCall_5_0ElementType()) {
-				return new PsiEObjectImpl(node) {};
-			}
-			if (elementType == elementTypeProvider.getPojoAttribute_InitExprXExpressionParserRuleCall_8_1_0ElementType()) {
+			if (elementType == elementTypeProvider.getPojoAttribute_InitExprXExpressionParserRuleCall_7_1_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getPojoProcedureElementType()) {
@@ -705,9 +717,6 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumEntity_AttributeEnumAttributeParserRuleCall_5_0ElementType()) {
-				return new PsiNamedEObjectImpl(node) {};
-			}
-			if (elementType == elementTypeProvider.getEnumEntity_ProceduresPojoProcedureParserRuleCall_6_0ElementType()) {
 				return new PsiNamedEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getEnumAttributeValueElementType()) {
@@ -812,11 +821,8 @@ public class ProcessorModelParserDefinition extends AbstractXtextParserDefinitio
 			if (elementType == elementTypeProvider.getDaoEntity_SuperTypeJvmParameterizedTypeReferenceParserRuleCall_5_1_0ElementType()) {
 				return new PsiEObjectImpl(node) {};
 			}
-			if (elementType == elementTypeProvider.getDaoEntity_AttributesPojoAttributeParserRuleCall_7_0ElementType()) {
-				return new PsiNamedEObjectImpl(node) {};
-			}
-			if (elementType == elementTypeProvider.getDaoEntity_ProceduresPojoProcedureParserRuleCall_8_0ElementType()) {
-				return new PsiNamedEObjectImpl(node) {};
+			if (elementType == elementTypeProvider.getDaoEntity_FeaturesAnnotatedFeatureParserRuleCall_7_0ElementType()) {
+				return new PsiEObjectImpl(node) {};
 			}
 			if (elementType == elementTypeProvider.getAnnotationDirectiveElementType()) {
 				return new PsiEObjectImpl(node) {};

@@ -27,6 +27,7 @@ import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
 import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator
+import org.sqlproc.model.processorModel.PojoProcedure
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -112,7 +113,7 @@ class PojoJvmModelInferrer {
  					initializer = '''«sernum»L'''
    				]
    			}
-   			for (attr : entity.attributes.filter(x | x.isIndex)) {
+   			for (attr : entity.features.map[feature].filter(PojoAttribute).filter(x | x.isIndex)) {
 				members += entity.toField('ORDER_BY_'+attr.constName, typeRef(String)) [
  					static = true
  					final = true
@@ -130,7 +131,7 @@ class PojoJvmModelInferrer {
 	   				addAnnotationsX(entity.staticAnnotations.map[a|a.annotation])
    				]
    			}
-   			val enumAttrIndexes = entity.attributes.filter(x | x.isEnumIndex)
+   			val enumAttrIndexes = entity.features.map[feature].filter(PojoAttribute).filter(x | x.isEnumIndex)
    			if (!enumAttrIndexes.isEmpty) {
    				val orderType = entity.toEnumerationType('Order') [
  					static = true
@@ -172,7 +173,7 @@ class PojoJvmModelInferrer {
    			}
    			
    			var _hasIds = false
-   			for (attr : entity.attributes) {
+   			for (attr : entity.features.map[feature].filter(PojoAttribute)) {
    				if (attr.name == "ids_")
    					_hasIds = true
    					
@@ -215,7 +216,7 @@ class PojoJvmModelInferrer {
    				}
    			}
    			
-   			for (proc : entity.procedures) {
+   			for (proc : entity.features.map[feature].filter(PojoProcedure)) {
    				members += proc.toMethod(proc.name, proc.type ?: inferredType) [
    					documentation = proc.documentation
    					//addAnnotationsX(proc.annotations.map[a|a.annotation])
@@ -290,10 +291,10 @@ class PojoJvmModelInferrer {
 	   			method.getAnnotations().add(annotationRef(Override))
 	   			members += method
 			}
-			if (!entity.attributes.empty) {
+			if (!entity.features.map[feature].filter(PojoAttribute).empty) {
 	   			members += entity.toMethod('toStringFull', typeRef(String)) [
 	  				body = '''
-	 					return "«simpleName» [«FOR f2:entity.attributes SEPARATOR " + \", "»«f2.name»=" + «f2.name»«ENDFOR»«IF entity.superType != null && entity.superType instanceof PojoEntity» + super.toString()«ENDIF» + "]";
+	 					return "«simpleName» [«FOR f2:entity.features.map[feature].filter(PojoAttribute) SEPARATOR " + \", "»«f2.name»=" + «f2.name»«ENDFOR»«IF entity.superType != null && entity.superType instanceof PojoEntity» + super.toString()«ENDIF» + "]";
 	 				'''
 	   			]
    			}
@@ -592,7 +593,7 @@ class PojoJvmModelInferrer {
 			if (entity.hasOperators) {
    				val opAttrType = entity.toEnumerationType('OpAttribute') []
    				members += opAttrType
-	   			for (attr: entity.attributes)
+	   			for (attr: entity.features.map[feature].filter(PojoAttribute))
 	   				opAttrType.members += entity.toEnumerationLiteral(attr.name)
 				val identifierMapType = typeRef(java.util.Map, typeRef(String), typeRef(String))
 				members += entity.toField('operators_', identifierMapType) [

@@ -10,6 +10,7 @@ import org.eclipse.emf.ecore.util.Switch;
 
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
+import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.Annotation;
 import org.sqlproc.model.processorModel.AnnotationAssignement;
 import org.sqlproc.model.processorModel.AnnotationDefinitionModel;
@@ -56,6 +57,7 @@ import org.sqlproc.model.processorModel.ExportAssignement;
 import org.sqlproc.model.processorModel.Extends;
 import org.sqlproc.model.processorModel.ExtendsAssignement;
 import org.sqlproc.model.processorModel.ExtendsAssignementGenerics;
+import org.sqlproc.model.processorModel.Feature;
 import org.sqlproc.model.processorModel.FunProcType;
 import org.sqlproc.model.processorModel.FunctionCall;
 import org.sqlproc.model.processorModel.FunctionCallQuery;
@@ -555,6 +557,20 @@ public class ProcessorModelSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
+      case ProcessorModelPackage.ANNOTATED_FEATURE:
+      {
+        AnnotatedFeature annotatedFeature = (AnnotatedFeature)theEObject;
+        T result = caseAnnotatedFeature(annotatedFeature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case ProcessorModelPackage.FEATURE:
+      {
+        Feature feature = (Feature)theEObject;
+        T result = caseFeature(feature);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
       case ProcessorModelPackage.POJO_ATTRIBUTE_DIRECTIVE:
       {
         PojoAttributeDirective pojoAttributeDirective = (PojoAttributeDirective)theEObject;
@@ -566,6 +582,7 @@ public class ProcessorModelSwitch<T> extends Switch<T>
       {
         PojoAttribute pojoAttribute = (PojoAttribute)theEObject;
         T result = casePojoAttribute(pojoAttribute);
+        if (result == null) result = caseFeature(pojoAttribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -573,6 +590,7 @@ public class ProcessorModelSwitch<T> extends Switch<T>
       {
         PojoProcedure pojoProcedure = (PojoProcedure)theEObject;
         T result = casePojoProcedure(pojoProcedure);
+        if (result == null) result = caseFeature(pojoProcedure);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -1878,6 +1896,38 @@ public class ProcessorModelSwitch<T> extends Switch<T>
    * @generated
    */
   public T casePojoEntity(PojoEntity object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Annotated Feature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Annotated Feature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAnnotatedFeature(AnnotatedFeature object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Feature</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFeature(Feature object)
   {
     return null;
   }

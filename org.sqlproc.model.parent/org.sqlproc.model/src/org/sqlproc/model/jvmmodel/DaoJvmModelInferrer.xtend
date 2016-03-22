@@ -35,6 +35,7 @@ import org.sqlproc.model.processorModel.ProcedureUpdate
 import org.sqlproc.model.processorModel.FunctionQuery
 import org.sqlproc.model.processorModel.DaoFunProcDirective
 import org.eclipse.xtext.naming.QualifiedName
+import org.sqlproc.model.processorModel.PojoProcedure
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -296,7 +297,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 			}
 
    			
-   			for (attr : entity.attributes) {
+   			for (attr : entity.features.map[feature].filter(PojoAttribute)) {
    				val type = attr.type ?: attr.initExpr?.inferredType ?: typeRef(String)
    				members += entity.toField(attr.name, type) [
    					documentation = attr.documentation
@@ -322,7 +323,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    				}
    			}
    			
-   			for (proc : entity.procedures) {
+   			for (proc : entity.features.map[feature].filter(PojoProcedure)) {
    				members += proc.toMethod(proc.name, proc.type ?: inferredType) [
    					documentation = proc.documentation
    					//addAnnotations(proc.annotations.map[a|a.annotation])

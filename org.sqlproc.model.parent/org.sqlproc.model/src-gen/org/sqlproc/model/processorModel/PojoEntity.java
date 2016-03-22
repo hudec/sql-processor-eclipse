@@ -19,7 +19,7 @@ import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
  *   <li>{@link org.sqlproc.model.processorModel.PojoEntity#getDirectives <em>Directives</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoEntity#isAbstract <em>Abstract</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.PojoEntity#getSuperType <em>Super Type</em>}</li>
- *   <li>{@link org.sqlproc.model.processorModel.PojoEntity#getAttributes <em>Attributes</em>}</li>
+ *   <li>{@link org.sqlproc.model.processorModel.PojoEntity#getFeatures <em>Features</em>}</li>
  * </ul>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoEntity()
@@ -97,19 +97,19 @@ public interface PojoEntity extends Entity
   void setSuperType(JvmParameterizedTypeReference value);
 
   /**
-   * Returns the value of the '<em><b>Attributes</b></em>' containment reference list.
-   * The list contents are of type {@link org.sqlproc.model.processorModel.PojoAttribute}.
+   * Returns the value of the '<em><b>Features</b></em>' containment reference list.
+   * The list contents are of type {@link org.sqlproc.model.processorModel.AnnotatedFeature}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Attributes</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Features</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Attributes</em>' containment reference list.
-   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoEntity_Attributes()
+   * @return the value of the '<em>Features</em>' containment reference list.
+   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getPojoEntity_Features()
    * @model containment="true"
    * @generated
    */
-  EList<PojoAttribute> getAttributes();
+  EList<AnnotatedFeature> getFeatures();
 
 } // PojoEntity

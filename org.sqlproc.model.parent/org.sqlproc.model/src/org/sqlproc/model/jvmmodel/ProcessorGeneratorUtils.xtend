@@ -3,11 +3,8 @@
  */
 package org.sqlproc.model.jvmmodel
 
-import org.eclipse.xtext.naming.IQualifiedNameProvider
 import org.sqlproc.model.processorModel.PojoAttribute
-import org.sqlproc.model.processorModel.EnumAttribute
 import org.sqlproc.model.processorModel.PojoEntity
-import com.google.inject.Inject
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveUpdateCol
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveCreateCol
 import org.sqlproc.model.processorModel.PojoAttributeDirectivePrimaryKey
@@ -26,11 +23,6 @@ import org.sqlproc.model.processorModel.DaoDirectiveDiscriminator
 import org.sqlproc.model.processorModel.PojoDirectiveDiscriminator
 import org.sqlproc.model.processorModel.DaoDirectiveCrud
 import org.sqlproc.model.processorModel.DaoDirectiveQuery
-import org.sqlproc.model.processorModel.DaoDirective
-import org.sqlproc.model.processorModel.Artifacts
-import org.eclipse.xtext.scoping.IScopeProvider
-import org.eclipse.xtext.naming.IQualifiedNameConverter
-import org.sqlproc.model.processorModel.ProcessorModelPackage
 import org.eclipse.xtext.common.types.JvmPrimitiveType
 import org.sqlproc.model.processorModel.Implements
 import org.sqlproc.model.processorModel.ImplementsExtendsDirectiveGenerics
@@ -51,7 +43,6 @@ import org.sqlproc.model.processorModel.PojoDirectiveToString
 import org.sqlproc.model.processorModel.PojoDirectiveEquals
 import org.sqlproc.model.processorModel.PojoDirectiveHashCode
 import org.sqlproc.model.processorModel.Package
-import org.sqlproc.model.processorModel.Entity
 import org.sqlproc.model.processorModel.Extends
 import org.sqlproc.model.processorModel.ImplementsExtendsDirectiveOnlyPojos
 import org.sqlproc.model.processorModel.ImplementsExtendsDirectiveExceptPojos
@@ -60,27 +51,19 @@ import org.sqlproc.model.processorModel.ImplementsExtendsDirectiveExceptDaos
 import org.sqlproc.model.processorModel.ValueType
 import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference
-import org.eclipse.xtext.scoping.IScope
-import org.eclipse.xtext.resource.IEObjectDescription
 import org.sqlproc.model.processorModel.DaoDirectivePojo
 import org.sqlproc.model.processorModel.DaoFunProcDirective
-import org.sqlproc.model.util.Utils
 import org.sqlproc.model.processorModel.PackageDirectiveImplementation
 import org.sqlproc.plugin.lib.util.CommonUtils
 import org.sqlproc.model.processorModel.PojoDirectiveEnumIndex
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveEnumIndex
 import org.sqlproc.model.processorModel.PojoDirectiveProcessingId
 import org.sqlproc.model.processorModel.PojoAttributeDirectiveIsPojo
+import org.sqlproc.model.processorModel.AnnotatedFeature
+import org.eclipse.xtext.EcoreUtil2
+import com.google.common.collect.Lists
 
 class ProcessorGeneratorUtils {
-
-	@Inject extension IQualifiedNameProvider
-
-    @Inject
-    IScopeProvider scopeProvider
-
-    @Inject
-    IQualifiedNameConverter qualifiedNameConverter
 
 	// Implements
 	
@@ -272,7 +255,7 @@ class ProcessorGeneratorUtils {
     }
 
 	def PojoAttribute getOptLock(PojoEntity pojo) {
-		val fea = pojo?.attributes?.findFirst[x|isOptLock(x)]
+		val fea = pojo?.features?.map[feature].filter(PojoAttribute).findFirst[x|isOptLock(x)]
 		if (fea != null)
 			return fea
 		val se = pojo?.getSuperType
@@ -287,13 +270,13 @@ class ProcessorGeneratorUtils {
 			val d = it as PojoDirectiveIndex
 			if (d.index != null) {
 				if (d.index.id != null)
-					result.put(d.index.id, d.proplist.features)
+					result.put(d.index.id, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 				else
-					result.put(""+d.index.number, d.proplist.features)
+					result.put(""+d.index.number, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 			}
 			else {
 				val name = constName(d.proplist.features)
-				result.put(name, d.proplist.features)
+				result.put(name, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 			}
 		]
         return result
@@ -305,13 +288,13 @@ class ProcessorGeneratorUtils {
 			val d = it as PojoDirectiveEnumIndex
 			if (d.index != null) {
 				if (d.index.id != null)
-					result.put(d.index.id, d.proplist.features)
+					result.put(d.index.id, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 				else
-					result.put(""+d.index.number, d.proplist.features)
+					result.put(""+d.index.number, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 			}
 			else {
 				val name = constName(d.proplist.features)
-				result.put(name, d.proplist.features)
+				result.put(name, Lists.newArrayList(d.proplist.features.filter(PojoAttribute)))
 			}
 		]
         return result
@@ -321,7 +304,7 @@ class ProcessorGeneratorUtils {
         val List<PojoAttribute> result = newArrayList()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveToString].forEach[
 			val d = it as PojoDirectiveToString
-			result.addAll(d.proplist.features)
+			result.addAll(d.proplist.features.filter(PojoAttribute))
 		]
         return result
     }
@@ -330,7 +313,7 @@ class ProcessorGeneratorUtils {
         val List<PojoAttribute> result = newArrayList()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveProcessingId].forEach[
 			val d = it as PojoDirectiveProcessingId
-			result.addAll(d.proplist.features)
+			result.addAll(d.proplist.features.filter(PojoAttribute))
 		]
         return result
     }
@@ -339,7 +322,7 @@ class ProcessorGeneratorUtils {
         val List<PojoAttribute> result = newArrayList()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveEquals].forEach[
 			val d = it as PojoDirectiveEquals
-			result.addAll(d.proplist.features)
+			result.addAll(d.proplist.features.filter(PojoAttribute))
 		]
         return result
     }
@@ -348,7 +331,7 @@ class ProcessorGeneratorUtils {
         val List<PojoAttribute> result = newArrayList()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveHashCode].forEach[
 			val d = it as PojoDirectiveHashCode
-			result.addAll(d.proplist.features)
+			result.addAll(d.proplist.features.filter(PojoAttribute))
 		]
         return result
     }
@@ -399,7 +382,7 @@ class ProcessorGeneratorUtils {
 		val se = pojo.parent
 		if (se != null)
 			features.addAll(se.allRequiredAttributes)
-		features.addAll(pojo.attributes.filter[x|x.isRequired].toList)
+		features.addAll(pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isRequired].toList)
 		return features
 	}
 
@@ -407,7 +390,7 @@ class ProcessorGeneratorUtils {
 		val List<PojoAttribute> features = newArrayList()
 		if (pojo == null)
 			return features
-		features.addAll(pojo.attributes.filter[x|x.isRequired].toList)
+		features.addAll(pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isRequired].toList)
 		return features
 	}
 
@@ -424,7 +407,7 @@ class ProcessorGeneratorUtils {
 	def List<PojoAttribute> allAttributes(PojoEntity pojo) {
 		if (pojo == null)
 			return newArrayList()
-		val features = pojo.attributes.toList
+		val features = pojo.features.map[feature].filter(PojoAttribute).toList
 		val se = pojo.parent
 		if (se == null)
 			return features
@@ -436,7 +419,7 @@ class ProcessorGeneratorUtils {
 		val result = new TreeMap()
 		if (pojo == null)
 			return result
-		pojo.attributes.forEach[
+		pojo.features.map[feature].filter(PojoAttribute).forEach[
 			result.put(it.name, it)
 		]
 		val se = pojo.parent
@@ -449,7 +432,7 @@ class ProcessorGeneratorUtils {
 	def List<PojoAttribute> toInitAttributes(PojoEntity pojo) {
 		if (pojo == null)
 			return newArrayList()
-		val features = pojo.attributes.filter[x|x.isToInit].toList
+		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isToInit].toList
 		val se = pojo.parent
 		if (se == null)
 			return features
@@ -460,7 +443,7 @@ class ProcessorGeneratorUtils {
 	def List<PojoAttribute> enumInitAttributes(PojoEntity pojo) {
 		if (pojo == null)
 			return newArrayList()
-		val features = pojo.attributes.filter[x|x.isEnumInit].toList
+		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isEnumInit].toList
 		val se = pojo.parent
 		if (se == null)
 			return features
@@ -471,7 +454,7 @@ class ProcessorGeneratorUtils {
 	def List<PojoAttribute> isDefAttributes(PojoEntity pojo) {
 		if (pojo == null)
 			return newArrayList()
-		val features = pojo.attributes.filter[x|x.isIsDef].toList
+		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isIsDef].toList
 		val se = pojo.parent
 		if (se == null)
 			return features
@@ -482,7 +465,7 @@ class ProcessorGeneratorUtils {
 	def List<PojoAttribute> enumDefAttributes(PojoEntity pojo) {
 		if (pojo == null)
 			return newArrayList()
-		val features = pojo.attributes.filter[x|x.isEnumDef].toList
+		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isEnumDef].toList
 		val se = pojo.parent
 		if (se == null)
 			return features
@@ -491,7 +474,7 @@ class ProcessorGeneratorUtils {
 	}
 	
 	def boolean hasIsDef(PojoEntity pojo) {
-		val result = pojo.attributes.findFirst(f|f.isIsDef || f.isEnumDef)
+		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isIsDef || f.isEnumDef)
 		if (result != null)
 			return true
 		val se = pojo.superType
@@ -501,7 +484,7 @@ class ProcessorGeneratorUtils {
 	}
 	
 	def boolean hasToInit(PojoEntity pojo) {
-		val result = pojo.attributes.findFirst(f|f.isToInit || f.isEnumInit)
+		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isToInit || f.isEnumInit)
 		if (result != null)
 			return true
 		val se = pojo.parent
@@ -513,7 +496,7 @@ class ProcessorGeneratorUtils {
     def PojoAttribute getAttribute(PojoEntity pojo, String name) {
 		if (pojo == null || name == null)
 			return null
-		val feature = pojo.attributes.findFirst[x| x.name == name]
+		val feature = pojo.features.map[feature].filter(PojoAttribute).findFirst[x| x.name == name]
 		if (feature != null)
 			return feature
 		val se = pojo.parent
@@ -525,7 +508,7 @@ class ProcessorGeneratorUtils {
 	def PojoAttribute getPrimaryKey(PojoEntity pojo) {
 		if (pojo == null)
 			return null;
-		val result = pojo.attributes.findFirst(f|f.isPrimaryKey)
+		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isPrimaryKey)
 		if (result != null)
 			return result
 		val se = pojo.superType
@@ -741,7 +724,8 @@ class ProcessorGeneratorUtils {
 	def List<Annotation> setterAnnotations(PojoAttribute prop) {
 		if (prop == null)
 			return newArrayList()
-		return prop.annotations.filter[x|x.isSetter].toList
+		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
+		return aprop.annotations.filter[x|x.isSetter].toList
 	}
 
     def isGetter(Annotation an) {
@@ -752,7 +736,8 @@ class ProcessorGeneratorUtils {
 	def List<Annotation> getterAnnotations(PojoAttribute prop) {
 		if (prop == null)
 			return newArrayList()
-		return prop.annotations.filter[x|x.isGetter].toList
+		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
+		return aprop.annotations.filter[x|x.isGetter].toList
 	}
 
     def isAttribute(Annotation an) {
@@ -765,7 +750,8 @@ class ProcessorGeneratorUtils {
 	def List<Annotation> attributeAnnotations(PojoAttribute prop) {
 		if (prop == null)
 			return newArrayList()
-		return prop.annotations.filter[x|x.isAttribute].toList
+		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
+		return aprop.annotations.filter[x|x.isAttribute].toList
 	}
 	
 	// Extends, Implements

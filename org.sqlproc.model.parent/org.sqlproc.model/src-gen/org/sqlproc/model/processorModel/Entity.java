@@ -3,8 +3,6 @@
  */
 package org.sqlproc.model.processorModel;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -18,7 +16,6 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.sqlproc.model.processorModel.Entity#isFinal <em>Final</em>}</li>
  *   <li>{@link org.sqlproc.model.processorModel.Entity#getName <em>Name</em>}</li>
- *   <li>{@link org.sqlproc.model.processorModel.Entity#getProcedures <em>Procedures</em>}</li>
  * </ul>
  *
  * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEntity()
@@ -78,21 +75,5 @@ public interface Entity extends EObject
    * @generated
    */
   void setName(String value);
-
-  /**
-   * Returns the value of the '<em><b>Procedures</b></em>' containment reference list.
-   * The list contents are of type {@link org.sqlproc.model.processorModel.PojoProcedure}.
-   * <!-- begin-user-doc -->
-   * <p>
-   * If the meaning of the '<em>Procedures</em>' containment reference list isn't clear,
-   * there really should be more of a description here...
-   * </p>
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Procedures</em>' containment reference list.
-   * @see org.sqlproc.model.processorModel.ProcessorModelPackage#getEntity_Procedures()
-   * @model containment="true"
-   * @generated
-   */
-  EList<PojoProcedure> getProcedures();
 
 } // Entity
