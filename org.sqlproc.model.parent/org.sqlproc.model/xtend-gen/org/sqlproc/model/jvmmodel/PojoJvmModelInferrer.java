@@ -577,7 +577,6 @@ public class PojoJvmModelInferrer {
             boolean _isStatic = attr_2.isStatic();
             boolean _not_3 = (!_isStatic);
             if (_not_3) {
-              EList<JvmMember> _members_10 = it.getMembers();
               String _name_2 = attr_2.getName();
               String _name_3 = attr_2.getName();
               final Procedure1<JvmOperation> _function_16 = new Procedure1<JvmOperation>() {
@@ -594,9 +593,12 @@ public class PojoJvmModelInferrer {
                   PojoJvmModelInferrer.this.addAnnotationsX(it, _map);
                 }
               };
-              JvmOperation _getter = PojoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr_2, _name_2, _name_3, type, procNames, _function_16);
-              PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_10, _getter);
-              EList<JvmMember> _members_11 = it.getMembers();
+              final JvmOperation m1 = PojoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr_2, _name_2, _name_3, type, procNames, _function_16);
+              boolean _notEquals_3 = (!Objects.equal(m1, null));
+              if (_notEquals_3) {
+                EList<JvmMember> _members_10 = it.getMembers();
+                PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_10, m1);
+              }
               String _name_4 = attr_2.getName();
               String _name_5 = attr_2.getName();
               JvmTypeReference _typeRef_6 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -618,9 +620,12 @@ public class PojoJvmModelInferrer {
                   PojoJvmModelInferrer.this.addAnnotationsX(it, _map);
                 }
               };
-              JvmOperation _setterExt = PojoJvmModelInferrer.this._processorTypesBuilder.toSetterExt(attr_2, _name_4, _name_5, type, _typeRef_6, _updateColumn1, _updateColumn2, _createColumn1, _createColumn2, procNames, _function_17);
-              PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_11, _setterExt);
-              EList<JvmMember> _members_12 = it.getMembers();
+              final JvmOperation m2 = PojoJvmModelInferrer.this._processorTypesBuilder.toSetterExt(attr_2, _name_4, _name_5, type, _typeRef_6, _updateColumn1, _updateColumn2, _createColumn1, _createColumn2, procNames, _function_17);
+              boolean _notEquals_4 = (!Objects.equal(m2, null));
+              if (_notEquals_4) {
+                EList<JvmMember> _members_11 = it.getMembers();
+                PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_11, m2);
+              }
               String _name_6 = attr_2.getName();
               String _name_7 = attr_2.getName();
               JvmTypeReference _typeRef_7 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -628,11 +633,15 @@ public class PojoJvmModelInferrer {
               PojoAttribute _updateColumn2_1 = PojoJvmModelInferrer.this._processorGeneratorUtils.getUpdateColumn2(attr_2);
               PojoAttribute _createColumn1_1 = PojoJvmModelInferrer.this._processorGeneratorUtils.getCreateColumn1(attr_2);
               String _createColumn2_1 = PojoJvmModelInferrer.this._processorGeneratorUtils.getCreateColumn2(attr_2);
-              JvmOperation __toSetterExt = PojoJvmModelInferrer.this._processorTypesBuilder._toSetterExt(attr_2, _name_6, _name_7, type, _typeRef_7, _updateColumn1_1, _updateColumn2_1, _createColumn1_1, _createColumn2_1, procNames);
-              PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_12, __toSetterExt);
+              final JvmOperation m3 = PojoJvmModelInferrer.this._processorTypesBuilder._toSetterExt(attr_2, _name_6, _name_7, type, _typeRef_7, _updateColumn1_1, _updateColumn2_1, _createColumn1_1, _createColumn2_1, procNames);
+              boolean _notEquals_5 = (!Objects.equal(m3, null));
+              if (_notEquals_5) {
+                EList<JvmMember> _members_12 = it.getMembers();
+                PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_12, m3);
+              }
               final String operSuffix = PojoJvmModelInferrer.this._processorGeneratorUtils.getOperatorsSuffix(entity);
-              boolean _notEquals_3 = (!Objects.equal(operSuffix, null));
-              if (_notEquals_3) {
+              boolean _notEquals_6 = (!Objects.equal(operSuffix, null));
+              if (_notEquals_6) {
                 EList<JvmMember> _members_13 = it.getMembers();
                 String _name_8 = attr_2.getName();
                 String _plus_2 = (_name_8 + operSuffix);
@@ -648,8 +657,8 @@ public class PojoJvmModelInferrer {
                 String _name_9 = attr_2.getName();
                 String _plus_3 = (_name_9 + operSuffix);
                 JvmTypeReference _typeRef_9 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
-                JvmOperation _getter_1 = PojoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr_2, _plus_3, _typeRef_9);
-                PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_14, _getter_1);
+                JvmOperation _getter = PojoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr_2, _plus_3, _typeRef_9);
+                PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_14, _getter);
                 EList<JvmMember> _members_15 = it.getMembers();
                 String _name_10 = attr_2.getName();
                 String _plus_4 = (_name_10 + operSuffix);
@@ -665,7 +674,7 @@ public class PojoJvmModelInferrer {
                 String _plus_7 = (_name_13 + operSuffix);
                 JvmTypeReference _typeRef_11 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
                 JvmTypeReference _typeRef_12 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-                JvmOperation __toSetter = PojoJvmModelInferrer.this._processorTypesBuilder._toSetter(attr_2, _plus_6, _plus_7, _typeRef_11, _typeRef_12);
+                JvmOperation __toSetter = PojoJvmModelInferrer.this._processorTypesBuilder._toSetter(attr_2, _plus_6, _plus_7, _typeRef_11, _typeRef_12, procNames);
                 PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_16, __toSetter);
               }
             }

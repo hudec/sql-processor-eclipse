@@ -44,7 +44,10 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
                 && "boolean".equals(typeRef.getType().getIdentifier())) {
             prefix = "is";
         }
-        result.setSimpleName(prefix + _toFirstUpper(propertyName));
+        String name = prefix + _toFirstUpper(propertyName);
+        if (procNames != null && procNames.contains(name))
+            return null;
+        result.setSimpleName(name);
         result.setReturnType(cloneWithProxies(typeRef));
         setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
             public void apply(/* @Nullable */ITreeAppendable p) {
@@ -82,7 +85,10 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(references.getTypeForName(Void.TYPE, sourceElement));
-        result.setSimpleName("set" + _toFirstUpper(propertyName));
+        String name = "set" + _toFirstUpper(propertyName);
+        if (procNames != null && procNames.contains(name))
+            return null;
+        result.setSimpleName(name);
         result.getParameters().add(toParameter(sourceElement, propertyName, cloneWithProxies(typeRef)));
         setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
             public void apply(/* @Nullable */ITreeAppendable p) {
@@ -109,7 +115,10 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(references.getTypeForName(Void.TYPE, sourceElement));
-        result.setSimpleName("set" + _toFirstUpper(propertyName));
+        String name = "set" + _toFirstUpper(propertyName);
+        if (procNames != null && procNames.contains(name))
+            return null;
+        result.setSimpleName(name);
         result.getParameters().add(toParameter(sourceElement, propertyName, cloneWithProxies(typeRef)));
         setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
             public void apply(/* @Nullable */ITreeAppendable p) {
@@ -163,7 +172,10 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(cloneWithProxies(typeEntityRef));
-        result.setSimpleName("_set" + _toFirstUpper(propertyName));
+        String name = "_set" + _toFirstUpper(propertyName);
+        if (procNames != null && procNames.contains(name))
+            return null;
+        result.setSimpleName(name);
         result.getParameters().add(toParameter(sourceElement, propertyName, cloneWithProxies(typeRef)));
         setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
             public void apply(/* @Nullable */ITreeAppendable p) {
@@ -197,20 +209,24 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
     /* @Nullable */
     public JvmOperation _toSetter(/* @Nullable */final EObject sourceElement, /* @Nullable */final String propertyName,
             /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef) {
-        return _toSetter(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, null);
+            JvmTypeReference typeEntityRef, /* @Nullable */final Set<String> procNames) {
+        return _toSetter(sourceElement, propertyName, fieldName, typeRef, typeEntityRef, procNames, null);
     }
 
     /* @Nullable */
     public JvmOperation _toSetter(/* @Nullable */final EObject sourceElement, /* @Nullable */final String propertyName,
             /* @Nullable */final String fieldName, /* @Nullable */JvmTypeReference typeRef, /* @Nullable */
-            JvmTypeReference typeEntityRef, /* @Nullable */Procedure1<? super JvmOperation> initializer) {
+            JvmTypeReference typeEntityRef, /* @Nullable */final Set<String> procNames,
+            /* @Nullable */Procedure1<? super JvmOperation> initializer) {
         if (sourceElement == null || propertyName == null || fieldName == null)
             return null;
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(cloneWithProxies(typeEntityRef));
-        result.setSimpleName("_set" + _toFirstUpper(propertyName));
+        String name = "_set" + _toFirstUpper(propertyName);
+        if (procNames != null && procNames.contains(name))
+            return null;
+        result.setSimpleName(name);
         result.getParameters().add(toParameter(sourceElement, propertyName, cloneWithProxies(typeRef)));
         setBody(result, new Procedures.Procedure1<ITreeAppendable>() {
             public void apply(/* @Nullable */ITreeAppendable p) {

@@ -738,7 +738,6 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             boolean _isStatic = attr.isStatic();
             boolean _not_2 = (!_isStatic);
             if (_not_2) {
-              EList<JvmMember> _members_18 = it.getMembers();
               String _name_1 = attr.getName();
               String _name_2 = attr.getName();
               final Procedure1<JvmOperation> _function_10 = new Procedure1<JvmOperation>() {
@@ -755,9 +754,12 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _getter = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, procNames, _function_10);
-              DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, _getter);
-              EList<JvmMember> _members_19 = it.getMembers();
+              final JvmOperation m1 = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, procNames, _function_10);
+              boolean _notEquals_7 = (!Objects.equal(m1, null));
+              if (_notEquals_7) {
+                EList<JvmMember> _members_18 = it.getMembers();
+                DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, m1);
+              }
               String _name_3 = attr.getName();
               String _name_4 = attr.getName();
               JvmTypeReference _typeRef_9 = DaoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
@@ -775,8 +777,12 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                   DaoJvmModelInferrer.this._processorTypesBuilder.addAnnotations(it, _map);
                 }
               };
-              JvmOperation _setter = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, procNames, _function_11);
-              DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, _setter);
+              final JvmOperation m2 = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, procNames, _function_11);
+              boolean _notEquals_8 = (!Objects.equal(m2, null));
+              if (_notEquals_8) {
+                EList<JvmMember> _members_19 = it.getMembers();
+                DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, m2);
+              }
             }
           }
         }

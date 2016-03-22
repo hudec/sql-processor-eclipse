@@ -1,34 +1,17 @@
 package org.sqlproc.model.jvmmodel
 
 import com.google.inject.Inject
-import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.sqlproc.model.processorModel.Package
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.sqlproc.model.processorModel.PojoEntity
-import org.sqlproc.model.processorModel.AnnotatedEntity
-import org.sqlproc.model.processorModel.EnumEntity
-import org.sqlproc.model.processorModel.EnumAttributeDirectiveValues
-import org.sqlproc.model.processorModel.DaoEntity
-import org.sqlproc.model.processorModel.EnumAttributeValue
-import java.util.List
-import org.eclipse.xtext.xbase.XStringLiteral
-import org.eclipse.xtext.xbase.XNumberLiteral
 import org.eclipse.xtext.common.types.JvmVisibility
-import org.eclipse.xtext.common.types.JvmGenericType
-import org.eclipse.xtext.common.types.JvmMember
 import org.sqlproc.model.processorModel.PojoAttribute
-import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.JvmAnnotationReferenceBuilder
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypeReferenceBuilder
 import org.eclipse.xtext.common.types.JvmAnnotationTarget
 import org.eclipse.xtext.xbase.annotations.xAnnotations.XAnnotation
-import org.eclipse.xtext.xbase.jvmmodel.IJvmModelAssociations
 import org.eclipse.xtext.xbase.jvmmodel.JvmModelAssociator
 import org.sqlproc.model.processorModel.PojoProcedure
-import org.eclipse.xtext.common.types.JvmOperation
 
 /**
  * <p>Infers a JVM model from the source model.</p> 
@@ -199,21 +182,27 @@ class PojoJvmModelInferrer {
 					}
    				]
    				if (!attr.static) {
-	   				members += attr.toGetter(attr.name, attr.name, type, procNames) [
+	   				val m1 = attr.toGetter(attr.name, attr.name, type, procNames) [
 	   					addAnnotationsX(attr.getterAnnotations.map[a|a.annotation])
 	   				]
-	   				members += attr.toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
+	   				if (m1 != null)
+	   					members += m1
+	   				val m2 = attr.toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
 	   								attr.createColumn1, attr.createColumn2, procNames) [
 	   					addAnnotationsX(attr.setterAnnotations.map[a|a.annotation])
 	   				]
-	   				members += attr._toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
+	   				if (m2 != null)
+	   					members += m2
+	   				val m3 = attr._toSetterExt(attr.name, attr.name, type, typeRef(entityType), attr.updateColumn1, attr.updateColumn2, 
 	   								attr.createColumn1, attr.createColumn2, procNames)
+	   				if (m3 != null)
+	   					members += m3
 		   			val operSuffix = entity.operatorsSuffix
 		   			if (operSuffix != null) {
 	   					members += entity.toField(attr.name + operSuffix, typeRef(String)) []
 		   				members += attr.toGetter(attr.name + operSuffix, typeRef(String))
 	   					members += attr.toSetter(attr.name + operSuffix, attr.name + operSuffix, typeRef(String))
-	   					members += attr._toSetter(attr.name + operSuffix, attr.name + operSuffix, typeRef(String), typeRef(entityType))
+	   					members += attr._toSetter(attr.name + operSuffix, attr.name + operSuffix, typeRef(String), typeRef(entityType), procNames)
 	   				}
    				}
    			}

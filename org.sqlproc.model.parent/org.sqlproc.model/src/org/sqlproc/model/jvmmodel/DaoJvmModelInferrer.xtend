@@ -3,24 +3,14 @@ package org.sqlproc.model.jvmmodel
 import com.google.inject.Inject
 import org.eclipse.xtext.xbase.jvmmodel.AbstractModelInferrer
 import org.eclipse.xtext.xbase.jvmmodel.IJvmDeclaredTypeAcceptor
-import org.eclipse.xtext.xbase.jvmmodel.JvmTypesBuilder
-import org.sqlproc.model.processorModel.Package
 import org.eclipse.xtext.naming.IQualifiedNameProvider
-import static extension org.eclipse.xtext.EcoreUtil2.*
 import org.sqlproc.model.processorModel.PojoEntity
-import org.sqlproc.model.processorModel.AnnotatedEntity
-import org.sqlproc.model.processorModel.EnumEntity
-import org.sqlproc.model.processorModel.EnumAttributeDirectiveValues
 import org.sqlproc.model.processorModel.DaoEntity
-import org.sqlproc.model.processorModel.EnumAttributeValue
 import java.util.List
-import org.eclipse.xtext.xbase.XStringLiteral
-import org.eclipse.xtext.xbase.XNumberLiteral
 import org.eclipse.xtext.common.types.JvmVisibility
 import org.eclipse.xtext.common.types.JvmGenericType
 import org.eclipse.xtext.common.types.JvmMember
 import org.sqlproc.model.processorModel.PojoAttribute
-import org.eclipse.xtext.common.types.JvmTypeReference
 import org.eclipse.xtext.xbase.jvmmodel.JvmAnnotationReferenceBuilder
 import org.eclipse.xtext.xbase.jvmmodel.JvmTypeReferenceBuilder
 import org.sqlproc.model.processorModel.DaoDirectiveCrud
@@ -315,12 +305,16 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
  					}
    				]
    				if (!attr.static) {
-	   				members += attr.toGetter(attr.name, attr.name, type, procNames) [
+	   				val m1 = attr.toGetter(attr.name, attr.name, type, procNames) [
 	   					addAnnotations(attr.getterAnnotations.map[a|a.annotation])
 	   				]
-	   				members += attr.toSetter(attr.name, attr.name, type, typeRef(entityType), procNames) [
+	   				if (m1 != null)
+	   					members += m1
+	   				val m2 = attr.toSetter(attr.name, attr.name, type, typeRef(entityType), procNames) [
 	   					addAnnotations(attr.setterAnnotations.map[a|a.annotation])
 	   				]
+	   				if (m2 != null)
+	   					members += m2
    				}
    			}
    			
