@@ -596,6 +596,14 @@ class PojoJvmModelInferrer {
 						return operators_;
    					'''
    				]
+	   			members += entity.toMethod('getOp_', typeRef(String)) [
+   					parameters += entity.toParameter("attrName", typeRef(String))
+   					body = '''
+						if (attrName == null)
+							throw new IllegalArgumentException();
+						return operators_.get(attrName);
+   					'''
+   				]	
 	   			members += entity.toMethod('setOp_', typeRef(Void.TYPE)) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)

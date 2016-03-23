@@ -2097,8 +2097,34 @@ public class PojoJvmModelInferrer {
           JvmOperation _method_29 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getOperators_", identifierMapType, _function_59);
           PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_55, _method_29);
           EList<JvmMember> _members_56 = it.getMembers();
-          JvmTypeReference _typeRef_40 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          JvmTypeReference _typeRef_40 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
           final Procedure1<JvmOperation> _function_60 = new Procedure1<JvmOperation>() {
+            @Override
+            public void apply(final JvmOperation it) {
+              EList<JvmFormalParameter> _parameters = it.getParameters();
+              JvmTypeReference _typeRef = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
+              JvmFormalParameter _parameter = PojoJvmModelInferrer.this._processorTypesBuilder.toParameter(entity, "attrName", _typeRef);
+              PojoJvmModelInferrer.this._processorTypesBuilder.<JvmFormalParameter>operator_add(_parameters, _parameter);
+              StringConcatenationClient _client = new StringConcatenationClient() {
+                @Override
+                protected void appendTo(StringConcatenationClient.TargetStringConcatenation _builder) {
+                  _builder.append("if (attrName == null)");
+                  _builder.newLine();
+                  _builder.append("\t");
+                  _builder.append("throw new IllegalArgumentException();");
+                  _builder.newLine();
+                  _builder.append("return operators_.get(attrName);");
+                  _builder.newLine();
+                }
+              };
+              PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
+            }
+          };
+          JvmOperation _method_30 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getOp_", _typeRef_40, _function_60);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_56, _method_30);
+          EList<JvmMember> _members_57 = it.getMembers();
+          JvmTypeReference _typeRef_41 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_61 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2139,12 +2165,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_30 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_40, _function_60);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_56, _method_30);
-          EList<JvmMember> _members_57 = it.getMembers();
-          JvmTypeReference _typeRef_41 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_12 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_41);
-          final Procedure1<JvmOperation> _function_61 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_31 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_41, _function_61);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_57, _method_31);
+          EList<JvmMember> _members_58 = it.getMembers();
+          JvmTypeReference _typeRef_42 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_12 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_42);
+          final Procedure1<JvmOperation> _function_62 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2179,11 +2205,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_31 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_12, _function_61);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_57, _method_31);
-          EList<JvmMember> _members_58 = it.getMembers();
-          JvmTypeReference _typeRef_42 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_62 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_32 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_12, _function_62);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_58, _method_32);
+          EList<JvmMember> _members_59 = it.getMembers();
+          JvmTypeReference _typeRef_43 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_63 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2220,12 +2246,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_32 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_42, _function_62);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_58, _method_32);
-          EList<JvmMember> _members_59 = it.getMembers();
-          JvmTypeReference _typeRef_43 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_13 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_43);
-          final Procedure1<JvmOperation> _function_63 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_33 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_43, _function_63);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_59, _method_33);
+          EList<JvmMember> _members_60 = it.getMembers();
+          JvmTypeReference _typeRef_44 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_13 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_44);
+          final Procedure1<JvmOperation> _function_64 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2256,11 +2282,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_33 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_13, _function_63);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_59, _method_33);
-          EList<JvmMember> _members_60 = it.getMembers();
-          JvmTypeReference _typeRef_44 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_64 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_34 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_13, _function_64);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_60, _method_34);
+          EList<JvmMember> _members_61 = it.getMembers();
+          JvmTypeReference _typeRef_45 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_65 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2291,12 +2317,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_34 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_44, _function_64);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_60, _method_34);
-          EList<JvmMember> _members_61 = it.getMembers();
-          JvmTypeReference _typeRef_45 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_14 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_45);
-          final Procedure1<JvmOperation> _function_65 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_35 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setOp_", _typeRef_45, _function_65);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_61, _method_35);
+          EList<JvmMember> _members_62 = it.getMembers();
+          JvmTypeReference _typeRef_46 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_14 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_46);
+          final Procedure1<JvmOperation> _function_66 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2321,11 +2347,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_35 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_14, _function_65);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_61, _method_35);
-          EList<JvmMember> _members_62 = it.getMembers();
-          JvmTypeReference _typeRef_46 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_66 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_36 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setOp_", _cloneWithProxies_14, _function_66);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_62, _method_36);
+          EList<JvmMember> _members_63 = it.getMembers();
+          JvmTypeReference _typeRef_47 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_67 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2352,12 +2378,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_36 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_46, _function_66);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_62, _method_36);
-          EList<JvmMember> _members_63 = it.getMembers();
-          JvmTypeReference _typeRef_47 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_15 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_47);
-          final Procedure1<JvmOperation> _function_67 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_37 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearOp_", _typeRef_47, _function_67);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_63, _method_37);
+          EList<JvmMember> _members_64 = it.getMembers();
+          JvmTypeReference _typeRef_48 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_15 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_48);
+          final Procedure1<JvmOperation> _function_68 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2378,11 +2404,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_37 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_15, _function_67);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_63, _method_37);
-          EList<JvmMember> _members_64 = it.getMembers();
-          JvmTypeReference _typeRef_48 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_68 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_38 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_clearOp_", _cloneWithProxies_15, _function_68);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_64, _method_38);
+          EList<JvmMember> _members_65 = it.getMembers();
+          JvmTypeReference _typeRef_49 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_69 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2419,12 +2445,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_38 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_48, _function_68);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_64, _method_38);
-          EList<JvmMember> _members_65 = it.getMembers();
-          JvmTypeReference _typeRef_49 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_16 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_49);
-          final Procedure1<JvmOperation> _function_69 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_39 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_49, _function_69);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_65, _method_39);
+          EList<JvmMember> _members_66 = it.getMembers();
+          JvmTypeReference _typeRef_50 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_16 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_50);
+          final Procedure1<JvmOperation> _function_70 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2455,11 +2481,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_39 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_16, _function_69);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_65, _method_39);
-          EList<JvmMember> _members_66 = it.getMembers();
-          JvmTypeReference _typeRef_50 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_70 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_40 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_16, _function_70);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_66, _method_40);
+          EList<JvmMember> _members_67 = it.getMembers();
+          JvmTypeReference _typeRef_51 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_71 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2486,12 +2512,12 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_40 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_50, _function_70);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_66, _method_40);
-          EList<JvmMember> _members_67 = it.getMembers();
-          JvmTypeReference _typeRef_51 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
-          JvmTypeReference _cloneWithProxies_17 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_51);
-          final Procedure1<JvmOperation> _function_71 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_41 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "setNullOp_", _typeRef_51, _function_71);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_67, _method_41);
+          EList<JvmMember> _members_68 = it.getMembers();
+          JvmTypeReference _typeRef_52 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(entityType);
+          JvmTypeReference _cloneWithProxies_17 = PojoJvmModelInferrer.this._processorTypesBuilder.cloneWithProxies(_typeRef_52);
+          final Procedure1<JvmOperation> _function_72 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2512,11 +2538,11 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_41 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_17, _function_71);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_67, _method_41);
-          EList<JvmMember> _members_68 = it.getMembers();
-          JvmTypeReference _typeRef_52 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
-          final Procedure1<JvmOperation> _function_72 = new Procedure1<JvmOperation>() {
+          JvmOperation _method_42 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "_setNullOp_", _cloneWithProxies_17, _function_72);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_68, _method_42);
+          EList<JvmMember> _members_69 = it.getMembers();
+          JvmTypeReference _typeRef_53 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(Void.TYPE);
+          final Procedure1<JvmOperation> _function_73 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               StringConcatenationClient _client = new StringConcatenationClient() {
@@ -2531,14 +2557,14 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          JvmOperation _method_42 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllOps_", _typeRef_52, _function_72);
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_68, _method_42);
+          JvmOperation _method_43 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "clearAllOps_", _typeRef_53, _function_73);
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_69, _method_43);
           boolean _isEmpty_14 = processingIdsList.isEmpty();
           boolean _not_14 = (!_isEmpty_14);
           if (_not_14) {
-            EList<JvmMember> _members_69 = it.getMembers();
-            JvmTypeReference _typeRef_53 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(StringBuilder.class);
-            final Procedure1<JvmOperation> _function_73 = new Procedure1<JvmOperation>() {
+            EList<JvmMember> _members_70 = it.getMembers();
+            JvmTypeReference _typeRef_54 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(StringBuilder.class);
+            final Procedure1<JvmOperation> _function_74 = new Procedure1<JvmOperation>() {
               @Override
               public void apply(final JvmOperation it) {
                 StringConcatenationClient _client = new StringConcatenationClient() {
@@ -2568,16 +2594,16 @@ public class PojoJvmModelInferrer {
                 PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
               }
             };
-            JvmOperation _method_43 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForOperators_", _typeRef_53, _function_73);
-            PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_69, _method_43);
+            JvmOperation _method_44 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingIdForOperators_", _typeRef_54, _function_74);
+            PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_70, _method_44);
           }
         }
         boolean _isEmpty_15 = processingIdsList.isEmpty();
         boolean _not_15 = (!_isEmpty_15);
         if (_not_15) {
           final boolean hasIds = _hasIds;
-          JvmTypeReference _typeRef_54 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
-          final Procedure1<JvmOperation> _function_74 = new Procedure1<JvmOperation>() {
+          JvmTypeReference _typeRef_55 = PojoJvmModelInferrer.this._typeReferenceBuilder.typeRef(String.class);
+          final Procedure1<JvmOperation> _function_75 = new Procedure1<JvmOperation>() {
             @Override
             public void apply(final JvmOperation it) {
               EList<JvmFormalParameter> _parameters = it.getParameters();
@@ -2658,9 +2684,9 @@ public class PojoJvmModelInferrer {
               PojoJvmModelInferrer.this._processorTypesBuilder.setBody(it, _client);
             }
           };
-          final JvmOperation method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingId_", _typeRef_54, _function_74);
-          EList<JvmMember> _members_70 = it.getMembers();
-          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_70, method_4);
+          final JvmOperation method_4 = PojoJvmModelInferrer.this._processorTypesBuilder.toMethod(entity, "getProcessingId_", _typeRef_55, _function_75);
+          EList<JvmMember> _members_71 = it.getMembers();
+          PojoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_71, method_4);
         }
       }
     };
