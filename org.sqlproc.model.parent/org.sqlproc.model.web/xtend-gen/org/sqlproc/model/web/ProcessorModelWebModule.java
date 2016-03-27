@@ -14,7 +14,7 @@ import org.sqlproc.model.web.AbstractProcessorModelWebModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class ProcessorModelWebModule extends AbstractProcessorModelWebModule {
-  public ProcessorModelWebModule(final Provider<ExecutorService> executorServiceProvider) {
-    super(executorServiceProvider);
+  public ProcessorModelWebModule(final Provider<ExecutorService> arg0) {
+    super(arg0);
   }
 }
