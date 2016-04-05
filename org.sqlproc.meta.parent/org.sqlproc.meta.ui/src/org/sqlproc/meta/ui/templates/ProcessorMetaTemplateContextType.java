@@ -2,8 +2,6 @@ package org.sqlproc.meta.ui.templates;
 
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
-import java.util.TreeMap;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -13,7 +11,6 @@ import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContext;
 import org.eclipse.xtext.ui.editor.templates.XtextTemplateContextType;
-import org.eclipse.xtext.util.Strings;
 import org.sqlproc.meta.generator.TableMetaGenerator;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.MetaStatement;
@@ -249,22 +246,6 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
                         .append(toCamelCase(columns.get(i))).append(" }");
                 continue;
             }
-        }
-        return builder.toString();
-    }
-
-    protected String getPojoDefinitions(List<Class<?>> pojoClasses) {
-        if (pojoClasses == null)
-            return null;
-        TreeMap<String, String> map = new TreeMap<String, String>();
-        for (Class<?> clazz : pojoClasses) {
-            map.put(toCamelCase(clazz), clazz.getName());
-        }
-
-        StringBuilder builder = new StringBuilder();
-        for (Entry<String, String> pojo : map.entrySet()) {
-            builder.append("pojo ").append(Strings.toFirstUpper(pojo.getKey())).append(' ').append(pojo.getValue())
-                    .append(";\n");
         }
         return builder.toString();
     }
@@ -510,7 +491,7 @@ public class ProcessorMetaTemplateContextType extends XtextTemplateContextType {
             if (artifacts != null && modelProperty.isDoResolvePojo(artifacts)) {
                 URI uri = (artifacts.eResource() != null) ? artifacts.eResource().getURI() : null;
                 List<Class<?>> pojoClasses = pojoResolver.getPojoClasses(uri);
-                return getPojoDefinitions(pojoClasses);
+                return CommonUtils.getPojoDefinitions(pojoClasses);
             }
             return super.resolve(context);
         }
