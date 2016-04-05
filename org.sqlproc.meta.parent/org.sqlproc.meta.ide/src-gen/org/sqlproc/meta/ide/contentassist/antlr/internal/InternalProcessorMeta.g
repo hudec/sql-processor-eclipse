@@ -2936,27 +2936,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__PojoDefinitionModel__Alternatives_0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0()); }
-		'pojo'
-		{ after(grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1()); }
-		'is-pojo'
-		{ after(grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 rule__PojoDefinitionModel__Alternatives_2
 	@init {
 		int stackSize = keepStackSize();
@@ -3035,69 +3014,6 @@ rule__AnnotationDefinitionModel__ClassAlternatives_2_0_2_0
 		{ before(grammarAccess.getAnnotationDefinitionModelAccess().getClassIDENT_DOTTerminalRuleCall_2_0_2_0_1()); }
 		RULE_IDENT_DOT
 		{ after(grammarAccess.getAnnotationDefinitionModelAccess().getClassIDENT_DOTTerminalRuleCall_2_0_2_0_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__TableDefinitionModel__Alternatives_0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0()); }
-		'table'
-		{ after(grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1()); }
-		'is-table'
-		{ after(grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__ProcedureDefinitionModel__Alternatives_0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0()); }
-		'procedure'
-		{ after(grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1()); }
-		'is-procedure'
-		{ after(grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionDefinitionModel__Alternatives_0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0()); }
-		'function'
-		{ after(grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0()); }
-	)
-	|
-	(
-		{ before(grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1()); }
-		'is-function'
-		{ after(grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1()); }
 	)
 ;
 finally {
@@ -24715,9 +24631,9 @@ rule__PojoDefinitionModel__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_0()); }
-	(rule__PojoDefinitionModel__Alternatives_0)
-	{ after(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_0()); }
+	{ before(grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0()); }
+	'is-pojo'
+	{ after(grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0()); }
 )
 ;
 finally {
@@ -25093,9 +25009,9 @@ rule__TableDefinitionModel__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getTableDefinitionModelAccess().getAlternatives_0()); }
-	(rule__TableDefinitionModel__Alternatives_0)
-	{ after(grammarAccess.getTableDefinitionModelAccess().getAlternatives_0()); }
+	{ before(grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0()); }
+	'is-table'
+	{ after(grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0()); }
 )
 ;
 finally {
@@ -25201,9 +25117,9 @@ rule__ProcedureDefinitionModel__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getProcedureDefinitionModelAccess().getAlternatives_0()); }
-	(rule__ProcedureDefinitionModel__Alternatives_0)
-	{ after(grammarAccess.getProcedureDefinitionModelAccess().getAlternatives_0()); }
+	{ before(grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0()); }
+	'is-procedure'
+	{ after(grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0()); }
 )
 ;
 finally {
@@ -25309,9 +25225,9 @@ rule__FunctionDefinitionModel__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFunctionDefinitionModelAccess().getAlternatives_0()); }
-	(rule__FunctionDefinitionModel__Alternatives_0)
-	{ after(grammarAccess.getFunctionDefinitionModelAccess().getAlternatives_0()); }
+	{ before(grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0()); }
+	'is-function'
+	{ after(grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0()); }
 )
 ;
 finally {

@@ -8592,22 +8592,15 @@ rulePojoDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='pojo'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-pojo'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1());
-			}
-		)
+		otherlv_0='is-pojo'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0());
+		}
 		(
 			(
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getPojoDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getPojoDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -8616,29 +8609,29 @@ rulePojoDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
 		(
 			(
-				this_COLON_3=RULE_COLON
+				this_COLON_2=RULE_COLON
 				{
-					newLeafNode(this_COLON_3, grammarAccess.getPojoDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_0());
+					newLeafNode(this_COLON_2, grammarAccess.getPojoDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_0());
 				}
 				(
-					this_COLON_4=RULE_COLON
+					this_COLON_3=RULE_COLON
 					{
-						newLeafNode(this_COLON_4, grammarAccess.getPojoDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_1());
+						newLeafNode(this_COLON_3, grammarAccess.getPojoDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_1());
 					}
 				)?
 				(
 					(
 						(
-							lv_class_5_1=RULE_IDENT
+							lv_class_4_1=RULE_IDENT
 							{
-								newLeafNode(lv_class_5_1, grammarAccess.getPojoDefinitionModelAccess().getClassIDENTTerminalRuleCall_2_0_2_0_0());
+								newLeafNode(lv_class_4_1, grammarAccess.getPojoDefinitionModelAccess().getClassIDENTTerminalRuleCall_2_0_2_0_0());
 							}
 							{
 								if ($current==null) {
@@ -8647,13 +8640,13 @@ rulePojoDefinitionModel returns [EObject current=null]
 								setWithLastConsumed(
 									$current,
 									"class",
-									lv_class_5_1,
+									lv_class_4_1,
 									"org.sqlproc.meta.ProcessorMeta.IDENT");
 							}
 							    |
-							lv_class_5_2=RULE_IDENT_DOT
+							lv_class_4_2=RULE_IDENT_DOT
 							{
-								newLeafNode(lv_class_5_2, grammarAccess.getPojoDefinitionModelAccess().getClassIDENT_DOTTerminalRuleCall_2_0_2_0_1());
+								newLeafNode(lv_class_4_2, grammarAccess.getPojoDefinitionModelAccess().getClassIDENT_DOTTerminalRuleCall_2_0_2_0_1());
 							}
 							{
 								if ($current==null) {
@@ -8662,7 +8655,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 								setWithLastConsumed(
 									$current,
 									"class",
-									lv_class_5_2,
+									lv_class_4_2,
 									"org.sqlproc.meta.ProcessorMeta.IDENT_DOT");
 							}
 						)
@@ -8687,9 +8680,9 @@ rulePojoDefinitionModel returns [EObject current=null]
 				)
 			)
 		)
-		this_SEMICOLON_7=RULE_SEMICOLON
+		this_SEMICOLON_6=RULE_SEMICOLON
 		{
-			newLeafNode(this_SEMICOLON_7, grammarAccess.getPojoDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
+			newLeafNode(this_SEMICOLON_6, grammarAccess.getPojoDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
 		}
 	)
 ;
@@ -8839,22 +8832,15 @@ ruleTableDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='table'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-table'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1());
-			}
-		)
+		otherlv_0='is-table'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0());
+		}
 		(
 			(
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getTableDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getTableDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -8863,16 +8849,16 @@ ruleTableDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
 		(
 			(
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
-					newLeafNode(lv_table_3_0, grammarAccess.getTableDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
+					newLeafNode(lv_table_2_0, grammarAccess.getTableDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -8881,14 +8867,14 @@ ruleTableDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			newLeafNode(this_SEMICOLON_4, grammarAccess.getTableDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
+			newLeafNode(this_SEMICOLON_3, grammarAccess.getTableDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
 		}
 	)
 ;
@@ -8918,22 +8904,15 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='procedure'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-procedure'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1());
-			}
-		)
+		otherlv_0='is-procedure'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0());
+		}
 		(
 			(
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getProcedureDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getProcedureDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -8942,16 +8921,16 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
 		(
 			(
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
-					newLeafNode(lv_table_3_0, grammarAccess.getProcedureDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
+					newLeafNode(lv_table_2_0, grammarAccess.getProcedureDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -8960,14 +8939,14 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			newLeafNode(this_SEMICOLON_4, grammarAccess.getProcedureDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
+			newLeafNode(this_SEMICOLON_3, grammarAccess.getProcedureDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
 		}
 	)
 ;
@@ -8997,22 +8976,15 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='function'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-function'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1());
-			}
-		)
+		otherlv_0='is-function'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0());
+		}
 		(
 			(
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
-					newLeafNode(lv_name_2_0, grammarAccess.getFunctionDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
+					newLeafNode(lv_name_1_0, grammarAccess.getFunctionDefinitionModelAccess().getNameIDENTTerminalRuleCall_1_0());
 				}
 				{
 					if ($current==null) {
@@ -9021,16 +8993,16 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
 		(
 			(
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
-					newLeafNode(lv_table_3_0, grammarAccess.getFunctionDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
+					newLeafNode(lv_table_2_0, grammarAccess.getFunctionDefinitionModelAccess().getTableIDENTTerminalRuleCall_2_0());
 				}
 				{
 					if ($current==null) {
@@ -9039,14 +9011,14 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					setWithLastConsumed(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.sqlproc.meta.ProcessorMeta.IDENT");
 				}
 			)
 		)
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			newLeafNode(this_SEMICOLON_4, grammarAccess.getFunctionDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
+			newLeafNode(this_SEMICOLON_3, grammarAccess.getFunctionDefinitionModelAccess().getSEMICOLONTerminalRuleCall_3());
 		}
 	)
 ;

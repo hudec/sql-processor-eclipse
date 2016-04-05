@@ -10,7 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -72,7 +71,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_ExtendsAssignement_WSTerminalRuleCall_1_2_0_p;
 	protected AbstractElementAlias match_ExtendsAssignement_WSTerminalRuleCall_2_0_p;
 	protected AbstractElementAlias match_ExtendsAssignement_WSTerminalRuleCall_2_2_0_p;
-	protected AbstractElementAlias match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1;
 	protected AbstractElementAlias match_IfSqlCond_WSTerminalRuleCall_0_a;
 	protected AbstractElementAlias match_IfSqlCond_WSTerminalRuleCall_2_a;
 	protected AbstractElementAlias match_IfSqlCond_WSTerminalRuleCall_3_1_a;
@@ -130,7 +128,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_9_1_0_p;
 	protected AbstractElementAlias match_MetagenProperty_WSTerminalRuleCall_9_1_2_0_p;
 	protected AbstractElementAlias match_PojoDefinitionModel_COLONTerminalRuleCall_2_0_1_q;
-	protected AbstractElementAlias match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_0_1_0_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_10_1_0_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_11_1_0_p;
@@ -208,7 +205,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_7_3_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_8_1_0_p;
 	protected AbstractElementAlias match_PojogenProperty_WSTerminalRuleCall_9_1_0_p;
-	protected AbstractElementAlias match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0;
 	protected AbstractElementAlias match_PropertyCondition_WSTerminalRuleCall_1_a;
 	protected AbstractElementAlias match_PropertyCondition_WSTerminalRuleCall_3_p;
 	protected AbstractElementAlias match_PropertyCondition_WSTerminalRuleCall_5_p;
@@ -225,7 +221,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	protected AbstractElementAlias match_Property_WSTerminalRuleCall_1_9_1_2_0_p;
 	protected AbstractElementAlias match_Property_WSTerminalRuleCall_1_9_2_0_p;
 	protected AbstractElementAlias match_Property_WSTerminalRuleCall_1_9_2_2_0_p;
-	protected AbstractElementAlias match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
@@ -281,7 +276,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_ExtendsAssignement_WSTerminalRuleCall_1_2_0_p = new TokenAlias(true, false, grammarAccess.getExtendsAssignementAccess().getWSTerminalRuleCall_1_2_0());
 		match_ExtendsAssignement_WSTerminalRuleCall_2_0_p = new TokenAlias(true, false, grammarAccess.getExtendsAssignementAccess().getWSTerminalRuleCall_2_0());
 		match_ExtendsAssignement_WSTerminalRuleCall_2_2_0_p = new TokenAlias(true, false, grammarAccess.getExtendsAssignementAccess().getWSTerminalRuleCall_2_2_0());
-		match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1()));
 		match_IfSqlCond_WSTerminalRuleCall_0_a = new TokenAlias(true, true, grammarAccess.getIfSqlCondAccess().getWSTerminalRuleCall_0());
 		match_IfSqlCond_WSTerminalRuleCall_2_a = new TokenAlias(true, true, grammarAccess.getIfSqlCondAccess().getWSTerminalRuleCall_2());
 		match_IfSqlCond_WSTerminalRuleCall_3_1_a = new TokenAlias(true, true, grammarAccess.getIfSqlCondAccess().getWSTerminalRuleCall_3_1());
@@ -339,7 +333,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_MetagenProperty_WSTerminalRuleCall_9_1_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_9_1_0());
 		match_MetagenProperty_WSTerminalRuleCall_9_1_2_0_p = new TokenAlias(true, false, grammarAccess.getMetagenPropertyAccess().getWSTerminalRuleCall_9_1_2_0());
 		match_PojoDefinitionModel_COLONTerminalRuleCall_2_0_1_q = new TokenAlias(false, true, grammarAccess.getPojoDefinitionModelAccess().getCOLONTerminalRuleCall_2_0_1());
-		match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0()));
 		match_PojogenProperty_WSTerminalRuleCall_0_1_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_0_1_0());
 		match_PojogenProperty_WSTerminalRuleCall_10_1_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_10_1_0());
 		match_PojogenProperty_WSTerminalRuleCall_11_1_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_11_1_0());
@@ -417,7 +410,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_PojogenProperty_WSTerminalRuleCall_7_3_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_7_3());
 		match_PojogenProperty_WSTerminalRuleCall_8_1_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_8_1_0());
 		match_PojogenProperty_WSTerminalRuleCall_9_1_0_p = new TokenAlias(true, false, grammarAccess.getPojogenPropertyAccess().getWSTerminalRuleCall_9_1_0());
-		match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0()));
 		match_PropertyCondition_WSTerminalRuleCall_1_a = new TokenAlias(true, true, grammarAccess.getPropertyConditionAccess().getWSTerminalRuleCall_1());
 		match_PropertyCondition_WSTerminalRuleCall_3_p = new TokenAlias(true, false, grammarAccess.getPropertyConditionAccess().getWSTerminalRuleCall_3());
 		match_PropertyCondition_WSTerminalRuleCall_5_p = new TokenAlias(true, false, grammarAccess.getPropertyConditionAccess().getWSTerminalRuleCall_5());
@@ -434,7 +426,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 		match_Property_WSTerminalRuleCall_1_9_1_2_0_p = new TokenAlias(true, false, grammarAccess.getPropertyAccess().getWSTerminalRuleCall_1_9_1_2_0());
 		match_Property_WSTerminalRuleCall_1_9_2_0_p = new TokenAlias(true, false, grammarAccess.getPropertyAccess().getWSTerminalRuleCall_1_9_2_0());
 		match_Property_WSTerminalRuleCall_1_9_2_2_0_p = new TokenAlias(true, false, grammarAccess.getPropertyAccess().getWSTerminalRuleCall_1_9_2_2_0());
-		match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0()));
 	}
 	
 	@Override
@@ -748,8 +739,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_ExtendsAssignement_WSTerminalRuleCall_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_ExtendsAssignement_WSTerminalRuleCall_2_2_0_p.equals(syntax))
 				emit_ExtendsAssignement_WSTerminalRuleCall_2_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1.equals(syntax))
-				emit_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_IfSqlCond_WSTerminalRuleCall_0_a.equals(syntax))
 				emit_IfSqlCond_WSTerminalRuleCall_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_IfSqlCond_WSTerminalRuleCall_2_a.equals(syntax))
@@ -864,8 +853,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_MetagenProperty_WSTerminalRuleCall_9_1_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojoDefinitionModel_COLONTerminalRuleCall_2_0_1_q.equals(syntax))
 				emit_PojoDefinitionModel_COLONTerminalRuleCall_2_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0.equals(syntax))
-				emit_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_0_1_0_p.equals(syntax))
 				emit_PojogenProperty_WSTerminalRuleCall_0_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_10_1_0_p.equals(syntax))
@@ -1020,8 +1007,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_PojogenProperty_WSTerminalRuleCall_8_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojogenProperty_WSTerminalRuleCall_9_1_0_p.equals(syntax))
 				emit_PojogenProperty_WSTerminalRuleCall_9_1_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0.equals(syntax))
-				emit_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PropertyCondition_WSTerminalRuleCall_1_a.equals(syntax))
 				emit_PropertyCondition_WSTerminalRuleCall_1_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PropertyCondition_WSTerminalRuleCall_3_p.equals(syntax))
@@ -1054,8 +1039,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 				emit_Property_WSTerminalRuleCall_1_9_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Property_WSTerminalRuleCall_1_9_2_2_0_p.equals(syntax))
 				emit_Property_WSTerminalRuleCall_1_9_2_2_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0.equals(syntax))
-				emit_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
@@ -1729,17 +1712,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'function' | 'is-function'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=IDENT
-	 */
-	protected void emit_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     WS*
 	 *
 	 * This ambiguous syntax occurs at:
@@ -2407,17 +2379,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     name=IDENT COLON (ambiguity) class=IDENT_DOT
 	 */
 	protected void emit_PojoDefinitionModel_COLONTerminalRuleCall_2_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'pojo' | 'is-pojo'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=IDENT
-	 */
-	protected void emit_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -3303,17 +3264,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'procedure' | 'is-procedure'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=IDENT
-	 */
-	protected void emit_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     WS*
 	 *
 	 * This ambiguous syntax occurs at:
@@ -3503,17 +3453,6 @@ public class ProcessorMetaSyntacticSequencer extends AbstractSyntacticSequencer 
 	 *     name='validate-resources' WS+ MINUS (ambiguity) doNotVerifyResources+=ValueType
 	 */
 	protected void emit_Property_WSTerminalRuleCall_1_9_2_2_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'table' | 'is-table'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=IDENT
-	 */
-	protected void emit_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

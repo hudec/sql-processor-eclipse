@@ -1,6 +1,6 @@
 define(["ace/lib/oop", "ace/mode/text", "ace/mode/text_highlight_rules"], function(oop, mText, mTextHighlightRules) {
 	var HighlightRules = function() {
-		var keywords = "function|package|pojo|procedure|table";
+		var keywords = "package";
 		this.$rules = {
 			"start": [
 				{token: "keyword", regex: "\\b(?:" + keywords + ")\\b"}

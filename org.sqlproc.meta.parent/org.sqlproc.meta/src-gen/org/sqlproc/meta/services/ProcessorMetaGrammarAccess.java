@@ -5262,9 +5262,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	public class PojoDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.PojoDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cPojoKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsPojoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsPojoKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDENTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
@@ -5281,20 +5279,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSEMICOLONTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-		//	('pojo' | 'is-pojo') name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
+		//	'is-pojo' name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('pojo' | 'is-pojo') name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON
+		//'is-pojo' name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON
 		public Group getGroup() { return cGroup; }
 		
-		//'pojo' | 'is-pojo'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'pojo'
-		public Keyword getPojoKeyword_0_0() { return cPojoKeyword_0_0; }
-		
 		//'is-pojo'
-		public Keyword getIsPojoKeyword_0_1() { return cIsPojoKeyword_0_1; }
+		public Keyword getIsPojoKeyword_0() { return cIsPojoKeyword_0; }
 		
 		//name=IDENT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -5412,9 +5404,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	public class TableDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.TableDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cTableKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsTableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsTableKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDENTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -5422,20 +5412,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSEMICOLONTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//TableDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-		//	('table' | 'is-table') name=IDENT table=IDENT SEMICOLON;
+		//	'is-table' name=IDENT table=IDENT SEMICOLON;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('table' | 'is-table') name=IDENT table=IDENT SEMICOLON
+		//'is-table' name=IDENT table=IDENT SEMICOLON
 		public Group getGroup() { return cGroup; }
 		
-		//'table' | 'is-table'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'table'
-		public Keyword getTableKeyword_0_0() { return cTableKeyword_0_0; }
-		
 		//'is-table'
-		public Keyword getIsTableKeyword_0_1() { return cIsTableKeyword_0_1; }
+		public Keyword getIsTableKeyword_0() { return cIsTableKeyword_0; }
 		
 		//name=IDENT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -5455,9 +5439,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	public class ProcedureDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.ProcedureDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cProcedureKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsProcedureKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsProcedureKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDENTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -5465,20 +5447,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSEMICOLONTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//ProcedureDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-		//	('procedure' | 'is-procedure') name=IDENT table=IDENT SEMICOLON;
+		//	'is-procedure' name=IDENT table=IDENT SEMICOLON;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('procedure' | 'is-procedure') name=IDENT table=IDENT SEMICOLON
+		//'is-procedure' name=IDENT table=IDENT SEMICOLON
 		public Group getGroup() { return cGroup; }
 		
-		//'procedure' | 'is-procedure'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'procedure'
-		public Keyword getProcedureKeyword_0_0() { return cProcedureKeyword_0_0; }
-		
 		//'is-procedure'
-		public Keyword getIsProcedureKeyword_0_1() { return cIsProcedureKeyword_0_1; }
+		public Keyword getIsProcedureKeyword_0() { return cIsProcedureKeyword_0; }
 		
 		//name=IDENT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -5498,9 +5474,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	public class FunctionDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.FunctionDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cFunctionKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsFunctionKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsFunctionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDENTTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -5508,20 +5482,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cSEMICOLONTerminalRuleCall_3 = (RuleCall)cGroup.eContents().get(3);
 		
 		//FunctionDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-		//	('function' | 'is-function') name=IDENT table=IDENT SEMICOLON;
+		//	'is-function' name=IDENT table=IDENT SEMICOLON;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('function' | 'is-function') name=IDENT table=IDENT SEMICOLON
+		//'is-function' name=IDENT table=IDENT SEMICOLON
 		public Group getGroup() { return cGroup; }
 		
-		//'function' | 'is-function'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'function'
-		public Keyword getFunctionKeyword_0_0() { return cFunctionKeyword_0_0; }
-		
 		//'is-function'
-		public Keyword getIsFunctionKeyword_0_1() { return cIsFunctionKeyword_0_1; }
+		public Keyword getIsFunctionKeyword_0() { return cIsFunctionKeyword_0; }
 		
 		//name=IDENT
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -9137,7 +9105,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	//	('pojo' | 'is-pojo') name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
+	//	'is-pojo' name=IDENT (COLON COLON? class=(IDENT | IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 	public PojoDefinitionModelElements getPojoDefinitionModelAccess() {
 		return pPojoDefinitionModel;
 	}
@@ -9157,7 +9125,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TableDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	//	('table' | 'is-table') name=IDENT table=IDENT SEMICOLON;
+	//	'is-table' name=IDENT table=IDENT SEMICOLON;
 	public TableDefinitionModelElements getTableDefinitionModelAccess() {
 		return pTableDefinitionModel;
 	}
@@ -9167,7 +9135,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ProcedureDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	//	('procedure' | 'is-procedure') name=IDENT table=IDENT SEMICOLON;
+	//	'is-procedure' name=IDENT table=IDENT SEMICOLON;
 	public ProcedureDefinitionModelElements getProcedureDefinitionModelAccess() {
 		return pProcedureDefinitionModel;
 	}
@@ -9177,7 +9145,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FunctionDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	//	('function' | 'is-function') name=IDENT table=IDENT SEMICOLON;
+	//	'is-function' name=IDENT table=IDENT SEMICOLON;
 	public FunctionDefinitionModelElements getFunctionDefinitionModelAccess() {
 		return pFunctionDefinitionModel;
 	}

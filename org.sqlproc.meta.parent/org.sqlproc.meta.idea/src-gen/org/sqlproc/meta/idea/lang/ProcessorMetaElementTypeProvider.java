@@ -6289,14 +6289,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojoDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("PojoDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createPojoDefinitionModel_Alternatives_0ElementType() {
-			return new IGrammarAwareElementType("PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getAlternatives_0());
-		}
-		public static IGrammarAwareElementType createPojoDefinitionModel_PojoKeyword_0_0ElementType() {
-			return new IGrammarAwareElementType("PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getPojoKeyword_0_0());
-		}
-		public static IGrammarAwareElementType createPojoDefinitionModel_IsPojoKeyword_0_1ElementType() {
-			return new IGrammarAwareElementType("PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1());
+		public static IGrammarAwareElementType createPojoDefinitionModel_IsPojoKeyword_0ElementType() {
+			return new IGrammarAwareElementType("PojoDefinitionModel_IsPojoKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getIsPojoKeyword_0());
 		}
 		public static IGrammarAwareElementType createPojoDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("PojoDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojoDefinitionModelAccess().getNameAssignment_1());
@@ -6346,11 +6340,7 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType PojoDefinitionModel_Group_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_Alternatives_0ElementType());
-
-	public static final IGrammarAwareElementType PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_PojoKeyword_0_0ElementType());
-
-	public static final IGrammarAwareElementType PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_IsPojoKeyword_0_1ElementType());
+	public static final IGrammarAwareElementType PojoDefinitionModel_IsPojoKeyword_0_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_IsPojoKeyword_0ElementType());
 
 	public static final IGrammarAwareElementType PojoDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(PojoDefinitionModelFactory.createPojoDefinitionModel_NameAssignment_1ElementType());
 
@@ -6475,14 +6465,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createTableDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("TableDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createTableDefinitionModel_Alternatives_0ElementType() {
-			return new IGrammarAwareElementType("TableDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getAlternatives_0());
-		}
-		public static IGrammarAwareElementType createTableDefinitionModel_TableKeyword_0_0ElementType() {
-			return new IGrammarAwareElementType("TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getTableKeyword_0_0());
-		}
-		public static IGrammarAwareElementType createTableDefinitionModel_IsTableKeyword_0_1ElementType() {
-			return new IGrammarAwareElementType("TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getIsTableKeyword_0_1());
+		public static IGrammarAwareElementType createTableDefinitionModel_IsTableKeyword_0ElementType() {
+			return new IGrammarAwareElementType("TableDefinitionModel_IsTableKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getIsTableKeyword_0());
 		}
 		public static IGrammarAwareElementType createTableDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("TableDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getTableDefinitionModelAccess().getNameAssignment_1());
@@ -6505,11 +6489,7 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType TableDefinitionModel_Group_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType TableDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_Alternatives_0ElementType());
-
-	public static final IGrammarAwareElementType TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_TableKeyword_0_0ElementType());
-
-	public static final IGrammarAwareElementType TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_IsTableKeyword_0_1ElementType());
+	public static final IGrammarAwareElementType TableDefinitionModel_IsTableKeyword_0_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_IsTableKeyword_0ElementType());
 
 	public static final IGrammarAwareElementType TableDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(TableDefinitionModelFactory.createTableDefinitionModel_NameAssignment_1ElementType());
 
@@ -6528,14 +6508,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createProcedureDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("ProcedureDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createProcedureDefinitionModel_Alternatives_0ElementType() {
-			return new IGrammarAwareElementType("ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getAlternatives_0());
-		}
-		public static IGrammarAwareElementType createProcedureDefinitionModel_ProcedureKeyword_0_0ElementType() {
-			return new IGrammarAwareElementType("ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0());
-		}
-		public static IGrammarAwareElementType createProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType() {
-			return new IGrammarAwareElementType("ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1());
+		public static IGrammarAwareElementType createProcedureDefinitionModel_IsProcedureKeyword_0ElementType() {
+			return new IGrammarAwareElementType("ProcedureDefinitionModel_IsProcedureKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0());
 		}
 		public static IGrammarAwareElementType createProcedureDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("ProcedureDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getProcedureDefinitionModelAccess().getNameAssignment_1());
@@ -6558,11 +6532,7 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType ProcedureDefinitionModel_Group_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_Alternatives_0ElementType());
-
-	public static final IGrammarAwareElementType ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_ProcedureKeyword_0_0ElementType());
-
-	public static final IGrammarAwareElementType ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType());
+	public static final IGrammarAwareElementType ProcedureDefinitionModel_IsProcedureKeyword_0_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_IsProcedureKeyword_0ElementType());
 
 	public static final IGrammarAwareElementType ProcedureDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(ProcedureDefinitionModelFactory.createProcedureDefinitionModel_NameAssignment_1ElementType());
 
@@ -6581,14 +6551,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createFunctionDefinitionModel_GroupElementType() {
 			return new IGrammarAwareElementType("FunctionDefinitionModel_Group_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getGroup());
 		}
-		public static IGrammarAwareElementType createFunctionDefinitionModel_Alternatives_0ElementType() {
-			return new IGrammarAwareElementType("FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getAlternatives_0());
-		}
-		public static IGrammarAwareElementType createFunctionDefinitionModel_FunctionKeyword_0_0ElementType() {
-			return new IGrammarAwareElementType("FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0());
-		}
-		public static IGrammarAwareElementType createFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType() {
-			return new IGrammarAwareElementType("FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1());
+		public static IGrammarAwareElementType createFunctionDefinitionModel_IsFunctionKeyword_0ElementType() {
+			return new IGrammarAwareElementType("FunctionDefinitionModel_IsFunctionKeyword_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0());
 		}
 		public static IGrammarAwareElementType createFunctionDefinitionModel_NameAssignment_1ElementType() {
 			return new IGrammarAwareElementType("FunctionDefinitionModel_NameAssignment_1_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getFunctionDefinitionModelAccess().getNameAssignment_1());
@@ -6611,11 +6575,7 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 
 	public static final IGrammarAwareElementType FunctionDefinitionModel_Group_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_GroupElementType());
 
-	public static final IGrammarAwareElementType FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_Alternatives_0ElementType());
-
-	public static final IGrammarAwareElementType FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_FunctionKeyword_0_0ElementType());
-
-	public static final IGrammarAwareElementType FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType());
+	public static final IGrammarAwareElementType FunctionDefinitionModel_IsFunctionKeyword_0_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_IsFunctionKeyword_0ElementType());
 
 	public static final IGrammarAwareElementType FunctionDefinitionModel_NameAssignment_1_ELEMENT_TYPE = associate(FunctionDefinitionModelFactory.createFunctionDefinitionModel_NameAssignment_1ElementType());
 
@@ -15006,16 +14966,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return PojoDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getPojoDefinitionModel_Alternatives_0ElementType() {
-		return PojoDefinitionModel_Alternatives_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getPojoDefinitionModel_PojoKeyword_0_0ElementType() {
-		return PojoDefinitionModel_PojoKeyword_0_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getPojoDefinitionModel_IsPojoKeyword_0_1ElementType() {
-		return PojoDefinitionModel_IsPojoKeyword_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getPojoDefinitionModel_IsPojoKeyword_0ElementType() {
+		return PojoDefinitionModel_IsPojoKeyword_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getPojoDefinitionModel_NameAssignment_1ElementType() {
@@ -15150,16 +15102,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return TableDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getTableDefinitionModel_Alternatives_0ElementType() {
-		return TableDefinitionModel_Alternatives_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getTableDefinitionModel_TableKeyword_0_0ElementType() {
-		return TableDefinitionModel_TableKeyword_0_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getTableDefinitionModel_IsTableKeyword_0_1ElementType() {
-		return TableDefinitionModel_IsTableKeyword_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getTableDefinitionModel_IsTableKeyword_0ElementType() {
+		return TableDefinitionModel_IsTableKeyword_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getTableDefinitionModel_NameAssignment_1ElementType() {
@@ -15190,16 +15134,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return ProcedureDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getProcedureDefinitionModel_Alternatives_0ElementType() {
-		return ProcedureDefinitionModel_Alternatives_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getProcedureDefinitionModel_ProcedureKeyword_0_0ElementType() {
-		return ProcedureDefinitionModel_ProcedureKeyword_0_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType() {
-		return ProcedureDefinitionModel_IsProcedureKeyword_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getProcedureDefinitionModel_IsProcedureKeyword_0ElementType() {
+		return ProcedureDefinitionModel_IsProcedureKeyword_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getProcedureDefinitionModel_NameAssignment_1ElementType() {
@@ -15230,16 +15166,8 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		return FunctionDefinitionModel_Group_ELEMENT_TYPE;
 	}
 	
-	public IGrammarAwareElementType getFunctionDefinitionModel_Alternatives_0ElementType() {
-		return FunctionDefinitionModel_Alternatives_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getFunctionDefinitionModel_FunctionKeyword_0_0ElementType() {
-		return FunctionDefinitionModel_FunctionKeyword_0_0_ELEMENT_TYPE;
-	}
-	
-	public IGrammarAwareElementType getFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType() {
-		return FunctionDefinitionModel_IsFunctionKeyword_0_1_ELEMENT_TYPE;
+	public IGrammarAwareElementType getFunctionDefinitionModel_IsFunctionKeyword_0ElementType() {
+		return FunctionDefinitionModel_IsFunctionKeyword_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getFunctionDefinitionModel_NameAssignment_1ElementType() {

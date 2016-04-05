@@ -189,19 +189,19 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	('pojo' | 'is-pojo') name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
+	'is-pojo' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 
 AnnotationDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
 	'is-annotation' name=IDENT (COLON (COLON)? class=(IDENT|IDENT_DOT) | classx=[JvmType|QualifiedName]) SEMICOLON;
 
 TableDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	('table' | 'is-table') name=IDENT table=IDENT SEMICOLON;
+	'is-table' name=IDENT table=IDENT SEMICOLON;
 
 ProcedureDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	('procedure' | 'is-procedure') name=IDENT table=IDENT SEMICOLON;
+	'is-procedure' name=IDENT table=IDENT SEMICOLON;
 
 FunctionDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):
-	('function' | 'is-function') name=IDENT table=IDENT SEMICOLON;
+	'is-function' name=IDENT table=IDENT SEMICOLON;
 
 MetaStatement:
 	name=IDENT LPAREN type=STATEMENT_TYPE (COMMA modifiers+=StatementModifier)* RPAREN EQUALS statement=Sql SEMICOLON;

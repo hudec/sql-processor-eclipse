@@ -44,12 +44,8 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getAlternatives(), "rule__PojogenProperty__Alternatives");
 					put(grammarAccess.getMetagenPropertyAccess().getAlternatives(), "rule__MetagenProperty__Alternatives");
 					put(grammarAccess.getDaogenPropertyAccess().getAlternatives(), "rule__DaogenProperty__Alternatives");
-					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_0(), "rule__PojoDefinitionModel__Alternatives_0");
 					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_2(), "rule__PojoDefinitionModel__Alternatives_2");
 					put(grammarAccess.getAnnotationDefinitionModelAccess().getAlternatives_2(), "rule__AnnotationDefinitionModel__Alternatives_2");
-					put(grammarAccess.getTableDefinitionModelAccess().getAlternatives_0(), "rule__TableDefinitionModel__Alternatives_0");
-					put(grammarAccess.getProcedureDefinitionModelAccess().getAlternatives_0(), "rule__ProcedureDefinitionModel__Alternatives_0");
-					put(grammarAccess.getFunctionDefinitionModelAccess().getAlternatives_0(), "rule__FunctionDefinitionModel__Alternatives_0");
 					put(grammarAccess.getAbstractEntityAccess().getAlternatives(), "rule__AbstractEntity__Alternatives");
 					put(grammarAccess.getImplementsExtendsDirectiveAccess().getAlternatives(), "rule__ImplementsExtendsDirective__Alternatives");
 					put(grammarAccess.getEntityAccess().getAlternatives(), "rule__Entity__Alternatives");

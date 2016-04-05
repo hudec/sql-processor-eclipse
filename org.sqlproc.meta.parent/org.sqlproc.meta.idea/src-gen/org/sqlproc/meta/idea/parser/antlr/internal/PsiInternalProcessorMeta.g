@@ -8977,29 +8977,19 @@ rulePojoDefinitionModel returns [Boolean current=false]
 	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS");
 }:
 	(
-		(
-			{
-				markLeaf(elementTypeProvider.getPojoDefinitionModel_PojoKeyword_0_0ElementType());
-			}
-			otherlv_0='pojo'
-			{
-				doneLeaf(otherlv_0);
-			}
-			    |
-			{
-				markLeaf(elementTypeProvider.getPojoDefinitionModel_IsPojoKeyword_0_1ElementType());
-			}
-			otherlv_1='is-pojo'
-			{
-				doneLeaf(otherlv_1);
-			}
-		)
+		{
+			markLeaf(elementTypeProvider.getPojoDefinitionModel_IsPojoKeyword_0ElementType());
+		}
+		otherlv_0='is-pojo'
+		{
+			doneLeaf(otherlv_0);
+		}
 		(
 			(
 				{
 					markLeaf(elementTypeProvider.getPojoDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType());
 				}
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9007,7 +8997,7 @@ rulePojoDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_name_2_0);
+					doneLeaf(lv_name_1_0);
 				}
 			)
 		)
@@ -9016,17 +9006,17 @@ rulePojoDefinitionModel returns [Boolean current=false]
 				{
 					markLeaf(elementTypeProvider.getPojoDefinitionModel_COLONTerminalRuleCall_2_0_0ElementType());
 				}
-				this_COLON_3=RULE_COLON
+				this_COLON_2=RULE_COLON
 				{
-					doneLeaf(this_COLON_3);
+					doneLeaf(this_COLON_2);
 				}
 				(
 					{
 						markLeaf(elementTypeProvider.getPojoDefinitionModel_COLONTerminalRuleCall_2_0_1ElementType());
 					}
-					this_COLON_4=RULE_COLON
+					this_COLON_3=RULE_COLON
 					{
-						doneLeaf(this_COLON_4);
+						doneLeaf(this_COLON_3);
 					}
 				)?
 				(
@@ -9035,7 +9025,7 @@ rulePojoDefinitionModel returns [Boolean current=false]
 							{
 								markLeaf(elementTypeProvider.getPojoDefinitionModel_ClassIDENTTerminalRuleCall_2_0_2_0_0ElementType());
 							}
-							lv_class_5_1=RULE_IDENT
+							lv_class_4_1=RULE_IDENT
 							{
 								if(!$current) {
 									associateWithSemanticElement();
@@ -9043,13 +9033,13 @@ rulePojoDefinitionModel returns [Boolean current=false]
 								}
 							}
 							{
-								doneLeaf(lv_class_5_1);
+								doneLeaf(lv_class_4_1);
 							}
 							    |
 							{
 								markLeaf(elementTypeProvider.getPojoDefinitionModel_ClassIDENT_DOTTerminalRuleCall_2_0_2_0_1ElementType());
 							}
-							lv_class_5_2=RULE_IDENT_DOT
+							lv_class_4_2=RULE_IDENT_DOT
 							{
 								if(!$current) {
 									associateWithSemanticElement();
@@ -9057,7 +9047,7 @@ rulePojoDefinitionModel returns [Boolean current=false]
 								}
 							}
 							{
-								doneLeaf(lv_class_5_2);
+								doneLeaf(lv_class_4_2);
 							}
 						)
 					)
@@ -9085,9 +9075,9 @@ rulePojoDefinitionModel returns [Boolean current=false]
 		{
 			markLeaf(elementTypeProvider.getPojoDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
 		}
-		this_SEMICOLON_7=RULE_SEMICOLON
+		this_SEMICOLON_6=RULE_SEMICOLON
 		{
-			doneLeaf(this_SEMICOLON_7);
+			doneLeaf(this_SEMICOLON_6);
 		}
 	)
 ;
@@ -9239,29 +9229,19 @@ ruleTableDefinitionModel returns [Boolean current=false]
 	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS");
 }:
 	(
-		(
-			{
-				markLeaf(elementTypeProvider.getTableDefinitionModel_TableKeyword_0_0ElementType());
-			}
-			otherlv_0='table'
-			{
-				doneLeaf(otherlv_0);
-			}
-			    |
-			{
-				markLeaf(elementTypeProvider.getTableDefinitionModel_IsTableKeyword_0_1ElementType());
-			}
-			otherlv_1='is-table'
-			{
-				doneLeaf(otherlv_1);
-			}
-		)
+		{
+			markLeaf(elementTypeProvider.getTableDefinitionModel_IsTableKeyword_0ElementType());
+		}
+		otherlv_0='is-table'
+		{
+			doneLeaf(otherlv_0);
+		}
 		(
 			(
 				{
 					markLeaf(elementTypeProvider.getTableDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType());
 				}
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9269,7 +9249,7 @@ ruleTableDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_name_2_0);
+					doneLeaf(lv_name_1_0);
 				}
 			)
 		)
@@ -9278,7 +9258,7 @@ ruleTableDefinitionModel returns [Boolean current=false]
 				{
 					markLeaf(elementTypeProvider.getTableDefinitionModel_TableIDENTTerminalRuleCall_2_0ElementType());
 				}
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9286,16 +9266,16 @@ ruleTableDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_table_3_0);
+					doneLeaf(lv_table_2_0);
 				}
 			)
 		)
 		{
 			markLeaf(elementTypeProvider.getTableDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
 		}
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			doneLeaf(this_SEMICOLON_4);
+			doneLeaf(this_SEMICOLON_3);
 		}
 	)
 ;
@@ -9321,29 +9301,19 @@ ruleProcedureDefinitionModel returns [Boolean current=false]
 	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS");
 }:
 	(
-		(
-			{
-				markLeaf(elementTypeProvider.getProcedureDefinitionModel_ProcedureKeyword_0_0ElementType());
-			}
-			otherlv_0='procedure'
-			{
-				doneLeaf(otherlv_0);
-			}
-			    |
-			{
-				markLeaf(elementTypeProvider.getProcedureDefinitionModel_IsProcedureKeyword_0_1ElementType());
-			}
-			otherlv_1='is-procedure'
-			{
-				doneLeaf(otherlv_1);
-			}
-		)
+		{
+			markLeaf(elementTypeProvider.getProcedureDefinitionModel_IsProcedureKeyword_0ElementType());
+		}
+		otherlv_0='is-procedure'
+		{
+			doneLeaf(otherlv_0);
+		}
 		(
 			(
 				{
 					markLeaf(elementTypeProvider.getProcedureDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType());
 				}
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9351,7 +9321,7 @@ ruleProcedureDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_name_2_0);
+					doneLeaf(lv_name_1_0);
 				}
 			)
 		)
@@ -9360,7 +9330,7 @@ ruleProcedureDefinitionModel returns [Boolean current=false]
 				{
 					markLeaf(elementTypeProvider.getProcedureDefinitionModel_TableIDENTTerminalRuleCall_2_0ElementType());
 				}
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9368,16 +9338,16 @@ ruleProcedureDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_table_3_0);
+					doneLeaf(lv_table_2_0);
 				}
 			)
 		)
 		{
 			markLeaf(elementTypeProvider.getProcedureDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
 		}
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			doneLeaf(this_SEMICOLON_4);
+			doneLeaf(this_SEMICOLON_3);
 		}
 	)
 ;
@@ -9403,29 +9373,19 @@ ruleFunctionDefinitionModel returns [Boolean current=false]
 	HiddenTokens myHiddenTokenState = ((XtextTokenStream)input).setHiddenTokens("RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS");
 }:
 	(
-		(
-			{
-				markLeaf(elementTypeProvider.getFunctionDefinitionModel_FunctionKeyword_0_0ElementType());
-			}
-			otherlv_0='function'
-			{
-				doneLeaf(otherlv_0);
-			}
-			    |
-			{
-				markLeaf(elementTypeProvider.getFunctionDefinitionModel_IsFunctionKeyword_0_1ElementType());
-			}
-			otherlv_1='is-function'
-			{
-				doneLeaf(otherlv_1);
-			}
-		)
+		{
+			markLeaf(elementTypeProvider.getFunctionDefinitionModel_IsFunctionKeyword_0ElementType());
+		}
+		otherlv_0='is-function'
+		{
+			doneLeaf(otherlv_0);
+		}
 		(
 			(
 				{
 					markLeaf(elementTypeProvider.getFunctionDefinitionModel_NameIDENTTerminalRuleCall_1_0ElementType());
 				}
-				lv_name_2_0=RULE_IDENT
+				lv_name_1_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9433,7 +9393,7 @@ ruleFunctionDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_name_2_0);
+					doneLeaf(lv_name_1_0);
 				}
 			)
 		)
@@ -9442,7 +9402,7 @@ ruleFunctionDefinitionModel returns [Boolean current=false]
 				{
 					markLeaf(elementTypeProvider.getFunctionDefinitionModel_TableIDENTTerminalRuleCall_2_0ElementType());
 				}
-				lv_table_3_0=RULE_IDENT
+				lv_table_2_0=RULE_IDENT
 				{
 					if(!$current) {
 						associateWithSemanticElement();
@@ -9450,16 +9410,16 @@ ruleFunctionDefinitionModel returns [Boolean current=false]
 					}
 				}
 				{
-					doneLeaf(lv_table_3_0);
+					doneLeaf(lv_table_2_0);
 				}
 			)
 		)
 		{
 			markLeaf(elementTypeProvider.getFunctionDefinitionModel_SEMICOLONTerminalRuleCall_3ElementType());
 		}
-		this_SEMICOLON_4=RULE_SEMICOLON
+		this_SEMICOLON_3=RULE_SEMICOLON
 		{
-			doneLeaf(this_SEMICOLON_4);
+			doneLeaf(this_SEMICOLON_3);
 		}
 	)
 ;

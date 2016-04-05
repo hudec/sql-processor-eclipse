@@ -7430,23 +7430,16 @@ rulePojoDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='pojo'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-pojo'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1());
-			}
-		)
+		otherlv_0='is-pojo'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0());
+		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_2_0=ruleValidID
+				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
@@ -7454,7 +7447,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7462,14 +7455,14 @@ rulePojoDefinitionModel returns [EObject current=null]
 		)
 		(
 			(
-				otherlv_3=':'
+				otherlv_2=':'
 				{
-					newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0());
+					newLeafNode(otherlv_2, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_0());
 				}
 				(
-					otherlv_4=':'
+					otherlv_3=':'
 					{
-						newLeafNode(otherlv_4, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
+						newLeafNode(otherlv_3, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
 					}
 				)?
 				(
@@ -7477,7 +7470,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 						{
 							newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassQualifiedNameParserRuleCall_2_0_2_0());
 						}
-						lv_class_5_0=ruleQualifiedName
+						lv_class_4_0=ruleQualifiedName
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
@@ -7485,7 +7478,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 							set(
 								$current,
 								"class",
-								lv_class_5_0,
+								lv_class_4_0,
 								"org.eclipse.xtext.xbase.Xbase.QualifiedName");
 							afterParserOrEnumRuleCall();
 						}
@@ -7498,7 +7491,7 @@ rulePojoDefinitionModel returns [EObject current=null]
 					{
 						newCompositeNode(grammarAccess.getPojoDefinitionModelAccess().getClassxQualifiedNameParserRuleCall_2_1_0());
 					}
-					lv_classx_6_0=ruleQualifiedName
+					lv_classx_5_0=ruleQualifiedName
 					{
 						if ($current==null) {
 							$current = createModelElementForParent(grammarAccess.getPojoDefinitionModelRule());
@@ -7506,16 +7499,16 @@ rulePojoDefinitionModel returns [EObject current=null]
 						set(
 							$current,
 							"classx",
-							lv_classx_6_0,
+							lv_classx_5_0,
 							"org.eclipse.xtext.xbase.Xbase.QualifiedName");
 						afterParserOrEnumRuleCall();
 					}
 				)
 			)
 		)
-		otherlv_7=';'
+		otherlv_6=';'
 		{
-			newLeafNode(otherlv_7, grammarAccess.getPojoDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_6, grammarAccess.getPojoDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7632,23 +7625,16 @@ ruleTableDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='table'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-table'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1());
-			}
-		)
+		otherlv_0='is-table'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0());
+		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getTableDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_2_0=ruleValidID
+				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTableDefinitionModelRule());
@@ -7656,7 +7642,7 @@ ruleTableDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7667,7 +7653,7 @@ ruleTableDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getTableDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_3_0=ruleValidID
+				lv_table_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getTableDefinitionModelRule());
@@ -7675,15 +7661,15 @@ ruleTableDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=';'
+		otherlv_3=';'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getTableDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getTableDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7704,23 +7690,16 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='procedure'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-procedure'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1());
-			}
-		)
+		otherlv_0='is-procedure'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0());
+		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getProcedureDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_2_0=ruleValidID
+				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProcedureDefinitionModelRule());
@@ -7728,7 +7707,7 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7739,7 +7718,7 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getProcedureDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_3_0=ruleValidID
+				lv_table_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getProcedureDefinitionModelRule());
@@ -7747,15 +7726,15 @@ ruleProcedureDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=';'
+		otherlv_3=';'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getProcedureDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getProcedureDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;
@@ -7776,23 +7755,16 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 	leaveRule();
 }:
 	(
-		(
-			otherlv_0='function'
-			{
-				newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0());
-			}
-			    |
-			otherlv_1='is-function'
-			{
-				newLeafNode(otherlv_1, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1());
-			}
-		)
+		otherlv_0='is-function'
+		{
+			newLeafNode(otherlv_0, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0());
+		}
 		(
 			(
 				{
 					newCompositeNode(grammarAccess.getFunctionDefinitionModelAccess().getNameValidIDParserRuleCall_1_0());
 				}
-				lv_name_2_0=ruleValidID
+				lv_name_1_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFunctionDefinitionModelRule());
@@ -7800,7 +7772,7 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"name",
-						lv_name_2_0,
+						lv_name_1_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
@@ -7811,7 +7783,7 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getFunctionDefinitionModelAccess().getTableValidIDParserRuleCall_2_0());
 				}
-				lv_table_3_0=ruleValidID
+				lv_table_2_0=ruleValidID
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFunctionDefinitionModelRule());
@@ -7819,15 +7791,15 @@ ruleFunctionDefinitionModel returns [EObject current=null]
 					set(
 						$current,
 						"table",
-						lv_table_3_0,
+						lv_table_2_0,
 						"org.eclipse.xtext.xbase.Xtype.ValidID");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)
-		otherlv_4=';'
+		otherlv_3=';'
 		{
-			newLeafNode(otherlv_4, grammarAccess.getFunctionDefinitionModelAccess().getSemicolonKeyword_3());
+			newLeafNode(otherlv_3, grammarAccess.getFunctionDefinitionModelAccess().getSemicolonKeyword_3());
 		}
 	)
 ;

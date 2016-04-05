@@ -4204,9 +4204,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class PojoDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.PojoDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cPojoKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsPojoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsPojoKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
@@ -4220,20 +4218,14 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//PojoDefinitionModel:
-		//	('pojo' | 'is-pojo') name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';';
+		//	'is-pojo' name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('pojo' | 'is-pojo') name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';'
+		//'is-pojo' name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';'
 		public Group getGroup() { return cGroup; }
 		
-		//'pojo' | 'is-pojo'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'pojo'
-		public Keyword getPojoKeyword_0_0() { return cPojoKeyword_0_0; }
-		
 		//'is-pojo'
-		public Keyword getIsPojoKeyword_0_1() { return cIsPojoKeyword_0_1; }
+		public Keyword getIsPojoKeyword_0() { return cIsPojoKeyword_0; }
 		
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -4334,9 +4326,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class TableDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.TableDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cTableKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsTableKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsTableKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -4344,20 +4334,14 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//TableDefinitionModel:
-		//	('table' | 'is-table') name=ValidID table=ValidID ';';
+		//	'is-table' name=ValidID table=ValidID ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('table' | 'is-table') name=ValidID table=ValidID ';'
+		//'is-table' name=ValidID table=ValidID ';'
 		public Group getGroup() { return cGroup; }
 		
-		//'table' | 'is-table'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'table'
-		public Keyword getTableKeyword_0_0() { return cTableKeyword_0_0; }
-		
 		//'is-table'
-		public Keyword getIsTableKeyword_0_1() { return cIsTableKeyword_0_1; }
+		public Keyword getIsTableKeyword_0() { return cIsTableKeyword_0; }
 		
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -4377,9 +4361,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class ProcedureDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.ProcedureDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cProcedureKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsProcedureKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsProcedureKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -4387,20 +4369,14 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//ProcedureDefinitionModel:
-		//	('procedure' | 'is-procedure') name=ValidID table=ValidID ';';
+		//	'is-procedure' name=ValidID table=ValidID ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('procedure' | 'is-procedure') name=ValidID table=ValidID ';'
+		//'is-procedure' name=ValidID table=ValidID ';'
 		public Group getGroup() { return cGroup; }
 		
-		//'procedure' | 'is-procedure'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'procedure'
-		public Keyword getProcedureKeyword_0_0() { return cProcedureKeyword_0_0; }
-		
 		//'is-procedure'
-		public Keyword getIsProcedureKeyword_0_1() { return cIsProcedureKeyword_0_1; }
+		public Keyword getIsProcedureKeyword_0() { return cIsProcedureKeyword_0; }
 		
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -4420,9 +4396,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	public class FunctionDefinitionModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.model.ProcessorModel.FunctionDefinitionModel");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
-		private final Keyword cFunctionKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
-		private final Keyword cIsFunctionKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cIsFunctionKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameValidIDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Assignment cTableAssignment_2 = (Assignment)cGroup.eContents().get(2);
@@ -4430,20 +4404,14 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//FunctionDefinitionModel:
-		//	('function' | 'is-function') name=ValidID table=ValidID ';';
+		//	'is-function' name=ValidID table=ValidID ';';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('function' | 'is-function') name=ValidID table=ValidID ';'
+		//'is-function' name=ValidID table=ValidID ';'
 		public Group getGroup() { return cGroup; }
 		
-		//'function' | 'is-function'
-		public Alternatives getAlternatives_0() { return cAlternatives_0; }
-		
-		//'function'
-		public Keyword getFunctionKeyword_0_0() { return cFunctionKeyword_0_0; }
-		
 		//'is-function'
-		public Keyword getIsFunctionKeyword_0_1() { return cIsFunctionKeyword_0_1; }
+		public Keyword getIsFunctionKeyword_0() { return cIsFunctionKeyword_0; }
 		
 		//name=ValidID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -7504,7 +7472,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//PojoDefinitionModel:
-	//	('pojo' | 'is-pojo') name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';';
+	//	'is-pojo' name=ValidID (':' ':'? class=QualifiedName | classx=QualifiedName) ';';
 	public PojoDefinitionModelElements getPojoDefinitionModelAccess() {
 		return pPojoDefinitionModel;
 	}
@@ -7524,7 +7492,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//TableDefinitionModel:
-	//	('table' | 'is-table') name=ValidID table=ValidID ';';
+	//	'is-table' name=ValidID table=ValidID ';';
 	public TableDefinitionModelElements getTableDefinitionModelAccess() {
 		return pTableDefinitionModel;
 	}
@@ -7534,7 +7502,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//ProcedureDefinitionModel:
-	//	('procedure' | 'is-procedure') name=ValidID table=ValidID ';';
+	//	'is-procedure' name=ValidID table=ValidID ';';
 	public ProcedureDefinitionModelElements getProcedureDefinitionModelAccess() {
 		return pProcedureDefinitionModel;
 	}
@@ -7544,7 +7512,7 @@ public class ProcessorModelGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//FunctionDefinitionModel:
-	//	('function' | 'is-function') name=ValidID table=ValidID ';';
+	//	'is-function' name=ValidID table=ValidID ';';
 	public FunctionDefinitionModelElements getFunctionDefinitionModelAccess() {
 		return pFunctionDefinitionModel;
 	}

@@ -43,14 +43,10 @@ public class ProcessorMetaParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getAlternatives(), "rule__PojogenProperty__Alternatives");
 					put(grammarAccess.getMetagenPropertyAccess().getAlternatives(), "rule__MetagenProperty__Alternatives");
 					put(grammarAccess.getDaogenPropertyAccess().getAlternatives(), "rule__DaogenProperty__Alternatives");
-					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_0(), "rule__PojoDefinitionModel__Alternatives_0");
 					put(grammarAccess.getPojoDefinitionModelAccess().getAlternatives_2(), "rule__PojoDefinitionModel__Alternatives_2");
 					put(grammarAccess.getPojoDefinitionModelAccess().getClassAlternatives_2_0_2_0(), "rule__PojoDefinitionModel__ClassAlternatives_2_0_2_0");
 					put(grammarAccess.getAnnotationDefinitionModelAccess().getAlternatives_2(), "rule__AnnotationDefinitionModel__Alternatives_2");
 					put(grammarAccess.getAnnotationDefinitionModelAccess().getClassAlternatives_2_0_2_0(), "rule__AnnotationDefinitionModel__ClassAlternatives_2_0_2_0");
-					put(grammarAccess.getTableDefinitionModelAccess().getAlternatives_0(), "rule__TableDefinitionModel__Alternatives_0");
-					put(grammarAccess.getProcedureDefinitionModelAccess().getAlternatives_0(), "rule__ProcedureDefinitionModel__Alternatives_0");
-					put(grammarAccess.getFunctionDefinitionModelAccess().getAlternatives_0(), "rule__FunctionDefinitionModel__Alternatives_0");
 					put(grammarAccess.getSqlFragmentAccess().getAlternatives(), "rule__SqlFragment__Alternatives");
 					put(grammarAccess.getSqlFragmentAccess().getAlternatives_7_1(), "rule__SqlFragment__Alternatives_7_1");
 					put(grammarAccess.getSqlValueAccess().getAlternatives_0(), "rule__SqlValue__Alternatives_0");

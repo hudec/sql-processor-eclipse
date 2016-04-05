@@ -192,19 +192,19 @@ DaogenProperty:
 	);
 
 PojoDefinitionModel:
-	('pojo' | 'is-pojo') name=ValidID (':' (':')? class=(QualifiedName) | classx=(QualifiedName)) ';';
+	'is-pojo' name=ValidID (':' (':')? class=(QualifiedName) | classx=(QualifiedName)) ';';
 
 AnnotationDefinitionModel:
 	'is-annotation' name=ValidID (':' (':')? class=(QualifiedName) | classx=[JvmType|QualifiedName]) ';';
 
 TableDefinitionModel:
-	('table' | 'is-table') name=ValidID table=ValidID ';';
+	'is-table' name=ValidID table=ValidID ';';
 
 ProcedureDefinitionModel:
-	('procedure' | 'is-procedure') name=ValidID table=ValidID ';';
+	'is-procedure' name=ValidID table=ValidID ';';
 
 FunctionDefinitionModel:
-	('function' | 'is-function') name=ValidID table=ValidID ';';
+	'is-function' name=ValidID table=ValidID ';';
 
 PackageDirective: 
 {PackageDirectiveImplementation} '#Implementation' LPAREN implementation=QualifiedName RPAREN

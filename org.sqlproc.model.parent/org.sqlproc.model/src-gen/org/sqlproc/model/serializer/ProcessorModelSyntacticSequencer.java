@@ -10,7 +10,6 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
-import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.GroupAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
@@ -23,11 +22,7 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 
 	protected ProcessorModelGrammarAccess grammarAccess;
 	protected AbstractElementAlias match_AnnotationDefinitionModel_ColonKeyword_2_0_1_q;
-	protected AbstractElementAlias match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1;
 	protected AbstractElementAlias match_PojoDefinitionModel_ColonKeyword_2_0_1_q;
-	protected AbstractElementAlias match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0;
-	protected AbstractElementAlias match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0;
-	protected AbstractElementAlias match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0;
 	protected AbstractElementAlias match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q;
 	protected AbstractElementAlias match_XBlockExpression_SemicolonKeyword_2_1_q;
 	protected AbstractElementAlias match_XExpressionInClosure_SemicolonKeyword_1_1_q;
@@ -40,11 +35,7 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (ProcessorModelGrammarAccess) access;
 		match_AnnotationDefinitionModel_ColonKeyword_2_0_1_q = new TokenAlias(false, true, grammarAccess.getAnnotationDefinitionModelAccess().getColonKeyword_2_0_1());
-		match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFunctionDefinitionModelAccess().getFunctionKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getFunctionDefinitionModelAccess().getIsFunctionKeyword_0_1()));
 		match_PojoDefinitionModel_ColonKeyword_2_0_1_q = new TokenAlias(false, true, grammarAccess.getPojoDefinitionModelAccess().getColonKeyword_2_0_1());
-		match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getIsPojoKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getPojoDefinitionModelAccess().getPojoKeyword_0_0()));
-		match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getProcedureDefinitionModelAccess().getIsProcedureKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getProcedureDefinitionModelAccess().getProcedureKeyword_0_0()));
-		match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getTableDefinitionModelAccess().getIsTableKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getTableDefinitionModelAccess().getTableKeyword_0_0()));
 		match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q = new GroupAlias(false, true, new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getLeftParenthesisKeyword_3_0()), new TokenAlias(false, false, grammarAccess.getXAnnotationAccess().getRightParenthesisKeyword_3_2()));
 		match_XBlockExpression_SemicolonKeyword_2_1_q = new TokenAlias(false, true, grammarAccess.getXBlockExpressionAccess().getSemicolonKeyword_2_1());
 		match_XExpressionInClosure_SemicolonKeyword_1_1_q = new TokenAlias(false, true, grammarAccess.getXExpressionInClosureAccess().getSemicolonKeyword_1_1());
@@ -137,16 +128,8 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
 			if (match_AnnotationDefinitionModel_ColonKeyword_2_0_1_q.equals(syntax))
 				emit_AnnotationDefinitionModel_ColonKeyword_2_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1.equals(syntax))
-				emit_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_PojoDefinitionModel_ColonKeyword_2_0_1_q.equals(syntax))
 				emit_PojoDefinitionModel_ColonKeyword_2_0_1_q(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0.equals(syntax))
-				emit_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0.equals(syntax))
-				emit_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0.equals(syntax))
-				emit_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q.equals(syntax))
 				emit_XAnnotation___LeftParenthesisKeyword_3_0_RightParenthesisKeyword_3_2__q(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_XBlockExpression_SemicolonKeyword_2_1_q.equals(syntax))
@@ -178,56 +161,12 @@ public class ProcessorModelSyntacticSequencer extends AbstractSyntacticSequencer
 	
 	/**
 	 * Ambiguous syntax:
-	 *     'function' | 'is-function'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=ValidID
-	 */
-	protected void emit_FunctionDefinitionModel_FunctionKeyword_0_0_or_IsFunctionKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
 	 *     ':'?
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     name=ValidID ':' (ambiguity) class=QualifiedName
 	 */
 	protected void emit_PojoDefinitionModel_ColonKeyword_2_0_1_q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'pojo' | 'is-pojo'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=ValidID
-	 */
-	protected void emit_PojoDefinitionModel_IsPojoKeyword_0_1_or_PojoKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'procedure' | 'is-procedure'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=ValidID
-	 */
-	protected void emit_ProcedureDefinitionModel_IsProcedureKeyword_0_1_or_ProcedureKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
-		acceptNodes(transition, nodes);
-	}
-	
-	/**
-	 * Ambiguous syntax:
-	 *     'table' | 'is-table'
-	 *
-	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) name=ValidID
-	 */
-	protected void emit_TableDefinitionModel_IsTableKeyword_0_1_or_TableKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
