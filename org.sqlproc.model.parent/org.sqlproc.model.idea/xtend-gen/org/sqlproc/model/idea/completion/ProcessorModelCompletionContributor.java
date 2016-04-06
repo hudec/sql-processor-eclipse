@@ -4,12 +4,12 @@
 package org.sqlproc.model.idea.completion;
 
 import org.sqlproc.model.idea.completion.AbstractProcessorModelCompletionContributor;
-import org.sqlproc.model.idea.lang.ProcessorModelLanguage;
 
 @SuppressWarnings("all")
 public class ProcessorModelCompletionContributor extends AbstractProcessorModelCompletionContributor {
   public ProcessorModelCompletionContributor() {
-    this(ProcessorModelLanguage.INSTANCE);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe constructor ProcessorModelCompletionContributor(AbstractXtextLanguage) refers to the missing type AbstractXtextLanguage");
   }
   
   public ProcessorModelCompletionContributor(final /* AbstractXtextLanguage */Object lang) {

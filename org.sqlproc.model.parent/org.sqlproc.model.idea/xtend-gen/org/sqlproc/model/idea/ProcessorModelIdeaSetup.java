@@ -9,6 +9,7 @@ public class ProcessorModelIdeaSetup /* implements ISetup  */{
   public Object createInjectorAndDoEMFRegistration() {
     throw new Error("Unresolved compilation problems:"
       + "\nThe method or field EcoreGlobalRegistries is undefined"
+      + "\nThe method createInjector() from the type ProcessorModelStandaloneSetupIdea refers to the missing type Object"
       + "\nensureInitialized cannot be resolved");
   }
 }

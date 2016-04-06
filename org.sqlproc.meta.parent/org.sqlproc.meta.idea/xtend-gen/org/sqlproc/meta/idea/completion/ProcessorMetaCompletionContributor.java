@@ -4,12 +4,12 @@
 package org.sqlproc.meta.idea.completion;
 
 import org.sqlproc.meta.idea.completion.AbstractProcessorMetaCompletionContributor;
-import org.sqlproc.meta.idea.lang.ProcessorMetaLanguage;
 
 @SuppressWarnings("all")
 public class ProcessorMetaCompletionContributor extends AbstractProcessorMetaCompletionContributor {
   public ProcessorMetaCompletionContributor() {
-    this(ProcessorMetaLanguage.INSTANCE);
+    throw new Error("Unresolved compilation problems:"
+      + "\nThe constructor ProcessorMetaCompletionContributor(AbstractXtextLanguage) refers to the missing type AbstractXtextLanguage");
   }
   
   public ProcessorMetaCompletionContributor(final /* AbstractXtextLanguage */Object lang) {
