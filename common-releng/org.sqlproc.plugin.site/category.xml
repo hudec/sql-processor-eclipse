@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature id="org.sqlproc.plugin.sdk" version="0.0.0">
+      <category name="main"/>
+   </feature>
+   
+   <feature id="org.sqlproc.plugin.sdk.source" version="0.0.0">
+      <category name="main.source"/>
+   </feature>
+
+   <category-def name="main" label="SQL Processor Eclipse Plugin">
+      <description>
+         SQL Processor Eclipse META and Model Plugin
+      </description>
+   </category-def>
+   <category-def name="main.source" label="Sources for SQL Processor Eclipse Plugin">
+      <description>
+         SQL Processor Eclipse META and Model Plugin
+      </description>
+   </category-def>
+</site>

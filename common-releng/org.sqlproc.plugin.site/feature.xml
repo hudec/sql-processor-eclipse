@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="org.sqlproc.plugin.site"
+      label="SQL Processor Eclipse Plugin Site Feature"
+      version="1.0.0.qualifier">
+
+   <description>
+      SQL Processor META and Model Eclipse Plugin
+   </description>
+
+   <includes
+         id="org.sqlproc.plugin.sdk"
+         version="0.0.0"/>
+</feature>

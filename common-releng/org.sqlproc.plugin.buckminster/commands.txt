@@ -1,0 +1,15 @@
+setpref targetPlatformPath="${target.platform}"
+
+# Resolve Target platform
+resolve "${projects.location}/common-releng/org.sqlproc.plugin.buckminster/projects-platform.cquery"
+
+# Resolve Projects
+resolve "${projects.location}/common-releng/org.sqlproc.plugin.buckminster/project.cquery"
+
+# Compile (eclipse clean build)
+build
+
+# Test
+
+# Build p2 repo
+perform "org.sqlproc.plugin.site#site.p2"
