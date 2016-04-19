@@ -2,7 +2,7 @@
 <feature
       id="org.sqlproc.plugin.sdk"
       label="SQL Processor Eclipse Plugin"
-      version="1.0.0.qualifier">
+      version="2.6.0.qualifier">
 
    <description>
       SQL Processor Eclipse Meta and Model Eclipse Plugin
@@ -10,6 +10,13 @@
 
    <plugin
          id="org.sqlproc.model"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.sqlproc.model.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"
@@ -24,6 +31,13 @@
 
    <plugin
          id="org.sqlproc.meta"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="org.sqlproc.meta.ide"
          download-size="0"
          install-size="0"
          version="0.0.0"
