@@ -1421,7 +1421,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                             Table table2 = new Table();
                             table2.setNames(name);
                             // inheritImports {MOVIE={MEDIA_ID={MEDIA=ID}}, BOOK={MEDIA_ID={MEDIA=ID}}}
-                            String[] kk = findInheritanceKeysName(name, pentry.getKey());
+                            String[] kk = findInheritanceKeysName(name, table.realTableName);
                             table2.primaryKey = kk[1];
                             table2.tableKey = kk[0];
                             table2.tablePrefix = newPrefix(prefixes, table2);

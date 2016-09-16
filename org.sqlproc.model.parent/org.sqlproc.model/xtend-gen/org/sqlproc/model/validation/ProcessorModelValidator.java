@@ -59,25 +59,9 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<PojoDefinitionModel> _pojos = artifacts.getPojos();
     for (final PojoDefinitionModel definition : _pojos) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(definition, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (definition != pojoDefinition);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
+      if ((((!Objects.equal(definition, null)) && (definition != pojoDefinition)) && Objects.equal(pojoDefinition.getName(), definition.getName()))) {
         String _name = pojoDefinition.getName();
-        String _name_1 = definition.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        String _name_2 = pojoDefinition.getName();
-        String _plus = ("Duplicate name : " + _name_2);
+        String _plus = ("Duplicate name : " + _name);
         this.error(_plus, ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME);
         return;
       }
@@ -97,25 +81,9 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<AnnotationDefinitionModel> _annotations = artifacts.getAnnotations();
     for (final AnnotationDefinitionModel definition : _annotations) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(definition, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (definition != annotationDefinition);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
+      if ((((!Objects.equal(definition, null)) && (definition != annotationDefinition)) && Objects.equal(annotationDefinition.getName(), definition.getName()))) {
         String _name = annotationDefinition.getName();
-        String _name_1 = definition.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        String _name_2 = annotationDefinition.getName();
-        String _plus = ("Duplicate name : " + _name_2);
+        String _plus = ("Duplicate name : " + _name);
         this.error(_plus, ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME);
         return;
       }
@@ -135,65 +103,10 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<Property> _properties = artifacts.getProperties();
     for (final Property prop : _properties) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(prop, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (prop != property);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
-        String _name = prop.getName();
-        String _name_1 = property.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        boolean _and_2 = false;
-        boolean _and_3 = false;
-        boolean _and_4 = false;
-        boolean _and_5 = false;
-        String _name_2 = prop.getName();
-        boolean _startsWith = _name_2.startsWith("pojogen");
-        boolean _not = (!_startsWith);
-        if (!_not) {
-          _and_5 = false;
-        } else {
-          String _name_3 = prop.getName();
-          boolean _startsWith_1 = _name_3.startsWith("database");
-          boolean _not_1 = (!_startsWith_1);
-          _and_5 = _not_1;
-        }
-        if (!_and_5) {
-          _and_4 = false;
-        } else {
-          String _name_4 = prop.getName();
-          boolean _startsWith_2 = _name_4.startsWith("metagen");
-          boolean _not_2 = (!_startsWith_2);
-          _and_4 = _not_2;
-        }
-        if (!_and_4) {
-          _and_3 = false;
-        } else {
-          String _name_5 = prop.getName();
-          boolean _startsWith_3 = _name_5.startsWith("daogen");
-          boolean _not_3 = (!_startsWith_3);
-          _and_3 = _not_3;
-        }
-        if (!_and_3) {
-          _and_2 = false;
-        } else {
-          String _name_6 = prop.getName();
-          boolean _startsWith_4 = _name_6.startsWith("replace-text");
-          boolean _not_4 = (!_startsWith_4);
-          _and_2 = _not_4;
-        }
-        if (_and_2) {
-          String _name_7 = property.getName();
-          String _plus = ("Duplicate name : " + _name_7);
+      if ((((!Objects.equal(prop, null)) && (prop != property)) && Objects.equal(prop.getName(), property.getName()))) {
+        if ((((((!prop.getName().startsWith("pojogen")) && (!prop.getName().startsWith("database"))) && (!prop.getName().startsWith("metagen"))) && (!prop.getName().startsWith("daogen"))) && (!prop.getName().startsWith("replace-text")))) {
+          String _name = property.getName();
+          String _plus = ("Duplicate name : " + _name);
           this.error(_plus, ProcessorModelPackage.Literals.PROPERTY__NAME);
           return;
         }
@@ -214,43 +127,17 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<TableDefinitionModel> _tables = artifacts.getTables();
     for (final TableDefinitionModel table : _tables) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(table, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (table != tableDefinition);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
+      if ((((!Objects.equal(table, null)) && (table != tableDefinition)) && Objects.equal(tableDefinition.getName(), table.getName()))) {
         String _name = tableDefinition.getName();
-        String _name_1 = table.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        String _name_2 = tableDefinition.getName();
-        String _plus = ("Duplicate name : " + _name_2);
+        String _plus = ("Duplicate name : " + _name);
         String _plus_1 = (_plus + "[table]");
         this.error(_plus_1, ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__NAME);
         return;
       }
     }
-    boolean _and_2 = false;
-    boolean _isResolveDb = this.isResolveDb(tableDefinition);
-    if (!_isResolveDb) {
-      _and_2 = false;
-    } else {
+    if ((this.isResolveDb(tableDefinition) && (!this.dbResolver.checkTable(tableDefinition, tableDefinition.getTable())))) {
       String _table = tableDefinition.getTable();
-      boolean _checkTable = this.dbResolver.checkTable(tableDefinition, _table);
-      boolean _not = (!_checkTable);
-      _and_2 = _not;
-    }
-    if (_and_2) {
-      String _table_1 = tableDefinition.getTable();
-      String _plus_2 = ("Cannot find table in DB : " + _table_1);
+      String _plus_2 = ("Cannot find table in DB : " + _table);
       this.error(_plus_2, ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__TABLE);
     }
   }
@@ -268,43 +155,17 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<ProcedureDefinitionModel> _procedures = artifacts.getProcedures();
     for (final ProcedureDefinitionModel procedure : _procedures) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(procedure, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (procedure != procedureDefinition);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
+      if ((((!Objects.equal(procedure, null)) && (procedure != procedureDefinition)) && Objects.equal(procedureDefinition.getName(), procedure.getName()))) {
         String _name = procedureDefinition.getName();
-        String _name_1 = procedure.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        String _name_2 = procedureDefinition.getName();
-        String _plus = ("Duplicate name : " + _name_2);
+        String _plus = ("Duplicate name : " + _name);
         String _plus_1 = (_plus + "[procedure]");
         this.error(_plus_1, ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME);
         return;
       }
     }
-    boolean _and_2 = false;
-    boolean _isResolveDb = this.isResolveDb(procedureDefinition);
-    if (!_isResolveDb) {
-      _and_2 = false;
-    } else {
+    if ((this.isResolveDb(procedureDefinition) && (!this.dbResolver.checkProcedure(procedureDefinition, procedureDefinition.getTable())))) {
       String _table = procedureDefinition.getTable();
-      boolean _checkProcedure = this.dbResolver.checkProcedure(procedureDefinition, _table);
-      boolean _not = (!_checkProcedure);
-      _and_2 = _not;
-    }
-    if (_and_2) {
-      String _table_1 = procedureDefinition.getTable();
-      String _plus_2 = ("Cannot find procedure in DB : " + _table_1);
+      String _plus_2 = ("Cannot find procedure in DB : " + _table);
       this.error(_plus_2, ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME);
     }
   }
@@ -322,25 +183,9 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     }
     EList<FunctionDefinitionModel> _functions = artifacts.getFunctions();
     for (final FunctionDefinitionModel function : _functions) {
-      boolean _and = false;
-      boolean _and_1 = false;
-      boolean _notEquals = (!Objects.equal(function, null));
-      if (!_notEquals) {
-        _and_1 = false;
-      } else {
-        _and_1 = (function != functionDefinition);
-      }
-      if (!_and_1) {
-        _and = false;
-      } else {
+      if ((((!Objects.equal(function, null)) && (function != functionDefinition)) && Objects.equal(functionDefinition.getName(), function.getName()))) {
         String _name = functionDefinition.getName();
-        String _name_1 = function.getName();
-        boolean _equals_1 = Objects.equal(_name, _name_1);
-        _and = _equals_1;
-      }
-      if (_and) {
-        String _name_2 = functionDefinition.getName();
-        String _plus = ("Duplicate name : " + _name_2);
+        String _plus = ("Duplicate name : " + _name);
         String _plus_1 = (_plus + "[function]");
         this.error(_plus_1, ProcessorModelPackage.Literals.FUNCTION_DEFINITION_MODEL__NAME);
         return;
@@ -365,39 +210,16 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
       if (_notEquals) {
         EList<AbstractEntity> _elements = pkg.getElements();
         for (final AbstractEntity abstractEntity : _elements) {
-          boolean _and = false;
-          boolean _notEquals_1 = (!Objects.equal(abstractEntity, null));
-          if (!_notEquals_1) {
-            _and = false;
-          } else {
-            _and = (abstractEntity instanceof AnnotatedEntity);
-          }
-          if (_and) {
+          if (((!Objects.equal(abstractEntity, null)) && (abstractEntity instanceof AnnotatedEntity))) {
             final AnnotatedEntity annotatedEntity = ((AnnotatedEntity) abstractEntity);
             Entity _entity = annotatedEntity.getEntity();
-            boolean _notEquals_2 = (!Objects.equal(_entity, null));
-            if (_notEquals_2) {
+            boolean _notEquals_1 = (!Objects.equal(_entity, null));
+            if (_notEquals_1) {
               Entity _entity_1 = annotatedEntity.getEntity();
               final Entity _entity_2 = ((Entity) _entity_1);
-              boolean _and_1 = false;
-              boolean _and_2 = false;
-              boolean _notEquals_3 = (!Objects.equal(_entity_2, null));
-              if (!_notEquals_3) {
-                _and_2 = false;
-              } else {
-                _and_2 = (_entity_2 != entity);
-              }
-              if (!_and_2) {
-                _and_1 = false;
-              } else {
+              if ((((!Objects.equal(_entity_2, null)) && (_entity_2 != entity)) && Objects.equal(entity.getName(), _entity_2.getName()))) {
                 String _name = entity.getName();
-                String _name_1 = _entity_2.getName();
-                boolean _equals_1 = Objects.equal(_name, _name_1);
-                _and_1 = _equals_1;
-              }
-              if (_and_1) {
-                String _name_2 = entity.getName();
-                String _plus = ("Duplicate name : " + _name_2);
+                String _plus = ("Duplicate name : " + _name);
                 this.error(_plus, ProcessorModelPackage.Literals.ENTITY__NAME);
                 return;
               }
@@ -428,25 +250,9 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
         };
         List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
         for (final Feature _feature : _map) {
-          boolean _and = false;
-          boolean _and_1 = false;
-          boolean _notEquals_1 = (!Objects.equal(_feature, null));
-          if (!_notEquals_1) {
-            _and_1 = false;
-          } else {
-            _and_1 = (_feature != feature);
-          }
-          if (!_and_1) {
-            _and = false;
-          } else {
+          if ((((!Objects.equal(_feature, null)) && (_feature != feature)) && Objects.equal(feature.getName(), _feature.getName()))) {
             String _name = feature.getName();
-            String _name_1 = _feature.getName();
-            boolean _equals = Objects.equal(_name, _name_1);
-            _and = _equals;
-          }
-          if (_and) {
-            String _name_2 = feature.getName();
-            String _plus = ("Duplicate name : " + _name_2);
+            String _plus = ("Duplicate name : " + _name);
             this.error(_plus, ProcessorModelPackage.Literals.FEATURE__NAME);
             return;
           }
@@ -463,25 +269,9 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
           };
           List<Feature> _map_1 = ListExtensions.<AnnotatedFeature, Feature>map(_features_1, _function_1);
           for (final Feature _feature_1 : _map_1) {
-            boolean _and_2 = false;
-            boolean _and_3 = false;
-            boolean _notEquals_2 = (!Objects.equal(_feature_1, null));
-            if (!_notEquals_2) {
-              _and_3 = false;
-            } else {
-              _and_3 = (_feature_1 != feature);
-            }
-            if (!_and_3) {
-              _and_2 = false;
-            } else {
-              String _name_3 = feature.getName();
-              String _name_4 = _feature_1.getName();
-              boolean _equals_1 = Objects.equal(_name_3, _name_4);
-              _and_2 = _equals_1;
-            }
-            if (_and_2) {
-              String _name_5 = feature.getName();
-              String _plus_1 = ("Duplicate name : " + _name_5);
+            if ((((!Objects.equal(_feature_1, null)) && (_feature_1 != feature)) && Objects.equal(feature.getName(), _feature_1.getName()))) {
+              String _name_1 = feature.getName();
+              String _plus_1 = ("Duplicate name : " + _name_1);
               this.error(_plus_1, ProcessorModelPackage.Literals.FEATURE__NAME);
               return;
             }

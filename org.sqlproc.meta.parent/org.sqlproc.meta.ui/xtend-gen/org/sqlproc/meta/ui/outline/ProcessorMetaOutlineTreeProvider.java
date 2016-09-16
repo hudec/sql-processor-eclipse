@@ -63,58 +63,56 @@ public class ProcessorMetaOutlineTreeProvider extends DefaultOutlineTreeProvider
   @Override
   public void _createChildren(final IOutlineNode parentNode, final EObject modelElement) {
     boolean _matched = false;
-    if (!_matched) {
-      if (modelElement instanceof MetaStatement) {
-        _matched=true;
-        final Comparator<Identifier> _function = new Comparator<Identifier>() {
-          @Override
-          public int compare(final Identifier a, final Identifier b) {
-            String _name = a.getName();
-            String _name_1 = b.getName();
-            return _name.compareTo(_name_1);
-          }
-        };
-        final TreeSet<Identifier> identifiers = CollectionLiterals.<Identifier>newTreeSet(_function);
-        final Comparator<Constant> _function_1 = new Comparator<Constant>() {
-          @Override
-          public int compare(final Constant a, final Constant b) {
-            String _name = a.getName();
-            String _name_1 = b.getName();
-            return _name.compareTo(_name_1);
-          }
-        };
-        final TreeSet<Constant> constants = CollectionLiterals.<Constant>newTreeSet(_function_1);
-        final Comparator<Column> _function_2 = new Comparator<Column>() {
-          @Override
-          public int compare(final Column a, final Column b) {
-            String _name = Utils.getName(a);
-            String _name_1 = Utils.getName(b);
-            return _name.compareTo(_name_1);
-          }
-        };
-        final TreeSet<Column> columns = CollectionLiterals.<Column>newTreeSet(_function_2);
-        final Comparator<DatabaseColumn> _function_3 = new Comparator<DatabaseColumn>() {
-          @Override
-          public int compare(final DatabaseColumn a, final DatabaseColumn b) {
-            String _name = a.getName();
-            String _name_1 = b.getName();
-            return _name.compareTo(_name_1);
-          }
-        };
-        final TreeSet<DatabaseColumn> databaseColumns = CollectionLiterals.<DatabaseColumn>newTreeSet(_function_3);
-        Collector.allVariables(((MetaStatement) modelElement), identifiers, constants, columns, databaseColumns);
-        for (final Identifier identifier : identifiers) {
-          this.createNode(parentNode, identifier);
+    if (modelElement instanceof MetaStatement) {
+      _matched=true;
+      final Comparator<Identifier> _function = new Comparator<Identifier>() {
+        @Override
+        public int compare(final Identifier a, final Identifier b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
         }
-        for (final Constant constant : constants) {
-          this.createNode(parentNode, constant);
+      };
+      final TreeSet<Identifier> identifiers = CollectionLiterals.<Identifier>newTreeSet(_function);
+      final Comparator<Constant> _function_1 = new Comparator<Constant>() {
+        @Override
+        public int compare(final Constant a, final Constant b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
         }
-        for (final Column column : columns) {
-          this.createNode(parentNode, column);
+      };
+      final TreeSet<Constant> constants = CollectionLiterals.<Constant>newTreeSet(_function_1);
+      final Comparator<Column> _function_2 = new Comparator<Column>() {
+        @Override
+        public int compare(final Column a, final Column b) {
+          String _name = Utils.getName(a);
+          String _name_1 = Utils.getName(b);
+          return _name.compareTo(_name_1);
         }
-        for (final DatabaseColumn column_1 : databaseColumns) {
-          this.createNode(parentNode, column_1);
+      };
+      final TreeSet<Column> columns = CollectionLiterals.<Column>newTreeSet(_function_2);
+      final Comparator<DatabaseColumn> _function_3 = new Comparator<DatabaseColumn>() {
+        @Override
+        public int compare(final DatabaseColumn a, final DatabaseColumn b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
         }
+      };
+      final TreeSet<DatabaseColumn> databaseColumns = CollectionLiterals.<DatabaseColumn>newTreeSet(_function_3);
+      Collector.allVariables(((MetaStatement) modelElement), identifiers, constants, columns, databaseColumns);
+      for (final Identifier identifier : identifiers) {
+        this.createNode(parentNode, identifier);
+      }
+      for (final Constant constant : constants) {
+        this.createNode(parentNode, constant);
+      }
+      for (final Column column : columns) {
+        this.createNode(parentNode, column);
+      }
+      for (final DatabaseColumn column_1 : databaseColumns) {
+        this.createNode(parentNode, column_1);
       }
     }
     if (!_matched) {

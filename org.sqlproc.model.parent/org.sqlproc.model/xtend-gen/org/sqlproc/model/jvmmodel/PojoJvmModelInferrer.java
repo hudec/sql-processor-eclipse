@@ -6,6 +6,7 @@ import com.google.inject.Inject;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtend2.lib.StringConcatenationClient;
@@ -941,16 +942,7 @@ public class PojoJvmModelInferrer {
                     }
                   }
                   {
-                    boolean _and = false;
-                    JvmParameterizedTypeReference _superType = entity.getSuperType();
-                    boolean _notEquals = (!Objects.equal(_superType, null));
-                    if (!_notEquals) {
-                      _and = false;
-                    } else {
-                      JvmParameterizedTypeReference _superType_1 = entity.getSuperType();
-                      _and = (_superType_1 instanceof PojoEntity);
-                    }
-                    if (_and) {
+                    if (((!Objects.equal(entity.getSuperType(), null)) && (entity.getSuperType() instanceof PojoEntity))) {
                       _builder.append(" + super.toString()");
                     }
                   }
@@ -1016,16 +1008,7 @@ public class PojoJvmModelInferrer {
                     }
                   }
                   {
-                    boolean _and = false;
-                    JvmParameterizedTypeReference _superType = entity.getSuperType();
-                    boolean _notEquals = (!Objects.equal(_superType, null));
-                    if (!_notEquals) {
-                      _and = false;
-                    } else {
-                      JvmParameterizedTypeReference _superType_1 = entity.getSuperType();
-                      _and = (_superType_1 instanceof PojoEntity);
-                    }
-                    if (_and) {
+                    if (((!Objects.equal(entity.getSuperType(), null)) && (entity.getSuperType() instanceof PojoEntity))) {
                       _builder.append(" + super.toString()");
                     }
                   }
@@ -2698,22 +2681,7 @@ public class PojoJvmModelInferrer {
   private JvmModelAssociator associator;
   
   public void addAnnotationsX(final JvmAnnotationTarget target, final Iterable<? extends XAnnotation> annotations) {
-    boolean _or = false;
-    boolean _or_1 = false;
-    boolean _equals = Objects.equal(annotations, null);
-    if (_equals) {
-      _or_1 = true;
-    } else {
-      boolean _isEmpty = IterableExtensions.isEmpty(annotations);
-      _or_1 = _isEmpty;
-    }
-    if (_or_1) {
-      _or = true;
-    } else {
-      boolean _equals_1 = Objects.equal(target, null);
-      _or = _equals_1;
-    }
-    if (_or) {
+    if (((Objects.equal(annotations, null) || IterableExtensions.isEmpty(annotations)) || Objects.equal(target, null))) {
       return;
     }
     for (final XAnnotation a : annotations) {
@@ -2722,23 +2690,7 @@ public class PojoJvmModelInferrer {
   }
   
   public void addAnnotationX(final JvmAnnotationTarget target, final XAnnotation annotation) {
-    boolean _or = false;
-    boolean _or_1 = false;
-    boolean _equals = Objects.equal(annotation, null);
-    if (_equals) {
-      _or_1 = true;
-    } else {
-      JvmType _annotationType = annotation.getAnnotationType();
-      boolean _equals_1 = Objects.equal(_annotationType, null);
-      _or_1 = _equals_1;
-    }
-    if (_or_1) {
-      _or = true;
-    } else {
-      boolean _equals_2 = Objects.equal(target, null);
-      _or = _equals_2;
-    }
-    if (_or) {
+    if (((Objects.equal(annotation, null) || Objects.equal(annotation.getAnnotationType(), null)) || Objects.equal(target, null))) {
       return;
     }
     final Set<EObject> associatedElements = this.associator.getJvmElements(annotation);
@@ -2746,28 +2698,19 @@ public class PojoJvmModelInferrer {
     boolean _not = (!_isEmpty);
     if (_not) {
       List<EObject> _list = IterableExtensions.<EObject>toList(associatedElements);
-      final Procedure1<EObject> _function = new Procedure1<EObject>() {
+      final Consumer<EObject> _function = new Consumer<EObject>() {
         @Override
-        public void apply(final EObject assoc) {
+        public void accept(final EObject assoc) {
           PojoJvmModelInferrer.this.associator.removeAllAssociation(assoc);
         }
       };
-      IterableExtensions.<EObject>forEach(_list, _function);
+      _list.forEach(_function);
     }
     this._processorTypesBuilder.addAnnotation(target, annotation);
   }
   
   public String toFirstUpper(final String s) {
-    boolean _or = false;
-    boolean _equals = Objects.equal(s, null);
-    if (_equals) {
-      _or = true;
-    } else {
-      int _length = s.length();
-      boolean _equals_1 = (_length == 0);
-      _or = _equals_1;
-    }
-    if (_or) {
+    if ((Objects.equal(s, null) || (s.length() == 0))) {
       return s;
     }
     char _charAt = s.charAt(0);
@@ -2775,9 +2718,9 @@ public class PojoJvmModelInferrer {
     if (_isUpperCase) {
       return s;
     }
-    int _length_1 = s.length();
-    boolean _equals_2 = (_length_1 == 1);
-    if (_equals_2) {
+    int _length = s.length();
+    boolean _equals = (_length == 1);
+    if (_equals) {
       return s.toUpperCase();
     }
     String _substring = s.substring(0, 1);

@@ -147,14 +147,12 @@ public class EnumJvmModelInferrer extends AbstractModelInferrer {
                 String _switchResult = null;
                 XExpression _value = epv.getValue();
                 boolean _matched = false;
-                if (!_matched) {
-                  if (_value instanceof XStringLiteral) {
-                    _matched=true;
-                    XExpression _value_1 = epv.getValue();
-                    String _value_2 = ((XStringLiteral) _value_1).getValue();
-                    String _plus = ("\"" + _value_2);
-                    _switchResult = (_plus + "\"");
-                  }
+                if (_value instanceof XStringLiteral) {
+                  _matched=true;
+                  XExpression _value_1 = epv.getValue();
+                  String _value_2 = ((XStringLiteral) _value_1).getValue();
+                  String _plus = ("\"" + _value_2);
+                  _switchResult = (_plus + "\"");
                 }
                 if (!_matched) {
                   if (_value instanceof XNumberLiteral) {

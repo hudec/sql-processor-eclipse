@@ -17,6 +17,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
@@ -33,7 +34,6 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
-import org.eclipse.xtext.xbase.lib.Procedures.Procedure1;
 import org.sqlproc.model.processorModel.AbstractEntity;
 import org.sqlproc.model.processorModel.AnnotatedEntity;
 import org.sqlproc.model.processorModel.DatabaseProperty;
@@ -66,9 +66,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   public void addProposalList(final List<String> values, final String lexerRule, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix) {
     if (values!=null) {
-      final Procedure1<String> _function = new Procedure1<String>() {
+      final Consumer<String> _function = new Consumer<String>() {
         @Override
-        public void apply(final String value) {
+        public void accept(final String value) {
           IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
           String _elvis = null;
           if (prefix != null) {
@@ -82,7 +82,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
           acceptor.accept(_createCompletionProposal);
         }
       };
-      IterableExtensions.<String>forEach(values, _function);
+      values.forEach(_function);
     }
   }
   
@@ -169,16 +169,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_tables, _function);
-    final Procedure1<String> _function_1 = new Procedure1<String>() {
+    final Consumer<String> _function_1 = new Consumer<String>() {
       @Override
-      public void apply(final String table) {
+      public void accept(final String table) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(table, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal((proposal + suffix), context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_filter, _function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptProcedures(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
@@ -191,16 +191,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_procedures, _function);
-    final Procedure1<String> _function_1 = new Procedure1<String>() {
+    final Consumer<String> _function_1 = new Consumer<String>() {
       @Override
-      public void apply(final String table) {
+      public void accept(final String table) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(table, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_filter, _function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptFunctions(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
@@ -213,16 +213,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_functions, _function);
-    final Procedure1<String> _function_1 = new Procedure1<String>() {
+    final Consumer<String> _function_1 = new Consumer<String>() {
       @Override
-      public void apply(final String table) {
+      public void accept(final String table) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(table, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_filter, _function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptCheckConstraints(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
@@ -235,16 +235,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_checkConstraints, _function);
-    final Procedure1<String> _function_1 = new Procedure1<String>() {
+    final Consumer<String> _function_1 = new Consumer<String>() {
       @Override
-      public void apply(final String table) {
+      public void accept(final String table) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(table, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_filter, _function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptSequences(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
@@ -257,22 +257,22 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       }
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_sequences, _function);
-    final Procedure1<String> _function_1 = new Procedure1<String>() {
+    final Consumer<String> _function_1 = new Consumer<String>() {
       @Override
-      public void apply(final String table) {
+      public void accept(final String table) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(table, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_filter, _function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptColumns(final List<String> columns, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix, final String suffix) {
-    final Procedure1<String> _function = new Procedure1<String>() {
+    final Consumer<String> _function = new Consumer<String>() {
       @Override
-      public void apply(final String column) {
+      public void accept(final String column) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(column, "IDENT");
         String _xifexpression = null;
@@ -295,7 +295,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(columns, _function);
+    columns.forEach(_function);
   }
   
   @Override
@@ -422,15 +422,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completePojogenProperty_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -452,15 +444,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completePojogenProperty_DbColumns(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -586,15 +570,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeColumnTypeAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -632,15 +608,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeColumnAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -665,53 +633,24 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeImportAssignement_PkTable(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ImportAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ImportAssignement)))) {
       super.completeImportAssignement_PkTable(model, assignment, context, acceptor);
       return;
     }
     final ImportAssignement imp = ((ImportAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
-    boolean _and = false;
-    String _dbTable = prop.getDbTable();
-    boolean _notEquals = (!Objects.equal(_dbTable, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      String _dbColumn = imp.getDbColumn();
-      boolean _notEquals_1 = (!Objects.equal(_dbColumn, null));
-      _and = _notEquals_1;
-    }
-    if (_and) {
+    if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(imp.getDbColumn(), null)))) {
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-many-to-one", _name);
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
-        String _dbTable_1 = prop.getDbTable();
-        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable_1);
-        final Procedure1<DbImport> _function = new Procedure1<DbImport>() {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
+        final Consumer<DbImport> _function = new Consumer<DbImport>() {
           @Override
-          public void apply(final DbImport dbImport) {
-            boolean _and = false;
-            String _fkColumn = dbImport.getFkColumn();
-            boolean _notEquals = (!Objects.equal(_fkColumn, null));
-            if (!_notEquals) {
-              _and = false;
-            } else {
-              String _fkColumn_1 = dbImport.getFkColumn();
-              String _dbColumn = imp.getDbColumn();
-              boolean _equals = _fkColumn_1.equals(_dbColumn);
-              _and = _equals;
-            }
-            if (_and) {
+          public void accept(final DbImport dbImport) {
+            if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
               IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
               String _pkTable = dbImport.getPkTable();
               final String proposal = _valueConverter.toString(_pkTable, "IDENT");
@@ -720,82 +659,34 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
             }
           }
         };
-        IterableExtensions.<DbImport>forEach(_dbImports, _function);
+        _dbImports.forEach(_function);
       }
     }
   }
   
   @Override
   public void completeImportAssignement_PkColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ImportAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ImportAssignement)))) {
       super.completeImportAssignement_PkColumn(model, assignment, context, acceptor);
       return;
     }
     final ImportAssignement imp = ((ImportAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
-    boolean _and = false;
-    boolean _and_1 = false;
-    String _dbTable = prop.getDbTable();
-    boolean _notEquals = (!Objects.equal(_dbTable, null));
-    if (!_notEquals) {
-      _and_1 = false;
-    } else {
-      String _dbColumn = imp.getDbColumn();
-      boolean _notEquals_1 = (!Objects.equal(_dbColumn, null));
-      _and_1 = _notEquals_1;
-    }
-    if (!_and_1) {
-      _and = false;
-    } else {
-      String _pkTable = imp.getPkTable();
-      boolean _notEquals_2 = (!Objects.equal(_pkTable, null));
-      _and = _notEquals_2;
-    }
-    if (_and) {
+    if ((((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(imp.getDbColumn(), null))) && (!Objects.equal(imp.getPkTable(), null)))) {
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-many-to-one", _name);
       if (_equals) {
-        String _pkTable_1 = imp.getPkTable();
-        List<String> _columns = this.dbResolver.getColumns(model, _pkTable_1);
+        String _pkTable = imp.getPkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _pkTable);
         this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
-        String _dbTable_1 = prop.getDbTable();
-        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable_1);
-        final Procedure1<DbImport> _function = new Procedure1<DbImport>() {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
+        final Consumer<DbImport> _function = new Consumer<DbImport>() {
           @Override
-          public void apply(final DbImport dbImport) {
-            boolean _and = false;
-            String _fkColumn = dbImport.getFkColumn();
-            boolean _notEquals = (!Objects.equal(_fkColumn, null));
-            if (!_notEquals) {
-              _and = false;
-            } else {
-              String _fkColumn_1 = dbImport.getFkColumn();
-              String _dbColumn = imp.getDbColumn();
-              boolean _equals = _fkColumn_1.equals(_dbColumn);
-              _and = _equals;
-            }
-            if (_and) {
-              boolean _and_1 = false;
-              String _pkTable = dbImport.getPkTable();
-              boolean _notEquals_1 = (!Objects.equal(_pkTable, null));
-              if (!_notEquals_1) {
-                _and_1 = false;
-              } else {
-                String _pkTable_1 = dbImport.getPkTable();
-                String _pkTable_2 = imp.getPkTable();
-                boolean _equals_1 = _pkTable_1.equals(_pkTable_2);
-                _and_1 = _equals_1;
-              }
-              if (_and_1) {
+          public void accept(final DbImport dbImport) {
+            if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
+              if (((!Objects.equal(dbImport.getPkTable(), null)) && dbImport.getPkTable().equals(imp.getPkTable()))) {
                 IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
                 String _pkColumn = dbImport.getPkColumn();
                 final String proposal = _valueConverter.toString(_pkColumn, "IDENT");
@@ -805,22 +696,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
             }
           }
         };
-        IterableExtensions.<DbImport>forEach(_dbImports, _function);
+        _dbImports.forEach(_function);
       }
     }
   }
   
   @Override
   public void completeImportAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -842,53 +725,24 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeExportAssignement_FkTable(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ExportAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ExportAssignement)))) {
       super.completeExportAssignement_FkTable(model, assignment, context, acceptor);
       return;
     }
     final ExportAssignement exp = ((ExportAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
-    boolean _and = false;
-    String _dbTable = prop.getDbTable();
-    boolean _notEquals = (!Objects.equal(_dbTable, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      String _dbColumn = exp.getDbColumn();
-      boolean _notEquals_1 = (!Objects.equal(_dbColumn, null));
-      _and = _notEquals_1;
-    }
-    if (_and) {
+    if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(exp.getDbColumn(), null)))) {
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-one-to-many", _name);
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
-        String _dbTable_1 = prop.getDbTable();
-        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable_1);
-        final Procedure1<DbExport> _function = new Procedure1<DbExport>() {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
+        final Consumer<DbExport> _function = new Consumer<DbExport>() {
           @Override
-          public void apply(final DbExport dbExport) {
-            boolean _and = false;
-            String _pkColumn = dbExport.getPkColumn();
-            boolean _notEquals = (!Objects.equal(_pkColumn, null));
-            if (!_notEquals) {
-              _and = false;
-            } else {
-              String _pkColumn_1 = dbExport.getPkColumn();
-              String _dbColumn = exp.getDbColumn();
-              boolean _equals = _pkColumn_1.equals(_dbColumn);
-              _and = _equals;
-            }
-            if (_and) {
+          public void accept(final DbExport dbExport) {
+            if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
               IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
               String _fkTable = dbExport.getFkTable();
               final String proposal = _valueConverter.toString(_fkTable, "IDENT");
@@ -897,82 +751,34 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
             }
           }
         };
-        IterableExtensions.<DbExport>forEach(_dbExports, _function);
+        _dbExports.forEach(_function);
       }
     }
   }
   
   @Override
   public void completeExportAssignement_FkColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ExportAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ExportAssignement)))) {
       super.completeExportAssignement_FkColumn(model, assignment, context, acceptor);
       return;
     }
     final ExportAssignement exp = ((ExportAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
-    boolean _and = false;
-    boolean _and_1 = false;
-    String _dbTable = prop.getDbTable();
-    boolean _notEquals = (!Objects.equal(_dbTable, null));
-    if (!_notEquals) {
-      _and_1 = false;
-    } else {
-      String _dbColumn = exp.getDbColumn();
-      boolean _notEquals_1 = (!Objects.equal(_dbColumn, null));
-      _and_1 = _notEquals_1;
-    }
-    if (!_and_1) {
-      _and = false;
-    } else {
-      String _fkTable = exp.getFkTable();
-      boolean _notEquals_2 = (!Objects.equal(_fkTable, null));
-      _and = _notEquals_2;
-    }
-    if (_and) {
+    if ((((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(exp.getDbColumn(), null))) && (!Objects.equal(exp.getFkTable(), null)))) {
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-one-to-many", _name);
       if (_equals) {
-        String _fkTable_1 = exp.getFkTable();
-        List<String> _columns = this.dbResolver.getColumns(model, _fkTable_1);
+        String _fkTable = exp.getFkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _fkTable);
         this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
-        String _dbTable_1 = prop.getDbTable();
-        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable_1);
-        final Procedure1<DbExport> _function = new Procedure1<DbExport>() {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
+        final Consumer<DbExport> _function = new Consumer<DbExport>() {
           @Override
-          public void apply(final DbExport dbExport) {
-            boolean _and = false;
-            String _pkColumn = dbExport.getPkColumn();
-            boolean _notEquals = (!Objects.equal(_pkColumn, null));
-            if (!_notEquals) {
-              _and = false;
-            } else {
-              String _pkColumn_1 = dbExport.getPkColumn();
-              String _dbColumn = exp.getDbColumn();
-              boolean _equals = _pkColumn_1.equals(_dbColumn);
-              _and = _equals;
-            }
-            if (_and) {
-              boolean _and_1 = false;
-              String _fkTable = dbExport.getFkTable();
-              boolean _notEquals_1 = (!Objects.equal(_fkTable, null));
-              if (!_notEquals_1) {
-                _and_1 = false;
-              } else {
-                String _fkTable_1 = dbExport.getFkTable();
-                String _fkTable_2 = exp.getFkTable();
-                boolean _equals_1 = _fkTable_1.equals(_fkTable_2);
-                _and_1 = _equals_1;
-              }
-              if (_and_1) {
+          public void accept(final DbExport dbExport) {
+            if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
+              if (((!Objects.equal(dbExport.getFkTable(), null)) && dbExport.getFkTable().equals(exp.getFkTable()))) {
                 IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
                 String _fkColumn = dbExport.getFkColumn();
                 final String proposal = _valueConverter.toString(_fkColumn, "IDENT");
@@ -982,22 +788,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
             }
           }
         };
-        IterableExtensions.<DbExport>forEach(_dbExports, _function);
+        _dbExports.forEach(_function);
       }
     }
   }
   
   @Override
   public void completeExportAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -1019,15 +817,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeManyToManyAssignement_PkColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -1049,48 +839,19 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeManyToManyAssignement_PkTable(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ManyToManyAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ManyToManyAssignement)))) {
       super.completeManyToManyAssignement_PkTable(model, assignment, context, acceptor);
       return;
     }
     final ManyToManyAssignement many2 = ((ManyToManyAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
-    boolean _and = false;
-    String _dbTable = prop.getDbTable();
-    boolean _notEquals = (!Objects.equal(_dbTable, null));
-    if (!_notEquals) {
-      _and = false;
-    } else {
-      String _pkColumn = many2.getPkColumn();
-      boolean _notEquals_1 = (!Objects.equal(_pkColumn, null));
-      _and = _notEquals_1;
-    }
-    if (_and) {
-      String _dbTable_1 = prop.getDbTable();
-      List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable_1);
-      final Procedure1<DbImport> _function = new Procedure1<DbImport>() {
+    if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(many2.getPkColumn(), null)))) {
+      String _dbTable = prop.getDbTable();
+      List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
+      final Consumer<DbImport> _function = new Consumer<DbImport>() {
         @Override
-        public void apply(final DbImport dbImport) {
-          boolean _and = false;
-          String _pkColumn = dbImport.getPkColumn();
-          boolean _notEquals = (!Objects.equal(_pkColumn, null));
-          if (!_notEquals) {
-            _and = false;
-          } else {
-            String _pkColumn_1 = dbImport.getPkColumn();
-            String _pkColumn_2 = many2.getPkColumn();
-            boolean _equals = _pkColumn_1.equals(_pkColumn_2);
-            _and = _equals;
-          }
-          if (_and) {
+        public void accept(final DbImport dbImport) {
+          if (((!Objects.equal(dbImport.getPkColumn(), null)) && dbImport.getPkColumn().equals(many2.getPkColumn()))) {
             IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
             String _pkTable = dbImport.getPkTable();
             final String proposal = _valueConverter.toString(_pkTable, "IDENT");
@@ -1099,21 +860,13 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
           }
         }
       };
-      IterableExtensions.<DbImport>forEach(_dbImports, _function);
+      _dbImports.forEach(_function);
     }
   }
   
   @Override
   public void completeInheritanceAssignement_DbColumns(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof InheritanceAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof InheritanceAssignement)))) {
       super.completeInheritanceAssignement_DbColumns(model, assignment, context, acceptor);
       return;
     }
@@ -1135,29 +888,21 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       super.completePojogenProperty_Methods(model, assignment, context, acceptor);
       return;
     }
-    final Procedure1<String> _function = new Procedure1<String>() {
+    final Consumer<String> _function = new Consumer<String>() {
       @Override
-      public void apply(final String method) {
+      public void accept(final String method) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(method, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(this.methods, _function);
+    this.methods.forEach(_function);
   }
   
   @Override
   public void completeShowColumnTypeAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof PojogenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof PojogenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -1195,15 +940,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeShowColumnTypeAssignement_Type(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof ShowColumnTypeAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof ShowColumnTypeAssignement)))) {
       super.completeShowColumnTypeAssignement_Type(model, assignment, context, acceptor);
       return;
     }
@@ -1278,16 +1015,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     };
     final TreeSet<PojoEntity> result = CollectionLiterals.<PojoEntity>newTreeSet(_function);
     Iterable<IEObjectDescription> _allElements = scope.getAllElements();
-    final Procedure1<IEObjectDescription> _function_1 = new Procedure1<IEObjectDescription>() {
+    final Consumer<IEObjectDescription> _function_1 = new Consumer<IEObjectDescription>() {
       @Override
-      public void apply(final IEObjectDescription description) {
+      public void accept(final IEObjectDescription description) {
         URI _eObjectURI = description.getEObjectURI();
         EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
         final org.sqlproc.model.processorModel.Package packageDeclaration = ((org.sqlproc.model.processorModel.Package) _eObject);
         EList<AbstractEntity> _elements = packageDeclaration.getElements();
-        final Procedure1<AbstractEntity> _function = new Procedure1<AbstractEntity>() {
+        final Consumer<AbstractEntity> _function = new Consumer<AbstractEntity>() {
           @Override
-          public void apply(final AbstractEntity aEntity) {
+          public void accept(final AbstractEntity aEntity) {
             if ((aEntity instanceof AnnotatedEntity)) {
               AnnotatedEntity ae = ((AnnotatedEntity) aEntity);
               Entity _entity = ae.getEntity();
@@ -1298,10 +1035,10 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
             }
           }
         };
-        IterableExtensions.<AbstractEntity>forEach(_elements, _function);
+        _elements.forEach(_function);
       }
     };
-    IterableExtensions.<IEObjectDescription>forEach(_allElements, _function_1);
+    _allElements.forEach(_function_1);
     return result;
   }
   
@@ -1381,15 +1118,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeMetaTypeAssignement_DbColumn(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = ((!(model instanceof MetagenProperty)) && (!(model instanceof Property)));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || ((!(model instanceof MetagenProperty)) && (!(model instanceof Property))))) {
       super.completeColumnTypeAssignement_DbColumn(model, assignment, context, acceptor);
       return;
     }
@@ -1418,15 +1147,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeMetagenProperty_DbColumns(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof MetagenProperty));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof MetagenProperty)))) {
       super.completeMetagenProperty_DbColumns(model, assignment, context, acceptor);
       return;
     }
@@ -1476,42 +1197,26 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   @Override
   public void completeDriverMethodOutputAssignement_DriverMethod(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof DatabaseProperty));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof DatabaseProperty)))) {
       super.completeDriverMethodOutputAssignement_DriverMethod(model, assignment, context, acceptor);
       return;
     }
     Set<String> _driverMethods = this.dbResolver.getDriverMethods(model);
-    final Procedure1<String> _function = new Procedure1<String>() {
+    final Consumer<String> _function = new Consumer<String>() {
       @Override
-      public void apply(final String driverMetod) {
+      public void accept(final String driverMetod) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(driverMetod, "PropertyValue");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal((proposal + "->"), context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_driverMethods, _function);
+    _driverMethods.forEach(_function);
   }
   
   @Override
   public void completeDriverMethodOutputAssignement_CallOutput(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _or = false;
-    boolean _isResolveDb = this.isResolveDb(model);
-    boolean _not = (!_isResolveDb);
-    if (_not) {
-      _or = true;
-    } else {
-      _or = (!(model instanceof DriverMethodOutputAssignement));
-    }
-    if (_or) {
+    if (((!this.isResolveDb(model)) || (!(model instanceof DriverMethodOutputAssignement)))) {
       super.completeDriverMethodOutputAssignement_CallOutput(model, assignment, context, acceptor);
       return;
     }
@@ -1541,9 +1246,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     }
     final String dbMetaInfo = this.dbResolver.getDbMetaInfo(model);
     DbResolver.DbType[] _fromDbMetaInfo = DbResolver.DbType.fromDbMetaInfo(dbMetaInfo);
-    final Procedure1<DbResolver.DbType> _function = new Procedure1<DbResolver.DbType>() {
+    final Consumer<DbResolver.DbType> _function = new Consumer<DbResolver.DbType>() {
       @Override
-      public void apply(final DbResolver.DbType dbType) {
+      public void accept(final DbResolver.DbType dbType) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         String _value = dbType.getValue();
         final String proposal = _valueConverter.toString(_value, "PropertyValue");
@@ -1551,7 +1256,7 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<DbResolver.DbType>forEach(((Iterable<DbResolver.DbType>)Conversions.doWrapArray(_fromDbMetaInfo)), _function);
+    ((List<DbResolver.DbType>)Conversions.doWrapArray(_fromDbMetaInfo)).forEach(_function);
   }
   
   @Override
@@ -1563,16 +1268,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     List<String> _catalogs = this.dbResolver.getCatalogs(model);
-    final Procedure1<String> _function = new Procedure1<String>() {
+    final Consumer<String> _function = new Consumer<String>() {
       @Override
-      public void apply(final String catalog) {
+      public void accept(final String catalog) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(catalog, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_catalogs, _function);
+    _catalogs.forEach(_function);
   }
   
   @Override
@@ -1584,16 +1289,16 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     List<String> _schemas = this.dbResolver.getSchemas(model);
-    final Procedure1<String> _function = new Procedure1<String>() {
+    final Consumer<String> _function = new Consumer<String>() {
       @Override
-      public void apply(final String schema) {
+      public void accept(final String schema) {
         IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
         final String proposal = _valueConverter.toString(schema, "IDENT");
         ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
         acceptor.accept(_createCompletionProposal);
       }
     };
-    IterableExtensions.<String>forEach(_schemas, _function);
+    _schemas.forEach(_function);
   }
   
   @Override

@@ -4,7 +4,6 @@ import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmSpecializedTypeReference;
-import org.eclipse.xtext.common.types.JvmType;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmUnknownTypeReference;
 import org.eclipse.xtext.xbase.compiler.ErrorSafeExtensions;
@@ -37,14 +36,7 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
   protected ITreeAppendable closeErrorAppendable(final ITreeAppendable parent, final ITreeAppendable child) {
     ITreeAppendable _xblockexpression = null;
     {
-      boolean _and = false;
-      if (!(child instanceof ErrorTreeAppendable)) {
-        _and = false;
-      } else {
-        boolean _notEquals = (!Objects.equal(child, parent));
-        _and = _notEquals;
-      }
-      if (_and) {
+      if (((child instanceof ErrorTreeAppendable) && (!Objects.equal(child, parent)))) {
         child.append("");
       }
       _xblockexpression = parent;
@@ -54,23 +46,12 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
   
   @Override
   public void serializeSafely(final JvmTypeReference typeRef, final String surrogateType, final ITreeAppendable appendable) {
-    boolean _or = false;
-    boolean _equals = Objects.equal(typeRef, null);
-    if (_equals) {
-      _or = true;
-    } else {
-      JvmType _type = typeRef.getType();
-      boolean _equals_1 = Objects.equal(_type, null);
-      _or = _equals_1;
-    }
-    if (_or) {
+    if ((Objects.equal(typeRef, null) || Objects.equal(typeRef.getType(), null))) {
       boolean _matched = false;
-      if (!_matched) {
-        if (typeRef instanceof JvmSpecializedTypeReference) {
-          _matched=true;
-          JvmTypeReference _equivalent = ((JvmSpecializedTypeReference)typeRef).getEquivalent();
-          this.serializeSafely(_equivalent, surrogateType, appendable);
-        }
+      if (typeRef instanceof JvmSpecializedTypeReference) {
+        _matched=true;
+        JvmTypeReference _equivalent = ((JvmSpecializedTypeReference)typeRef).getEquivalent();
+        this.serializeSafely(_equivalent, surrogateType, appendable);
       }
       if (!_matched) {
         if (typeRef instanceof JvmUnknownTypeReference) {

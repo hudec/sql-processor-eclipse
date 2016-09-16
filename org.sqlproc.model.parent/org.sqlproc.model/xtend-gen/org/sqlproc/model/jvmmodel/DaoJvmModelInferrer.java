@@ -129,16 +129,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
   
   public void inferDaoIfx(final DaoEntity entity, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase) {
     final PojoEntity pojo = this._processorGeneratorUtils.getPojo(entity);
-    boolean _and = false;
-    boolean _equals = Objects.equal(pojo, null);
-    if (!_equals) {
-      _and = false;
-    } else {
-      boolean _isFunctionProcedure = this._processorGeneratorUtils.isFunctionProcedure(entity);
-      boolean _not = (!_isFunctionProcedure);
-      _and = _not;
-    }
-    if (_and) {
+    if ((Objects.equal(pojo, null) && (!this._processorGeneratorUtils.isFunctionProcedure(entity)))) {
       InputOutput.<String>println(("Missing POJO for " + entity));
       return;
     }
@@ -159,16 +150,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
       _class=this._processorTypesBuilder.toClass(pojo, _fullyQualifiedName_1);
     }
     final JvmGenericType pojoType = _class;
-    boolean _and_1 = false;
-    boolean _equals_1 = Objects.equal(pojoType, null);
-    if (!_equals_1) {
-      _and_1 = false;
-    } else {
-      boolean _isFunctionProcedure_1 = this._processorGeneratorUtils.isFunctionProcedure(entity);
-      boolean _not_1 = (!_isFunctionProcedure_1);
-      _and_1 = _not_1;
-    }
-    if (_and_1) {
+    if ((Objects.equal(pojoType, null) && (!this._processorGeneratorUtils.isFunctionProcedure(entity)))) {
       InputOutput.<String>println(("Missing POJOTYPE for " + entity));
       return;
     }
@@ -235,25 +217,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
               DaoJvmModelInferrer.this.inferListIfx(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_4, moreResultClasses);
               EList<JvmMember> _members_5 = it.getMembers();
               DaoJvmModelInferrer.this.inferQueryIfx(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_5, moreResultClasses);
-              boolean _and = false;
-              boolean _and_1 = false;
-              boolean _notEquals_1 = (!Objects.equal(primaryKey, null));
-              if (!_notEquals_1) {
-                _and_1 = false;
-              } else {
-                String _fromTo = pkDir.getFromTo();
-                boolean _notEquals_2 = (!Objects.equal(_fromTo, null));
-                _and_1 = _notEquals_2;
-              }
-              if (!_and_1) {
-                _and = false;
-              } else {
-                List<PojoAttribute> _initAttributes = DaoJvmModelInferrer.this._processorGeneratorUtils.toInitAttributes(pojo);
-                boolean _isEmpty = _initAttributes.isEmpty();
-                boolean _not = (!_isEmpty);
-                _and = _not;
-              }
-              if (_and) {
+              if ((((!Objects.equal(primaryKey, null)) && (!Objects.equal(pkDir.getFromTo(), null))) && (!DaoJvmModelInferrer.this._processorGeneratorUtils.toInitAttributes(pojo).isEmpty()))) {
                 EList<JvmMember> _members_6 = it.getMembers();
                 DaoJvmModelInferrer.this.inferListFromToIfx(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_6, moreResultClasses);
               }
@@ -269,16 +233,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             }
           }
         }
-        boolean _and_2 = false;
-        boolean _notEquals_3 = (!Objects.equal(moreResultClasses, null));
-        if (!_notEquals_3) {
-          _and_2 = false;
-        } else {
-          boolean _isEmpty_1 = moreResultClasses.isEmpty();
-          boolean _not_1 = (!_isEmpty_1);
-          _and_2 = _not_1;
-        }
-        if (_and_2) {
+        if (((!Objects.equal(moreResultClasses, null)) && (!moreResultClasses.isEmpty()))) {
           EList<JvmMember> _members_9 = it.getMembers();
           DaoJvmModelInferrer.this.inferMoreResultClassesIfx(entity, entityType, simpleName, pojo, pojoType, _members_9, moreResultClasses);
         }
@@ -314,16 +269,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
    */
   public void inferDao(final DaoEntity entity, final IJvmDeclaredTypeAcceptor acceptor, final boolean isPreIndexingPhase, final String implPackage) {
     final PojoEntity pojo = this._processorGeneratorUtils.getPojo(entity);
-    boolean _and = false;
-    boolean _equals = Objects.equal(pojo, null);
-    if (!_equals) {
-      _and = false;
-    } else {
-      boolean _isFunctionProcedure = this._processorGeneratorUtils.isFunctionProcedure(entity);
-      boolean _not = (!_isFunctionProcedure);
-      _and = _not;
-    }
-    if (_and) {
+    if ((Objects.equal(pojo, null) && (!this._processorGeneratorUtils.isFunctionProcedure(entity)))) {
       InputOutput.<String>println(("Missing POJO for " + entity));
       return;
     }
@@ -351,16 +297,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
       _class=this._processorTypesBuilder.toClass(pojo, _fullyQualifiedName_1);
     }
     final JvmGenericType pojoType = _class;
-    boolean _and_1 = false;
-    boolean _equals_1 = Objects.equal(pojoType, null);
-    if (!_equals_1) {
-      _and_1 = false;
-    } else {
-      boolean _isFunctionProcedure_1 = this._processorGeneratorUtils.isFunctionProcedure(entity);
-      boolean _not_1 = (!_isFunctionProcedure_1);
-      _and_1 = _not_1;
-    }
-    if (_and_1) {
+    if ((Objects.equal(pojoType, null) && (!this._processorGeneratorUtils.isFunctionProcedure(entity)))) {
       InputOutput.<String>println(("Missing POJOTYPE for " + entity));
       return;
     }
@@ -610,25 +547,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
               DaoJvmModelInferrer.this.inferList(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_11, moreResultClasses);
               EList<JvmMember> _members_12 = it.getMembers();
               DaoJvmModelInferrer.this.inferQuery(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_12, moreResultClasses);
-              boolean _and = false;
-              boolean _and_1 = false;
-              boolean _notEquals_4 = (!Objects.equal(primaryKey, null));
-              if (!_notEquals_4) {
-                _and_1 = false;
-              } else {
-                String _fromTo = pkDir.getFromTo();
-                boolean _notEquals_5 = (!Objects.equal(_fromTo, null));
-                _and_1 = _notEquals_5;
-              }
-              if (!_and_1) {
-                _and = false;
-              } else {
-                List<PojoAttribute> _initAttributes = DaoJvmModelInferrer.this._processorGeneratorUtils.toInitAttributes(pojo);
-                boolean _isEmpty = _initAttributes.isEmpty();
-                boolean _not = (!_isEmpty);
-                _and = _not;
-              }
-              if (_and) {
+              if ((((!Objects.equal(primaryKey, null)) && (!Objects.equal(pkDir.getFromTo(), null))) && (!DaoJvmModelInferrer.this._processorGeneratorUtils.toInitAttributes(pojo).isEmpty()))) {
                 EList<JvmMember> _members_13 = it.getMembers();
                 DaoJvmModelInferrer.this.inferListFromTo(entity, ((DaoDirectiveQuery) dir), entityType, simpleName, pojo, pojoType, _members_13, moreResultClasses, primaryKey);
               }
@@ -644,16 +563,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             }
           }
         }
-        boolean _and_2 = false;
-        boolean _notEquals_6 = (!Objects.equal(moreResultClasses, null));
-        if (!_notEquals_6) {
-          _and_2 = false;
-        } else {
-          boolean _isEmpty_1 = moreResultClasses.isEmpty();
-          boolean _not_1 = (!_isEmpty_1);
-          _and_2 = _not_1;
-        }
-        if (_and_2) {
+        if (((!Objects.equal(moreResultClasses, null)) && (!moreResultClasses.isEmpty()))) {
           EList<JvmMember> _members_16 = it.getMembers();
           DaoJvmModelInferrer.this.inferMoreResultClasses(entity, entityType, simpleName, pojo, pojoType, _members_16, moreResultClasses);
         }
@@ -736,8 +646,8 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
             JvmField _field_4 = DaoJvmModelInferrer.this._processorTypesBuilder.toField(entity, _name, type, _function_9);
             DaoJvmModelInferrer.this._processorTypesBuilder.<JvmField>operator_add(_members_17, _field_4);
             boolean _isStatic = attr.isStatic();
-            boolean _not_2 = (!_isStatic);
-            if (_not_2) {
+            boolean _not = (!_isStatic);
+            if (_not) {
               String _name_1 = attr.getName();
               String _name_2 = attr.getName();
               final Procedure1<JvmOperation> _function_10 = new Procedure1<JvmOperation>() {
@@ -755,8 +665,8 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                 }
               };
               final JvmOperation m1 = DaoJvmModelInferrer.this._processorTypesBuilder.toGetter(attr, _name_1, _name_2, type, procNames, _function_10);
-              boolean _notEquals_7 = (!Objects.equal(m1, null));
-              if (_notEquals_7) {
+              boolean _notEquals_4 = (!Objects.equal(m1, null));
+              if (_notEquals_4) {
                 EList<JvmMember> _members_18 = it.getMembers();
                 DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_18, m1);
               }
@@ -778,8 +688,8 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
                 }
               };
               final JvmOperation m2 = DaoJvmModelInferrer.this._processorTypesBuilder.toSetter(attr, _name_3, _name_4, type, _typeRef_9, procNames, _function_11);
-              boolean _notEquals_8 = (!Objects.equal(m2, null));
-              if (_notEquals_8) {
+              boolean _notEquals_5 = (!Objects.equal(m2, null));
+              if (_notEquals_5) {
                 EList<JvmMember> _members_19 = it.getMembers();
                 DaoJvmModelInferrer.this._processorTypesBuilder.<JvmOperation>operator_add(_members_19, m2);
               }
