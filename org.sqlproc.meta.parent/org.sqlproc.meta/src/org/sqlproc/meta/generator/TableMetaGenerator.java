@@ -1415,7 +1415,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     }
                     header.assocTables.put(pentry.getKey(), table);
                     debug.trace("333 " + pentry.getKey() + " " + table + " " + attr);
-                    if (pojoInheritanceSimple.containsKey(table.realTableName)) {
+                    if (pojoInheritanceSimple.containsKey(table.realTableName)
+                            && !notAbstractTables.contains(table.realTableName)) {
                         header.inherTables.put(pentry.getKey(), new ArrayList<Table>());
                         for (String name : pojoInheritanceSimple.get(table.realTableName)) {
                             Table table2 = new Table();
@@ -1492,7 +1493,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     header.assocTables.put(pentry.getKey(), table);
                     Table table12 = new Table();
                     table12.setNames(attr.getManyToManyTable());
-                    table12.tableKey = findPKeyName(table.realTableName);
+                    table12.tableKey = findPKeyName(table12.realTableName);
                     table12.primaryKey = findM2mKeyName(table.realTableName, table12.realTableName);
                     if (table12.tableKey == null) {
                         debug.warn("Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
@@ -1624,7 +1625,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         header.assocTables.put(pentry.getKey(), table);
                         Table table12 = new Table();
                         table12.setNames(attr.getManyToManyTable());
-                        table12.tableKey = findPKeyName(table.realTableName);
+                        table12.tableKey = findPKeyName(table12.realTableName);
                         table12.primaryKey = findM2mKeyName(table12.realTableName, table.realTableName);
                         if (table12.tableKey == null) {
                             debug.warn("Error for findM2mKeyName " + table12.realTableName + " " + table.realTableName);
