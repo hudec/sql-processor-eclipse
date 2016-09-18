@@ -602,9 +602,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 if (attribute.getRef() != null) {
                     if (pojoInheritanceDiscriminator.containsKey(attribute.getRef())
                             || pojoInheritanceSimple.containsKey(attribute.getRef())) {
-                        if (!notAbstractTables.contains(attribute.getRef())) {
-                            toInit.put(name, attribute.getRef());
-                        }
+                        toInit.put(name, attribute.getRef());
                     }
                 }
             }
