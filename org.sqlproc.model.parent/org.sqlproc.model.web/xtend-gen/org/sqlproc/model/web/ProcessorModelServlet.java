@@ -28,18 +28,12 @@ public class ProcessorModelServlet extends XtextServlet {
   public void init() {
     try {
       super.init();
-      final Provider<ExecutorService> _function = new Provider<ExecutorService>() {
-        @Override
-        public ExecutorService get() {
-          ExecutorService _newCachedThreadPool = Executors.newCachedThreadPool();
-          final Procedure1<ExecutorService> _function = new Procedure1<ExecutorService>() {
-            @Override
-            public void apply(final ExecutorService it) {
-              ProcessorModelServlet.this.executorServices.add(it);
-            }
-          };
-          return ObjectExtensions.<ExecutorService>operator_doubleArrow(_newCachedThreadPool, _function);
-        }
+      final Provider<ExecutorService> _function = () -> {
+        ExecutorService _newCachedThreadPool = Executors.newCachedThreadPool();
+        final Procedure1<ExecutorService> _function_1 = (ExecutorService it) -> {
+          this.executorServices.add(it);
+        };
+        return ObjectExtensions.<ExecutorService>operator_doubleArrow(_newCachedThreadPool, _function_1);
       };
       final Provider<ExecutorService> executorServiceProvider = _function;
       ProcessorModelWebSetup _processorModelWebSetup = new ProcessorModelWebSetup(executorServiceProvider);
@@ -51,11 +45,8 @@ public class ProcessorModelServlet extends XtextServlet {
   
   @Override
   public void destroy() {
-    final Consumer<ExecutorService> _function = new Consumer<ExecutorService>() {
-      @Override
-      public void accept(final ExecutorService it) {
-        it.shutdown();
-      }
+    final Consumer<ExecutorService> _function = (ExecutorService it) -> {
+      it.shutdown();
     };
     this.executorServices.forEach(_function);
     this.executorServices.clear();

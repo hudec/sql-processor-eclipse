@@ -14,7 +14,7 @@ import org.sqlproc.meta.web.AbstractProcessorMetaWebModule;
 @FinalFieldsConstructor
 @SuppressWarnings("all")
 public class ProcessorMetaWebModule extends AbstractProcessorMetaWebModule {
-  public ProcessorMetaWebModule(final Provider<ExecutorService> executorServiceProvider) {
-    super(executorServiceProvider);
+  public ProcessorMetaWebModule(final Provider<ExecutorService> arg0) {
+    super(arg0);
   }
 }

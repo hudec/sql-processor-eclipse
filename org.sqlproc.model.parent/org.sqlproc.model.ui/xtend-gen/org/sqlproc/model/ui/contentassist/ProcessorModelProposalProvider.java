@@ -66,21 +66,18 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   public void addProposalList(final List<String> values, final String lexerRule, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix) {
     if (values!=null) {
-      final Consumer<String> _function = new Consumer<String>() {
-        @Override
-        public void accept(final String value) {
-          IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-          String _elvis = null;
-          if (prefix != null) {
-            _elvis = prefix;
-          } else {
-            _elvis = "";
-          }
-          String _plus = (_elvis + value);
-          final String proposal = _valueConverter.toString(_plus, lexerRule);
-          ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-          acceptor.accept(_createCompletionProposal);
+      final Consumer<String> _function = (String value) -> {
+        IValueConverterService _valueConverter = this.getValueConverter();
+        String _elvis = null;
+        if (prefix != null) {
+          _elvis = prefix;
+        } else {
+          _elvis = "";
         }
+        String _plus = (_elvis + value);
+        final String proposal = _valueConverter.toString(_plus, lexerRule);
+        ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+        acceptor.accept(_createCompletionProposal);
       };
       values.forEach(_function);
     }
@@ -161,139 +158,106 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   public void acceptTables(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String suffix) {
     List<String> _tables = this.dbResolver.getTables(model);
-    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String it) {
-        int _indexOf = it.indexOf("$");
-        return Boolean.valueOf((_indexOf < 0));
-      }
+    final Function1<String, Boolean> _function = (String it) -> {
+      int _indexOf = it.indexOf("$");
+      return Boolean.valueOf((_indexOf < 0));
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_tables, _function);
-    final Consumer<String> _function_1 = new Consumer<String>() {
-      @Override
-      public void accept(final String table) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(table, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal((proposal + suffix), context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function_1 = (String table) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + suffix), context);
+      acceptor.accept(_createCompletionProposal);
     };
     _filter.forEach(_function_1);
   }
   
   public void acceptProcedures(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     List<String> _procedures = this.dbResolver.getProcedures(model);
-    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String it) {
-        int _indexOf = it.indexOf("$");
-        return Boolean.valueOf((_indexOf < 0));
-      }
+    final Function1<String, Boolean> _function = (String it) -> {
+      int _indexOf = it.indexOf("$");
+      return Boolean.valueOf((_indexOf < 0));
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_procedures, _function);
-    final Consumer<String> _function_1 = new Consumer<String>() {
-      @Override
-      public void accept(final String table) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(table, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function_1 = (String table) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _filter.forEach(_function_1);
   }
   
   public void acceptFunctions(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     List<String> _functions = this.dbResolver.getFunctions(model);
-    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String it) {
-        int _indexOf = it.indexOf("$");
-        return Boolean.valueOf((_indexOf < 0));
-      }
+    final Function1<String, Boolean> _function = (String it) -> {
+      int _indexOf = it.indexOf("$");
+      return Boolean.valueOf((_indexOf < 0));
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_functions, _function);
-    final Consumer<String> _function_1 = new Consumer<String>() {
-      @Override
-      public void accept(final String table) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(table, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function_1 = (String table) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _filter.forEach(_function_1);
   }
   
   public void acceptCheckConstraints(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     List<String> _checkConstraints = this.dbResolver.getCheckConstraints(model);
-    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String it) {
-        int _indexOf = it.indexOf("$");
-        return Boolean.valueOf((_indexOf < 0));
-      }
+    final Function1<String, Boolean> _function = (String it) -> {
+      int _indexOf = it.indexOf("$");
+      return Boolean.valueOf((_indexOf < 0));
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_checkConstraints, _function);
-    final Consumer<String> _function_1 = new Consumer<String>() {
-      @Override
-      public void accept(final String table) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(table, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function_1 = (String table) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _filter.forEach(_function_1);
   }
   
   public void acceptSequences(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     List<String> _sequences = this.dbResolver.getSequences(model);
-    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
-      @Override
-      public Boolean apply(final String it) {
-        int _indexOf = it.indexOf("$");
-        return Boolean.valueOf((_indexOf < 0));
-      }
+    final Function1<String, Boolean> _function = (String it) -> {
+      int _indexOf = it.indexOf("$");
+      return Boolean.valueOf((_indexOf < 0));
     };
     Iterable<String> _filter = IterableExtensions.<String>filter(_sequences, _function);
-    final Consumer<String> _function_1 = new Consumer<String>() {
-      @Override
-      public void accept(final String table) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(table, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function_1 = (String table) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _filter.forEach(_function_1);
   }
   
   public void acceptColumns(final List<String> columns, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix, final String suffix) {
-    final Consumer<String> _function = new Consumer<String>() {
-      @Override
-      public void accept(final String column) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(column, "IDENT");
-        String _xifexpression = null;
-        boolean _notEquals = (!Objects.equal(prefix, null));
-        if (_notEquals) {
-          _xifexpression = ((prefix + ".") + proposal);
-        } else {
-          _xifexpression = proposal;
-        }
-        String completion = _xifexpression;
-        String _xifexpression_1 = null;
-        boolean _notEquals_1 = (!Objects.equal(suffix, null));
-        if (_notEquals_1) {
-          _xifexpression_1 = (completion + suffix);
-        } else {
-          _xifexpression_1 = completion;
-        }
-        completion = _xifexpression_1;
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(completion, context);
-        acceptor.accept(_createCompletionProposal);
+    final Consumer<String> _function = (String column) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(column, "IDENT");
+      String _xifexpression = null;
+      boolean _notEquals = (!Objects.equal(prefix, null));
+      if (_notEquals) {
+        _xifexpression = ((prefix + ".") + proposal);
+      } else {
+        _xifexpression = proposal;
       }
+      String completion = _xifexpression;
+      String _xifexpression_1 = null;
+      boolean _notEquals_1 = (!Objects.equal(suffix, null));
+      if (_notEquals_1) {
+        _xifexpression_1 = (completion + suffix);
+      } else {
+        _xifexpression_1 = completion;
+      }
+      completion = _xifexpression_1;
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(completion, context);
+      acceptor.accept(_createCompletionProposal);
     };
     columns.forEach(_function);
   }
@@ -647,16 +611,13 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       } else {
         String _dbTable = prop.getDbTable();
         List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
-        final Consumer<DbImport> _function = new Consumer<DbImport>() {
-          @Override
-          public void accept(final DbImport dbImport) {
-            if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
-              IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-              String _pkTable = dbImport.getPkTable();
-              final String proposal = _valueConverter.toString(_pkTable, "IDENT");
-              ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-              acceptor.accept(_createCompletionProposal);
-            }
+        final Consumer<DbImport> _function = (DbImport dbImport) -> {
+          if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _pkTable = dbImport.getPkTable();
+            final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
         _dbImports.forEach(_function);
@@ -682,17 +643,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       } else {
         String _dbTable = prop.getDbTable();
         List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
-        final Consumer<DbImport> _function = new Consumer<DbImport>() {
-          @Override
-          public void accept(final DbImport dbImport) {
-            if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
-              if (((!Objects.equal(dbImport.getPkTable(), null)) && dbImport.getPkTable().equals(imp.getPkTable()))) {
-                IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-                String _pkColumn = dbImport.getPkColumn();
-                final String proposal = _valueConverter.toString(_pkColumn, "IDENT");
-                ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-                acceptor.accept(_createCompletionProposal);
-              }
+        final Consumer<DbImport> _function = (DbImport dbImport) -> {
+          if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
+            if (((!Objects.equal(dbImport.getPkTable(), null)) && dbImport.getPkTable().equals(imp.getPkTable()))) {
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _pkColumn = dbImport.getPkColumn();
+              final String proposal = _valueConverter.toString(_pkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
@@ -739,16 +697,13 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       } else {
         String _dbTable = prop.getDbTable();
         List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
-        final Consumer<DbExport> _function = new Consumer<DbExport>() {
-          @Override
-          public void accept(final DbExport dbExport) {
-            if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
-              IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-              String _fkTable = dbExport.getFkTable();
-              final String proposal = _valueConverter.toString(_fkTable, "IDENT");
-              ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-              acceptor.accept(_createCompletionProposal);
-            }
+        final Consumer<DbExport> _function = (DbExport dbExport) -> {
+          if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _fkTable = dbExport.getFkTable();
+            final String proposal = _valueConverter.toString(_fkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
         _dbExports.forEach(_function);
@@ -774,17 +729,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       } else {
         String _dbTable = prop.getDbTable();
         List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
-        final Consumer<DbExport> _function = new Consumer<DbExport>() {
-          @Override
-          public void accept(final DbExport dbExport) {
-            if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
-              if (((!Objects.equal(dbExport.getFkTable(), null)) && dbExport.getFkTable().equals(exp.getFkTable()))) {
-                IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-                String _fkColumn = dbExport.getFkColumn();
-                final String proposal = _valueConverter.toString(_fkColumn, "IDENT");
-                ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-                acceptor.accept(_createCompletionProposal);
-              }
+        final Consumer<DbExport> _function = (DbExport dbExport) -> {
+          if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
+            if (((!Objects.equal(dbExport.getFkTable(), null)) && dbExport.getFkTable().equals(exp.getFkTable()))) {
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _fkColumn = dbExport.getFkColumn();
+              final String proposal = _valueConverter.toString(_fkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
@@ -848,16 +800,13 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(many2.getPkColumn(), null)))) {
       String _dbTable = prop.getDbTable();
       List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
-      final Consumer<DbImport> _function = new Consumer<DbImport>() {
-        @Override
-        public void accept(final DbImport dbImport) {
-          if (((!Objects.equal(dbImport.getPkColumn(), null)) && dbImport.getPkColumn().equals(many2.getPkColumn()))) {
-            IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-            String _pkTable = dbImport.getPkTable();
-            final String proposal = _valueConverter.toString(_pkTable, "IDENT");
-            ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-            acceptor.accept(_createCompletionProposal);
-          }
+      final Consumer<DbImport> _function = (DbImport dbImport) -> {
+        if (((!Objects.equal(dbImport.getPkColumn(), null)) && dbImport.getPkColumn().equals(many2.getPkColumn()))) {
+          IValueConverterService _valueConverter = this.getValueConverter();
+          String _pkTable = dbImport.getPkTable();
+          final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+          ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+          acceptor.accept(_createCompletionProposal);
         }
       };
       _dbImports.forEach(_function);
@@ -888,14 +837,11 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       super.completePojogenProperty_Methods(model, assignment, context, acceptor);
       return;
     }
-    final Consumer<String> _function = new Consumer<String>() {
-      @Override
-      public void accept(final String method) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(method, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function = (String method) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(method, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     this.methods.forEach(_function);
   }
@@ -1005,38 +951,29 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   }
   
   public Set<PojoEntity> listEntities(final ResourceSet resourceSet, final IScope scope) {
-    final Comparator<PojoEntity> _function = new Comparator<PojoEntity>() {
-      @Override
-      public int compare(final PojoEntity o1, final PojoEntity o2) {
-        String _name = o1.getName();
-        String _name_1 = o2.getName();
-        return _name.compareTo(_name_1);
-      }
+    final Comparator<PojoEntity> _function = (PojoEntity o1, PojoEntity o2) -> {
+      String _name = o1.getName();
+      String _name_1 = o2.getName();
+      return _name.compareTo(_name_1);
     };
     final TreeSet<PojoEntity> result = CollectionLiterals.<PojoEntity>newTreeSet(_function);
     Iterable<IEObjectDescription> _allElements = scope.getAllElements();
-    final Consumer<IEObjectDescription> _function_1 = new Consumer<IEObjectDescription>() {
-      @Override
-      public void accept(final IEObjectDescription description) {
-        URI _eObjectURI = description.getEObjectURI();
-        EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
-        final org.sqlproc.model.processorModel.Package packageDeclaration = ((org.sqlproc.model.processorModel.Package) _eObject);
-        EList<AbstractEntity> _elements = packageDeclaration.getElements();
-        final Consumer<AbstractEntity> _function = new Consumer<AbstractEntity>() {
-          @Override
-          public void accept(final AbstractEntity aEntity) {
-            if ((aEntity instanceof AnnotatedEntity)) {
-              AnnotatedEntity ae = ((AnnotatedEntity) aEntity);
-              Entity _entity = ae.getEntity();
-              if ((_entity instanceof PojoEntity)) {
-                Entity _entity_1 = ae.getEntity();
-                result.add(((PojoEntity) _entity_1));
-              }
-            }
+    final Consumer<IEObjectDescription> _function_1 = (IEObjectDescription description) -> {
+      URI _eObjectURI = description.getEObjectURI();
+      EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
+      final org.sqlproc.model.processorModel.Package packageDeclaration = ((org.sqlproc.model.processorModel.Package) _eObject);
+      EList<AbstractEntity> _elements = packageDeclaration.getElements();
+      final Consumer<AbstractEntity> _function_2 = (AbstractEntity aEntity) -> {
+        if ((aEntity instanceof AnnotatedEntity)) {
+          AnnotatedEntity ae = ((AnnotatedEntity) aEntity);
+          Entity _entity = ae.getEntity();
+          if ((_entity instanceof PojoEntity)) {
+            Entity _entity_1 = ae.getEntity();
+            result.add(((PojoEntity) _entity_1));
           }
-        };
-        _elements.forEach(_function);
-      }
+        }
+      };
+      _elements.forEach(_function_2);
     };
     _allElements.forEach(_function_1);
     return result;
@@ -1202,14 +1139,11 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     Set<String> _driverMethods = this.dbResolver.getDriverMethods(model);
-    final Consumer<String> _function = new Consumer<String>() {
-      @Override
-      public void accept(final String driverMetod) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(driverMetod, "PropertyValue");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal((proposal + "->"), context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function = (String driverMetod) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(driverMetod, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + "->"), context);
+      acceptor.accept(_createCompletionProposal);
     };
     _driverMethods.forEach(_function);
   }
@@ -1246,15 +1180,12 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     }
     final String dbMetaInfo = this.dbResolver.getDbMetaInfo(model);
     DbResolver.DbType[] _fromDbMetaInfo = DbResolver.DbType.fromDbMetaInfo(dbMetaInfo);
-    final Consumer<DbResolver.DbType> _function = new Consumer<DbResolver.DbType>() {
-      @Override
-      public void accept(final DbResolver.DbType dbType) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        String _value = dbType.getValue();
-        final String proposal = _valueConverter.toString(_value, "PropertyValue");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<DbResolver.DbType> _function = (DbResolver.DbType dbType) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _value = dbType.getValue();
+      final String proposal = _valueConverter.toString(_value, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     ((List<DbResolver.DbType>)Conversions.doWrapArray(_fromDbMetaInfo)).forEach(_function);
   }
@@ -1268,14 +1199,11 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     List<String> _catalogs = this.dbResolver.getCatalogs(model);
-    final Consumer<String> _function = new Consumer<String>() {
-      @Override
-      public void accept(final String catalog) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(catalog, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function = (String catalog) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(catalog, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _catalogs.forEach(_function);
   }
@@ -1289,14 +1217,11 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     List<String> _schemas = this.dbResolver.getSchemas(model);
-    final Consumer<String> _function = new Consumer<String>() {
-      @Override
-      public void accept(final String schema) {
-        IValueConverterService _valueConverter = ProcessorModelProposalProvider.this.getValueConverter();
-        final String proposal = _valueConverter.toString(schema, "IDENT");
-        ICompletionProposal _createCompletionProposal = ProcessorModelProposalProvider.this.createCompletionProposal(proposal, context);
-        acceptor.accept(_createCompletionProposal);
-      }
+    final Consumer<String> _function = (String schema) -> {
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(schema, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     _schemas.forEach(_function);
   }

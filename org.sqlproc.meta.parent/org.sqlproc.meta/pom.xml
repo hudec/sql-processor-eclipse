@@ -2,11 +2,11 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>org.sqlproc.model</groupId>
-		<artifactId>org.sqlproc.model.parent</artifactId>
+		<groupId>org.sqlproc.meta</groupId>
+		<artifactId>org.sqlproc.meta.parent</artifactId>
 		<version>2.7.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>org.sqlproc.model</artifactId>
+	<artifactId>org.sqlproc.meta</artifactId>
 	<packaging>eclipse-plugin</packaging>
 
 	<build>
@@ -14,7 +14,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>1.4.0</version>
+				<version>1.5.0</version>
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
@@ -27,7 +27,7 @@
 				<configuration>
 					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
 					<arguments>
-						<argument>/${project.basedir}/src/org/sqlproc/model/GenerateProcessorModel.mwe2</argument>
+						<argument>/${project.basedir}/src/org/sqlproc/meta/GenerateProcessorMeta.mwe2</argument>
 						<argument>-p</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
@@ -64,37 +64,37 @@
 				<configuration>
 					<filesets combine.children="append">
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model.tests/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model.ide/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta.ide/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model.ui/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta.ui/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model.ui.tests/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta.ui.tests/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
 						</fileset>
 						<fileset>
-							<directory>${basedir}/../org.sqlproc.model.web/src-gen/</directory>
+							<directory>${basedir}/../org.sqlproc.meta.web/src-gen/</directory>
 							<includes>
 								<include>**/*</include>
 							</includes>
