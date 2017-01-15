@@ -1,0 +1,19 @@
+language: java
+
+sudo: false
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.m2
+
+branches:
+  only:
+    - maven
+
+notifications:
+  email:
+    - vladimir.hudec@gmail.com
+
