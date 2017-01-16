@@ -91,11 +91,8 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = impl.getDirectives();
     ImplementsExtendsDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveGenerics));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveGenerics));
       };
       _findFirst=IterableExtensions.<ImplementsExtendsDirective>findFirst(_directives, _function);
     }
@@ -114,11 +111,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveRequired));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveRequired));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -137,11 +131,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveIndex));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveIndex));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -153,11 +144,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveIndex));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveIndex));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -181,11 +169,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumIndex));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumIndex));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -197,11 +182,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumIndex));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumIndex));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -225,11 +207,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveUpdateCol));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveUpdateCol));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -245,11 +224,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveUpdateCol));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveUpdateCol));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -265,11 +241,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveCreateCol));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveCreateCol));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -285,11 +258,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveCreateCol));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveCreateCol));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -305,11 +275,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectivePrimaryKey));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectivePrimaryKey));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -328,11 +295,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectivePrimaryKey));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectivePrimaryKey));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -344,11 +308,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveVersion));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveVersion));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -390,11 +351,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveToInit));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveToInit));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -413,11 +371,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumInit));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumInit));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -436,11 +391,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveIsDef));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveIsDef));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -459,11 +411,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumDef));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveEnumDef));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -482,11 +431,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoAttributeDirective> _directives = f.getDirectives();
     PojoAttributeDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoAttributeDirective, Boolean> _function = new Function1<PojoAttributeDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoAttributeDirective x) {
-          return Boolean.valueOf((x instanceof PojoAttributeDirectiveIsPojo));
-        }
+      final Function1<PojoAttributeDirective, Boolean> _function = (PojoAttributeDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoAttributeDirectiveIsPojo));
       };
       _findFirst=IterableExtensions.<PojoAttributeDirective>findFirst(_directives, _function);
     }
@@ -571,11 +517,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoDirective> _directives = pojo.getDirectives();
     PojoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveOperators));
-        }
+      final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveOperators));
       };
       _findFirst=IterableExtensions.<PojoDirective>findFirst(_directives, _function);
     }
@@ -594,11 +537,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoDirective> _directives = pojo.getDirectives();
     PojoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveOperators));
-        }
+      final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveOperators));
       };
       _findFirst=IterableExtensions.<PojoDirective>findFirst(_directives, _function);
     }
@@ -614,11 +554,8 @@ public class ProcessorGeneratorUtils {
     EList<PojoDirective> _directives = pojo.getDirectives();
     PojoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
-        }
+      final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
       };
       _findFirst=IterableExtensions.<PojoDirective>findFirst(_directives, _function);
     }
@@ -640,11 +577,8 @@ public class ProcessorGeneratorUtils {
     }
     PojoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PojoDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveDiscriminator));
-        }
+      final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveDiscriminator));
       };
       _findFirst=IterableExtensions.<PojoDirective>findFirst(_directives, _function);
     }
@@ -663,20 +597,14 @@ public class ProcessorGeneratorUtils {
     }
     List<Feature> _map = null;
     if (_features!=null) {
-      final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-        @Override
-        public Feature apply(final AnnotatedFeature it) {
-          return it.getFeature();
-        }
+      final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+        return it.getFeature();
       };
       _map=ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     }
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isOptLock(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isOptLock(x));
     };
     final PojoAttribute fea = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(fea, null));
@@ -700,51 +628,45 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveIndex));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveIndex));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveIndex d = ((PojoDirectiveIndex) it);
-        IndexType _index = d.getIndex();
-        boolean _notEquals = (!Objects.equal(_index, null));
-        if (_notEquals) {
-          IndexType _index_1 = d.getIndex();
-          String _id = _index_1.getId();
-          boolean _notEquals_1 = (!Objects.equal(_id, null));
-          if (_notEquals_1) {
-            IndexType _index_2 = d.getIndex();
-            String _id_1 = _index_2.getId();
-            DirectiveProperties _proplist = d.getProplist();
-            EList<Feature> _features = _proplist.getFeatures();
-            Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-            List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
-            result.put(_id_1, _list);
-          } else {
-            IndexType _index_3 = d.getIndex();
-            int _number = _index_3.getNumber();
-            String _plus = ("" + Integer.valueOf(_number));
-            DirectiveProperties _proplist_1 = d.getProplist();
-            EList<Feature> _features_1 = _proplist_1.getFeatures();
-            Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-            List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_1);
-            result.put(_plus, _list_1);
-          }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveIndex d = ((PojoDirectiveIndex) it);
+      IndexType _index = d.getIndex();
+      boolean _notEquals = (!Objects.equal(_index, null));
+      if (_notEquals) {
+        IndexType _index_1 = d.getIndex();
+        String _id = _index_1.getId();
+        boolean _notEquals_1 = (!Objects.equal(_id, null));
+        if (_notEquals_1) {
+          IndexType _index_2 = d.getIndex();
+          String _id_1 = _index_2.getId();
+          DirectiveProperties _proplist = d.getProplist();
+          EList<Feature> _features = _proplist.getFeatures();
+          Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+          List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
+          result.put(_id_1, _list);
         } else {
-          DirectiveProperties _proplist_2 = d.getProplist();
-          EList<Feature> _features_2 = _proplist_2.getFeatures();
-          final String name = ProcessorGeneratorUtils.this.constName(_features_2);
-          DirectiveProperties _proplist_3 = d.getProplist();
-          EList<Feature> _features_3 = _proplist_3.getFeatures();
-          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-          List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_2);
-          result.put(name, _list_2);
+          IndexType _index_3 = d.getIndex();
+          int _number = _index_3.getNumber();
+          String _plus = ("" + Integer.valueOf(_number));
+          DirectiveProperties _proplist_1 = d.getProplist();
+          EList<Feature> _features_1 = _proplist_1.getFeatures();
+          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
+          List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_2);
+          result.put(_plus, _list_1);
         }
+      } else {
+        DirectiveProperties _proplist_2 = d.getProplist();
+        EList<Feature> _features_2 = _proplist_2.getFeatures();
+        final String name = this.constName(_features_2);
+        DirectiveProperties _proplist_3 = d.getProplist();
+        EList<Feature> _features_3 = _proplist_3.getFeatures();
+        Iterable<PojoAttribute> _filter_3 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
+        List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_3);
+        result.put(name, _list_2);
       }
     };
     _filter.forEach(_function_1);
@@ -757,51 +679,45 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveEnumIndex));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveEnumIndex));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveEnumIndex d = ((PojoDirectiveEnumIndex) it);
-        IndexType _index = d.getIndex();
-        boolean _notEquals = (!Objects.equal(_index, null));
-        if (_notEquals) {
-          IndexType _index_1 = d.getIndex();
-          String _id = _index_1.getId();
-          boolean _notEquals_1 = (!Objects.equal(_id, null));
-          if (_notEquals_1) {
-            IndexType _index_2 = d.getIndex();
-            String _id_1 = _index_2.getId();
-            DirectiveProperties _proplist = d.getProplist();
-            EList<Feature> _features = _proplist.getFeatures();
-            Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-            List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter);
-            result.put(_id_1, _list);
-          } else {
-            IndexType _index_3 = d.getIndex();
-            int _number = _index_3.getNumber();
-            String _plus = ("" + Integer.valueOf(_number));
-            DirectiveProperties _proplist_1 = d.getProplist();
-            EList<Feature> _features_1 = _proplist_1.getFeatures();
-            Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-            List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_1);
-            result.put(_plus, _list_1);
-          }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveEnumIndex d = ((PojoDirectiveEnumIndex) it);
+      IndexType _index = d.getIndex();
+      boolean _notEquals = (!Objects.equal(_index, null));
+      if (_notEquals) {
+        IndexType _index_1 = d.getIndex();
+        String _id = _index_1.getId();
+        boolean _notEquals_1 = (!Objects.equal(_id, null));
+        if (_notEquals_1) {
+          IndexType _index_2 = d.getIndex();
+          String _id_1 = _index_2.getId();
+          DirectiveProperties _proplist = d.getProplist();
+          EList<Feature> _features = _proplist.getFeatures();
+          Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+          List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
+          result.put(_id_1, _list);
         } else {
-          DirectiveProperties _proplist_2 = d.getProplist();
-          EList<Feature> _features_2 = _proplist_2.getFeatures();
-          final String name = ProcessorGeneratorUtils.this.constName(_features_2);
-          DirectiveProperties _proplist_3 = d.getProplist();
-          EList<Feature> _features_3 = _proplist_3.getFeatures();
-          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-          List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_2);
-          result.put(name, _list_2);
+          IndexType _index_3 = d.getIndex();
+          int _number = _index_3.getNumber();
+          String _plus = ("" + Integer.valueOf(_number));
+          DirectiveProperties _proplist_1 = d.getProplist();
+          EList<Feature> _features_1 = _proplist_1.getFeatures();
+          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
+          List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_2);
+          result.put(_plus, _list_1);
         }
+      } else {
+        DirectiveProperties _proplist_2 = d.getProplist();
+        EList<Feature> _features_2 = _proplist_2.getFeatures();
+        final String name = this.constName(_features_2);
+        DirectiveProperties _proplist_3 = d.getProplist();
+        EList<Feature> _features_3 = _proplist_3.getFeatures();
+        Iterable<PojoAttribute> _filter_3 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
+        List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_3);
+        result.put(name, _list_2);
       }
     };
     _filter.forEach(_function_1);
@@ -814,22 +730,16 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveToString));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveToString));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveToString d = ((PojoDirectiveToString) it);
-        DirectiveProperties _proplist = d.getProplist();
-        EList<Feature> _features = _proplist.getFeatures();
-        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-        Iterables.<PojoAttribute>addAll(result, _filter);
-      }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveToString d = ((PojoDirectiveToString) it);
+      DirectiveProperties _proplist = d.getProplist();
+      EList<Feature> _features = _proplist.getFeatures();
+      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+      Iterables.<PojoAttribute>addAll(result, _filter_1);
     };
     _filter.forEach(_function_1);
     return result;
@@ -841,22 +751,16 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveProcessingId));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveProcessingId));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveProcessingId d = ((PojoDirectiveProcessingId) it);
-        DirectiveProperties _proplist = d.getProplist();
-        EList<Feature> _features = _proplist.getFeatures();
-        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-        Iterables.<PojoAttribute>addAll(result, _filter);
-      }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveProcessingId d = ((PojoDirectiveProcessingId) it);
+      DirectiveProperties _proplist = d.getProplist();
+      EList<Feature> _features = _proplist.getFeatures();
+      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+      Iterables.<PojoAttribute>addAll(result, _filter_1);
     };
     _filter.forEach(_function_1);
     return result;
@@ -868,22 +772,16 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveEquals));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveEquals));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveEquals d = ((PojoDirectiveEquals) it);
-        DirectiveProperties _proplist = d.getProplist();
-        EList<Feature> _features = _proplist.getFeatures();
-        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-        Iterables.<PojoAttribute>addAll(result, _filter);
-      }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveEquals d = ((PojoDirectiveEquals) it);
+      DirectiveProperties _proplist = d.getProplist();
+      EList<Feature> _features = _proplist.getFeatures();
+      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+      Iterables.<PojoAttribute>addAll(result, _filter_1);
     };
     _filter.forEach(_function_1);
     return result;
@@ -895,22 +793,16 @@ public class ProcessorGeneratorUtils {
     if (pojo!=null) {
       _directives=pojo.getDirectives();
     }
-    final Function1<PojoDirective, Boolean> _function = new Function1<PojoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final PojoDirective x) {
-        return Boolean.valueOf((x instanceof PojoDirectiveHashCode));
-      }
+    final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
+      return Boolean.valueOf((x instanceof PojoDirectiveHashCode));
     };
     Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
-    final Consumer<PojoDirective> _function_1 = new Consumer<PojoDirective>() {
-      @Override
-      public void accept(final PojoDirective it) {
-        final PojoDirectiveHashCode d = ((PojoDirectiveHashCode) it);
-        DirectiveProperties _proplist = d.getProplist();
-        EList<Feature> _features = _proplist.getFeatures();
-        Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-        Iterables.<PojoAttribute>addAll(result, _filter);
-      }
+    final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
+      final PojoDirectiveHashCode d = ((PojoDirectiveHashCode) it);
+      DirectiveProperties _proplist = d.getProplist();
+      EList<Feature> _features = _proplist.getFeatures();
+      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
+      Iterables.<PojoAttribute>addAll(result, _filter_1);
     };
     _filter.forEach(_function_1);
     return result;
@@ -941,13 +833,10 @@ public class ProcessorGeneratorUtils {
     final org.sqlproc.model.processorModel.Package pkg = EcoreUtil2.<org.sqlproc.model.processorModel.Package>getContainerOfType(pojo, org.sqlproc.model.processorModel.Package.class);
     final String name = superType.getSimpleName();
     List<AnnotatedEntity> _contentsOfType = CommonUtils.<AnnotatedEntity>getContentsOfType(pkg, AnnotatedEntity.class);
-    final Function1<AnnotatedEntity, Boolean> _function = new Function1<AnnotatedEntity, Boolean>() {
-      @Override
-      public Boolean apply(final AnnotatedEntity p) {
-        Entity _entity = p.getEntity();
-        String _name = _entity.getName();
-        return Boolean.valueOf(Objects.equal(_name, name));
-      }
+    final Function1<AnnotatedEntity, Boolean> _function = (AnnotatedEntity p) -> {
+      Entity _entity = p.getEntity();
+      String _name = _entity.getName();
+      return Boolean.valueOf(Objects.equal(_name, name));
     };
     final AnnotatedEntity _pojo = IterableExtensions.<AnnotatedEntity>findFirst(_contentsOfType, _function);
     boolean _notEquals = (!Objects.equal(_pojo, null));
@@ -971,19 +860,13 @@ public class ProcessorGeneratorUtils {
       features.addAll(_allRequiredAttributes);
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isRequired(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isRequired(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -998,19 +881,13 @@ public class ProcessorGeneratorUtils {
       return features;
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isRequired(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isRequired(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -1039,11 +916,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
@@ -1065,20 +939,14 @@ public class ProcessorGeneratorUtils {
       return result;
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Consumer<PojoAttribute> _function_1 = new Consumer<PojoAttribute>() {
-      @Override
-      public void accept(final PojoAttribute it) {
-        String _name = it.getName();
-        result.put(_name, it);
-      }
+    final Consumer<PojoAttribute> _function_1 = (PojoAttribute it) -> {
+      String _name = it.getName();
+      result.put(_name, it);
     };
     _filter.forEach(_function_1);
     final PojoEntity se = this.getParent(pojo);
@@ -1097,19 +965,13 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isToInit(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isToInit(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -1129,19 +991,13 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isEnumInit(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isEnumInit(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -1161,19 +1017,13 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isIsDef(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isIsDef(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -1193,19 +1043,13 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isEnumDef(x));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      return Boolean.valueOf(this.isEnumDef(x));
     };
     Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
     final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
@@ -1221,19 +1065,13 @@ public class ProcessorGeneratorUtils {
   
   public boolean hasIsDef(final PojoEntity pojo) {
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute f) {
-        return Boolean.valueOf((ProcessorGeneratorUtils.this.isIsDef(f) || ProcessorGeneratorUtils.this.isEnumDef(f)));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
+      return Boolean.valueOf((this.isIsDef(f) || this.isEnumDef(f)));
     };
     final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
@@ -1249,19 +1087,13 @@ public class ProcessorGeneratorUtils {
   
   public boolean hasToInit(final PojoEntity pojo) {
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute f) {
-        return Boolean.valueOf((ProcessorGeneratorUtils.this.isToInit(f) || ProcessorGeneratorUtils.this.isEnumInit(f)));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
+      return Boolean.valueOf((this.isToInit(f) || this.isEnumInit(f)));
     };
     final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
@@ -1281,20 +1113,14 @@ public class ProcessorGeneratorUtils {
       return null;
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute x) {
-        String _name = x.getName();
-        return Boolean.valueOf(Objects.equal(_name, name));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
+      String _name = x.getName();
+      return Boolean.valueOf(Objects.equal(_name, name));
     };
     final PojoAttribute feature = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(feature, null));
@@ -1315,19 +1141,13 @@ public class ProcessorGeneratorUtils {
       return null;
     }
     EList<AnnotatedFeature> _features = pojo.getFeatures();
-    final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
-      @Override
-      public Feature apply(final AnnotatedFeature it) {
-        return it.getFeature();
-      }
+    final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
+      return it.getFeature();
     };
     List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final Function1<PojoAttribute, Boolean> _function_1 = new Function1<PojoAttribute, Boolean>() {
-      @Override
-      public Boolean apply(final PojoAttribute f) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isPrimaryKey(f));
-      }
+    final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
+      return Boolean.valueOf(this.isPrimaryKey(f));
     };
     final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
@@ -1354,11 +1174,8 @@ public class ProcessorGeneratorUtils {
     EList<EnumDirective> _directives = enum_.getDirectives();
     EnumDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<EnumDirective, Boolean> _function = new Function1<EnumDirective, Boolean>() {
-        @Override
-        public Boolean apply(final EnumDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
-        }
+      final Function1<EnumDirective, Boolean> _function = (EnumDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
       };
       _findFirst=IterableExtensions.<EnumDirective>findFirst(_directives, _function);
     }
@@ -1386,11 +1203,8 @@ public class ProcessorGeneratorUtils {
     EList<DaoDirective> _directives = dao.getDirectives();
     DaoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final DaoDirective x) {
-          return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
-        }
+      final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+        return Boolean.valueOf((x instanceof PojoDirectiveSerializable));
       };
       _findFirst=IterableExtensions.<DaoDirective>findFirst(_directives, _function);
     }
@@ -1425,13 +1239,10 @@ public class ProcessorGeneratorUtils {
     }
     DaoEntity _findFirst = null;
     if (_eAllOfType!=null) {
-      final Function1<DaoEntity, Boolean> _function = new Function1<DaoEntity, Boolean>() {
-        @Override
-        public Boolean apply(final DaoEntity d) {
-          String _name = d.getName();
-          String _simpleName = superType.getSimpleName();
-          return Boolean.valueOf(Objects.equal(_name, _simpleName));
-        }
+      final Function1<DaoEntity, Boolean> _function = (DaoEntity d) -> {
+        String _name = d.getName();
+        String _simpleName = superType.getSimpleName();
+        return Boolean.valueOf(Objects.equal(_name, _simpleName));
       };
       _findFirst=IterableExtensions.<DaoEntity>findFirst(_eAllOfType, _function);
     }
@@ -1449,33 +1260,24 @@ public class ProcessorGeneratorUtils {
     if (dao!=null) {
       _directives=dao.getDirectives();
     }
-    final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final DaoDirective x) {
-        return Boolean.valueOf((x instanceof DaoDirectiveDiscriminator));
-      }
+    final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+      return Boolean.valueOf((x instanceof DaoDirectiveDiscriminator));
     };
     Iterable<DaoDirective> _filter = IterableExtensions.<DaoDirective>filter(_directives, _function);
-    final Consumer<DaoDirective> _function_1 = new Consumer<DaoDirective>() {
-      @Override
-      public void accept(final DaoDirective it) {
-        final DaoDirectiveDiscriminator d = ((DaoDirectiveDiscriminator) it);
-        final Map<String, JvmParameterizedTypeReference> map = new TreeMap<String, JvmParameterizedTypeReference>();
-        EList<DescendantAssignment> _descendants = d.getDescendants();
-        final Consumer<DescendantAssignment> _function = new Consumer<DescendantAssignment>() {
-          @Override
-          public void accept(final DescendantAssignment dd) {
-            ValueType _value = dd.getValue();
-            String _value0 = ProcessorGeneratorUtils.this.value0(_value);
-            JvmParameterizedTypeReference _descendant = dd.getDescendant();
-            map.put(_value0, _descendant);
-          }
-        };
-        _descendants.forEach(_function);
-        PojoAttribute _ancestor = d.getAncestor();
-        String _name = _ancestor.getName();
-        result.put(_name, map);
-      }
+    final Consumer<DaoDirective> _function_1 = (DaoDirective it) -> {
+      final DaoDirectiveDiscriminator d = ((DaoDirectiveDiscriminator) it);
+      final Map<String, JvmParameterizedTypeReference> map = new TreeMap<String, JvmParameterizedTypeReference>();
+      EList<DescendantAssignment> _descendants = d.getDescendants();
+      final Consumer<DescendantAssignment> _function_2 = (DescendantAssignment dd) -> {
+        ValueType _value = dd.getValue();
+        String _value0 = this.value0(_value);
+        JvmParameterizedTypeReference _descendant = dd.getDescendant();
+        map.put(_value0, _descendant);
+      };
+      _descendants.forEach(_function_2);
+      PojoAttribute _ancestor = d.getAncestor();
+      String _name = _ancestor.getName();
+      result.put(_name, map);
     };
     _filter.forEach(_function_1);
     return result;
@@ -1486,12 +1288,9 @@ public class ProcessorGeneratorUtils {
     if (dao!=null) {
       _directives=dao.getDirectives();
     }
-    final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-      @Override
-      public Boolean apply(final DaoDirective x) {
-        return Boolean.valueOf((((x instanceof DaoDirectiveCrud) || 
-          (x instanceof DaoDirectiveQuery)) || (x instanceof DaoFunProcDirective)));
-      }
+    final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+      return Boolean.valueOf((((x instanceof DaoDirectiveCrud) || 
+        (x instanceof DaoDirectiveQuery)) || (x instanceof DaoFunProcDirective)));
     };
     return IterableExtensions.<DaoDirective>findFirst(_directives, _function);
   }
@@ -1542,11 +1341,8 @@ public class ProcessorGeneratorUtils {
     EList<DaoDirective> _directives = dao.getDirectives();
     DaoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final DaoDirective x) {
-          return Boolean.valueOf((x instanceof DaoDirectiveCrud));
-        }
+      final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+        return Boolean.valueOf((x instanceof DaoDirectiveCrud));
       };
       _findFirst=IterableExtensions.<DaoDirective>findFirst(_directives, _function);
     }
@@ -1565,11 +1361,8 @@ public class ProcessorGeneratorUtils {
     EList<DaoDirective> _directives = dao.getDirectives();
     DaoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final DaoDirective x) {
-          return Boolean.valueOf((x instanceof DaoDirectiveQuery));
-        }
+      final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+        return Boolean.valueOf((x instanceof DaoDirectiveQuery));
       };
       _findFirst=IterableExtensions.<DaoDirective>findFirst(_directives, _function);
     }
@@ -1588,11 +1381,8 @@ public class ProcessorGeneratorUtils {
     EList<DaoDirective> _directives = dao.getDirectives();
     DaoDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final DaoDirective x) {
-          return Boolean.valueOf((x instanceof DaoFunProcDirective));
-        }
+      final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+        return Boolean.valueOf((x instanceof DaoFunProcDirective));
       };
       _findFirst=IterableExtensions.<DaoDirective>findFirst(_directives, _function);
     }
@@ -1612,19 +1402,13 @@ public class ProcessorGeneratorUtils {
     EList<DaoDirective> _directives = dao.getDirectives();
     Iterable<DaoDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<DaoDirective, Boolean> _function = new Function1<DaoDirective, Boolean>() {
-        @Override
-        public Boolean apply(final DaoDirective x) {
-          return Boolean.valueOf((x instanceof DaoFunProcDirective));
-        }
+      final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
+        return Boolean.valueOf((x instanceof DaoFunProcDirective));
       };
       _filter=IterableExtensions.<DaoDirective>filter(_directives, _function);
     }
-    final Consumer<DaoDirective> _function_1 = new Consumer<DaoDirective>() {
-      @Override
-      public void accept(final DaoDirective it) {
-        result.add(((DaoFunProcDirective) it));
-      }
+    final Consumer<DaoDirective> _function_1 = (DaoDirective it) -> {
+      result.add(((DaoFunProcDirective) it));
     };
     _filter.forEach(_function_1);
     return result;
@@ -1638,11 +1422,8 @@ public class ProcessorGeneratorUtils {
     }
     PackageDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<PackageDirective, Boolean> _function = new Function1<PackageDirective, Boolean>() {
-        @Override
-        public Boolean apply(final PackageDirective x) {
-          return Boolean.valueOf((x instanceof PackageDirectiveImplementation));
-        }
+      final Function1<PackageDirective, Boolean> _function = (PackageDirective x) -> {
+        return Boolean.valueOf((x instanceof PackageDirectiveImplementation));
       };
       _findFirst=IterableExtensions.<PackageDirective>findFirst(_directives, _function);
     }
@@ -1661,11 +1442,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveConflict));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveConflict));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1686,11 +1464,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = pojo.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isConflict(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isConflict(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1702,11 +1477,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isConflict(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isConflict(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1716,11 +1488,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveConstructor));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveConstructor));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1741,11 +1510,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = pojo.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isConstructor(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isConstructor(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1757,11 +1523,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isConstructor(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isConstructor(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1773,11 +1536,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isConstructor(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isConstructor(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1787,11 +1547,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveStatic));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveStatic));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1812,11 +1569,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = pojo.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isStatic(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isStatic(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1828,11 +1582,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isStatic(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isStatic(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1845,11 +1596,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveStandard));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveStandard));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1870,11 +1618,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = pojo.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isStandard(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isStandard(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1886,11 +1631,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isStandard(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isStandard(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1902,11 +1644,8 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     EList<Annotation> _annotations = this.annotations(pojo);
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isStandard(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isStandard(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1916,11 +1655,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveSetter));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveSetter));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1942,11 +1678,8 @@ public class ProcessorGeneratorUtils {
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
     EList<Annotation> _annotations = aprop.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isSetter(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isSetter(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1956,11 +1689,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveGetter));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveGetter));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -1982,11 +1712,8 @@ public class ProcessorGeneratorUtils {
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
     EList<Annotation> _annotations = aprop.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isGetter(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isGetter(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -1999,11 +1726,8 @@ public class ProcessorGeneratorUtils {
     EList<AnnotationDirective> _directives = an.getDirectives();
     AnnotationDirective _findFirst = null;
     if (_directives!=null) {
-      final Function1<AnnotationDirective, Boolean> _function = new Function1<AnnotationDirective, Boolean>() {
-        @Override
-        public Boolean apply(final AnnotationDirective x) {
-          return Boolean.valueOf((x instanceof AnnotationDirectiveAttribute));
-        }
+      final Function1<AnnotationDirective, Boolean> _function = (AnnotationDirective x) -> {
+        return Boolean.valueOf((x instanceof AnnotationDirectiveAttribute));
       };
       _findFirst=IterableExtensions.<AnnotationDirective>findFirst(_directives, _function);
     }
@@ -2025,11 +1749,8 @@ public class ProcessorGeneratorUtils {
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
     EList<Annotation> _annotations = aprop.getAnnotations();
-    final Function1<Annotation, Boolean> _function = new Function1<Annotation, Boolean>() {
-      @Override
-      public Boolean apply(final Annotation x) {
-        return Boolean.valueOf(ProcessorGeneratorUtils.this.isAttribute(x));
-      }
+    final Function1<Annotation, Boolean> _function = (Annotation x) -> {
+      return Boolean.valueOf(this.isAttribute(x));
     };
     Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
     return IterableExtensions.<Annotation>toList(_filter);
@@ -2040,20 +1761,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = ext.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyPojos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyPojos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
-        result.addAll(_onlyPojos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
+      result.addAll(_onlyPojos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2064,20 +1779,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = ext.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptPojos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptPojos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
-        result.addAll(_exceptPojos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
+      result.addAll(_exceptPojos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2088,20 +1797,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = imp.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyPojos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyPojos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
-        result.addAll(_onlyPojos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
+      result.addAll(_onlyPojos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2112,20 +1815,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = imp.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptPojos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptPojos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
-        result.addAll(_exceptPojos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
+      result.addAll(_exceptPojos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2136,20 +1833,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = ext.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyDaos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyDaos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
-        result.addAll(_onlyDaos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
+      result.addAll(_onlyDaos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2160,20 +1851,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = ext.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptDaos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptDaos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
-        result.addAll(_exceptDaos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
+      result.addAll(_exceptDaos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2184,20 +1869,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = imp.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyDaos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveOnlyDaos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
-        result.addAll(_onlyDaos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
+      result.addAll(_onlyDaos);
     };
     _filter.forEach(_function_1);
     return result;
@@ -2208,20 +1887,14 @@ public class ProcessorGeneratorUtils {
     EList<ImplementsExtendsDirective> _directives = imp.getDirectives();
     Iterable<ImplementsExtendsDirective> _filter = null;
     if (_directives!=null) {
-      final Function1<ImplementsExtendsDirective, Boolean> _function = new Function1<ImplementsExtendsDirective, Boolean>() {
-        @Override
-        public Boolean apply(final ImplementsExtendsDirective x) {
-          return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptDaos));
-        }
+      final Function1<ImplementsExtendsDirective, Boolean> _function = (ImplementsExtendsDirective x) -> {
+        return Boolean.valueOf((x instanceof ImplementsExtendsDirectiveExceptDaos));
       };
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
-    final Consumer<ImplementsExtendsDirective> _function_1 = new Consumer<ImplementsExtendsDirective>() {
-      @Override
-      public void accept(final ImplementsExtendsDirective it) {
-        EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
-        result.addAll(_exceptDaos);
-      }
+    final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
+      EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
+      result.addAll(_exceptDaos);
     };
     _filter.forEach(_function_1);
     return result;
