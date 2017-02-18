@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model.ui
 Bundle-Vendor: My Company
-Bundle-Version: 2.7.0.qualifier
+Bundle-Version: 2.6.1.qualifier
 Bundle-SymbolicName: org.sqlproc.model.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model,
