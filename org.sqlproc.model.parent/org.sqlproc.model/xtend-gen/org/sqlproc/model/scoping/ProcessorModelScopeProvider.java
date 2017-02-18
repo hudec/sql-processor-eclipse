@@ -42,8 +42,11 @@ public class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProv
     if (_equals) {
       final PojoEntity pojo = EcoreUtil2.<PojoEntity>getContainerOfType(context, PojoEntity.class);
       EList<AnnotatedFeature> _features = pojo.getFeatures();
-      final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
-        return it.getFeature();
+      final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+        @Override
+        public Feature apply(final AnnotatedFeature it) {
+          return it.getFeature();
+        }
       };
       List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
       final IScope scope = Scopes.scopeFor(_map);

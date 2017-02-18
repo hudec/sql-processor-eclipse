@@ -17,6 +17,8 @@ import org.apache.log4j.Logger;
 import org.eclipse.xtext.resource.XtextResource;
 import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.serializer.ISerializer;
+import org.eclipse.xtext.util.Pair;
+import org.eclipse.xtext.util.Tuples;
 import org.sqlproc.meta.processorMeta.Artifacts;
 import org.sqlproc.meta.processorMeta.MetaStatement;
 import org.sqlproc.meta.property.ModelPropertyBean;
@@ -268,9 +270,9 @@ public class TableMetaGenerator extends TableBaseGenerator {
         }
         if (metaGenerateIdentities && dbType == DbType.POSTGRESQL) {
             for (String pojo : pojos.keySet()) {
-                String primaryKey = getPrimaryKey(pojo);
+                Pair<String, String> primaryKey = getPrimaryKey(pojo);
                 if (primaryKey != null)
-                    metaIdentityDefinition(pojo, primaryKey, identities);
+                    metaIdentityDefinition(pojo, primaryKey.getFirst(), identities);
             }
         }
 
@@ -360,13 +362,13 @@ public class TableMetaGenerator extends TableBaseGenerator {
         return buffer;
     }
 
-    String getPrimaryKey(String pojo) {
+    Pair<String, String> getPrimaryKey(String pojo) {
         for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
             PojoAttribute attr = pentry.getValue();
             if (attr == null)
                 continue;
             if (attr.isPrimaryKey()) {
-                return attr.getDbName();
+                return Tuples.pair(attr.getDbName(), attr.getName());
             }
         }
         return null;
@@ -377,11 +379,11 @@ public class TableMetaGenerator extends TableBaseGenerator {
         Header header = getStatementHeader(pojo, buffer, (select) ? StatementType.SELECT : StatementType.GET, null);
         if (header == null)
             return buffer;
-        String primaryKey = getPrimaryKey(pojo);
+        Pair<String, String> primaryKey = getPrimaryKey(pojo);
         buffer.append("\n  select ");
         if (doGenerateFromTo && select && primaryKey != null)
-            buffer.append("{? :onlyIds_ | %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
-                    .append(" @id(id) |\n    ");
+            buffer.append("{? :onlyIds_ | %").append(tablePrefix(header.table.tablePrefix))
+                    .append(primaryKey.getFirst()).append(" @" + primaryKey.getSecond() + "(id) |\n    ");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
                 ? pojoExtends.get(header.table.tableName) : null;
         boolean first = selectColumns(buffer, pojo, true, header.statementName, header.table.tablePrefix, null, false,
@@ -512,7 +514,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
             whereColumns(buffer, header.extendTable.tableName, first, header.statementName,
                     header.extendTable.tablePrefix, true, select);
         if (doGenerateFromTo && select && primaryKey != null)
-            buffer.append("\n    {& %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey)
+            buffer.append("\n    {& %").append(tablePrefix(header.table.tablePrefix)).append(primaryKey.getFirst())
                     .append(" in :ids_ }");
         buffer.append("\n  }");
         if (select) {

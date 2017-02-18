@@ -380,11 +380,14 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return null;
     }
     final ArrayList<String> filteredModifiers = CollectionLiterals.<String>newArrayList();
-    final Consumer<String> _function = (String modifier) -> {
-      int _indexOf = modifier.indexOf("=");
-      boolean _lessThan = (_indexOf < 0);
-      if (_lessThan) {
-        filteredModifiers.add(modifier);
+    final Consumer<String> _function = new Consumer<String>() {
+      @Override
+      public void accept(final String modifier) {
+        int _indexOf = modifier.indexOf("=");
+        boolean _lessThan = (_indexOf < 0);
+        if (_lessThan) {
+          filteredModifiers.add(modifier);
+        }
       }
     };
     modifiers.forEach(_function);
@@ -537,8 +540,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       final List<Identifier> identifiers = EcoreUtil2.<Identifier>getAllContentsOfType(statement, Identifier.class);
       final PojoDefinition pojo = identPojo;
       final String pojoName = identPojoName;
-      final Consumer<Identifier> _function = (Identifier identifier) -> {
-        this.checkIdentifier(identifier, pojo, pojoName, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+      final Consumer<Identifier> _function = new Consumer<Identifier>() {
+        @Override
+        public void accept(final Identifier identifier) {
+          ProcessorMetaValidator.this.checkIdentifier(identifier, pojo, pojoName, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+        }
       };
       identifiers.forEach(_function);
     }
@@ -547,8 +553,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       final List<OrdSql> orders = EcoreUtil2.<OrdSql>getAllContentsOfType(statement, OrdSql.class);
       final PojoDefinition pojo_1 = indexPojo;
       final String pojoName_1 = indexPojoName;
-      final Consumer<OrdSql> _function_1 = (OrdSql order) -> {
-        this.checkOrder(order, pojo_1, pojoName_1, statement, newPojoValidator, artifacts, uri, ordersCache, classesCache);
+      final Consumer<OrdSql> _function_1 = new Consumer<OrdSql>() {
+        @Override
+        public void accept(final OrdSql order) {
+          ProcessorMetaValidator.this.checkOrder(order, pojo_1, pojoName_1, statement, newPojoValidator, artifacts, uri, ordersCache, classesCache);
+        }
       };
       orders.forEach(_function_1);
     }
@@ -557,8 +566,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       final List<Column> columns = EcoreUtil2.<Column>getAllContentsOfType(statement, Column.class);
       final PojoDefinition pojo_2 = colPojo;
       final String pojoName_2 = colPojoName;
-      final Consumer<Column> _function_2 = (Column column) -> {
-        this.checkColumn(column, pojo_2, pojoName_2, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+      final Consumer<Column> _function_2 = new Consumer<Column>() {
+        @Override
+        public void accept(final Column column) {
+          ProcessorMetaValidator.this.checkColumn(column, pojo_2, pojoName_2, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+        }
       };
       columns.forEach(_function_2);
     }
@@ -567,8 +579,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       final List<Constant> constants = EcoreUtil2.<Constant>getAllContentsOfType(statement, Constant.class);
       final PojoDefinition pojo_3 = constPojo;
       final String pojoName_3 = constPojoName;
-      final Consumer<Constant> _function_3 = (Constant constant) -> {
-        this.checkConstant(constant, pojo_3, pojoName_3, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+      final Consumer<Constant> _function_3 = new Consumer<Constant>() {
+        @Override
+        public void accept(final Constant constant) {
+          ProcessorMetaValidator.this.checkConstant(constant, pojo_3, pojoName_3, statement, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+        }
       };
       constants.forEach(_function_3);
     }
@@ -580,53 +595,62 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
   
   public void checkTablesColumns(final TreeMap<String, TableDefinition> tablesPojo, final TreeMap<String, TableDefinition> tablesPrefixPojo, final MetaStatement statement) {
     final List<DatabaseTable> tables = EcoreUtil2.<DatabaseTable>getAllContentsOfType(statement, DatabaseTable.class);
-    final Consumer<DatabaseTable> _function = (DatabaseTable table) -> {
-      final String tableName = table.getName();
-      Collection<TableDefinition> _values = tablesPojo.values();
-      final Function1<TableDefinition, Boolean> _function_1 = (TableDefinition it) -> {
-        String _table = it.getTable();
-        return Boolean.valueOf(Objects.equal(_table, tableName));
-      };
-      final TableDefinition tableDefinition = IterableExtensions.<TableDefinition>findFirst(_values, _function_1);
-      if ((Objects.equal(tableDefinition, null) || (!this.dbResolver.checkTable(statement, tableName)))) {
-        this.error(("Cannot find table in DB : " + tableName), table, ProcessorMetaPackage.Literals.DATABASE_TABLE__NAME);
+    final Consumer<DatabaseTable> _function = new Consumer<DatabaseTable>() {
+      @Override
+      public void accept(final DatabaseTable table) {
+        final String tableName = table.getName();
+        Collection<TableDefinition> _values = tablesPojo.values();
+        final Function1<TableDefinition, Boolean> _function = new Function1<TableDefinition, Boolean>() {
+          @Override
+          public Boolean apply(final TableDefinition it) {
+            String _table = it.getTable();
+            return Boolean.valueOf(Objects.equal(_table, tableName));
+          }
+        };
+        final TableDefinition tableDefinition = IterableExtensions.<TableDefinition>findFirst(_values, _function);
+        if ((Objects.equal(tableDefinition, null) || (!ProcessorMetaValidator.this.dbResolver.checkTable(statement, tableName)))) {
+          ProcessorMetaValidator.this.error(("Cannot find table in DB : " + tableName), table, ProcessorMetaPackage.Literals.DATABASE_TABLE__NAME);
+        }
       }
     };
     tables.forEach(_function);
     final List<DatabaseColumn> columns = EcoreUtil2.<DatabaseColumn>getAllContentsOfType(statement, DatabaseColumn.class);
-    final Consumer<DatabaseColumn> _function_1 = (DatabaseColumn column) -> {
-      String _name = column.getName();
-      final int pos = _name.indexOf(".");
-      String _xifexpression = null;
-      if ((pos > 0)) {
-        String _name_1 = column.getName();
-        _xifexpression = _name_1.substring(0, pos);
-      } else {
-        _xifexpression = "_DEFAULT_";
-      }
-      final String prefix = _xifexpression;
-      String _xifexpression_1 = null;
-      if ((pos > 0)) {
-        String _name_2 = column.getName();
-        _xifexpression_1 = _name_2.substring((pos + 1));
-      } else {
-        _xifexpression_1 = column.getName();
-      }
-      final String columnName = _xifexpression_1;
-      final TableDefinition tableDefinition = tablesPrefixPojo.get(prefix);
-      String _xifexpression_2 = null;
-      boolean _notEquals = (!Objects.equal(tableDefinition, null));
-      if (_notEquals) {
-        _xifexpression_2 = tableDefinition.getTable();
-      }
-      final String tableName = _xifexpression_2;
-      if ((Objects.equal(tableName, null) || (!this.dbResolver.checkColumn(column, tableName, columnName)))) {
-        String _name_3 = column.getName();
-        String _plus = ("Cannot find column in DB : " + _name_3);
-        String _plus_1 = (_plus + "[");
-        String _plus_2 = (_plus_1 + tableName);
-        String _plus_3 = (_plus_2 + "]");
-        this.error(_plus_3, column, ProcessorMetaPackage.Literals.DATABASE_COLUMN__NAME);
+    final Consumer<DatabaseColumn> _function_1 = new Consumer<DatabaseColumn>() {
+      @Override
+      public void accept(final DatabaseColumn column) {
+        String _name = column.getName();
+        final int pos = _name.indexOf(".");
+        String _xifexpression = null;
+        if ((pos > 0)) {
+          String _name_1 = column.getName();
+          _xifexpression = _name_1.substring(0, pos);
+        } else {
+          _xifexpression = "_DEFAULT_";
+        }
+        final String prefix = _xifexpression;
+        String _xifexpression_1 = null;
+        if ((pos > 0)) {
+          String _name_2 = column.getName();
+          _xifexpression_1 = _name_2.substring((pos + 1));
+        } else {
+          _xifexpression_1 = column.getName();
+        }
+        final String columnName = _xifexpression_1;
+        final TableDefinition tableDefinition = tablesPrefixPojo.get(prefix);
+        String _xifexpression_2 = null;
+        boolean _notEquals = (!Objects.equal(tableDefinition, null));
+        if (_notEquals) {
+          _xifexpression_2 = tableDefinition.getTable();
+        }
+        final String tableName = _xifexpression_2;
+        if ((Objects.equal(tableName, null) || (!ProcessorMetaValidator.this.dbResolver.checkColumn(column, tableName, columnName)))) {
+          String _name_3 = column.getName();
+          String _plus = ("Cannot find column in DB : " + _name_3);
+          String _plus_1 = (_plus + "[");
+          String _plus_2 = (_plus_1 + tableName);
+          String _plus_3 = (_plus_2 + "]");
+          ProcessorMetaValidator.this.error(_plus_3, column, ProcessorMetaPackage.Literals.DATABASE_COLUMN__NAME);
+        }
       }
     };
     columns.forEach(_function_1);
@@ -939,8 +963,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       final List<MappingColumn> columns = EcoreUtil2.<MappingColumn>getAllContentsOfType(rule, MappingColumn.class);
       final PojoDefinition pojo = colPojo;
       final String pojoName = colPojoName;
-      final Consumer<MappingColumn> _function = (MappingColumn column) -> {
-        this.checkMappingColumn(column, pojo, pojoName, rule, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+      final Consumer<MappingColumn> _function = new Consumer<MappingColumn>() {
+        @Override
+        public void accept(final MappingColumn column) {
+          ProcessorMetaValidator.this.checkMappingColumn(column, pojo, pojoName, rule, newPojoValidator, artifacts, uri, descriptorsCache, classesCache);
+        }
       };
       columns.forEach(_function);
     }
@@ -1037,9 +1064,12 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     final String _checkProperty = checkProperty;
     final PropertyDescriptor[] _converted_descriptors = (PropertyDescriptor[])descriptors;
-    final Function1<PropertyDescriptor, Boolean> _function = (PropertyDescriptor descriptor) -> {
-      String _name = descriptor.getName();
-      return Boolean.valueOf(Objects.equal(_name, _checkProperty));
+    final Function1<PropertyDescriptor, Boolean> _function = new Function1<PropertyDescriptor, Boolean>() {
+      @Override
+      public Boolean apply(final PropertyDescriptor descriptor) {
+        String _name = descriptor.getName();
+        return Boolean.valueOf(Objects.equal(_name, _checkProperty));
+      }
     };
     PropertyDescriptor checkDesriptor = IterableExtensions.<PropertyDescriptor>findFirst(((Iterable<PropertyDescriptor>)Conversions.doWrapArray(_converted_descriptors)), _function);
     boolean _equals_3 = Objects.equal(checkDesriptor, null);
@@ -1231,9 +1261,12 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     final Map<String, String> _orders_1 = orders;
     Set<String> _keySet = orders.keySet();
-    final Function1<String, Boolean> _function = (String k) -> {
-      String _get = _orders_1.get(k);
-      return Boolean.valueOf(_get.equals(property));
+    final Function1<String, Boolean> _function = new Function1<String, Boolean>() {
+      @Override
+      public Boolean apply(final String k) {
+        String _get = _orders_1.get(k);
+        return Boolean.valueOf(_get.equals(property));
+      }
     };
     final String order = IterableExtensions.<String>findFirst(_keySet, _function);
     boolean _notEquals = (!Objects.equal(order, null));
@@ -1386,14 +1419,20 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     final String tableName = databaseTable.getName();
     List<String> _tokensFromModifier = Utils.getTokensFromModifier(statement, Constants.TABLE_USAGE);
-    final Function1<String, TableDefinition> _function = (String value) -> {
-      Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
-      return _modelTables.get(value);
+    final Function1<String, TableDefinition> _function = new Function1<String, TableDefinition>() {
+      @Override
+      public TableDefinition apply(final String value) {
+        Map<String, TableDefinition> _modelTables = ProcessorMetaValidator.this.modelProperty.getModelTables(artifacts);
+        return _modelTables.get(value);
+      }
     };
     final List<TableDefinition> tableDefinitions = ListExtensions.<String, TableDefinition>map(_tokensFromModifier, _function);
-    final Function1<TableDefinition, Boolean> _function_1 = (TableDefinition it) -> {
-      String _table = it.getTable();
-      return Boolean.valueOf(Objects.equal(_table, tableName));
+    final Function1<TableDefinition, Boolean> _function_1 = new Function1<TableDefinition, Boolean>() {
+      @Override
+      public Boolean apply(final TableDefinition it) {
+        String _table = it.getTable();
+        return Boolean.valueOf(Objects.equal(_table, tableName));
+      }
     };
     final TableDefinition tableDefinition = IterableExtensions.<TableDefinition>findFirst(tableDefinitions, _function_1);
     if ((Objects.equal(tableDefinition, null) || (!this.dbResolver.checkTable(databaseTable, tableName)))) {

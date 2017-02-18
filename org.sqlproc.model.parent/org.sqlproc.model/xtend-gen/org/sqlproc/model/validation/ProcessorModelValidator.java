@@ -242,8 +242,11 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
       if ((entity instanceof PojoEntity)) {
         final PojoEntity pentity = ((PojoEntity) entity);
         EList<AnnotatedFeature> _features = pentity.getFeatures();
-        final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
-          return feature;
+        final Function1<AnnotatedFeature, Feature> _function = new Function1<AnnotatedFeature, Feature>() {
+          @Override
+          public Feature apply(final AnnotatedFeature it) {
+            return feature;
+          }
         };
         List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
         for (final Feature _feature : _map) {
@@ -258,8 +261,11 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if ((entity instanceof DaoEntity)) {
           final DaoEntity pentity_1 = ((DaoEntity) entity);
           EList<AnnotatedFeature> _features_1 = pentity_1.getFeatures();
-          final Function1<AnnotatedFeature, Feature> _function_1 = (AnnotatedFeature it) -> {
-            return feature;
+          final Function1<AnnotatedFeature, Feature> _function_1 = new Function1<AnnotatedFeature, Feature>() {
+            @Override
+            public Feature apply(final AnnotatedFeature it) {
+              return feature;
+            }
           };
           List<Feature> _map_1 = ListExtensions.<AnnotatedFeature, Feature>map(_features_1, _function_1);
           for (final Feature _feature_1 : _map_1) {

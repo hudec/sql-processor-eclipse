@@ -65,28 +65,40 @@ public class ProcessorMetaOutlineTreeProvider extends DefaultOutlineTreeProvider
     boolean _matched = false;
     if (modelElement instanceof MetaStatement) {
       _matched=true;
-      final Comparator<Identifier> _function = (Identifier a, Identifier b) -> {
-        String _name = a.getName();
-        String _name_1 = b.getName();
-        return _name.compareTo(_name_1);
+      final Comparator<Identifier> _function = new Comparator<Identifier>() {
+        @Override
+        public int compare(final Identifier a, final Identifier b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
+        }
       };
       final TreeSet<Identifier> identifiers = CollectionLiterals.<Identifier>newTreeSet(_function);
-      final Comparator<Constant> _function_1 = (Constant a, Constant b) -> {
-        String _name = a.getName();
-        String _name_1 = b.getName();
-        return _name.compareTo(_name_1);
+      final Comparator<Constant> _function_1 = new Comparator<Constant>() {
+        @Override
+        public int compare(final Constant a, final Constant b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
+        }
       };
       final TreeSet<Constant> constants = CollectionLiterals.<Constant>newTreeSet(_function_1);
-      final Comparator<Column> _function_2 = (Column a, Column b) -> {
-        String _name = Utils.getName(a);
-        String _name_1 = Utils.getName(b);
-        return _name.compareTo(_name_1);
+      final Comparator<Column> _function_2 = new Comparator<Column>() {
+        @Override
+        public int compare(final Column a, final Column b) {
+          String _name = Utils.getName(a);
+          String _name_1 = Utils.getName(b);
+          return _name.compareTo(_name_1);
+        }
       };
       final TreeSet<Column> columns = CollectionLiterals.<Column>newTreeSet(_function_2);
-      final Comparator<DatabaseColumn> _function_3 = (DatabaseColumn a, DatabaseColumn b) -> {
-        String _name = a.getName();
-        String _name_1 = b.getName();
-        return _name.compareTo(_name_1);
+      final Comparator<DatabaseColumn> _function_3 = new Comparator<DatabaseColumn>() {
+        @Override
+        public int compare(final DatabaseColumn a, final DatabaseColumn b) {
+          String _name = a.getName();
+          String _name_1 = b.getName();
+          return _name.compareTo(_name_1);
+        }
       };
       final TreeSet<DatabaseColumn> databaseColumns = CollectionLiterals.<DatabaseColumn>newTreeSet(_function_3);
       Collector.allVariables(((MetaStatement) modelElement), identifiers, constants, columns, databaseColumns);
@@ -106,10 +118,13 @@ public class ProcessorMetaOutlineTreeProvider extends DefaultOutlineTreeProvider
     if (!_matched) {
       if (modelElement instanceof MappingRule) {
         _matched=true;
-        final Comparator<MappingColumn> _function = (MappingColumn a, MappingColumn b) -> {
-          String _name = Utils.getName(a);
-          String _name_1 = Utils.getName(b);
-          return _name.compareTo(_name_1);
+        final Comparator<MappingColumn> _function = new Comparator<MappingColumn>() {
+          @Override
+          public int compare(final MappingColumn a, final MappingColumn b) {
+            String _name = Utils.getName(a);
+            String _name_1 = Utils.getName(b);
+            return _name.compareTo(_name_1);
+          }
         };
         final TreeSet<MappingColumn> columns = CollectionLiterals.<MappingColumn>newTreeSet(_function);
         Collector.allVariables(((MappingRule) modelElement), columns);
