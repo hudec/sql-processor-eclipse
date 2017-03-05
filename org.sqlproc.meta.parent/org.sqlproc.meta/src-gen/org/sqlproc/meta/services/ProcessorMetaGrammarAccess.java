@@ -2663,14 +2663,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	| name='create-columns' WS+ dbTable=IDENT (WS+ columnTypes+=ColumnTypeAssignement)+
 		//	| name='rename-tables' (WS+ tables+=TableAssignement)+
 		//	| name='rename-columns' WS+ dbTable=IDENT (WS+ columns+=ColumnAssignement)+
-		//	| name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-		//	| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//	| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//	| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-		//	| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//	| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//	| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+
-		//	| name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+
+		//	| name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_IGNORE_EXPORTS, ignoreExports
+		//	| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_IGNORE_IMPORTS, ignoreImports
+		//	| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_INHERIT_IMPORTS, inheritImports
+		//	| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_CREATE_EXPORTS, createExports
+		//	| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_IMPORTS, createImports
+		//	| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_121_IMPORTS, create121Imports, ignoreExports, ignoreImports
+		//	| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+ // , POJOGEN_MANY_TO_MANY_IMPORTS, manyToManyImports
+		//	| name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+ // , POJOGEN_INHERITANCE, inheritance, inheritanceColumns
 		//	| name='generate-methods' (WS+ methods+=IDENT)+
 		//	| name='generate-operators' (WS+ operatorsSuffix=IDENT)?
 		//	| name='implements-interfaces' WS+ toImplements=ImplementsAssignement
@@ -2710,29 +2710,30 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//WS+ dbTable=IDENT (WS+ dbColumns+=IDENT)+ | name='create-columns' WS+ dbTable=IDENT (WS+
 		//columnTypes+=ColumnTypeAssignement)+ | name='rename-tables' (WS+ tables+=TableAssignement)+ | name='rename-columns' WS+
 		//dbTable=IDENT (WS+ columns+=ColumnAssignement)+ | name='ignore-one-to-many' WS+ dbTable=IDENT (WS+
-		//exports+=ExportAssignement)+ // exports
-		//| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-		//| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-		//| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+ | name='inherit-discriminator' WS+
-		//dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+ | name='generate-methods' (WS+
-		//methods+=IDENT)+ | name='generate-operators' (WS+ operatorsSuffix=IDENT)? | name='implements-interfaces' WS+
-		//toImplements=ImplementsAssignement | name='extends-class' WS+ toExtends=ExtendsAssignement |
-		//name='implements-interfaces-generics' WS+ toImplementsGenerics=ImplementsAssignementGenerics |
-		//name='extends-class-generics' WS+ toExtendsGenerics=ExtendsAssignementGenerics | name='generate-wrappers' |
-		//name='generate-validation-annotations' | name='preserve-foreign-keys' (WS+ dbTables+=IDENT)* | name='make-it-final' |
-		//name='version-column' WS+ version=IDENT (WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)? |
-		//name='debug-level' WS+ debug=DebugLevelAssignement | name='pojos-for-procedures' (WS+
-		//procPojos+=ProcedurePojoAssignement)+ | name='pojos-for-functions' (WS+ funPojos+=FunctionPojoAssignement)+ |
-		//name='active-filter' WS+ activeFilter=ValueType | name='package' WS+ pckg=QualifiedName |
-		//name='enum-for-check-constraints' WS+ enumName=IDENT (WS+ dbCheckConstraints+=IDENT)+ | name='column-annotations' WS+
-		//dbColumn=IDENT WS+ columnAnnotations=AnnotationAssignement | name='getter-annotations' WS+ dbColumn=IDENT WS+
-		//columnAnnotations=AnnotationAssignement | name='setter-annotations' WS+ dbColumn=IDENT WS+
-		//columnAnnotations=AnnotationAssignement | name='conflict-annotations' WS+ columnAnnotations=AnnotationAssignement |
-		//name='static-annotations' WS+ columnAnnotations=AnnotationAssignement | name='constructor-annotations' WS+
-		//columnAnnotations=AnnotationAssignement | name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement
+		//exports+=ExportAssignement)+ // exports, POJOGEN_IGNORE_EXPORTS, ignoreExports
+		//| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_IGNORE_IMPORTS, ignoreImports
+		//| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_INHERIT_IMPORTS, inheritImports
+		//| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_CREATE_EXPORTS, createExports
+		//| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_IMPORTS, createImports
+		//| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_121_IMPORTS, create121Imports, ignoreExports, ignoreImports
+		//| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+ // , POJOGEN_MANY_TO_MANY_IMPORTS, manyToManyImports
+		//| name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+ // , POJOGEN_INHERITANCE, inheritance, inheritanceColumns
+		//| name='generate-methods' (WS+ methods+=IDENT)+ | name='generate-operators' (WS+ operatorsSuffix=IDENT)? |
+		//name='implements-interfaces' WS+ toImplements=ImplementsAssignement | name='extends-class' WS+
+		//toExtends=ExtendsAssignement | name='implements-interfaces-generics' WS+
+		//toImplementsGenerics=ImplementsAssignementGenerics | name='extends-class-generics' WS+
+		//toExtendsGenerics=ExtendsAssignementGenerics | name='generate-wrappers' | name='generate-validation-annotations' |
+		//name='preserve-foreign-keys' (WS+ dbTables+=IDENT)* | name='make-it-final' | name='version-column' WS+ version=IDENT
+		//(WS+ PLUS (WS+ dbTables+=IDENT)+)? (WS+ MINUS (WS+ dbNotTables+=IDENT)+)? | name='debug-level' WS+
+		//debug=DebugLevelAssignement | name='pojos-for-procedures' (WS+ procPojos+=ProcedurePojoAssignement)+ |
+		//name='pojos-for-functions' (WS+ funPojos+=FunctionPojoAssignement)+ | name='active-filter' WS+ activeFilter=ValueType |
+		//name='package' WS+ pckg=QualifiedName | name='enum-for-check-constraints' WS+ enumName=IDENT (WS+
+		//dbCheckConstraints+=IDENT)+ | name='column-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=AnnotationAssignement
+		//| name='getter-annotations' WS+ dbColumn=IDENT WS+ columnAnnotations=AnnotationAssignement | name='setter-annotations'
+		//WS+ dbColumn=IDENT WS+ columnAnnotations=AnnotationAssignement | name='conflict-annotations' WS+
+		//columnAnnotations=AnnotationAssignement | name='static-annotations' WS+ columnAnnotations=AnnotationAssignement |
+		//name='constructor-annotations' WS+ columnAnnotations=AnnotationAssignement | name='pojo-annotations' WS+
+		//columnAnnotations=AnnotationAssignement
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -8986,14 +8987,14 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	| name='create-columns' WS+ dbTable=IDENT (WS+ columnTypes+=ColumnTypeAssignement)+
 	//	| name='rename-tables' (WS+ tables+=TableAssignement)+
 	//	| name='rename-columns' WS+ dbTable=IDENT (WS+ columns+=ColumnAssignement)+
-	//	| name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-	//	| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	//	| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	//	| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-	//	| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	//	| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	//	| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+
-	//	| name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+
+	//	| name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_IGNORE_EXPORTS, ignoreExports
+	//	| name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_IGNORE_IMPORTS, ignoreImports
+	//	| name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_INHERIT_IMPORTS, inheritImports
+	//	| name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_CREATE_EXPORTS, createExports
+	//	| name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_IMPORTS, createImports
+	//	| name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_121_IMPORTS, create121Imports, ignoreExports, ignoreImports
+	//	| name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+ // , POJOGEN_MANY_TO_MANY_IMPORTS, manyToManyImports
+	//	| name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+ // , POJOGEN_INHERITANCE, inheritance, inheritanceColumns
 	//	| name='generate-methods' (WS+ methods+=IDENT)+
 	//	| name='generate-operators' (WS+ operatorsSuffix=IDENT)?
 	//	| name='implements-interfaces' WS+ toImplements=ImplementsAssignement

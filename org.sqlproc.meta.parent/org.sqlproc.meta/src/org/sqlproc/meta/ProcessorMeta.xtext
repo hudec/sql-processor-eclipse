@@ -110,14 +110,14 @@ PojogenProperty:
 	|name='create-columns' WS+ dbTable=IDENT (WS+ columnTypes+=ColumnTypeAssignement)+
 	|name='rename-tables' (WS+ tables+=TableAssignement)+
 	|name='rename-columns' WS+ dbTable=IDENT (WS+ columns+=ColumnAssignement)+
-	|name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-	|name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	|name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	|name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports
-	|name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	|name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports
-	|name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+
-	|name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+
+	|name='ignore-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_IGNORE_EXPORTS, ignoreExports
+	|name='ignore-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_IGNORE_IMPORTS, ignoreImports
+	|name='inherit-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_INHERIT_IMPORTS, inheritImports
+	|name='create-one-to-many' WS+ dbTable=IDENT (WS+ exports+=ExportAssignement)+ // exports, POJOGEN_CREATE_EXPORTS, createExports
+	|name='create-many-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_IMPORTS, createImports
+	|name='association-one-to-one' WS+ dbTable=IDENT (WS+ imports+=ImportAssignement)+ // imports, POJOGEN_CREATE_121_IMPORTS, create121Imports, ignoreExports, ignoreImports
+	|name='table-many-to-many' WS+ dbTable=IDENT (WS+ many2s+=ManyToManyAssignement)+ // , POJOGEN_MANY_TO_MANY_IMPORTS, manyToManyImports
+	|name='inherit-discriminator' WS+ dbTable=IDENT WS+ dbColumn=IDENT (WS+ inheritance+=InheritanceAssignement)+ // , POJOGEN_INHERITANCE, inheritance, inheritanceColumns
 	|name='generate-methods' (WS+ methods+=IDENT)+
 	|name='generate-operators' (WS+ operatorsSuffix=IDENT)?
 	|name='implements-interfaces' WS+ toImplements=ImplementsAssignement 

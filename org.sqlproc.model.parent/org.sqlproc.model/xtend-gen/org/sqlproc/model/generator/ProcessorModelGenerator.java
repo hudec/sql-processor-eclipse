@@ -77,22 +77,19 @@ public class ProcessorModelGenerator extends JvmModelGenerator {
     } else {
       EList<EObject> _values_1 = it.getValues();
       Iterable<XExpression> _filter = Iterables.<XExpression>filter(_values_1, XExpression.class);
-      final Procedure1<XExpression> _function = new Procedure1<XExpression>() {
-        @Override
-        public void apply(final XExpression it) {
-          if ((it instanceof XStringLiteral)) {
-            String _value = ((XStringLiteral)it).getValue();
-            String _doConvertToJavaString = ProcessorModelGenerator.this.doConvertToJavaString(_value);
-            String _plus = ("\"" + _doConvertToJavaString);
-            String _plus_1 = (_plus + "\"");
-            appendable.append(_plus_1);
+      final Procedure1<XExpression> _function = (XExpression it_1) -> {
+        if ((it_1 instanceof XStringLiteral)) {
+          String _value = ((XStringLiteral)it_1).getValue();
+          String _doConvertToJavaString = this.doConvertToJavaString(_value);
+          String _plus = ("\"" + _doConvertToJavaString);
+          String _plus_1 = (_plus + "\"");
+          appendable.append(_plus_1);
+        } else {
+          if ((it_1 instanceof XNumberLiteral)) {
+            String _value_1 = ((XNumberLiteral)it_1).getValue();
+            appendable.append(_value_1);
           } else {
-            if ((it instanceof XNumberLiteral)) {
-              String _value_1 = ((XNumberLiteral)it).getValue();
-              appendable.append(_value_1);
-            } else {
-              ProcessorModelGenerator.this.compiler.toJavaExpression(it, appendable);
-            }
+            this.compiler.toJavaExpression(it_1, appendable);
           }
         }
       };
