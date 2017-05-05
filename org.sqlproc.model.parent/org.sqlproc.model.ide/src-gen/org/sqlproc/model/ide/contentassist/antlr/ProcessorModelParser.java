@@ -819,6 +819,7 @@ public class ProcessorModelParser extends AbstractContentAssistParser {
 					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_49_1(), "rule__PojogenProperty__ColumnAnnotationsAssignment_49_1");
 					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_50_0(), "rule__PojogenProperty__NameAssignment_50_0");
 					put(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAssignment_50_1(), "rule__PojogenProperty__ColumnAnnotationsAssignment_50_1");
+					put(grammarAccess.getPojogenPropertyAccess().getNameAssignment_51(), "rule__PojogenProperty__NameAssignment_51");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getSqlTypeAssignment_0(), "rule__MetaSqlTypeAssignement__SqlTypeAssignment_0");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getTypeAssignment_2(), "rule__MetaSqlTypeAssignement__TypeAssignment_2");
 					put(grammarAccess.getMetaSqlTypeAssignementAccess().getExtensionAssignment_3_1(), "rule__MetaSqlTypeAssignement__ExtensionAssignment_3_1");

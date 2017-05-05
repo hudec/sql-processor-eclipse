@@ -5668,6 +5668,21 @@ rulePojogenProperty returns [EObject current=null]
 				)
 			)
 		)
+		    |
+		(
+			(
+				lv_name_128_0='old-date-time'
+				{
+					newLeafNode(lv_name_128_0, grammarAccess.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getPojogenPropertyRule());
+					}
+					setWithLastConsumed($current, "name", lv_name_128_0, "old-date-time");
+				}
+			)
+		)
 	)
 ;
 

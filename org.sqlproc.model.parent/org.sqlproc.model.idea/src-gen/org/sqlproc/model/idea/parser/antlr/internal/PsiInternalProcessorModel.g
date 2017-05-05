@@ -5223,6 +5223,24 @@ rulePojogenProperty returns [Boolean current=false]
 				)
 			)
 		)
+		    |
+		(
+			(
+				{
+					markLeaf(elementTypeProvider.getPojogenProperty_NameOldDateTimeKeyword_51_0ElementType());
+				}
+				lv_name_128_0='old-date-time'
+				{
+					doneLeaf(lv_name_128_0);
+				}
+				{
+					if (!$current) {
+						associateWithSemanticElement();
+						$current = true;
+					}
+				}
+			)
+		)
 	)
 ;
 

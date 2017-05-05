@@ -2642,6 +2642,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cWSTerminalRuleCall_50_1 = (RuleCall)cGroup_50.eContents().get(1);
 		private final Assignment cColumnAnnotationsAssignment_50_2 = (Assignment)cGroup_50.eContents().get(2);
 		private final RuleCall cColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0 = (RuleCall)cColumnAnnotationsAssignment_50_2.eContents().get(0);
+		private final Assignment cNameAssignment_51 = (Assignment)cAlternatives.eContents().get(51);
+		private final Keyword cNameOldDateTimeKeyword_51_0 = (Keyword)cNameAssignment_51.eContents().get(0);
 		
 		//PojogenProperty:
 		//	name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -2694,7 +2696,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//	| name='conflict-annotations' WS+ columnAnnotations=AnnotationAssignement
 		//	| name='static-annotations' WS+ columnAnnotations=AnnotationAssignement
 		//	| name='constructor-annotations' WS+ columnAnnotations=AnnotationAssignement
-		//	| name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement;
+		//	| name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement
+		//	| name='old-date-time';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+ | name='types-in-table' WS+ dbTable=IDENT (WS+
@@ -2733,7 +2736,7 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		//WS+ dbColumn=IDENT WS+ columnAnnotations=AnnotationAssignement | name='conflict-annotations' WS+
 		//columnAnnotations=AnnotationAssignement | name='static-annotations' WS+ columnAnnotations=AnnotationAssignement |
 		//name='constructor-annotations' WS+ columnAnnotations=AnnotationAssignement | name='pojo-annotations' WS+
-		//columnAnnotations=AnnotationAssignement
+		//columnAnnotations=AnnotationAssignement | name='old-date-time'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//name='types-sqltypes' (WS+ sqlTypes+=SqlTypeAssignement)+
@@ -3974,6 +3977,12 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//AnnotationAssignement
 		public RuleCall getColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0() { return cColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0; }
+		
+		//name='old-date-time'
+		public Assignment getNameAssignment_51() { return cNameAssignment_51; }
+		
+		//'old-date-time'
+		public Keyword getNameOldDateTimeKeyword_51_0() { return cNameOldDateTimeKeyword_51_0; }
 	}
 	public class MetaSqlTypeAssignementElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.sqlproc.meta.ProcessorMeta.MetaSqlTypeAssignement");
@@ -9018,7 +9027,8 @@ public class ProcessorMetaGrammarAccess extends AbstractGrammarElementFinder {
 	//	| name='conflict-annotations' WS+ columnAnnotations=AnnotationAssignement
 	//	| name='static-annotations' WS+ columnAnnotations=AnnotationAssignement
 	//	| name='constructor-annotations' WS+ columnAnnotations=AnnotationAssignement
-	//	| name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement;
+	//	| name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement
+	//	| name='old-date-time';
 	public PojogenPropertyElements getPojogenPropertyAccess() {
 		return pPojogenProperty;
 	}

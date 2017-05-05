@@ -3918,6 +3918,12 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 		public static IGrammarAwareElementType createPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0ElementType() {
 			return new IGrammarAwareElementType("PojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0());
 		}
+		public static IGrammarAwareElementType createPojogenProperty_NameAssignment_51ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameAssignment_51_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameAssignment_51());
+		}
+		public static IGrammarAwareElementType createPojogenProperty_NameOldDateTimeKeyword_51_0ElementType() {
+			return new IGrammarAwareElementType("PojogenProperty_NameOldDateTimeKeyword_51_0_ELEMENT_TYPE", ProcessorMetaLanguage.INSTANCE, GRAMMAR_ACCESS.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0());
+		}
 	}
 
 	public static final IGrammarAwareElementType PojogenProperty_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenPropertyElementType());
@@ -4749,6 +4755,10 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAssignment_50_2_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAssignment_50_2ElementType());
 
 	public static final IGrammarAwareElementType PojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameAssignment_51_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameAssignment_51ElementType());
+
+	public static final IGrammarAwareElementType PojogenProperty_NameOldDateTimeKeyword_51_0_ELEMENT_TYPE = associate(PojogenPropertyFactory.createPojogenProperty_NameOldDateTimeKeyword_51_0ElementType());
 
 	private static class MetaSqlTypeAssignementFactory {
 		public static IGrammarAwareElementType createMetaSqlTypeAssignementElementType() {
@@ -13740,6 +13750,14 @@ public class ProcessorMetaElementTypeProvider implements IElementTypeProvider {
 	
 	public IGrammarAwareElementType getPojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0ElementType() {
 		return PojogenProperty_ColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameAssignment_51ElementType() {
+		return PojogenProperty_NameAssignment_51_ELEMENT_TYPE;
+	}
+	
+	public IGrammarAwareElementType getPojogenProperty_NameOldDateTimeKeyword_51_0ElementType() {
+		return PojogenProperty_NameOldDateTimeKeyword_51_0_ELEMENT_TYPE;
 	}
 	
 	public IGrammarAwareElementType getMetaSqlTypeAssignementElementType() {

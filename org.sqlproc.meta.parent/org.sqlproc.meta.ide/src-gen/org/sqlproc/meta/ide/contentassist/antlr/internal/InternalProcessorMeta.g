@@ -2703,6 +2703,12 @@ rule__PojogenProperty__Alternatives
 		(rule__PojogenProperty__Group_50__0)
 		{ after(grammarAccess.getPojogenPropertyAccess().getGroup_50()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getPojogenPropertyAccess().getNameAssignment_51()); }
+		(rule__PojogenProperty__NameAssignment_51)
+		{ after(grammarAccess.getPojogenPropertyAccess().getNameAssignment_51()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -35167,6 +35173,25 @@ rule__PojogenProperty__ColumnAnnotationsAssignment_50_2
 		{ before(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0()); }
 		ruleAnnotationAssignement
 		{ after(grammarAccess.getPojogenPropertyAccess().getColumnAnnotationsAnnotationAssignementParserRuleCall_50_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__PojogenProperty__NameAssignment_51
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0()); }
+		(
+			{ before(grammarAccess.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0()); }
+			'old-date-time'
+			{ after(grammarAccess.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0()); }
+		)
+		{ after(grammarAccess.getPojogenPropertyAccess().getNameOldDateTimeKeyword_51_0()); }
 	)
 ;
 finally {

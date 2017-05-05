@@ -1192,7 +1192,8 @@ public class ProcessorMetaSemanticSequencer extends AbstractDelegatingSemanticSe
 	 *         (name='conflict-annotations' columnAnnotations=AnnotationAssignement) | 
 	 *         (name='static-annotations' columnAnnotations=AnnotationAssignement) | 
 	 *         (name='constructor-annotations' columnAnnotations=AnnotationAssignement) | 
-	 *         (name='pojo-annotations' columnAnnotations=AnnotationAssignement)
+	 *         (name='pojo-annotations' columnAnnotations=AnnotationAssignement) | 
+	 *         name='old-date-time'
 	 *     )
 	 */
 	protected void sequence_PojogenProperty(ISerializationContext context, PojogenProperty semanticObject) {
