@@ -145,6 +145,7 @@ PojogenProperty:
 	|name='static-annotations' columnAnnotations=AnnotationAssignement
 	|name='constructor-annotations' columnAnnotations=AnnotationAssignement
 	|name='pojo-annotations' columnAnnotations=AnnotationAssignement
+	|name='old-date-time'
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=ValidID ('->' extension=ValidID)?;

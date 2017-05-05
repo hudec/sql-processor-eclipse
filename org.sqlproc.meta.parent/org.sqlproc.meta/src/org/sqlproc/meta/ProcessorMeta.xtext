@@ -142,6 +142,7 @@ PojogenProperty:
 	|name='static-annotations' WS+ columnAnnotations=AnnotationAssignement
 	|name='constructor-annotations' WS+ columnAnnotations=AnnotationAssignement
 	|name='pojo-annotations' WS+ columnAnnotations=AnnotationAssignement
+	|name='old-date-time'
 	);
 
 MetaSqlTypeAssignement: sqlType=ValueType '->' type=IDENT ('->' extension=IDENT)?;
