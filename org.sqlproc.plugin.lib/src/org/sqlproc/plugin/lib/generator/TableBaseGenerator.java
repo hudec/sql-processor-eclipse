@@ -130,6 +130,7 @@ public class TableBaseGenerator {
     protected Map<String, ColumnAnnotations> columnAnnotations = new TreeMap<>();
     protected Map<String, ColumnAnnotations> columnAnnotations2 = new TreeMap<>();
     protected PojoAnnotations pojoAnnotations = null;
+    protected boolean oldDateTime = false;
 
     protected Set<String> tables = new HashSet<String>();
     protected Map<String, Map<String, PojoAttribute>> pojos = new TreeMap<>();
@@ -321,6 +322,7 @@ public class TableBaseGenerator {
         }
         pojoAnnotations = modelProperty.getPojoAnnotations(model);
         pojoPackage = modelProperty.getPackage(model);
+        oldDateTime = modelProperty.isOldDateTime(model);
 
         for (Map.Entry<String, Map<String, Map<String, String>>> inheritImport : this.inheritImports.entrySet()) {
             for (Map.Entry<String, Map<String, String>> inherit : inheritImport.getValue().entrySet()) {
@@ -431,6 +433,7 @@ public class TableBaseGenerator {
         debug.debug("modelTables " + this.modelTables);
         debug.debug("modelProcedures " + this.modelProcedures);
         debug.debug("modelFunctions " + this.modelFunctions);
+        debug.debug("oldDateTime " + this.oldDateTime);
 
         for (String table : createTables) {
             addTableDefinition(table, Collections.<DbColumn>emptyList(), Collections.<String>emptyList(),
