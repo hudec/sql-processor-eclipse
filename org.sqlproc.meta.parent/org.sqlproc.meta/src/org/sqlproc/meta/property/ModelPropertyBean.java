@@ -699,6 +699,8 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.enumForCheckConstraints.put(property.getDbCheckConstraints().get(i),
                         property.getEnumName());
             }
+        } else if (POJOGEN_OLD_DATE_TIME.equals(property.getName())) {
+            modelValues.oldDateTime = true;
         }
     }
 

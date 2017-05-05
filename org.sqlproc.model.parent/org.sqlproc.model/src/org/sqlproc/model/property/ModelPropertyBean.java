@@ -732,6 +732,8 @@ public class ModelPropertyBean extends ModelProperty {
                     property.getDbColumn(), property.getColumnAnnotations().getAnnotations(),
                     property.getColumnAnnotations().getDbTables(), property.getColumnAnnotations().getDbNotTables(),
                     type);
+        } else if (POJOGEN_OLD_DATE_TIME.equals(property.getName())) {
+            modelValues.oldDateTime = true;
         }
     }
 
