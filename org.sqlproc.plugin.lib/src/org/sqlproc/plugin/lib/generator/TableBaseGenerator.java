@@ -1282,21 +1282,34 @@ public class TableBaseGenerator {
             attribute.setWrapperClassName(String.class.getName());
             break;
         case Types.DATE:
-            // java.util.Date or java.sql.Date ?
             attribute.setPrimitive(false);
-            attribute.setClassName(java.util.Date.class.getName());
-            attribute.setWrapperClassName(java.util.Date.class.getName());
+            if (oldDateTime) {
+                attribute.setClassName(java.sql.Date.class.getName());
+                attribute.setWrapperClassName(java.util.Date.class.getName());
+            } else {
+                attribute.setClassName(java.time.LocalDate.class.getName());
+                attribute.setWrapperClassName(java.time.LocalDate.class.getName());
+            }
             break;
         case Types.TIME:
             attribute.setPrimitive(false);
-            attribute.setClassName(java.sql.Time.class.getName());
-            attribute.setWrapperClassName(java.sql.Time.class.getName());
+            if (oldDateTime) {
+                attribute.setClassName(java.sql.Time.class.getName());
+                attribute.setWrapperClassName(java.sql.Time.class.getName());
+            } else {
+                attribute.setClassName(java.time.LocalTime.class.getName());
+                attribute.setWrapperClassName(java.time.LocalTime.class.getName());
+            }
             break;
         case Types.TIMESTAMP:
-            // java.util.Date or java.sql.Timestamp ?
             attribute.setPrimitive(false);
-            attribute.setClassName(java.sql.Timestamp.class.getName());
-            attribute.setWrapperClassName(java.sql.Timestamp.class.getName());
+            if (oldDateTime) {
+                attribute.setClassName(java.sql.Timestamp.class.getName());
+                attribute.setWrapperClassName(java.sql.Timestamp.class.getName());
+            } else {
+                attribute.setClassName(java.time.LocalDateTime.class.getName());
+                attribute.setWrapperClassName(java.time.LocalDateTime.class.getName());
+            }
             break;
         case Types.BINARY:
         case Types.VARBINARY:
@@ -1314,10 +1327,14 @@ public class TableBaseGenerator {
         default:
             // todo what type?
             attribute.setPrimitive(false);
-            if (dbColumn.getType().indexOf("TIMESTAMP") == 0 || dbColumn.getType().indexOf("timestamp") == 0)
-                attribute.setClassName(java.sql.Timestamp.class.getName());
-            else
+            if (dbColumn.getType().indexOf("TIMESTAMP") == 0 || dbColumn.getType().indexOf("timestamp") == 0) {
+                if (oldDateTime)
+                    attribute.setClassName(java.sql.Timestamp.class.getName());
+                else
+                    attribute.setClassName(java.time.LocalDateTime.class.getName());
+            } else {
                 attribute.setClassName("java.lang.Object");
+            }
             attribute.setWrapperClassName(attribute.getClassName());
         }
         attribute.setSqlType(dbColumn.getSqlType());
@@ -1331,6 +1348,10 @@ public class TableBaseGenerator {
     protected static Map<String, String> metaType2classNameMap = new LinkedHashMap<String, String>();
 
     static {
+        metaType2classNameMap.put("localdatetime", java.time.LocalDateTime.class.getName());
+        metaType2classNameMap.put("localdate", java.time.LocalDate.class.getName());
+        metaType2classNameMap.put("localtime", java.time.LocalTime.class.getName());
+        metaType2classNameMap.put("instant", java.time.Instant.class.getName());
         metaType2classNameMap.put("stamp", java.sql.Timestamp.class.getName());
         metaType2classNameMap.put("timestamp", java.sql.Timestamp.class.getName());
         metaType2classNameMap.put("date", java.sql.Date.class.getName());
