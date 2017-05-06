@@ -172,7 +172,7 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(cloneWithProxies(typeEntityRef));
-        String name = "_set" + _toFirstUpper(propertyName);
+        String name = "with" + _toFirstUpper(propertyName);
         if (procNames != null && procNames.contains(name))
             return null;
         result.setSimpleName(name);
@@ -223,7 +223,7 @@ public class ProcessorTypesBuilder extends JvmTypesBuilder {
         JvmOperation result = typesFactory.createJvmOperation();
         result.setVisibility(JvmVisibility.PUBLIC);
         result.setReturnType(cloneWithProxies(typeEntityRef));
-        String name = "_set" + _toFirstUpper(propertyName);
+        String name = "with" + _toFirstUpper(propertyName);
         if (procNames != null && procNames.contains(name))
             return null;
         result.setSimpleName(name);

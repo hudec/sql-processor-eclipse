@@ -311,7 +311,7 @@ class PojoJvmModelInferrer {
 							nullValues_.add(attribute.name());
    					'''
    				]	
-	   			members += entity.toMethod('_setNull_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(isDefType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -350,7 +350,7 @@ class PojoJvmModelInferrer {
 							nullValues_.add(attribute);
    					'''
    				]	
-	   			members += entity.toMethod('_setNull_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withNull_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
@@ -470,7 +470,7 @@ class PojoJvmModelInferrer {
 							initAssociations_.add(association.name());
    					'''
    				]	
-	   			members += entity.toMethod('_setInit_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(toInitType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -509,7 +509,7 @@ class PojoJvmModelInferrer {
 							initAssociations_.add(association);
    					'''
    				]	
-	   			members += entity.toMethod('_setInit_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withInit_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("associations", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''
@@ -616,7 +616,7 @@ class PojoJvmModelInferrer {
 							operators_.put(attribute.name(), operator);
    					'''
    				]	
-	   			members += entity.toMethod('_setOp_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
@@ -657,7 +657,7 @@ class PojoJvmModelInferrer {
 							operators_.put(attribute, operator);
    					'''
    				]	
-	   			members += entity.toMethod('_setOp_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("operator", typeRef(String))
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
@@ -695,7 +695,7 @@ class PojoJvmModelInferrer {
 							operators_.put(attribute.name(), "is null");
    					'''
    				]	
-	   			members += entity.toMethod('_setNullOp_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withNullOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(opAttrType).addArrayTypeDimension.cloneWithProxies)
 	   				varArgs = true
 	   				addAnnotationsX(entity.conflictAnnotations.map[a|a.annotation])
@@ -714,7 +714,7 @@ class PojoJvmModelInferrer {
 							operators_.put(attribute, "is null");
    					'''
    				]	
-	   			members += entity.toMethod('_setNullOp_', typeRef(entityType).cloneWithProxies) [
+	   			members += entity.toMethod('withNullOp_', typeRef(entityType).cloneWithProxies) [
    					parameters += entity.toParameter("attributes", typeRef(String).addArrayTypeDimension)
 	   				varArgs = true
    					body = '''

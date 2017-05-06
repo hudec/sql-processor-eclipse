@@ -2039,7 +2039,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
           _builder.append(".class, new ");
           String _name_13 = pojo.getName();
           _builder.append(_name_13, "\t");
-          _builder.append("()._setIds_(ids_), sqlc, sqlRowProcessor);");
+          _builder.append("().withIds_(ids_), sqlc, sqlRowProcessor);");
           _builder.newLineIfNotEmpty();
           _builder.append("\t");
           _builder.append("for (");

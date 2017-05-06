@@ -767,7 +767,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 							return true;
 						}
 					};
-					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»()._setIds_(ids_), sqlc, sqlRowProcessor);
+					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»().withIds_(ids_), sqlc, sqlRowProcessor);
 					for («pkType» id : ids_)
 						«pojoAttrName»List.add(map.get(id));
 				}
