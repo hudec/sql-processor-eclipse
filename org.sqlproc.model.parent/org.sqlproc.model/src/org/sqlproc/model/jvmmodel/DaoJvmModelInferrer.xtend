@@ -426,7 +426,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql get: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«CRUD_ENGINE» sqlGetEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine("GET_«dbName(pojo.name)»");
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "GET_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlGetEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				«pojo.name» «pojoAttrName»Got = sqlGetEngine«pojo.name».get(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl);
 				if (logger.isTraceEnabled()) {
@@ -662,7 +663,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql list «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				List<«pojo.name»> «pojoAttrName»List = sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl);
 				if (logger.isTraceEnabled()) {
@@ -745,7 +747,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql list «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				«pojoAttrName».setOnlyIds_(true);
 				«SET»<String> initAssociations = «pojoAttrName».getInitAssociations_();
@@ -846,7 +849,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql query «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				int rownums = sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl, sqlRowProcessor);
 				if (logger.isTraceEnabled()) {
@@ -929,7 +933,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("count «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine("SELECT_«dbName(pojo.name)»");
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				int count = sqlEngine«pojo.name».queryCount(sqlSession, «pojoAttrName», sqlControl);
 				if (logger.isTraceEnabled()) {

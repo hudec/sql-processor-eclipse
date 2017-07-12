@@ -2,7 +2,7 @@
 <feature
       id="org.sqlproc.plugin.sdk"
       label="SQL Processor Eclipse Plugin"
-      version="2.7.0">
+      version="2.7.1.qualifier">
 
    <description>
       SQL Processor Eclipse Meta and Model Eclipse Plugin
