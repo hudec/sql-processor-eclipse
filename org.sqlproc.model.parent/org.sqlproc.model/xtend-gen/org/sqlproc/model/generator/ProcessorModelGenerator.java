@@ -4,10 +4,7 @@ import com.google.common.base.Objects;
 import com.google.common.collect.Iterables;
 import com.google.inject.Inject;
 import java.util.Arrays;
-import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmAnnotationAnnotationValue;
-import org.eclipse.xtext.common.types.JvmAnnotationReference;
 import org.eclipse.xtext.common.types.JvmAnnotationValue;
 import org.eclipse.xtext.common.types.JvmBooleanAnnotationValue;
 import org.eclipse.xtext.common.types.JvmByteAnnotationValue;
@@ -23,7 +20,6 @@ import org.eclipse.xtext.common.types.JvmLongAnnotationValue;
 import org.eclipse.xtext.common.types.JvmShortAnnotationValue;
 import org.eclipse.xtext.common.types.JvmStringAnnotationValue;
 import org.eclipse.xtext.common.types.JvmTypeAnnotationValue;
-import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.xbase.XExpression;
 import org.eclipse.xtext.xbase.XNumberLiteral;
 import org.eclipse.xtext.xbase.XStringLiteral;
@@ -55,45 +51,35 @@ public class ProcessorModelGenerator extends JvmModelGenerator {
       super.generateParameter(it, appendable, vararg, config);
     } else {
       final ITreeAppendable tracedAppendable = appendable.trace(it);
-      EList<JvmAnnotationReference> _annotations = it.getAnnotations();
-      this.generateAnnotations(_annotations, tracedAppendable, false, config);
-      JvmTypeReference _parameterType = it.getParameterType();
-      this._errorSafeExtensions.serializeSafely(_parameterType, "Object", tracedAppendable);
+      this.generateAnnotations(it.getAnnotations(), tracedAppendable, false, config);
+      this._errorSafeExtensions.serializeSafely(it.getParameterType(), "Object", tracedAppendable);
       tracedAppendable.append(" ");
-      String _simpleName = it.getSimpleName();
-      String _makeJavaIdentifier = this.makeJavaIdentifier(_simpleName);
-      final String name = tracedAppendable.declareVariable(it, _makeJavaIdentifier);
-      ITreeAppendable _traceSignificant = this._treeAppendableUtil.traceSignificant(tracedAppendable, it);
-      _traceSignificant.append(name);
+      final String name = tracedAppendable.declareVariable(it, this.makeJavaIdentifier(it.getSimpleName()));
+      this._treeAppendableUtil.traceSignificant(tracedAppendable, it).append(name);
     }
   }
   
   @Override
   protected void _toJavaLiteral(final JvmCustomAnnotationValue it, final ITreeAppendable appendable, final GeneratorConfig config) {
-    EList<EObject> _values = it.getValues();
-    boolean _isEmpty = _values.isEmpty();
+    boolean _isEmpty = it.getValues().isEmpty();
     if (_isEmpty) {
       appendable.append("{}");
     } else {
-      EList<EObject> _values_1 = it.getValues();
-      Iterable<XExpression> _filter = Iterables.<XExpression>filter(_values_1, XExpression.class);
       final Procedure1<XExpression> _function = (XExpression it_1) -> {
         if ((it_1 instanceof XStringLiteral)) {
-          String _value = ((XStringLiteral)it_1).getValue();
-          String _doConvertToJavaString = this.doConvertToJavaString(_value);
+          String _doConvertToJavaString = this.doConvertToJavaString(((XStringLiteral)it_1).getValue());
           String _plus = ("\"" + _doConvertToJavaString);
           String _plus_1 = (_plus + "\"");
           appendable.append(_plus_1);
         } else {
           if ((it_1 instanceof XNumberLiteral)) {
-            String _value_1 = ((XNumberLiteral)it_1).getValue();
-            appendable.append(_value_1);
+            appendable.append(((XNumberLiteral)it_1).getValue());
           } else {
             this.compiler.toJavaExpression(it_1, appendable);
           }
         }
       };
-      this._loopExtensions.<XExpression>forEachWithShortcut(appendable, _filter, _function);
+      this._loopExtensions.<XExpression>forEachWithShortcut(appendable, Iterables.<XExpression>filter(it.getValues(), XExpression.class), _function);
     }
   }
   

@@ -5,8 +5,6 @@ package org.sqlproc.model.scoping;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
-import java.util.List;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.EcoreUtil2;
@@ -19,7 +17,6 @@ import org.sqlproc.model.jvmmodel.ProcessorGeneratorUtils;
 import org.sqlproc.model.processorModel.AnnotatedFeature;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.Feature;
-import org.sqlproc.model.processorModel.PojoAttribute;
 import org.sqlproc.model.processorModel.PojoEntity;
 import org.sqlproc.model.processorModel.ProcessorModelPackage;
 import org.sqlproc.model.scoping.AbstractProcessorModelScopeProvider;
@@ -41,12 +38,10 @@ public class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProv
     boolean _equals = Objects.equal(reference, ProcessorModelPackage.Literals.DIRECTIVE_PROPERTIES__FEATURES);
     if (_equals) {
       final PojoEntity pojo = EcoreUtil2.<PojoEntity>getContainerOfType(context, PojoEntity.class);
-      EList<AnnotatedFeature> _features = pojo.getFeatures();
       final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
         return it.getFeature();
       };
-      List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-      final IScope scope = Scopes.scopeFor(_map);
+      final IScope scope = Scopes.scopeFor(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function));
       return scope;
     } else {
       boolean _equals_1 = Objects.equal(reference, ProcessorModelPackage.Literals.DAO_DIRECTIVE_DISCRIMINATOR__ANCESTOR);
@@ -55,8 +50,7 @@ public class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProv
         boolean _notEquals = (!Objects.equal(dao, null));
         if (_notEquals) {
           final PojoEntity pojo_1 = this._processorGeneratorUtils.getPojo(dao);
-          List<PojoAttribute> _allAttributes = this._processorGeneratorUtils.allAttributes(pojo_1);
-          final IScope scope_1 = Scopes.scopeFor(_allAttributes);
+          final IScope scope_1 = Scopes.scopeFor(this._processorGeneratorUtils.allAttributes(pojo_1));
           return scope_1;
         }
       }

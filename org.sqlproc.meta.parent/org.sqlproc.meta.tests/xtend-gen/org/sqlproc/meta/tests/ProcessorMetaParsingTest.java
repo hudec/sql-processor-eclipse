@@ -4,7 +4,6 @@
 package org.sqlproc.meta.tests;
 
 import com.google.inject.Inject;
-import org.eclipse.emf.common.util.EList;
 import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.junit4.InjectWith;
 import org.eclipse.xtext.junit4.XtextRunner;
@@ -14,7 +13,6 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.sqlproc.meta.processorMeta.Artifacts;
-import org.sqlproc.meta.processorMeta.Property;
 import org.sqlproc.meta.tests.ProcessorMetaInjectorProvider;
 
 @RunWith(XtextRunner.class)
@@ -32,9 +30,7 @@ public class ProcessorMetaParsingTest {
       _builder.newLine();
       _builder.append("database-is-online;\t\t");
       final Artifacts artifacts = this.parseHelper.parse(_builder);
-      EList<Property> _properties = artifacts.getProperties();
-      int _size = _properties.size();
-      Assert.assertEquals(2, _size);
+      Assert.assertEquals(2, artifacts.getProperties().size());
     } catch (Throwable _e) {
       throw Exceptions.sneakyThrow(_e);
     }

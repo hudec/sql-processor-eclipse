@@ -6,7 +6,6 @@ package org.sqlproc.meta.validation;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.beans.PropertyDescriptor;
-import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
@@ -71,7 +70,6 @@ import org.sqlproc.meta.processorMeta.PojoDefinitionModel;
 import org.sqlproc.meta.processorMeta.ProcedureDefinitionModel;
 import org.sqlproc.meta.processorMeta.ProcessorMetaPackage;
 import org.sqlproc.meta.processorMeta.Property;
-import org.sqlproc.meta.processorMeta.Sql;
 import org.sqlproc.meta.processorMeta.SqlFragment;
 import org.sqlproc.meta.processorMeta.TableDefinitionModel;
 import org.sqlproc.meta.util.Utils;
@@ -163,9 +161,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return false;
     }
     if ((statement1.getName().equals(statement2.getName()) && statement1.getType().equals(statement2.getType()))) {
-      EList<String> _modifiers = statement1.getModifiers();
-      EList<String> _modifiers_1 = statement2.getModifiers();
-      return this.equalsModifiers(_modifiers, _modifiers_1);
+      return this.equalsModifiers(statement1.getModifiers(), statement2.getModifiers());
     }
     return false;
   }
@@ -211,9 +207,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return false;
     }
     if ((rule1.getName().equals(rule2.getName()) && rule1.getType().equals(rule2.getType()))) {
-      EList<String> _modifiers = rule1.getModifiers();
-      EList<String> _modifiers_1 = rule2.getModifiers();
-      return this.equalsModifiers(_modifiers, _modifiers_1);
+      return this.equalsModifiers(rule1.getModifiers(), rule2.getModifiers());
     }
     return false;
   }
@@ -259,9 +253,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return false;
     }
     if ((feature1.getName().equals(feature2.getName()) && feature1.getType().equals(feature2.getType()))) {
-      EList<String> _modifiers = feature1.getModifiers();
-      EList<String> _modifiers_1 = feature2.getModifiers();
-      return this.equalsModifiers(_modifiers, _modifiers_1);
+      return this.equalsModifiers(feature1.getModifiers(), feature2.getModifiers());
     }
     return false;
   }
@@ -280,12 +272,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     EList<PojoDefinitionModel> _pojos = artifacts.getPojos();
     for (final PojoDefinitionModel definition : _pojos) {
       if (((!Objects.equal(definition, null)) && (definition != pojoDefinition))) {
-        String _name = pojoDefinition.getName();
-        String _name_1 = definition.getName();
-        boolean _equals_1 = _name.equals(_name_1);
+        boolean _equals_1 = pojoDefinition.getName().equals(definition.getName());
         if (_equals_1) {
-          String _name_2 = pojoDefinition.getName();
-          String _plus = ("Duplicate name : " + _name_2);
+          String _name = pojoDefinition.getName();
+          String _plus = ("Duplicate name : " + _name);
           this.error(_plus, 
             ProcessorMetaPackage.Literals.POJO_DEFINITION_MODEL__NAME);
           return;
@@ -308,12 +298,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     EList<AnnotationDefinitionModel> _annotations = artifacts.getAnnotations();
     for (final AnnotationDefinitionModel definition : _annotations) {
       if (((!Objects.equal(definition, null)) && (definition != annotationDefinition))) {
-        String _name = annotationDefinition.getName();
-        String _name_1 = definition.getName();
-        boolean _equals_1 = _name.equals(_name_1);
+        boolean _equals_1 = annotationDefinition.getName().equals(definition.getName());
         if (_equals_1) {
-          String _name_2 = annotationDefinition.getName();
-          String _plus = ("Duplicate name : " + _name_2);
+          String _name = annotationDefinition.getName();
+          String _plus = ("Duplicate name : " + _name);
           this.error(_plus, 
             ProcessorMetaPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME);
           return;
@@ -395,8 +383,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     JvmType _classx = pojo.getClassx();
     boolean _notEquals = (!Objects.equal(_classx, null));
     if (_notEquals) {
-      JvmType _classx_1 = pojo.getClassx();
-      return _classx_1.getQualifiedName();
+      return pojo.getClassx().getQualifiedName();
     }
     return pojo.getClass_();
   }
@@ -446,9 +433,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           final String value = values[1];
           boolean _equals_1 = Constants.IDENTIFIER_USAGE.equals(key);
           if (_equals_1) {
-            Map<String, PojoDefinition> _modelPojos = this.modelProperty.getModelPojos(artifacts);
-            PojoDefinition _get = _modelPojos.get(value);
-            identPojo = _get;
+            identPojo = this.modelProperty.getModelPojos(artifacts).get(value);
             boolean _equals_2 = Objects.equal(identPojo, null);
             if (_equals_2) {
               this.error((((("Cannot find pojo : " + value) + "[") + Constants.IDENTIFIER_USAGE) + "]"), 
@@ -459,9 +444,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           }
           boolean _equals_3 = Constants.INDEX_USAGE.equals(key);
           if (_equals_3) {
-            Map<String, PojoDefinition> _modelPojos_1 = this.modelProperty.getModelPojos(artifacts);
-            PojoDefinition _get_1 = _modelPojos_1.get(value);
-            indexPojo = _get_1;
+            indexPojo = this.modelProperty.getModelPojos(artifacts).get(value);
             boolean _equals_4 = Objects.equal(indexPojo, null);
             if (_equals_4) {
               this.error((((("Cannot find pojo : " + value) + "[") + Constants.INDEX_USAGE) + "]"), 
@@ -472,9 +455,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           } else {
             boolean _equals_5 = Constants.COLUMN_USAGE.equals(key);
             if (_equals_5) {
-              Map<String, PojoDefinition> _modelPojos_2 = this.modelProperty.getModelPojos(artifacts);
-              PojoDefinition _get_2 = _modelPojos_2.get(value);
-              colPojo = _get_2;
+              colPojo = this.modelProperty.getModelPojos(artifacts).get(value);
               boolean _equals_6 = Objects.equal(colPojo, null);
               if (_equals_6) {
                 this.error((((("Cannot find pojo : " + value) + "[") + Constants.COLUMN_USAGE) + "]"), 
@@ -485,9 +466,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
             } else {
               boolean _equals_7 = Constants.CONSTANT_USAGE.equals(key);
               if (_equals_7) {
-                Map<String, PojoDefinition> _modelPojos_3 = this.modelProperty.getModelPojos(artifacts);
-                PojoDefinition _get_3 = _modelPojos_3.get(value);
-                constPojo = _get_3;
+                constPojo = this.modelProperty.getModelPojos(artifacts).get(value);
                 boolean _equals_8 = Objects.equal(constPojo, null);
                 if (_equals_8) {
                   this.error((((("Cannot find pojo : " + value) + "[") + Constants.CONSTANT_USAGE) + "]"), 
@@ -507,8 +486,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
                     _xifexpression = "_DEFAULT_";
                   }
                   final String prefix = _xifexpression;
-                  Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
-                  final TableDefinition table = _modelTables.get(value);
+                  final TableDefinition table = this.modelProperty.getModelTables(artifacts).get(value);
                   boolean _equals_10 = Objects.equal(table, null);
                   if (_equals_10) {
                     this.error((((("Cannot find table : " + value) + "[") + Constants.TABLE_USAGE) + "]"), 
@@ -582,12 +560,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     final List<DatabaseTable> tables = EcoreUtil2.<DatabaseTable>getAllContentsOfType(statement, DatabaseTable.class);
     final Consumer<DatabaseTable> _function = (DatabaseTable table) -> {
       final String tableName = table.getName();
-      Collection<TableDefinition> _values = tablesPojo.values();
       final Function1<TableDefinition, Boolean> _function_1 = (TableDefinition it) -> {
         String _table = it.getTable();
         return Boolean.valueOf(Objects.equal(_table, tableName));
       };
-      final TableDefinition tableDefinition = IterableExtensions.<TableDefinition>findFirst(_values, _function_1);
+      final TableDefinition tableDefinition = IterableExtensions.<TableDefinition>findFirst(tablesPojo.values(), _function_1);
       if ((Objects.equal(tableDefinition, null) || (!this.dbResolver.checkTable(statement, tableName)))) {
         this.error(("Cannot find table in DB : " + tableName), table, ProcessorMetaPackage.Literals.DATABASE_TABLE__NAME);
       }
@@ -595,20 +572,17 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     tables.forEach(_function);
     final List<DatabaseColumn> columns = EcoreUtil2.<DatabaseColumn>getAllContentsOfType(statement, DatabaseColumn.class);
     final Consumer<DatabaseColumn> _function_1 = (DatabaseColumn column) -> {
-      String _name = column.getName();
-      final int pos = _name.indexOf(".");
+      final int pos = column.getName().indexOf(".");
       String _xifexpression = null;
       if ((pos > 0)) {
-        String _name_1 = column.getName();
-        _xifexpression = _name_1.substring(0, pos);
+        _xifexpression = column.getName().substring(0, pos);
       } else {
         _xifexpression = "_DEFAULT_";
       }
       final String prefix = _xifexpression;
       String _xifexpression_1 = null;
       if ((pos > 0)) {
-        String _name_2 = column.getName();
-        _xifexpression_1 = _name_2.substring((pos + 1));
+        _xifexpression_1 = column.getName().substring((pos + 1));
       } else {
         _xifexpression_1 = column.getName();
       }
@@ -621,8 +595,8 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       }
       final String tableName = _xifexpression_2;
       if ((Objects.equal(tableName, null) || (!this.dbResolver.checkColumn(column, tableName, columnName)))) {
-        String _name_3 = column.getName();
-        String _plus = ("Cannot find column in DB : " + _name_3);
+        String _name = column.getName();
+        String _plus = ("Cannot find column in DB : " + _name);
         String _plus_1 = (_plus + "[");
         String _plus_2 = (_plus_1 + tableName);
         String _plus_3 = (_plus_2 + "]");
@@ -645,11 +619,9 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if (_notEquals) {
       if ((newPojoValidator && (pojo.getClassx() instanceof JvmDeclaredType))) {
         JvmType _classx = pojo.getClassx();
-        ValidationResult _checkClassProperty = this.checkClassProperty(((JvmDeclaredType) _classx), identifierName);
-        validationResult = _checkClassProperty;
+        validationResult = this.checkClassProperty(((JvmDeclaredType) _classx), identifierName);
       } else {
-        ValidationResult _checkClassProperty_1 = this.checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache);
-        validationResult = _checkClassProperty_1;
+        validationResult = this.checkClassProperty(identifierUsageClass, identifierName, uri, descriptorsCache, classesCache);
       }
       if (validationResult != null) {
         switch (validationResult) {
@@ -685,8 +657,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if (_notEquals) {
       if ((newPojoValidator && (pojo.getClassx() instanceof JvmDeclaredType))) {
         JvmType _classx = pojo.getClassx();
-        ValidationResult _checkOrderProperty = this.checkOrderProperty(((JvmDeclaredType) _classx), identifierName);
-        validationResult = _checkOrderProperty;
+        validationResult = this.checkOrderProperty(((JvmDeclaredType) _classx), identifierName);
       } else {
         this.checkOrderProperty(identifierUsageClass, identifierName, uri, ordersCache, classesCache);
       }
@@ -733,11 +704,9 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if (_notEquals_1) {
       if ((newPojoValidator && (pojo.getClassx() instanceof JvmDeclaredType))) {
         JvmType _classx = pojo.getClassx();
-        ValidationResult _checkClassProperty = this.checkClassProperty(((JvmDeclaredType) _classx), columnName);
-        validationResult = _checkClassProperty;
+        validationResult = this.checkClassProperty(((JvmDeclaredType) _classx), columnName);
       } else {
-        ValidationResult _checkClassProperty_1 = this.checkClassProperty(columnUsageClass, columnName, uri, descriptorsCache, classesCache);
-        validationResult = _checkClassProperty_1;
+        validationResult = this.checkClassProperty(columnUsageClass, columnName, uri, descriptorsCache, classesCache);
       }
       if (validationResult != null) {
         switch (validationResult) {
@@ -764,18 +733,16 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if ((Objects.equal(statement.getStatement(), null) || Objects.equal(statement.getStatement().getSqls(), null))) {
       return;
     }
-    Sql _statement = statement.getStatement();
-    EList<SqlFragment> _sqls = _statement.getSqls();
+    EList<SqlFragment> _sqls = statement.getStatement().getSqls();
     for (final SqlFragment stmt : _sqls) {
       {
         if ((((!Objects.equal(stmt.getCol(), null)) && (!Objects.equal(stmt.getCol().getColumns(), null))) && (!Objects.equal(stmt.getCol().getColumns(), null)))) {
-          Column _col = stmt.getCol();
-          EList<ExtendedColumn> _columns = _col.getColumns();
-          for (final ExtendedColumn _col_1 : _columns) {
-            EList<String> _modifiers = _col_1.getModifiers();
+          EList<ExtendedColumn> _columns = stmt.getCol().getColumns();
+          for (final ExtendedColumn _col : _columns) {
+            EList<String> _modifiers = _col.getModifiers();
             boolean _notEquals = (!Objects.equal(_modifiers, null));
             if (_notEquals) {
-              EList<String> _modifiers_1 = _col_1.getModifiers();
+              EList<String> _modifiers_1 = _col.getModifiers();
               for (final String mod : _modifiers_1) {
                 int _indexOf = mod.indexOf("gtype");
                 boolean _greaterEqualsThan = (_indexOf >= 0);
@@ -788,8 +755,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           }
         }
         if (((!Objects.equal(stmt.getMeta(), null)) && (!Objects.equal(stmt.getMeta().getIfs(), null)))) {
-          MetaSql _meta = stmt.getMeta();
-          EList<IfSql> _ifs = _meta.getIfs();
+          EList<IfSql> _ifs = stmt.getMeta().getIfs();
           for (final IfSql ifs : _ifs) {
             EList<IfSqlFragment> _sqls_1 = ifs.getSqls();
             boolean _notEquals_1 = (!Objects.equal(_sqls_1, null));
@@ -797,13 +763,12 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
               EList<IfSqlFragment> _sqls_2 = ifs.getSqls();
               for (final IfSqlFragment stmt2 : _sqls_2) {
                 if ((((!Objects.equal(stmt2.getCol(), null)) && (!Objects.equal(stmt2.getCol().getColumns(), null))) && (!Objects.equal(stmt2.getCol().getColumns(), null)))) {
-                  Column _col_2 = stmt2.getCol();
-                  EList<ExtendedColumn> _columns_1 = _col_2.getColumns();
-                  for (final ExtendedColumn _col_3 : _columns_1) {
-                    EList<String> _modifiers_2 = _col_3.getModifiers();
+                  EList<ExtendedColumn> _columns_1 = stmt2.getCol().getColumns();
+                  for (final ExtendedColumn _col_1 : _columns_1) {
+                    EList<String> _modifiers_2 = _col_1.getModifiers();
                     boolean _notEquals_2 = (!Objects.equal(_modifiers_2, null));
                     if (_notEquals_2) {
-                      EList<String> _modifiers_3 = _col_3.getModifiers();
+                      EList<String> _modifiers_3 = _col_1.getModifiers();
                       for (final String mod_1 : _modifiers_3) {
                         int _indexOf_1 = mod_1.indexOf("gtype");
                         boolean _greaterEqualsThan_1 = (_indexOf_1 >= 0);
@@ -841,27 +806,23 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if (_notEquals_1) {
       if ((newPojoValidator && (pojo.getClassx() instanceof JvmDeclaredType))) {
         JvmType _classx = pojo.getClassx();
-        String _name = constant.getName();
-        ValidationResult _checkClassProperty = this.checkClassProperty(((JvmDeclaredType) _classx), _name);
-        validationResult = _checkClassProperty;
+        validationResult = this.checkClassProperty(((JvmDeclaredType) _classx), constant.getName());
       } else {
-        String _name_1 = constant.getName();
-        ValidationResult _checkClassProperty_1 = this.checkClassProperty(constantUsageClass, _name_1, uri, descriptorsCache, classesCache);
-        validationResult = _checkClassProperty_1;
+        validationResult = this.checkClassProperty(constantUsageClass, constant.getName(), uri, descriptorsCache, classesCache);
       }
       if (validationResult != null) {
         switch (validationResult) {
           case WARNING:
-            String _name_2 = constant.getName();
-            String _plus = ("Problem property : " + _name_2);
+            String _name = constant.getName();
+            String _plus = ("Problem property : " + _name);
             String _plus_1 = (_plus + "[");
             String _plus_2 = (_plus_1 + constantUsageClass);
             String _plus_3 = (_plus_2 + "]");
             this.warning(_plus_3, constant, ProcessorMetaPackage.Literals.CONSTANT__NAME);
             break;
           case ERROR:
-            String _name_3 = constant.getName();
-            String _plus_4 = ("Cannot find property : " + _name_3);
+            String _name_1 = constant.getName();
+            String _plus_4 = ("Cannot find property : " + _name_1);
             String _plus_5 = (_plus_4 + "[");
             String _plus_6 = (_plus_5 + constantUsageClass);
             String _plus_7 = (_plus_6 + "]");
@@ -876,8 +837,8 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     PojoResolver _pojoResolver = this.pojoResolverFactory.getPojoResolver();
     boolean _notEquals_2 = (!Objects.equal(_pojoResolver, null));
     if (_notEquals_2) {
-      String _name_4 = constant.getName();
-      String _plus_8 = ("Cannot check constant form attribute : " + _name_4);
+      String _name_2 = constant.getName();
+      String _plus_8 = ("Cannot check constant form attribute : " + _name_2);
       this.error(_plus_8, 
         ProcessorMetaPackage.Literals.CONSTANT__NAME);
     }
@@ -917,9 +878,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
           final String value = modifier.substring((ix + 1));
           boolean _equals_1 = Constants.MAPPING_USAGE.equals(key);
           if (_equals_1) {
-            Map<String, PojoDefinition> _modelPojos = this.modelProperty.getModelPojos(artifacts);
-            PojoDefinition _get = _modelPojos.get(value);
-            colPojo = _get;
+            colPojo = this.modelProperty.getModelPojos(artifacts).get(value);
             boolean _equals_2 = Objects.equal(colPojo, null);
             if (_equals_2) {
               this.error((((("Cannot find pojo : " + value) + "[") + Constants.MAPPING_USAGE) + "]"), 
@@ -963,11 +922,9 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     if (_notEquals) {
       if ((newPojoValidator && (pojo.getClassx() instanceof JvmDeclaredType))) {
         JvmType _classx = pojo.getClassx();
-        ValidationResult _checkClassProperty = this.checkClassProperty(((JvmDeclaredType) _classx), columnName);
-        validationResult = _checkClassProperty;
+        validationResult = this.checkClassProperty(((JvmDeclaredType) _classx), columnName);
       } else {
-        ValidationResult _checkClassProperty_1 = this.checkClassProperty(mappingUsageClass, columnName, uri, descriptorsCache, classesCache);
-        validationResult = _checkClassProperty_1;
+        validationResult = this.checkClassProperty(mappingUsageClass, columnName, uri, descriptorsCache, classesCache);
       }
       if (validationResult != null) {
         switch (validationResult) {
@@ -1003,9 +960,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     PropertyDescriptor[] descriptors = descriptorsCache.get(_plus);
     boolean _equals_1 = Objects.equal(descriptors, null);
     if (_equals_1) {
-      PojoResolver _pojoResolver = this.pojoResolverFactory.getPojoResolver();
-      PropertyDescriptor[] _propertyDescriptors = _pojoResolver.getPropertyDescriptors(className, uri);
-      descriptors = _propertyDescriptors;
+      descriptors = this.pojoResolverFactory.getPojoResolver().getPropertyDescriptors(className, uri);
     }
     boolean _equals_2 = Objects.equal(descriptors, null);
     if (_equals_2) {
@@ -1027,13 +982,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       }
     }
     String innerProperty = ((String) null);
-    int _indexOf = checkProperty.indexOf(".");
-    pos1 = _indexOf;
+    pos1 = checkProperty.indexOf(".");
     if ((pos1 > 0)) {
-      String _substring_2 = checkProperty.substring((pos1 + 1));
-      innerProperty = _substring_2;
-      String _substring_3 = checkProperty.substring(0, pos1);
-      checkProperty = _substring_3;
+      innerProperty = checkProperty.substring((pos1 + 1));
+      checkProperty = checkProperty.substring(0, pos1);
     }
     final String _checkProperty = checkProperty;
     final PropertyDescriptor[] _converted_descriptors = (PropertyDescriptor[])descriptors;
@@ -1049,9 +1001,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       Class<?> clazz = classesCache.get(_plus_3);
       boolean _equals_4 = Objects.equal(clazz, null);
       if (_equals_4) {
-        PojoResolver _pojoResolver_1 = this.pojoResolverFactory.getPojoResolver();
-        Class<?> _loadClass = _pojoResolver_1.loadClass(className, uri);
-        clazz = _loadClass;
+        clazz = this.pojoResolverFactory.getPojoResolver().loadClass(className, uri);
       }
       if (((!Objects.equal(clazz, null)) && Modifier.isAbstract(clazz.getModifiers()))) {
         return ValidationResult.WARNING;
@@ -1066,46 +1016,39 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       Class<?> innerClass = checkDesriptor.getPropertyType();
       boolean _isArray = innerClass.isArray();
       if (_isArray) {
-        Method _readMethod = checkDesriptor.getReadMethod();
-        Type _genericReturnType = _readMethod.getGenericReturnType();
+        Type _genericReturnType = checkDesriptor.getReadMethod().getGenericReturnType();
         final ParameterizedType type = ((ParameterizedType) _genericReturnType);
         if ((Objects.equal(type.getActualTypeArguments(), null) || (type.getActualTypeArguments().length == 0))) {
           return ValidationResult.WARNING;
         }
-        Type[] _actualTypeArguments = type.getActualTypeArguments();
-        Type _head = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(_actualTypeArguments)));
+        Type _head = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(type.getActualTypeArguments())));
         innerClass = ((Class<?>) _head);
         boolean _isPrimitive = this.isPrimitive(innerClass);
         if (_isPrimitive) {
           return ValidationResult.ERROR;
         }
-        String _name = innerClass.getName();
-        return this.checkClassProperty(_name, innerProperty, uri, descriptorsCache, classesCache);
+        return this.checkClassProperty(innerClass.getName(), innerProperty, uri, descriptorsCache, classesCache);
       } else {
         boolean _isAssignableFrom = Collection.class.isAssignableFrom(innerClass);
         if (_isAssignableFrom) {
-          Method _readMethod_1 = checkDesriptor.getReadMethod();
-          Type _genericReturnType_1 = _readMethod_1.getGenericReturnType();
+          Type _genericReturnType_1 = checkDesriptor.getReadMethod().getGenericReturnType();
           final ParameterizedType type_1 = ((ParameterizedType) _genericReturnType_1);
           if ((Objects.equal(type_1.getActualTypeArguments(), null) || (type_1.getActualTypeArguments().length == 0))) {
             return ValidationResult.WARNING;
           }
-          Type[] _actualTypeArguments_1 = type_1.getActualTypeArguments();
-          Type _head_1 = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(_actualTypeArguments_1)));
+          Type _head_1 = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(type_1.getActualTypeArguments())));
           innerClass = ((Class<?>) _head_1);
           boolean _isPrimitive_1 = this.isPrimitive(innerClass);
           if (_isPrimitive_1) {
             return ValidationResult.ERROR;
           }
-          String _name_1 = innerClass.getName();
-          return this.checkClassProperty(_name_1, innerProperty, uri, descriptorsCache, classesCache);
+          return this.checkClassProperty(innerClass.getName(), innerProperty, uri, descriptorsCache, classesCache);
         } else {
           boolean _isPrimitive_2 = this.isPrimitive(innerClass);
           if (_isPrimitive_2) {
             return ValidationResult.ERROR;
           }
-          String _name_2 = innerClass.getName();
-          return this.checkClassProperty(_name_2, innerProperty, uri, descriptorsCache, classesCache);
+          return this.checkClassProperty(innerClass.getName(), innerProperty, uri, descriptorsCache, classesCache);
         }
       }
     }
@@ -1132,20 +1075,16 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       }
     }
     String innerProperty = ((String) null);
-    int _indexOf = checkProperty.indexOf(".");
-    pos1 = _indexOf;
+    pos1 = checkProperty.indexOf(".");
     if ((pos1 > 0)) {
-      String _substring_2 = checkProperty.substring((pos1 + 1));
-      innerProperty = _substring_2;
-      String _substring_3 = checkProperty.substring(0, pos1);
-      checkProperty = _substring_3;
+      innerProperty = checkProperty.substring((pos1 + 1));
+      checkProperty = checkProperty.substring(0, pos1);
     }
     Iterable<JvmFeature> features = jvmType.findAllFeaturesByName(checkProperty);
     if (((Objects.equal(features, null) || IterableExtensions.isEmpty(features)) || (!(IterableExtensions.<JvmFeature>head(features) instanceof JvmField)))) {
       String _firstUpper = StringExtensions.toFirstUpper(checkProperty);
       String _plus_1 = ("get" + _firstUpper);
-      Iterable<JvmFeature> _findAllFeaturesByName = jvmType.findAllFeaturesByName(_plus_1);
-      features = _findAllFeaturesByName;
+      features = jvmType.findAllFeaturesByName(_plus_1);
     }
     if (((Objects.equal(features, null) || IterableExtensions.isEmpty(features)) || ((!(IterableExtensions.<JvmFeature>head(features) instanceof JvmOperation)) && (!(IterableExtensions.<JvmFeature>head(features) instanceof JvmField))))) {
       if (((jvmType instanceof JvmPrimitiveType) || this.isPrimitive(jvmType.getQualifiedName()))) {
@@ -1198,8 +1137,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     final Set<String> result = CollectionLiterals.<String>newHashSet();
     Iterable<JvmField> _declaredFields = jvmType.getDeclaredFields();
     for (final JvmField field : _declaredFields) {
-      String _simpleName = field.getSimpleName();
-      result.add(_simpleName);
+      result.add(field.getSimpleName());
     }
     return result;
   }
@@ -1217,9 +1155,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     Map<String, String> orders = ordersCache.get(_plus);
     boolean _equals_1 = Objects.equal(orders, null);
     if (_equals_1) {
-      PojoResolver _pojoResolver = this.pojoResolverFactory.getPojoResolver();
-      Map<String, String> _orders = _pojoResolver.getOrders(className, uri);
-      orders = _orders;
+      orders = this.pojoResolverFactory.getPojoResolver().getOrders(className, uri);
     }
     boolean _equals_2 = Objects.equal(orders, null);
     if (_equals_2) {
@@ -1229,13 +1165,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       String _plus_1 = (_string_1 + className);
       ordersCache.put(_plus_1, orders);
     }
-    final Map<String, String> _orders_1 = orders;
-    Set<String> _keySet = orders.keySet();
+    final Map<String, String> _orders = orders;
     final Function1<String, Boolean> _function = (String k) -> {
-      String _get = _orders_1.get(k);
-      return Boolean.valueOf(_get.equals(property));
+      return Boolean.valueOf(_orders.get(k).equals(property));
     };
-    final String order = IterableExtensions.<String>findFirst(_keySet, _function);
+    final String order = IterableExtensions.<String>findFirst(orders.keySet(), _function);
     boolean _notEquals = (!Objects.equal(order, null));
     if (_notEquals) {
       return ValidationResult.OK;
@@ -1283,12 +1217,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     EList<TableDefinitionModel> _tables = artifacts.getTables();
     for (final TableDefinitionModel table : _tables) {
       if (((!Objects.equal(table, null)) && (table != tableDefinition))) {
-        String _name = tableDefinition.getName();
-        String _name_1 = table.getName();
-        boolean _equals_1 = _name.equals(_name_1);
+        boolean _equals_1 = tableDefinition.getName().equals(table.getName());
         if (_equals_1) {
-          String _name_2 = tableDefinition.getName();
-          String _plus = ("Duplicate name : " + _name_2);
+          String _name = tableDefinition.getName();
+          String _plus = ("Duplicate name : " + _name);
           String _plus_1 = (_plus + "[table]");
           this.error(_plus_1, 
             ProcessorMetaPackage.Literals.TABLE_DEFINITION_MODEL__NAME);
@@ -1318,12 +1250,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     EList<ProcedureDefinitionModel> _procedures = artifacts.getProcedures();
     for (final ProcedureDefinitionModel procedure : _procedures) {
       if (((!Objects.equal(procedure, null)) && (procedure != procedureDefinition))) {
-        String _name = procedureDefinition.getName();
-        String _name_1 = procedure.getName();
-        boolean _equals_1 = _name.equals(_name_1);
+        boolean _equals_1 = procedureDefinition.getName().equals(procedure.getName());
         if (_equals_1) {
-          String _name_2 = procedureDefinition.getName();
-          String _plus = ("Duplicate name : " + _name_2);
+          String _name = procedureDefinition.getName();
+          String _plus = ("Duplicate name : " + _name);
           String _plus_1 = (_plus + "[procedure]");
           this.error(_plus_1, 
             ProcessorMetaPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME);
@@ -1353,12 +1283,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     EList<FunctionDefinitionModel> _functions = artifacts.getFunctions();
     for (final FunctionDefinitionModel function : _functions) {
       if (((!Objects.equal(function, null)) && (function != functionDefinition))) {
-        String _name = functionDefinition.getName();
-        String _name_1 = function.getName();
-        boolean _equals_1 = _name.equals(_name_1);
+        boolean _equals_1 = functionDefinition.getName().equals(function.getName());
         if (_equals_1) {
-          String _name_2 = functionDefinition.getName();
-          String _plus = ("Duplicate name : " + _name_2);
+          String _name = functionDefinition.getName();
+          String _plus = ("Duplicate name : " + _name);
           String _plus_1 = (_plus + "[function]");
           this.error(_plus_1, 
             ProcessorMetaPackage.Literals.FUNCTION_DEFINITION_MODEL__NAME);
@@ -1385,12 +1313,10 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
       return;
     }
     final String tableName = databaseTable.getName();
-    List<String> _tokensFromModifier = Utils.getTokensFromModifier(statement, Constants.TABLE_USAGE);
     final Function1<String, TableDefinition> _function = (String value) -> {
-      Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
-      return _modelTables.get(value);
+      return this.modelProperty.getModelTables(artifacts).get(value);
     };
-    final List<TableDefinition> tableDefinitions = ListExtensions.<String, TableDefinition>map(_tokensFromModifier, _function);
+    final List<TableDefinition> tableDefinitions = ListExtensions.<String, TableDefinition>map(Utils.getTokensFromModifier(statement, Constants.TABLE_USAGE), _function);
     final Function1<TableDefinition, Boolean> _function_1 = (TableDefinition it) -> {
       String _table = it.getTable();
       return Boolean.valueOf(Objects.equal(_table, tableName));
@@ -1415,16 +1341,11 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     String columnName = ((String) null);
     final int pos = prefix.indexOf(".");
     if ((pos > 0)) {
-      String _name = databaseColumn.getName();
-      String _substring = _name.substring(0, pos);
-      prefix = _substring;
-      String _name_1 = databaseColumn.getName();
-      String _substring_1 = _name_1.substring((pos + 1));
-      columnName = _substring_1;
+      prefix = databaseColumn.getName().substring(0, pos);
+      columnName = databaseColumn.getName().substring((pos + 1));
     } else {
       prefix = null;
-      String _name_2 = databaseColumn.getName();
-      columnName = _name_2;
+      columnName = databaseColumn.getName();
     }
     final MetaStatement statement = EcoreUtil2.<MetaStatement>getContainerOfType(databaseColumn, MetaStatement.class);
     final Artifacts artifacts = this.getArtifacts(statement);
@@ -1436,8 +1357,7 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     TableDefinition _xifexpression = null;
     boolean _notEquals = (!Objects.equal(value, null));
     if (_notEquals) {
-      Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
-      _xifexpression = _modelTables.get(value);
+      _xifexpression = this.modelProperty.getModelTables(artifacts).get(value);
     }
     final TableDefinition tableDefinition = _xifexpression;
     String _xifexpression_1 = null;
@@ -1447,8 +1367,8 @@ public class ProcessorMetaValidator extends AbstractProcessorMetaValidator {
     }
     final String tableName = _xifexpression_1;
     if ((Objects.equal(tableName, null) || (!this.dbResolver.checkColumn(databaseColumn, tableName, columnName)))) {
-      String _name_3 = databaseColumn.getName();
-      String _plus = ("Cannot find column in DB : " + _name_3);
+      String _name = databaseColumn.getName();
+      String _plus = ("Cannot find column in DB : " + _name);
       String _plus_1 = (_plus + "[");
       String _plus_2 = (_plus_1 + tableName);
       String _plus_3 = (_plus_2 + "]");

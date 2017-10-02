@@ -770,7 +770,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 							return true;
 						}
 					};
-					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»().withIds_(ids_), sqlc, sqlRowProcessor);
+					sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, new «pojo.name»().withIds_(ids_).withInit_(initAssociations.toArray(new String[initAssociations.size()])), sqlc, sqlRowProcessor);
 					for («pkType» id : ids_)
 						«pojoAttrName»List.add(map.get(id));
 				}
@@ -787,7 +787,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 			body = '''
 				return listFromTo(sqlSessionFactory.getSqlSession(), «pojoAttrName», sqlControl);
 			'''
-   		]	
+   		]
    		
 		members += entity.toMethod('listFromTo', listType) [
 			parameters += entity.toParameter("sqlSession", typeRef(SQL_SESSION))

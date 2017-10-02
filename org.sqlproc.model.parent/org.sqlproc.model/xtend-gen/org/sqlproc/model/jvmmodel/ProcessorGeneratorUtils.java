@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.function.Consumer;
 import org.eclipse.emf.common.util.EList;
-import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.common.types.JvmParameterizedTypeReference;
 import org.eclipse.xtext.common.types.JvmPrimitiveType;
@@ -41,7 +40,6 @@ import org.sqlproc.model.processorModel.DaoDirectiveQuery;
 import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.DaoFunProcDirective;
 import org.sqlproc.model.processorModel.DescendantAssignment;
-import org.sqlproc.model.processorModel.DirectiveProperties;
 import org.sqlproc.model.processorModel.Entity;
 import org.sqlproc.model.processorModel.EnumDirective;
 import org.sqlproc.model.processorModel.EnumEntity;
@@ -153,15 +151,12 @@ public class ProcessorGeneratorUtils {
     if ((Objects.equal(d, null) || Objects.equal(d.getIndex(), null))) {
       return null;
     }
-    IndexType _index = d.getIndex();
-    String _id = _index.getId();
+    String _id = d.getIndex().getId();
     boolean _notEquals = (!Objects.equal(_id, null));
     if (_notEquals) {
-      IndexType _index_1 = d.getIndex();
-      return _index_1.getId();
+      return d.getIndex().getId();
     }
-    IndexType _index_2 = d.getIndex();
-    int _number = _index_2.getNumber();
+    int _number = d.getIndex().getNumber();
     return ("" + Integer.valueOf(_number));
   }
   
@@ -191,15 +186,12 @@ public class ProcessorGeneratorUtils {
     if ((Objects.equal(d, null) || Objects.equal(d.getIndex(), null))) {
       return null;
     }
-    IndexType _index = d.getIndex();
-    String _id = _index.getId();
+    String _id = d.getIndex().getId();
     boolean _notEquals = (!Objects.equal(_id, null));
     if (_notEquals) {
-      IndexType _index_1 = d.getIndex();
-      return _index_1.getId();
+      return d.getIndex().getId();
     }
-    IndexType _index_2 = d.getIndex();
-    int _number = _index_2.getNumber();
+    int _number = d.getIndex().getNumber();
     return ("" + Integer.valueOf(_number));
   }
   
@@ -441,8 +433,7 @@ public class ProcessorGeneratorUtils {
   }
   
   protected String _constName(final PojoAttribute attr) {
-    String _name = attr.getName();
-    return this.constantName(_name);
+    return this.constantName(attr.getName());
   }
   
   protected String _constName(final List<PojoAttribute> l) {
@@ -455,9 +446,7 @@ public class ProcessorGeneratorUtils {
         } else {
           result.append("_");
         }
-        String _name = attr.getName();
-        String _constantName = this.constantName(_name);
-        result.append(_constantName);
+        result.append(this.constantName(attr.getName()));
       }
     }
     return result.toString();
@@ -472,8 +461,7 @@ public class ProcessorGeneratorUtils {
         result.append("_");
         result.append(c);
       } else {
-        char _upperCase = Character.toUpperCase(c);
-        result.append(_upperCase);
+        result.append(Character.toUpperCase(c));
       }
     }
     return result.toString();
@@ -489,11 +477,9 @@ public class ProcessorGeneratorUtils {
           result.append("_");
           result.append(c);
         } else {
-          char _upperCase = Character.toUpperCase(c);
-          result.append(_upperCase);
+          result.append(Character.toUpperCase(c));
         }
-        boolean _isDigit = Character.isDigit(c);
-        lastDigit = _isDigit;
+        lastDigit = Character.isDigit(c);
       }
     }
     final String s = result.toString();
@@ -602,11 +588,10 @@ public class ProcessorGeneratorUtils {
       };
       _map=ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
     }
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isOptLock(x));
     };
-    final PojoAttribute fea = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
+    final PojoAttribute fea = IterableExtensions.<PojoAttribute>findFirst(Iterables.<PojoAttribute>filter(_map, PojoAttribute.class), _function_1);
     boolean _notEquals = (!Objects.equal(fea, null));
     if (_notEquals) {
       return fea;
@@ -631,45 +616,26 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveIndex));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveIndex d = ((PojoDirectiveIndex) it);
       IndexType _index = d.getIndex();
       boolean _notEquals = (!Objects.equal(_index, null));
       if (_notEquals) {
-        IndexType _index_1 = d.getIndex();
-        String _id = _index_1.getId();
+        String _id = d.getIndex().getId();
         boolean _notEquals_1 = (!Objects.equal(_id, null));
         if (_notEquals_1) {
-          IndexType _index_2 = d.getIndex();
-          String _id_1 = _index_2.getId();
-          DirectiveProperties _proplist = d.getProplist();
-          EList<Feature> _features = _proplist.getFeatures();
-          Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-          List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
-          result.put(_id_1, _list);
+          result.put(d.getIndex().getId(), IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
         } else {
-          IndexType _index_3 = d.getIndex();
-          int _number = _index_3.getNumber();
+          int _number = d.getIndex().getNumber();
           String _plus = ("" + Integer.valueOf(_number));
-          DirectiveProperties _proplist_1 = d.getProplist();
-          EList<Feature> _features_1 = _proplist_1.getFeatures();
-          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-          List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_2);
-          result.put(_plus, _list_1);
+          result.put(_plus, IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
         }
       } else {
-        DirectiveProperties _proplist_2 = d.getProplist();
-        EList<Feature> _features_2 = _proplist_2.getFeatures();
-        final String name = this.constName(_features_2);
-        DirectiveProperties _proplist_3 = d.getProplist();
-        EList<Feature> _features_3 = _proplist_3.getFeatures();
-        Iterable<PojoAttribute> _filter_3 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-        List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_3);
-        result.put(name, _list_2);
+        final String name = this.constName(d.getProplist().getFeatures());
+        result.put(name, IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
       }
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -682,45 +648,26 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveEnumIndex));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveEnumIndex d = ((PojoDirectiveEnumIndex) it);
       IndexType _index = d.getIndex();
       boolean _notEquals = (!Objects.equal(_index, null));
       if (_notEquals) {
-        IndexType _index_1 = d.getIndex();
-        String _id = _index_1.getId();
+        String _id = d.getIndex().getId();
         boolean _notEquals_1 = (!Objects.equal(_id, null));
         if (_notEquals_1) {
-          IndexType _index_2 = d.getIndex();
-          String _id_1 = _index_2.getId();
-          DirectiveProperties _proplist = d.getProplist();
-          EList<Feature> _features = _proplist.getFeatures();
-          Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-          List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
-          result.put(_id_1, _list);
+          result.put(d.getIndex().getId(), IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
         } else {
-          IndexType _index_3 = d.getIndex();
-          int _number = _index_3.getNumber();
+          int _number = d.getIndex().getNumber();
           String _plus = ("" + Integer.valueOf(_number));
-          DirectiveProperties _proplist_1 = d.getProplist();
-          EList<Feature> _features_1 = _proplist_1.getFeatures();
-          Iterable<PojoAttribute> _filter_2 = Iterables.<PojoAttribute>filter(_features_1, PojoAttribute.class);
-          List<PojoAttribute> _list_1 = IterableExtensions.<PojoAttribute>toList(_filter_2);
-          result.put(_plus, _list_1);
+          result.put(_plus, IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
         }
       } else {
-        DirectiveProperties _proplist_2 = d.getProplist();
-        EList<Feature> _features_2 = _proplist_2.getFeatures();
-        final String name = this.constName(_features_2);
-        DirectiveProperties _proplist_3 = d.getProplist();
-        EList<Feature> _features_3 = _proplist_3.getFeatures();
-        Iterable<PojoAttribute> _filter_3 = Iterables.<PojoAttribute>filter(_features_3, PojoAttribute.class);
-        List<PojoAttribute> _list_2 = IterableExtensions.<PojoAttribute>toList(_filter_3);
-        result.put(name, _list_2);
+        final String name = this.constName(d.getProplist().getFeatures());
+        result.put(name, IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class)));
       }
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -733,15 +680,11 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveToString));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveToString d = ((PojoDirectiveToString) it);
-      DirectiveProperties _proplist = d.getProplist();
-      EList<Feature> _features = _proplist.getFeatures();
-      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-      Iterables.<PojoAttribute>addAll(result, _filter_1);
+      Iterables.<PojoAttribute>addAll(result, Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class));
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -754,15 +697,11 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveProcessingId));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveProcessingId d = ((PojoDirectiveProcessingId) it);
-      DirectiveProperties _proplist = d.getProplist();
-      EList<Feature> _features = _proplist.getFeatures();
-      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-      Iterables.<PojoAttribute>addAll(result, _filter_1);
+      Iterables.<PojoAttribute>addAll(result, Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class));
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -775,15 +714,11 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveEquals));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveEquals d = ((PojoDirectiveEquals) it);
-      DirectiveProperties _proplist = d.getProplist();
-      EList<Feature> _features = _proplist.getFeatures();
-      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-      Iterables.<PojoAttribute>addAll(result, _filter_1);
+      Iterables.<PojoAttribute>addAll(result, Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class));
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -796,15 +731,11 @@ public class ProcessorGeneratorUtils {
     final Function1<PojoDirective, Boolean> _function = (PojoDirective x) -> {
       return Boolean.valueOf((x instanceof PojoDirectiveHashCode));
     };
-    Iterable<PojoDirective> _filter = IterableExtensions.<PojoDirective>filter(_directives, _function);
     final Consumer<PojoDirective> _function_1 = (PojoDirective it) -> {
       final PojoDirectiveHashCode d = ((PojoDirectiveHashCode) it);
-      DirectiveProperties _proplist = d.getProplist();
-      EList<Feature> _features = _proplist.getFeatures();
-      Iterable<PojoAttribute> _filter_1 = Iterables.<PojoAttribute>filter(_features, PojoAttribute.class);
-      Iterables.<PojoAttribute>addAll(result, _filter_1);
+      Iterables.<PojoAttribute>addAll(result, Iterables.<PojoAttribute>filter(d.getProplist().getFeatures(), PojoAttribute.class));
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<PojoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -832,13 +763,11 @@ public class ProcessorGeneratorUtils {
     }
     final org.sqlproc.model.processorModel.Package pkg = EcoreUtil2.<org.sqlproc.model.processorModel.Package>getContainerOfType(pojo, org.sqlproc.model.processorModel.Package.class);
     final String name = superType.getSimpleName();
-    List<AnnotatedEntity> _contentsOfType = CommonUtils.<AnnotatedEntity>getContentsOfType(pkg, AnnotatedEntity.class);
     final Function1<AnnotatedEntity, Boolean> _function = (AnnotatedEntity p) -> {
-      Entity _entity = p.getEntity();
-      String _name = _entity.getName();
+      String _name = p.getEntity().getName();
       return Boolean.valueOf(Objects.equal(_name, name));
     };
-    final AnnotatedEntity _pojo = IterableExtensions.<AnnotatedEntity>findFirst(_contentsOfType, _function);
+    final AnnotatedEntity _pojo = IterableExtensions.<AnnotatedEntity>findFirst(CommonUtils.<AnnotatedEntity>getContentsOfType(pkg, AnnotatedEntity.class), _function);
     boolean _notEquals = (!Objects.equal(_pojo, null));
     if (_notEquals) {
       Entity _entity = _pojo.getEntity();
@@ -856,21 +785,15 @@ public class ProcessorGeneratorUtils {
     final PojoEntity se = this.getParent(pojo);
     boolean _notEquals = (!Objects.equal(se, null));
     if (_notEquals) {
-      List<PojoAttribute> _allRequiredAttributes = this.allRequiredAttributes(se);
-      features.addAll(_allRequiredAttributes);
+      features.addAll(this.allRequiredAttributes(se));
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isRequired(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
-    features.addAll(_list);
+    features.addAll(IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1)));
     return features;
   }
   
@@ -880,18 +803,13 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return features;
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isRequired(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    List<PojoAttribute> _list = IterableExtensions.<PojoAttribute>toList(_filter_1);
-    features.addAll(_list);
+    features.addAll(IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1)));
     return features;
   }
   
@@ -904,8 +822,7 @@ public class ProcessorGeneratorUtils {
     final PojoEntity se = this.getParent(pojo);
     boolean _notEquals = (!Objects.equal(se, null));
     if (_notEquals) {
-      List<PojoAttribute> _allRequiredAttributes = this.allRequiredAttributes(se);
-      features.addAll(_allRequiredAttributes);
+      features.addAll(this.allRequiredAttributes(se));
     }
     return features;
   }
@@ -915,20 +832,16 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class));
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return features;
     }
-    List<PojoAttribute> _allAttributes = this.allAttributes(se);
-    features.addAll(_allAttributes);
+    features.addAll(this.allAttributes(se));
     return features;
   }
   
@@ -938,24 +851,19 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return result;
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Consumer<PojoAttribute> _function_1 = (PojoAttribute it) -> {
-      String _name = it.getName();
-      result.put(_name, it);
+      result.put(it.getName(), it);
     };
-    _filter.forEach(_function_1);
+    Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class).forEach(_function_1);
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return result;
     }
-    Map<String, PojoAttribute> _allAttributesAsMap = this.allAttributesAsMap(se);
-    result.putAll(_allAttributesAsMap);
+    result.putAll(this.allAttributesAsMap(se));
     return result;
   }
   
@@ -964,24 +872,19 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isToInit(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1));
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return features;
     }
-    List<PojoAttribute> _initAttributes = this.toInitAttributes(se);
-    features.addAll(_initAttributes);
+    features.addAll(this.toInitAttributes(se));
     return features;
   }
   
@@ -990,24 +893,19 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isEnumInit(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1));
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return features;
     }
-    List<PojoAttribute> _enumInitAttributes = this.enumInitAttributes(se);
-    features.addAll(_enumInitAttributes);
+    features.addAll(this.enumInitAttributes(se));
     return features;
   }
   
@@ -1016,24 +914,19 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isIsDef(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1));
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return features;
     }
-    List<PojoAttribute> _isDefAttributes = this.isDefAttributes(se);
-    features.addAll(_isDefAttributes);
+    features.addAll(this.isDefAttributes(se));
     return features;
   }
   
@@ -1042,38 +935,30 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<PojoAttribute>newArrayList();
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       return Boolean.valueOf(this.isEnumDef(x));
     };
-    Iterable<PojoAttribute> _filter_1 = IterableExtensions.<PojoAttribute>filter(_filter, _function_1);
-    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(_filter_1);
+    final List<PojoAttribute> features = IterableExtensions.<PojoAttribute>toList(IterableExtensions.<PojoAttribute>filter(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1));
     final PojoEntity se = this.getParent(pojo);
     boolean _equals_1 = Objects.equal(se, null);
     if (_equals_1) {
       return features;
     }
-    List<PojoAttribute> _enumDefAttributes = this.enumDefAttributes(se);
-    features.addAll(_enumDefAttributes);
+    features.addAll(this.enumDefAttributes(se));
     return features;
   }
   
   public boolean hasIsDef(final PojoEntity pojo) {
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
       return Boolean.valueOf((this.isIsDef(f) || this.isEnumDef(f)));
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return true;
@@ -1086,16 +971,13 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean hasToInit(final PojoEntity pojo) {
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
       return Boolean.valueOf((this.isToInit(f) || this.isEnumInit(f)));
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return true;
@@ -1112,17 +994,14 @@ public class ProcessorGeneratorUtils {
     if ((Objects.equal(pojo, null) || Objects.equal(name, null))) {
       return null;
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute x) -> {
       String _name = x.getName();
       return Boolean.valueOf(Objects.equal(_name, name));
     };
-    final PojoAttribute feature = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
+    final PojoAttribute feature = IterableExtensions.<PojoAttribute>findFirst(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1);
     boolean _notEquals = (!Objects.equal(feature, null));
     if (_notEquals) {
       return feature;
@@ -1140,16 +1019,13 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return null;
     }
-    EList<AnnotatedFeature> _features = pojo.getFeatures();
     final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
       return it.getFeature();
     };
-    List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
-    Iterable<PojoAttribute> _filter = Iterables.<PojoAttribute>filter(_map, PojoAttribute.class);
     final Function1<PojoAttribute, Boolean> _function_1 = (PojoAttribute f) -> {
       return Boolean.valueOf(this.isPrimaryKey(f));
     };
-    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(_filter, _function_1);
+    final PojoAttribute result = IterableExtensions.<PojoAttribute>findFirst(Iterables.<PojoAttribute>filter(ListExtensions.<AnnotatedFeature, Feature>map(pojo.getFeatures(), _function), PojoAttribute.class), _function_1);
     boolean _notEquals = (!Objects.equal(result, null));
     if (_notEquals) {
       return result;
@@ -1263,23 +1139,16 @@ public class ProcessorGeneratorUtils {
     final Function1<DaoDirective, Boolean> _function = (DaoDirective x) -> {
       return Boolean.valueOf((x instanceof DaoDirectiveDiscriminator));
     };
-    Iterable<DaoDirective> _filter = IterableExtensions.<DaoDirective>filter(_directives, _function);
     final Consumer<DaoDirective> _function_1 = (DaoDirective it) -> {
       final DaoDirectiveDiscriminator d = ((DaoDirectiveDiscriminator) it);
       final Map<String, JvmParameterizedTypeReference> map = new TreeMap<String, JvmParameterizedTypeReference>();
-      EList<DescendantAssignment> _descendants = d.getDescendants();
       final Consumer<DescendantAssignment> _function_2 = (DescendantAssignment dd) -> {
-        ValueType _value = dd.getValue();
-        String _value0 = this.value0(_value);
-        JvmParameterizedTypeReference _descendant = dd.getDescendant();
-        map.put(_value0, _descendant);
+        map.put(this.value0(dd.getValue()), dd.getDescendant());
       };
-      _descendants.forEach(_function_2);
-      PojoAttribute _ancestor = d.getAncestor();
-      String _name = _ancestor.getName();
-      result.put(_name, map);
+      d.getDescendants().forEach(_function_2);
+      result.put(d.getAncestor().getName(), map);
     };
-    _filter.forEach(_function_1);
+    IterableExtensions.<DaoDirective>filter(_directives, _function).forEach(_function_1);
     return result;
   }
   
@@ -1301,8 +1170,7 @@ public class ProcessorGeneratorUtils {
     if (_endsWith) {
       int _length = pojoName.length();
       int _minus = (_length - 3);
-      String _substring = pojoName.substring(0, _minus);
-      pojoName = _substring;
+      pojoName = pojoName.substring(0, _minus);
     }
     return StringExtensions.toFirstLower(pojoName);
   }
@@ -1313,8 +1181,7 @@ public class ProcessorGeneratorUtils {
     if (_endsWith) {
       int _length = pojoName.length();
       int _minus = (_length - 3);
-      String _substring = pojoName.substring(0, _minus);
-      pojoName = _substring;
+      pojoName = pojoName.substring(0, _minus);
     }
     return null;
   }
@@ -1463,12 +1330,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = pojo.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isConflict(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(pojo.getAnnotations(), _function));
   }
   
   public List<Annotation> conflictAnnotations(final PojoEntity pojo) {
@@ -1476,12 +1341,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isConflict(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public boolean isConstructor(final Annotation an) {
@@ -1509,12 +1372,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = pojo.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isConstructor(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(pojo.getAnnotations(), _function));
   }
   
   public List<Annotation> constructorAnnotations(final PojoEntity pojo) {
@@ -1522,12 +1383,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isConstructor(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public List<Annotation> constructorAnnotations(final DaoEntity pojo) {
@@ -1535,12 +1394,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isConstructor(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public boolean isStatic(final Annotation an) {
@@ -1568,12 +1425,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = pojo.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isStatic(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(pojo.getAnnotations(), _function));
   }
   
   public List<Annotation> staticAnnotations(final PojoEntity pojo) {
@@ -1581,12 +1436,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isStatic(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public boolean isStandard(final Annotation an) {
@@ -1617,12 +1470,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = pojo.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isStandard(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(pojo.getAnnotations(), _function));
   }
   
   public List<Annotation> standardAnnotations(final PojoEntity pojo) {
@@ -1630,12 +1481,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isStandard(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public List<Annotation> standardAnnotations(final DaoEntity pojo) {
@@ -1643,12 +1492,10 @@ public class ProcessorGeneratorUtils {
     if (_equals) {
       return CollectionLiterals.<Annotation>newArrayList();
     }
-    EList<Annotation> _annotations = this.annotations(pojo);
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isStandard(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(this.annotations(pojo), _function));
   }
   
   public boolean isSetter(final Annotation an) {
@@ -1677,12 +1524,10 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
-    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isSetter(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(aprop.getAnnotations(), _function));
   }
   
   public boolean isGetter(final Annotation an) {
@@ -1711,12 +1556,10 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
-    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isGetter(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(aprop.getAnnotations(), _function));
   }
   
   public boolean isAttribute(final Annotation an) {
@@ -1748,12 +1591,10 @@ public class ProcessorGeneratorUtils {
       return CollectionLiterals.<Annotation>newArrayList();
     }
     final AnnotatedFeature aprop = EcoreUtil2.<AnnotatedFeature>getContainerOfType(prop, AnnotatedFeature.class);
-    EList<Annotation> _annotations = aprop.getAnnotations();
     final Function1<Annotation, Boolean> _function = (Annotation x) -> {
       return Boolean.valueOf(this.isAttribute(x));
     };
-    Iterable<Annotation> _filter = IterableExtensions.<Annotation>filter(_annotations, _function);
-    return IterableExtensions.<Annotation>toList(_filter);
+    return IterableExtensions.<Annotation>toList(IterableExtensions.<Annotation>filter(aprop.getAnnotations(), _function));
   }
   
   public List<PojoEntity> onlyPojos(final Extends ext) {
@@ -1767,8 +1608,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
-      result.addAll(_onlyPojos);
+      result.addAll(((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1785,8 +1625,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
-      result.addAll(_exceptPojos);
+      result.addAll(((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1803,8 +1642,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<PojoEntity> _onlyPojos = ((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos();
-      result.addAll(_onlyPojos);
+      result.addAll(((ImplementsExtendsDirectiveOnlyPojos) it).getOnlyPojos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1821,8 +1659,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<PojoEntity> _exceptPojos = ((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos();
-      result.addAll(_exceptPojos);
+      result.addAll(((ImplementsExtendsDirectiveExceptPojos) it).getExceptPojos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1839,8 +1676,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
-      result.addAll(_onlyDaos);
+      result.addAll(((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1857,8 +1693,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
-      result.addAll(_exceptDaos);
+      result.addAll(((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1875,8 +1710,7 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<DaoEntity> _onlyDaos = ((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos();
-      result.addAll(_onlyDaos);
+      result.addAll(((ImplementsExtendsDirectiveOnlyDaos) it).getOnlyDaos());
     };
     _filter.forEach(_function_1);
     return result;
@@ -1893,30 +1727,22 @@ public class ProcessorGeneratorUtils {
       _filter=IterableExtensions.<ImplementsExtendsDirective>filter(_directives, _function);
     }
     final Consumer<ImplementsExtendsDirective> _function_1 = (ImplementsExtendsDirective it) -> {
-      EList<DaoEntity> _exceptDaos = ((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos();
-      result.addAll(_exceptDaos);
+      result.addAll(((ImplementsExtendsDirectiveExceptDaos) it).getExceptDaos());
     };
     _filter.forEach(_function_1);
     return result;
   }
   
   public String getExtends(final EnumEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Extends> _filter = Iterables.<Extends>filter(_eContents, Extends.class);
+    Iterable<Extends> _filter = Iterables.<Extends>filter(e.eContainer().eContainer().eContents(), Extends.class);
     for (final Extends ext : _filter) {
-      JvmParameterizedTypeReference _extends = ext.getExtends();
-      return _extends.getSimpleName();
+      return ext.getExtends().getSimpleName();
     }
     return "";
   }
   
   public boolean isImplements(final EnumEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Implements> _filter = Iterables.<Implements>filter(_eContents, Implements.class);
+    Iterable<Implements> _filter = Iterables.<Implements>filter(e.eContainer().eContainer().eContents(), Implements.class);
     for (final Implements ext : _filter) {
       return true;
     }
@@ -1924,18 +1750,14 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isExtends(final PojoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Extends> _filter = Iterables.<Extends>filter(_eContents, Extends.class);
+    Iterable<Extends> _filter = Iterables.<Extends>filter(e.eContainer().eContainer().eContents(), Extends.class);
     for (final Extends ext : _filter) {
       {
-        List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
-        boolean _isEmpty = _onlyPojos.isEmpty();
+        boolean _isEmpty = this.onlyPojos(ext).isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          List<PojoEntity> _onlyPojos_1 = this.onlyPojos(ext);
-          for (final PojoEntity ee : _onlyPojos_1) {
+          List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
+          for (final PojoEntity ee : _onlyPojos) {
             String _name = ee.getName();
             String _name_1 = e.getName();
             boolean _equals = Objects.equal(_name, _name_1);
@@ -1961,12 +1783,11 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isExtends(final PojoEntity e, final Extends ext) {
-    List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
-    boolean _isEmpty = _onlyPojos.isEmpty();
+    boolean _isEmpty = this.onlyPojos(ext).isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      List<PojoEntity> _onlyPojos_1 = this.onlyPojos(ext);
-      for (final PojoEntity ee : _onlyPojos_1) {
+      List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
+      for (final PojoEntity ee : _onlyPojos) {
         String _name = ee.getName();
         String _name_1 = e.getName();
         boolean _equals = Objects.equal(_name, _name_1);
@@ -1989,10 +1810,7 @@ public class ProcessorGeneratorUtils {
   }
   
   public Extends getExtends(final PojoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Extends> _filter = Iterables.<Extends>filter(_eContents, Extends.class);
+    Iterable<Extends> _filter = Iterables.<Extends>filter(e.eContainer().eContainer().eContents(), Extends.class);
     for (final Extends ext : _filter) {
       boolean _isExtends = this.isExtends(e, ext);
       if (_isExtends) {
@@ -2003,10 +1821,7 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isImplements(final PojoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Implements> _filter = Iterables.<Implements>filter(_eContents, Implements.class);
+    Iterable<Implements> _filter = Iterables.<Implements>filter(e.eContainer().eContainer().eContents(), Implements.class);
     for (final Implements ext : _filter) {
       {
         List<PojoEntity> _exceptPojos = this.exceptPojos(ext);
@@ -2018,12 +1833,11 @@ public class ProcessorGeneratorUtils {
             return false;
           }
         }
-        List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
-        boolean _isEmpty = _onlyPojos.isEmpty();
+        boolean _isEmpty = this.onlyPojos(ext).isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          List<PojoEntity> _onlyPojos_1 = this.onlyPojos(ext);
-          for (final PojoEntity ee_1 : _onlyPojos_1) {
+          List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
+          for (final PojoEntity ee_1 : _onlyPojos) {
             String _name_2 = ee_1.getName();
             String _name_3 = e.getName();
             boolean _equals_1 = Objects.equal(_name_2, _name_3);
@@ -2040,12 +1854,11 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isImplements(final PojoEntity e, final Implements ext) {
-    List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
-    boolean _isEmpty = _onlyPojos.isEmpty();
+    boolean _isEmpty = this.onlyPojos(ext).isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      List<PojoEntity> _onlyPojos_1 = this.onlyPojos(ext);
-      for (final PojoEntity ee : _onlyPojos_1) {
+      List<PojoEntity> _onlyPojos = this.onlyPojos(ext);
+      for (final PojoEntity ee : _onlyPojos) {
         String _name = ee.getName();
         String _name_1 = e.getName();
         boolean _equals = Objects.equal(_name, _name_1);
@@ -2069,10 +1882,7 @@ public class ProcessorGeneratorUtils {
   
   public List<Implements> getImplements(final PojoEntity e) {
     final List<Implements> list = CollectionLiterals.<Implements>newArrayList();
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Implements> _filter = Iterables.<Implements>filter(_eContents, Implements.class);
+    Iterable<Implements> _filter = Iterables.<Implements>filter(e.eContainer().eContainer().eContents(), Implements.class);
     for (final Implements ext : _filter) {
       boolean _isImplements = this.isImplements(e, ext);
       if (_isImplements) {
@@ -2083,18 +1893,14 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isExtends(final DaoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Extends> _filter = Iterables.<Extends>filter(_eContents, Extends.class);
+    Iterable<Extends> _filter = Iterables.<Extends>filter(e.eContainer().eContainer().eContents(), Extends.class);
     for (final Extends ext : _filter) {
       {
-        List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
-        boolean _isEmpty = _onlyDaos.isEmpty();
+        boolean _isEmpty = this.onlyDaos(ext).isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          List<DaoEntity> _onlyDaos_1 = this.onlyDaos(ext);
-          for (final DaoEntity ee : _onlyDaos_1) {
+          List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
+          for (final DaoEntity ee : _onlyDaos) {
             String _name = ee.getName();
             String _name_1 = e.getName();
             boolean _equals = Objects.equal(_name, _name_1);
@@ -2120,12 +1926,11 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isExtends(final DaoEntity e, final Extends ext) {
-    List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
-    boolean _isEmpty = _onlyDaos.isEmpty();
+    boolean _isEmpty = this.onlyDaos(ext).isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      List<DaoEntity> _onlyDaos_1 = this.onlyDaos(ext);
-      for (final DaoEntity ee : _onlyDaos_1) {
+      List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
+      for (final DaoEntity ee : _onlyDaos) {
         String _name = ee.getName();
         String _name_1 = e.getName();
         boolean _equals = Objects.equal(_name, _name_1);
@@ -2148,10 +1953,7 @@ public class ProcessorGeneratorUtils {
   }
   
   public Extends getExtends(final DaoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Extends> _filter = Iterables.<Extends>filter(_eContents, Extends.class);
+    Iterable<Extends> _filter = Iterables.<Extends>filter(e.eContainer().eContainer().eContents(), Extends.class);
     for (final Extends ext : _filter) {
       boolean _isExtends = this.isExtends(e, ext);
       if (_isExtends) {
@@ -2162,10 +1964,7 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isImplements(final DaoEntity e) {
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Implements> _filter = Iterables.<Implements>filter(_eContents, Implements.class);
+    Iterable<Implements> _filter = Iterables.<Implements>filter(e.eContainer().eContainer().eContents(), Implements.class);
     for (final Implements ext : _filter) {
       {
         List<DaoEntity> _exceptDaos = this.exceptDaos(ext);
@@ -2177,12 +1976,11 @@ public class ProcessorGeneratorUtils {
             return false;
           }
         }
-        List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
-        boolean _isEmpty = _onlyDaos.isEmpty();
+        boolean _isEmpty = this.onlyDaos(ext).isEmpty();
         boolean _not = (!_isEmpty);
         if (_not) {
-          List<DaoEntity> _onlyDaos_1 = this.onlyDaos(ext);
-          for (final DaoEntity ee_1 : _onlyDaos_1) {
+          List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
+          for (final DaoEntity ee_1 : _onlyDaos) {
             String _name_2 = ee_1.getName();
             String _name_3 = e.getName();
             boolean _equals_1 = Objects.equal(_name_2, _name_3);
@@ -2199,12 +1997,11 @@ public class ProcessorGeneratorUtils {
   }
   
   public boolean isImplements(final DaoEntity e, final Implements ext) {
-    List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
-    boolean _isEmpty = _onlyDaos.isEmpty();
+    boolean _isEmpty = this.onlyDaos(ext).isEmpty();
     boolean _not = (!_isEmpty);
     if (_not) {
-      List<DaoEntity> _onlyDaos_1 = this.onlyDaos(ext);
-      for (final DaoEntity ee : _onlyDaos_1) {
+      List<DaoEntity> _onlyDaos = this.onlyDaos(ext);
+      for (final DaoEntity ee : _onlyDaos) {
         String _name = ee.getName();
         String _name_1 = e.getName();
         boolean _equals = Objects.equal(_name, _name_1);
@@ -2228,10 +2025,7 @@ public class ProcessorGeneratorUtils {
   
   public List<Implements> getImplements(final DaoEntity e) {
     final List<Implements> list = CollectionLiterals.<Implements>newArrayList();
-    EObject _eContainer = e.eContainer();
-    EObject _eContainer_1 = _eContainer.eContainer();
-    EList<EObject> _eContents = _eContainer_1.eContents();
-    Iterable<Implements> _filter = Iterables.<Implements>filter(_eContents, Implements.class);
+    Iterable<Implements> _filter = Iterables.<Implements>filter(e.eContainer().eContainer().eContents(), Implements.class);
     for (final Implements ext : _filter) {
       boolean _isImplements = this.isImplements(e, ext);
       if (_isImplements) {
@@ -2249,8 +2043,7 @@ public class ProcessorGeneratorUtils {
     String s = pv.getValue();
     boolean _notEquals = (!Objects.equal(s, null));
     if (_notEquals) {
-      String _trim = s.trim();
-      s = _trim;
+      s = s.trim();
       boolean _startsWith = s.startsWith("\"");
       boolean _not = (!_startsWith);
       if (_not) {
@@ -2282,8 +2075,7 @@ public class ProcessorGeneratorUtils {
     String s = pv.getValue();
     boolean _notEquals = (!Objects.equal(s, null));
     if (_notEquals) {
-      String _trim = s.trim();
-      s = _trim;
+      s = s.trim();
       return s;
     } else {
       String _id = pv.getId();
@@ -2298,8 +2090,7 @@ public class ProcessorGeneratorUtils {
   }
   
   public String getSimpleName(final JvmParameterizedTypeReference ref) {
-    JvmType _type = ref.getType();
-    String _simpleName = _type.getSimpleName();
+    String _simpleName = ref.getType().getSimpleName();
     final StringBuilder name = new StringBuilder(_simpleName);
     if (((!Objects.equal(ref.getArguments(), null)) && (!ref.getArguments().isEmpty()))) {
       name.append("<");
@@ -2312,8 +2103,7 @@ public class ProcessorGeneratorUtils {
           } else {
             name.append(",");
           }
-          String _simpleName_1 = arg.getSimpleName();
-          name.append(_simpleName_1);
+          name.append(arg.getSimpleName());
         }
       }
       name.append(">");
@@ -2325,9 +2115,8 @@ public class ProcessorGeneratorUtils {
     if ((Objects.equal(f.getType(), null) || (!(f.getType().getType() instanceof JvmPrimitiveType)))) {
       return "0";
     }
-    JvmParameterizedTypeReference _type = f.getType();
-    JvmType _type_1 = _type.getType();
-    final String name = ((JvmPrimitiveType) _type_1).getSimpleName();
+    JvmType _type = f.getType().getType();
+    final String name = ((JvmPrimitiveType) _type).getSimpleName();
     boolean _equals = Objects.equal(name, "boolean");
     if (_equals) {
       String _name = f.getName();

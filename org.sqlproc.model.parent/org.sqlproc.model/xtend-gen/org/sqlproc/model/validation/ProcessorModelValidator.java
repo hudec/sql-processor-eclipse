@@ -241,11 +241,10 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
     if (_notEquals) {
       if ((entity instanceof PojoEntity)) {
         final PojoEntity pentity = ((PojoEntity) entity);
-        EList<AnnotatedFeature> _features = pentity.getFeatures();
         final Function1<AnnotatedFeature, Feature> _function = (AnnotatedFeature it) -> {
           return feature;
         };
-        List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(_features, _function);
+        List<Feature> _map = ListExtensions.<AnnotatedFeature, Feature>map(pentity.getFeatures(), _function);
         for (final Feature _feature : _map) {
           if ((((!Objects.equal(_feature, null)) && (_feature != feature)) && Objects.equal(feature.getName(), _feature.getName()))) {
             String _name = feature.getName();
@@ -257,11 +256,10 @@ public class ProcessorModelValidator extends AbstractProcessorModelValidator {
       } else {
         if ((entity instanceof DaoEntity)) {
           final DaoEntity pentity_1 = ((DaoEntity) entity);
-          EList<AnnotatedFeature> _features_1 = pentity_1.getFeatures();
           final Function1<AnnotatedFeature, Feature> _function_1 = (AnnotatedFeature it) -> {
             return feature;
           };
-          List<Feature> _map_1 = ListExtensions.<AnnotatedFeature, Feature>map(_features_1, _function_1);
+          List<Feature> _map_1 = ListExtensions.<AnnotatedFeature, Feature>map(pentity_1.getFeatures(), _function_1);
           for (final Feature _feature_1 : _map_1) {
             if ((((!Objects.equal(_feature_1, null)) && (_feature_1 != feature)) && Objects.equal(feature.getName(), _feature_1.getName()))) {
               String _name_1 = feature.getName();
