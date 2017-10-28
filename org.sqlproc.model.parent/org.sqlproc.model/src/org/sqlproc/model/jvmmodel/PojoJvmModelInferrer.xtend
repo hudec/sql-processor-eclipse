@@ -178,7 +178,7 @@ class PojoJvmModelInferrer {
  						initializer = '''new java.util.Array«type.simpleName»()'''
  					}
  					else if (isOptLock(attr)) {
- 						initializer = '''(«type.simpleName») 0'''
+ 						initializer = '''«zero(type.simpleName)»'''
 					}
    				]
    				if (!attr.static) {

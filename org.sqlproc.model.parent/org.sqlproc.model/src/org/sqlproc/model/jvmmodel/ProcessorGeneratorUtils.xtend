@@ -545,7 +545,8 @@ class ProcessorGeneratorUtils {
     	if (superType == null)
     		return null;
     	if (superType instanceof DaoEntity)
-    		return superType as DaoEntity    	val Package pkg = getContainerOfType(pojo, Package)
+    		return superType as DaoEntity    	
+    	val Package pkg = getContainerOfType(pojo, Package)
     	val DaoEntity _dao =  pkg?.eAllOfType(DaoEntity)?.findFirst[d|d.name == superType.simpleName]
     	if (_dao != null)
     		return _dao
@@ -1112,5 +1113,11 @@ class ProcessorGeneratorUtils {
    		if (name == "short")
    			return "Short"
 		return name
+   	}
+   	
+   	def String zero(String name) {
+   		if (name.toUpperCase == "LONG")
+   			return "0L"
+   		return "0"
    	}
 }
