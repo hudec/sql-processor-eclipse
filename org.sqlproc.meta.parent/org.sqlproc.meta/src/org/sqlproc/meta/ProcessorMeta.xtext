@@ -187,6 +187,7 @@ DaogenProperty:
 	|name='active-filter' WS+ activeFilter=ValueType
 	|name='package' WS+ pckg=QualifiedName
 	|name='implementation-package' WS+ implPckg=QualifiedName
+	|name='dao-annotations' columnAnnotations=AnnotationAssignement
 	);
 
 PojoDefinitionModel hidden(ML_COMMENT, SL_COMMENT, WS):

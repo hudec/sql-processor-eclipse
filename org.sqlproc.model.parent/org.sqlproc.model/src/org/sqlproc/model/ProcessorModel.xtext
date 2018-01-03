@@ -190,6 +190,7 @@ DaogenProperty:
 	|name='active-filter' activeFilter=ValueType
 	|name='package' pckg=QualifiedName
 	|name='implementation-package' implPckg=QualifiedName
+	|name='dao-annotations' columnAnnotations=AnnotationAssignement
 	);
 
 PojoDefinitionModel:

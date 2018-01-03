@@ -84,13 +84,13 @@
 '>'=31
 '>='=30
 '?'=137
-'?.'=249
+'?.'=250
 '?:'=38
 '@'=114
 '['=117
 '[]'=139
 ']'=115
-'abstract'=248
+'abstract'=249
 'active-filter'=217
 'active-schema'=161
 'as'=119
@@ -107,6 +107,7 @@
 'create-many-to-one'=200
 'create-one-to-many'=199
 'create-tables'=188
+'dao-annotations'=247
 'daogen-'=145
 'database-'=142
 'ddl-create'=163
@@ -121,7 +122,7 @@
 'extends-class-generics'=209
 'extension'=53
 'false'=55
-'final'=247
+'final'=248
 'finally'=134
 'for'=125
 'function-result'=240
@@ -220,7 +221,7 @@
 'table-sequence'=228
 'take-comments'=174
 'throw'=131
-'true'=252
+'true'=253
 'try'=133
 'typeof'=130
 'types-for-columns'=179
@@ -231,11 +232,11 @@
 'uppercase-names'=176
 'val'=49
 'validate-resources'=149
-'var'=251
+'var'=252
 'version-column'=214
 'while'=126
 '{'=58
-'|'=250
+'|'=251
 '||'=17
 '}'=59
 RULE_ANY_OTHER=16
@@ -412,6 +413,7 @@ T__24=24
 T__250=250
 T__251=251
 T__252=252
+T__253=253
 T__25=25
 T__26=26
 T__27=27
