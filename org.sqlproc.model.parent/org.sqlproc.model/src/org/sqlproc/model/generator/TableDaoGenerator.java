@@ -26,6 +26,7 @@ import org.sqlproc.model.processorModel.DaoEntity;
 import org.sqlproc.model.processorModel.Package;
 import org.sqlproc.model.util.Annotations;
 import org.sqlproc.model.util.Utils;
+import org.sqlproc.plugin.lib.property.DaoAnnotations;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
@@ -42,7 +43,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
 
     protected Map<String, String> finalDaos;
     protected Map<String, Map<String, String>> finalDaosFeatures;
-    protected Annotations daoAnnotations;
+    protected Annotations daoEntityAnnotations;
     protected Set<String> daoImports;
     protected Set<String> daoIgnoreTables = new HashSet<String>();
     protected Set<String> daoOnlyTables = new HashSet<String>();
@@ -53,10 +54,11 @@ public class TableDaoGenerator extends TablePojoGenerator {
     protected Filter daoActiveFilter = null;
     protected String daoPackage;
     protected String daoImplPackage;
+    protected DaoAnnotations daoAnnotations = null;
 
     public TableDaoGenerator(ModelProperty modelProperty, Artifacts artifacts, IScopeProvider scopeProvider,
             Map<String, String> finalDaos, Map<String, Map<String, String>> finalDaosFeatures,
-            Annotations daoAnnotations, Set<String> daoImports, List<String> dbSequences, DbType dbType) {
+            Annotations daoEntityAnnotations, Set<String> daoImports, List<String> dbSequences, DbType dbType) {
         super(modelProperty, artifacts, Collections.<String, String>emptyMap(),
                 Collections.<String, Map<String, String>>emptyMap(), null, null, dbSequences, dbType);
 
@@ -64,7 +66,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
 
         this.finalDaos = finalDaos;
         this.finalDaosFeatures = finalDaosFeatures;
-        this.daoAnnotations = daoAnnotations;
+        this.daoEntityAnnotations = daoEntityAnnotations;
         this.daoImports = new TreeSet<String>();
         if (daoImports != null)
             this.daoImports.addAll(daoImports);
@@ -90,10 +92,11 @@ public class TableDaoGenerator extends TablePojoGenerator {
         this.daoActiveFilter = Filter.parse(modelProperty.getDaoActiveFilter(artifacts));
         daoPackage = modelProperty.getDaoPackage(artifacts);
         daoImplPackage = modelProperty.getDaoImplPackage(artifacts);
+        daoAnnotations = modelProperty.getDaoAnnotations(model);
 
         debug.debug("finalDaos " + this.finalDaos);
         debug.debug("finalDaosFeatures " + this.finalDaosFeatures);
-        debug.debug("daoAnnotations " + this.daoAnnotations);
+        debug.debug("daoAnnotations " + this.daoEntityAnnotations);
         debug.debug("daoImports " + this.daoImports);
         debug.debug("daoIgnoreTables " + this.daoIgnoreTables);
         debug.debug("daoOnlyTables " + this.daoOnlyTables);
@@ -103,6 +106,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
         debug.debug("daoActiveFilter " + this.daoActiveFilter);
         debug.debug("daoPackage " + this.daoPackage);
         debug.debug("daoImplPackage " + this.daoImplPackage);
+        debug.debug("daoAnnotations " + this.daoAnnotations);
     }
 
     public String getDaoDefinitions(ModelProperty modelProperty, Artifacts artifacts, ISerializer serializer) {
@@ -272,12 +276,12 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 if (!notAbstractTables.contains(pojo))
                     continue;
             }
-            if (daoAnnotations != null) {
-                buffer.append(daoAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
-                        daoAnnotations.isNonStandardPojoAnnotations(daoName)));
-                buffer.append(daoAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
+            if (daoEntityAnnotations != null) {
+                buffer.append(daoEntityAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
+                        daoEntityAnnotations.isNonStandardPojoAnnotations(daoName)));
+                buffer.append(daoEntityAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
             }
             {
                 bufferMeta = new StringBuilder();
@@ -357,12 +361,12 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 buffer.append(Utils.getFinalContent(finalDaos.get(daoName)));
                 continue;
             }
-            if (daoAnnotations != null) {
-                buffer.append(daoAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
-                        daoAnnotations.isNonStandardPojoAnnotations(daoName)));
-                buffer.append(daoAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
+            if (daoEntityAnnotations != null) {
+                buffer.append(daoEntityAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
+                        daoEntityAnnotations.isNonStandardPojoAnnotations(daoName)));
+                buffer.append(daoEntityAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
             }
 
             // String procedureName = lowerFirstChar(pojoName);
@@ -381,7 +385,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
                             .append(">");
                 } else {
                     PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
-                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME)
+                            : null;
                     if (returnAttribute != null && dbType != DbType.POSTGRESQL && dbType != DbType.MS_SQL) {
                         bufferMeta.append(nlindent()).append("#ProcedureCallQuery(").append(COLLECTION_LIST).append("<")
                                 .append(returnAttribute.getClassName()).append(">");
@@ -437,12 +442,12 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 buffer.append(Utils.getFinalContent(finalDaos.get(daoName)));
                 continue;
             }
-            if (daoAnnotations != null) {
-                buffer.append(daoAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
-                        daoAnnotations.isNonStandardPojoAnnotations(daoName)));
-                buffer.append(daoAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
+            if (daoEntityAnnotations != null) {
+                buffer.append(daoEntityAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
+                        daoEntityAnnotations.isNonStandardPojoAnnotations(daoName)));
+                buffer.append(daoEntityAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
             }
 
             // String procedureName = lowerFirstChar(pojoName);
@@ -463,7 +468,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
                             .append(metaType2className(metaFunctionsResult.get(function)));
                 } else {
                     PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
-                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME)
+                            : null;
                     if (returnAttribute != null) {
                         bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST).append("<")
                                 .append(returnAttribute.getClassName()).append(">");
@@ -520,12 +526,12 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 buffer.append(Utils.getFinalContent(finalDaos.get(daoName)));
                 continue;
             }
-            if (daoAnnotations != null) {
-                buffer.append(daoAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
-                        daoAnnotations.isNonStandardPojoAnnotations(daoName)));
-                buffer.append(daoAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
-                buffer.append(daoAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
+            if (daoEntityAnnotations != null) {
+                buffer.append(daoEntityAnnotations.getEntityAnnotationsDefinitions(daoName, serializer, true,
+                        daoEntityAnnotations.isNonStandardPojoAnnotations(daoName)));
+                buffer.append(daoEntityAnnotations.getConstructorAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
+                buffer.append(daoEntityAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
             }
 
             // String procedureName = lowerFirstChar(pojoName);
@@ -549,7 +555,8 @@ public class TableDaoGenerator extends TablePojoGenerator {
                             .append(metaType2className(metaFunctionsResult.get(function)));
                 } else {
                     PojoAttribute returnAttribute = (attributes.containsKey(FAKE_FUN_PROC_COLUMN_NAME))
-                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME) : null;
+                            ? attributes.get(FAKE_FUN_PROC_COLUMN_NAME)
+                            : null;
                     if (returnAttribute != null) {
                         bufferMeta.append(nlindent()).append("#FunctionCallQuery(").append(COLLECTION_LIST).append("<")
                                 .append(returnAttribute.getClassName()).append(">");

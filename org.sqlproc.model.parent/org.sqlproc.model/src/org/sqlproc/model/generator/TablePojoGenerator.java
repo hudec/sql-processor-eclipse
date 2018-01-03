@@ -40,18 +40,18 @@ import org.sqlproc.plugin.lib.util.Stats;
 public class TablePojoGenerator extends TableBaseGenerator {
 
     protected Artifacts artifacts;
-    protected Annotations entityAnnotations;
+    protected Annotations pojoEntityAnnotations;
     protected Map<String, String> finalEntities;
     protected Map<String, Map<String, String>> finalEntitiesFeatures;
     protected Set<String> entityImports;
 
     public TablePojoGenerator(ModelProperty modelProperty, Artifacts artifacts, Map<String, String> finalEntities,
-            Map<String, Map<String, String>> finalEntitiesFeatures, Annotations entityAnnotations,
+            Map<String, Map<String, String>> finalEntitiesFeatures, Annotations pojoEntityAnnotations,
             Set<String> entityImports, List<String> dbSequences, DbType dbType) {
         super(modelProperty, artifacts, dbSequences, dbType);
 
         this.artifacts = artifacts;
-        this.entityAnnotations = entityAnnotations;
+        this.pojoEntityAnnotations = pojoEntityAnnotations;
         this.finalEntities = finalEntities;
         this.finalEntitiesFeatures = finalEntitiesFeatures;
         this.entityImports = new TreeSet<String>();
@@ -63,7 +63,7 @@ public class TablePojoGenerator extends TableBaseGenerator {
             this.entityImports.add(ANNOTATION_SIZE);
         }
 
-        debug.debug("entityAnnotations " + this.entityAnnotations);
+        debug.debug("entityAnnotations " + this.pojoEntityAnnotations);
         debug.debug("finalEntities " + this.finalEntities);
         debug.debug("finalEntitiesFeatures " + this.finalEntitiesFeatures);
         debug.debug("entityImports " + this.entityImports);
@@ -232,12 +232,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(Utils.getFinalContent(finalEntities.get(realPojoName)));
                 continue;
             }
-            if (entityAnnotations != null) {
-                buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
-                        entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                buffer.append(entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
+            if (pojoEntityAnnotations != null) {
+                buffer.append(pojoEntityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
+                        pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
+                buffer.append(pojoEntityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
             }
             if (isSerializable || serializables.contains(pojo))
                 buffer.append(NLINDENT).append("#Serializable(1)");
@@ -324,12 +324,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(Utils.getFinalContent(finalEntities.get(realPojoName)));
                 continue;
             }
-            if (entityAnnotations != null) {
-                buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
-                        entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                buffer.append(entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
+            if (pojoEntityAnnotations != null) {
+                buffer.append(pojoEntityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
+                        pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
+                buffer.append(pojoEntityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
             }
             addPojoAnnotations(realPojoName, buffer);
             {
@@ -423,12 +423,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                         name = attribute.getName();
                     else
                         name = columnToCamelCase(name);
-                    if (entityAnnotations != null) {
-                        bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
-                                serializer, true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
-                        bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
+                    if (pojoEntityAnnotations != null) {
+                        bufferPartial.append(pojoEntityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
+                                serializer, true, pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                        bufferPartial.append(pojoEntityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
-                        bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
+                        bufferPartial.append(pojoEntityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
                     }
                     if (doGenerateValidationAnnotations) {
@@ -436,14 +436,14 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                 || (attribute.isRequired() && !attribute.isPrimaryKey())) {
                             if (!notRequiredColumns.containsKey(pojo)
                                     || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_NOT_NULL)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@NotNull");
                                 }
                         }
                         if (attribute.getDependencyClassName() == null && !attribute.isPrimitive()) {
                             if (attribute.isString() && attribute.getSize() > 0) {
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_SIZE)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@Size(max = ")
                                             .append(attribute.getSize()).append(")");
@@ -626,12 +626,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(Utils.getFinalContent(finalEntities.get(realPojoName)));
                 continue;
             }
-            if (entityAnnotations != null) {
-                buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
-                        entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                buffer.append(entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
+            if (pojoEntityAnnotations != null) {
+                buffer.append(pojoEntityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
+                        pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
+                buffer.append(pojoEntityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
             }
             addPojoAnnotations(realPojoName, buffer);
             {
@@ -663,12 +663,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     else
                         name = columnToCamelCase(name);
                     printComment(bufferPartial, attribute.getComment(), INDENT, INDENT);
-                    if (entityAnnotations != null) {
-                        bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
-                                serializer, true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
-                        bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
+                    if (pojoEntityAnnotations != null) {
+                        bufferPartial.append(pojoEntityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
+                                serializer, true, pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                        bufferPartial.append(pojoEntityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
-                        bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
+                        bufferPartial.append(pojoEntityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
                     }
                     if (doGenerateValidationAnnotations) {
@@ -676,14 +676,14 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                 || (attribute.isRequired() && !attribute.isPrimaryKey())) {
                             if (!notRequiredColumns.containsKey(pojo)
                                     || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_NOT_NULL)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@NotNull");
                                 }
                         }
                         if (attribute.getDependencyClassName() == null && !attribute.isPrimitive()) {
                             if (attribute.isString() && attribute.getSize() > 0) {
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_SIZE)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@Size(max = ")
                                             .append(attribute.getSize()).append(")");
@@ -758,12 +758,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                 buffer.append(Utils.getFinalContent(finalEntities.get(realPojoName)));
                 continue;
             }
-            if (entityAnnotations != null) {
-                buffer.append(entityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
-                        entityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
-                buffer.append(entityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
-                buffer.append(entityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
+            if (pojoEntityAnnotations != null) {
+                buffer.append(pojoEntityAnnotations.getEntityAnnotationsDefinitions(realPojoName, serializer, true,
+                        pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName)));
+                buffer.append(pojoEntityAnnotations.getConstructorAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getStaticAnnotationsDefinitions(realPojoName, serializer, true));
+                buffer.append(pojoEntityAnnotations.getConflictAnnotationsDefinitions(realPojoName, serializer, true));
             }
             addPojoAnnotations(realPojoName, buffer);
             {
@@ -796,12 +796,12 @@ public class TablePojoGenerator extends TableBaseGenerator {
                     else
                         name = columnToCamelCase(name);
                     printComment(bufferPartial, attribute.getComment(), INDENT, INDENT);
-                    if (entityAnnotations != null) {
-                        bufferPartial.append(entityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
-                                serializer, true, entityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
-                        bufferPartial.append(entityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
+                    if (pojoEntityAnnotations != null) {
+                        bufferPartial.append(pojoEntityAnnotations.getAttributeAnnotationsDefinitions(realPojoName, name,
+                                serializer, true, pojoEntityAnnotations.isNonStandardPojoAnnotations(realPojoName, name)));
+                        bufferPartial.append(pojoEntityAnnotations.getGetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
-                        bufferPartial.append(entityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
+                        bufferPartial.append(pojoEntityAnnotations.getSetterAnnotationsDefinitions(realPojoName, name,
                                 serializer, true));
                     }
                     if (doGenerateValidationAnnotations) {
@@ -809,14 +809,14 @@ public class TablePojoGenerator extends TableBaseGenerator {
                                 || (attribute.isRequired() && !attribute.isPrimaryKey())) {
                             if (!notRequiredColumns.containsKey(pojo)
                                     || !notRequiredColumns.get(pojo).contains(pentry.getKey()))
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_NOT_NULL)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@NotNull");
                                 }
                         }
                         if (attribute.getDependencyClassName() == null && !attribute.isPrimitive()) {
                             if (attribute.isString() && attribute.getSize() > 0) {
-                                if (entityAnnotations == null || !entityAnnotations
+                                if (pojoEntityAnnotations == null || !pojoEntityAnnotations
                                         .hasAttributeAnnotationsDefinitions(realPojoName, name, ANNOTATION_SIZE)) {
                                     bufferPartial.append(NLINDENT).append(INDENT).append("@Size(max = ")
                                             .append(attribute.getSize()).append(")");
