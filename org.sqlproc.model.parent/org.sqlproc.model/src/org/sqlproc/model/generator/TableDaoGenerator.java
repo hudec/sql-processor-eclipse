@@ -29,7 +29,6 @@ import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.DaoAnnotations;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
-import org.sqlproc.plugin.lib.property.PojoAnnotations;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
 import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
@@ -535,6 +534,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
                 buffer.append(daoEntityAnnotations.getStaticAnnotationsDefinitions(daoName, serializer, true));
                 buffer.append(daoEntityAnnotations.getConflictAnnotationsDefinitions(daoName, serializer, true));
             }
+            addDaoAnnotations(pojoName, buffer);
 
             // String procedureName = lowerFirstChar(pojoName);
             {
@@ -597,7 +597,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
         return buffer;
     }
 
-    protected void addDaoAnnotations(String daoName, StringBuilder buffer) {
+    protected void addDaoAnnotations(String pojoName, StringBuilder buffer) {
 
         if (daoAnnotations == null)
             return;
@@ -607,7 +607,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
             if (annotation != null) {
                 boolean doit = false;
                 if ((e.getValue() & DaoAnnotations.IS_STANDARD) != 0
-                        && doAddPojoAnnotations(pojoAnnotations, daoName, e.getKey(), PojoAnnotations.IS_STANDARD)) {
+                        && doAddDaoAnnotations(daoAnnotations, pojoName, e.getKey(), DaoAnnotations.IS_STANDARD)) {
                     buffer.append(NLINDENT).append("#Standard");
                     doit = true;
                 }
@@ -617,7 +617,7 @@ public class TableDaoGenerator extends TablePojoGenerator {
         }
     }
 
-    protected boolean doAddDaoAnnotations(DaoAnnotations pa, String daoName, String name, Integer type) {
+    protected boolean doAddDaoAnnotations(DaoAnnotations pa, String pojoName, String name, Integer type) {
         boolean doit = false;
         if (pa.getDbTables(name + type) != null && !pa.getDbTables(name + type).isEmpty()) {
             if (pa.getDbTables(name + type).contains(pojoName))
