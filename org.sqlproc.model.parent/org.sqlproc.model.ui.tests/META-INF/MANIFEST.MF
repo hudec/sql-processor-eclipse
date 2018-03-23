@@ -10,7 +10,9 @@ Require-Bundle: org.sqlproc.model.ui,
  org.eclipse.xtext.junit4,
  org.eclipse.xtext.xbase.junit,
  org.eclipse.ui.workbench;resolution:=optional,
- org.eclipse.core.runtime
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.testing
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.sqlproc.model.ui.tests;x-internal=true
 Import-Package: org.junit.runners;version="4.5.0",
