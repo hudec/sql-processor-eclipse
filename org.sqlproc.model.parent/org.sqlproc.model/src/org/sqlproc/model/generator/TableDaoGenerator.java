@@ -29,9 +29,7 @@ import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.DaoAnnotations;
 import org.sqlproc.plugin.lib.property.ImplementsExtends;
 import org.sqlproc.plugin.lib.property.ModelProperty;
-import org.sqlproc.plugin.lib.property.PojoAnnotations;
 import org.sqlproc.plugin.lib.property.PojoAttribute;
-import org.sqlproc.plugin.lib.property.PojoDefinition;
 import org.sqlproc.plugin.lib.property.PojoEntityType;
 import org.sqlproc.plugin.lib.resolver.DbResolver;
 import org.sqlproc.plugin.lib.resolver.DbResolver.DbType;
@@ -595,39 +593,6 @@ public class TableDaoGenerator extends TablePojoGenerator {
         }
 
         return buffer;
-    }
-
-    protected void addDaoAnnotations(String daoName, StringBuilder buffer) {
-
-        if (daoAnnotations == null)
-            return;
-
-        for (Entry<String, Integer> e : daoAnnotations.getAnnotations().entrySet()) {
-            PojoDefinition annotation = modelAnnotations.get(e.getKey());
-            if (annotation != null) {
-                boolean doit = false;
-                if ((e.getValue() & DaoAnnotations.IS_STANDARD) != 0
-                        && doAddPojoAnnotations(pojoAnnotations, daoName, e.getKey(), PojoAnnotations.IS_STANDARD)) {
-                    buffer.append(NLINDENT).append("#Standard");
-                    doit = true;
-                }
-                if (doit)
-                    buffer.append(NLINDENT).append("@").append(annotation.getQualifiedName());
-            }
-        }
-    }
-
-    protected boolean doAddDaoAnnotations(DaoAnnotations pa, String daoName, String name, Integer type) {
-        boolean doit = false;
-        if (pa.getDbTables(name + type) != null && !pa.getDbTables(name + type).isEmpty()) {
-            if (pa.getDbTables(name + type).contains(pojoName))
-                doit = true;
-        } else if (pa.getDbNotTables(name + type) != null && !pa.getDbNotTables(name + type).isEmpty()) {
-            if (!pa.getDbNotTables(name + type).contains(pojoName))
-                doit = true;
-        } else
-            doit = true;
-        return doit;
     }
 
     protected void toInits(String pojo, Map<String, String> toInit) {
