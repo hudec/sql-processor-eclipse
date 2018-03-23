@@ -7,8 +7,7 @@ Bundle-SymbolicName: org.sqlproc.model.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model,
  org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide,
- org.antlr.runtime
+ org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.sqlproc.model.ide.contentassist.antlr,
  org.sqlproc.model.ide.contentassist.antlr.internal

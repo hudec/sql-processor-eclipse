@@ -2235,15 +2235,6 @@ public class ProcessorGeneratorUtils {
     return name;
   }
   
-  public String zero(final String name) {
-    String _upperCase = name.toUpperCase();
-    boolean _equals = Objects.equal(_upperCase, "LONG");
-    if (_equals) {
-      return "0L";
-    }
-    return "0";
-  }
-  
   public String constName(final Object attr) {
     if (attr instanceof PojoAttribute) {
       return _constName((PojoAttribute)attr);

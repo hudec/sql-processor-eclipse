@@ -35,7 +35,6 @@ import org.sqlproc.model.processorModel.PropertyCondition;
 import org.sqlproc.model.processorModel.TableDefinitionModel;
 import org.sqlproc.model.util.Utils;
 import org.sqlproc.plugin.lib.property.ColumnAnnotations;
-import org.sqlproc.plugin.lib.property.DaoAnnotations;
 import org.sqlproc.plugin.lib.property.ModelProperty;
 import org.sqlproc.plugin.lib.property.PairValues;
 import org.sqlproc.plugin.lib.property.PojoAnnotations;
@@ -899,12 +898,6 @@ public class ModelPropertyBean extends ModelProperty {
             modelValues.daoPckg = Utils.getPropertyValue(property.getPckg());
         } else if (DAOGEN_IMPLEMENTATION_PACKAGE.equals(property.getName())) {
             modelValues.daoImplPckg = Utils.getPropertyValue(property.getImplPckg());
-        } else if (DAOGEN_DAO_ANNOTATIONS.equals(property.getName())) {
-            int type = DaoAnnotations.IS_STANDARD;
-
-            modelValues.daoAnnotations = new DaoAnnotationsImpl((DaoAnnotationsImpl) modelValues.daoAnnotations,
-                    property.getColumnAnnotations().getAnnotations(), property.getColumnAnnotations().getDbTables(),
-                    property.getColumnAnnotations().getDbNotTables(), type);
         }
     }
 

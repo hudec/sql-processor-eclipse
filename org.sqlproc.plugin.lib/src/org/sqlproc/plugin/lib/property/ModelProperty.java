@@ -141,7 +141,6 @@ public abstract class ModelProperty extends AdapterImpl {
     public static final String DAOGEN_ACTIVE_FILTER = "active-filter";
     public static final String DAOGEN_PACKAGE = "package";
     public static final String DAOGEN_IMPLEMENTATION_PACKAGE = "implementation-package";
-    public static final String DAOGEN_DAO_ANNOTATIONS = "dao-annotations";
 
     public static final String STANDARD = "___GLOBAL";
 
@@ -307,7 +306,6 @@ public abstract class ModelProperty extends AdapterImpl {
         public String daoActiveFilter;
         public String daoPckg;
         public String daoImplPckg;
-        public DaoAnnotations daoAnnotations;
 
         public Map<String, PojoDefinition> modelPojos;
         public Map<String, PojoDefinition> modelAnnotations;
@@ -459,7 +457,6 @@ public abstract class ModelProperty extends AdapterImpl {
             daoImplPckg = null;
             defaultAttrs.put(DAOGEN, new HashSet<String>());
             conditionalAttrs.put(DAOGEN, new HashSet<String>());
-            daoAnnotations = null;
         }
 
         public void initModelModel() {
@@ -1067,11 +1064,6 @@ public abstract class ModelProperty extends AdapterImpl {
     public String getDaoImplPackage(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.daoImplPckg : null;
-    }
-
-    public DaoAnnotations getDaoAnnotations(EObject model) {
-        ModelValues modelValues = getModelValues(model);
-        return (modelValues != null) ? modelValues.daoAnnotations : null;
     }
 
     public String getDbDriver(EObject model) {
