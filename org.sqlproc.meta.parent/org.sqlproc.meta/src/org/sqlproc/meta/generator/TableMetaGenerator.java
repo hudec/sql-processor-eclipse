@@ -338,7 +338,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         else
             buffer.append(" (");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
-                ? pojoExtends.get(header.table.tableName) : null;
+                ? pojoExtends.get(header.table.tableName)
+                : null;
         boolean first = (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_")) ? false : true;
         first = insertColumns(buffer, pojo, first);
         if (parentPojo != null)
@@ -385,7 +386,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             buffer.append("{? :onlyIds_ | %").append(tablePrefix(header.table.tablePrefix))
                     .append(primaryKey.getFirst()).append(" @" + primaryKey.getSecond() + "(id) |\n    ");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
-                ? pojoExtends.get(header.table.tableName) : null;
+                ? pojoExtends.get(header.table.tableName)
+                : null;
         boolean first = selectColumns(buffer, pojo, true, header.statementName, header.table.tablePrefix, null, false,
                 header.assocTables, null, header.discrTables, header.inherTables, null);
         if (parentPojo != null)
@@ -535,7 +537,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         buffer.append("\n  update %%").append(header.table.realTableName);
         buffer.append("\n  {= set");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
-                ? pojoExtends.get(header.table.tableName) : null;
+                ? pojoExtends.get(header.table.tableName)
+                : null;
         boolean first = updateColumns(buffer, pojo, true, header.statementName);
         if (parentPojo != null)
             updateColumns(buffer, parentPojo, first, header.statementName);
@@ -556,7 +559,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         buffer.append("\n  delete from %%").append(header.table.realTableName);
         buffer.append("\n  {= where");
         String parentPojo = pojoDiscriminators.containsKey(header.table.tableName)
-                ? pojoExtends.get(header.table.tableName) : null;
+                ? pojoExtends.get(header.table.tableName)
+                : null;
         boolean first = wherePrimaryKeys(buffer, pojo, true, header.statementName);
         if (parentPojo != null)
             wherePrimaryKeys(buffer, parentPojo, first, header.statementName);
@@ -600,7 +604,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     if (attr == null)
                         continue;
                     name = (columnNames.containsKey(attr.tableName))
-                            ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                            ? columnNames.get(attr.tableName).get(attr.attributeName)
+                            : null;
                     if (name == null)
                         name = attr.attribute.getName();
                     else
@@ -685,7 +690,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     continue;
             }
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -779,7 +785,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
         if (attr.attribute.isPrimaryKey() && notPrimaryKeys)
             return first;
         String name = (columnNames.containsKey(attr.tableName))
-                ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                ? columnNames.get(attr.tableName).get(attr.attributeName)
+                : null;
         if (name == null)
             name = attr.attribute.getName();
         else
@@ -845,7 +852,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     useLike = false;
             }
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -885,7 +893,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (!attr.attribute.isPrimaryKey() && !attr.attribute.isVersion())
                 continue;
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -922,7 +931,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (pentry.getValue().getOne2one() != null)
                 continue;
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -1072,6 +1082,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 return attribute;
             } else if (dbType == DbType.POSTGRESQL && attribute.getSqlType() == 1111) {
                 return attribute;
+            } else if (dbType == DbType.POSTGRESQL && attribute.getSqlType() == 2012) {
+                return attribute;
             }
         }
         return null;
@@ -1130,7 +1142,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 continue;
             ix++;
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
@@ -1289,7 +1302,8 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (attr == null)
                 continue;
             String name = (columnNames.containsKey(attr.tableName))
-                    ? columnNames.get(attr.tableName).get(attr.attributeName) : null;
+                    ? columnNames.get(attr.tableName).get(attr.attributeName)
+                    : null;
             if (name == null)
                 name = attr.attribute.getName();
             else
