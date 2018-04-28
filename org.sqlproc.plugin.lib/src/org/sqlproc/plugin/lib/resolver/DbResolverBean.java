@@ -1970,29 +1970,78 @@ public class DbResolverBean implements DbResolver {
         sequencesForModel = Collections.synchronizedList(new ArrayList<String>());
         dbSequences.put(modelDatabaseValues.dir, sequencesForModel);
         if (modelDatabaseValues.connection != null) {
-            ResultSet result = null;
-            try {
-                DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
-                result = meta.getTables(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema, null,
-                        new String[] { "SEQUENCE" });
-                while (result.next()) {
-                    String type = result.getString("TABLE_TYPE");
-                    if (type != null
-                            && (type.toUpperCase().indexOf("TABLE") >= 0 || type.toUpperCase().indexOf("VIEW") >= 0))
-                        continue;
-                    String name = result.getString("TABLE_NAME");
-                    if (name.startsWith(" "))
-                        continue;
-                    sequencesForModel.add(name(modelDatabaseValues, name));
-                }
-            } catch (SQLException e) {
-                debug.error("getSequences error " + e, e);
-            } finally {
+
+            DbType dbType = getDbType(model);
+            if (dbType == DbType.ORACLE) {
+                String query = "SELECT o.owner AS sequence_owner,o.object_name AS sequence_name FROM all_objects o WHERE ";
+                String owner = modelDatabaseValues.dbCatalog != null ? modelDatabaseValues.dbCatalog
+                        : modelDatabaseValues.dbSchema;
+                if (owner != null)
+                    query = query + "o.owner LIKE '" + owner + "%' AND ";
+                query = query + "o.object_type = 'SEQUENCE'";
+                Statement stmt = null;
+                ResultSet result = null;
                 try {
-                    if (result != null)
-                        result.close();
+                    stmt = modelDatabaseValues.connection.createStatement();
+                    result = stmt.executeQuery(query);
+                    while (result.next()) {
+                        String name = result.getString("SEQUENCE_NAME");
+                        if (name.startsWith(" "))
+                            continue;
+                        sequencesForModel.add(name(modelDatabaseValues, name));
+                    }
                 } catch (SQLException e) {
                     debug.error("getSequences error " + e, e);
+                } finally {
+                    try {
+                        if (stmt != null)
+                            stmt.close();
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getSequences error " + e, e);
+                    }
+                }
+            }
+
+            else {
+                ResultSet result = null;
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getTableTypes();
+                } catch (SQLException e) {
+                    debug.error("getSequences error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getSequences error " + e, e);
+                    }
+                }
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getTables(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema, null,
+                            new String[] { "SEQUENCE" });
+                    while (result.next()) {
+                        String type = result.getString("TABLE_TYPE");
+                        if (type != null && (type.toUpperCase().indexOf("TABLE") >= 0
+                                || type.toUpperCase().indexOf("VIEW") >= 0))
+                            continue;
+                        String name = result.getString("TABLE_NAME");
+                        if (name.startsWith(" "))
+                            continue;
+                        sequencesForModel.add(name(modelDatabaseValues, name));
+                    }
+                } catch (SQLException e) {
+                    debug.error("getSequences error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getSequences error " + e, e);
+                    }
                 }
             }
         }
