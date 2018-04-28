@@ -1,6 +1,5 @@
 package org.sqlproc.plugin.lib.generator;
 
-import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.sql.Types;
 import java.util.ArrayList;
@@ -644,7 +643,8 @@ public class TableBaseGenerator {
             DbCheckConstraint check = dbCheckConstraints.get(i);
             PojoAttribute attribute = (pojos.containsKey(check.getTable())
                     && pojos.get(check.getTable()).containsKey(check.getColumn()))
-                            ? pojos.get(check.getTable()).get(check.getColumn()) : null;
+                            ? pojos.get(check.getTable()).get(check.getColumn())
+                            : null;
             if (attribute == null) {
                 debug.warn("For the constraint " + check.getEnumName() + " there's no table or column");
                 continue;
@@ -1163,7 +1163,21 @@ public class TableBaseGenerator {
         PojoAttribute attribute = new PojoAttribute(dbColumn.getName());
         attribute.setName(columnToCamelCase(dbColumn.getName()));
         attribute.setRequired(!dbColumn.isNullable());
-        switch (dbColumn.getSqlType()) {
+        int sqlType = dbColumn.getSqlType();
+        if (sqlType == Types.NUMERIC) {
+            if (dbColumn.getSize() <= 1)
+                sqlType = Types.BOOLEAN; // boolean
+            else if (dbColumn.getSize() <= 3)
+                sqlType = Types.TINYINT; // byte
+            else if (dbColumn.getSize() <= 5)
+                sqlType = Types.SMALLINT; // short
+            else if (dbColumn.getSize() <= 10)
+                sqlType = Types.INTEGER; // int
+            else if (dbColumn.getSize() <= 19)
+                sqlType = Types.BIGINT; // long
+            // biginteger
+        }
+        switch (sqlType) {
         case Types.BIT:
         case Types.BOOLEAN:
             if (dbColumn.isNullable() || doGenerateWrappers) {
@@ -1245,7 +1259,7 @@ public class TableBaseGenerator {
             break;
         case Types.NUMERIC:
             attribute.setPrimitive(false);
-            attribute.setClassName(BigDecimal.class.getName());
+            attribute.setClassName(BigInteger.class.getName());
             attribute.setWrapperClassName(attribute.getClassName());
             break;
         case Types.DECIMAL:
