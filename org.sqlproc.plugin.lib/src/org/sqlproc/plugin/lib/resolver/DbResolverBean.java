@@ -1977,7 +1977,7 @@ public class DbResolverBean implements DbResolver {
                 String owner = modelDatabaseValues.dbCatalog != null ? modelDatabaseValues.dbCatalog
                         : modelDatabaseValues.dbSchema;
                 if (owner != null)
-                    query = query + "o.owner LIKE '" + owner + "%' AND ";
+                    query = query + "o.owner = '" + owner + "' AND ";
                 query = query + "o.object_type = 'SEQUENCE'";
                 Statement stmt = null;
                 ResultSet result = null;

@@ -1157,6 +1157,13 @@ public class TableBaseGenerator {
         return attribute;
     }
 
+    public static void main(String args[]) {
+        System.out.println(("" + 0x7F).length());
+        System.out.println(("" + 0x7FFF).length());
+        System.out.println(("" + 0x7FFFFFFF).length());
+        System.out.println(("" + 0x7FFFFFFFFFFFFFFFL).length());
+    }
+
     protected PojoAttribute convertDbColumnDefault(String table, DbColumn dbColumn) {
         if (dbColumn == null)
             return null;
@@ -1165,15 +1172,13 @@ public class TableBaseGenerator {
         attribute.setRequired(!dbColumn.isNullable());
         int sqlType = dbColumn.getSqlType();
         if (sqlType == Types.NUMERIC) {
-            if (dbColumn.getSize() <= 1)
-                sqlType = Types.BOOLEAN; // boolean
-            else if (dbColumn.getSize() <= 3)
+            if (dbColumn.getSize() < 3)
                 sqlType = Types.TINYINT; // byte
-            else if (dbColumn.getSize() <= 5)
+            else if (dbColumn.getSize() < 5)
                 sqlType = Types.SMALLINT; // short
-            else if (dbColumn.getSize() <= 10)
+            else if (dbColumn.getSize() < 10)
                 sqlType = Types.INTEGER; // int
-            else if (dbColumn.getSize() <= 19)
+            else if (dbColumn.getSize() < 19)
                 sqlType = Types.BIGINT; // long
             // biginteger
         }
@@ -1270,7 +1275,7 @@ public class TableBaseGenerator {
                 attribute.setClassName(Short.class.getName());
             else if (dbColumn.getSize() < 10)
                 attribute.setClassName(Integer.class.getName());
-            else if (dbColumn.getSize() < 20)
+            else if (dbColumn.getSize() < 19)
                 attribute.setClassName(Long.class.getName());
             else
                 attribute.setClassName(BigInteger.class.getName());
