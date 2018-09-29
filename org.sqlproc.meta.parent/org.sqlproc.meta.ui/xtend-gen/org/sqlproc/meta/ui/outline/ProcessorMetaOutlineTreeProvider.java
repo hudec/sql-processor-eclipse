@@ -66,19 +66,27 @@ public class ProcessorMetaOutlineTreeProvider extends DefaultOutlineTreeProvider
     if (modelElement instanceof MetaStatement) {
       _matched=true;
       final Comparator<Identifier> _function = (Identifier a, Identifier b) -> {
-        return a.getName().compareTo(b.getName());
+        String _name = a.getName();
+        String _name_1 = b.getName();
+        return _name.compareTo(_name_1);
       };
       final TreeSet<Identifier> identifiers = CollectionLiterals.<Identifier>newTreeSet(_function);
       final Comparator<Constant> _function_1 = (Constant a, Constant b) -> {
-        return a.getName().compareTo(b.getName());
+        String _name = a.getName();
+        String _name_1 = b.getName();
+        return _name.compareTo(_name_1);
       };
       final TreeSet<Constant> constants = CollectionLiterals.<Constant>newTreeSet(_function_1);
       final Comparator<Column> _function_2 = (Column a, Column b) -> {
-        return Utils.getName(a).compareTo(Utils.getName(b));
+        String _name = Utils.getName(a);
+        String _name_1 = Utils.getName(b);
+        return _name.compareTo(_name_1);
       };
       final TreeSet<Column> columns = CollectionLiterals.<Column>newTreeSet(_function_2);
       final Comparator<DatabaseColumn> _function_3 = (DatabaseColumn a, DatabaseColumn b) -> {
-        return a.getName().compareTo(b.getName());
+        String _name = a.getName();
+        String _name_1 = b.getName();
+        return _name.compareTo(_name_1);
       };
       final TreeSet<DatabaseColumn> databaseColumns = CollectionLiterals.<DatabaseColumn>newTreeSet(_function_3);
       Collector.allVariables(((MetaStatement) modelElement), identifiers, constants, columns, databaseColumns);
@@ -99,7 +107,9 @@ public class ProcessorMetaOutlineTreeProvider extends DefaultOutlineTreeProvider
       if (modelElement instanceof MappingRule) {
         _matched=true;
         final Comparator<MappingColumn> _function = (MappingColumn a, MappingColumn b) -> {
-          return Utils.getName(a).compareTo(Utils.getName(b));
+          String _name = Utils.getName(a);
+          String _name_1 = Utils.getName(b);
+          return _name.compareTo(_name_1);
         };
         final TreeSet<MappingColumn> columns = CollectionLiterals.<MappingColumn>newTreeSet(_function);
         Collector.allVariables(((MappingRule) modelElement), columns);

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model.tests
 Bundle-Vendor: My Company
-Bundle-Version: 2.7.2
+Bundle-Version: 2.7.3
 Bundle-SymbolicName: org.sqlproc.model.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model,

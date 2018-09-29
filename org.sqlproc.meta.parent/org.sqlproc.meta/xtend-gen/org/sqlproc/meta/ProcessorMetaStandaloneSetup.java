@@ -11,6 +11,7 @@ import org.sqlproc.meta.ProcessorMetaStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class ProcessorMetaStandaloneSetup extends ProcessorMetaStandaloneSetupGenerated {
   public static void doSetup() {
-    new ProcessorMetaStandaloneSetup().createInjectorAndDoEMFRegistration();
+    ProcessorMetaStandaloneSetup _processorMetaStandaloneSetup = new ProcessorMetaStandaloneSetup();
+    _processorMetaStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }

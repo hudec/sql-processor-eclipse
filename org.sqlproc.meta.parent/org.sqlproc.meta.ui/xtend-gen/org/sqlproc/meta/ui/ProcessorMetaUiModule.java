@@ -4,6 +4,9 @@
 package org.sqlproc.meta.ui;
 
 import com.google.inject.Binder;
+import com.google.inject.binder.AnnotatedBindingBuilder;
+import com.google.inject.binder.LinkedBindingBuilder;
+import com.google.inject.name.Named;
 import com.google.inject.name.Names;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 import org.eclipse.xtend.lib.annotations.FinalFieldsConstructor;
@@ -66,21 +69,31 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
   }
   
   public void configureFilterOptionalFeaturesOutlineContribution(final Binder binder) {
-    binder.<IOutlineContribution>bind(IOutlineContribution.class).annotatedWith(Names.named("FilterOptionalFeaturesContribution")).to(FilterOptionalFeaturesContribution.class);
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterOptionalFeaturesContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterOptionalFeaturesContribution.class);
   }
   
   public void configureFilterMetaStatementsOutlineContribution(final Binder binder) {
-    binder.<IOutlineContribution>bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMetaStatementsContribution")).to(FilterMetaStatementsContribution.class);
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterMetaStatementsContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterMetaStatementsContribution.class);
   }
   
   public void configureFilterMappingRulesOutlineContribution(final Binder binder) {
-    binder.<IOutlineContribution>bind(IOutlineContribution.class).annotatedWith(Names.named("FilterMappingRulesContribution")).to(FilterMappingRulesContribution.class);
+    AnnotatedBindingBuilder<IOutlineContribution> _bind = binder.<IOutlineContribution>bind(IOutlineContribution.class);
+    Named _named = Names.named("FilterMappingRulesContribution");
+    LinkedBindingBuilder<IOutlineContribution> _annotatedWith = _bind.annotatedWith(_named);
+    _annotatedWith.to(FilterMappingRulesContribution.class);
   }
   
   @Override
   public void configure(final Binder binder) {
     super.configure(binder);
-    binder.<XtextTemplateContextType>bind(XtextTemplateContextType.class).to(ProcessorMetaTemplateContextType.class);
+    AnnotatedBindingBuilder<XtextTemplateContextType> _bind = binder.<XtextTemplateContextType>bind(XtextTemplateContextType.class);
+    _bind.to(ProcessorMetaTemplateContextType.class);
   }
   
   @Override
@@ -103,7 +116,7 @@ public class ProcessorMetaUiModule extends AbstractProcessorMetaUiModule {
     return ProcessorMetaJdtBasedSimpleTypeScopeProvider.class;
   }
   
-  public ProcessorMetaUiModule(final AbstractUIPlugin plugin) {
-    super(plugin);
+  public ProcessorMetaUiModule(final AbstractUIPlugin arg0) {
+    super(arg0);
   }
 }

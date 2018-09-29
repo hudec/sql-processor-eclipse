@@ -276,7 +276,7 @@ public class ImportAssignementImpl extends MinimalEObjectImpl.Container implemen
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (dbColumn: ");
     result.append(dbColumn);
     result.append(", pkTable: ");

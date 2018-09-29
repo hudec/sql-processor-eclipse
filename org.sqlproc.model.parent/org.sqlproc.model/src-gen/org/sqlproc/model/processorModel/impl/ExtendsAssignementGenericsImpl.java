@@ -281,7 +281,7 @@ public class ExtendsAssignementGenericsImpl extends MinimalEObjectImpl.Container
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (dbTables: ");
     result.append(dbTables);
     result.append(", dbNotTables: ");

@@ -454,7 +454,7 @@ public class PojoTypeImpl extends MinimalEObjectImpl.Container implements PojoTy
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (array: ");
     result.append(array);
     result.append(')');

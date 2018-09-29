@@ -167,7 +167,7 @@ public class PojoDirectiveOperatorsImpl extends PojoDirectiveImpl implements Poj
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
+    StringBuilder result = new StringBuilder(super.toString());
     result.append(" (operatorsSuffix: ");
     result.append(operatorsSuffix);
     result.append(')');

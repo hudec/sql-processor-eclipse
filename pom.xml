@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.sqlproc</groupId>
     <artifactId>mote-model</artifactId>
-    <version>2.7.2</version>
+    <version>2.7.3</version>
     <packaging>pom</packaging>
     <name>Common parent for SQLMEP and SQLMOP</name>
 

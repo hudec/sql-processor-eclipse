@@ -18,8 +18,11 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import java.util.function.Consumer;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.conversion.IValueConverterService;
@@ -73,7 +76,8 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
         }
         String _plus = (_elvis + value);
         final String proposal = _valueConverter.toString(_plus, lexerRule);
-        acceptor.accept(this.createCompletionProposal(proposal, context));
+        ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+        acceptor.accept(_createCompletionProposal);
       };
       values.forEach(_function);
     }
@@ -153,68 +157,89 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   }
   
   public void acceptTables(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String suffix) {
+    List<String> _tables = this.dbResolver.getTables(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_tables, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal((proposal + suffix), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + suffix), context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getTables(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptProcedures(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _procedures = this.dbResolver.getProcedures(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_procedures, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getProcedures(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptFunctions(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _functions = this.dbResolver.getFunctions(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_functions, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getFunctions(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptCheckConstraints(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _checkConstraints = this.dbResolver.getCheckConstraints(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_checkConstraints, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getCheckConstraints(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptSequences(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _sequences = this.dbResolver.getSequences(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_sequences, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getSequences(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptColumns(final List<String> columns, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix, final String suffix) {
     final Consumer<String> _function = (String column) -> {
-      final String proposal = this.getValueConverter().toString(column, "IDENT");
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(column, "IDENT");
       String _xifexpression = null;
       boolean _notEquals = (!Objects.equal(prefix, null));
       if (_notEquals) {
@@ -231,7 +256,8 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
         _xifexpression_1 = completion;
       }
       completion = _xifexpression_1;
-      acceptor.accept(this.createCompletionProposal(completion, context));
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(completion, context);
+      acceptor.accept(_createCompletionProposal);
     };
     columns.forEach(_function);
   }
@@ -374,7 +400,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -394,7 +422,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -518,17 +548,23 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     } else {
       String _dbProcedure = prop.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        this.acceptColumns(this.dbResolver.getProcColumns(model, prop.getDbProcedure()), context, acceptor, null, "->");
+        String _dbProcedure_1 = prop.getDbProcedure();
+        List<String> _procColumns = this.dbResolver.getProcColumns(model, _dbProcedure_1);
+        this.acceptColumns(_procColumns, context, acceptor, null, "->");
       } else {
         String _dbFunction = prop.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          this.acceptColumns(this.dbResolver.getFunColumns(model, prop.getDbFunction()), context, acceptor, null, "->");
+          String _dbFunction_1 = prop.getDbFunction();
+          List<String> _funColumns = this.dbResolver.getFunColumns(model, _dbFunction_1);
+          this.acceptColumns(_funColumns, context, acceptor, null, "->");
         }
       }
     }
@@ -550,8 +586,12 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
-      this.acceptColumns(this.dbResolver.getCheckColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
+      String _dbTable_2 = prop.getDbTable();
+      List<String> _checkColumns = this.dbResolver.getCheckColumns(model, _dbTable_2);
+      this.acceptColumns(_checkColumns, context, acceptor, null, "->");
     }
   }
   
@@ -569,13 +609,18 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
         final Consumer<DbImport> _function = (DbImport dbImport) -> {
           if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
-            final String proposal = this.getValueConverter().toString(dbImport.getPkTable(), "IDENT");
-            acceptor.accept(this.createCompletionProposal(proposal, context));
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _pkTable = dbImport.getPkTable();
+            final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
-        this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+        _dbImports.forEach(_function);
       }
     }
   }
@@ -592,17 +637,24 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-many-to-one", _name);
       if (_equals) {
-        this.acceptColumns(this.dbResolver.getColumns(model, imp.getPkTable()), context, acceptor, null, null);
+        String _pkTable = imp.getPkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _pkTable);
+        this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
         final Consumer<DbImport> _function = (DbImport dbImport) -> {
           if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
             if (((!Objects.equal(dbImport.getPkTable(), null)) && dbImport.getPkTable().equals(imp.getPkTable()))) {
-              final String proposal = this.getValueConverter().toString(dbImport.getPkColumn(), "IDENT");
-              acceptor.accept(this.createCompletionProposal(proposal, context));
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _pkColumn = dbImport.getPkColumn();
+              final String proposal = _valueConverter.toString(_pkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
-        this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+        _dbImports.forEach(_function);
       }
     }
   }
@@ -623,7 +675,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -641,13 +695,18 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
         final Consumer<DbExport> _function = (DbExport dbExport) -> {
           if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
-            final String proposal = this.getValueConverter().toString(dbExport.getFkTable(), "IDENT");
-            acceptor.accept(this.createCompletionProposal(proposal, context));
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _fkTable = dbExport.getFkTable();
+            final String proposal = _valueConverter.toString(_fkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
-        this.dbResolver.getDbExports(model, prop.getDbTable()).forEach(_function);
+        _dbExports.forEach(_function);
       }
     }
   }
@@ -664,17 +723,24 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-one-to-many", _name);
       if (_equals) {
-        this.acceptColumns(this.dbResolver.getColumns(model, exp.getFkTable()), context, acceptor, null, null);
+        String _fkTable = exp.getFkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _fkTable);
+        this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
         final Consumer<DbExport> _function = (DbExport dbExport) -> {
           if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
             if (((!Objects.equal(dbExport.getFkTable(), null)) && dbExport.getFkTable().equals(exp.getFkTable()))) {
-              final String proposal = this.getValueConverter().toString(dbExport.getFkColumn(), "IDENT");
-              acceptor.accept(this.createCompletionProposal(proposal, context));
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _fkColumn = dbExport.getFkColumn();
+              final String proposal = _valueConverter.toString(_fkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
-        this.dbResolver.getDbExports(model, prop.getDbTable()).forEach(_function);
+        _dbExports.forEach(_function);
       }
     }
   }
@@ -695,7 +761,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -715,7 +783,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -728,13 +798,18 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     final ManyToManyAssignement many2 = ((ManyToManyAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
     if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(many2.getPkColumn(), null)))) {
+      String _dbTable = prop.getDbTable();
+      List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
       final Consumer<DbImport> _function = (DbImport dbImport) -> {
         if (((!Objects.equal(dbImport.getPkColumn(), null)) && dbImport.getPkColumn().equals(many2.getPkColumn()))) {
-          final String proposal = this.getValueConverter().toString(dbImport.getPkTable(), "IDENT");
-          acceptor.accept(this.createCompletionProposal(proposal, context));
+          IValueConverterService _valueConverter = this.getValueConverter();
+          String _pkTable = dbImport.getPkTable();
+          final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+          ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+          acceptor.accept(_createCompletionProposal);
         }
       };
-      this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+      _dbImports.forEach(_function);
     }
   }
   
@@ -748,7 +823,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -761,8 +838,10 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     final Consumer<String> _function = (String method) -> {
-      final String proposal = this.getValueConverter().toString(method, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(method, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     this.methods.forEach(_function);
   }
@@ -783,17 +862,23 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     } else {
       String _dbProcedure = prop.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        this.acceptColumns(this.dbResolver.getProcColumns(model, prop.getDbProcedure()), context, acceptor, null, "->");
+        String _dbProcedure_1 = prop.getDbProcedure();
+        List<String> _procColumns = this.dbResolver.getProcColumns(model, _dbProcedure_1);
+        this.acceptColumns(_procColumns, context, acceptor, null, "->");
       } else {
         String _dbFunction = prop.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          this.acceptColumns(this.dbResolver.getFunColumns(model, prop.getDbFunction()), context, acceptor, null, "->");
+          String _dbFunction_1 = prop.getDbFunction();
+          List<String> _funColumns = this.dbResolver.getFunColumns(model, _dbFunction_1);
+          this.acceptColumns(_funColumns, context, acceptor, null, "->");
         }
       }
     }
@@ -811,24 +896,35 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     String _dbTable = prop2.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      type = this.dbResolver.getType(model, prop2.getDbTable(), prop.getDbColumn());
+      String _dbTable_1 = prop2.getDbTable();
+      String _dbColumn = prop.getDbColumn();
+      String _type = this.dbResolver.getType(model, _dbTable_1, _dbColumn);
+      type = _type;
     } else {
       String _dbProcedure = prop2.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        type = this.dbResolver.getType(model, prop2.getDbProcedure(), prop.getDbColumn());
+        String _dbProcedure_1 = prop2.getDbProcedure();
+        String _dbColumn_1 = prop.getDbColumn();
+        String _type_1 = this.dbResolver.getType(model, _dbProcedure_1, _dbColumn_1);
+        type = _type_1;
       } else {
         String _dbFunction = prop2.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          type = this.dbResolver.getType(model, prop2.getDbFunction(), prop.getDbColumn());
+          String _dbFunction_1 = prop2.getDbFunction();
+          String _dbColumn_2 = prop.getDbColumn();
+          String _type_2 = this.dbResolver.getType(model, _dbFunction_1, _dbColumn_2);
+          type = _type_2;
         }
       }
     }
     boolean _notEquals_3 = (!Objects.equal(type, null));
     if (_notEquals_3) {
-      final String proposal = this.getValueConverter().toString((("\"" + type) + "\""), "PropertyValue");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString((("\"" + type) + "\""), "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     }
   }
   
@@ -856,12 +952,17 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
   
   public Set<PojoEntity> listEntities(final ResourceSet resourceSet, final IScope scope) {
     final Comparator<PojoEntity> _function = (PojoEntity o1, PojoEntity o2) -> {
-      return o1.getName().compareTo(o2.getName());
+      String _name = o1.getName();
+      String _name_1 = o2.getName();
+      return _name.compareTo(_name_1);
     };
     final TreeSet<PojoEntity> result = CollectionLiterals.<PojoEntity>newTreeSet(_function);
+    Iterable<IEObjectDescription> _allElements = scope.getAllElements();
     final Consumer<IEObjectDescription> _function_1 = (IEObjectDescription description) -> {
-      EObject _eObject = resourceSet.getEObject(description.getEObjectURI(), true);
+      URI _eObjectURI = description.getEObjectURI();
+      EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
       final org.sqlproc.model.processorModel.Package packageDeclaration = ((org.sqlproc.model.processorModel.Package) _eObject);
+      EList<AbstractEntity> _elements = packageDeclaration.getElements();
       final Consumer<AbstractEntity> _function_2 = (AbstractEntity aEntity) -> {
         if ((aEntity instanceof AnnotatedEntity)) {
           AnnotatedEntity ae = ((AnnotatedEntity) aEntity);
@@ -872,9 +973,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
           }
         }
       };
-      packageDeclaration.getElements().forEach(_function_2);
+      _elements.forEach(_function_2);
     };
-    scope.getAllElements().forEach(_function_1);
+    _allElements.forEach(_function_1);
     return result;
   }
   
@@ -965,7 +1066,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       _xifexpression = ((MetagenProperty) model);
     }
     final MetagenProperty prop = _xifexpression;
-    this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+    String _dbTable = prop.getDbTable();
+    List<String> _columns = this.dbResolver.getColumns(model, _dbTable);
+    this.acceptColumns(_columns, context, acceptor, null, null);
   }
   
   @Override
@@ -986,7 +1089,9 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     final MetagenProperty prop = ((MetagenProperty) model);
-    this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+    String _dbTable = prop.getDbTable();
+    List<String> _columns = this.dbResolver.getColumns(model, _dbTable);
+    this.acceptColumns(_columns, context, acceptor, null, null);
   }
   
   @Override
@@ -1002,8 +1107,10 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     if (_notEquals) {
       dbMetaInfo = (("\"" + dbMetaInfo) + "\"");
     }
-    final String proposal = this.getValueConverter().toString(dbMetaInfo, "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString(dbMetaInfo, "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1019,8 +1126,10 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     if (_notEquals) {
       dbDriverInfo = (("\"" + dbDriverInfo) + "\"");
     }
-    final String proposal = this.getValueConverter().toString(dbDriverInfo, "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString(dbDriverInfo, "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1029,11 +1138,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       super.completeDriverMethodOutputAssignement_DriverMethod(model, assignment, context, acceptor);
       return;
     }
+    Set<String> _driverMethods = this.dbResolver.getDriverMethods(model);
     final Consumer<String> _function = (String driverMetod) -> {
-      final String proposal = this.getValueConverter().toString(driverMetod, "PropertyValue");
-      acceptor.accept(this.createCompletionProposal((proposal + "->"), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(driverMetod, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + "->"), context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getDriverMethods(model).forEach(_function);
+    _driverMethods.forEach(_function);
   }
   
   @Override
@@ -1044,15 +1156,18 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
     }
     final DriverMethodOutputAssignement prop = ((DriverMethodOutputAssignement) model);
     Object _elvis = null;
-    Object _driverMethodOutput = this.dbResolver.getDriverMethodOutput(model, prop.getDriverMethod());
+    String _driverMethod = prop.getDriverMethod();
+    Object _driverMethodOutput = this.dbResolver.getDriverMethodOutput(model, _driverMethod);
     if (_driverMethodOutput != null) {
       _elvis = _driverMethodOutput;
     } else {
       _elvis = "null";
     }
     Object methodCallOutput = _elvis;
-    final String proposal = this.getValueConverter().toString((("\"" + methodCallOutput) + "\""), "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString((("\"" + methodCallOutput) + "\""), "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1064,11 +1179,15 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       return;
     }
     final String dbMetaInfo = this.dbResolver.getDbMetaInfo(model);
+    DbResolver.DbType[] _fromDbMetaInfo = DbResolver.DbType.fromDbMetaInfo(dbMetaInfo);
     final Consumer<DbResolver.DbType> _function = (DbResolver.DbType dbType) -> {
-      final String proposal = this.getValueConverter().toString(dbType.getValue(), "PropertyValue");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _value = dbType.getValue();
+      final String proposal = _valueConverter.toString(_value, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    ((List<DbResolver.DbType>)Conversions.doWrapArray(DbResolver.DbType.fromDbMetaInfo(dbMetaInfo))).forEach(_function);
+    ((List<DbResolver.DbType>)Conversions.doWrapArray(_fromDbMetaInfo)).forEach(_function);
   }
   
   @Override
@@ -1079,11 +1198,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       super.completeDatabaseCatalogAssignement_DbCatalog(model, assignment, context, acceptor);
       return;
     }
+    List<String> _catalogs = this.dbResolver.getCatalogs(model);
     final Consumer<String> _function = (String catalog) -> {
-      final String proposal = this.getValueConverter().toString(catalog, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(catalog, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getCatalogs(model).forEach(_function);
+    _catalogs.forEach(_function);
   }
   
   @Override
@@ -1094,11 +1216,14 @@ public class ProcessorModelProposalProvider extends AbstractProcessorModelPropos
       super.completeDatabaseSchemaAssignement_DbSchema(model, assignment, context, acceptor);
       return;
     }
+    List<String> _schemas = this.dbResolver.getSchemas(model);
     final Consumer<String> _function = (String schema) -> {
-      final String proposal = this.getValueConverter().toString(schema, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(schema, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getSchemas(model).forEach(_function);
+    _schemas.forEach(_function);
   }
   
   @Override

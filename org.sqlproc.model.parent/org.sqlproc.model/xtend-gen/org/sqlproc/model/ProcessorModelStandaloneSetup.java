@@ -11,6 +11,7 @@ import org.sqlproc.model.ProcessorModelStandaloneSetupGenerated;
 @SuppressWarnings("all")
 public class ProcessorModelStandaloneSetup extends ProcessorModelStandaloneSetupGenerated {
   public static void doSetup() {
-    new ProcessorModelStandaloneSetup().createInjectorAndDoEMFRegistration();
+    ProcessorModelStandaloneSetup _processorModelStandaloneSetup = new ProcessorModelStandaloneSetup();
+    _processorModelStandaloneSetup.createInjectorAndDoEMFRegistration();
   }
 }

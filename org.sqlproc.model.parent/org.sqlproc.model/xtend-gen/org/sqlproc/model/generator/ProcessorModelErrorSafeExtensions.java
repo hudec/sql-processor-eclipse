@@ -2,6 +2,7 @@ package org.sqlproc.model.generator;
 
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.common.types.JvmSpecializedTypeReference;
 import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.common.types.JvmUnknownTypeReference;
@@ -23,7 +24,8 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
   protected ITreeAppendable openErrorAppendable(final ITreeAppendable parent, final ITreeAppendable child) {
     ITreeAppendable _xifexpression = null;
     if ((!(child instanceof ErrorTreeAppendable))) {
-      _xifexpression = parent.errorChild().append(" ");
+      ErrorTreeAppendable _errorChild = parent.errorChild();
+      _xifexpression = _errorChild.append(" ");
     } else {
       _xifexpression = child;
     }
@@ -48,12 +50,14 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
       boolean _matched = false;
       if (typeRef instanceof JvmSpecializedTypeReference) {
         _matched=true;
-        this.serializeSafely(((JvmSpecializedTypeReference)typeRef).getEquivalent(), surrogateType, appendable);
+        JvmTypeReference _equivalent = ((JvmSpecializedTypeReference)typeRef).getEquivalent();
+        this.serializeSafely(_equivalent, surrogateType, appendable);
       }
       if (!_matched) {
         if (typeRef instanceof JvmUnknownTypeReference) {
           _matched=true;
-          appendable.append(((JvmUnknownTypeReference)typeRef).getQualifiedName());
+          String _qualifiedName = ((JvmUnknownTypeReference)typeRef).getQualifiedName();
+          appendable.append(_qualifiedName);
         }
       }
       if (!_matched) {
@@ -70,7 +74,8 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
       if ((_accept).booleanValue()) {
         final ITreeAppendable errorChild = this.openErrorAppendable(appendable, appendable);
         try {
-          this._typeReferenceSerializer.serialize(typeRef, typeRef.eContainer(), errorChild);
+          EObject _eContainer = typeRef.eContainer();
+          this._typeReferenceSerializer.serialize(typeRef, _eContainer, errorChild);
         } catch (final Throwable _t) {
           if (_t instanceof Exception) {
             final Exception ignoreMe = (Exception)_t;
@@ -80,7 +85,8 @@ public class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
         }
         this.closeErrorAppendable(appendable, errorChild);
       } else {
-        this._typeReferenceSerializer.serialize(typeRef, typeRef.eContainer(), appendable);
+        EObject _eContainer_1 = typeRef.eContainer();
+        this._typeReferenceSerializer.serialize(typeRef, _eContainer_1, appendable);
       }
     }
   }

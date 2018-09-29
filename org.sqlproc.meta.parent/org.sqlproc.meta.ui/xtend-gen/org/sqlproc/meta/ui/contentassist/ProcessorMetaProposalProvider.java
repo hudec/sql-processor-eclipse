@@ -6,6 +6,7 @@ package org.sqlproc.meta.ui.contentassist;
 import com.google.common.base.Objects;
 import com.google.inject.Inject;
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.math.BigDecimal;
@@ -28,6 +29,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
+import org.eclipse.jface.text.contentassist.ICompletionProposal;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.EcoreUtil2;
 import org.eclipse.xtext.RuleCall;
@@ -42,6 +44,7 @@ import org.eclipse.xtext.common.types.JvmTypeReference;
 import org.eclipse.xtext.conversion.IValueConverterService;
 import org.eclipse.xtext.resource.IEObjectDescription;
 import org.eclipse.xtext.scoping.IScope;
+import org.eclipse.xtext.scoping.IScopeProvider;
 import org.eclipse.xtext.ui.editor.contentassist.ContentAssistContext;
 import org.eclipse.xtext.ui.editor.contentassist.ICompletionProposalAcceptor;
 import org.eclipse.xtext.xbase.lib.CollectionLiterals;
@@ -55,11 +58,13 @@ import org.sqlproc.meta.processorMeta.DatabaseProperty;
 import org.sqlproc.meta.processorMeta.DriverMethodOutputAssignement;
 import org.sqlproc.meta.processorMeta.ExportAssignement;
 import org.sqlproc.meta.processorMeta.ExtendedColumn;
+import org.sqlproc.meta.processorMeta.ExtendedColumnName;
 import org.sqlproc.meta.processorMeta.ExtendedMappingItem;
 import org.sqlproc.meta.processorMeta.ImportAssignement;
 import org.sqlproc.meta.processorMeta.InheritanceAssignement;
 import org.sqlproc.meta.processorMeta.ManyToManyAssignement;
 import org.sqlproc.meta.processorMeta.MappingColumn;
+import org.sqlproc.meta.processorMeta.MappingColumnName;
 import org.sqlproc.meta.processorMeta.MappingRule;
 import org.sqlproc.meta.processorMeta.MetaStatement;
 import org.sqlproc.meta.processorMeta.MetagenProperty;
@@ -142,7 +147,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
         }
         String _plus = (_elvis + value);
         final String proposal = _valueConverter.toString(_plus, lexerRule);
-        acceptor.accept(this.createCompletionProposal(proposal, context));
+        ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+        acceptor.accept(_createCompletionProposal);
       };
       values.forEach(_function);
     }
@@ -165,14 +171,18 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       final Function1<ExtendedColumn, Boolean> _function = (ExtendedColumn it) -> {
         boolean _xblockexpression = false;
         {
-          this.append(partialName, it.getCol().getName());
+          ExtendedColumnName _col = it.getCol();
+          String _name = _col.getName();
+          this.append(partialName, _name);
           _xblockexpression = ((!Objects.equal(context.getPreviousModel(), null)) && (it == context.getPreviousModel()));
         }
         return Boolean.valueOf(_xblockexpression);
       };
       IterableExtensions.<ExtendedColumn>findFirst(_columns, _function);
     }
-    final String prefix = this.append(partialName, context.getPrefix()).toString();
+    String _prefix = context.getPrefix();
+    StringBuilder _append = this.append(partialName, _prefix);
+    final String prefix = _append.toString();
     boolean _completeUsage = this.completeUsage(model, assignment, context, acceptor, Constants.COLUMN_USAGE, Constants.COLUMN_USAGE_EXTENDED, prefix, true);
     boolean _not = (!_completeUsage);
     if (_not) {
@@ -182,7 +192,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
   
   @Override
   public void completeConstant_Name(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _completeUsage = this.completeUsage(model, assignment, context, acceptor, Constants.CONSTANT_USAGE, Constants.CONSTANT_USAGE_EXTENDED, context.getPrefix(), false);
+    String _prefix = context.getPrefix();
+    boolean _completeUsage = this.completeUsage(model, assignment, context, acceptor, Constants.CONSTANT_USAGE, Constants.CONSTANT_USAGE_EXTENDED, _prefix, false);
     boolean _not = (!_completeUsage);
     if (_not) {
       super.completeConstant_Name(model, assignment, context, acceptor);
@@ -191,7 +202,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
   
   @Override
   public void completeIdentifier_Name(final EObject model, final Assignment assignment, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
-    boolean _completeUsage = this.completeUsage(model, assignment, context, acceptor, Constants.IDENTIFIER_USAGE, Constants.IDENTIFIER_USAGE_EXTENDED, context.getPrefix(), 
+    String _prefix = context.getPrefix();
+    boolean _completeUsage = this.completeUsage(model, assignment, context, acceptor, Constants.IDENTIFIER_USAGE, Constants.IDENTIFIER_USAGE_EXTENDED, _prefix, 
       false);
     boolean _not = (!_completeUsage);
     if (_not) {
@@ -211,13 +223,16 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     PojoDefinition _xifexpression = null;
     boolean _notEquals = (!Objects.equal(pojoName, null));
     if (_notEquals) {
-      _xifexpression = this.modelProperty.getModelPojos(artifacts).get(pojoName);
+      Map<String, PojoDefinition> _modelPojos = this.modelProperty.getModelPojos(artifacts);
+      _xifexpression = _modelPojos.get(pojoName);
     }
     final PojoDefinition pojoDefinition = _xifexpression;
     boolean _equals = Objects.equal(pojoDefinition, null);
     if (_equals) {
-      final String proposal = this.getValueConverter().toString(("Error: I can\'t load pojo for " + model), "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(("Error: I can\'t load pojo for " + model), "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
       return true;
     }
     final int pos = _prefix.lastIndexOf(".");
@@ -233,12 +248,16 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     if ((newPojoValidator && (pojoDefinition.getClassx() instanceof JvmDeclaredType))) {
       JvmType _classx = pojoDefinition.getClassx();
       final JvmDeclaredType type = ((JvmDeclaredType) _classx);
+      Iterable<JvmFeature> _allFeatures = this.getAllFeatures(type, _prefix);
       final Consumer<JvmFeature> _function = (JvmFeature feature) -> {
-        final String proposal_1 = this.getValueConverter().toString(feature.getSimpleName(), "IDENT");
+        IValueConverterService _valueConverter_1 = this.getValueConverter();
+        String _simpleName = feature.getSimpleName();
+        final String proposal_1 = _valueConverter_1.toString(_simpleName, "IDENT");
         InputOutput.<String>println(proposal_1);
-        acceptor.accept(this.createCompletionProposal((prefix + proposal_1), context));
+        ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal((prefix + proposal_1), context);
+        acceptor.accept(_createCompletionProposal_1);
       };
-      this.getAllFeatures(type, _prefix).forEach(_function);
+      _allFeatures.forEach(_function);
     } else {
       Resource _eResource = model.eResource();
       URI _uRI = null;
@@ -246,7 +265,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
         _uRI=_eResource.getURI();
       }
       final URI uri = _uRI;
-      final String clazz = this.getClassName(pojoDefinition.getQualifiedName(), prefix, uri);
+      String _qualifiedName = pojoDefinition.getQualifiedName();
+      final String clazz = this.getClassName(_qualifiedName, prefix, uri);
       boolean _equals_1 = Objects.equal(clazz, null);
       if (_equals_1) {
         return false;
@@ -260,17 +280,21 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
         String _name = it.getName();
         return Boolean.valueOf((!Objects.equal("class", _name)));
       };
+      Iterable<PropertyDescriptor> _filter = IterableExtensions.<PropertyDescriptor>filter(((Iterable<PropertyDescriptor>)Conversions.doWrapArray(descriptors)), _function_1);
       final Consumer<PropertyDescriptor> _function_2 = (PropertyDescriptor descriptor) -> {
-        final String proposal_1 = this.getValueConverter().toString(descriptor.getName(), "IDENT");
+        IValueConverterService _valueConverter_1 = this.getValueConverter();
+        String _name = descriptor.getName();
+        final String proposal_1 = _valueConverter_1.toString(_name, "IDENT");
         String _xifexpression_2 = null;
         if (cutPrefix) {
           _xifexpression_2 = proposal_1;
         } else {
           _xifexpression_2 = (prefix + proposal_1);
         }
-        acceptor.accept(this.createCompletionProposal(_xifexpression_2, context));
+        ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(_xifexpression_2, context);
+        acceptor.accept(_createCompletionProposal_1);
       };
-      IterableExtensions.<PropertyDescriptor>filter(((Iterable<PropertyDescriptor>)Conversions.doWrapArray(descriptors)), _function_1).forEach(_function_2);
+      _filter.forEach(_function_2);
     }
     return true;
   }
@@ -281,7 +305,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       JvmDeclaredType type = _type;
       final int pos = _prefix.lastIndexOf(".");
       if ((pos > 0)) {
-        final Iterable<JvmFeature> features = type.findAllFeaturesByName(_prefix.substring(0, pos));
+        String _substring = _prefix.substring(0, pos);
+        final Iterable<JvmFeature> features = type.findAllFeaturesByName(_substring);
         if ((((!Objects.equal(features, null)) && (!IterableExtensions.isEmpty(features))) && (IterableExtensions.<JvmFeature>head(features) instanceof JvmField))) {
           JvmFeature _head = IterableExtensions.<JvmFeature>head(features);
           JvmField field = ((JvmField) _head);
@@ -295,18 +320,22 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
           }
         }
       }
+      Iterable<JvmFeature> _allFeatures = type.getAllFeatures();
       final Function1<JvmFeature, Boolean> _function = (JvmFeature it) -> {
         return Boolean.valueOf((it instanceof JvmField));
       };
+      Iterable<JvmFeature> _filter = IterableExtensions.<JvmFeature>filter(_allFeatures, _function);
       final Function1<JvmFeature, Boolean> _function_1 = (JvmFeature it) -> {
         boolean _isStatic = it.isStatic();
         return Boolean.valueOf((!_isStatic));
       };
+      Iterable<JvmFeature> _filter_1 = IterableExtensions.<JvmFeature>filter(_filter, _function_1);
       final Function1<JvmFeature, Boolean> _function_2 = (JvmFeature it) -> {
-        boolean _startsWith = it.getSimpleName().startsWith("_");
+        String _simpleName = it.getSimpleName();
+        boolean _startsWith = _simpleName.startsWith("_");
         return Boolean.valueOf((!_startsWith));
       };
-      _xblockexpression = IterableExtensions.<JvmFeature>filter(IterableExtensions.<JvmFeature>filter(IterableExtensions.<JvmFeature>filter(type.getAllFeatures(), _function), _function_1), _function_2);
+      _xblockexpression = IterableExtensions.<JvmFeature>filter(_filter_1, _function_2);
     }
     return _xblockexpression;
   }
@@ -326,29 +355,37 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     PojoDefinition _xifexpression = null;
     boolean _notEquals = (!Objects.equal(pojoName, null));
     if (_notEquals) {
-      _xifexpression = this.modelProperty.getModelPojos(artifacts).get(pojoName);
+      Map<String, PojoDefinition> _modelPojos = this.modelProperty.getModelPojos(artifacts);
+      _xifexpression = _modelPojos.get(pojoName);
     }
     final PojoDefinition pojoDefinition = _xifexpression;
     boolean _equals = Objects.equal(pojoDefinition, null);
     if (_equals) {
-      final String proposal = this.getValueConverter().toString(("Error: I can\'t load pojo for " + model), "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(("Error: I can\'t load pojo for " + model), "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     }
     final StringBuilder partialName = new StringBuilder("");
     boolean cutPrefix = false;
     if (((model instanceof MappingColumn) && (!Objects.equal(mappingColumn, null)))) {
       cutPrefix = true;
+      EList<ExtendedMappingItem> _items = mappingColumn.getItems();
       final Function1<ExtendedMappingItem, Boolean> _function = (ExtendedMappingItem it) -> {
         boolean _xblockexpression = false;
         {
-          this.append(partialName, it.getAttr().getName());
+          MappingColumnName _attr = it.getAttr();
+          String _name = _attr.getName();
+          this.append(partialName, _name);
           _xblockexpression = ((!Objects.equal(context.getPreviousModel(), null)) && (it == context.getPreviousModel()));
         }
         return Boolean.valueOf(_xblockexpression);
       };
-      IterableExtensions.<ExtendedMappingItem>findFirst(mappingColumn.getItems(), _function);
+      IterableExtensions.<ExtendedMappingItem>findFirst(_items, _function);
     }
-    String prefix = this.append(partialName, context.getPrefix()).toString();
+    String _prefix = context.getPrefix();
+    StringBuilder _append = this.append(partialName, _prefix);
+    String prefix = _append.toString();
     final int pos = prefix.lastIndexOf(".");
     String _xifexpression_1 = null;
     if ((pos > 0)) {
@@ -356,19 +393,23 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     } else {
       _xifexpression_1 = "";
     }
-    final String _prefix = _xifexpression_1;
+    final String _prefix_1 = _xifexpression_1;
     final boolean _cutPrefix = cutPrefix;
     boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(model);
     final boolean newPojoValidator = (!_isOldPojoValidator);
     if ((newPojoValidator && (pojoDefinition.getClassx() instanceof JvmDeclaredType))) {
       JvmType _classx = pojoDefinition.getClassx();
       final JvmDeclaredType type = ((JvmDeclaredType) _classx);
+      Iterable<JvmFeature> _allFeatures = this.getAllFeatures(type, _prefix_1);
       final Consumer<JvmFeature> _function_1 = (JvmFeature feature) -> {
-        final String proposal_1 = this.getValueConverter().toString(feature.getSimpleName(), "IDENT");
+        IValueConverterService _valueConverter_1 = this.getValueConverter();
+        String _simpleName = feature.getSimpleName();
+        final String proposal_1 = _valueConverter_1.toString(_simpleName, "IDENT");
         InputOutput.<String>println(proposal_1);
-        acceptor.accept(this.createCompletionProposal((_prefix + proposal_1), context));
+        ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal((_prefix_1 + proposal_1), context);
+        acceptor.accept(_createCompletionProposal_1);
       };
-      this.getAllFeatures(type, _prefix).forEach(_function_1);
+      _allFeatures.forEach(_function_1);
     } else {
       Resource _eResource = model.eResource();
       URI _uRI = null;
@@ -376,7 +417,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
         _uRI=_eResource.getURI();
       }
       final URI uri = _uRI;
-      final String clazz = this.getClassName(pojoDefinition.getQualifiedName(), prefix, uri);
+      String _qualifiedName = pojoDefinition.getQualifiedName();
+      final String clazz = this.getClassName(_qualifiedName, prefix, uri);
       boolean _equals_1 = Objects.equal(clazz, null);
       if (_equals_1) {
         return;
@@ -390,17 +432,21 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
           String _name = it.getName();
           return Boolean.valueOf((!Objects.equal("class", _name)));
         };
+        Iterable<PropertyDescriptor> _filter = IterableExtensions.<PropertyDescriptor>filter(((Iterable<PropertyDescriptor>)Conversions.doWrapArray(descriptors)), _function_2);
         final Consumer<PropertyDescriptor> _function_3 = (PropertyDescriptor descriptor) -> {
-          final String proposal_1 = this.getValueConverter().toString(descriptor.getName(), "IDENT");
+          IValueConverterService _valueConverter_1 = this.getValueConverter();
+          String _name = descriptor.getName();
+          final String proposal_1 = _valueConverter_1.toString(_name, "IDENT");
           String _xifexpression_2 = null;
           if (_cutPrefix) {
             _xifexpression_2 = proposal_1;
           } else {
-            _xifexpression_2 = (_prefix + proposal_1);
+            _xifexpression_2 = (_prefix_1 + proposal_1);
           }
-          acceptor.accept(this.createCompletionProposal(_xifexpression_2, context));
+          ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(_xifexpression_2, context);
+          acceptor.accept(_createCompletionProposal_1);
         };
-        IterableExtensions.<PropertyDescriptor>filter(((Iterable<PropertyDescriptor>)Conversions.doWrapArray(descriptors)), _function_2).forEach(_function_3);
+        _filter.forEach(_function_3);
       }
     }
   }
@@ -479,7 +525,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       return baseClass;
     }
     String checkProperty = property;
-    pos1 = checkProperty.indexOf("=");
+    int _indexOf = checkProperty.indexOf("=");
+    pos1 = _indexOf;
     if ((pos1 > 0)) {
       int pos2 = checkProperty.indexOf(".", pos1);
       if ((pos2 > pos1)) {
@@ -490,10 +537,13 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       }
     }
     String innerProperty = ((String) null);
-    pos1 = checkProperty.indexOf(".");
+    int _indexOf_1 = checkProperty.indexOf(".");
+    pos1 = _indexOf_1;
     if ((pos1 > 0)) {
-      innerProperty = checkProperty.substring((pos1 + 1));
-      checkProperty = checkProperty.substring(0, pos1);
+      String _substring_2 = checkProperty.substring((pos1 + 1));
+      innerProperty = _substring_2;
+      String _substring_3 = checkProperty.substring(0, pos1);
+      checkProperty = _substring_3;
     }
     PropertyDescriptor[] descriptors = this.pojoResolver.getPropertyDescriptors(baseClass, uri);
     boolean _equals = Objects.equal(descriptors, null);
@@ -514,106 +564,134 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     Class<?> innerClass = innerDesriptor.getPropertyType();
     boolean _isArray = innerClass.isArray();
     if (_isArray) {
-      Type _genericReturnType = innerDesriptor.getReadMethod().getGenericReturnType();
+      Method _readMethod = innerDesriptor.getReadMethod();
+      Type _genericReturnType = _readMethod.getGenericReturnType();
       ParameterizedType type = ((ParameterizedType) _genericReturnType);
       if ((Objects.equal(type.getActualTypeArguments(), null) || (type.getActualTypeArguments().length == 0))) {
         return null;
       }
-      Type _head = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(type.getActualTypeArguments())));
+      Type[] _actualTypeArguments = type.getActualTypeArguments();
+      Type _head = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(_actualTypeArguments)));
       innerClass = ((Class<?>) _head);
       boolean _isPrimitive = this.isPrimitive(innerClass);
       if (_isPrimitive) {
         return null;
       }
-      return this.getClassName(innerClass.getName(), innerProperty, uri);
+      String _name = innerClass.getName();
+      return this.getClassName(_name, innerProperty, uri);
     } else {
       boolean _isAssignableFrom = Collection.class.isAssignableFrom(innerClass);
       if (_isAssignableFrom) {
-        Type _genericReturnType_1 = innerDesriptor.getReadMethod().getGenericReturnType();
+        Method _readMethod_1 = innerDesriptor.getReadMethod();
+        Type _genericReturnType_1 = _readMethod_1.getGenericReturnType();
         ParameterizedType type_1 = ((ParameterizedType) _genericReturnType_1);
         if ((Objects.equal(type_1.getActualTypeArguments(), null) || (type_1.getActualTypeArguments().length == 0))) {
           return null;
         }
-        Type _head_1 = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(type_1.getActualTypeArguments())));
+        Type[] _actualTypeArguments_1 = type_1.getActualTypeArguments();
+        Type _head_1 = IterableExtensions.<Type>head(((Iterable<Type>)Conversions.doWrapArray(_actualTypeArguments_1)));
         innerClass = ((Class<?>) _head_1);
         boolean _isPrimitive_1 = this.isPrimitive(innerClass);
         if (_isPrimitive_1) {
           return null;
         }
-        return this.getClassName(innerClass.getName(), innerProperty, uri);
+        String _name_1 = innerClass.getName();
+        return this.getClassName(_name_1, innerProperty, uri);
       } else {
         boolean _isPrimitive_2 = this.isPrimitive(innerClass);
         if (_isPrimitive_2) {
           return null;
         }
-        return this.getClassName(innerClass.getName(), innerProperty, uri);
+        String _name_2 = innerClass.getName();
+        return this.getClassName(_name_2, innerProperty, uri);
       }
     }
   }
   
   public void acceptTables(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String suffix) {
+    List<String> _tables = this.dbResolver.getTables(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_tables, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal((proposal + suffix), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + suffix), context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getTables(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptProcedures(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _procedures = this.dbResolver.getProcedures(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_procedures, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getProcedures(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptFunctions(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _functions = this.dbResolver.getFunctions(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_functions, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getFunctions(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptCheckConstraints(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _checkConstraints = this.dbResolver.getCheckConstraints(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_checkConstraints, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getCheckConstraints(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptSequences(final EObject model, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
+    List<String> _sequences = this.dbResolver.getSequences(model);
     final Function1<String, Boolean> _function = (String it) -> {
       int _indexOf = it.indexOf("$");
       return Boolean.valueOf((_indexOf < 0));
     };
+    Iterable<String> _filter = IterableExtensions.<String>filter(_sequences, _function);
     final Consumer<String> _function_1 = (String table) -> {
-      final String proposal = this.getValueConverter().toString(table, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(table, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    IterableExtensions.<String>filter(this.dbResolver.getSequences(model), _function).forEach(_function_1);
+    _filter.forEach(_function_1);
   }
   
   public void acceptColumns(final List<String> columns, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor, final String prefix, final String suffix) {
     final Consumer<String> _function = (String column) -> {
-      final String proposal = this.getValueConverter().toString(column, "IDENT");
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(column, "IDENT");
       String _xifexpression = null;
       boolean _notEquals = (!Objects.equal(prefix, null));
       if (_notEquals) {
@@ -630,7 +708,8 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
         _xifexpression_1 = completion;
       }
       completion = _xifexpression_1;
-      acceptor.accept(this.createCompletionProposal(completion, context));
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(completion, context);
+      acceptor.accept(_createCompletionProposal);
     };
     columns.forEach(_function);
   }
@@ -676,10 +755,12 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       super.complete_DatabaseColumn(model, ruleCall, context, acceptor);
       return;
     }
-    final int pos = context.getPrefix().indexOf(".");
+    String _prefix = context.getPrefix();
+    final int pos = _prefix.indexOf(".");
     String _xifexpression = null;
     if ((pos > 0)) {
-      _xifexpression = context.getPrefix().substring(0, pos);
+      String _prefix_1 = context.getPrefix();
+      _xifexpression = _prefix_1.substring(0, pos);
     }
     final String prefix = _xifexpression;
     final MetaStatement metaStatement = EcoreUtil2.<MetaStatement>getContainerOfType(model, MetaStatement.class);
@@ -688,11 +769,14 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     TableDefinition _xifexpression_1 = null;
     boolean _notEquals = (!Objects.equal(value, null));
     if (_notEquals) {
-      _xifexpression_1 = this.modelProperty.getModelTables(artifacts).get(value);
+      Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
+      _xifexpression_1 = _modelTables.get(value);
     }
     final TableDefinition tableDefinition = _xifexpression_1;
     if (((!Objects.equal(tableDefinition, null)) && (!Objects.equal(tableDefinition.getTable(), null)))) {
-      this.acceptColumns(this.dbResolver.getColumns(model, tableDefinition.getTable()), context, acceptor, prefix, null);
+      String _table = tableDefinition.getTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _table);
+      this.acceptColumns(_columns, context, acceptor, prefix, null);
     }
   }
   
@@ -706,15 +790,20 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     }
     final MetaStatement metaStatement = EcoreUtil2.<MetaStatement>getContainerOfType(model, MetaStatement.class);
     final Artifacts artifacts = EcoreUtil2.<Artifacts>getContainerOfType(model, Artifacts.class);
+    List<String> _tokensFromModifier = Utils.getTokensFromModifier(metaStatement, Constants.TABLE_USAGE);
     final Consumer<String> _function = (String value) -> {
-      final TableDefinition tableDefinition = this.modelProperty.getModelTables(artifacts).get(value);
+      Map<String, TableDefinition> _modelTables = this.modelProperty.getModelTables(artifacts);
+      final TableDefinition tableDefinition = _modelTables.get(value);
       boolean _notEquals = (!Objects.equal(tableDefinition, null));
       if (_notEquals) {
-        final String proposal = this.getValueConverter().toString(tableDefinition.getTable(), "IDENT");
-        acceptor.accept(this.createCompletionProposal(proposal, context));
+        IValueConverterService _valueConverter = this.getValueConverter();
+        String _table = tableDefinition.getTable();
+        final String proposal = _valueConverter.toString(_table, "IDENT");
+        ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+        acceptor.accept(_createCompletionProposal);
       }
     };
-    Utils.getTokensFromModifier(metaStatement, Constants.TABLE_USAGE).forEach(_function);
+    _tokensFromModifier.forEach(_function);
   }
   
   @Override
@@ -816,7 +905,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -830,7 +921,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -948,17 +1041,23 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     } else {
       String _dbProcedure = prop.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        this.acceptColumns(this.dbResolver.getProcColumns(model, prop.getDbProcedure()), context, acceptor, null, "->");
+        String _dbProcedure_1 = prop.getDbProcedure();
+        List<String> _procColumns = this.dbResolver.getProcColumns(model, _dbProcedure_1);
+        this.acceptColumns(_procColumns, context, acceptor, null, "->");
       } else {
         String _dbFunction = prop.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          this.acceptColumns(this.dbResolver.getFunColumns(model, prop.getDbFunction()), context, acceptor, null, "->");
+          String _dbFunction_1 = prop.getDbFunction();
+          List<String> _funColumns = this.dbResolver.getFunColumns(model, _dbFunction_1);
+          this.acceptColumns(_funColumns, context, acceptor, null, "->");
         }
       }
     }
@@ -974,8 +1073,12 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
-      this.acceptColumns(this.dbResolver.getCheckColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
+      String _dbTable_2 = prop.getDbTable();
+      List<String> _checkColumns = this.dbResolver.getCheckColumns(model, _dbTable_2);
+      this.acceptColumns(_checkColumns, context, acceptor, null, "->");
     }
   }
   
@@ -993,13 +1096,18 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
         final Consumer<DbImport> _function = (DbImport dbImport) -> {
           if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
-            final String proposal = this.getValueConverter().toString(dbImport.getPkTable(), "IDENT");
-            acceptor.accept(this.createCompletionProposal(proposal, context));
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _pkTable = dbImport.getPkTable();
+            final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
-        this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+        _dbImports.forEach(_function);
       }
     }
   }
@@ -1016,17 +1124,24 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-many-to-one", _name);
       if (_equals) {
-        this.acceptColumns(this.dbResolver.getColumns(model, imp.getPkTable()), context, acceptor, null, null);
+        String _pkTable = imp.getPkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _pkTable);
+        this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
         final Consumer<DbImport> _function = (DbImport dbImport) -> {
           if (((!Objects.equal(dbImport.getFkColumn(), null)) && dbImport.getFkColumn().equals(imp.getDbColumn()))) {
             if (((!Objects.equal(dbImport.getPkTable(), null)) && dbImport.getPkTable().equals(imp.getPkTable()))) {
-              final String proposal = this.getValueConverter().toString(dbImport.getPkColumn(), "IDENT");
-              acceptor.accept(this.createCompletionProposal(proposal, context));
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _pkColumn = dbImport.getPkColumn();
+              final String proposal = _valueConverter.toString(_pkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
-        this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+        _dbImports.forEach(_function);
       }
     }
   }
@@ -1041,7 +1156,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -1059,13 +1176,18 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       if (_equals) {
         this.acceptTables(model, context, acceptor, "");
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
         final Consumer<DbExport> _function = (DbExport dbExport) -> {
           if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
-            final String proposal = this.getValueConverter().toString(dbExport.getFkTable(), "IDENT");
-            acceptor.accept(this.createCompletionProposal(proposal, context));
+            IValueConverterService _valueConverter = this.getValueConverter();
+            String _fkTable = dbExport.getFkTable();
+            final String proposal = _valueConverter.toString(_fkTable, "IDENT");
+            ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+            acceptor.accept(_createCompletionProposal);
           }
         };
-        this.dbResolver.getDbExports(model, prop.getDbTable()).forEach(_function);
+        _dbExports.forEach(_function);
       }
     }
   }
@@ -1082,17 +1204,24 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       String _name = prop.getName();
       boolean _equals = Objects.equal("create-one-to-many", _name);
       if (_equals) {
-        this.acceptColumns(this.dbResolver.getColumns(model, exp.getFkTable()), context, acceptor, null, null);
+        String _fkTable = exp.getFkTable();
+        List<String> _columns = this.dbResolver.getColumns(model, _fkTable);
+        this.acceptColumns(_columns, context, acceptor, null, null);
       } else {
+        String _dbTable = prop.getDbTable();
+        List<DbExport> _dbExports = this.dbResolver.getDbExports(model, _dbTable);
         final Consumer<DbExport> _function = (DbExport dbExport) -> {
           if (((!Objects.equal(dbExport.getPkColumn(), null)) && dbExport.getPkColumn().equals(exp.getDbColumn()))) {
             if (((!Objects.equal(dbExport.getFkTable(), null)) && dbExport.getFkTable().equals(exp.getFkTable()))) {
-              final String proposal = this.getValueConverter().toString(dbExport.getFkColumn(), "IDENT");
-              acceptor.accept(this.createCompletionProposal(proposal, context));
+              IValueConverterService _valueConverter = this.getValueConverter();
+              String _fkColumn = dbExport.getFkColumn();
+              final String proposal = _valueConverter.toString(_fkColumn, "IDENT");
+              ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+              acceptor.accept(_createCompletionProposal);
             }
           }
         };
-        this.dbResolver.getDbExports(model, prop.getDbTable()).forEach(_function);
+        _dbExports.forEach(_function);
       }
     }
   }
@@ -1107,7 +1236,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -1121,7 +1252,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     }
   }
   
@@ -1134,13 +1267,18 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     final ManyToManyAssignement many2 = ((ManyToManyAssignement) model);
     final PojogenProperty prop = EcoreUtil2.<PojogenProperty>getContainerOfType(model, PojogenProperty.class);
     if (((!Objects.equal(prop.getDbTable(), null)) && (!Objects.equal(many2.getPkColumn(), null)))) {
+      String _dbTable = prop.getDbTable();
+      List<DbImport> _dbImports = this.dbResolver.getDbImports(model, _dbTable);
       final Consumer<DbImport> _function = (DbImport dbImport) -> {
         if (((!Objects.equal(dbImport.getPkColumn(), null)) && dbImport.getPkColumn().equals(many2.getPkColumn()))) {
-          final String proposal = this.getValueConverter().toString(dbImport.getPkTable(), "IDENT");
-          acceptor.accept(this.createCompletionProposal(proposal, context));
+          IValueConverterService _valueConverter = this.getValueConverter();
+          String _pkTable = dbImport.getPkTable();
+          final String proposal = _valueConverter.toString(_pkTable, "IDENT");
+          ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+          acceptor.accept(_createCompletionProposal);
         }
       };
-      this.dbResolver.getDbImports(model, prop.getDbTable()).forEach(_function);
+      _dbImports.forEach(_function);
     }
   }
   
@@ -1154,7 +1292,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, null);
     }
   }
   
@@ -1168,8 +1308,10 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       return;
     }
     final Consumer<String> _function = (String method) -> {
-      final String proposal = this.getValueConverter().toString(method, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(method, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
     this.methods.forEach(_function);
   }
@@ -1184,17 +1326,23 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->");
+      String _dbTable_1 = prop.getDbTable();
+      List<String> _columns = this.dbResolver.getColumns(model, _dbTable_1);
+      this.acceptColumns(_columns, context, acceptor, null, "->");
     } else {
       String _dbProcedure = prop.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        this.acceptColumns(this.dbResolver.getProcColumns(model, prop.getDbProcedure()), context, acceptor, null, "->");
+        String _dbProcedure_1 = prop.getDbProcedure();
+        List<String> _procColumns = this.dbResolver.getProcColumns(model, _dbProcedure_1);
+        this.acceptColumns(_procColumns, context, acceptor, null, "->");
       } else {
         String _dbFunction = prop.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          this.acceptColumns(this.dbResolver.getFunColumns(model, prop.getDbFunction()), context, acceptor, null, "->");
+          String _dbFunction_1 = prop.getDbFunction();
+          List<String> _funColumns = this.dbResolver.getFunColumns(model, _dbFunction_1);
+          this.acceptColumns(_funColumns, context, acceptor, null, "->");
         }
       }
     }
@@ -1212,24 +1360,35 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String _dbTable = prop2.getDbTable();
     boolean _notEquals = (!Objects.equal(_dbTable, null));
     if (_notEquals) {
-      type = this.dbResolver.getType(model, prop2.getDbTable(), prop.getDbColumn());
+      String _dbTable_1 = prop2.getDbTable();
+      String _dbColumn = prop.getDbColumn();
+      String _type = this.dbResolver.getType(model, _dbTable_1, _dbColumn);
+      type = _type;
     } else {
       String _dbProcedure = prop2.getDbProcedure();
       boolean _notEquals_1 = (!Objects.equal(_dbProcedure, null));
       if (_notEquals_1) {
-        type = this.dbResolver.getType(model, prop2.getDbProcedure(), prop.getDbColumn());
+        String _dbProcedure_1 = prop2.getDbProcedure();
+        String _dbColumn_1 = prop.getDbColumn();
+        String _type_1 = this.dbResolver.getType(model, _dbProcedure_1, _dbColumn_1);
+        type = _type_1;
       } else {
         String _dbFunction = prop2.getDbFunction();
         boolean _notEquals_2 = (!Objects.equal(_dbFunction, null));
         if (_notEquals_2) {
-          type = this.dbResolver.getType(model, prop2.getDbFunction(), prop.getDbColumn());
+          String _dbFunction_1 = prop2.getDbFunction();
+          String _dbColumn_2 = prop.getDbColumn();
+          String _type_2 = this.dbResolver.getType(model, _dbFunction_1, _dbColumn_2);
+          type = _type_2;
         }
       }
     }
     boolean _notEquals_3 = (!Objects.equal(type, null));
     if (_notEquals_3) {
-      final String proposal = this.getValueConverter().toString(type, "PropertyValue");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(type, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     }
   }
   
@@ -1257,29 +1416,37 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
   
   public Set<PojoDefinitionModel> listPojos(final ResourceSet resourceSet, final IScope scope) {
     final Comparator<PojoDefinitionModel> _function = (PojoDefinitionModel o1, PojoDefinitionModel o2) -> {
-      return o1.getName().compareTo(o2.getName());
+      String _name = o1.getName();
+      String _name_1 = o2.getName();
+      return _name.compareTo(_name_1);
     };
     final TreeSet<PojoDefinitionModel> result = CollectionLiterals.<PojoDefinitionModel>newTreeSet(_function);
+    Iterable<IEObjectDescription> _allElements = scope.getAllElements();
     final Consumer<IEObjectDescription> _function_1 = (IEObjectDescription description) -> {
-      EObject _eObject = resourceSet.getEObject(description.getEObjectURI(), true);
+      URI _eObjectURI = description.getEObjectURI();
+      EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
       final PojoDefinitionModel pojo = ((PojoDefinitionModel) _eObject);
       result.add(pojo);
     };
-    scope.getAllElements().forEach(_function_1);
+    _allElements.forEach(_function_1);
     return result;
   }
   
   public Set<TableDefinitionModel> listTables(final ResourceSet resourceSet, final IScope scope) {
     final Comparator<TableDefinitionModel> _function = (TableDefinitionModel o1, TableDefinitionModel o2) -> {
-      return o1.getName().compareTo(o2.getName());
+      String _name = o1.getName();
+      String _name_1 = o2.getName();
+      return _name.compareTo(_name_1);
     };
     final TreeSet<TableDefinitionModel> result = CollectionLiterals.<TableDefinitionModel>newTreeSet(_function);
+    Iterable<IEObjectDescription> _allElements = scope.getAllElements();
     final Consumer<IEObjectDescription> _function_1 = (IEObjectDescription description) -> {
-      EObject _eObject = resourceSet.getEObject(description.getEObjectURI(), true);
+      URI _eObjectURI = description.getEObjectURI();
+      EObject _eObject = resourceSet.getEObject(_eObjectURI, true);
       final TableDefinitionModel table = ((TableDefinitionModel) _eObject);
       result.add(table);
     };
-    scope.getAllElements().forEach(_function_1);
+    _allElements.forEach(_function_1);
     return result;
   }
   
@@ -1287,21 +1454,36 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
   public void complete_StatementModifier(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     final MetaStatement metaStatement = EcoreUtil2.<MetaStatement>getContainerOfType(model, MetaStatement.class);
     final Artifacts artifacts = EcoreUtil2.<Artifacts>getContainerOfType(metaStatement, Artifacts.class);
-    final Set<PojoDefinitionModel> pojos = this.listPojos(artifacts.eResource().getResourceSet(), 
-      this.getScopeProvider().getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__POJOS));
+    Resource _eResource = artifacts.eResource();
+    ResourceSet _resourceSet = _eResource.getResourceSet();
+    IScopeProvider _scopeProvider = this.getScopeProvider();
+    IScope _scope = _scopeProvider.getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__POJOS);
+    final Set<PojoDefinitionModel> pojos = this.listPojos(_resourceSet, _scope);
     final Consumer<PojoDefinitionModel> _function = (PojoDefinitionModel pojo) -> {
-      final String proposal = this.getValueConverter().toString(pojo.getName(), "IDENT");
-      acceptor.accept(this.createCompletionProposal(((Constants.CONSTANT_USAGE + "=") + proposal), context));
-      acceptor.accept(this.createCompletionProposal(((Constants.IDENTIFIER_USAGE + "=") + proposal), context));
-      acceptor.accept(this.createCompletionProposal(((Constants.COLUMN_USAGE + "=") + proposal), context));
-      acceptor.accept(this.createCompletionProposal(((Constants.INDEX_USAGE + "=") + proposal), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _name = pojo.getName();
+      final String proposal = _valueConverter.toString(_name, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(((Constants.CONSTANT_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal);
+      ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(((Constants.IDENTIFIER_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal_1);
+      ICompletionProposal _createCompletionProposal_2 = this.createCompletionProposal(((Constants.COLUMN_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal_2);
+      ICompletionProposal _createCompletionProposal_3 = this.createCompletionProposal(((Constants.INDEX_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal_3);
     };
     pojos.forEach(_function);
-    final Set<TableDefinitionModel> tables = this.listTables(artifacts.eResource().getResourceSet(), 
-      this.getScopeProvider().getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__TABLES));
+    Resource _eResource_1 = artifacts.eResource();
+    ResourceSet _resourceSet_1 = _eResource_1.getResourceSet();
+    IScopeProvider _scopeProvider_1 = this.getScopeProvider();
+    IScope _scope_1 = _scopeProvider_1.getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__TABLES);
+    final Set<TableDefinitionModel> tables = this.listTables(_resourceSet_1, _scope_1);
     final Consumer<TableDefinitionModel> _function_1 = (TableDefinitionModel table) -> {
-      final String proposal = this.getValueConverter().toString(table.getName(), "IDENT");
-      acceptor.accept(this.createCompletionProposal(((Constants.TABLE_USAGE + "=") + proposal), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _name = table.getName();
+      final String proposal = _valueConverter.toString(_name, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(((Constants.TABLE_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal);
     };
     tables.forEach(_function_1);
   }
@@ -1310,11 +1492,17 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
   public void complete_MappingRuleModifier(final EObject model, final RuleCall ruleCall, final ContentAssistContext context, final ICompletionProposalAcceptor acceptor) {
     final MappingRule mappingRule = EcoreUtil2.<MappingRule>getContainerOfType(model, MappingRule.class);
     final Artifacts artifacts = EcoreUtil2.<Artifacts>getContainerOfType(mappingRule, Artifacts.class);
-    final Set<PojoDefinitionModel> pojos = this.listPojos(artifacts.eResource().getResourceSet(), 
-      this.getScopeProvider().getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__POJOS));
+    Resource _eResource = artifacts.eResource();
+    ResourceSet _resourceSet = _eResource.getResourceSet();
+    IScopeProvider _scopeProvider = this.getScopeProvider();
+    IScope _scope = _scopeProvider.getScope(artifacts, ProcessorMetaPackage.Literals.ARTIFACTS__POJOS);
+    final Set<PojoDefinitionModel> pojos = this.listPojos(_resourceSet, _scope);
     final Consumer<PojoDefinitionModel> _function = (PojoDefinitionModel pojo) -> {
-      final String proposal = this.getValueConverter().toString(pojo.getName(), "IDENT");
-      acceptor.accept(this.createCompletionProposal(((Constants.MAPPING_USAGE + "=") + proposal), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _name = pojo.getName();
+      final String proposal = _valueConverter.toString(_name, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(((Constants.MAPPING_USAGE + "=") + proposal), context);
+      acceptor.accept(_createCompletionProposal);
     };
     pojos.forEach(_function);
   }
@@ -1393,7 +1581,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       return;
     }
     final PojogenProperty prop = ((PojogenProperty) model);
-    this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+    String _dbTable = prop.getDbTable();
+    List<String> _columns = this.dbResolver.getColumns(model, _dbTable);
+    this.acceptColumns(_columns, context, acceptor, null, null);
   }
   
   @Override
@@ -1414,7 +1604,9 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       return;
     }
     final MetagenProperty prop = ((MetagenProperty) model);
-    this.acceptColumns(this.dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null);
+    String _dbTable = prop.getDbTable();
+    List<String> _columns = this.dbResolver.getColumns(model, _dbTable);
+    this.acceptColumns(_columns, context, acceptor, null, null);
   }
   
   @Override
@@ -1430,8 +1622,10 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     if (_notEquals) {
       dbMetaInfo = (("\"" + dbMetaInfo) + "\"");
     }
-    final String proposal = this.getValueConverter().toString(dbMetaInfo, "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString(dbMetaInfo, "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1447,8 +1641,10 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     if (_notEquals) {
       dbDriverInfo = (("\"" + dbDriverInfo) + "\"");
     }
-    final String proposal = this.getValueConverter().toString(dbDriverInfo, "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString(dbDriverInfo, "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1457,11 +1653,14 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       super.completeDriverMethodOutputAssignement_DriverMethod(model, assignment, context, acceptor);
       return;
     }
+    Set<String> _driverMethods = this.dbResolver.getDriverMethods(model);
     final Consumer<String> _function = (String driverMetod) -> {
-      final String proposal = this.getValueConverter().toString(driverMetod, "PropertyValue");
-      acceptor.accept(this.createCompletionProposal((proposal + "->"), context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(driverMetod, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal((proposal + "->"), context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getDriverMethods(model).forEach(_function);
+    _driverMethods.forEach(_function);
   }
   
   @Override
@@ -1472,15 +1671,18 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     }
     final DriverMethodOutputAssignement prop = ((DriverMethodOutputAssignement) model);
     Object _elvis = null;
-    Object _driverMethodOutput = this.dbResolver.getDriverMethodOutput(model, prop.getDriverMethod());
+    String _driverMethod = prop.getDriverMethod();
+    Object _driverMethodOutput = this.dbResolver.getDriverMethodOutput(model, _driverMethod);
     if (_driverMethodOutput != null) {
       _elvis = _driverMethodOutput;
     } else {
       _elvis = "null";
     }
     Object methodCallOutput = _elvis;
-    final String proposal = this.getValueConverter().toString((("\"" + methodCallOutput) + "\""), "PropertyValue");
-    acceptor.accept(this.createCompletionProposal(proposal, context));
+    IValueConverterService _valueConverter = this.getValueConverter();
+    final String proposal = _valueConverter.toString((("\"" + methodCallOutput) + "\""), "PropertyValue");
+    ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+    acceptor.accept(_createCompletionProposal);
   }
   
   @Override
@@ -1492,11 +1694,15 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       return;
     }
     final String dbMetaInfo = this.dbResolver.getDbMetaInfo(model);
+    DbResolver.DbType[] _fromDbMetaInfo = DbResolver.DbType.fromDbMetaInfo(dbMetaInfo);
     final Consumer<DbResolver.DbType> _function = (DbResolver.DbType dbType) -> {
-      final String proposal = this.getValueConverter().toString(dbType.getValue(), "PropertyValue");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      String _value = dbType.getValue();
+      final String proposal = _valueConverter.toString(_value, "PropertyValue");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    ((List<DbResolver.DbType>)Conversions.doWrapArray(DbResolver.DbType.fromDbMetaInfo(dbMetaInfo))).forEach(_function);
+    ((List<DbResolver.DbType>)Conversions.doWrapArray(_fromDbMetaInfo)).forEach(_function);
   }
   
   @Override
@@ -1507,11 +1713,14 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       super.completeDatabaseCatalogAssignement_DbCatalog(model, assignment, context, acceptor);
       return;
     }
+    List<String> _catalogs = this.dbResolver.getCatalogs(model);
     final Consumer<String> _function = (String catalog) -> {
-      final String proposal = this.getValueConverter().toString(catalog, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(catalog, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getCatalogs(model).forEach(_function);
+    _catalogs.forEach(_function);
   }
   
   @Override
@@ -1522,11 +1731,14 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       super.completeDatabaseSchemaAssignement_DbSchema(model, assignment, context, acceptor);
       return;
     }
+    List<String> _schemas = this.dbResolver.getSchemas(model);
     final Consumer<String> _function = (String schema) -> {
-      final String proposal = this.getValueConverter().toString(schema, "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(schema, "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
     };
-    this.dbResolver.getSchemas(model).forEach(_function);
+    _schemas.forEach(_function);
   }
   
   @Override
@@ -1569,18 +1781,22 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
     String pojoName = Utils.getTokenFromModifier(metaStatement, Constants.INDEX_USAGE);
     boolean _equals = Objects.equal(pojoName, null);
     if (_equals) {
-      pojoName = Utils.getTokenFromModifier(metaStatement, Constants.IDENTIFIER_USAGE);
+      String _tokenFromModifier = Utils.getTokenFromModifier(metaStatement, Constants.IDENTIFIER_USAGE);
+      pojoName = _tokenFromModifier;
     }
     PojoDefinition _xifexpression = null;
     boolean _notEquals = (!Objects.equal(pojoName, null));
     if (_notEquals) {
-      _xifexpression = this.modelProperty.getModelPojos(artifacts).get(pojoName);
+      Map<String, PojoDefinition> _modelPojos = this.modelProperty.getModelPojos(artifacts);
+      _xifexpression = _modelPojos.get(pojoName);
     }
     final PojoDefinition pojoDefinition = _xifexpression;
     boolean _equals_1 = Objects.equal(pojoDefinition, null);
     if (_equals_1) {
-      final String proposal = this.getValueConverter().toString(("Error: I can\'t load pojo for " + model), "IDENT");
-      acceptor.accept(this.createCompletionProposal(proposal, context));
+      IValueConverterService _valueConverter = this.getValueConverter();
+      final String proposal = _valueConverter.toString(("Error: I can\'t load pojo for " + model), "IDENT");
+      ICompletionProposal _createCompletionProposal = this.createCompletionProposal(proposal, context);
+      acceptor.accept(_createCompletionProposal);
       return;
     }
     boolean _isOldPojoValidator = this.modelProperty.isOldPojoValidator(model);
@@ -1589,36 +1805,50 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       final ProcessorMetaProposalProvider.Founder founder = new ProcessorMetaProposalProvider.Founder();
       JvmType _classx = pojoDefinition.getClassx();
       final JvmDeclaredType type = ((JvmDeclaredType) _classx);
+      Iterable<JvmFeature> _allFeatures = type.getAllFeatures();
       final Function1<JvmFeature, Boolean> _function = (JvmFeature it) -> {
         return Boolean.valueOf((it instanceof JvmField));
       };
+      Iterable<JvmFeature> _filter = IterableExtensions.<JvmFeature>filter(_allFeatures, _function);
       final Function1<JvmFeature, Boolean> _function_1 = (JvmFeature it) -> {
         return Boolean.valueOf(it.isStatic());
       };
+      Iterable<JvmFeature> _filter_1 = IterableExtensions.<JvmFeature>filter(_filter, _function_1);
       final Function1<JvmFeature, Boolean> _function_2 = (JvmFeature it) -> {
-        return Boolean.valueOf(it.getSimpleName().startsWith("ORDER_BY_"));
+        String _simpleName = it.getSimpleName();
+        return Boolean.valueOf(_simpleName.startsWith("ORDER_BY_"));
       };
+      Iterable<JvmFeature> _filter_2 = IterableExtensions.<JvmFeature>filter(_filter_1, _function_2);
       final Consumer<JvmFeature> _function_3 = (JvmFeature feature) -> {
         founder.found = true;
-        final String proposal_1 = this.getValueConverter().toString(feature.getSimpleName(), "IDENT").substring(9);
+        IValueConverterService _valueConverter_1 = this.getValueConverter();
+        String _simpleName = feature.getSimpleName();
+        String _string = _valueConverter_1.toString(_simpleName, "IDENT");
+        final String proposal_1 = _string.substring(9);
         InputOutput.<String>println(proposal_1);
-        acceptor.accept(this.createCompletionProposal(proposal_1, context));
+        ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(proposal_1, context);
+        acceptor.accept(_createCompletionProposal_1);
       };
-      IterableExtensions.<JvmFeature>filter(IterableExtensions.<JvmFeature>filter(IterableExtensions.<JvmFeature>filter(type.getAllFeatures(), _function), _function_1), _function_2).forEach(_function_3);
+      _filter_2.forEach(_function_3);
       if ((!founder.found)) {
         final Iterable<JvmDeclaredType> nestedTypes = type.findAllNestedTypesByName("Order");
         if ((((!Objects.equal(nestedTypes, null)) && (!IterableExtensions.isEmpty(nestedTypes))) && (IterableExtensions.<JvmDeclaredType>head(nestedTypes) instanceof JvmEnumerationType))) {
           JvmDeclaredType _head = IterableExtensions.<JvmDeclaredType>head(nestedTypes);
           final JvmEnumerationType enumType = ((JvmEnumerationType) _head);
+          Iterable<JvmFeature> _allFeatures_1 = enumType.getAllFeatures();
           final Function1<JvmFeature, Boolean> _function_4 = (JvmFeature it) -> {
             return Boolean.valueOf((it instanceof JvmEnumerationLiteral));
           };
+          Iterable<JvmFeature> _filter_3 = IterableExtensions.<JvmFeature>filter(_allFeatures_1, _function_4);
           final Consumer<JvmFeature> _function_5 = (JvmFeature feature) -> {
-            final String proposal_1 = this.getValueConverter().toString(feature.getSimpleName(), "IDENT");
+            IValueConverterService _valueConverter_1 = this.getValueConverter();
+            String _simpleName = feature.getSimpleName();
+            final String proposal_1 = _valueConverter_1.toString(_simpleName, "IDENT");
             InputOutput.<String>println(proposal_1);
-            acceptor.accept(this.createCompletionProposal(proposal_1, context));
+            ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(proposal_1, context);
+            acceptor.accept(_createCompletionProposal_1);
           };
-          IterableExtensions.<JvmFeature>filter(enumType.getAllFeatures(), _function_4).forEach(_function_5);
+          _filter_3.forEach(_function_5);
         }
       }
     } else {
@@ -1632,11 +1862,14 @@ public class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposal
       final Map<String, String> orders = this.pojoResolver.getOrders(clazz, uri);
       boolean _notEquals_1 = (!Objects.equal(orders, null));
       if (_notEquals_1) {
+        Collection<String> _values = orders.values();
         final Consumer<String> _function_6 = (String order) -> {
-          final String proposal_1 = this.getValueConverter().toString(order, "IDENT");
-          acceptor.accept(this.createCompletionProposal(proposal_1, context));
+          IValueConverterService _valueConverter_1 = this.getValueConverter();
+          final String proposal_1 = _valueConverter_1.toString(order, "IDENT");
+          ICompletionProposal _createCompletionProposal_1 = this.createCompletionProposal(proposal_1, context);
+          acceptor.accept(_createCompletionProposal_1);
         };
-        orders.values().forEach(_function_6);
+        _values.forEach(_function_6);
       }
     }
   }

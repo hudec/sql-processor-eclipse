@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.meta.ui
 Bundle-Vendor: My Company
-Bundle-Version: 2.7.2
+Bundle-Version: 2.7.3
 Bundle-SymbolicName: org.sqlproc.meta.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.meta,

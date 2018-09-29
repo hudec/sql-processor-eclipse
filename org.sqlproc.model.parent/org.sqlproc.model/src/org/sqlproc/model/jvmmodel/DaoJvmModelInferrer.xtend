@@ -347,7 +347,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql insert «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«CRUD_ENGINE» sqlInsert«pojo.name» = sqlEngineFactory.getCheckedCrudEngine("INSERT_«dbName(pojo.name)»");«IF parent != null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "INSERT_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlInsert«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlInsert«parent.name» = sqlEngineFactory.getCheckedCrudEngine("INSERT_«dbName(parent.name)»");
 				int count = sqlInsert«parent.name».insert(sqlSession, «pojoAttrName», sqlControl);
 				if (count > 0) {
@@ -502,7 +503,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql update «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«CRUD_ENGINE» sqlUpdateEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine("UPDATE_«dbName(pojo.name)»");«IF parent != null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "UPDATE_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlUpdateEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlUpdate«parent.name» = sqlEngineFactory.getCheckedCrudEngine("UPDATE_«dbName(parent.name)»");«ENDIF»
 				int count = sqlUpdateEngine«pojo.name».update(sqlSession, «pojoAttrName», sqlControl);«IF parent != null»
 				if (count > 0) {
@@ -582,7 +584,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql delete «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				«CRUD_ENGINE» sqlDeleteEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine("DELETE_«dbName(pojo.name)»");«IF parent != null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : ""DELETE_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlDeleteEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlDelete«parent.name» = sqlEngineFactory.getCheckedCrudEngine("DELETE_«dbName(parent.name)»");«ENDIF»
 				int count = sqlDeleteEngine«pojo.name».delete(sqlSession, «pojoAttrName», sqlControl);«IF parent != null»
 				if (count > 0) {

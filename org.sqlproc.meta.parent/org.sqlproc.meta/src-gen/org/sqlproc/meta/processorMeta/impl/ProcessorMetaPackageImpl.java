@@ -588,7 +588,7 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
 
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   * 
+   *
    * <p>This method is used to initialize {@link ProcessorMetaPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
@@ -603,7 +603,8 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     if (isInited) return (ProcessorMetaPackage)EPackage.Registry.INSTANCE.getEPackage(ProcessorMetaPackage.eNS_URI);
 
     // Obtain or create and register package
-    ProcessorMetaPackageImpl theProcessorMetaPackage = (ProcessorMetaPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ProcessorMetaPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ProcessorMetaPackageImpl());
+    Object registeredProcessorMetaPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
+    ProcessorMetaPackageImpl theProcessorMetaPackage = registeredProcessorMetaPackage instanceof ProcessorMetaPackageImpl ? (ProcessorMetaPackageImpl)registeredProcessorMetaPackage : new ProcessorMetaPackageImpl();
 
     isInited = true;
 
@@ -619,7 +620,6 @@ public class ProcessorMetaPackageImpl extends EPackageImpl implements ProcessorM
     // Mark meta-data to indicate it can't be changed
     theProcessorMetaPackage.freeze();
 
-  
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(ProcessorMetaPackage.eNS_URI, theProcessorMetaPackage);
     return theProcessorMetaPackage;
