@@ -285,7 +285,7 @@ public class IfSqlCondImpl extends MinimalEObjectImpl.Container implements IfSql
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (oper: ");
     result.append(oper);
     result.append(')');

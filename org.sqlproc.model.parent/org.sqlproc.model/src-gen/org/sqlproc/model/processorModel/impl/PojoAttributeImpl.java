@@ -357,7 +357,7 @@ public class PojoAttributeImpl extends FeatureImpl implements PojoAttribute
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (kind: ");
     result.append(kind);
     result.append(", array: ");

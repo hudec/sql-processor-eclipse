@@ -1392,7 +1392,7 @@ public class DaoJvmModelInferrer extends AbstractModelInferrer {
           _builder.newLineIfNotEmpty();
           _builder.append("}");
           _builder.newLine();
-          _builder.append("String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : \"\"DELETE_");
+          _builder.append("String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : \"DELETE_");
           String _name = pojo.getName();
           String _dbName = DaoJvmModelInferrer.this._processorGeneratorUtils.dbName(_name);
           _builder.append(_dbName, "");

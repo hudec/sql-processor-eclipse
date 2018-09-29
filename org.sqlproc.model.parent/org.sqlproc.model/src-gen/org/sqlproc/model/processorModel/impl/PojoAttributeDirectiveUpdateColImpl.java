@@ -234,7 +234,7 @@ public class PojoAttributeDirectiveUpdateColImpl extends PojoAttributeDirectiveI
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (updateColumn1: ");
     result.append(updateColumn1);
     result.append(')');

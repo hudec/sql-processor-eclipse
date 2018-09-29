@@ -584,7 +584,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql delete «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : ""DELETE_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "DELETE_«dbName(pojo.name)»";
 				«CRUD_ENGINE» sqlDeleteEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlDelete«parent.name» = sqlEngineFactory.getCheckedCrudEngine("DELETE_«dbName(parent.name)»");«ENDIF»
 				int count = sqlDeleteEngine«pojo.name».delete(sqlSession, «pojoAttrName», sqlControl);«IF parent != null»

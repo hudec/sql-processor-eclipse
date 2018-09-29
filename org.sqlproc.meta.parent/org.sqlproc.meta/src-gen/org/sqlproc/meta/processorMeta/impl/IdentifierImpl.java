@@ -319,7 +319,7 @@ public class IdentifierImpl extends MinimalEObjectImpl.Container implements Iden
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (mode: ");
     result.append(mode);
     result.append(", case: ");

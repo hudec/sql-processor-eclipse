@@ -276,7 +276,7 @@ public class ValueTypeImpl extends MinimalEObjectImpl.Container implements Value
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (value: ");
     result.append(value);
     result.append(", number: ");

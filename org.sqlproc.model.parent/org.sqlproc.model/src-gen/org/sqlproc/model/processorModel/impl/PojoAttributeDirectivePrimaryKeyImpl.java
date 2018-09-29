@@ -275,7 +275,7 @@ public class PojoAttributeDirectivePrimaryKeyImpl extends PojoAttributeDirective
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (fromTo: ");
     result.append(fromTo);
     result.append(", name: ");

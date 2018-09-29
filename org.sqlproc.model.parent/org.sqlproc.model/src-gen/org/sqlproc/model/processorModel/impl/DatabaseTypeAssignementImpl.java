@@ -168,7 +168,7 @@ public class DatabaseTypeAssignementImpl extends MinimalEObjectImpl.Container im
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (dbType: ");
     result.append(dbType);
     result.append(')');

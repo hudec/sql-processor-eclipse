@@ -222,7 +222,7 @@ public class ProcedureDefinitionModelImpl extends MinimalEObjectImpl.Container i
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
     result.append(", table: ");

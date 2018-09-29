@@ -993,7 +993,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
 
   /**
    * Creates, registers, and initializes the <b>Package</b> for this model, and for any others upon which it depends.
-   *
+   * 
    * <p>This method is used to initialize {@link ProcessorModelPackage#eINSTANCE} when that field is accessed.
    * Clients should not invoke it directly. Instead, they should simply access that field to obtain the package.
    * <!-- begin-user-doc -->
@@ -1008,13 +1008,11 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     if (isInited) return (ProcessorModelPackage)EPackage.Registry.INSTANCE.getEPackage(ProcessorModelPackage.eNS_URI);
 
     // Obtain or create and register package
-    Object registeredProcessorModelPackage = EPackage.Registry.INSTANCE.get(eNS_URI);
-    ProcessorModelPackageImpl theProcessorModelPackage = registeredProcessorModelPackage instanceof ProcessorModelPackageImpl ? (ProcessorModelPackageImpl)registeredProcessorModelPackage : new ProcessorModelPackageImpl();
+    ProcessorModelPackageImpl theProcessorModelPackage = (ProcessorModelPackageImpl)(EPackage.Registry.INSTANCE.get(eNS_URI) instanceof ProcessorModelPackageImpl ? EPackage.Registry.INSTANCE.get(eNS_URI) : new ProcessorModelPackageImpl());
 
     isInited = true;
 
     // Initialize simple dependencies
-    TypesPackage.eINSTANCE.eClass();
     XAnnotationsPackage.eINSTANCE.eClass();
     XbasePackage.eINSTANCE.eClass();
     XtypePackage.eINSTANCE.eClass();
@@ -1028,6 +1026,7 @@ public class ProcessorModelPackageImpl extends EPackageImpl implements Processor
     // Mark meta-data to indicate it can't be changed
     theProcessorModelPackage.freeze();
 
+  
     // Update the registry and return the package
     EPackage.Registry.INSTANCE.put(ProcessorModelPackage.eNS_URI, theProcessorModelPackage);
     return theProcessorModelPackage;

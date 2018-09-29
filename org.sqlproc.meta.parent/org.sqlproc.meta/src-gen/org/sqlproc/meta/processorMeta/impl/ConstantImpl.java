@@ -265,7 +265,7 @@ public class ConstantImpl extends MinimalEObjectImpl.Container implements Consta
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (case: ");
     result.append(case_);
     result.append(", name: ");

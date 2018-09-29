@@ -222,7 +222,7 @@ public class IndexTypeImpl extends MinimalEObjectImpl.Container implements Index
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (number: ");
     result.append(number);
     result.append(", id: ");

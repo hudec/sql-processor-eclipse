@@ -231,7 +231,7 @@ public class OrdSqlImpl extends MinimalEObjectImpl.Container implements OrdSql
   {
     if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
+    StringBuffer result = new StringBuffer(super.toString());
     result.append(" (ident: ");
     result.append(ident);
     result.append(')');
