@@ -9,7 +9,7 @@
    </description>
 
    <url>
-      <update label="SQL Processor Model Plugin Release Update Site" url="http://sql-processor.org/plugins/releases"/>
+      <update label="SQL Processor Model Plugin Release Update Site" url="http://sql-processor.eu/plugins/releases"/>
    </url>
 
    <includes

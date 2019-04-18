@@ -15,8 +15,8 @@ and the plugins:
 and finally Java 7.
 
 To install SQLEP, the next P2 repos can be used
- - http://sql-processor.org/plugins/milestones/
- - http://sql-processor.org/plugins/releases/
+ - http://sql-processor.eu/plugins/milestones/
+ - http://sql-processor.eu/plugins/releases/
 
 To build from the command line the Maven 3 is required plus the next command:
 
