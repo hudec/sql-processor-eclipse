@@ -1,6 +1,0 @@
-setpref targetPlatformPath="${target.platform}"
-resolve "${projects.location}/org.sqlproc.model.buckminster/projects-platform.cquery"
-resolve "${projects.location}/org.sqlproc.model.buckminster/project.cquery"
-build
-junit -l "org.sqlproc.model.tests/org.sqlproc.model.tests.launch"  --flatXML --output "${buckminster.output.root}/test.results/org.sqlproc.model.tests.launch.xml"
-perform "org.sqlproc.model.site#site.p2"
