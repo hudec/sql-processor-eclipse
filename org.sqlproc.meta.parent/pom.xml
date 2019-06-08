@@ -25,73 +25,73 @@
 		<module>org.sqlproc.meta.updatesite</module-->
 	</modules>
 
-		<repositories>
-			<repository>
-				<id>eclipse</id>
-				<layout>p2</layout>
-				<url>https://download.eclipse.org/releases/2019-06/</url>
-			</repository>
-			<repository>
-				<id>Xtext Update Site</id>
-				<layout>p2</layout>
-				<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}/</url>
-			</repository>
-		</repositories>
+	<repositories>
+		<repository>
+			<id>eclipse</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/releases/2019-06/</url>
+		</repository>
+		<repository>
+			<id>Xtext Update Site</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}/</url>
+		</repository>
+	</repositories>
 
-		<build>
-			<pluginManagement>
-				<plugins>
-
-					<plugin>
-						<groupId>org.eclipse.xtend</groupId>
-						<artifactId>xtend-maven-plugin</artifactId>
-						<version>${xtext-version}</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>compile</goal>
-									<goal>xtend-install-debug-info</goal>
-									<goal>testCompile</goal>
-									<goal>xtend-test-install-debug-info</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<outputDirectory>${basedir}/xtend-gen</outputDirectory>
-							<!--testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory-->
-						</configuration>
-					</plugin>
-
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-clean-plugin</artifactId>
-						<version>2.5</version>
-						<executions>
-							<execution>
-								<id>gen-clean</id>
-								<goals>
-									<goal>clean</goal>
-								</goals>
-								<configuration>
-									<filesets>
-										<fileset>
-											<directory>${basedir}/xtend-gen</directory>
-										</fileset>
-									</filesets>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-				</plugins>
-			</pluginManagement>
-
+	<build>
+		<pluginManagement>
 			<plugins>
+
 				<plugin>
-					<groupId>org.eclipse.tycho</groupId>
-					<artifactId>tycho-maven-plugin</artifactId>
-					<version>${tycho-version}</version>
-					<extensions>true</extensions>
+					<groupId>org.eclipse.xtend</groupId>
+					<artifactId>xtend-maven-plugin</artifactId>
+					<version>${xtext-version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>xtend-install-debug-info</goal>
+								<goal>testCompile</goal>
+								<goal>xtend-test-install-debug-info</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<outputDirectory>${basedir}/xtend-gen</outputDirectory>
+						<!--testOutputDirectory>${basedir}/xtend-gen</testOutputDirectory-->
+					</configuration>
+				</plugin>
+
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-clean-plugin</artifactId>
+					<version>2.5</version>
+					<executions>
+						<execution>
+							<id>gen-clean</id>
+							<goals>
+								<goal>clean</goal>
+							</goals>
+							<configuration>
+								<filesets>
+									<fileset>
+										<directory>${basedir}/xtend-gen</directory>
+									</fileset>
+								</filesets>
+							</configuration>
+						</execution>
+					</executions>
 				</plugin>
 			</plugins>
-		</build>
-	</project>
+		</pluginManagement>
+
+		<plugins>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<version>${tycho-version}</version>
+				<extensions>true</extensions>
+			</plugin>
+		</plugins>
+	</build>
+</project>
