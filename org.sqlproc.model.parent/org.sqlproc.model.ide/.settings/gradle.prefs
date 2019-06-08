@@ -1,8 +1,0 @@
-{
-	"1.0": {
-		"project_path": ":org.sqlproc.model.ide",
-		"project_dir": "/home/hudec/git/sql-processor-eclipse/org.sqlproc.model.parent/org.sqlproc.model.ide",
-		"connection_project_dir": "/home/hudec/git/sql-processor-eclipse/org.sqlproc.model.parent",
-		"connection_gradle_distribution": "GRADLE_DISTRIBUTION(WRAPPER)"
-	}
-}
