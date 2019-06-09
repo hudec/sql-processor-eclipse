@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.sqlproc.model.sdk_0.0.0.jar" id="org.sqlproc.model.sdk" version="0.0.0">
+      <category name="org.sqlproc.model.plugin"/>
+   </feature>
+   <category-def name="org.sqlproc.model.plugin" label="SQL Processor Model Plugin"/>
+</site>

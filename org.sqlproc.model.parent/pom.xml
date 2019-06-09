@@ -20,9 +20,9 @@
 		<module>org.sqlproc.model.ide</module>
 		<module>org.sqlproc.model.ui</module>
 		<module>org.sqlproc.model.tests</module>
-		<!--module>org.sqlproc.model.ui.tests</module>
+		<module>org.sqlproc.model.ui.tests</module>
 		<module>org.sqlproc.model.sdk</module>
-		<module>org.sqlproc.model.updatesite</module-->
+		<module>org.sqlproc.model.updatesite</module>
 	</modules>
 
 	<repositories>

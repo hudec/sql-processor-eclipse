@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
-      id="org.sqlproc.plugin.sdk"
-      label="SQL Processor Eclipse Plugin"
+      id="org.sqlproc.model.plugin.sdk"
+      label="SQL Processor Model Plugin"
       version="3.0.0.qualifier">
 
    <requires>
