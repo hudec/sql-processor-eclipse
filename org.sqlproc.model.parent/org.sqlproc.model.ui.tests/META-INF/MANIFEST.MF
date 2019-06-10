@@ -6,14 +6,15 @@ Bundle-Version: 3.0.0.qualifier
 Bundle-SymbolicName: org.sqlproc.model.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model.ui,
-	org.eclipse.core.runtime,
-  org.eclipse.xtext.junit4,
-  org.eclipse.xtext.xbase.lib;bundle-version="2.13.0",
-  org.eclipse.xtend.lib,
-  org.eclipse.ui.workbench;resolution:=optional,
-  org.objectweb.asm;bundle-version="[7.0.0,7.1.0)";resolution:=optional,
-  org.eclipse.xtext.testing,
-  org.eclipse.xtext.xbase.testing
+ org.eclipse.core.runtime,
+ org.eclipse.xtext.junit4,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.13.0",
+ org.eclipse.xtend.lib,
+ org.eclipse.ui.workbench;resolution:=optional,
+ org.objectweb.asm;bundle-version="[7.0.0,7.1.0)";resolution:=optional,
+ org.eclipse.xtext.testing,
+ org.eclipse.xtext.xbase.testing,
+ org.eclipse.xtext.xbase.junit
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: org.sqlproc.model.ui.tests;x-internal=true
 Import-Package: org.apache.log4j,
