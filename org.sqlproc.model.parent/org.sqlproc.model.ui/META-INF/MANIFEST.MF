@@ -24,7 +24,8 @@ Require-Bundle: org.sqlproc.model;visibility:=reexport,
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: org.sqlproc.model.ui.quickfix,
+Export-Package: org.sqlproc.model.ui,
+ org.sqlproc.model.ui.quickfix,
  org.sqlproc.model.ui.contentassist,
  org.sqlproc.model.ui.internal,
  org.sqlproc.model.ui.editor
