@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<site>
+   <feature url="features/org.sqlproc.meta.sdk_0.0.0.jar" id="org.sqlproc.meta.sdk" version="0.0.0">
+      <category name="org.sqlproc.meta"/>
+   </feature>
+   <category-def name="org.sqlproc.meta" label="SQL Processor Meta"/>
+</site>
