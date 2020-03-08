@@ -32,5 +32,6 @@ Export-Package: org.sqlproc.meta,
  org.sqlproc.plugin.lib.property,
  org.sqlproc.plugin.lib.resolver,
  org.sqlproc.plugin.lib.util
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.apache.commons.cli
 Automatic-Module-Name: org.sqlproc.model
