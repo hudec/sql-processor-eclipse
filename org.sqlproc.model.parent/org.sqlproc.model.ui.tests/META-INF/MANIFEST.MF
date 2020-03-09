@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model.ui.tests
 Bundle-Vendor: Sizar
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 3.0.0
 Bundle-SymbolicName: org.sqlproc.model.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model.ui,
@@ -16,7 +16,7 @@ Require-Bundle: org.sqlproc.model.ui,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.junit,
  org.eclipse.xtext.ui.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.sqlproc.model.ui.tests;x-internal=true
 Import-Package: org.apache.log4j,
  org.junit;version="4.5.0",

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model.tests
 Bundle-Vendor: Sizar
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 3.0.0
 Bundle-SymbolicName: org.sqlproc.model.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model,
@@ -14,7 +14,7 @@ Require-Bundle: org.sqlproc.model,
  org.objectweb.asm;bundle-version="[7.0.0,7.1.0)";resolution:=optional,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.sqlproc.model.tests;x-internal=true
 Import-Package: org.apache.log4j,
  org.junit;version="4.5.0",

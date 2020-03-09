@@ -2,10 +2,10 @@
 <feature
       id="org.sqlproc.model.sdk"
       label="SQL Processor Model SQK Feature"
-      version="3.0.0.qualifier">
+      version="3.0.0">
 
    <requires>
-      <import feature="org.eclipse.xtext.runtime" version="2.8.0" match="greaterOrEqual"/>
+      <import feature="org.eclipse.xtext.runtime" version="2.21.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

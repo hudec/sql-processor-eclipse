@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model
 Bundle-Vendor: Sizar
-Bundle-Version: 3.0.0.qualifier
+Bundle-Version: 3.0.0
 Bundle-SymbolicName: org.sqlproc.model; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib;bundle-version="2.13.0",
  org.eclipse.emf.common
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.sqlproc.model,
  org.sqlproc.model.generator,
  org.sqlproc.model.jvmmodel,
