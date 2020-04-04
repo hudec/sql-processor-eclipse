@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.UUID;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -508,13 +509,15 @@ public class ModelPropertyBean extends ModelProperty {
             }
         } else if (POJOGEN_IGNORE_EXPORTS.equals(property.getName())) {
             if (!modelValues.ignoreExports.containsKey(property.getDbTable()))
-                modelValues.ignoreExports.put(property.getDbTable(), new HashMap<String, Map<String, String>>());
-            Map<String, Map<String, String>> exports = modelValues.ignoreExports.get(property.getDbTable());
+                modelValues.ignoreExports.put(property.getDbTable(), new HashMap<String, Map<String, Set<String>>>());
+            Map<String, Map<String, Set<String>>> exports = modelValues.ignoreExports.get(property.getDbTable());
             for (int i = 0, m = property.getExports().size(); i < m; i++) {
                 ExportAssignement export = property.getExports().get(i);
                 if (!exports.containsKey(export.getDbColumn()))
-                    exports.put(export.getDbColumn(), new HashMap<String, String>());
-                exports.get(export.getDbColumn()).put(export.getFkTable(), export.getFkColumn());
+                    exports.put(export.getDbColumn(), new HashMap<String, Set<String>>());
+                if (!exports.get(export.getDbColumn()).containsKey(export.getFkTable()))
+                	exports.get(export.getDbColumn()).put(export.getFkTable(), new HashSet<String>());
+                exports.get(export.getDbColumn()).get(export.getFkTable()).add(export.getFkColumn());
             }
         } else if (POJOGEN_IGNORE_IMPORTS.equals(property.getName())) {
             if (!modelValues.ignoreImports.containsKey(property.getDbTable()))
@@ -554,16 +557,18 @@ public class ModelPropertyBean extends ModelProperty {
                 modelValues.create121Imports.put(property.getDbTable(), new HashMap<String, Map<String, String>>());
             Map<String, Map<String, String>> imports = modelValues.create121Imports.get(property.getDbTable());
             if (!modelValues.ignoreExports.containsKey(property.getDbTable()))
-                modelValues.ignoreExports.put(property.getDbTable(), new HashMap<String, Map<String, String>>());
-            Map<String, Map<String, String>> exports = modelValues.ignoreExports.get(property.getDbTable());
+                modelValues.ignoreExports.put(property.getDbTable(), new HashMap<String, Map<String, Set<String>>>());
+            Map<String, Map<String, Set<String>>> exports = modelValues.ignoreExports.get(property.getDbTable());
             for (int i = 0, m = property.getImports().size(); i < m; i++) {
                 ImportAssignement _import = property.getImports().get(i);
                 if (!imports.containsKey(_import.getDbColumn()))
                     imports.put(_import.getDbColumn(), new HashMap<String, String>());
                 imports.get(_import.getDbColumn()).put(_import.getPkTable(), _import.getPkColumn());
                 if (!exports.containsKey(_import.getDbColumn()))
-                    exports.put(_import.getDbColumn(), new HashMap<String, String>());
-                exports.get(_import.getDbColumn()).put(_import.getPkTable(), _import.getPkColumn());
+                    exports.put(_import.getDbColumn(), new HashMap<String, Set<String>>());
+                if (!exports.get(_import.getDbColumn()).containsKey(_import.getPkTable()))
+                	exports.get(_import.getDbColumn()).put(_import.getPkTable(), new HashSet<String>());
+                exports.get(_import.getDbColumn()).get(_import.getPkTable()).add(_import.getPkColumn());
                 if (!modelValues.ignoreImports.containsKey(_import.getPkTable()))
                     modelValues.ignoreImports.put(_import.getPkTable(), new HashMap<String, Map<String, String>>());
                 Map<String, Map<String, String>> _imports = modelValues.ignoreImports.get(_import.getPkTable());

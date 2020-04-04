@@ -569,7 +569,7 @@ public class ModelPropertyBean extends ModelProperty {
                 if (!exports.containsKey(_import.getDbColumn()))
                     exports.put(_import.getDbColumn(), new HashMap<String, Set<String>>());
                 if (!exports.get(_import.getDbColumn()).containsKey(_import.getPkTable()))
-                exports.get(_import.getDbColumn()).put(_import.getPkTable(), new HashSet<String>());
+                	exports.get(_import.getDbColumn()).put(_import.getPkTable(), new HashSet<String>());
                 exports.get(_import.getDbColumn()).get(_import.getPkTable()).add(_import.getPkColumn());
                 if (!modelValues.ignoreImports.containsKey(_import.getPkTable()))
                     modelValues.ignoreImports.put(_import.getPkTable(), new HashMap<String, Map<String, String>>());
