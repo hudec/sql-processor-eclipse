@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.meta
 Bundle-Vendor: Sizar
-Bundle-Version: 3.0.0
+Bundle-Version: 3.0.1
 Bundle-SymbolicName: org.sqlproc.meta; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,

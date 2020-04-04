@@ -232,7 +232,7 @@ public abstract class ModelProperty extends AdapterImpl {
         public Map<String, Set<String>> requiredColumns;
         public Map<String, Set<String>> notRequiredColumns;
         public Map<String, Map<String, PojoAttrType>> createColumns;
-        public Map<String, Map<String, Map<String, String>>> ignoreExports;
+        public Map<String, Map<String, Map<String, Set<String>>>> ignoreExports;
         public Map<String, Map<String, Map<String, String>>> ignoreImports;
         public Map<String, Map<String, Map<String, String>>> createExports;
         public Map<String, Map<String, Map<String, String>>> createImports;
@@ -373,7 +373,7 @@ public abstract class ModelProperty extends AdapterImpl {
             requiredColumns = new HashMap<String, Set<String>>();
             notRequiredColumns = new HashMap<String, Set<String>>();
             createColumns = new HashMap<String, Map<String, PojoAttrType>>();
-            ignoreExports = new HashMap<String, Map<String, Map<String, String>>>();
+            ignoreExports = new HashMap<String, Map<String, Map<String, Set<String>>>>();
             ignoreImports = new HashMap<String, Map<String, Map<String, String>>>();
             createExports = new HashMap<String, Map<String, Map<String, String>>>();
             createImports = new HashMap<String, Map<String, Map<String, String>>>();
@@ -695,10 +695,10 @@ public abstract class ModelProperty extends AdapterImpl {
                 : Collections.<String, Map<String, PojoAttrType>>emptyMap();
     }
 
-    public Map<String, Map<String, Map<String, String>>> getIgnoreExports(EObject model) {
+    public Map<String, Map<String, Map<String, Set<String>>>> getIgnoreExports(EObject model) {
         ModelValues modelValues = getModelValues(model);
         return (modelValues != null) ? modelValues.ignoreExports
-                : Collections.<String, Map<String, Map<String, String>>>emptyMap();
+                : Collections.<String, Map<String, Map<String, Set<String>>>>emptyMap();
     }
 
     public Map<String, Map<String, Map<String, String>>> getIgnoreImports(EObject model) {

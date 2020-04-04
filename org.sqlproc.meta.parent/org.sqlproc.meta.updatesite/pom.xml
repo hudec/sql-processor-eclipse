@@ -4,7 +4,7 @@
   <parent>
 		<groupId>org.sqlproc.meta</groupId>
 		<artifactId>org.sqlproc.meta.parent</artifactId>
-		<version>3.0.0</version>
+		<version>3.0.1</version>
 	</parent>
   <artifactId>org.sqlproc.meta.updatesite</artifactId>
   <packaging>eclipse-repository</packaging>

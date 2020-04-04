@@ -101,7 +101,7 @@ public class TableBaseGenerator {
     protected Map<String, Set<String>> requiredColumns = new HashMap<>();
     protected Map<String, Set<String>> notRequiredColumns = new HashMap<>();
     protected Map<String, Map<String, PojoAttrType>> createColumns = new HashMap<>();
-    protected Map<String, Map<String, Map<String, String>>> ignoreExports = new HashMap<>();
+    protected Map<String, Map<String, Map<String, Set<String>>>> ignoreExports = new HashMap<>();
     protected Map<String, Map<String, Map<String, String>>> ignoreImports = new HashMap<>();
     protected Map<String, Map<String, Map<String, String>>> createExports = new HashMap<>();
     protected Map<String, Map<String, Map<String, String>>> createImports = new HashMap<>();
@@ -233,7 +233,7 @@ public class TableBaseGenerator {
         if (createColumns != null) {
             this.createColumns.putAll(createColumns);
         }
-        Map<String, Map<String, Map<String, String>>> ignoreExports = modelProperty.getIgnoreExports(model);
+        Map<String, Map<String, Map<String, Set<String>>>> ignoreExports = modelProperty.getIgnoreExports(model);
         if (ignoreExports != null) {
             this.ignoreExports.putAll(ignoreExports);
         }
@@ -327,9 +327,9 @@ public class TableBaseGenerator {
             for (Map.Entry<String, Map<String, String>> inherit : inheritImport.getValue().entrySet()) {
                 for (Map.Entry<String, String> tabcol : inherit.getValue().entrySet()) {
                     if (!this.ignoreExports.containsKey(tabcol.getKey()))
-                        this.ignoreExports.put(tabcol.getKey(), new HashMap<String, Map<String, String>>());
+                        this.ignoreExports.put(tabcol.getKey(), new HashMap<String, Map<String, Set<String>>>());
                     if (!this.ignoreExports.get(tabcol.getKey()).containsKey(tabcol.getValue()))
-                        this.ignoreExports.get(tabcol.getKey()).put(tabcol.getValue(), new HashMap<String, String>());
+                        this.ignoreExports.get(tabcol.getKey()).put(tabcol.getValue(), new HashMap<String, Set<String>>());
                     this.ignoreExports.get(tabcol.getKey()).get(tabcol.getValue()).put(inheritImport.getKey(), null);
                     if (!this.ignoreColumns.containsKey(inheritImport.getKey()))
                         this.ignoreColumns.put(inheritImport.getKey(), new HashSet<String>());
@@ -546,10 +546,10 @@ public class TableBaseGenerator {
             // pojogen table many-to-many PERSON_LIBRARY ID->MEDIA->LIBRARY;
             if (ignoreExports.containsKey(table) && ignoreExports.get(table).containsKey(dbExport.getPkColumn())
                     && ignoreExports.get(table).get(dbExport.getPkColumn()).containsKey(dbExport.getFkTable())) {
-                String fkColumn = ignoreExports.get(table).get(dbExport.getPkColumn()).get(dbExport.getFkTable());
-                if (fkColumn == null || fkColumn.length() == 0)
+                Set<String> fkColumns = ignoreExports.get(table).get(dbExport.getPkColumn()).get(dbExport.getFkTable());
+                if (fkColumns == null || fkColumns.size() == 0)
                     continue;
-                if (fkColumn.equals(dbExport.getFkColumn()))
+                if (fkColumns.contains(dbExport.getFkColumn()))
                     continue;
             }
             if (manyToManyImports.containsKey(dbExport.getFkTable())) {
