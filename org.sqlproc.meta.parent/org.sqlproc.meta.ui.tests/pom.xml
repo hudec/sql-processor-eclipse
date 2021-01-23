@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.sqlproc.meta</groupId>
 		<artifactId>org.sqlproc.meta.parent</artifactId>
-		<version>3.0.1</version>
+		<version>3.1.0</version>
 	</parent>
 	<artifactId>org.sqlproc.meta.ui.tests</artifactId>
 	<packaging>eclipse-test-plugin</packaging>
