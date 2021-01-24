@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.model.ui
 Bundle-Vendor: Sizar
-Bundle-Version: 3.0.1
+Bundle-Version: 3.1.0.qualifier
 Bundle-SymbolicName: org.sqlproc.model.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.model;visibility:=reexport,
