@@ -29,7 +29,6 @@ Bundle-RequiredExecutionEnvironment: JavaSE-11
 Export-Package: org.sqlproc.meta.ui,
  org.sqlproc.meta.ui.quickfix,
  org.sqlproc.meta.ui.contentassist,
- org.sqlproc.meta.ui.internal,
- org.sqlproc.meta.ui.editor
+ org.sqlproc.meta.ui.internal
 Bundle-Activator: org.sqlproc.meta.ui.internal.MetaActivator
 Automatic-Module-Name: org.sqlproc.meta.ui

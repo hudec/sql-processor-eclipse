@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project org.sqlproc.meta with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR file Export Wizard-->
+    <!--ANT 1.7 is required-->
+    <!--define folder properties-->
+    <property name="dir.buildfile" value="."/>
+    <property name="dir.workspace" value="/home/hudec/Workspace/sqlep2020"/>
+    <property name="dir.jarfile" value="/home/hudec/git/hudec.github.com"/>
+    <target name="create_run_jar">
+        <jar destfile="${dir.jarfile}/sqlmeta.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="org.sqlproc.meta.generator.Main"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ com.google.guava_27.1.0.v20190517-1946.jar com.google.inject_3.0.0.v201605172100.jar com.ibm.icu_67.1.0.v20200706-1749.jar javax.inject_1.0.0.v20091030.jar org.antlr.runtime_3.2.0.v201101311130.jar org.apache.commons.cli_1.2.0.v201404270220.jar org.apache.commons.logging_1.2.0.v20180409-1502.jar org.apache.log4j_1.2.15.v201012070815.jar org.eclipse.emf.codegen.ecore_2.24.0.v20200917-1423.jar ch.qos.logback.classic_1.2.3.v20200428-2012.jar org.eclipse.emf.codegen_2.21.0.v20200708-0547.jar org.eclipse.emf.common_2.21.0.v20200917-1439.jar org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar org.eclipse.emf.ecore_2.23.0.v20200630-0516.jar org.eclipse.emf.mwe.core_1.6.0.v20201119-2018.jar org.eclipse.emf.mwe.utils_1.6.0.v20201119-2018.jar org.eclipse.emf.mwe2.language_2.12.0.v20201119-2018.jar org.eclipse.emf.mwe2.launch_2.12.0.v20201119-2018.jar org.eclipse.emf.mwe2.lib_2.12.0.v20201119-2018.jar org.eclipse.emf.mwe2.runtime_2.12.0.v20201119-2018.jar org.eclipse.equinox.common_3.14.0.v20201102-2053.jar org.eclipse.xtend.lib.macro_2.24.0.v20201130-0911.jar org.eclipse.xtend.lib_2.24.0.v20201130-0911.jar org.eclipse.xtext.buildship_2.24.0.v20201130-0931.jar org.eclipse.xtext.common.types_2.24.0.v20201130-0919.jar org.eclipse.xtext.util_2.24.0.v20201130-0914.jar org.eclipse.xtext.xbase.lib_2.24.0.v20201130-0911.jar org.eclipse.xtext.xbase_2.24.0.v20201130-0919.jar org.eclipse.xtext.xtext.generator_2.24.0.v20201130-0914.jar org.eclipse.xtext_2.24.0.v20201130-0914.jar org.objectweb.asm_9.0.0.v20201001-1419.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="${dir.buildfile}/org.sqlproc.meta.parent/org.sqlproc.meta/target/classes"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="com.google.guava_27.1.0.v20190517-1946.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="com.google.inject_3.0.0.v201605172100.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="com.ibm.icu_67.1.0.v20200706-1749.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="javax.inject_1.0.0.v20091030.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.antlr.runtime_3.2.0.v201101311130.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.apache.commons.cli_1.2.0.v201404270220.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.apache.commons.logging_1.2.0.v20180409-1502.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.apache.log4j_1.2.15.v201012070815.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.codegen.ecore_2.24.0.v20200917-1423.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="ch.qos.logback.classic_1.2.3.v20200428-2012.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.codegen_2.21.0.v20200708-0547.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.common_2.21.0.v20200917-1439.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.ecore.xmi_2.16.0.v20190528-0725.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.ecore_2.23.0.v20200630-0516.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe.core_1.6.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe.utils_1.6.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe2.language_2.12.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe2.launch_2.12.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe2.lib_2.12.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.emf.mwe2.runtime_2.12.0.v20201119-2018.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.equinox.common_3.14.0.v20201102-2053.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtend.lib.macro_2.24.0.v20201130-0911.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtend.lib_2.24.0.v20201130-0911.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.buildship_2.24.0.v20201130-0931.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.common.types_2.24.0.v20201130-0919.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.util_2.24.0.v20201130-0914.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.xbase.lib_2.24.0.v20201130-0911.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.xbase_2.24.0.v20201130-0919.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext.xtext.generator_2.24.0.v20201130-0914.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.eclipse.xtext_2.24.0.v20201130-0914.jar"/>
+            <zipfileset dir="/home/hudec/eclipse/plugins" includes="org.objectweb.asm_9.0.0.v20201001-1419.jar"/>
+        </jar>
+    </target>
+</project>
