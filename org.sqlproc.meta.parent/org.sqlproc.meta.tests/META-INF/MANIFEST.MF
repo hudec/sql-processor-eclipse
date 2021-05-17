@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.meta.tests
 Bundle-Vendor: Sizar
-Bundle-Version: 3.1.0.qualifier
+Bundle-Version: 3.1.0
 Bundle-SymbolicName: org.sqlproc.meta.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.meta,
