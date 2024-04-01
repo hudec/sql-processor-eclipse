@@ -3,7 +3,7 @@ Bundle-ManifestVersion: 2
 Bundle-Name: SQL Processor Common Plugin Library
 Bundle-Vendor: SQL Processor Team
 Bundle-SymbolicName: org.sqlproc.plugin.lib
-Bundle-Version: 2.5.4
+Bundle-Version: 3.2.0.qualifier
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.xtext.xbase;resolution:=optional;visibility:=reexport,
  org.eclipse.xtext.generator;resolution:=optional,
@@ -21,7 +21,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.equinox.common;bundle-version="3.6.200"
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.sqlproc.plugin.lib.generator,
  org.sqlproc.plugin.lib.property,
  org.sqlproc.plugin.lib.resolver,

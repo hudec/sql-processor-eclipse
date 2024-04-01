@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: org.sqlproc.meta
 Bundle-Vendor: Sizar
-Bundle-Version: 3.1.0
+Bundle-Version: 3.2.0.qualifier
 Bundle-SymbolicName: org.sqlproc.meta; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext,
@@ -16,7 +16,7 @@ Require-Bundle: org.eclipse.xtext,
  org.eclipse.xtext.util,
  org.eclipse.xtend.lib;bundle-version="2.13.0",
  org.eclipse.emf.common
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.sqlproc.meta,
  org.sqlproc.meta.generator,
  org.sqlproc.meta.parser.antlr,
