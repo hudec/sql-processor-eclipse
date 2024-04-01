@@ -15,7 +15,8 @@ Require-Bundle: org.sqlproc.model.ui,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.xbase.junit,
- org.eclipse.xtext.ui.testing
+ org.eclipse.xtext.ui.testing,
+ org.eclipse.xtext.xbase.ui.testing
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.sqlproc.model.ui.tests;x-internal=true
 Import-Package: org.apache.log4j,
