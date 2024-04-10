@@ -755,6 +755,35 @@ public class DbResolverBean implements DbResolver {
                     debug.error("getProcedures error " + e, e);
                 }
             }
+            if (dbType == DbType.POSTGRESQL) {
+                result = null;
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getFunctions(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema, null);
+                    while (result.next()) {
+                        if (ignore(result))
+                            continue;
+                        String name = result.getString("FUNCTION_NAME");
+                        if (dbType == DbType.MS_SQL) {
+                            int ix = name.lastIndexOf(";");
+                            if (ix >= 0)
+                                name = name.substring(0, ix);
+                        }
+                      	proceduresForModel.add(name(modelDatabaseValues, name));
+                        	
+                    }
+                } catch (SQLException e) {
+                    debug.error("getFunctions error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getFunctions error " + e, e);
+                    }
+                }
+            }
+            
         }
         debug.debug(m, "<<<", proceduresForModel);
         return proceduresForModel;
@@ -781,7 +810,7 @@ public class DbResolverBean implements DbResolver {
         functionsForModel = Collections.synchronizedList(new ArrayList<String>());
         functions.put(modelDatabaseValues.dir, functionsForModel);
         if (modelDatabaseValues.connection != null) {
-            if (dbType == DbType.POSTGRESQL || dbType == DbType.INFORMIX)
+            if (dbType == DbType.INFORMIX || dbType == DbType.POSTGRESQL)
                 return functionsForModel;
             ResultSet result = null;
             try {
@@ -797,6 +826,7 @@ public class DbResolverBean implements DbResolver {
                             name = name.substring(0, ix);
                     }
                     functionsForModel.add(name(modelDatabaseValues, name));
+                    	
                 }
             } catch (SQLException e) {
                 debug.error("getFunctions error " + e, e);
@@ -963,6 +993,33 @@ public class DbResolverBean implements DbResolver {
                         result.close();
                 } catch (SQLException e) {
                     debug.error("getProcColumns error " + e, e);
+                }
+            }
+            if (dbType == DbType.POSTGRESQL) {
+                result = null;
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
+                            origName(model, modelDatabaseValues, table), null);
+                    while (result.next()) {
+                        if (ignore(result))
+                            continue;
+                        String name = result.getString("COLUMN_NAME");
+                        if (dbType == DbType.MS_SQL) {
+                            if (name.startsWith("@"))
+                                name = name.substring(1);
+                        }
+                        columnsForModel.add(name(modelDatabaseValues, name));
+                    }
+                } catch (SQLException e) {
+                    debug.error("getFunColumns error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getFunColumns error " + e, e);
+                    }
                 }
             }
         }
@@ -1268,6 +1325,40 @@ public class DbResolverBean implements DbResolver {
                     debug.error("getDbProcedures error " + e, e);
                 }
             }
+            if (dbType == DbType.POSTGRESQL) {
+            	result = null;
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getFunctions(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
+                            origName(model, modelDatabaseValues, table));
+                    while (result.next()) {
+                        if (ignore(result))
+                            continue;
+                        String name = result.getString("FUNCTION_NAME");
+                        if (dbType == DbType.MS_SQL) {
+                            int ix = name.lastIndexOf(";");
+                            if (ix >= 0)
+                                name = name.substring(0, ix);
+                        }
+                        DbTable dbTable = new DbTable();
+                        dbTable.setName(name(modelDatabaseValues, name));
+                        if (dbType != DbType.DB2 && dbType != DbType.ORACLE)
+                            dbTable.setFtype(result.getShort("FUNCTION_TYPE"));
+                        if (modelDatabaseValues.dbTakeComments)
+                            dbTable.setComment(result.getString("REMARKS"));
+                        tablesForModel.add(dbTable);
+                    }
+                } catch (SQLException e) {
+                    debug.error("getDbFunctions error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getDbFunctions error " + e, e);
+                    }
+                }
+            }
         }
         debug.debug(m, "<<<", tablesForModel);
         return tablesForModel;
@@ -1353,6 +1444,59 @@ public class DbResolverBean implements DbResolver {
                         result.close();
                 } catch (SQLException e) {
                     debug.error("getDbProcColumns error " + e, e);
+                }
+            }
+            if (dbType == DbType.POSTGRESQL) {
+                result = null;
+                try {
+                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
+                            origName(model, modelDatabaseValues, procedure), null);
+                    while (result.next()) {
+                        if (ignore(result))
+                            continue;
+                        String name = result.getString(dbType == DbType.DB2 ? "PARAMETER_NAME" : "COLUMN_NAME");
+                        if (dbType == DbType.MS_SQL) {
+                            if (name.startsWith("@"))
+                                name = name.substring(1);
+                        }
+                        DbColumn dbColumn = new DbColumn();
+                        dbColumn.setName(name(modelDatabaseValues, name));
+                        dbColumn.setType(result.getString("TYPE_NAME"));
+                        dbColumn.setColumnType(result.getShort(dbType == DbType.DB2 ? "PARAMETER_TYPE" : "COLUMN_TYPE"));
+                        int ix = dbColumn.getType().indexOf('(');
+                        if (ix > 0) {
+                            String size = dbColumn.getType().substring(ix + 1);
+                            dbColumn.setType(dbColumn.getType().substring(0, ix));
+                            ix = size.indexOf(')');
+                            if (ix > 0) {
+                                size = size.substring(0, ix);
+                            }
+                            try {
+                                dbColumn.setSize(Integer.parseInt(size));
+                            } catch (Exception ignore) {
+                            }
+                        } else {
+                            dbColumn.setSize(result.getInt("LENGTH"));
+                        }
+                        dbColumn.setSqlType(result.getInt("DATA_TYPE"));
+                        dbColumn.setNullable(result.getInt("NULLABLE") != DatabaseMetaData.columnNoNulls);
+                        if (modelDatabaseValues.dbTakeComments)
+                            dbColumn.setComment(result.getString("REMARKS"));
+                        // if (DbType.MY_SQL != dbType)
+                        // dbColumn.setPosition(result.getInt("ORDINAL_POSITION"));
+                        columnsForModel.add(dbColumn);
+                        // debug.debug(function + ": " + dbColumn.toString());
+                    }
+                } catch (SQLException e) {
+                    debug.error("getDbFunColumns error " + e, e);
+                } finally {
+                    try {
+                        if (result != null)
+                            result.close();
+                    } catch (SQLException e) {
+                        debug.error("getDbFunColumns error " + e, e);
+                    }
                 }
             }
         }
