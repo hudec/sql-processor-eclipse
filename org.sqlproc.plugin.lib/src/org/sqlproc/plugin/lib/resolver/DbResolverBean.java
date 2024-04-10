@@ -1446,59 +1446,59 @@ public class DbResolverBean implements DbResolver {
                     debug.error("getDbProcColumns error " + e, e);
                 }
             }
-            if (dbType == DbType.POSTGRESQL) {
-                result = null;
-                try {
-                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
-                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
-                            origName(model, modelDatabaseValues, procedure), null);
-                    while (result.next()) {
-                        if (ignore(result))
-                            continue;
-                        String name = result.getString(dbType == DbType.DB2 ? "PARAMETER_NAME" : "COLUMN_NAME");
-                        if (dbType == DbType.MS_SQL) {
-                            if (name.startsWith("@"))
-                                name = name.substring(1);
-                        }
-                        DbColumn dbColumn = new DbColumn();
-                        dbColumn.setName(name(modelDatabaseValues, name));
-                        dbColumn.setType(result.getString("TYPE_NAME"));
-                        dbColumn.setColumnType(result.getShort(dbType == DbType.DB2 ? "PARAMETER_TYPE" : "COLUMN_TYPE"));
-                        int ix = dbColumn.getType().indexOf('(');
-                        if (ix > 0) {
-                            String size = dbColumn.getType().substring(ix + 1);
-                            dbColumn.setType(dbColumn.getType().substring(0, ix));
-                            ix = size.indexOf(')');
-                            if (ix > 0) {
-                                size = size.substring(0, ix);
-                            }
-                            try {
-                                dbColumn.setSize(Integer.parseInt(size));
-                            } catch (Exception ignore) {
-                            }
-                        } else {
-                            dbColumn.setSize(result.getInt("LENGTH"));
-                        }
-                        dbColumn.setSqlType(result.getInt("DATA_TYPE"));
-                        dbColumn.setNullable(result.getInt("NULLABLE") != DatabaseMetaData.columnNoNulls);
-                        if (modelDatabaseValues.dbTakeComments)
-                            dbColumn.setComment(result.getString("REMARKS"));
-                        // if (DbType.MY_SQL != dbType)
-                        // dbColumn.setPosition(result.getInt("ORDINAL_POSITION"));
-                        columnsForModel.add(dbColumn);
-                        // debug.debug(function + ": " + dbColumn.toString());
-                    }
-                } catch (SQLException e) {
-                    debug.error("getDbFunColumns error " + e, e);
-                } finally {
-                    try {
-                        if (result != null)
-                            result.close();
-                    } catch (SQLException e) {
-                        debug.error("getDbFunColumns error " + e, e);
-                    }
-                }
-            }
+//            if (dbType == DbType.POSTGRESQL) {
+//                result = null;
+//                try {
+//                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+//                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
+//                            origName(model, modelDatabaseValues, procedure), null);
+//                    while (result.next()) {
+//                        if (ignore(result))
+//                            continue;
+//                        String name = result.getString(dbType == DbType.DB2 ? "PARAMETER_NAME" : "COLUMN_NAME");
+//                        if (dbType == DbType.MS_SQL) {
+//                            if (name.startsWith("@"))
+//                                name = name.substring(1);
+//                        }
+//                        DbColumn dbColumn = new DbColumn();
+//                        dbColumn.setName(name(modelDatabaseValues, name));
+//                        dbColumn.setType(result.getString("TYPE_NAME"));
+//                        dbColumn.setColumnType(result.getShort(dbType == DbType.DB2 ? "PARAMETER_TYPE" : "COLUMN_TYPE"));
+//                        int ix = dbColumn.getType().indexOf('(');
+//                        if (ix > 0) {
+//                            String size = dbColumn.getType().substring(ix + 1);
+//                            dbColumn.setType(dbColumn.getType().substring(0, ix));
+//                            ix = size.indexOf(')');
+//                            if (ix > 0) {
+//                                size = size.substring(0, ix);
+//                            }
+//                            try {
+//                                dbColumn.setSize(Integer.parseInt(size));
+//                            } catch (Exception ignore) {
+//                            }
+//                        } else {
+//                            dbColumn.setSize(result.getInt("LENGTH"));
+//                        }
+//                        dbColumn.setSqlType(result.getInt("DATA_TYPE"));
+//                        dbColumn.setNullable(result.getInt("NULLABLE") != DatabaseMetaData.columnNoNulls);
+//                        if (modelDatabaseValues.dbTakeComments)
+//                            dbColumn.setComment(result.getString("REMARKS"));
+//                        // if (DbType.MY_SQL != dbType)
+//                        // dbColumn.setPosition(result.getInt("ORDINAL_POSITION"));
+//                        columnsForModel.add(dbColumn);
+//                        // debug.debug(function + ": " + dbColumn.toString());
+//                    }
+//                } catch (SQLException e) {
+//                    debug.error("getDbFunColumns error " + e, e);
+//                } finally {
+//                    try {
+//                        if (result != null)
+//                            result.close();
+//                    } catch (SQLException e) {
+//                        debug.error("getDbFunColumns error " + e, e);
+//                    }
+//                }
+//            }
         }
         // Collections.sort(columnsForModel);
         debug.debug(m, "<<<", columnsForModel);
