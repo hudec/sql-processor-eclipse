@@ -995,33 +995,33 @@ public class DbResolverBean implements DbResolver {
                     debug.error("getProcColumns error " + e, e);
                 }
             }
-            if (dbType == DbType.POSTGRESQL) {
-                result = null;
-                try {
-                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
-                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
-                            origName(model, modelDatabaseValues, table), null);
-                    while (result.next()) {
-                        if (ignore(result))
-                            continue;
-                        String name = result.getString("COLUMN_NAME");
-                        if (dbType == DbType.MS_SQL) {
-                            if (name.startsWith("@"))
-                                name = name.substring(1);
-                        }
-                        columnsForModel.add(name(modelDatabaseValues, name));
-                    }
-                } catch (SQLException e) {
-                    debug.error("getFunColumns error " + e, e);
-                } finally {
-                    try {
-                        if (result != null)
-                            result.close();
-                    } catch (SQLException e) {
-                        debug.error("getFunColumns error " + e, e);
-                    }
-                }
-            }
+//            if (dbType == DbType.POSTGRESQL) {
+//                result = null;
+//                try {
+//                    DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
+//                    result = meta.getFunctionColumns(modelDatabaseValues.dbCatalog, modelDatabaseValues.dbSchema,
+//                            origName(model, modelDatabaseValues, table), null);
+//                    while (result.next()) {
+//                        if (ignore(result))
+//                            continue;
+//                        String name = result.getString("COLUMN_NAME");
+//                        if (dbType == DbType.MS_SQL) {
+//                            if (name.startsWith("@"))
+//                                name = name.substring(1);
+//                        }
+//                        columnsForModel.add(name(modelDatabaseValues, name));
+//                    }
+//                } catch (SQLException e) {
+//                    debug.error("getFunColumns error " + e, e);
+//                } finally {
+//                    try {
+//                        if (result != null)
+//                            result.close();
+//                    } catch (SQLException e) {
+//                        debug.error("getFunColumns error " + e, e);
+//                    }
+//                }
+//            }
         }
         debug.debug(m, "<<<", columnsForModel);
         return columnsForModel;
