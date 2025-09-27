@@ -8,6 +8,8 @@
     <name>Common parent for SQLMEP and SQLMOP</name>
 
     <modules>
+        <module>org.sqlproc.plugin.lib</module>
+        <module>org.sqlproc.plugin.lib.tests</module>
         <module>org.sqlproc.meta.parent</module>
         <module>org.sqlproc.model.parent</module>
     </modules>
