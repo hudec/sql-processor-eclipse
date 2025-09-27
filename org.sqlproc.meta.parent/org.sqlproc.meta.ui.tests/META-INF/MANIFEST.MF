@@ -15,7 +15,7 @@ Require-Bundle: org.sqlproc.meta.ui,
  org.eclipse.xtext.xbase.testing,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.ui.testing
-Bundle-RequiredExecutionEnvironment: JavaSE-21
+Bundle-RequiredExecutionEnvironment: JavaSE-25
 Export-Package: org.sqlproc.meta.ui.tests;x-internal=true
 Import-Package: org.apache.log4j,
  org.junit;version="4.5.0",
