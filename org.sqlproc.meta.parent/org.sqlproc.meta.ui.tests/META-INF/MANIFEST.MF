@@ -7,14 +7,12 @@ Bundle-SymbolicName: org.sqlproc.meta.ui.tests; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.sqlproc.meta.ui,
  org.eclipse.core.runtime,
- org.eclipse.xtext.junit4,
  org.eclipse.xtext.xbase.lib,
  org.eclipse.xtend.lib,
  org.eclipse.ui.workbench;resolution:=optional,
  org.objectweb.asm;bundle-version="[9.0.0,10.0.0)";resolution:=optional,
  org.eclipse.xtext.testing,
  org.eclipse.xtext.xbase.testing,
- org.eclipse.xtext.xbase.junit,
  org.eclipse.xtext.ui.testing,
  org.eclipse.xtext.xbase.ui.testing
 Bundle-RequiredExecutionEnvironment: JavaSE-21
