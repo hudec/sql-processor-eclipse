@@ -68,40 +68,40 @@ class ProcessorGeneratorUtils {
 	
     def isGenerics(Implements impl) {
 		val d = impl.directives?.findFirst[x|x instanceof ImplementsExtendsDirectiveGenerics]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 
 	// PojoAttribute
 	
 	def isRequired(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveRequired]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def boolean isIndex(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveIndex] as PojoAttributeDirectiveIndex
-		return d != null
+		return d !== null
 	}
 
 	def String getIndex(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveIndex] as PojoAttributeDirectiveIndex
-		if (d == null || d.index == null)
+		if (d === null || d.index === null)
 			return null
-		if (d.index.id != null)
+		if (d.index.id !== null)
 			return d.index.id
 		return ""+d.index.number
 	}
 
 	def boolean isEnumIndex(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveEnumIndex] as PojoAttributeDirectiveEnumIndex
-		return d != null
+		return d !== null
 	}
 
 	def String getEnumIndex(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveEnumIndex] as PojoAttributeDirectiveEnumIndex
-		if (d == null || d.index == null)
+		if (d === null || d.index === null)
 			return null
-		if (d.index.id != null)
+		if (d.index.id !== null)
 			return d.index.id
 		return ""+d.index.number
 	}
@@ -128,7 +128,7 @@ class ProcessorGeneratorUtils {
 
 	def isPrimaryKey(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectivePrimaryKey]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def PojoAttributeDirectivePrimaryKey getPrimaryKeyDir(PojoAttribute f) {
@@ -138,7 +138,7 @@ class ProcessorGeneratorUtils {
 
 	def isOptLock(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveVersion] 
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def isList(PojoAttribute f) {
@@ -147,32 +147,32 @@ class ProcessorGeneratorUtils {
 	}
 
 	def isNative(PojoAttribute f) {
-		return if (f.type != null && f.type.type instanceof JvmPrimitiveType) true else false
+		return if (f.type !== null && f.type.type instanceof JvmPrimitiveType) true else false
 	}
 
 	def isToInit(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveToInit]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def isEnumInit(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveEnumInit]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def isIsDef(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveIsDef]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def isEnumDef(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveEnumDef]
-		return if(d != null) true else false
+		return if(d !== null) true else false
 	}
 
 	def boolean isPojo(PojoAttribute f) {
 		val d = f.directives?.findFirst[x|x instanceof PojoAttributeDirectiveIsPojo] as PojoAttributeDirectiveIsPojo
-		return d != null
+		return d !== null
 	}
 
     def dispatch String constName(PojoAttribute attr) {
@@ -235,7 +235,7 @@ class ProcessorGeneratorUtils {
 
     def hasOperators(PojoEntity pojo) {
 		val d = pojo.directives?.findFirst[x|x instanceof PojoDirectiveOperators]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 
     def getOperatorsSuffix(PojoEntity pojo) {
@@ -245,7 +245,7 @@ class ProcessorGeneratorUtils {
 
     def Integer getSernum(PojoEntity pojo) {
 		val d = pojo.directives?.findFirst[x|x instanceof PojoDirectiveSerializable] as PojoDirectiveSerializable
-		return if (d != null) d.sernum else null
+		return if (d !== null) d.sernum else null
     }
     
     def getDiscriminator(PojoEntity pojo) {
@@ -255,10 +255,10 @@ class ProcessorGeneratorUtils {
 
 	def PojoAttribute getOptLock(PojoEntity pojo) {
 		val fea = pojo?.features?.map[feature].filter(PojoAttribute).findFirst[x|isOptLock(x)]
-		if (fea != null)
+		if (fea !== null)
 			return fea
 		val se = pojo?.getSuperType
-		if (se == null || !(se instanceof PojoEntity))
+		if (se === null || !(se instanceof PojoEntity))
 			return null
 		return (se as PojoEntity).getOptLock
 	}
@@ -267,8 +267,8 @@ class ProcessorGeneratorUtils {
         val Map<String, List<PojoAttribute>> result = new TreeMap()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveIndex].forEach[
 			val d = it as PojoDirectiveIndex
-			if (d.index != null) {
-				if (d.index.id != null)
+			if (d.index !== null) {
+				if (d.index.id !== null)
 					result.put(d.index.id, d.proplist.features.filter(PojoAttribute).toList)
 				else
 					result.put(""+d.index.number, d.proplist.features.filter(PojoAttribute).toList)
@@ -285,8 +285,8 @@ class ProcessorGeneratorUtils {
         val Map<String, List<PojoAttribute>> result = new TreeMap()
 		pojo?.directives.filter[x|x instanceof PojoDirectiveEnumIndex].forEach[
 			val d = it as PojoDirectiveEnumIndex
-			if (d.index != null) {
-				if (d.index.id != null)
+			if (d.index !== null) {
+				if (d.index.id !== null)
 					result.put(d.index.id, d.proplist.features.filter(PojoAttribute).toList)
 				else
 					result.put(""+d.index.number, d.proplist.features.filter(PojoAttribute).toList)
@@ -354,7 +354,7 @@ class ProcessorGeneratorUtils {
 //    }
 	
     def PojoEntity getParentReflectInheritance(PojoEntity pojo) {
-    	if (getDiscriminator(pojo) != null)
+    	if (getDiscriminator(pojo) !== null)
 			return null;
 		return getParent(pojo)
 	}
@@ -362,24 +362,24 @@ class ProcessorGeneratorUtils {
     def PojoEntity getParent(PojoEntity pojo) {
 
     	val superType = pojo?.superType
-    	if (superType == null)
+    	if (superType === null)
     		return null;
     	if (superType instanceof PojoEntity)
     		return superType as PojoEntity
     	val Package pkg = getContainerOfType(pojo, Package)
     	val name = superType.simpleName
     	val AnnotatedEntity _pojo =  CommonUtils.getContentsOfType(pkg, AnnotatedEntity).findFirst[p|p.entity.name == name]
-    	if (_pojo != null)
+    	if (_pojo !== null)
     		return _pojo.entity as PojoEntity
     	return null
     }
 
 	def List<PojoAttribute> allRequiredAttributes(PojoEntity pojo) {
 		val List<PojoAttribute> features = newArrayList()
-		if (pojo == null)
+		if (pojo === null)
 			return features
 		val se = pojo.parent
-		if (se != null)
+		if (se !== null)
 			features.addAll(se.allRequiredAttributes)
 		features.addAll(pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isRequired].toList)
 		return features
@@ -387,7 +387,7 @@ class ProcessorGeneratorUtils {
 
 	def List<PojoAttribute> requiredAttributes(PojoEntity pojo) {
 		val List<PojoAttribute> features = newArrayList()
-		if (pojo == null)
+		if (pojo === null)
 			return features
 		features.addAll(pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isRequired].toList)
 		return features
@@ -395,20 +395,20 @@ class ProcessorGeneratorUtils {
 
 	def List<PojoAttribute> parentRequiredAttributes(PojoEntity pojo) {
 		val List<PojoAttribute> features = newArrayList()
-		if (pojo == null)
+		if (pojo === null)
 			return features
 		val se = pojo.parent
-		if (se != null)
+		if (se !== null)
 			features.addAll(se.allRequiredAttributes)
 		return features
 	}
 
 	def List<PojoAttribute> allAttributes(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		val features = pojo.features.map[feature].filter(PojoAttribute).toList
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return features
 		features.addAll(se.allAttributes)
 		return features
@@ -416,57 +416,57 @@ class ProcessorGeneratorUtils {
 
 	def Map<String, PojoAttribute> allAttributesAsMap(PojoEntity pojo) {
 		val result = new TreeMap()
-		if (pojo == null)
+		if (pojo === null)
 			return result
 		pojo.features.map[feature].filter(PojoAttribute).forEach[
 			result.put(it.name, it)
 		]
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return result
 		result.putAll(se.allAttributesAsMap)
 		return result
 	}
 
 	def List<PojoAttribute> toInitAttributes(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isToInit].toList
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return features
 		features.addAll(se.toInitAttributes)
 		return features
 	}
 
 	def List<PojoAttribute> enumInitAttributes(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isEnumInit].toList
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return features
 		features.addAll(se.enumInitAttributes)
 		return features
 	}
 
 	def List<PojoAttribute> isDefAttributes(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isIsDef].toList
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return features
 		features.addAll(se.isDefAttributes)
 		return features
 	}
 
 	def List<PojoAttribute> enumDefAttributes(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		val features = pojo.features.map[feature].filter(PojoAttribute).filter[x|x.isEnumDef].toList
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return features
 		features.addAll(se.enumDefAttributes)
 		return features
@@ -474,44 +474,44 @@ class ProcessorGeneratorUtils {
 	
 	def boolean hasIsDef(PojoEntity pojo) {
 		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isIsDef || f.isEnumDef)
-		if (result != null)
+		if (result !== null)
 			return true
 		val se = pojo.superType
-		if (se == null || !(se instanceof PojoEntity))
+		if (se === null || !(se instanceof PojoEntity))
 			return false
 		return hasIsDef(se as PojoEntity)
 	}
 	
 	def boolean hasToInit(PojoEntity pojo) {
 		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isToInit || f.isEnumInit)
-		if (result != null)
+		if (result !== null)
 			return true
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return false
 		return hasIsDef(se)
 	}
 	
     def PojoAttribute getAttribute(PojoEntity pojo, String name) {
-		if (pojo == null || name == null)
+		if (pojo === null || name === null)
 			return null
 		val feature = pojo.features.map[feature].filter(PojoAttribute).findFirst[x| x.name == name]
-		if (feature != null)
+		if (feature !== null)
 			return feature
 		val se = pojo.parent
-		if (se == null)
+		if (se === null)
 			return null
 		return se.getAttribute(name)
     }
 	
 	def PojoAttribute getPrimaryKey(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return null;
 		val result = pojo.features.map[feature].filter(PojoAttribute).findFirst(f|f.isPrimaryKey)
-		if (result != null)
+		if (result !== null)
 			return result
 		val se = pojo.superType
-		if (se == null || !(se instanceof PojoEntity))
+		if (se === null || !(se instanceof PojoEntity))
 			return null
 		return getPrimaryKey(se as PojoEntity)
 	}
@@ -525,7 +525,7 @@ class ProcessorGeneratorUtils {
 
     def Integer getSernum(EnumEntity ^enum) {
 		val d = ^enum.directives?.findFirst[x|x instanceof PojoDirectiveSerializable] as PojoDirectiveSerializable
-		return if (d != null) d.sernum else null
+		return if (d !== null) d.sernum else null
     }
 
 	// DaoEntity
@@ -537,18 +537,18 @@ class ProcessorGeneratorUtils {
 	
     def Integer getSernum(DaoEntity dao) {
 		val d = dao.directives?.findFirst[x|x instanceof PojoDirectiveSerializable] as PojoDirectiveSerializable
-		return if (d != null) d.sernum else null
+		return if (d !== null) d.sernum else null
     }
 
     def DaoEntity getParent(DaoEntity pojo) {
     	val superType = pojo?.superType
-    	if (superType == null)
+    	if (superType === null)
     		return null;
     	if (superType instanceof DaoEntity)
     		return superType as DaoEntity    	
     	val Package pkg = getContainerOfType(pojo, Package)
     	val DaoEntity _dao =  pkg?.eAllOfType(DaoEntity)?.findFirst[d|d.name == superType.simpleName]
-    	if (_dao != null)
+    	if (_dao !== null)
     		return _dao
     	return null
     }
@@ -604,17 +604,17 @@ class ProcessorGeneratorUtils {
 
     def isCRUD(DaoEntity dao) {
 		val d = dao.directives?.findFirst[x|x instanceof DaoDirectiveCrud]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 
     def isQuery(DaoEntity dao) {
 		val d = dao.directives?.findFirst[x|x instanceof DaoDirectiveQuery]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 
     def isFunctionProcedure(DaoEntity dao) {
 		val d = dao.directives?.findFirst[x|x instanceof DaoFunProcDirective]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 
     def listFunctionsDirectives(DaoEntity dao) {
@@ -628,100 +628,100 @@ class ProcessorGeneratorUtils {
     def String getImplPackage(DaoEntity dao) {
     	val Package pkg = getContainerOfType(dao, Package)
 		val d = pkg?.directives?.findFirst[x|x instanceof PackageDirectiveImplementation] as PackageDirectiveImplementation
-		return if (d != null) d.implementation else null
+		return if (d !== null) d.implementation else null
     }
 
 	// Annotations
 	
     def isConflict(Annotation an) {
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveConflict]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> conflictAnnotations(AnnotatedEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isConflict].toList
 	}
 
 	def List<Annotation> conflictAnnotations(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isConflict].toList
 	}
 
     def isConstructor(Annotation an) {
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveConstructor]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> constructorAnnotations(AnnotatedEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isConstructor].toList
 	}
 
 	def List<Annotation> constructorAnnotations(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isConstructor].toList
 	}
 
 	def List<Annotation> constructorAnnotations(DaoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isConstructor].toList
 	}
 
     def isStatic(Annotation an) {
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveStatic]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> staticAnnotations(AnnotatedEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isStatic].toList
 	}
 
 	def List<Annotation> staticAnnotations(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isStatic].toList
 	}
 
     def isStandard(Annotation an) {
-    	if (an.directives == null || an.directives.isEmpty)
+    	if (an.directives === null || an.directives.isEmpty)
     		return true
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveStandard]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> standardAnnotations(AnnotatedEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isStandard].toList
 	}
 	
 	def List<Annotation> standardAnnotations(PojoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isStandard].toList
 	}
 	
 	def List<Annotation> standardAnnotations(DaoEntity pojo) {
-		if (pojo == null)
+		if (pojo === null)
 			return newArrayList()
 		return pojo.annotations.filter[x|x.isStandard].toList
 	}
 
     def isSetter(Annotation an) {
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveSetter]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> setterAnnotations(PojoAttribute prop) {
-		if (prop == null)
+		if (prop === null)
 			return newArrayList()
 		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
 		return aprop.annotations.filter[x|x.isSetter].toList
@@ -729,25 +729,25 @@ class ProcessorGeneratorUtils {
 
     def isGetter(Annotation an) {
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveGetter]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> getterAnnotations(PojoAttribute prop) {
-		if (prop == null)
+		if (prop === null)
 			return newArrayList()
 		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
 		return aprop.annotations.filter[x|x.isGetter].toList
 	}
 
     def isAttribute(Annotation an) {
-    	if (an.directives == null || an.directives.isEmpty)
+    	if (an.directives === null || an.directives.isEmpty)
     		return true
 		val d = an.directives?.findFirst[x|x instanceof AnnotationDirectiveAttribute]
-		return if(d != null) true else false
+		return if(d !== null) true else false
     }
 	
 	def List<Annotation> attributeAnnotations(PojoAttribute prop) {
-		if (prop == null)
+		if (prop === null)
 			return newArrayList()
 		val AnnotatedFeature aprop = EcoreUtil2.getContainerOfType(prop, AnnotatedFeature)
 		return aprop.annotations.filter[x|x.isAttribute].toList
@@ -1006,30 +1006,30 @@ class ProcessorGeneratorUtils {
 	// Misc
 	
     def String value(ValueType pv) {
-        if (pv == null)
+        if (pv === null)
             return null
         var String s = pv.getValue()
-        if (s != null) {
+        if (s !== null) {
             s = s.trim()
             if (!s.startsWith("\""))
                 s = "\"" + s
             if (!s.endsWith("\""))
                 s = s + "\""
             return s
-        } else if (pv.getId() != null)
+        } else if (pv.getId() !== null)
             return pv.getId()
         else
             return "" + pv.getNumber()
     }
 
     def String value0(ValueType pv) {
-        if (pv == null)
+        if (pv === null)
             return null
         var String s = pv.getValue()
-        if (s != null) {
+        if (s !== null) {
             s = s.trim()
             return s
-        } else if (pv.getId() != null)
+        } else if (pv.getId() !== null)
             return pv.getId()
         else
             return "" + pv.getNumber()
@@ -1037,7 +1037,7 @@ class ProcessorGeneratorUtils {
    	
    	def String getSimpleName(JvmParameterizedTypeReference ref) {
    		val StringBuilder name = new StringBuilder(ref.type.simpleName)
-   		if (ref.arguments != null && !ref.arguments.empty) {
+   		if (ref.arguments !== null && !ref.arguments.empty) {
    			name.append('<')
    			var boolean first = true
    			for (arg : ref.arguments) {
@@ -1053,7 +1053,7 @@ class ProcessorGeneratorUtils {
    	}
    	
    	def String hashForPrimitive(PojoAttribute f) {
-   		if (f.type == null || !(f.type.type instanceof JvmPrimitiveType))
+   		if (f.type === null || !(f.type.type instanceof JvmPrimitiveType))
    			return "0"
    		val name = (f.type.type as JvmPrimitiveType).simpleName
    		if (name == "boolean")

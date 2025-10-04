@@ -119,7 +119,7 @@ class EnumJvmModelInferrer extends AbstractModelInferrer {
  				static = true
 				body = '''
 					«simpleName» result = identifierMap.get(value);
-					if (result == null) {
+					if (result === null) {
 						throw new IllegalArgumentException("No «simpleName» for value: " + value);
 					}
 					return result;

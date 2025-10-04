@@ -32,7 +32,7 @@ class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
 	}
 	
 	override void serializeSafely(JvmTypeReference typeRef, String surrogateType, ITreeAppendable appendable) {
-		if(typeRef == null || typeRef.type == null) {
+		if(typeRef === null || typeRef.type === null) {
 			switch(typeRef) {
 				JvmSpecializedTypeReference: typeRef.equivalent.serializeSafely(surrogateType, appendable)
 				JvmUnknownTypeReference: appendable.append(typeRef.qualifiedName)
@@ -50,7 +50,7 @@ class ProcessorModelErrorSafeExtensions extends ErrorSafeExtensions {
 					serialize(typeRef, typeRef.eContainer, errorChild)
 				} catch(Exception ignoreMe) {}
 				appendable.closeErrorAppendable(errorChild)
-//				if(surrogateType != null) 
+//				if(surrogateType !== null) 
 //					appendable.append(surrogateType)
 			} else {
 				serialize(typeRef, typeRef.eContainer, appendable)

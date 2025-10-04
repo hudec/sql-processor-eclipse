@@ -62,11 +62,11 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 	}
 
 	def getClass(PojoDefinitionModel pojo) {
-		return if(pojo.getClassx() != null) pojo.getClassx() else pojo.getClass_()
+		return if(pojo.getClassx() !== null) pojo.getClassx() else pojo.getClass_()
 	}
 
 	def isPrimitive(Class<?> clazz) {
-		if (clazz == null)
+		if (clazz === null)
 			return true
 		if (clazz == typeof(String))
 			return true
@@ -128,8 +128,8 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		String prefix, String suffix) {
 		columns.forEach [ column |
 			val proposal = getValueConverter().toString(column, "IDENT")
-			var completion = if(prefix != null) prefix + '.' + proposal else proposal
-			completion = if(suffix != null) completion + suffix else completion
+			var completion = if(prefix !== null) prefix + '.' + proposal else proposal
+			completion = if(suffix !== null) completion + suffix else completion
 			acceptor.accept(createCompletionProposal(completion, context))
 		]
 	}
@@ -241,7 +241,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.dbTable != null) {
+		if (prop.dbTable !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, null)
 		}
 	}
@@ -253,7 +253,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.dbTable != null) {
+		if (prop.dbTable !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, null)
 		}
 	}
@@ -353,11 +353,11 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
-		} else if (prop.getDbProcedure() != null) {
+		} else if (prop.getDbProcedure() !== null) {
 			acceptColumns(dbResolver.getProcColumns(model, prop.dbProcedure), context, acceptor, null, "->")
-		} else if (prop.getDbFunction() != null) {
+		} else if (prop.getDbFunction() !== null) {
 			acceptColumns(dbResolver.getFunColumns(model, prop.dbFunction), context, acceptor, null, "->")
 		}
 	}
@@ -369,7 +369,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
 			acceptColumns(dbResolver.getCheckColumns(model, prop.dbTable), context, acceptor, null, "->")
 		}
@@ -383,12 +383,12 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		}
 		val imp = model as ImportAssignement
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null && imp.getDbColumn() != null) {
+		if (prop.getDbTable() !== null && imp.getDbColumn() !== null) {
 			if ("create-many-to-one" == prop.name) {
 				acceptTables(model, context, acceptor, "")
 			} else {
 				dbResolver.getDbImports(model, prop.getDbTable()).forEach [ dbImport |
-					if (dbImport.getFkColumn() != null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
+					if (dbImport.getFkColumn() !== null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
 						val proposal = getValueConverter().toString(dbImport.getPkTable(), "IDENT")
 						acceptor.accept(createCompletionProposal(proposal, context))
 					}
@@ -405,13 +405,13 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		}
 		val imp = model as ImportAssignement
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null && imp.getDbColumn() != null && imp.getPkTable() != null) {
+		if (prop.getDbTable() !== null && imp.getDbColumn() !== null && imp.getPkTable() !== null) {
 			if ("create-many-to-one" == prop.name) {
 				acceptColumns(dbResolver.getColumns(model, imp.getPkTable()), context, acceptor, null, null)
 			} else {
 				dbResolver.getDbImports(model, prop.getDbTable()).forEach [ dbImport |
-					if (dbImport.getFkColumn() != null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
-						if (dbImport.getPkTable() != null && dbImport.getPkTable().equals(imp.getPkTable())) {
+					if (dbImport.getFkColumn() !== null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
+						if (dbImport.getPkTable() !== null && dbImport.getPkTable().equals(imp.getPkTable())) {
 							val proposal = getValueConverter().toString(dbImport.getPkColumn(), "IDENT")
 							acceptor.accept(createCompletionProposal(proposal, context))
 						}
@@ -428,7 +428,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
 		}
 	}
@@ -441,12 +441,12 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		}
 		val exp = model as ExportAssignement
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null && exp.getDbColumn() != null) {
+		if (prop.getDbTable() !== null && exp.getDbColumn() !== null) {
 			if ("create-one-to-many" == prop.name) {
 				acceptTables(model, context, acceptor, "")
 			} else {
 				dbResolver.getDbExports(model, prop.getDbTable()).forEach [ dbExport |
-					if (dbExport.getPkColumn() != null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
+					if (dbExport.getPkColumn() !== null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
 						val proposal = getValueConverter().toString(dbExport.getFkTable(), "IDENT")
 						acceptor.accept(createCompletionProposal(proposal, context))
 					}
@@ -463,13 +463,13 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		}
 		val exp = model as ExportAssignement
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null && exp.getDbColumn() != null && exp.getFkTable() != null) {
+		if (prop.getDbTable() !== null && exp.getDbColumn() !== null && exp.getFkTable() !== null) {
 			if ("create-one-to-many" == prop.name) {
 				acceptColumns(dbResolver.getColumns(model, exp.getFkTable()), context, acceptor, null, null)
 			} else {
 				dbResolver.getDbExports(model, prop.getDbTable()).forEach [ dbExport |
-					if (dbExport.getPkColumn() != null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
-						if (dbExport.getFkTable() != null && dbExport.getFkTable().equals(exp.getFkTable())) {
+					if (dbExport.getPkColumn() !== null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
+						if (dbExport.getFkTable() !== null && dbExport.getFkTable().equals(exp.getFkTable())) {
 							val proposal = getValueConverter().toString(dbExport.getFkColumn(), "IDENT")
 							acceptor.accept(createCompletionProposal(proposal, context))
 						}
@@ -486,7 +486,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
 		}
 	}
@@ -498,7 +498,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
 		}
 	}
@@ -511,9 +511,9 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		}
 		val many2 = model as ManyToManyAssignement
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null && many2.getPkColumn() != null) {
+		if (prop.getDbTable() !== null && many2.getPkColumn() !== null) {
 			dbResolver.getDbImports(model, prop.getDbTable()).forEach [ dbImport |
-				if (dbImport.getPkColumn() != null && dbImport.getPkColumn().equals(many2.getPkColumn())) {
+				if (dbImport.getPkColumn() !== null && dbImport.getPkColumn().equals(many2.getPkColumn())) {
 					val proposal = getValueConverter().toString(dbImport.getPkTable(), "IDENT")
 					acceptor.accept(createCompletionProposal(proposal, context))
 				}
@@ -528,7 +528,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = model.getContainerOfType(typeof(PojogenProperty))
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null)
 		}
 	}
@@ -554,11 +554,11 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		val prop = if (model instanceof Property) (model as Property).pojogen else model as PojogenProperty
-		if (prop.getDbTable() != null) {
+		if (prop.getDbTable() !== null) {
 			acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
-		} else if (prop.getDbProcedure() != null) {
+		} else if (prop.getDbProcedure() !== null) {
 			acceptColumns(dbResolver.getProcColumns(model, prop.dbProcedure), context, acceptor, null, "->")
-		} else if (prop.getDbFunction() != null) {
+		} else if (prop.getDbFunction() !== null) {
 			acceptColumns(dbResolver.getFunColumns(model, prop.dbFunction), context, acceptor, null, "->")
 		}
 	}
@@ -572,14 +572,14 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 		val prop = model as ShowColumnTypeAssignement
 		val prop2 = model.getContainerOfType(typeof(PojogenProperty))
 		var type = null as String
-		if (prop2.getDbTable() != null) {
+		if (prop2.getDbTable() !== null) {
 			type = dbResolver.getType(model, prop2.getDbTable(), prop.getDbColumn())
-		} else if (prop2.getDbProcedure() != null) {
+		} else if (prop2.getDbProcedure() !== null) {
 			type = dbResolver.getType(model, prop2.getDbProcedure(), prop.getDbColumn())
-		} else if (prop2.getDbFunction() != null) {
+		} else if (prop2.getDbFunction() !== null) {
 			type = dbResolver.getType(model, prop2.getDbFunction(), prop.getDbColumn())
 		}
-		if (type != null) {
+		if (type !== null) {
 			val proposal = getValueConverter().toString("\""+type+"\"", "PropertyValue")
 			acceptor.accept(createCompletionProposal(proposal, context))
 		}
@@ -717,7 +717,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		var String dbMetaInfo = dbResolver.getDbMetaInfo(model)
-		if (dbMetaInfo != null)
+		if (dbMetaInfo !== null)
 			dbMetaInfo = '"'+dbMetaInfo+'"'
 		val proposal = getValueConverter().toString(dbMetaInfo, "PropertyValue")
 		acceptor.accept(createCompletionProposal(proposal, context))
@@ -730,7 +730,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 			return
 		}
 		var String dbDriverInfo = dbResolver.getDbDriverInfo(model)
-		if (dbDriverInfo != null)
+		if (dbDriverInfo !== null)
 			dbDriverInfo = '"'+dbDriverInfo+'"'
 		val proposal = getValueConverter().toString(dbDriverInfo, "PropertyValue")
 		acceptor.accept(createCompletionProposal(proposal, context))
@@ -833,7 +833,7 @@ class ProcessorModelProposalProvider extends AbstractProcessorModelProposalProvi
 //	override completeDirectiveProperties_Features(EObject model, Assignment assignment, ContentAssistContext context,
 //		ICompletionProposalAcceptor acceptor) {
 //		println(model)
-//		if (!(model instanceof DirectiveProperties) || (model as DirectiveProperties).features == null ||
+//		if (!(model instanceof DirectiveProperties) || (model as DirectiveProperties).features === null ||
 //			(model as DirectiveProperties).features.empty) {
 //			super.completeDirectiveProperties_Features(model, assignment, context, acceptor)
 //			return
