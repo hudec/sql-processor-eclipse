@@ -6,10 +6,10 @@ Bundle-Version: 3.2.0.qualifier
 Bundle-SymbolicName: org.sqlproc.meta.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.41.0",
  org.sqlproc.meta,
- org.eclipse.xtext.ide,
- org.eclipse.xtext.xbase.ide
+ org.eclipse.xtext.ide;bundle-version="2.41.0",
+  org.eclipse.xtext.xbase.ide;bundle-version="2.41.0"
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.sqlproc.meta.ide.contentassist.antlr,
  org.sqlproc.meta.ide.contentassist.antlr.internal
