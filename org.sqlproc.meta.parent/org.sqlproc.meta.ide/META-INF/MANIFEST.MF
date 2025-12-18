@@ -5,8 +5,7 @@ Bundle-Vendor: Sizar
 Bundle-Version: 3.2.0.qualifier
 Bundle-SymbolicName: org.sqlproc.meta.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.antlr.runtime",
- org.eclipse.xtext.xbase.lib,
+Require-Bundle: org.eclipse.xtext.xbase.lib,
  org.sqlproc.meta,
  org.eclipse.xtext.ide,
   org.eclipse.xtext.xbase.ide
