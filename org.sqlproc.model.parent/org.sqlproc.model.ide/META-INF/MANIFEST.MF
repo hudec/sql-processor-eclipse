@@ -5,11 +5,10 @@ Bundle-Vendor: Sizar
 Bundle-Version: 3.2.0.qualifier
 Bundle-SymbolicName: org.sqlproc.model.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.antlr.runtime;bundle-version="[3.2.0,3.2.1)",
- org.eclipse.xtext.xbase.lib;bundle-version="2.41.0",
+Require-Bundle: org.eclipse.xtext.xbase.lib,
  org.sqlproc.model,
- org.eclipse.xtext.ide;bundle-version="2.41.0",
-  org.eclipse.xtext.xbase.ide;bundle-version="2.41.0"
+ org.eclipse.xtext.ide,
+  org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-21
 Export-Package: org.sqlproc.model.ide.contentassist.antlr,
  org.sqlproc.model.ide.contentassist.antlr.internal
