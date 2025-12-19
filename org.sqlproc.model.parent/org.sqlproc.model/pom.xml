@@ -35,6 +35,7 @@
 					<classpathScope>compile</classpathScope>
 					<includePluginDependencies>true</includePluginDependencies>
 					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
+					<fork>true</fork>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -58,9 +59,9 @@
 						<version>${xtext-version}</version>
 					</dependency>
 					<dependency>
-						<groupId>org.eclipse.xtext</groupId>
-						<artifactId>xtext-antlr-generator</artifactId>
-						<version>${xtext-version}</version>
+  						<groupId>org.eclipse.xtext</groupId>
+  						<artifactId>org.eclipse.xtext.xtext.generator.dependencies</artifactId>
+  						<version>${xtext-version}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -109,6 +110,21 @@
 							<directory>${basedir}/model/generated/</directory>
 						</fileset>
 					</filesets>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-jar-plugin</artifactId>
+				<version>3.3.0</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib/</classpathPrefix>
+							<mainClass>org.sqlproc.meta.generator.Main</mainClass>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 
