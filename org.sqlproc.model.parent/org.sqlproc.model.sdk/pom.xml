@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>org.sqlproc.model</groupId>
 		<artifactId>org.sqlproc.model.parent</artifactId>
-		<version>3.2.0-SNAPSHOT</version>
+		<version>3.3.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>org.sqlproc.model.sdk</artifactId>
   <packaging>eclipse-feature</packaging>

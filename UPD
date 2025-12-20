@@ -1,0 +1,5 @@
+find . -name pom.xml -exec sed -i 's/3.2.0-SNAPSHOT/3.3.0-SNAPSHOT/' {} \;
+find . -name MANIFEST.MF -exec sed -i 's/3.2.0.qualifier/3.3.0.qualifier/' {} \;
+find . -name feature.xml -exec sed -i 's/3.2.0.qualifier/3.3.0.qualifier/' {} \;
+grep -R 3.2.0-SNAPSHOT .
+grep -R 3.2.0.qualifier .
