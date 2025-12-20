@@ -114,7 +114,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val partialName = new StringBuilder("")
         column?.columns?.findFirst[
             append(partialName, col.name)
-            context.previousModel !== null && it === context.previousModel
+            context.previousModel != null && it == context.previousModel
         ]
         val prefix = append(partialName, context.prefix).toString()
         if (!completeUsage(model, assignment, context, acceptor, COLUMN_USAGE, COLUMN_USAGE_EXTENDED, prefix, true))
@@ -143,9 +143,9 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val artifacts = model.getContainerOfType(typeof(Artifacts))
 
         val pojoName = Utils.getTokenFromModifier(metaStatement, usageInFilter)
-        val PojoDefinition pojoDefinition = if (pojoName !== null) modelProperty.getModelPojos(artifacts).get(pojoName)
+        val PojoDefinition pojoDefinition = if (pojoName != null) modelProperty.getModelPojos(artifacts).get(pojoName)
 
-        if (pojoDefinition === null) {
+        if (pojoDefinition == null) {
             val proposal = getValueConverter().toString("Error: I can't load pojo for " + model, "IDENT")
             acceptor.accept(createCompletionProposal(proposal, context))
             return true
@@ -166,10 +166,10 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 		else {
 		    val URI uri = model.eResource?.URI
 	        val clazz = getClassName(pojoDefinition.qualifiedName, prefix, uri)
-	        if (clazz === null)
+	        if (clazz == null)
 	        	return false
 	        val descriptors = pojoResolver.getPropertyDescriptors(clazz, uri)
-	        if (descriptors === null)
+	        if (descriptors == null)
 	        	return false
 	        descriptors.filter["class" != name].forEach[descriptor |
 				val proposal = getValueConverter().toString(descriptor.getName(), "IDENT")
@@ -184,7 +184,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val pos = _prefix.lastIndexOf('.')
 		if (pos > 0) {
 	        val Iterable<JvmFeature> features = type.findAllFeaturesByName(_prefix.substring(0, pos))
-        	if (features !== null && !features.empty && (features.head instanceof JvmField)) {
+        	if (features != null && !features.empty && (features.head instanceof JvmField)) {
 	        	var JvmField field = features.head as JvmField
         		if (field.type instanceof JvmParameterizedTypeReference) {
 	        		val JvmType jvmType = (field.type as JvmParameterizedTypeReference).type
@@ -208,20 +208,20 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val artifacts = model.getContainerOfType(typeof(Artifacts))
 
         val pojoName = Utils.getTokenFromModifier(mappingRule, MAPPING_USAGE)
-        val pojoDefinition = if (pojoName !== null) modelProperty.getModelPojos(artifacts).get(pojoName)
+        val pojoDefinition = if (pojoName != null) modelProperty.getModelPojos(artifacts).get(pojoName)
 
-        if (pojoDefinition === null) {
+        if (pojoDefinition == null) {
             val proposal = getValueConverter().toString("Error: I can't load pojo for " + model, "IDENT")
             acceptor.accept(createCompletionProposal(proposal, context))
         }
 
         val partialName = new StringBuilder("")
         var cutPrefix = false
-        if (model instanceof MappingColumn && mappingColumn !== null) {
+        if (model instanceof MappingColumn && mappingColumn != null) {
             cutPrefix = true
             mappingColumn.items.findFirst[
             	append(partialName, attr.name)
-	            context.previousModel !== null && it === context.previousModel
+	            context.previousModel != null && it == context.previousModel
             ]
         }
         var prefix = append(partialName, context.prefix).toString()
@@ -241,10 +241,10 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 		else {
 	        val URI uri = model.eResource?.URI
             val clazz = getClassName(pojoDefinition.qualifiedName, prefix, uri)
-            if (clazz === null)
+            if (clazz == null)
                 return
             val descriptors = pojoResolver.getPropertyDescriptors(clazz, uri)
-            if (descriptors === null) {
+            if (descriptors == null) {
                 super.completeMappingColumnName_Name(model, assignment, context, acceptor)
             } else {
 	            descriptors.filter["class" != name].forEach[descriptor |
@@ -270,7 +270,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
     }
 
     def isPrimitive(Class<?> clazz) {
-        if (clazz === null)
+        if (clazz == null)
             return true
         if (clazz == typeof(String))
             return true
@@ -294,7 +294,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
     }
 
     def String getClassName(String baseClass, String property, URI uri) {
-        if (baseClass === null || property === null)
+        if (baseClass == null || property == null)
             return baseClass
         var pos1 = property.indexOf('.')
         if (pos1 == -1)
@@ -313,18 +313,18 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             checkProperty = checkProperty.substring(0, pos1)
         }
         var descriptors = pojoResolver.getPropertyDescriptors(baseClass, uri)
-        if (descriptors === null)
+        if (descriptors == null)
             return null
         val _checkProperty = checkProperty
         var innerDesriptor = descriptors.findFirst[descriptor |
         	descriptor.name == _checkProperty
         ]
-        if (innerDesriptor === null)
+        if (innerDesriptor == null)
             return null
         var innerClass = innerDesriptor.getPropertyType()
         if (innerClass.isArray()) {
             var type = innerDesriptor.getReadMethod().getGenericReturnType() as ParameterizedType
-            if (type.getActualTypeArguments() === null || type.getActualTypeArguments().length == 0)
+            if (type.getActualTypeArguments() == null || type.getActualTypeArguments().length == 0)
                 return null
             innerClass = type.getActualTypeArguments().head as Class<?>
             if (isPrimitive(innerClass))
@@ -332,7 +332,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return getClassName(innerClass.getName(), innerProperty, uri)
         } else if (typeof(Collection).isAssignableFrom(innerClass)) {
             var type = innerDesriptor.getReadMethod().getGenericReturnType() as ParameterizedType
-            if (type.getActualTypeArguments() === null || type.getActualTypeArguments().length == 0)
+            if (type.getActualTypeArguments() == null || type.getActualTypeArguments().length == 0)
                 return null
             innerClass = type.getActualTypeArguments().head as Class<?>
             if (isPrimitive(innerClass))
@@ -383,8 +383,8 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 	def acceptColumns(List<String> columns, ContentAssistContext context, ICompletionProposalAcceptor acceptor, String prefix, String suffix) {
         columns.forEach[column |
         	val proposal = getValueConverter().toString(column, "IDENT")
-            var completion = if (prefix !== null) prefix + '.' + proposal else proposal
-            completion = if (suffix !== null) completion + suffix else completion
+            var completion = if (prefix != null) prefix + '.' + proposal else proposal
+            completion = if (suffix != null) completion + suffix else completion
             acceptor.accept(createCompletionProposal(completion, context))
         ]
 	}
@@ -427,8 +427,8 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val metaStatement = model.getContainerOfType(typeof(MetaStatement))
         val artifacts = model.getContainerOfType(typeof(Artifacts))
         val value = Utils.getTokenFromModifier(metaStatement, TABLE_USAGE, prefix)
-        val tableDefinition = if (value !== null) modelProperty.getModelTables(artifacts).get(value)
-        if (tableDefinition !== null && tableDefinition.table !== null) {
+        val tableDefinition = if (value != null) modelProperty.getModelTables(artifacts).get(value)
+        if (tableDefinition != null && tableDefinition.table != null) {
         	acceptColumns(dbResolver.getColumns(model, tableDefinition.table), context, acceptor, prefix, null)
         }
     }
@@ -443,7 +443,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val artifacts = model.getContainerOfType(typeof(Artifacts))
         Utils.getTokensFromModifier(metaStatement, TABLE_USAGE).forEach[value |
             val tableDefinition = modelProperty.getModelTables(artifacts).get(value)
-            if (tableDefinition !== null) {
+            if (tableDefinition != null) {
                 val proposal = getValueConverter().toString(tableDefinition.getTable(), "IDENT")
                 acceptor.accept(createCompletionProposal(proposal, context))
             }
@@ -530,7 +530,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.dbTable !== null) {
+        if (prop.dbTable != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, null)
         }
     }
@@ -542,7 +542,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.dbTable !== null) {
+        if (prop.dbTable != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, null)
         }
     }
@@ -642,11 +642,11 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
-        } else if (prop.getDbProcedure() !== null) {
+        } else if (prop.getDbProcedure() != null) {
         	acceptColumns(dbResolver.getProcColumns(model, prop.dbProcedure), context, acceptor, null, "->")
-        } else if (prop.getDbFunction() !== null) {
+        } else if (prop.getDbFunction() != null) {
         	acceptColumns(dbResolver.getFunColumns(model, prop.dbFunction), context, acceptor, null, "->")
         }
     }
@@ -658,7 +658,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
         	acceptColumns(dbResolver.getCheckColumns(model, prop.dbTable), context, acceptor, null, "->")
         }
@@ -672,12 +672,12 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         }
         val imp = model as ImportAssignement
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null && imp.getDbColumn() !== null) {
+        if (prop.getDbTable() != null && imp.getDbColumn() != null) {
             if ("create-many-to-one" == prop.name) {
             	acceptTables(model, context, acceptor, "")
             } else {
                 dbResolver.getDbImports(model, prop.getDbTable()).forEach[dbImport |
-                    if (dbImport.getFkColumn() !== null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
+                    if (dbImport.getFkColumn() != null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
                         val proposal = getValueConverter().toString(dbImport.getPkTable(), "IDENT")
                         acceptor.accept(createCompletionProposal(proposal, context))
                     }
@@ -694,13 +694,13 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         }
         val imp = model as ImportAssignement
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null && imp.getDbColumn() !== null && imp.getPkTable() !== null) {
+        if (prop.getDbTable() != null && imp.getDbColumn() != null && imp.getPkTable() != null) {
             if ("create-many-to-one" == prop.name) {
             	acceptColumns(dbResolver.getColumns(model, imp.getPkTable()), context, acceptor, null, null)
             } else {
                 dbResolver.getDbImports(model, prop.getDbTable()).forEach[dbImport |
-                    if (dbImport.getFkColumn() !== null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
-                        if (dbImport.getPkTable() !== null && dbImport.getPkTable().equals(imp.getPkTable())) {
+                    if (dbImport.getFkColumn() != null && dbImport.getFkColumn().equals(imp.getDbColumn())) {
+                        if (dbImport.getPkTable() != null && dbImport.getPkTable().equals(imp.getPkTable())) {
                             val proposal = getValueConverter().toString(dbImport.getPkColumn(), "IDENT")
                             acceptor.accept(createCompletionProposal(proposal, context))
                         }
@@ -717,7 +717,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
         }
     }
@@ -730,12 +730,12 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         }
         val exp = model as ExportAssignement
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null && exp.getDbColumn() !== null) {
+        if (prop.getDbTable() != null && exp.getDbColumn() != null) {
             if ("create-one-to-many" == prop.name) {
             	acceptTables(model, context, acceptor, "")
             } else {
                 dbResolver.getDbExports(model, prop.getDbTable()).forEach[dbExport |
-                    if (dbExport.getPkColumn() !== null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
+                    if (dbExport.getPkColumn() != null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
                         val proposal = getValueConverter().toString(dbExport.getFkTable(), "IDENT")
                         acceptor.accept(createCompletionProposal(proposal, context))
                     }
@@ -752,13 +752,13 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         }
         val exp = model as ExportAssignement
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null && exp.getDbColumn() !== null && exp.getFkTable() !== null) {
+        if (prop.getDbTable() != null && exp.getDbColumn() != null && exp.getFkTable() != null) {
             if ("create-one-to-many" == prop.name) {
             	acceptColumns(dbResolver.getColumns(model, exp.getFkTable()), context, acceptor, null, null)
             } else {
                 dbResolver.getDbExports(model, prop.getDbTable()).forEach[dbExport |
-                    if (dbExport.getPkColumn() !== null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
-                        if (dbExport.getFkTable() !== null && dbExport.getFkTable().equals(exp.getFkTable())) {
+                    if (dbExport.getPkColumn() != null && dbExport.getPkColumn().equals(exp.getDbColumn())) {
+                        if (dbExport.getFkTable() != null && dbExport.getFkTable().equals(exp.getFkTable())) {
                             val proposal = getValueConverter().toString(dbExport.getFkColumn(), "IDENT")
                             acceptor.accept(createCompletionProposal(proposal, context))
                         }
@@ -775,7 +775,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
         }
     }
@@ -787,7 +787,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, "->")
         }
     }
@@ -800,9 +800,9 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         }
         val many2 = model as ManyToManyAssignement
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null && many2.getPkColumn() !== null) {
+        if (prop.getDbTable() != null && many2.getPkColumn() != null) {
             dbResolver.getDbImports(model, prop.getDbTable()).forEach[dbImport |
-                if (dbImport.getPkColumn() !== null && dbImport.getPkColumn().equals(many2.getPkColumn())) {
+                if (dbImport.getPkColumn() != null && dbImport.getPkColumn().equals(many2.getPkColumn())) {
                     val proposal = getValueConverter().toString(dbImport.getPkTable(), "IDENT")
                     acceptor.accept(createCompletionProposal(proposal, context))
                 }
@@ -817,7 +817,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model.getContainerOfType(typeof(PojogenProperty))
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.getDbTable()), context, acceptor, null, null)
         }
     }
@@ -844,11 +844,11 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
             return
         }
         val prop = model as PojogenProperty
-        if (prop.getDbTable() !== null) {
+        if (prop.getDbTable() != null) {
         	acceptColumns(dbResolver.getColumns(model, prop.dbTable), context, acceptor, null, "->")
-        } else if (prop.getDbProcedure() !== null) {
+        } else if (prop.getDbProcedure() != null) {
         	acceptColumns(dbResolver.getProcColumns(model, prop.dbProcedure), context, acceptor, null, "->")
-        } else if (prop.getDbFunction() !== null) {
+        } else if (prop.getDbFunction() != null) {
         	acceptColumns(dbResolver.getFunColumns(model, prop.dbFunction), context, acceptor, null, "->")
         }
     }
@@ -862,14 +862,14 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val prop = model as ShowColumnTypeAssignement
         val prop2 = model.getContainerOfType(typeof(PojogenProperty))
         var type = null as String
-        if (prop2.getDbTable() !== null) {
+        if (prop2.getDbTable() != null) {
             type = dbResolver.getType(model, prop2.getDbTable(), prop.getDbColumn())
-        } else if (prop2.getDbProcedure() !== null) {
+        } else if (prop2.getDbProcedure() != null) {
             type = dbResolver.getType(model, prop2.getDbProcedure(), prop.getDbColumn())
-        } else if (prop2.getDbFunction() !== null) {
+        } else if (prop2.getDbFunction() != null) {
             type = dbResolver.getType(model, prop2.getDbFunction(), prop.getDbColumn())
         }
-        if (type !== null) {
+        if (type != null) {
             val proposal = getValueConverter().toString(type, "PropertyValue")
             acceptor.accept(createCompletionProposal(proposal, context))
         }
@@ -1037,7 +1037,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 			return
 		}
 		var String dbMetaInfo = dbResolver.getDbMetaInfo(model)
-		if (dbMetaInfo !== null)
+		if (dbMetaInfo != null)
 			dbMetaInfo = '"'+dbMetaInfo+'"'
 		val proposal = getValueConverter().toString(dbMetaInfo, "PropertyValue")
 		acceptor.accept(createCompletionProposal(proposal, context))
@@ -1050,7 +1050,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 			return
 		}
 		var String dbDriverInfo = dbResolver.getDbDriverInfo(model)
-		if (dbDriverInfo !== null)
+		if (dbDriverInfo != null)
 			dbDriverInfo = '"'+dbDriverInfo+'"'
 		val proposal = getValueConverter().toString(dbDriverInfo, "PropertyValue")
 		acceptor.accept(createCompletionProposal(proposal, context))
@@ -1153,11 +1153,11 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
         val artifacts = model.getContainerOfType(typeof(Artifacts))
 
         var pojoName = Utils.getTokenFromModifier(metaStatement, INDEX_USAGE)
-        if (pojoName === null)
+        if (pojoName == null)
         	pojoName =  Utils.getTokenFromModifier(metaStatement, IDENTIFIER_USAGE)
-        val pojoDefinition = if (pojoName !== null) modelProperty.getModelPojos(artifacts).get(pojoName)
+        val pojoDefinition = if (pojoName != null) modelProperty.getModelPojos(artifacts).get(pojoName)
 
-        if (pojoDefinition === null) {
+        if (pojoDefinition == null) {
             val proposal = getValueConverter().toString("Error: I can't load pojo for " + model, "IDENT")
             acceptor.accept(createCompletionProposal(proposal, context))
             return
@@ -1175,7 +1175,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 	        ]
 	        if (!founder.found) {
 	        	val Iterable<JvmDeclaredType> nestedTypes = type.findAllNestedTypesByName("Order");
-	        	if (nestedTypes !== null && !nestedTypes.empty && (nestedTypes.head instanceof JvmEnumerationType)) {
+	        	if (nestedTypes != null && !nestedTypes.empty && (nestedTypes.head instanceof JvmEnumerationType)) {
 			        val JvmEnumerationType enumType = nestedTypes.head as JvmEnumerationType
 		        	enumType.allFeatures.filter[it instanceof JvmEnumerationLiteral].forEach[feature |
 						val proposal = getValueConverter().toString(feature.simpleName, "IDENT")
@@ -1189,7 +1189,7 @@ class ProcessorMetaProposalProvider extends AbstractProcessorMetaProposalProvide
 	        val URI uri = model.eResource?.URI
             val clazz = pojoDefinition.qualifiedName
             val orders = pojoResolver.getOrders(clazz, uri)
-            if (orders !== null) {
+            if (orders != null) {
             	orders.values.forEach[order |
 					val proposal = getValueConverter().toString(order, "IDENT")
 					acceptor.accept(createCompletionProposal(proposal, context))

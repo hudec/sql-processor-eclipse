@@ -28,7 +28,7 @@ class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProvider {
 
         if (reference == ProcessorModelPackage.Literals.DIRECTIVE_PROPERTIES__FEATURES) {
             val PojoEntity pojo = EcoreUtil2.getContainerOfType(context, PojoEntity)
-            //if (pojo.getSuperType() !== null) {
+            //if (pojo.getSuperType() != null) {
                 // TODO - problem, ze Pojo rodice nemusi byt inicializovano
                 //val IScope scope = Scopes.scopeFor(allAttributes(pojo))
                 val IScope scope = Scopes.scopeFor(pojo.features.map[feature])
@@ -37,7 +37,7 @@ class ProcessorModelScopeProvider extends AbstractProcessorModelScopeProvider {
         }
         else if (reference == ProcessorModelPackage.Literals.DAO_DIRECTIVE_DISCRIMINATOR__ANCESTOR) {
             val DaoEntity dao = EcoreUtil2.getContainerOfType(context, DaoEntity)
-            if (dao !== null) {
+            if (dao != null) {
             	val PojoEntity pojo = dao.getPojo
                 val IScope scope = Scopes.scopeFor(allAttributes(pojo))
                 return scope

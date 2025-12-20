@@ -68,14 +68,14 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 
    	def void inferDaoIfx(DaoEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase) {
    		val pojo = entity.pojo
-   		if (pojo === null && !entity.isFunctionProcedure) {
+   		if (pojo == null && !entity.isFunctionProcedure) {
    			println("Missing POJO for "+entity)
    			return
    		}
 
    		val entityType = entity.toInterface(entity.fullyQualifiedName.toString) []
    		val pojoType = pojo?.toClass(pojo?.fullyQualifiedName)
-   		if (pojoType === null && !entity.isFunctionProcedure) {
+   		if (pojoType == null && !entity.isFunctionProcedure) {
    			println("Missing POJOTYPE for "+entity)
    			return
    		}
@@ -97,12 +97,12 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    				}
    			}
 //   			val ext = entity.getExtends
-//   			if (ext !== null)
+//   			if (ext != null)
 //   				superTypes += ext.extends.cloneWithProxies
-//   			if (entity.superType !== null)
+//   			if (entity.superType != null)
 //   				superTypes += entity.superType.cloneWithProxies
    				
-   			if (sernum !== null) {
+   			if (sernum != null) {
    				superTypes += typeRef(SERIALIZABLE)
    			}
 
@@ -110,7 +110,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    			
    			for (dir : entity.directives) {
    				if (dir instanceof DaoDirectiveCrud) {
-   					if (moreResultClasses === null)
+   					if (moreResultClasses == null)
    						moreResultClasses = entity.getMoreResultClasses
    					inferInsertIfx(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members)
    					inferGetIfx(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
@@ -118,11 +118,11 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					inferDeleteIfx(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members)
    				}
    				else if (dir instanceof DaoDirectiveQuery) {
-   					if (moreResultClasses === null)
+   					if (moreResultClasses == null)
    						moreResultClasses = entity.getMoreResultClasses
    					inferListIfx(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
    					inferQueryIfx(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
-   					if (primaryKey !== null && pkDir.fromTo !== null && !pojo.toInitAttributes.isEmpty)
+   					if (primaryKey != null && pkDir.fromTo != null && !pojo.toInitAttributes.isEmpty)
    						inferListFromToIfx(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
    					inferCountIfx(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
    				}
@@ -130,7 +130,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					inferFunctionProcedureIfx(entity, (dir as DaoFunProcDirective).type, (dir as DaoFunProcDirective).paramlist, entityType, simpleName, members)
    				}
    			}
-   			if (moreResultClasses !== null && !moreResultClasses.empty) {
+   			if (moreResultClasses != null && !moreResultClasses.empty) {
    				inferMoreResultClassesIfx(entity, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
 			}
    		]
@@ -162,15 +162,15 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 	 */
    	def void inferDao(DaoEntity entity, IJvmDeclaredTypeAcceptor acceptor, boolean isPreIndexingPhase, String implPackage) {
    		val pojo = entity.pojo
-   		if (pojo === null && !entity.isFunctionProcedure) {
+   		if (pojo == null && !entity.isFunctionProcedure) {
    			println("Missing POJO for "+entity)
    			return
    		}
 
    		val entityType = entity.toClass(entity.daoFullyQualifiedName(implPackage))
-   		val entityTypeIfx = if (implPackage !== null ) entity.toInterface(entity.fullyQualifiedName.toString) []
+   		val entityTypeIfx = if (implPackage != null ) entity.toInterface(entity.fullyQualifiedName.toString) []
    		val pojoType = pojo?.toClass(pojo?.fullyQualifiedName)
-   		if (pojoType === null && !entity.isFunctionProcedure) {
+   		if (pojoType == null && !entity.isFunctionProcedure) {
    			println("Missing POJOTYPE for "+entity)
    			return
    		}
@@ -190,7 +190,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					addAnnotation(an)
    				}
    			}
-   			if (entityTypeIfx !== null)
+   			if (entityTypeIfx != null)
    				superTypes += typeRef(entityTypeIfx)
    			for (impl : entity.getImplements) {
    				if (impl.isGenerics) {
@@ -203,12 +203,12 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    				}
    			}
    			val ext = entity.getExtends
-   			if (ext !== null)
+   			if (ext != null)
    				superTypes += ext.extends.cloneWithProxies
-   			if (entity.superType !== null)
+   			if (entity.superType != null)
    				superTypes += entity.superType.cloneWithProxies
    				
-   			if (sernum !== null) {
+   			if (sernum != null) {
    				superTypes += typeRef(SERIALIZABLE)
 				members += entity.toField('serialVersionUID', typeRef(long)) [
  					static = true
@@ -263,7 +263,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    			
    			for (dir : entity.directives) {
    				if (dir instanceof DaoDirectiveCrud) {
-   					if (moreResultClasses === null)
+   					if (moreResultClasses == null)
    						moreResultClasses = entity.getMoreResultClasses
    					inferInsert(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members)
    					inferGet(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
@@ -271,11 +271,11 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					inferDelete(entity, dir as DaoDirectiveCrud, entityType, simpleName, pojo, pojoType, members)
    				}
    				else if (dir instanceof DaoDirectiveQuery) {
-   					if (moreResultClasses === null)
+   					if (moreResultClasses == null)
    						moreResultClasses = entity.getMoreResultClasses
    					inferList(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
    					inferQuery(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
-   					if (primaryKey !== null && pkDir.fromTo !== null && !pojo.toInitAttributes.isEmpty)
+   					if (primaryKey != null && pkDir.fromTo != null && !pojo.toInitAttributes.isEmpty)
    						inferListFromTo(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses, primaryKey)
    					inferCount(entity, dir as DaoDirectiveQuery, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
    				}
@@ -283,7 +283,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					inferFunctionProcedure(entity, (dir as DaoFunProcDirective).type, (dir as DaoFunProcDirective).paramlist, entityType, simpleName, members)
    				}
    			}
-   			if (moreResultClasses !== null && !moreResultClasses.empty) {
+   			if (moreResultClasses != null && !moreResultClasses.empty) {
    				inferMoreResultClasses(entity, entityType, simpleName, pojo, pojoType, members, moreResultClasses)
 			}
 
@@ -297,7 +297,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    					//final = attr.final
    					if (attr.static)
    						visibility = JvmVisibility.PUBLIC 
-   					if (attr.initExpr !== null) {
+   					if (attr.initExpr != null) {
  						initializer = attr.initExpr
  					} 
  					else if (isList(attr)) {
@@ -308,12 +308,12 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 	   				val m1 = attr.toGetter(attr.name, attr.name, type, procNames) [
 	   					addAnnotations(attr.getterAnnotations.map[a|a.annotation])
 	   				]
-	   				if (m1 !== null)
+	   				if (m1 != null)
 	   					members += m1
 	   				val m2 = attr.toSetter(attr.name, attr.name, type, typeRef(entityType), procNames) [
 	   					addAnnotations(attr.setterAnnotations.map[a|a.annotation])
 	   				]
-	   				if (m2 !== null)
+	   				if (m2 != null)
 	   					members += m2
    				}
    			}
@@ -347,8 +347,8 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql insert «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "INSERT_«dbName(pojo.name)»";
-				«CRUD_ENGINE» sqlInsert«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent !== null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "INSERT_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlInsert«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlInsert«parent.name» = sqlEngineFactory.getCheckedCrudEngine("INSERT_«dbName(parent.name)»");
 				int count = sqlInsert«parent.name».insert(sqlSession, «pojoAttrName», sqlControl);
 				if (count > 0) {
@@ -427,7 +427,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql get: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "GET_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "GET_«dbName(pojo.name)»";
 				«CRUD_ENGINE» sqlGetEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				«pojo.name» «pojoAttrName»Got = sqlGetEngine«pojo.name».get(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl);
@@ -503,13 +503,13 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql update «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "UPDATE_«dbName(pojo.name)»";
-				«CRUD_ENGINE» sqlUpdateEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent !== null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "UPDATE_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlUpdateEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlUpdate«parent.name» = sqlEngineFactory.getCheckedCrudEngine("UPDATE_«dbName(parent.name)»");«ENDIF»
-				int count = sqlUpdateEngine«pojo.name».update(sqlSession, «pojoAttrName», sqlControl);«IF parent !== null»
+				int count = sqlUpdateEngine«pojo.name».update(sqlSession, «pojoAttrName», sqlControl);«IF parent != null»
 				if (count > 0) {
 					sqlUpdate«parent.name».update(sqlSession, «pojoAttrName», sqlControl);
-				}«ENDIF»«val f=getOptLock(pojo)»«IF f !== null»
+				}«ENDIF»«val f=getOptLock(pojo)»«IF f != null»
 				if (count > 0) {
 					«pojoAttrName».set«f.name.toFirstUpper»(«pojoAttrName».get«f.name.toFirstUpper»() + 1);
 				}«ENDIF»
@@ -584,13 +584,13 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql delete «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "DELETE_«dbName(pojo.name)»";
-				«CRUD_ENGINE» sqlDeleteEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent !== null»
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "DELETE_«dbName(pojo.name)»";
+				«CRUD_ENGINE» sqlDeleteEngine«pojo.name» = sqlEngineFactory.getCheckedCrudEngine(sqlName);«IF parent != null»
 				«CRUD_ENGINE» sqlDelete«parent.name» = sqlEngineFactory.getCheckedCrudEngine("DELETE_«dbName(parent.name)»");«ENDIF»
-				int count = sqlDeleteEngine«pojo.name».delete(sqlSession, «pojoAttrName», sqlControl);«IF parent !== null»
+				int count = sqlDeleteEngine«pojo.name».delete(sqlSession, «pojoAttrName», sqlControl);«IF parent != null»
 				if (count > 0) {
 					sqlDelete«parent.name».delete(sqlSession, «pojoAttrName», sqlControl);
-				}«ENDIF»«val f=getOptLock(pojo)»«IF f !== null»
+				}«ENDIF»«val f=getOptLock(pojo)»«IF f != null»
 				if (count > 0) {
 					«pojoAttrName».set«f.name.toFirstUpper»(«pojoAttrName».get«f.name.toFirstUpper»() + 1);
 				}«ENDIF»
@@ -666,12 +666,12 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql list «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				List<«pojo.name»> «pojoAttrName»List = sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl);
 				if (logger.isTraceEnabled()) {
-					logger.trace("sql list «pojoAttrName» size: " + ((«pojoAttrName»List !== null) ? «pojoAttrName»List.size() : "null"));
+					logger.trace("sql list «pojoAttrName» size: " + ((«pojoAttrName»List != null) ? «pojoAttrName»List.size() : "null"));
 				}
 				return «pojoAttrName»List;
    				'''
@@ -736,21 +736,21 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    		val pojoAttrName = pojo.name.toFirstLower
    		val listType = typeRef(java.util.List, typeRef(pojoType))
 		val pkDir = primaryKey.primaryKeyDir
-		val pkType = if (pkDir.type !== null) pkDir.type else (primaryKey.type ?: primaryKey.initExpr?.inferredType ?: typeRef(String)).qualifiedName
-		val pkGetDep = if (pkDir.name !== null) ".get"+pkDir.name.toFirstUpper+"()" else ""
+		val pkType = if (pkDir.type != null) pkDir.type else (primaryKey.type ?: primaryKey.initExpr?.inferredType ?: typeRef(String)).qualifiedName
+		val pkGetDep = if (pkDir.name != null) ".get"+pkDir.name.toFirstUpper+"()" else ""
 			
 		members += entity.toMethod('listFromTo', listType) [
 			parameters += entity.toParameter("sqlSession", typeRef(SQL_SESSION))
 			parameters += entity.toParameter(pojoAttrName, typeRef(pojoType))
 			parameters += entity.toParameter("sqlControl", typeRef(SQL_CONTROL))
 			body = '''
-				if (sqlControl === null || sqlControl.getFirstResult() === null || sqlControl.getMaxResults() === null || «pojoAttrName» === null)
+				if (sqlControl == null || sqlControl.getFirstResult() == null || sqlControl.getMaxResults() == null || «pojoAttrName» == null)
 					return list(sqlSession, «pojoAttrName», sqlControl);
 
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql list «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				«pojoAttrName».setOnlyIds_(true);
@@ -778,7 +778,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 						«pojoAttrName»List.add(map.get(id));
 				}
 				if (logger.isTraceEnabled()) {
-					logger.trace("sql list «pojoAttrName» size: " + ((«pojoAttrName»List !== null) ? «pojoAttrName»List.size() : "null"));
+					logger.trace("sql list «pojoAttrName» size: " + ((«pojoAttrName»List != null) ? «pojoAttrName»List.size() : "null"));
 				}
 				return «pojoAttrName»List;
    				'''
@@ -852,7 +852,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql query «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				int rownums = sqlEngine«pojo.name».query(sqlSession, «pojo.name».class, «pojoAttrName», sqlControl, sqlRowProcessor);
@@ -936,7 +936,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("count «pojoAttrName»: " + «pojoAttrName» + " " + sqlControl);
 				}
-				String sqlName = (sqlControl !== null && sqlControl.getSqlName() !== null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
+				String sqlName = (sqlControl != null && sqlControl.getSqlName() != null) ? sqlControl.getSqlName() : "SELECT_«dbName(pojo.name)»";
 				«QUERY_ENGINE» sqlEngine«pojo.name» = sqlEngineFactory.getCheckedQueryEngine(sqlName);
 				«IF moreResultClasses.empty»//«ENDIF»sqlControl = getMoreResultClasses(«pojoAttrName», sqlControl);
 				int count = sqlEngine«pojo.name».queryCount(sqlSession, «pojoAttrName», sqlControl);
@@ -1008,19 +1008,19 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 			parameters += entity.toParameter(pojoAttrName, typeRef(pojoType))
 			parameters += entity.toParameter("sqlControl", typeRef(SQL_CONTROL))
 			body = '''
-			if (sqlControl !== null && sqlControl.getMoreResultClasses() !== null)
+			if (sqlControl != null && sqlControl.getMoreResultClasses() != null)
 				return sqlControl;
 			«MAP»<String, Class<?>> moreResultClasses = null;
 			«FOR f:moreResultClasses.entrySet»
-			if («pojoAttrName» !== null && «pojoAttrName».toInit_(«pojo.name».Association.«f.key».name())) {
-				if (moreResultClasses === null)
+			if («pojoAttrName» != null && «pojoAttrName».toInit_(«pojo.name».Association.«f.key».name())) {
+				if (moreResultClasses == null)
 					moreResultClasses = new «HASH_MAP»<String, Class<?>>();
 				«FOR a:f.value.entrySet»
 				moreResultClasses.put("«a.key»", «a.value».class);
 				«ENDFOR»
 			}
 			«ENDFOR»
-			if (moreResultClasses !== null) {
+			if (moreResultClasses != null) {
 				sqlControl = new «SQL_STANDARD_CONTROL»(sqlControl);
 				((«SQL_STANDARD_CONTROL») sqlControl).setMoreResultClasses(moreResultClasses);
 			}
@@ -1387,7 +1387,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
 				if (logger.isTraceEnabled()) {
 					logger.trace("sql «fname» result: " + list);
 				}
-				return (list !== null && !list.isEmpty()) ? list.get(0).getResult() : null;
+				return (list != null && !list.isEmpty()) ? list.get(0).getResult() : null;
    				'''
    		]	
    		
@@ -1451,7 +1451,7 @@ class DaoJvmModelInferrer extends AbstractModelInferrer {
    	
    	def QualifiedName daoFullyQualifiedName(DaoEntity entity, String implPackage) {
    		val QualifiedName fqname = entity.fullyQualifiedName
-   		if (implPackage === null)
+   		if (implPackage == null)
 			return fqname
    		if (implPackage.indexOf('.') >= 0) {
 			val segments = implPackage.split('.')

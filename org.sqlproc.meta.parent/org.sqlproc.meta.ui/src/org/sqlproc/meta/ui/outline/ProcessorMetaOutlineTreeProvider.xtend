@@ -32,15 +32,15 @@ class ProcessorMetaOutlineTreeProvider extends org.eclipse.xtext.ui.editor.outli
 		// }
 		
 		val artifacts = rootElement as Artifacts;
-		if (artifacts.features !== null) {
+		if (artifacts.features != null) {
 			for (optionalFeature : artifacts.features)
 				createNode(parentNode, optionalFeature)
 		}
-		if (artifacts.statements !== null) {
+		if (artifacts.statements != null) {
 			for (metaStatement : artifacts.statements)
 				createNode(parentNode, metaStatement)
 		}
-		if (artifacts.mappings!== null) {
+		if (artifacts.mappings!= null) {
 			for (mappingRule : artifacts.mappings)
 				createNode(parentNode, mappingRule)
 		}

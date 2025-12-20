@@ -46,10 +46,10 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
             return;
     	
         val artifacts = getArtifacts(pojoDefinition)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
         for (PojoDefinitionModel definition : artifacts.pojos) {
-            if (definition !== null && definition !== pojoDefinition && pojoDefinition.name == definition.name) {
+            if (definition != null && definition != pojoDefinition && pojoDefinition.name == definition.name) {
                 error("Duplicate name : " + pojoDefinition.name, ProcessorModelPackage.Literals.POJO_DEFINITION_MODEL__NAME)
                 return
             }
@@ -61,11 +61,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(annotationDefinition, modelProperty))
             return;
         val artifacts = getArtifacts(annotationDefinition)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
             
         for (AnnotationDefinitionModel definition : artifacts.annotations) {
-            if (definition !== null && definition !== annotationDefinition && annotationDefinition.name == definition.name) {
+            if (definition != null && definition != annotationDefinition && annotationDefinition.name == definition.name) {
                 error("Duplicate name : " + annotationDefinition.name, ProcessorModelPackage.Literals.ANNOTATION_DEFINITION_MODEL__NAME)
                 return
             }
@@ -77,11 +77,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(property, modelProperty))
             return;
         val artifacts = getArtifacts(property)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
 
         for (Property prop : artifacts.properties) {
-            if (prop !== null && prop !== property && prop.name == property.name) {
+            if (prop != null && prop != property && prop.name == property.name) {
 	            if (!prop.name.startsWith("pojogen") && !prop.name.startsWith("database") && !prop.name.startsWith("metagen")
 	                && !prop.name.startsWith("daogen") && !prop.name.startsWith("replace-text")) {
 	                error("Duplicate name : " + property.name, ProcessorModelPackage.Literals.PROPERTY__NAME)
@@ -96,11 +96,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(tableDefinition, modelProperty))
             return;
         val artifacts = getArtifacts(tableDefinition)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
 
         for (TableDefinitionModel table : artifacts.tables) {
-            if (table !== null && table !== tableDefinition && tableDefinition.name ==table.name) {
+            if (table != null && table != tableDefinition && tableDefinition.name ==table.name) {
                 error("Duplicate name : " + tableDefinition.name + "[table]", ProcessorModelPackage.Literals.TABLE_DEFINITION_MODEL__NAME)
                 return
            }
@@ -115,11 +115,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(procedureDefinition, modelProperty))
             return;
         val artifacts = getArtifacts(procedureDefinition)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
 
         for (ProcedureDefinitionModel procedure : artifacts.procedures) {
-            if (procedure !== null && procedure !== procedureDefinition && procedureDefinition.name == procedure.name) {
+            if (procedure != null && procedure != procedureDefinition && procedureDefinition.name == procedure.name) {
                 error("Duplicate name : " + procedureDefinition.name + "[procedure]", ProcessorModelPackage.Literals.PROCEDURE_DEFINITION_MODEL__NAME)
                 return
 	        }
@@ -134,11 +134,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(functionDefinition, modelProperty))
             return;
         val artifacts = getArtifacts(functionDefinition)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
 
         for (FunctionDefinitionModel function : artifacts.functions) {
-            if (function !== null && function !== functionDefinition && functionDefinition.name == function.name) {
+            if (function != null && function != functionDefinition && functionDefinition.name == function.name) {
                 error("Duplicate name : " + functionDefinition.name + "[function]", ProcessorModelPackage.Literals.FUNCTION_DEFINITION_MODEL__NAME)
                 return
 	    	}
@@ -150,17 +150,17 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         if (CommonUtils.skipVerification(entity, modelProperty))
             return;
         val artifacts = getArtifacts(entity)
-        if (artifacts === null)
+        if (artifacts == null)
             return;
 
         for (Package pkg : artifacts.packages) {
-            if (pkg !== null) {
+            if (pkg != null) {
 	            for (AbstractEntity abstractEntity : pkg.elements) {
-	                if (abstractEntity !== null && (abstractEntity instanceof AnnotatedEntity)) {
+	                if (abstractEntity != null && (abstractEntity instanceof AnnotatedEntity)) {
 		                val annotatedEntity = abstractEntity as AnnotatedEntity
-		                if (annotatedEntity.entity !== null) {
+		                if (annotatedEntity.entity != null) {
 	                		val _entity = annotatedEntity.entity as Entity
-		                	if (_entity !== null && _entity !== entity && entity.name == _entity.name) {
+		                	if (_entity != null && _entity != entity && entity.name == _entity.name) {
 			                    error("Duplicate name : " + entity.name, ProcessorModelPackage.Literals.ENTITY__NAME)
 			                    return
 			                }
@@ -177,11 +177,11 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
             return;
             
         val entity = feature.getContainerOfType(typeof(Entity))
-        if (entity !== null) {
+        if (entity != null) {
         	if (entity instanceof PojoEntity) {
         		val pentity = entity as PojoEntity
 		        for (Feature _feature : pentity.features.map[feature]) {
-		            if (_feature !== null && _feature !== feature && feature.name == _feature.name) {
+		            if (_feature != null && _feature != feature && feature.name == _feature.name) {
 		                error("Duplicate name : " + feature.name, ProcessorModelPackage.Literals.FEATURE__NAME)
 		                return
 		            }
@@ -189,7 +189,7 @@ class ProcessorModelValidator extends AbstractProcessorModelValidator {
         	} else if (entity instanceof DaoEntity) {
         		val pentity = entity as DaoEntity
 		        for (Feature _feature : pentity.features.map[feature]) {
-		            if (_feature !== null && _feature !== feature && feature.name == _feature.name) {
+		            if (_feature != null && _feature != feature && feature.name == _feature.name) {
 		                error("Duplicate name : " + feature.name, ProcessorModelPackage.Literals.FEATURE__NAME)
 		                return
 		            }
