@@ -138,10 +138,68 @@
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<classpathPrefix>lib/</classpathPrefix>
-							<mainClass>org.sqlproc.meta.generator.Main</mainClass>
+							<mainClass>org.sqlproc.model.generator.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>
+			</plugin>
+
+
+			<!-- Build the sqlmodel.jar fat JAR with jar-in-jar structure -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>3.1.0</version>
+				<executions>
+					<execution>
+						<id>build-sqlmodel-jar</id>
+						<phase>package</phase>
+						<goals>
+							<goal>run</goal>
+						</goals>
+						<configuration>
+							<target>
+								<!-- Unzip the jar-in-jar-loader to a temp dir -->
+								<mkdir dir="${project.build.directory}/jar-in-jar-loader"/>
+								<unzip src="${project.basedir}/../../jar-in-jar-loader.zip"
+								       dest="${project.build.directory}/jar-in-jar-loader"/>
+
+								<!-- Copy only .jar dependency files from Tycho-resolved classpath -->
+								<mkdir dir="${project.build.directory}/dependency"/>
+								<copy todir="${project.build.directory}/dependency" flatten="true" verbose="true">
+									<restrict>
+										<path refid="maven.compile.classpath"/>
+										<name name="**/*.jar"/>
+									</restrict>
+								</copy>
+
+								<!-- Build the Rsrc-Class-Path dynamically from dependency JARs -->
+								<fileset id="dep.jars" dir="${project.build.directory}/dependency" includes="*.jar"/>
+								<pathconvert property="rsrc.classpath" pathsep=" " refid="dep.jars">
+									<flattenmapper/>
+								</pathconvert>
+
+								<!-- Create the fat JAR -->
+								<jar destfile="${project.build.directory}/sqlmodel.jar">
+									<manifest>
+										<attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+										<attribute name="Rsrc-Main-Class" value="org.sqlproc.model.generator.Main"/>
+										<attribute name="Class-Path" value="."/>
+										<attribute name="Rsrc-Class-Path" value="./ ${rsrc.classpath}"/>
+									</manifest>
+									<!-- jar-in-jar-loader classes -->
+									<fileset dir="${project.build.directory}/jar-in-jar-loader"/>
+									<!-- project compiled classes -->
+									<fileset dir="${project.build.outputDirectory}"/>
+									<!-- dependency JARs as nested JARs (flat at root) -->
+									<fileset dir="${project.build.directory}/dependency" includes="*.jar"/>
+								</jar>
+
+								<echo message="Built sqlmodel.jar at: ${project.build.directory}/sqlmodel.jar"/>
+							</target>
+						</configuration>
+					</execution>
+				</executions>
 			</plugin>
 
 		</plugins>

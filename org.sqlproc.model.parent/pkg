@@ -1,0 +1,2 @@
+mvn package -pl org.sqlproc.model -DskipTests
+mvn install:install-file -Dfile=org.sqlproc.model/target/sqlmodel.jar -DgroupId=org.sqlproc.model -DartifactId=sqlmodel -Dversion=3.3.0-SNAPSHOT -Dpackaging=jar
