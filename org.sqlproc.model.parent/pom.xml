@@ -11,7 +11,7 @@
 		<maven.compiler.source>21</maven.compiler.source>
 		<maven.compiler.target>21</maven.compiler.target>
 		<tycho-version>5.0.2</tycho-version>
-		<xtext-version>2.41.0</xtext-version>
+		<xtext-version>2.42.0</xtext-version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<tycho.disableP2Mirrors>true</tycho.disableP2Mirrors>
 	</properties>
