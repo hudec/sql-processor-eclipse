@@ -417,7 +417,7 @@ public class DbResolverBean implements DbResolver {
                     }
                     InputStream is2 = null;
                     if (this.dbSqlsAfter != null) {
-                        is2 = new StringInputStream(this.dbSqlsBefore);
+                        is2 = new StringInputStream(this.dbSqlsAfter);
                     } else if (this.driverClass == null && modelDatabaseValues.dbSqlsAfter != null
                             && modelDatabaseValues.dbSqlsAfter.trim().length() > 0) {
                         if (modelDatabaseValues.newPojoValidator)
@@ -428,7 +428,7 @@ public class DbResolverBean implements DbResolver {
                                     uri);
                     }
                     if (is2 != null) {
-                        modelDatabaseValues.ddlsAfter = loadDDL(is);
+                        modelDatabaseValues.ddlsAfter = loadDDL(is2);
                     }
                 } catch (InstantiationException e) {
                     debug.error("getConnection error " + e, e);

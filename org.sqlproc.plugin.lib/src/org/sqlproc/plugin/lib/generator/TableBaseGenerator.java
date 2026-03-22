@@ -210,7 +210,7 @@ public class TableBaseGenerator {
             this.onlyTables.addAll(onlyTables);
         }
         Set<String> notAbstractTables = modelProperty.getNotAbstractTables(model);
-        if (onlyTables != null) {
+        if (notAbstractTables != null) {
             this.notAbstractTables.addAll(notAbstractTables);
         }
         Set<String> createTables = modelProperty.getCreateTables(model);
@@ -304,7 +304,7 @@ public class TableBaseGenerator {
             this.pojosForProcedures.putAll(pojosForProcedures);
         }
         Map<String, PojoEntityType> pojosForFunctions = modelProperty.getPojosForFunctions(model);
-        if (pojosForProcedures != null) {
+        if (pojosForFunctions != null) {
             this.pojosForFunctions.putAll(pojosForFunctions);
         }
         this.activeFilter = Filter.parse(modelProperty.getActiveFilter(model));
