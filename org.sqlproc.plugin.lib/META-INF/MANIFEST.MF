@@ -20,7 +20,7 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.equinox.common
 Import-Package: org.apache.log4j,
  org.eclipse.xtext.xbase.lib
-Bundle-RequiredExecutionEnvironment: JavaSE-21
+Bundle-RequiredExecutionEnvironment: JavaSE-25
 Export-Package: org.sqlproc.plugin.lib.generator,
  org.sqlproc.plugin.lib.property,
  org.sqlproc.plugin.lib.resolver,

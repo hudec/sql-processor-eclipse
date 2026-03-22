@@ -15,27 +15,43 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
-				<version>3.2.0</version>
+				<version>3.6.0</version>
 				<executions>
 					<execution>
 						<id>mwe2Launcher</id>
 						<phase>generate-sources</phase>
 						<goals>
-							<goal>java</goal>
+							<goal>exec</goal>
 						</goals>
 					</execution>
 				</executions>
 				<configuration>
-					<mainClass>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</mainClass>
+					<executable>java</executable>
 					<arguments>
+						<argument>--add-opens=java.base/java.lang=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.lang.invoke=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.lang.reflect=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.io=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.net=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.nio=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.util=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.util.concurrent=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/java.text=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/sun.nio.ch=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/sun.security.ssl=ALL-UNNAMED</argument>
+						<argument>--add-opens=java.base/sun.security.util=ALL-UNNAMED</argument>
+						<argument>-classpath</argument>
+						<classpath/>
+						<argument>org.eclipse.emf.mwe2.launch.runtime.Mwe2Launcher</argument>
 						<argument>/${project.basedir}/src/org/sqlproc/model/GenerateProcessorModel.mwe2</argument>
-						<argument>-p</argument>
+						<argument>--param</argument>
 						<argument>rootPath=/${project.basedir}/..</argument>
 					</arguments>
+					<successCodes>
+						<successCode>0</successCode>
+					</successCodes>
 					<classpathScope>compile</classpathScope>
 					<includePluginDependencies>true</includePluginDependencies>
-					<cleanupDaemonThreads>false</cleanupDaemonThreads><!-- see https://bugs.eclipse.org/bugs/show_bug.cgi?id=475098#c3 -->
-					<fork>true</fork>
 				</configuration>
 				<dependencies>
 					<dependency>
@@ -152,7 +168,7 @@
 											[1.2.1,)
 										</versionRange>
 										<goals>
-											<goal>java</goal>
+											<goal>exec</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>
