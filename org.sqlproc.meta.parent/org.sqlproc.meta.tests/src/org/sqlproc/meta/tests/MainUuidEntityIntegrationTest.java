@@ -100,7 +100,33 @@ public class MainUuidEntityIntegrationTest {
         
         // Try to connect to PostgreSQL and create table
         try {
-            Class.forName("org.postgresql.Driver");
+            // Try multiple ways to load the driver (for IDE vs Maven environment)
+            boolean driverLoaded = false;
+            try {
+                Class.forName("org.postgresql.Driver");
+                driverLoaded = true;
+            } catch (ClassNotFoundException e1) {
+                // Try with context classloader
+                try {
+                    Thread.currentThread().getContextClassLoader().loadClass("org.postgresql.Driver");
+                    driverLoaded = true;
+                } catch (ClassNotFoundException e2) {
+                    // Try explicit registration using reflection to avoid compile-time dependency
+                    try {
+                        Class<?> driverClass = Class.forName("org.postgresql.Driver");
+                        java.sql.Driver driver = (java.sql.Driver) driverClass.getDeclaredConstructor().newInstance();
+                        DriverManager.registerDriver(driver);
+                        driverLoaded = true;
+                    } catch (Exception e3) {
+                        throw new ClassNotFoundException("Could not load PostgreSQL driver: " + e1.getMessage());
+                    }
+                }
+            }
+            
+            if (!driverLoaded) {
+                throw new ClassNotFoundException("PostgreSQL driver not available");
+            }
+            
             connection = DriverManager.getConnection(
                 "jdbc:postgresql://localhost:5432/simple", "simple", "simple");
             

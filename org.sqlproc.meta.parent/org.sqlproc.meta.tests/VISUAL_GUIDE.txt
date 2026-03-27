@@ -1,0 +1,136 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║  🔴 ERROR: PostgreSQL Driver Not Available - Test Skipped                 ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│                                                                            │
+│  ⚡ QUICK FIX - Do This Instead:                                          │
+│                                                                            │
+│  ❌ DON'T USE:                                                            │
+│     Right-click → Run As → JUnit Test                                     │
+│                                                                            │
+│  ✅ USE THIS:                                                             │
+│     Right-click → Run As → JUnit Plug-in Test                             │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  WHY?                                                                      │
+│                                                                            │
+│  This is a Tycho/OSGi Eclipse Plugin Project                              │
+│                                                                            │
+│  ┌─────────────────────┐         ┌─────────────────────┐                 │
+│  │  JUnit Test         │         │ JUnit Plug-in Test  │                 │
+│  │  (Regular)          │         │ (OSGi Runtime)      │                 │
+│  ├─────────────────────┤         ├─────────────────────┤                 │
+│  │ Plain Java          │         │ Eclipse/OSGi        │                 │
+│  │ No OSGi bundles     │         │ OSGi bundles        │                 │
+│  │ ❌ No PostgreSQL    │         │ ✅ PostgreSQL       │                 │
+│  │    driver           │         │    driver loaded    │                 │
+│  └─────────────────────┘         └─────────────────────┘                 │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  📁 FILES CREATED FOR YOU:                                                │
+│                                                                            │
+│  1. ⭐ README.md                                                          │
+│     → Start here! Quick overview                                          │
+│                                                                            │
+│  2. ⭐ QUICK_FIX_POSTGRESQL_DRIVER.md                                     │
+│     → 3-step solution to your problem                                     │
+│                                                                            │
+│  3. 📖 POSTGRESQL_DRIVER_SETUP.md                                         │
+│     → Alternative solutions & detailed setup                              │
+│                                                                            │
+│  4. 📖 RUNNING_TESTS_IN_IDE.md                                            │
+│     → Complete guide for running tests in Eclipse                         │
+│                                                                            │
+│  5. 🚀 MainUuidEntityIntegrationTest-PluginTest.launch                   │
+│     → Pre-configured: just right-click and run!                           │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  🎯 STEP-BY-STEP:                                                         │
+│                                                                            │
+│  1. In Package Explorer, navigate to:                                     │
+│     org.sqlproc.meta.tests/src/org/sqlproc/meta/tests/                   │
+│     MainUuidEntityIntegrationTest.java                                    │
+│                                                                            │
+│  2. RIGHT-CLICK on the file                                               │
+│                                                                            │
+│  3. Hover over "Run As"                                                   │
+│                                                                            │
+│  4. Click "JUnit Plug-in Test" (NOT "JUnit Test")                         │
+│                                                                            │
+│  5. ✅ Test runs successfully!                                            │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  ✅ SUCCESS LOOKS LIKE:                                                   │
+│                                                                            │
+│  Console Output:                                                          │
+│  ┌──────────────────────────────────────────────────────────────────┐   │
+│  │ Available tables from DB:                                        │   │
+│  │   - uuid_entity                                                  │   │
+│  │ Generating META SQL...                                           │   │
+│  │ Column count: 4                                                  │   │
+│  │ Value count: 4                                                   │   │
+│  │ ID in columns: true                                              │   │
+│  │ MYID in columns: true                                            │   │
+│  └──────────────────────────────────────────────────────────────────┘   │
+│                                                                            │
+│  JUnit View:                                                              │
+│  ┌──────────────────────────────────────────────────────────────────┐   │
+│  │ ████████████████████████████████████████████████  ✅ 1/1        │   │
+│  │                                                                  │   │
+│  │ Runs: 1/1    Errors: 0    Failures: 0                           │   │
+│  └──────────────────────────────────────────────────────────────────┘   │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  💡 ALTERNATIVE: Use Launch Configuration                                 │
+│                                                                            │
+│  1. Find: MainUuidEntityIntegrationTest-PluginTest.launch                │
+│  2. Right-click it                                                        │
+│  3. Select: Run As → MainUuidEntityIntegrationTest-PluginTest            │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+┌────────────────────────────────────────────────────────────────────────────┐
+│  🔧 STILL NOT WORKING?                                                    │
+│                                                                            │
+│  1. Check PostgreSQL is running:                                          │
+│     $ sudo systemctl status postgresql                                    │
+│                                                                            │
+│  2. Check database exists:                                                │
+│     $ psql -h localhost -U simple -d simple                               │
+│                                                                            │
+│  3. Read POSTGRESQL_DRIVER_SETUP.md for alternative solutions             │
+│                                                                            │
+│  4. Or run via Maven:                                                     │
+│     $ cd org.sqlproc.meta.parent                                          │
+│     $ mvn verify -pl org.sqlproc.meta.tests -am                           │
+│                                                                            │
+└────────────────────────────────────────────────────────────────────────────┘
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                                                                            ║
+║  🎉 SUMMARY: Use "JUnit Plug-in Test" not "JUnit Test"                    ║
+║                                                                            ║
+║  The PostgreSQL driver is an OSGi bundle that's only available in the     ║
+║  Eclipse/OSGi runtime (Plug-in Test), not in plain Java classpath.        ║
+║                                                                            ║
+╚════════════════════════════════════════════════════════════════════════════╝

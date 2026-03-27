@@ -1,0 +1,7 @@
+#cd ~/git/sql-processor-eclipse/org.sqlproc.meta.parent
+#mvn verify -pl org.sqlproc.meta.tests -am
+#cd ~/git/sql-processor-eclipse/org.sqlproc.meta.parent
+#mvn clean install
+cd ~/git/sql-processor-eclipse/org.sqlproc.meta.parent
+mvn clean verify -pl org.sqlproc.meta.tests -am -X
+
