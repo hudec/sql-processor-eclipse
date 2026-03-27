@@ -2202,6 +2202,10 @@ public class DbResolverBean implements DbResolver {
             debug.trace(m, "<<<");
             return "";
         }
+        if (modelDatabaseValues.connection == null) {
+            debug.trace(m, "<<<", "no connection");
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         try {
             DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
@@ -2225,6 +2229,10 @@ public class DbResolverBean implements DbResolver {
             debug.trace(m, "<<<");
             return "";
         }
+        if (modelDatabaseValues.connection == null) {
+            debug.trace(m, "<<<", "no connection");
+            return "";
+        }
         StringBuilder sb = new StringBuilder();
         try {
             DatabaseMetaData meta = modelDatabaseValues.connection.getMetaData();
@@ -2246,6 +2254,10 @@ public class DbResolverBean implements DbResolver {
         DatabaseDirectives modelDatabaseValues = getConnection(model);
         if (modelDatabaseValues == null) {
             debug.trace(m, "<<<");
+            return "";
+        }
+        if (modelDatabaseValues.connection == null) {
+            debug.trace(m, "<<<", "no connection");
             return "";
         }
         StringBuilder sb = new StringBuilder();

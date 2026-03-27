@@ -41,6 +41,11 @@
 			<layout>p2</layout>
 			<url>https://download.eclipse.org/modeling/tmf/xtext/updates/releases/${xtext-version}/</url>
 		</repository>
+		<repository>
+			<id>orbit</id>
+			<layout>p2</layout>
+			<url>https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-12</url>
+		</repository>
 	</repositories>
 
 	<build>

@@ -12,7 +12,8 @@ Require-Bundle: org.sqlproc.meta,
  org.eclipse.ui.workbench;resolution:=optional,
  org.objectweb.asm;resolution:=optional,
  org.eclipse.xtext.testing,
-  org.eclipse.xtext.xbase.testing
+  org.eclipse.xtext.xbase.testing,
+  org.postgresql.jdbc;resolution:=optional
 Bundle-RequiredExecutionEnvironment: JavaSE-25
 Export-Package: org.sqlproc.meta.tests;x-internal=true
 Import-Package: org.apache.log4j,
