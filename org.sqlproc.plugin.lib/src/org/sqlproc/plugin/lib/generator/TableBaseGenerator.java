@@ -79,8 +79,8 @@ public class TableBaseGenerator {
     protected static final String METHOD_PROC_ID = "procId";
     protected static final String METHOD_ENUM_INDEX = "enumIndex";
     protected static final String COLLECTION_LIST = "java.util.List";
-    protected static final String ANNOTATION_NOT_NULL = "javax.validation.constraints.NotNull";
-    protected static final String ANNOTATION_SIZE = "javax.validation.constraints.Size";
+    protected static final String ANNOTATION_NOT_NULL = "jakarta.validation.constraints.NotNull";
+    protected static final String ANNOTATION_SIZE = "jakarta.validation.constraints.Size";
 
     protected EObject model;
     protected boolean doCompressMetaDirectives;
