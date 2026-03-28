@@ -570,6 +570,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
     }
 
     boolean insertColumns(StringBuilder buffer, String pojo, boolean first) {
+        boolean afterUuidOptional = false;
         for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
             if (createColumns.containsKey(pojo) && createColumns.get(pojo).containsKey(pentry.getKey()))
                 continue;
@@ -630,17 +631,24 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     else
                         uuidName = columnToCamelCase(uuidName);
                     if (!first)
-                        buffer.append(" ");
+                        buffer.append(", ");
                     buffer.append("{? :").append(uuidName).append("(type=uuid) | %")
                             .append(pentry.getKey()).append(", }");
                     first = false;
+                    afterUuidOptional = true;
                     continue;
                 }
             }
-            if (!first)
-                buffer.append((name != null) ? ",%" : ", %");
-            else
+            if (!first) {
+                if (afterUuidOptional) {
+                    buffer.append(" %");
+                    afterUuidOptional = false;
+                } else {
+                    buffer.append((name != null) ? ",%" : ", %");
+                }
+            } else {
                 buffer.append("%");
+            }
             buffer.append(pentry.getKey());
             if (name != null)
                 buffer.append("}");
@@ -702,6 +710,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
     }
 
     boolean insertValues(StringBuilder buffer, String pojo, boolean first, String statementName) {
+        boolean afterUuidOptional = false;
         for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
             if (pentry.getValue().getOne2one() != null)
                 continue;
@@ -730,9 +739,10 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (isNonPkUuid) {
                 // Wrap non-PK UUID value in optional syntax
                 if (!first)
-                    buffer.append(" ");
+                    buffer.append(", ");
                 buffer.append("{? :").append(name).append("(type=uuid) | :").append(name).append("(type=uuid), }");
                 first = false;
+                afterUuidOptional = true;
                 continue;
             }
             if (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_")) {
@@ -744,10 +754,16 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 else
                     buffer.append(":");
             } else {
-                if (!first)
-                    buffer.append(", :");
-                else
+                if (!first) {
+                    if (afterUuidOptional) {
+                        buffer.append(" :");
+                        afterUuidOptional = false;
+                    } else {
+                        buffer.append(", :");
+                    }
+                } else {
                     buffer.append(":");
+                }
             }
             buffer.append(name);
             if (attr.attribute.getPkTable() != null && attr.attribute.getRef() != null) {

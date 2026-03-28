@@ -185,16 +185,16 @@ public class MainUuidEntityIntegrationTest {
         "IDSEL=UUID_ENTITY(OPT)=JDBC;\n" +
         "\n" +
         "INSERT_TYPES_EXT(CRUD,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
-        "  insert into %%types_ext (%id, %t_uuid, %t_offset_date_time)\n" +
-        "  {= values (:id(idgen=TYPES_EXT,id=id), :tUuid, :tOffsetDateTime(type=offsetdatetime)) }\n" +
+        "  insert into %%types_ext (%id, {? :tUuid(type=uuid) | %t_uuid, } %t_offset_date_time)\n" +
+        "  {= values (:id(idgen=TYPES_EXT,id=id), {? :tUuid(type=uuid) | :tUuid(type=uuid), } :tOffsetDateTime(type=offsetdatetime)) }\n" +
         ";\n" +
         "\n" +
         "GET_TYPES_EXT(CRUD,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
-        "  select %id @id(id), %t_uuid @tUuid, %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
+        "  select %id @id(id), %t_uuid @tUuid(type=uuid), %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
         "  from %%types_ext\n" +
         "  {= where\n" +
         "    {& %id ::= :id }\n" +
-        "    {& %t_uuid ::= :tUuid }\n" +
+        "    {& %t_uuid ::= :tUuid(type=uuid) }\n" +
         "    {& %t_offset_date_time ::= :tOffsetDateTime(type=offsetdatetime) }\n" +
         "  }\n" +
         ";\n" +
@@ -202,7 +202,7 @@ public class MainUuidEntityIntegrationTest {
         "UPDATE_TYPES_EXT(CRUD,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
         "  update %%types_ext\n" +
         "  {= set\n" +
-        "    { ,%t_uuid = :tUuid(call=isDef) }\n" +
+        "    { ,%t_uuid = :tUuid(type=uuid,call=isDef) }\n" +
         "    { ,%t_offset_date_time = :tOffsetDateTime(type=offsetdatetime,call=isDef) }\n" +
         "  }\n" +
         "  {= where\n" +
@@ -218,11 +218,11 @@ public class MainUuidEntityIntegrationTest {
         ";\n" +
         "\n" +
         "SELECT_TYPES_EXT(QRY,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
-        "  select %id @id(id), %t_uuid @tUuid, %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
+        "  select %id @id(id), %t_uuid @tUuid(type=uuid), %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
         "  from %%types_ext\n" +
         "  {= where\n" +
         "    {& %id ::= :id }\n" +
-        "    {& %t_uuid ::= :tUuid }\n" +
+        "    {& %t_uuid ::= :tUuid(type=uuid) }\n" +
         "    {& %t_offset_date_time ::= :tOffsetDateTime(type=offsetdatetime) }\n" +
         "  }\n" +
         "  {#ID order by %id }\n" +
@@ -238,13 +238,16 @@ public class MainUuidEntityIntegrationTest {
         "  from %%uuid_entity\n" +
         "  {= where\n" +
         "    {& %id ::= :id(type=uuid) }\n" +
+        "    {& %myid ::= :myid(type=uuid) }\n" +
         "    {& %name ::= :name }\n" +
+        "    {& %description ::= :description }\n"+
         "  }\n" +
         ";\n" +
         "\n" +
         "UPDATE_UUID_ENTITY(CRUD,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
         "  update %%uuid_entity\n" +
         "  {= set\n" +
+        "    { ,%myid = :myid(type=uuid,call=isDef) }\n" +
         "    { ,%name = :name(call=isDef) }\n" +
         "    { ,%description = :description(call=isDef) }\n" +
         "  }\n" +
