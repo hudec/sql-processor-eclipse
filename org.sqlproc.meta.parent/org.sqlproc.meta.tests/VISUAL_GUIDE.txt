@@ -50,7 +50,7 @@
 │  4. 📖 RUNNING_TESTS_IN_IDE.md                                            │
 │     → Complete guide for running tests in Eclipse                         │
 │                                                                            │
-│  5. 🚀 MainUuidEntityIntegrationTest-PluginTest.launch                   │
+│  5. 🚀 MainPostgresIntegrationTest-PluginTest.launch                   │
 │     → Pre-configured: just right-click and run!                           │
 │                                                                            │
 └────────────────────────────────────────────────────────────────────────────┘
@@ -61,7 +61,7 @@
 │                                                                            │
 │  1. In Package Explorer, navigate to:                                     │
 │     org.sqlproc.meta.tests/src/org/sqlproc/meta/tests/                   │
-│     MainUuidEntityIntegrationTest.java                                    │
+│     MainPostgresIntegrationTest.java                                    │
 │                                                                            │
 │  2. RIGHT-CLICK on the file                                               │
 │                                                                            │
@@ -101,9 +101,9 @@
 ┌────────────────────────────────────────────────────────────────────────────┐
 │  💡 ALTERNATIVE: Use Launch Configuration                                 │
 │                                                                            │
-│  1. Find: MainUuidEntityIntegrationTest-PluginTest.launch                │
+│  1. Find: MainPostgresIntegrationTest-PluginTest.launch                │
 │  2. Right-click it                                                        │
-│  3. Select: Run As → MainUuidEntityIntegrationTest-PluginTest            │
+│  3. Select: Run As → MainPostgresIntegrationTest-PluginTest            │
 │                                                                            │
 └────────────────────────────────────────────────────────────────────────────┘
 

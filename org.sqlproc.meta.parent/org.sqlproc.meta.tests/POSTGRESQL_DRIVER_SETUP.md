@@ -1,4 +1,4 @@
-# How to Run MainUuidEntityIntegrationTest from Eclipse IDE
+# How to Run MainPostgresIntegrationTest from Eclipse IDE
 
 ## Problem: PostgreSQL Driver Not Found
 
@@ -13,7 +13,7 @@ This happens because the PostgreSQL JDBC driver is not in the Eclipse runtime cl
 
 ## Solution 1: Run as JUnit Plug-in Test (Recommended for Tycho Projects)
 
-1. **Right-click** on `MainUuidEntityIntegrationTest.java`
+1. **Right-click** on `MainPostgresIntegrationTest.java`
 2. **Select**: `Run As → JUnit Plug-in Test` (NOT regular JUnit Test)
 3. This will run the test in an OSGi/Eclipse runtime where the PostgreSQL driver bundle is available
 
@@ -34,15 +34,15 @@ If running as regular JUnit Test:
 6. Click **OK**
 
 ### Step 3: Run the Test
-1. **Right-click** on `MainUuidEntityIntegrationTest.java`
+1. **Right-click** on `MainPostgresIntegrationTest.java`
 2. **Select**: `Run As → JUnit Test`
 
 ## Solution 3: Create Custom Run Configuration
 
-1. **Right-click** on `MainUuidEntityIntegrationTest.java`
+1. **Right-click** on `MainPostgresIntegrationTest.java`
 2. **Select**: `Run As → Run Configurations...`
 3. **Double-click** on `JUnit` to create new configuration
-4. Set **Name**: `MainUuidEntityIntegrationTest`
+4. Set **Name**: `MainPostgresIntegrationTest`
 5. Go to **Classpath** tab
 6. Select **User Entries**
 7. Click **Add External JARs...**

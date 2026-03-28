@@ -1,4 +1,4 @@
-# Running MainUuidEntityIntegrationTest from Eclipse IDE
+# Running MainPostgresIntegrationTest from Eclipse IDE
 
 ## Prerequisites
 
@@ -23,7 +23,7 @@ Before running the test, ensure you have:
 ## Method 1: Right-Click Run (Easiest)
 
 1. **Open the test file** in Eclipse:
-   - Navigate to: `org.sqlproc.meta.tests/src/org/sqlproc/meta/tests/MainUuidEntityIntegrationTest.java`
+   - Navigate to: `org.sqlproc.meta.tests/src/org/sqlproc/meta/tests/MainPostgresIntegrationTest.java`
 
 2. **Right-click on the file** in Package Explorer or in the editor
 
@@ -37,13 +37,13 @@ Before running the test, ensure you have:
    - Menu: `Run → Run Configurations...`
 
 2. **Find the launch configuration**:
-   - Look for `MainUuidEntityIntegrationTest` under `JUnit`
+   - Look for `MainPostgresIntegrationTest` under `JUnit`
    - Or double-click `JUnit` to create a new configuration
 
 3. **Configure if needed**:
-   - **Name**: `MainUuidEntityIntegrationTest`
+   - **Name**: `MainPostgresIntegrationTest`
    - **Project**: `org.sqlproc.meta.tests`
-   - **Test class**: `org.sqlproc.meta.tests.MainUuidEntityIntegrationTest`
+   - **Test class**: `org.sqlproc.meta.tests.MainPostgresIntegrationTest`
    - **Test runner**: `JUnit 4`
 
 4. **Click Run**
@@ -52,16 +52,16 @@ Before running the test, ensure you have:
 
 1. **In Package Explorer**, navigate to:
    ```
-   org.sqlproc.meta.tests/MainUuidEntityIntegrationTest.launch
+   org.sqlproc.meta.tests/MainPostgresIntegrationTest.launch
    ```
 
 2. **Right-click** on the `.launch` file
 
-3. **Select**: `Run As → MainUuidEntityIntegrationTest`
+3. **Select**: `Run As → MainPostgresIntegrationTest`
 
 ## Method 4: Run Specific Test Method
 
-1. **Open** `MainUuidEntityIntegrationTest.java`
+1. **Open** `MainPostgresIntegrationTest.java`
 
 2. **Find the test method**: `testGenerateMetaForUuidEntity()`
 
@@ -149,7 +149,7 @@ The **JUnit view** (usually at the bottom) will show:
    - Run → Run Configurations...
    - Double-click "JUnit"
    - Set project: `org.sqlproc.meta.tests`
-   - Set test class: `org.sqlproc.meta.tests.MainUuidEntityIntegrationTest`
+   - Set test class: `org.sqlproc.meta.tests.MainPostgresIntegrationTest`
 
 ## Debugging the Test
 

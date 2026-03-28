@@ -5,7 +5,7 @@
 You're running as **regular JUnit Test**. Change to **JUnit Plug-in Test**:
 
 ```
-Right-click MainUuidEntityIntegrationTest.java
+Right-click MainPostgresIntegrationTest.java
 → Run As
 → JUnit Plug-in Test  ✅ (NOT "JUnit Test")
 ```
@@ -34,9 +34,9 @@ I've created comprehensive guides for you:
    - Expected output
    - Troubleshooting
 
-### 4. **MainUuidEntityIntegrationTest-PluginTest.launch**
+### 4. **MainPostgresIntegrationTest-PluginTest.launch**
    - Pre-configured launch file
-   - Right-click → Run As → MainUuidEntityIntegrationTest-PluginTest
+   - Right-click → Run As → MainPostgresIntegrationTest-PluginTest
 
 ---
 

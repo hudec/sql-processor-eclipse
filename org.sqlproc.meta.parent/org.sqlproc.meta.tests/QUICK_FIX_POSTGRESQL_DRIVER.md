@@ -1,4 +1,4 @@
-# ✅ SOLUTION: Running MainUuidEntityIntegrationTest from Eclipse IDE
+# ✅ SOLUTION: Running MainPostgresIntegrationTest from Eclipse IDE
 
 ## 🔴 Problem You're Seeing
 
@@ -12,7 +12,7 @@ Test skipped - PostgreSQL not available
 
 ### You were running as **regular JUnit Test**. You need to run as **JUnit Plug-in Test** instead!
 
-1. **Right-click** on `MainUuidEntityIntegrationTest.java` (or in the editor)
+1. **Right-click** on `MainPostgresIntegrationTest.java` (or in the editor)
 
 2. **Select**: `Run As → JUnit Plug-in Test` 
    - ⚠️ **NOT** "JUnit Test" 
@@ -24,12 +24,12 @@ Test skipped - PostgreSQL not available
 
 1. In **Package Explorer**, find:
    ```
-   org.sqlproc.meta.tests/MainUuidEntityIntegrationTest-PluginTest.launch
+   org.sqlproc.meta.tests/MainPostgresIntegrationTest-PluginTest.launch
    ```
 
 2. **Right-click** on it
 
-3. **Select**: `Run As → MainUuidEntityIntegrationTest-PluginTest`
+3. **Select**: `Run As → MainPostgresIntegrationTest-PluginTest`
 
 ## 🤔 Why Does This Happen?
 
@@ -45,7 +45,7 @@ This is a **Tycho/OSGi project**. The PostgreSQL JDBC driver is configured as an
 
 I've created 3 files to help:
 
-1. ✅ **`MainUuidEntityIntegrationTest-PluginTest.launch`**
+1. ✅ **`MainPostgresIntegrationTest-PluginTest.launch`**
    - Pre-configured JUnit Plug-in Test runner
    - Just right-click and run!
 
@@ -63,9 +63,9 @@ I've created 3 files to help:
 
 ```
 org.sqlproc.meta.tests/
-├── MainUuidEntityIntegrationTest.java          ← The test
-├── MainUuidEntityIntegrationTest.launch         ← Regular JUnit (won't work)
-├── MainUuidEntityIntegrationTest-PluginTest.launch  ← Plug-in Test (USE THIS!)
+├── MainPostgresIntegrationTest.java          ← The test
+├── MainPostgresIntegrationTest.launch         ← Regular JUnit (won't work)
+├── MainPostgresIntegrationTest-PluginTest.launch  ← Plug-in Test (USE THIS!)
 ├── POSTGRESQL_DRIVER_SETUP.md                  ← Driver setup guide
 └── RUNNING_TESTS_IN_IDE.md                     ← Complete running guide
 ```

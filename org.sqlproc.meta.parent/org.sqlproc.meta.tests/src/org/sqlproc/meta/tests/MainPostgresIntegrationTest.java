@@ -43,7 +43,7 @@ import com.google.inject.Provider;
  * Integration test for Main.generate with UUID_ENTITY DDL against PostgreSQL. This test reproduces the issue where
  * INSERT has more target columns than value expressions.
  */
-public class MainUuidEntityIntegrationTest {
+public class MainPostgresIntegrationTest {
 
     // @formatter:off
     private static final String EXPECTED_META =
