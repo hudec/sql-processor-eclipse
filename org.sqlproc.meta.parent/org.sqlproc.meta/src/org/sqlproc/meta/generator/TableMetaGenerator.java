@@ -962,7 +962,7 @@ public class TableMetaGenerator extends TableBaseGenerator {
             if (!metaTypes(buffer, attr.tableName, attr.attributeName, statementName, attr.completeSqlType, true))
                 buffer.append("(!empty)");
             else
-                buffer.append(")");
+                buffer.append(",!empty)");
             buffer.append(" }");
             first = false;
         }

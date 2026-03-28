@@ -268,10 +268,11 @@ public class MainUuidEntityIntegrationTest {
         "  from %%uuid_entity\n" +
         "  {= where\n" +
         "    {& %id ::= :id(type=uuid) }\n" +
+        "    {& %myid ::= :myid(type=uuid) }\n" +
         "    {& UPPER(%name) like :+name }\n" +
         "    {& UPPER(%description) like :+description }\n" +
         "  }\n" +
-        "  {#NAME order by %name }\n" +
+        "  {#ID order by %id }\n" +
         ";\n";
     // @formatter:on
 
