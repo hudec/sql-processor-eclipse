@@ -229,15 +229,15 @@ public class MainUuidEntityIntegrationTest {
         ";\n" +
         "\n" +
         "INSERT_UUID_ENTITY(CRUD,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
-        "  insert into %%uuid_entity (%id, {? :myid | %myid, } %name, %description)\n" +
-        "  {= values (:id(idgen=UUID_ENTITY,id=id), {? :myid | :myid, } :name, :description) }\n" +
+        "  insert into %%uuid_entity (%id, {? :myid(type=uuid) | %myid, } %name, %description)\n" +
+        "  {= values (:id(idgen=UUID_ENTITY,id=id,type=uuid), {? :myid(type=uuid) | :myid(type=uuid), } :name, :description) }\n" +
         ";\n" +
         "\n" +
         "GET_UUID_ENTITY(CRUD,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
-        "  select %id @id(id), %myid @myid, %name @name, %description @description\n" +
+        "  select %id @id(id,type=uuid), %myid @myid(type=uuid), %name @name, %description @description\n" +
         "  from %%uuid_entity\n" +
         "  {= where\n" +
-        "    {& %id ::= :id }\n" +
+        "    {& %id ::= :id(type=uuid) }\n" +
         "    {& %name ::= :name }\n" +
         "  }\n" +
         ";\n" +
@@ -249,22 +249,22 @@ public class MainUuidEntityIntegrationTest {
         "    { ,%description = :description(call=isDef) }\n" +
         "  }\n" +
         "  {= where\n" +
-        "    {& %id = :id(!empty) }\n" +
+        "    {& %id = :id(type=uuid,!empty) }\n" +
         "  }\n" +
         ";\n" +
         "\n" +
         "DELETE_UUID_ENTITY(CRUD,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
         "  delete from %%uuid_entity\n" +
         "  {= where\n" +
-        "    {& %id = :id(!empty) }\n" +
+        "    {& %id = :id(type=uuid,!empty) }\n" +
         "  }\n" +
         ";\n" +
         "\n" +
         "SELECT_UUID_ENTITY(QRY,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
-        "  select %id @id(id), %myid @myid, %name @name, %description @description\n" +
+        "  select %id @id(id,type=uuid), %myid @myid(type=uuid), %name @name, %description @description\n" +
         "  from %%uuid_entity\n" +
         "  {= where\n" +
-        "    {& %id ::= :id }\n" +
+        "    {& %id ::= :id(type=uuid) }\n" +
         "    {& UPPER(%name) like :+name }\n" +
         "    {& UPPER(%description) like :+description }\n" +
         "  }\n" +
@@ -397,6 +397,7 @@ public class MainUuidEntityIntegrationTest {
         "\n" +
         "// use identity for primary keys\n" +
         "metagen-table-identity contact CONTACT;\n" +
+        "metagen-table-identity uuid_entity UUID_ENTITY;\n" +
         "//metagen-table-sequence contact contact_id_seq;\n" +
         "metagen-table-sequence person person_id_seq;\n" +
         "metagen-generate-idgenerators;\n" +

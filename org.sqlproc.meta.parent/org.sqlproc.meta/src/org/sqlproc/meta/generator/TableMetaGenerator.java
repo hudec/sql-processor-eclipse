@@ -597,6 +597,10 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 continue;
             if (attribute.getOne2one() != null)
                 continue;
+            // Check if this is a non-PK UUID column
+            boolean isNonPkUuid = !attribute.isPrimaryKey()
+                    && attribute.getCompleteSqlType() != null
+                    && isUuid(attribute.getCompleteSqlType());
             String name = null;
             if (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_")) {
                 if (!attribute.isRequired()) {
@@ -614,6 +618,24 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 buffer.append("\n    ");
                 if (name != null)
                     buffer.append("{? :").append(name).append(" | ");
+            } else if (isNonPkUuid) {
+                // For non-PK UUID columns, get the field name and wrap in optional syntax
+                Attribute attr = getStatementAttribute(pojo, pentry.getKey(), pentry.getValue(), false);
+                if (attr != null) {
+                    String uuidName = (columnNames.containsKey(attr.tableName))
+                            ? columnNames.get(attr.tableName).get(attr.attributeName)
+                            : null;
+                    if (uuidName == null)
+                        uuidName = attr.attribute.getName();
+                    else
+                        uuidName = columnToCamelCase(uuidName);
+                    if (!first)
+                        buffer.append(" ");
+                    buffer.append("{? :").append(uuidName).append("(type=uuid) | %")
+                            .append(pentry.getKey()).append(", }");
+                    first = false;
+                    continue;
+                }
             }
             if (!first)
                 buffer.append((name != null) ? ",%" : ", %");
@@ -666,6 +688,11 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     if (identity.value1 != null)
                         buffer.append("=").append(identity.value1);
                 }
+                // Add type=uuid for UUID primary key columns
+                String completeSqlType = pentry.getValue().getCompleteSqlType();
+                if (identity.value2 == null && completeSqlType != null && isUuid(completeSqlType)) {
+                    buffer.append(",type=uuid");
+                }
                 buffer.append(")");
                 first = false;
                 break;
@@ -696,6 +723,18 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 name = attr.attribute.getName();
             else
                 name = columnToCamelCase(name);
+            // Check if this is a non-PK UUID column
+            boolean isNonPkUuid = !pentry.getValue().isPrimaryKey()
+                    && attr.completeSqlType != null
+                    && isUuid(attr.completeSqlType);
+            if (isNonPkUuid) {
+                // Wrap non-PK UUID value in optional syntax
+                if (!first)
+                    buffer.append(" ");
+                buffer.append("{? :").append(name).append("(type=uuid) | :").append(name).append("(type=uuid), }");
+                first = false;
+                continue;
+            }
             if (metaOptimizeInsert.contains(pojo) || metaOptimizeInsert.contains("_ALL_")) {
                 buffer.append("\n    ");
                 if (!pentry.getValue().isRequired())
@@ -1078,6 +1117,13 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 buffer.append(",");
             buffer.append("type=offsetdatetime");
             return true;
+        } else if (completeSqlType != null && isUuid(completeSqlType)) {
+            if (first)
+                buffer.append("(");
+            else
+                buffer.append(",");
+            buffer.append("type=uuid");
+            return true;
         }
         return false;
     }
@@ -1089,6 +1135,14 @@ public class TableMetaGenerator extends TableBaseGenerator {
             baseType = completeSqlType.substring(0, ix);
         return "timestamptz".equalsIgnoreCase(baseType)
                 || "TIMESTAMP WITH TIME ZONE".equalsIgnoreCase(baseType);
+    }
+
+    static boolean isUuid(String completeSqlType) {
+        String baseType = completeSqlType;
+        int ix = completeSqlType.indexOf('(');
+        if (ix > 0)
+            baseType = completeSqlType.substring(0, ix);
+        return "uuid".equalsIgnoreCase(baseType);
     }
 
     PojoAttribute resultSetAttribute(String pojo, boolean isFunction) {
