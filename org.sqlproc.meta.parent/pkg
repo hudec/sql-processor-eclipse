@@ -1,2 +1,2 @@
 mvn package -pl org.sqlproc.meta -DskipTests
-mvn install:install-file -Dfile=org.sqlproc.meta/target/sqlmeta.jar -DgroupId=org.sqlproc.meta -DartifactId=sqlmeta -Dversion=3.3.0-SNAPSHOT -Dpackaging=jar
+mvn install:install-file -Dfile=org.sqlproc.meta/target/sqlmeta.jar -DgroupId=org.sqlproc.meta -DartifactId=sqlmeta -Dversion=3.4.0-SNAPSHOT -Dpackaging=jar

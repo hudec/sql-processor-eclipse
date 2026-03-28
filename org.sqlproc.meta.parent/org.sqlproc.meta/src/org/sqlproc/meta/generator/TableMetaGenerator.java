@@ -271,8 +271,16 @@ public class TableMetaGenerator extends TableBaseGenerator {
         if (metaGenerateIdentities && dbType == DbType.POSTGRESQL) {
             for (String pojo : pojos.keySet()) {
                 Pair<String, String> primaryKey = getPrimaryKey(pojo);
-                if (primaryKey != null)
-                    metaIdentityDefinition(pojo, primaryKey.getFirst(), identities);
+                if (primaryKey != null) {
+                    // Check if primary key column is UUID type
+                    PojoAttribute pkAttr = getPrimaryKeyAttribute(pojo);
+                    if (pkAttr != null && pkAttr.getCompleteSqlType() != null
+                            && isUuid(pkAttr.getCompleteSqlType())) {
+                        metaIdentityDefinitionJdbc(pojo, identities);
+                    } else {
+                        metaIdentityDefinition(pojo, primaryKey.getFirst(), identities);
+                    }
+                }
             }
         }
 
@@ -370,6 +378,18 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 continue;
             if (attr.isPrimaryKey()) {
                 return Tuples.pair(attr.getDbName(), attr.getName());
+            }
+        }
+        return null;
+    }
+
+    PojoAttribute getPrimaryKeyAttribute(String pojo) {
+        for (Map.Entry<String, PojoAttribute> pentry : pojos.get(pojo).entrySet()) {
+            PojoAttribute attr = pentry.getValue();
+            if (attr == null)
+                continue;
+            if (attr.isPrimaryKey()) {
+                return attr;
             }
         }
         return null;
@@ -2161,6 +2181,29 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 buffer.append(";\n");
                 identities.put(name, buffer);
             }
+        }
+        return buffer;
+    }
+
+    StringBuilder metaIdentityDefinitionJdbc(String table, Map<String, StringBuilder> identities) {
+        StringBuilder buffer = new StringBuilder();
+        String name = table.toUpperCase();
+        if (!identities.containsKey(name)) {
+            if (metaGenerateIdGenerators) {
+                buffer.append("IDSEL=");
+            } else if (metaGenerateIndirectIdGenerators) {
+                buffer.append("IDGEN=");
+            } else {
+                buffer.append("IDSEL=");
+            }
+            buffer.append(name);
+            buffer.append("(OPT");
+            if (metaMakeItFinal)
+                buffer.append(",final=");
+            buffer.append(")=");
+            buffer.append("JDBC");
+            buffer.append(";\n");
+            identities.put(name, buffer);
         }
         return buffer;
     }
