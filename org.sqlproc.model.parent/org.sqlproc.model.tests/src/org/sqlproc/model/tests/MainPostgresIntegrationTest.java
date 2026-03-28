@@ -23,6 +23,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.sqlproc.model.ProcessorModelStandaloneSetup;
+import org.sqlproc.model.generator.TableDaoGenerator;
 import org.sqlproc.model.generator.TablePojoGenerator;
 import org.sqlproc.model.processorModel.Artifacts;
 import org.sqlproc.model.property.ModelPropertyBean;
@@ -132,6 +133,38 @@ public class MainPostgresIntegrationTest {
         "        #Attr String name // varchar(100)\n" +
         "        #IsDef\n" +
         "        #Attr String description // varchar(500)\n" +
+        "    }\n";
+    // @formatter:on
+
+    // @formatter:off
+    private static final String EXPECTED_DAO =
+        "\n" +
+        "    #CRUD(org.sample.model.Contact) #Query(org.sample.model.Contact)\n" +
+        "    #Dao ContactDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #CRUD(org.sample.model.Person) #Query(org.sample.model.Person)\n" +
+        "    #Dao PersonDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #CRUD(org.sample.model.TypesExt) #Query(org.sample.model.TypesExt)\n" +
+        "    #Dao TypesExtDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #CRUD(org.sample.model.UuidEntity) #Query(org.sample.model.UuidEntity)\n" +
+        "    #Dao UuidEntityDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #ProcedureUpdate(int,org.sample.model.NewPerson)\n" +
+        "    #Dao NewPersonDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #ProcedureCallQuery(java.util.List<org.sample.model.Person>,org.sample.model.NewPersonRetRs)\n" +
+        "    #Dao NewPersonRetRsDao {\n" +
+        "    }\n" +
+        "\n" +
+        "    #FunctionCall(java.time.LocalDateTime,org.sample.model.AnHourBefore)\n" +
+        "    #Dao AnHourBeforeDao {\n" +
         "    }\n";
     // @formatter:on
 
@@ -506,6 +539,71 @@ public class MainPostgresIntegrationTest {
             assertNotNull("Missing POJO/Enum definition: " + name, actualDef);
             assertEquals("POJO/Enum definition mismatch for: " + name, expectedDef, actualDef);
         }
+
+        // Generate DAOs
+        Stats daoStats = new Stats();
+        System.out.println("Generating DAOs...");
+        String daoDefinitions = TableDaoGenerator.generateDao(definitions, null,
+                ((XtextResource) controlResource).getSerializer(), dbResolver, scopeProvider, modelProperty, daoStats);
+
+        assertNotNull("Generated DAO should not be null", daoDefinitions);
+        System.out.println("Generated DAO definitions:");
+        System.out.println("==================");
+        System.out.println(daoDefinitions);
+        System.out.println("==================");
+        System.out.println("DAO Stats: " + daoStats);
+
+        // Write to file for debugging
+        try {
+            java.nio.file.Files.write(java.nio.file.Paths.get("target/generated-dao.model"),
+                    daoDefinitions.getBytes(java.nio.charset.StandardCharsets.UTF_8));
+            System.out.println("Generated DAO written to: target/generated-dao.model");
+        } catch (Exception e) {
+            System.err.println("Could not write debug file: " + e.getMessage());
+        }
+
+        // Verify DAO definitions using structured comparison
+        Map<String, String> expectedDaoStatements = parseDaoDefinitions(EXPECTED_DAO);
+        Map<String, String> actualDaoStatements = parseDaoDefinitions(daoDefinitions);
+
+        // Statements to temporarily ignore during comparison
+        Set<String> ignoredDaoStatements = new HashSet<String>();
+//        ignoredDaoStatements.add("UuidEntityDao");
+
+        // Compare statement keys (order-independent)
+        Set<String> expectedDaoKeys = new HashSet<String>(expectedDaoStatements.keySet());
+        Set<String> actualDaoKeys = new HashSet<String>(actualDaoStatements.keySet());
+        expectedDaoKeys.removeAll(ignoredDaoStatements);
+        actualDaoKeys.removeAll(ignoredDaoStatements);
+
+        Set<String> missingDaoKeys = new HashSet<String>(expectedDaoKeys);
+        missingDaoKeys.removeAll(actualDaoKeys);
+
+        Set<String> extraDaoKeys = new HashSet<String>(actualDaoKeys);
+        extraDaoKeys.removeAll(expectedDaoKeys);
+
+        if (!missingDaoKeys.isEmpty() || !extraDaoKeys.isEmpty()) {
+            StringBuilder sb = new StringBuilder("DAO definition names mismatch.");
+            if (!missingDaoKeys.isEmpty()) {
+                sb.append(" Missing: ").append(missingDaoKeys).append(".");
+            }
+            if (!extraDaoKeys.isEmpty()) {
+                sb.append(" Extra: ").append(extraDaoKeys).append(".");
+            }
+            assertEquals(sb.toString(), expectedDaoKeys, actualDaoKeys);
+        }
+
+        // Compare each individual DAO definition
+        for (Map.Entry<String, String> entry : expectedDaoStatements.entrySet()) {
+            String name = entry.getKey();
+            if (ignoredDaoStatements.contains(name)) {
+                continue;
+            }
+            String expectedDef = entry.getValue();
+            String actualDef = actualDaoStatements.get(name);
+            assertNotNull("Missing DAO definition: " + name, actualDef);
+            assertEquals("DAO definition mismatch for: " + name, expectedDef, actualDef);
+        }
     }
 
     /**
@@ -602,6 +700,91 @@ public class MainPostgresIntegrationTest {
         }
         String rest = line.substring(idx + prefixLen).trim();
         // Name is the first word
+        int spaceIdx = rest.indexOf(' ');
+        int braceIdx = rest.indexOf('{');
+        int endIdx = rest.length();
+        if (spaceIdx >= 0) endIdx = Math.min(endIdx, spaceIdx);
+        if (braceIdx >= 0) endIdx = Math.min(endIdx, braceIdx);
+        return rest.substring(0, endIdx).trim();
+    }
+
+    /**
+     * Parses DAO definition text into a map of individual definitions keyed by DAO name.
+     * Each definition block starts with annotation lines (e.g. #CRUD, #Query, #ProcedureUpdate) followed by
+     * #Dao Name { and ends with the closing }.
+     */
+    private static Map<String, String> parseDaoDefinitions(String daoText) {
+        Map<String, String> definitions = new LinkedHashMap<String, String>();
+        String[] lines = daoText.split("\n");
+        StringBuilder currentBlock = null;
+        String currentName = null;
+        int braceDepth = 0;
+
+        for (String line : lines) {
+            String trimmed = line.trim();
+
+            if (trimmed.isEmpty()) {
+                if (currentBlock == null) {
+                    continue;
+                }
+            }
+
+            // Detect start of a new block: annotation line starting with #
+            if (currentBlock == null && trimmed.startsWith("#")) {
+                currentBlock = new StringBuilder(line);
+                String name = extractDaoName(trimmed);
+                if (name != null) {
+                    currentName = name;
+                }
+                if (trimmed.contains("{")) {
+                    braceDepth++;
+                }
+                continue;
+            }
+
+            if (currentBlock != null) {
+                currentBlock.append("\n").append(line);
+
+                if (currentName == null) {
+                    String name = extractDaoName(trimmed);
+                    if (name != null) {
+                        currentName = name;
+                    }
+                }
+
+                if (trimmed.contains("{")) {
+                    braceDepth++;
+                }
+                if (trimmed.contains("}")) {
+                    braceDepth--;
+                    if (braceDepth <= 0) {
+                        if (currentName != null) {
+                            definitions.put(currentName, currentBlock.toString());
+                        }
+                        currentBlock = null;
+                        currentName = null;
+                        braceDepth = 0;
+                    }
+                }
+            }
+        }
+
+        if (currentName != null && currentBlock != null) {
+            definitions.put(currentName, currentBlock.toString());
+        }
+
+        return definitions;
+    }
+
+    /**
+     * Extracts the DAO name from a line like "#Dao ContactDao {".
+     */
+    private static String extractDaoName(String line) {
+        int daoIdx = line.indexOf("#Dao ");
+        if (daoIdx < 0) {
+            return null;
+        }
+        String rest = line.substring(daoIdx + "#Dao ".length()).trim();
         int spaceIdx = rest.indexOf(' ');
         int braceIdx = rest.indexOf('{');
         int endIdx = rest.length();
