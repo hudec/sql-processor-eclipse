@@ -620,7 +620,7 @@ public class MainPostgresIntegrationTest {
 
         // Statements to temporarily ignore during comparison
         Set<String> ignoredStatements = new HashSet<String>();
-        ignoredStatements.add("IDSEL=UUID_ENTITY");
+//        ignoredStatements.add("IDSEL=UUID_ENTITY");
 
         // Compare statement keys (order-independent)
         Set<String> expectedKeys = new HashSet<String>(expectedStatements.keySet());

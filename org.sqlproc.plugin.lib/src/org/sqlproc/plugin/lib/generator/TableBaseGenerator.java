@@ -1371,6 +1371,8 @@ public class TableBaseGenerator {
                     attribute.setClassName(java.time.OffsetDateTime.class.getName());
                 else
                     attribute.setClassName(java.time.LocalDateTime.class.getName());
+            } else if (dbColumn.getType() != null && dbColumn.getType().equalsIgnoreCase("uuid")) {
+                attribute.setClassName(java.util.UUID.class.getName());
             } else {
                 attribute.setClassName("java.lang.Object");
             }

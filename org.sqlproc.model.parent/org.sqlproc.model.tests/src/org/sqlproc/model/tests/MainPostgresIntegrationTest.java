@@ -118,7 +118,7 @@ public class MainPostgresIntegrationTest {
         "        #PrimaryKey #Index\n" +
         "        #Attr Long id // bigserial(19)\n" +
         "        #IsDef\n" +
-        "        #Attr Object tUuid // uuid(2147483647)\n" +
+        "        #Attr java.util.UUID tUuid // uuid(2147483647)\n" +
         "        #IsDef\n" +
         "        #Attr java.time.OffsetDateTime tOffsetDateTime // timestamptz(35)\n" +
         "    }\n" +
@@ -126,9 +126,9 @@ public class MainPostgresIntegrationTest {
         "    #Operators #Serializable(1) #Equals(id) #HashCode(id) #ToString(id,myid,name,description)\n" +
         "    #Pojo UuidEntity {\n" +
         "        #PrimaryKey #Index\n" +
-        "        #Attr Object id // uuid(2147483647)\n" +
+        "        #Attr java.util.UUID id // uuid(2147483647)\n" +
         "        #Required\n" +
-        "        #Attr Object myid // uuid(2147483647)\n" +
+        "        #Attr java.util.UUID myid // uuid(2147483647)\n" +
         "        #Required\n" +
         "        #Attr String name // varchar(100)\n" +
         "        #IsDef\n" +
