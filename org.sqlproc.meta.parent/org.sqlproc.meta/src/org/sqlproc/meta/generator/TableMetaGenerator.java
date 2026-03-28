@@ -1071,8 +1071,24 @@ public class TableMetaGenerator extends TableBaseGenerator {
                 buffer.append(",").append(metaType.value2);
             }
             return true;
+        } else if (completeSqlType != null && isTimestampWithTimeZone(completeSqlType)) {
+            if (first)
+                buffer.append("(");
+            else
+                buffer.append(",");
+            buffer.append("type=offsetdatetime");
+            return true;
         }
         return false;
+    }
+
+    static boolean isTimestampWithTimeZone(String completeSqlType) {
+        String baseType = completeSqlType;
+        int ix = completeSqlType.indexOf('(');
+        if (ix > 0)
+            baseType = completeSqlType.substring(0, ix);
+        return "timestamptz".equalsIgnoreCase(baseType)
+                || "TIMESTAMP WITH TIME ZONE".equalsIgnoreCase(baseType);
     }
 
     PojoAttribute resultSetAttribute(String pojo, boolean isFunction) {

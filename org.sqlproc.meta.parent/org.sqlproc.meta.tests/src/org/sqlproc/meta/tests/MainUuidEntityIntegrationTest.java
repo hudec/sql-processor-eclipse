@@ -186,15 +186,16 @@ public class MainUuidEntityIntegrationTest {
         "\n" +
         "INSERT_TYPES_EXT(CRUD,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
         "  insert into %%types_ext (%id, %t_uuid, %t_offset_date_time)\n" +
-        "  {= values (:id(idgen=TYPES_EXT,id=id), :uuid, :offsetDateTime(type=offsetdatetime)) }\n" +
+        "  {= values (:id(idgen=TYPES_EXT,id=id), :tUuid, :tOffsetDateTime(type=offsetdatetime)) }\n" +
         ";\n" +
         "\n" +
         "GET_TYPES_EXT(CRUD,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
-        "  select %id @id(id), %t_uuid @uuid, %t_offset_date_time @offsetDateTime(type=offsetdatetime)\n" +
+        "  select %id @id(id), %t_uuid @tUuid, %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
         "  from %%types_ext\n" +
         "  {= where\n" +
         "    {& %id ::= :id }\n" +
-        "    {& %t_uuid ::= :uuid }\n" +
+        "    {& %t_uuid ::= :tUuid }\n" +
+        "    {& %t_offset_date_time ::= :tOffsetDateTime(type=offsetdatetime) }\n" +
         "  }\n" +
         ";\n" +
         "\n" +
@@ -202,7 +203,7 @@ public class MainUuidEntityIntegrationTest {
         "  update %%types_ext\n" +
         "  {= set\n" +
         "    { ,%t_uuid = :tUuid(call=isDef) }\n" +
-        "    { ,%t_offset_date_time = :tOffsetDateTime(call=isDef) }\n" +
+        "    { ,%t_offset_date_time = :tOffsetDateTime(type=offsetdatetime,call=isDef) }\n" +
         "  }\n" +
         "  {= where\n" +
         "    {& %id = :id(!empty) }\n" +
@@ -217,13 +218,14 @@ public class MainUuidEntityIntegrationTest {
         ";\n" +
         "\n" +
         "SELECT_TYPES_EXT(QRY,in=TypesExt,out=TypesExt,tab=types_ext)=\n" +
-        "  select %id @id(id), %t_uuid @uuid, %t_offset_date_time @offsetDateTime(type=offsetdatetime)\n" +
+        "  select %id @id(id), %t_uuid @tUuid, %t_offset_date_time @tOffsetDateTime(type=offsetdatetime)\n" +
         "  from %%types_ext\n" +
         "  {= where\n" +
         "    {& %id ::= :id }\n" +
-        "    {& %t_uuid ::= :uuid }\n" +
+        "    {& %t_uuid ::= :tUuid }\n" +
+        "    {& %t_offset_date_time ::= :tOffsetDateTime(type=offsetdatetime) }\n" +
         "  }\n" +
-        "  order by %id\n" +
+        "  {#ID order by %id }\n" +
         ";\n" +
         "\n" +
         "INSERT_UUID_ENTITY(CRUD,in=UuidEntity,out=UuidEntity,tab=uuid_entity)=\n" +
