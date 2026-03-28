@@ -7,6 +7,8 @@ import static org.junit.Assert.assertNotNull;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.Set;
 
 import org.eclipse.emf.common.util.URI;
@@ -108,11 +110,7 @@ public class MainPostgresIntegrationTest {
         "        #Attr String firstName // varchar\n" +
         "        #Attr String lastName // varchar\n" +
         "        #Attr String gender // varchar\n" +
-        "    }\n";
-    // @formatter:on
-
-    // @formatter:off
-    private static final String EXPECTED_TYPES_EXT =
+        "    }\n" +
         "\n" +
         "    #Operators #Serializable(1) #Equals(id) #HashCode(id) #ToString(id,tUuid,tOffsetDateTime)\n" +
         "    #Pojo TypesExt {\n" +
@@ -122,11 +120,7 @@ public class MainPostgresIntegrationTest {
         "        #Attr Object tUuid // uuid(2147483647)\n" +
         "        #IsDef\n" +
         "        #Attr java.time.OffsetDateTime tOffsetDateTime // timestamptz(35)\n" +
-        "    }\n";
-    // @formatter:on
-
-    // @formatter:off
-    private static final String EXPECTED_UUID_ENTITY =
+        "    }\n" +
         "\n" +
         "    #Operators #Serializable(1) #Equals(id) #HashCode(id) #ToString(id,myid,name,description)\n" +
         "    #Pojo UuidEntity {\n" +
@@ -470,85 +464,149 @@ public class MainPostgresIntegrationTest {
             System.err.println("Could not write debug file: " + e.getMessage());
         }
 
-        // Verify EXPECTED_POJO (Contact, Person, AnHourBefore, NewPerson, NewPersonRetRs)
-        assertContainsPojo(pojoDefinitions, EXPECTED_POJO, "base POJOs (Contact, Person, AnHourBefore, NewPerson, NewPersonRetRs)");
+        // Verify POJO definitions using structured comparison (same logic as meta test)
+        Map<String, String> expectedStatements = parsePojoDefinitions(EXPECTED_POJO);
+        Map<String, String> actualStatements = parsePojoDefinitions(pojoDefinitions);
 
-        // Verify TYPES_EXT definitions
-        assertContainsPojo(pojoDefinitions, EXPECTED_TYPES_EXT, "TypesExt");
+        // Statements to temporarily ignore during comparison
+        Set<String> ignoredStatements = new HashSet<String>();
+//        ignoredStatements.add("UuidEntity");
 
-        // Verify UUID_ENTITY definitions
-        assertContainsPojo(pojoDefinitions, EXPECTED_UUID_ENTITY, "UuidEntity");
-    }
+        // Compare statement keys (order-independent)
+        Set<String> expectedKeys = new HashSet<String>(expectedStatements.keySet());
+        Set<String> actualKeys = new HashSet<String>(actualStatements.keySet());
+        expectedKeys.removeAll(ignoredStatements);
+        actualKeys.removeAll(ignoredStatements);
 
-    /**
-     * Asserts that the generated POJO definitions contain the expected POJO definition fragment.
-     * Comparison is done line-by-line after trimming to handle minor whitespace differences.
-     */
-    private void assertContainsPojo(String actual, String expected, String description) {
-        String[] expectedLines = expected.split("\n");
-        String[] actualLines = actual.split("\n");
+        Set<String> missingKeys = new HashSet<String>(expectedKeys);
+        missingKeys.removeAll(actualKeys);
 
-        for (String expectedLine : expectedLines) {
-            String trimmedExpected = expectedLine.trim();
-            if (trimmedExpected.isEmpty()) {
+        Set<String> extraKeys = new HashSet<String>(actualKeys);
+        extraKeys.removeAll(expectedKeys);
+
+        if (!missingKeys.isEmpty() || !extraKeys.isEmpty()) {
+            StringBuilder sb = new StringBuilder("POJO definition names mismatch.");
+            if (!missingKeys.isEmpty()) {
+                sb.append(" Missing: ").append(missingKeys).append(".");
+            }
+            if (!extraKeys.isEmpty()) {
+                sb.append(" Extra: ").append(extraKeys).append(".");
+            }
+            assertEquals(sb.toString(), expectedKeys, actualKeys);
+        }
+
+        // Compare each individual POJO/Enum definition
+        for (Map.Entry<String, String> entry : expectedStatements.entrySet()) {
+            String name = entry.getKey();
+            if (ignoredStatements.contains(name)) {
                 continue;
             }
-            boolean found = false;
-            for (String actualLine : actualLines) {
-                if (actualLine.trim().equals(trimmedExpected)) {
-                    found = true;
-                    break;
-                }
-            }
-            if (!found) {
-                assertEquals("Expected line not found in generated POJO for " + description + ": [" + trimmedExpected + "].\n"
-                        + "Full expected:\n" + expected + "\nFull actual:\n" + actual,
-                        expected.trim(), extractMatchingSection(actual, expected));
-            }
+            String expectedDef = entry.getValue();
+            String actualDef = actualStatements.get(name);
+            assertNotNull("Missing POJO/Enum definition: " + name, actualDef);
+            assertEquals("POJO/Enum definition mismatch for: " + name, expectedDef, actualDef);
         }
     }
 
     /**
-     * Tries to extract a section from actual that starts with the same first non-empty line as expected.
-     * Used for better error messages.
+     * Parses POJO definition text into a map of individual definitions keyed by POJO/Enum name.
+     * Each definition block starts with annotation lines (e.g. #Serializable, #Operators) followed by
+     * #Pojo Name { or #Enum Name { and ends with the closing }.
      */
-    private String extractMatchingSection(String actual, String expected) {
-        String[] expectedLines = expected.split("\n");
-        String firstExpectedLine = null;
-        for (String line : expectedLines) {
-            if (!line.trim().isEmpty()) {
-                firstExpectedLine = line.trim();
-                break;
+    private static Map<String, String> parsePojoDefinitions(String pojoText) {
+        Map<String, String> definitions = new LinkedHashMap<String, String>();
+        String[] lines = pojoText.split("\n");
+        StringBuilder currentBlock = null;
+        String currentName = null;
+        int braceDepth = 0;
+
+        for (String line : lines) {
+            String trimmed = line.trim();
+
+            if (trimmed.isEmpty()) {
+                // Empty line may separate blocks
+                if (currentBlock == null) {
+                    continue;
+                }
             }
-        }
-        if (firstExpectedLine == null) {
-            return actual.trim();
+
+            // Detect start of a new block: annotation line starting with #
+            if (currentBlock == null && trimmed.startsWith("#")) {
+                currentBlock = new StringBuilder(line);
+                // Check if this line itself contains #Pojo or #Enum
+                String name = extractPojoName(trimmed);
+                if (name != null) {
+                    currentName = name;
+                }
+                if (trimmed.contains("{")) {
+                    braceDepth++;
+                }
+                continue;
+            }
+
+            if (currentBlock != null) {
+                currentBlock.append("\n").append(line);
+
+                // Check for name if not yet found
+                if (currentName == null) {
+                    String name = extractPojoName(trimmed);
+                    if (name != null) {
+                        currentName = name;
+                    }
+                }
+
+                // Track braces
+                if (trimmed.contains("{")) {
+                    braceDepth++;
+                }
+                if (trimmed.contains("}")) {
+                    braceDepth--;
+                    if (braceDepth <= 0) {
+                        // Block is complete
+                        if (currentName != null) {
+                            definitions.put(currentName, currentBlock.toString());
+                        }
+                        currentBlock = null;
+                        currentName = null;
+                        braceDepth = 0;
+                    }
+                }
+            }
         }
 
-        String[] actualLines = actual.split("\n");
-        StringBuilder sb = new StringBuilder();
-        boolean capturing = false;
-        int expectedLineCount = 0;
-        for (String el : expectedLines) {
-            if (!el.trim().isEmpty()) {
-                expectedLineCount++;
-            }
+        // Handle last block if not closed
+        if (currentName != null && currentBlock != null) {
+            definitions.put(currentName, currentBlock.toString());
         }
-        int capturedCount = 0;
-        for (String line : actualLines) {
-            if (!capturing && line.trim().equals(firstExpectedLine)) {
-                capturing = true;
-            }
-            if (capturing) {
-                sb.append(line.trim()).append("\n");
-                if (!line.trim().isEmpty()) {
-                    capturedCount++;
-                }
-                if (capturedCount >= expectedLineCount) {
-                    break;
-                }
-            }
+
+        return definitions;
+    }
+
+    /**
+     * Extracts the POJO or Enum name from a line like "#Pojo Contact {" or "#Enum PersonGender {".
+     */
+    private static String extractPojoName(String line) {
+        int pojoIdx = line.indexOf("#Pojo ");
+        int enumIdx = line.indexOf("#Enum ");
+        int idx = -1;
+        int prefixLen = 0;
+        if (pojoIdx >= 0) {
+            idx = pojoIdx;
+            prefixLen = "#Pojo ".length();
+        } else if (enumIdx >= 0) {
+            idx = enumIdx;
+            prefixLen = "#Enum ".length();
         }
-        return sb.toString().trim();
+        if (idx < 0) {
+            return null;
+        }
+        String rest = line.substring(idx + prefixLen).trim();
+        // Name is the first word
+        int spaceIdx = rest.indexOf(' ');
+        int braceIdx = rest.indexOf('{');
+        int endIdx = rest.length();
+        if (spaceIdx >= 0) endIdx = Math.min(endIdx, spaceIdx);
+        if (braceIdx >= 0) endIdx = Math.min(endIdx, braceIdx);
+        return rest.substring(0, endIdx).trim();
     }
 }

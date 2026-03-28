@@ -1326,8 +1326,25 @@ public class TableBaseGenerator {
                 attribute.setClassName(java.sql.Timestamp.class.getName());
                 attribute.setWrapperClassName(java.sql.Timestamp.class.getName());
             } else {
-                attribute.setClassName(java.time.LocalDateTime.class.getName());
-                attribute.setWrapperClassName(java.time.LocalDateTime.class.getName());
+                String colType = dbColumn.getType();
+                if (colType != null && (colType.equalsIgnoreCase("timestamptz")
+                        || colType.toUpperCase().contains("WITH TIME ZONE"))) {
+                    attribute.setClassName(java.time.OffsetDateTime.class.getName());
+                    attribute.setWrapperClassName(java.time.OffsetDateTime.class.getName());
+                } else {
+                    attribute.setClassName(java.time.LocalDateTime.class.getName());
+                    attribute.setWrapperClassName(java.time.LocalDateTime.class.getName());
+                }
+            }
+            break;
+        case 2014: // Types.TIMESTAMP_WITH_TIMEZONE
+            attribute.setPrimitive(false);
+            if (oldDateTime) {
+                attribute.setClassName(java.sql.Timestamp.class.getName());
+                attribute.setWrapperClassName(java.sql.Timestamp.class.getName());
+            } else {
+                attribute.setClassName(java.time.OffsetDateTime.class.getName());
+                attribute.setWrapperClassName(java.time.OffsetDateTime.class.getName());
             }
             break;
         case Types.BINARY:
@@ -1347,8 +1364,11 @@ public class TableBaseGenerator {
             // todo what type?
             attribute.setPrimitive(false);
             if (dbColumn.getType().indexOf("TIMESTAMP") == 0 || dbColumn.getType().indexOf("timestamp") == 0) {
+                boolean withTimeZone = dbColumn.getType().toUpperCase().contains("WITH TIME ZONE");
                 if (oldDateTime)
                     attribute.setClassName(java.sql.Timestamp.class.getName());
+                else if (withTimeZone)
+                    attribute.setClassName(java.time.OffsetDateTime.class.getName());
                 else
                     attribute.setClassName(java.time.LocalDateTime.class.getName());
             } else {
@@ -1368,6 +1388,7 @@ public class TableBaseGenerator {
 
     static {
         metaType2classNameMap.put("localdatetime", java.time.LocalDateTime.class.getName());
+        metaType2classNameMap.put("offsetdatetime", java.time.OffsetDateTime.class.getName());
         metaType2classNameMap.put("localdate", java.time.LocalDate.class.getName());
         metaType2classNameMap.put("localtime", java.time.LocalTime.class.getName());
         metaType2classNameMap.put("instant", java.time.Instant.class.getName());
