@@ -650,8 +650,10 @@ public class TableMetaGenerator extends TableBaseGenerator {
                         uuidName = attr.attribute.getName();
                     else
                         uuidName = columnToCamelCase(uuidName);
-                    if (!first)
+                    if (!first && !afterUuidOptional)
                         buffer.append(", ");
+                    else if (afterUuidOptional)
+                        buffer.append(" ");
                     buffer.append("{? :").append(uuidName).append("(type=uuid) | %")
                             .append(pentry.getKey()).append(", }");
                     first = false;
@@ -758,8 +760,10 @@ public class TableMetaGenerator extends TableBaseGenerator {
                     && isUuid(attr.completeSqlType);
             if (isNonPkUuid) {
                 // Wrap non-PK UUID value in optional syntax
-                if (!first)
+                if (!first && !afterUuidOptional)
                     buffer.append(", ");
+                else if (afterUuidOptional)
+                    buffer.append(" ");
                 buffer.append("{? :").append(name).append("(type=uuid) | :").append(name).append("(type=uuid), }");
                 first = false;
                 afterUuidOptional = true;
