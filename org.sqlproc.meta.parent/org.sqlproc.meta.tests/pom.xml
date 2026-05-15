@@ -13,7 +13,7 @@
 		<dependency>
 			<groupId>org.postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>42.7.2</version>
+			<version>42.7.11</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -55,7 +55,7 @@
 								<artifactItem>
 									<groupId>org.postgresql</groupId>
 									<artifactId>postgresql</artifactId>
-									<version>42.7.2</version>
+									<version>42.7.11</version>
 									<type>jar</type>
 									<outputDirectory>${project.basedir}/lib</outputDirectory>
 								</artifactItem>
